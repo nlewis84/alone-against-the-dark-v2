@@ -4,9 +4,16 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build:css": "npx tailwindcss build styles.css -o output.css"
+    "build:css": "npx tailwindcss build styles.css -o output.css",
+    "test": "jest"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-fetch-mock": "^3.0.3",
     "tailwindcss": "^3.4.3"
   }
 }

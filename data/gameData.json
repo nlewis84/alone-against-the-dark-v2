@@ -1,4 +1,26 @@
 {
+  "investigators": {
+    "Professor Grunewald": {
+      "health": 100,
+      "sanity": 100,
+      "skills": {
+        "Climb": 40,
+        "Charm": 50,
+        "Fighting": 30
+      },
+      "inventory": []
+    },
+    "Ernest Holt": {
+      "health": 100,
+      "sanity": 100,
+      "skills": {
+        "Climb": 30,
+        "Charm": 60,
+        "Fighting": 40
+      },
+      "inventory": []
+    }
+  },
   "entries": {
     "1": {
       "description": "You are in a dark room...",
@@ -57,12 +79,15 @@
       ]
     },
     "9": {
-      "description": "You open the chest and find a magical artifact. Your health is restored!",
-      "choices": [{ "text": "Take the artifact and leave", "nextEntry": "7" }],
-      "effects": {
-        "health": 100,
-        "inventory": ["Magical Artifact"]
-      }
+      "description": "You open the chest and find a magical artifact.",
+      "choices": [
+        {
+          "text": "Take the artifact and leave",
+          "nextEntry": "7",
+          "effects": { "health": 100, "inventory": ["Magical Artifact"] }
+        },
+        { "text": "Leave without taking the artifact", "nextEntry": "7" }
+      ]
     }
   }
 }
