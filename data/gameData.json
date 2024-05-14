@@ -8,18 +8,61 @@
       ]
     },
     "2": {
-      "description": "The light reveals an old library...",
+      "description": "The light reveals an old library with bookshelves full of ancient tomes...",
       "choices": [
         { "text": "Read a book", "nextEntry": "4" },
         { "text": "Leave the library", "nextEntry": "3" }
       ]
     },
     "3": {
-      "description": "You are outside in the garden...",
+      "description": "You are outside in the garden, with paths leading in various directions...",
       "choices": [
         { "text": "Go back inside", "nextEntry": "1" },
         { "text": "Explore the garden", "nextEntry": "5" }
       ]
+    },
+    "4": {
+      "description": "You pick a dusty old book and start reading about ancient spells...",
+      "choices": [
+        { "text": "Try a spell", "nextEntry": "6" },
+        { "text": "Put the book back", "nextEntry": "2" }
+      ]
+    },
+    "5": {
+      "description": "You explore the garden and find a hidden pathway...",
+      "choices": [
+        { "text": "Follow the pathway", "nextEntry": "7" },
+        { "text": "Return to the main garden", "nextEntry": "3" }
+      ]
+    },
+    "6": {
+      "description": "You try to cast a spell from the book. Suddenly, you feel a strange power flowing through you...",
+      "choices": [
+        { "text": "Continue exploring the library", "nextEntry": "2" },
+        { "text": "Leave the room", "nextEntry": "3" }
+      ]
+    },
+    "7": {
+      "description": "The pathway leads you to a mysterious cave entrance...",
+      "choices": [
+        { "text": "Enter the cave", "nextEntry": "8" },
+        { "text": "Go back", "nextEntry": "5" }
+      ]
+    },
+    "8": {
+      "description": "Inside the cave, you find a treasure chest...",
+      "choices": [
+        { "text": "Open the chest", "nextEntry": "9" },
+        { "text": "Leave the cave", "nextEntry": "7" }
+      ]
+    },
+    "9": {
+      "description": "You open the chest and find a magical artifact. Your health is restored!",
+      "choices": [{ "text": "Take the artifact and leave", "nextEntry": "7" }],
+      "effects": {
+        "health": 100,
+        "inventory": ["Magical Artifact"]
+      }
     }
   }
 }

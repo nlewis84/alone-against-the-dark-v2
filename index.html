@@ -8,13 +8,13 @@
   </head>
   <body class="bg-gray-100 text-gray-900">
     <div id="game" class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <div id="description" class="mb-6"></div>
-      <div id="choices" class="mb-6"></div>
+      <div id="description" class="mb-6 text-lg"></div>
+      <div id="choices" class="mb-6 flex flex-col space-y-2"></div>
       <div id="status" class="mb-6">
-        <div id="health" class="mb-2">Health: 100</div>
-        <div id="inventory">Inventory:</div>
+        <div id="health" class="mb-2 font-bold">Health: 100</div>
+        <div id="inventory" class="font-bold">Inventory:</div>
       </div>
-      <div id="controls">
+      <div id="controls" class="flex space-x-2">
         <button
           id="saveButton"
           class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
