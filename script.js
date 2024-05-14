@@ -1,5 +1,5 @@
 let gameData;
-export let currentState; // Export currentState for tests
+export let currentState;
 let currentDate = new Date(1931, 8, 1); // Start on September 1, 1931
 
 document.addEventListener("DOMContentLoaded", () => {

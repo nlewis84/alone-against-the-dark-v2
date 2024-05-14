@@ -1,4 +1,59 @@
-/* styles.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville&display=swap");
+
+/* Apply global styles */
+body {
+  font-family: "Libre Baskerville", serif;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+/* Custom button styles */
+button {
+  font-family: "Cinzel", serif;
+  font-size: 1.1rem;
+}
+
+/* Custom container styles */
+#game {
+  max-width: 800px;
+  background-color: white;
+  border: 2px solid #d4af37;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: auto;
+}
+
+/* Custom text styles */
+#description,
+#choices {
+  margin-bottom: 1.5rem;
+}
+
+#choices button {
+  background-color: #000080;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+}
+
+#choices button:hover {
+  background-color: #333366;
+}
+
+#saveButton,
+#loadButton {
+  background-color: #d4af37;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-right: 0.5rem;
+}
+
+#saveButton:hover,
+#loadButton:hover {
+  background-color: #b38e2e;
+}
