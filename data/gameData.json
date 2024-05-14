@@ -1,0 +1,25 @@
+{
+  "entries": {
+    "1": {
+      "description": "You are in a dark room...",
+      "choices": [
+        { "text": "Turn on the light", "nextEntry": "2" },
+        { "text": "Leave the room", "nextEntry": "3" }
+      ]
+    },
+    "2": {
+      "description": "The light reveals an old library...",
+      "choices": [
+        { "text": "Read a book", "nextEntry": "4" },
+        { "text": "Leave the library", "nextEntry": "3" }
+      ]
+    },
+    "3": {
+      "description": "You are outside in the garden...",
+      "choices": [
+        { "text": "Go back inside", "nextEntry": "1" },
+        { "text": "Explore the garden", "nextEntry": "5" }
+      ]
+    }
+  }
+}

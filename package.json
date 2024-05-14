@@ -1,0 +1,14 @@
+{
+  "name": "alone-against-the-dark-v2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "http-server -p 8000",
+    "build:css": "npx tailwindcss build styles.css -o output.css"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "tailwindcss": "^3.4.3"
+  }
+}
