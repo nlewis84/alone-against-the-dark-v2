@@ -4,9 +4,67 @@
       "health": 100,
       "sanity": 100,
       "skills": {
-        "Climb": 40,
-        "Charm": 50,
-        "Fighting": 30
+        "Brawl": 25,
+        "Dodge": 30,
+        ".45 Revolver": 40,
+        "12-gauge Shotgun": 25,
+        "Accounting": 25,
+        "Credit Rating": 50,
+        "Firearms (Handgun)": 40,
+        "Intimidate": 50,
+        "Language (Own) (German)": 90,
+        "Language (English)": 60,
+        "Language (Latin)": 45,
+        "Language (Nordic)": 40,
+        "Language (Hieroglyphics)": 50,
+        "Library Use": 60,
+        "Persuade": 40,
+        "Psychology": 30,
+        "Spot Hidden": 50,
+        "Science (Cryptography)": 40
+      },
+      "inventory": []
+    },
+    "Lydia Lau": {
+      "health": 100,
+      "sanity": 100,
+      "skills": {
+        "Brawl": 25,
+        "Dodge": 30,
+        ".32 Revolver": 20,
+        "Art/Craft (Copy Writing)": 65,
+        "Credit Rating": 20,
+        "Fast Talk": 45,
+        "History": 40,
+        "Language (Own) (English)": 70,
+        "Language (Hieroglyphics)": 20,
+        "Listen": 35,
+        "Psychology": 40,
+        "Science (Cryptography)": 20,
+        "Spot Hidden": 60,
+        "Stealth": 50
+      },
+      "inventory": []
+    },
+    "Devon Wilson": {
+      "health": 100,
+      "sanity": 100,
+      "skills": {
+        "Brawl": 25,
+        "Dodge": 30,
+        ".45 Revolver": 20,
+        ".30-06 Rifle": 25,
+        "Credit Rating": 30,
+        "First Aid": 40,
+        "Language (Own) (English)": 85,
+        "Language (German)": 20,
+        "Mechanical Repair": 35,
+        "Navigate": 60,
+        "Pilot (Boat)": 60,
+        "Science (Cryptography)": 10,
+        "Survival (Sea)": 40,
+        "Survival (Desert)": 30,
+        "Swim": 45
       },
       "inventory": []
     },
@@ -14,9 +72,22 @@
       "health": 100,
       "sanity": 100,
       "skills": {
-        "Climb": 30,
-        "Charm": 60,
-        "Fighting": 40
+        "Brawl": 25,
+        "Dodge": 30,
+        ".45 Revolver": 40,
+        "12-gauge Shotgun": 25,
+        "Accounting": 25,
+        "Credit Rating": 50,
+        "Firearms (Handgun)": 40,
+        "Intimidate": 50,
+        "Language (Own) (English)": 65,
+        "Language (German)": 25,
+        "Law": 20,
+        "Listen": 30,
+        "Persuade": 40,
+        "Psychology": 30,
+        "Spot Hidden": 50,
+        "Throw": 30
       },
       "inventory": []
     }

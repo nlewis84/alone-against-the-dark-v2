@@ -106,4 +106,15 @@ describe("Game Logic", () => {
       "You are in a dark room..."
     );
   });
+
+  test("should update sanity correctly", () => {
+    updateSanity(-10);
+    expect(currentState.sanity).toBe(90);
+  });
+
+  test("should make skill check", () => {
+    currentState.skills = { Climb: 40 };
+    const result = makeSkillCheck("Climb");
+    expect([true, false]).toContain(result);
+  });
 });
