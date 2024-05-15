@@ -1,6 +1,6 @@
 import { currentState, gameData, currentDate } from "./gameState.js";
 import { saveState, loadState } from "../utils/storage.js";
-import { rollDice } from "../utils/dice.js";
+import { rollDice, makeSkillCheck } from "../utils/dice.js";
 
 export function updateTime(hours) {
   currentDate.setHours(currentDate.getHours() + hours);
@@ -36,7 +36,16 @@ export function displayEntry(entryId) {
     button.className =
       "px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2";
     if (choice.effects && choice.effects.check) {
-      button.onclick = () => handleSkillCheck(choice.effects.check);
+      button.onclick = () => {
+        const success = makeSkillCheck(
+          choice.effects.check.skill,
+          currentState.skills,
+          currentState
+        );
+        displayEntry(
+          success ? choice.effects.check.success : choice.effects.check.failure
+        );
+      };
     } else {
       button.onclick = () => makeChoice(choice.nextEntry, choice.effects);
     }
@@ -46,16 +55,6 @@ export function displayEntry(entryId) {
   if (entry.end) {
     document.getElementById("description").innerHTML +=
       "<br><strong>THE END</strong>";
-  }
-}
-
-function handleSkillCheck(check) {
-  const skillLevel = currentState.skills[check.skill];
-  const roll = rollDice(100);
-  if (roll <= skillLevel) {
-    displayEntry(check.success);
-  } else {
-    displayEntry(check.failure);
   }
 }
 

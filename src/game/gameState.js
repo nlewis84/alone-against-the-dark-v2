@@ -29,11 +29,7 @@ export async function initializeGame() {
 export function startGame() {
   currentState = {
     currentEntry: "1",
-    health: 100,
-    sanity: 100,
-    inventory: [],
-    investigator: "Professor Grunewald",
-    skills: gameData.investigators["Professor Grunewald"].skills,
+    ...gameData.investigators["Professor Grunewald"],
   };
   displayEntry(currentState.currentEntry);
   updateHealth(0); // Initialize health display

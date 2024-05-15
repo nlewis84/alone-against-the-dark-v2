@@ -14,6 +14,7 @@ import {
   updateInventory,
   saveGame,
   loadGame,
+  handleSkillCheck,
 } from "../src/game/gameActions.js";
 import { rollDice, makeSkillCheck } from "../src/utils/dice.js";
 
@@ -244,6 +245,12 @@ describe("Game Logic", () => {
   test("should make skill check", () => {
     currentState.skills = { Climb: 40 };
     const result = makeSkillCheck("Climb", currentState.skills);
+    expect([true, false]).toContain(result);
+  });
+
+  test("should make a stat check", () => {
+    currentState.skills = { DEX: 60 };
+    const result = makeSkillCheck("DEX", currentState.skills);
     expect([true, false]).toContain(result);
   });
 
