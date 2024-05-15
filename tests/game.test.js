@@ -22,10 +22,63 @@ const mockGameData = {
     "Professor Grunewald": {
       health: 100,
       sanity: 100,
+      DEX: 60,
       skills: {
         Climb: 40,
         Charm: 50,
         Fighting: 30,
+        Accounting: 5,
+        Anthropology: 5,
+        Archaeology: 5,
+        Art: 5,
+        Astronomy: 5,
+      },
+      inventory: [],
+    },
+    "Lydia Lau": {
+      health: 100,
+      sanity: 100,
+      DEX: 65,
+      skills: {
+        FastTalk: 45,
+        History: 40,
+        Listen: 35,
+        Accounting: 5,
+        Anthropology: 5,
+        Archaeology: 5,
+        Art: 5,
+        Astronomy: 5,
+      },
+      inventory: [],
+    },
+    "Devon Wilson": {
+      health: 100,
+      sanity: 100,
+      DEX: 60,
+      skills: {
+        FirstAid: 40,
+        Navigate: 60,
+        PilotBoat: 60,
+        Accounting: 5,
+        Anthropology: 5,
+        Archaeology: 5,
+        Art: 5,
+        Astronomy: 5,
+      },
+      inventory: [],
+    },
+    "Ernest Holt": {
+      health: 100,
+      sanity: 100,
+      DEX: 55,
+      skills: {
+        Accounting: 50,
+        FirearmsHandgun: 40,
+        Intimidate: 50,
+        Anthropology: 5,
+        Archaeology: 5,
+        Art: 5,
+        Astronomy: 5,
       },
       inventory: [],
     },
@@ -71,6 +124,72 @@ const mockGameData = {
     },
   },
 };
+
+// Add all the default skills with a value of 10 to each investigator
+const allSkills = [
+  "Accounting",
+  "Anthropology",
+  "Archaeology",
+  "Art",
+  "Astronomy",
+  "Bargain",
+  "Biology",
+  "Botany",
+  "Brawl",
+  "Charm",
+  "Chemistry",
+  "Climb",
+  "ComputerUse",
+  "CreditRating",
+  "CthulhuMythos",
+  "Disguise",
+  "Dodge",
+  "DriveAuto",
+  "ElectricRepair",
+  "FastTalk",
+  "Fighting",
+  "Firearms",
+  "FirstAid",
+  "Geology",
+  "History",
+  "Intimidate",
+  "Jump",
+  "Language",
+  "Law",
+  "LibraryUse",
+  "Listen",
+  "Locksmith",
+  "MartialArts",
+  "MechanicalRepair",
+  "Medicine",
+  "NaturalWorld",
+  "Navigate",
+  "Occult",
+  "OperateHeavyMachinery",
+  "Persuade",
+  "Photography",
+  "Physics",
+  "Pilot",
+  "Psychoanalysis",
+  "Psychology",
+  "Ride",
+  "Science",
+  "SleightOfHand",
+  "SpotHidden",
+  "Stealth",
+  "Survival",
+  "Swim",
+  "Throw",
+  "Track",
+];
+
+Object.values(mockGameData.investigators).forEach((investigator) => {
+  allSkills.forEach((skill) => {
+    if (!investigator.skills[skill]) {
+      investigator.skills[skill] = 10; // default value
+    }
+  });
+});
 
 describe("Game Logic", () => {
   beforeEach(() => {
@@ -162,18 +281,14 @@ describe("Game Logic", () => {
     // Add item to inventory before saving
     addItem("Magical Artifact");
     saveGame();
-    console.log("State saved to localStorage.");
 
     // Modify the current state
     currentState.health = 50;
     currentState.sanity = 50;
     currentState.inventory = [];
-    console.log("Current state modified:", currentState);
 
     // Load the saved state
     loadGame();
-
-    console.log("Current state after loading:", currentState);
 
     // Verify the state matches the expected values
     expect(currentState).toMatchObject({

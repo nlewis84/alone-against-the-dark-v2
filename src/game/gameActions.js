@@ -10,7 +10,6 @@ export function updateTime(hours) {
 }
 
 export function displayEntry(entryId) {
-  console.log(`Displaying entry: ${entryId}`);
   const entry = gameData.entries[entryId];
   if (!entry) {
     console.error(`Entry with ID ${entryId} not found`);
@@ -109,17 +108,14 @@ export function updateInventory() {
 
 // Save game state to localStorage
 export function saveGame() {
-  console.log("Saving current state to localStorage:", currentState);
   saveState("gameState", currentState);
 }
 
 // Load game state from localStorage
 export function loadGame() {
   const savedState = loadState("gameState");
-  console.log("Loaded state from localStorage:", savedState);
   if (savedState) {
     Object.assign(currentState, savedState);
-    console.log("Current state after loading:", currentState);
     displayEntry(currentState.currentEntry);
     updateHealth(0); // Refresh health display
     updateSanity(0); // Refresh sanity display
