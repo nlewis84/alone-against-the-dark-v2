@@ -3,34 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Interactive Game</title>
-    <link href="output.css" rel="stylesheet" />
+    <title>Alone Against the Dark</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="game" class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <div id="description" class="mb-6 text-lg"></div>
-      <div id="choices" class="mb-6 flex space-x-4"></div>
-      <div id="status" class="mb-6">
-        <div id="health" class="mb-2 font-bold">Health: 100</div>
-        <div id="sanity" class="mb-2 font-bold">Sanity: 100</div>
-        <div id="inventory" class="font-bold">Inventory:</div>
-        <div id="date" class="font-bold">Date: September 1, 1931</div>
-      </div>
-      <div id="controls" class="flex space-x-2">
-        <button
-          id="saveButton"
-          class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-        >
-          Save Game
-        </button>
-        <button
-          id="loadButton"
-          class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        >
-          Load Game
-        </button>
-      </div>
+    <div id="app">
+      <div id="description"></div>
+      <div id="choices"></div>
+      <div id="health"></div>
+      <div id="sanity"></div>
+      <div id="inventory"></div>
+      <div id="date"></div>
+      <button id="saveButton">Save Game</button>
+      <button id="loadButton">Load Game</button>
     </div>
-    <script type="module" src="script.js"></script>
+    <script src="src/index.js" type="module"></script>
   </body>
 </html>
