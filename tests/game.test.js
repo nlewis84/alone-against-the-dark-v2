@@ -1,4 +1,5 @@
 import {
+  currentDate,
   updateTime,
   displayEntry,
   makeChoice,
@@ -116,5 +117,49 @@ describe("Game Logic", () => {
     currentState.skills = { Climb: 40 };
     const result = makeSkillCheck("Climb");
     expect([true, false]).toContain(result);
+  });
+
+  test("should roll a dice and return a value between 1 and the specified number of sides", () => {
+    const sides = 6;
+    const roll = rollDice(sides);
+    expect(roll).toBeGreaterThanOrEqual(1);
+    expect(roll).toBeLessThanOrEqual(sides);
+  });
+
+  test("should update the current time correctly", () => {
+    const initialDate = new Date(1931, 8, 1);
+    const hoursToAdd = 5;
+    updateTime(hoursToAdd);
+    const updatedDate = new Date(initialDate);
+    updatedDate.setHours(initialDate.getHours() + hoursToAdd);
+    expect(new Date(currentDate)).toEqual(updatedDate);
+  });
+
+  test("should update the inventory display correctly", () => {
+    addItem("Magical Artifact");
+    updateInventory();
+    expect(document.getElementById("inventory").innerText).toBe(
+      "Inventory: Magical Artifact"
+    );
+  });
+
+  test("should save the game state to localStorage", () => {
+    saveGame();
+    const savedState = JSON.parse(localStorage.getItem("gameState"));
+    expect(savedState).toEqual(currentState);
+  });
+
+  test("should load the game state from localStorage", () => {
+    saveGame();
+    currentState.health = 50;
+    currentState.sanity = 50;
+    currentState.inventory = [];
+    loadGame();
+    expect(currentState).toMatchObject({
+      health: 100,
+      sanity: 100,
+      inventory: [],
+      skills: expect.any(Object),
+    });
   });
 });
