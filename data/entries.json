@@ -1,0 +1,192 @@
+{
+  "1": {
+    "title": "START",
+    "description": "You wake up in a dark room. There's a door to your left and a window to your right.",
+    "choices": [
+      { "text": "Open the door", "nextEntry": "2" },
+      { "text": "Open the window", "nextEntry": "10" }
+    ],
+    "traceNumbers": []
+  },
+  "2": {
+    "title": "HALLWAY",
+    "description": "You step into a dimly lit hallway. There's a noise coming from the end of the hallway.",
+    "choices": [
+      { "text": "Investigate the noise", "nextEntry": "3" },
+      { "text": "Leave the building", "nextEntry": "20" }
+    ],
+    "traceNumbers": ["1"]
+  },
+  "3": {
+    "title": "NOISE SOURCE",
+    "description": "You find the source of the noise. It's a person rummaging through a box.",
+    "choices": [
+      { "text": "Confront the person", "nextEntry": "4" },
+      { "text": "Sneak past them", "nextEntry": "5" }
+    ],
+    "traceNumbers": ["2"]
+  },
+  "4": {
+    "title": "CONFRONTATION",
+    "description": "The person is startled and attacks you!",
+    "specialInstructions": "Attempt a DEX roll to see who acts first:",
+    "choices": [
+      {
+        "text": "Attempt DEX roll",
+        "nextEntry": "21",
+        "effects": {
+          "check": {
+            "skill": "DEX",
+            "success": 22,
+            "failure": 23
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["3"]
+  },
+  "5": {
+    "title": "STEALTH CHECK",
+    "description": "You try to sneak past the person.",
+    "specialInstructions": "Attempt a Stealth roll to avoid detection:",
+    "choices": [
+      {
+        "text": "Attempt Stealth roll",
+        "nextEntry": "6",
+        "effects": {
+          "check": {
+            "skill": "Stealth",
+            "success": 7,
+            "failure": 8
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["3"]
+  },
+  "6": {
+    "title": "STEALTH RESULT",
+    "description": "You successfully sneak past the person and find an exit.",
+    "choices": [{ "text": "Leave the building", "nextEntry": "20" }],
+    "traceNumbers": ["5"]
+  },
+  "7": {
+    "title": "SUCCESS",
+    "description": "You sneak past the person unnoticed and continue your journey.",
+    "choices": [{ "text": "Leave the building", "nextEntry": "20" }],
+    "traceNumbers": ["5"]
+  },
+  "8": {
+    "title": "FAILURE",
+    "description": "You make too much noise and the person notices you!",
+    "choices": [{ "text": "Confront them", "nextEntry": "4" }],
+    "traceNumbers": ["5"]
+  },
+  "10": {
+    "title": "DARK ALLEY",
+    "description": "You find yourself in a dark alley. Shadows move around you, making you feel uneasy.",
+    "specialInstructions": "Attempt a Stealth roll to avoid detection:",
+    "choices": [
+      {
+        "text": "Attempt Stealth roll",
+        "nextEntry": "11",
+        "effects": {
+          "check": {
+            "skill": "Stealth",
+            "success": 12,
+            "failure": 13
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["1"]
+  },
+  "11": {
+    "description": "You successfully avoid detection and move silently through the alley.",
+    "choices": [{ "text": "Continue", "nextEntry": "14" }],
+    "traceNumbers": ["10"]
+  },
+  "12": {
+    "description": "You make too much noise and attract attention. You must find a way to escape.",
+    "choices": [{ "text": "Run", "nextEntry": "15" }],
+    "traceNumbers": ["10"]
+  },
+  "14": {
+    "description": "You reach the end of the alley and find an exit.",
+    "choices": [{ "text": "Leave the alley", "nextEntry": "20" }],
+    "traceNumbers": ["11"]
+  },
+  "15": {
+    "description": "You run and manage to escape the alley.",
+    "choices": [{ "text": "Continue", "nextEntry": "20" }],
+    "traceNumbers": ["12"]
+  },
+  "20": {
+    "title": "ENCOUNTER",
+    "description": "A menacing figure approaches you with a knife in hand. Prepare to defend yourself.",
+    "specialInstructions": "Attempt a DEX roll to see who acts first:",
+    "choices": [
+      {
+        "text": "Attempt DEX roll",
+        "nextEntry": "21",
+        "effects": {
+          "check": {
+            "skill": "DEX",
+            "success": 22,
+            "failure": 23
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["2", "6", "7", "14", "15"]
+  },
+  "21": {
+    "description": "You manage to act first. Do you want to attack or try to escape?",
+    "choices": [
+      { "text": "Attack", "nextEntry": "24" },
+      { "text": "Escape", "nextEntry": "25" }
+    ],
+    "traceNumbers": ["20"]
+  },
+  "22": {
+    "description": "The attacker strikes first, and you must defend yourself.",
+    "choices": [{ "text": "Defend", "nextEntry": "26" }],
+    "traceNumbers": ["20"]
+  },
+  "23": {
+    "description": "The attacker catches you off guard and lands a blow. You take 1D6 damage.",
+    "choices": [{ "text": "Continue", "nextEntry": "27" }],
+    "traceNumbers": ["20"]
+  },
+  "24": {
+    "description": "You successfully fend off the attacker and escape unharmed.",
+    "choices": [{ "text": "Continue", "nextEntry": "28" }],
+    "traceNumbers": ["21"]
+  },
+  "25": {
+    "description": "You escape the encounter unharmed and continue your journey.",
+    "choices": [{ "text": "Continue", "nextEntry": "28" }],
+    "traceNumbers": ["21"]
+  },
+  "26": {
+    "description": "You defend yourself and manage to escape the encounter.",
+    "choices": [{ "text": "Continue", "nextEntry": "28" }],
+    "traceNumbers": ["22"]
+  },
+  "27": {
+    "description": "You take damage but manage to fend off the attacker.",
+    "choices": [{ "text": "Continue", "nextEntry": "28" }],
+    "traceNumbers": ["23"]
+  },
+  "28": {
+    "description": "You continue your journey, having survived the encounter.",
+    "choices": [{ "text": "Continue", "nextEntry": "30" }],
+    "traceNumbers": ["24", "25", "26", "27"]
+  },
+  "30": {
+    "description": "You stumble into a trap and realize there's no way out. It's the end of your journey.",
+    "choices": [],
+    "traceNumbers": ["28"],
+    "end": true
+  }
+}
