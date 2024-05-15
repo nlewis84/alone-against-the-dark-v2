@@ -2,7 +2,7 @@ import {
   currentDate,
   initializeGame,
   currentState,
-  setGameData,
+  handleInvestigatorDeath,
 } from "../src/game/gameState.js";
 import {
   updateTime,
@@ -14,188 +14,36 @@ import {
   updateInventory,
   saveGame,
   loadGame,
-  handleSkillCheck,
 } from "../src/game/gameActions.js";
 import { rollDice, makeSkillCheck } from "../src/utils/dice.js";
+import fs from "fs";
+import path from "path";
 
-const mockGameData = {
-  investigators: {
-    "Professor Grunewald": {
-      health: 100,
-      sanity: 100,
-      DEX: 60,
-      skills: {
-        Climb: 40,
-        Charm: 50,
-        Fighting: 30,
-        Accounting: 5,
-        Anthropology: 5,
-        Archaeology: 5,
-        Art: 5,
-        Astronomy: 5,
-      },
-      inventory: [],
-    },
-    "Lydia Lau": {
-      health: 100,
-      sanity: 100,
-      DEX: 65,
-      skills: {
-        FastTalk: 45,
-        History: 40,
-        Listen: 35,
-        Accounting: 5,
-        Anthropology: 5,
-        Archaeology: 5,
-        Art: 5,
-        Astronomy: 5,
-      },
-      inventory: [],
-    },
-    "Devon Wilson": {
-      health: 100,
-      sanity: 100,
-      DEX: 60,
-      skills: {
-        FirstAid: 40,
-        Navigate: 60,
-        PilotBoat: 60,
-        Accounting: 5,
-        Anthropology: 5,
-        Archaeology: 5,
-        Art: 5,
-        Astronomy: 5,
-      },
-      inventory: [],
-    },
-    "Ernest Holt": {
-      health: 100,
-      sanity: 100,
-      DEX: 55,
-      skills: {
-        Accounting: 50,
-        FirearmsHandgun: 40,
-        Intimidate: 50,
-        Anthropology: 5,
-        Archaeology: 5,
-        Art: 5,
-        Astronomy: 5,
-      },
-      inventory: [],
-    },
-  },
-  entries: {
-    1: {
-      title: "TAXIS",
-      description: "You are in a dark room...",
-      specialInstructions: "Keep track of your time.",
-      choices: [
-        { text: "Turn on the light", nextEntry: "2" },
-        { text: "Leave the room", nextEntry: "3" },
-      ],
-      traceNumbers: [],
-      hasPhone: false,
-      end: false,
-    },
-    2: {
-      title: "LIBRARY",
-      description:
-        "The light reveals an old library with bookshelves full of ancient tomes...",
-      choices: [
-        { text: "Read a book", nextEntry: "4" },
-        { text: "Leave the library", nextEntry: "3" },
-      ],
-      traceNumbers: ["1"],
-      hasPhone: false,
-      end: false,
-    },
-    9: {
-      description: "You open the chest and find a magical artifact.",
-      choices: [
-        {
-          text: "Take the artifact and leave",
-          nextEntry: "7",
-          effects: { health: 100, inventory: ["Magical Artifact"] },
-        },
-        { text: "Leave without taking the artifact", nextEntry: "7" },
-      ],
-      traceNumbers: ["8"],
-      hasPhone: false,
-      end: false,
-    },
-  },
-};
-
-// Add all the default skills with a value of 10 to each investigator
-const allSkills = [
-  "Accounting",
-  "Anthropology",
-  "Archaeology",
-  "Art",
-  "Astronomy",
-  "Bargain",
-  "Biology",
-  "Botany",
-  "Brawl",
-  "Charm",
-  "Chemistry",
-  "Climb",
-  "ComputerUse",
-  "CreditRating",
-  "CthulhuMythos",
-  "Disguise",
-  "Dodge",
-  "DriveAuto",
-  "ElectricRepair",
-  "FastTalk",
-  "Fighting",
-  "Firearms",
-  "FirstAid",
-  "Geology",
-  "History",
-  "Intimidate",
-  "Jump",
-  "Language",
-  "Law",
-  "LibraryUse",
-  "Listen",
-  "Locksmith",
-  "MartialArts",
-  "MechanicalRepair",
-  "Medicine",
-  "NaturalWorld",
-  "Navigate",
-  "Occult",
-  "OperateHeavyMachinery",
-  "Persuade",
-  "Photography",
-  "Physics",
-  "Pilot",
-  "Psychoanalysis",
-  "Psychology",
-  "Ride",
-  "Science",
-  "SleightOfHand",
-  "SpotHidden",
-  "Stealth",
-  "Survival",
-  "Swim",
-  "Throw",
-  "Track",
-];
-
-Object.values(mockGameData.investigators).forEach((investigator) => {
-  allSkills.forEach((skill) => {
-    if (!investigator.skills[skill]) {
-      investigator.skills[skill] = 10; // default value
-    }
-  });
-});
+// Load the actual JSON files
+const investigatorsData = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, "../data/investigators.json"))
+);
+const entriesData = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, "../data/entries.json"))
+);
 
 describe("Game Logic", () => {
   beforeEach(() => {
-    fetch.resetMocks();
-    fetch.mockResponseOnce(JSON.stringify(mockGameData));
+    global.fetch = jest.fn((url) => {
+      if (url.includes("investigators.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(investigatorsData),
+        });
+      }
+      if (url.includes("entries.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(entriesData),
+        });
+      }
+      return Promise.reject(new Error("Unknown URL"));
+    });
 
     document.body.innerHTML = `
       <div id="description"></div>
@@ -208,10 +56,11 @@ describe("Game Logic", () => {
       <button id="loadButton"></button>
     `;
 
-    // Set the mock game data directly
-    setGameData(mockGameData);
+    return initializeGame();
+  });
 
-    initializeGame();
+  afterEach(() => {
+    jest.restoreAllMocks(); // Restore any mocks after each test
   });
 
   test("should update health correctly", () => {
@@ -227,7 +76,7 @@ describe("Game Logic", () => {
   test("should display correct entry", () => {
     displayEntry("1");
     expect(document.getElementById("description").innerHTML).toContain(
-      "You are in a dark room..."
+      "There's a door to your left"
     );
   });
 
@@ -304,5 +153,41 @@ describe("Game Logic", () => {
       inventory: ["Magical Artifact"],
       skills: expect.any(Object),
     });
+  });
+
+  test("should switch to the next investigator upon death", () => {
+    jest.spyOn(console, "log").mockImplementation(() => {}); // Mock console.log
+
+    // Initialize game and set the first investigator
+    initializeGame();
+
+    // Simulate the death of the first investigator
+    handleInvestigatorDeath();
+
+    // Verify that the current investigator is now Ernest Holt starting at entry 36
+    expect(currentState.currentEntry).toBe("36");
+    expect(currentState.health).toBe(100); // Check other properties as necessary
+
+    // Simulate the death of the second investigator
+    handleInvestigatorDeath();
+
+    // Verify that the current investigator is now Lydia Lau starting at entry 37
+    expect(currentState.currentEntry).toBe("37");
+    expect(currentState.health).toBe(100); // Check other properties as necessary
+
+    // Simulate the death of the third investigator
+    handleInvestigatorDeath();
+
+    // Verify that the current investigator is now Devon Wilson starting at entry 554
+    expect(currentState.currentEntry).toBe("554");
+    expect(currentState.health).toBe(100); // Check other properties as necessary
+
+    // Simulate the death of the fourth investigator
+    handleInvestigatorDeath();
+
+    // Verify that the game is over
+    expect(console.log).toHaveBeenCalledWith(
+      "All investigators are dead. Game over."
+    );
   });
 });
