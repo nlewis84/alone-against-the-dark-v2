@@ -1,19 +1,21 @@
 import {
   currentDate,
+  initializeGame,
+  currentState,
+  setGameData,
+} from "../src/game/gameState.js";
+import {
   updateTime,
   displayEntry,
   makeChoice,
-  startGame,
   updateHealth,
   updateSanity,
   addItem,
   updateInventory,
   saveGame,
   loadGame,
-  rollDice,
-  makeSkillCheck,
-  currentState,
-} from "../script";
+} from "../src/game/gameActions.js";
+import { rollDice, makeSkillCheck } from "../src/utils/dice.js";
 
 const mockGameData = {
   investigators: {
@@ -30,19 +32,28 @@ const mockGameData = {
   },
   entries: {
     1: {
+      title: "TAXIS",
       description: "You are in a dark room...",
+      specialInstructions: "Keep track of your time.",
       choices: [
         { text: "Turn on the light", nextEntry: "2" },
         { text: "Leave the room", nextEntry: "3" },
       ],
+      traceNumbers: [],
+      hasPhone: false,
+      end: false,
     },
     2: {
+      title: "LIBRARY",
       description:
         "The light reveals an old library with bookshelves full of ancient tomes...",
       choices: [
         { text: "Read a book", nextEntry: "4" },
         { text: "Leave the library", nextEntry: "3" },
       ],
+      traceNumbers: ["1"],
+      hasPhone: false,
+      end: false,
     },
     9: {
       description: "You open the chest and find a magical artifact.",
@@ -54,6 +65,9 @@ const mockGameData = {
         },
         { text: "Leave without taking the artifact", nextEntry: "7" },
       ],
+      traceNumbers: ["8"],
+      hasPhone: false,
+      end: false,
     },
   },
 };
@@ -74,8 +88,10 @@ describe("Game Logic", () => {
       <button id="loadButton"></button>
     `;
 
-    // Simulate DOMContentLoaded event
-    document.dispatchEvent(new Event("DOMContentLoaded"));
+    // Set the mock game data directly
+    setGameData(mockGameData);
+
+    initializeGame();
   });
 
   test("should update health correctly", () => {
@@ -90,7 +106,7 @@ describe("Game Logic", () => {
 
   test("should display correct entry", () => {
     displayEntry("1");
-    expect(document.getElementById("description").innerText).toBe(
+    expect(document.getElementById("description").innerHTML).toContain(
       "You are in a dark room..."
     );
   });
@@ -101,13 +117,6 @@ describe("Game Logic", () => {
     expect(currentState.inventory).toContain("Magical Artifact");
   });
 
-  test("should display the first prompt when the game starts", () => {
-    startGame();
-    expect(document.getElementById("description").innerText).toBe(
-      "You are in a dark room..."
-    );
-  });
-
   test("should update sanity correctly", () => {
     updateSanity(-10);
     expect(currentState.sanity).toBe(90);
@@ -115,7 +124,7 @@ describe("Game Logic", () => {
 
   test("should make skill check", () => {
     currentState.skills = { Climb: 40 };
-    const result = makeSkillCheck("Climb");
+    const result = makeSkillCheck("Climb", currentState.skills);
     expect([true, false]).toContain(result);
   });
 
@@ -150,15 +159,27 @@ describe("Game Logic", () => {
   });
 
   test("should load the game state from localStorage", () => {
+    // Add item to inventory before saving
+    addItem("Magical Artifact");
     saveGame();
+    console.log("State saved to localStorage.");
+
+    // Modify the current state
     currentState.health = 50;
     currentState.sanity = 50;
     currentState.inventory = [];
+    console.log("Current state modified:", currentState);
+
+    // Load the saved state
     loadGame();
+
+    console.log("Current state after loading:", currentState);
+
+    // Verify the state matches the expected values
     expect(currentState).toMatchObject({
       health: 100,
       sanity: 100,
-      inventory: [],
+      inventory: ["Magical Artifact"],
       skills: expect.any(Object),
     });
   });

@@ -19,7 +19,13 @@ export function displayEntry(entryId) {
     return;
   }
 
-  document.getElementById("description").innerText = entry.description;
+  let entryText = `<strong>${entryId}. ${entry.title || ""}</strong><br>`;
+  if (entry.specialInstructions) {
+    entryText += `<em>${entry.specialInstructions}</em><br>`;
+  }
+  entryText += entry.description;
+
+  document.getElementById("description").innerHTML = entryText;
 
   const choicesContainer = document.getElementById("choices");
   choicesContainer.innerHTML = "";
@@ -31,6 +37,11 @@ export function displayEntry(entryId) {
     button.onclick = () => makeChoice(choice.nextEntry, choice.effects);
     choicesContainer.appendChild(button);
   });
+
+  if (entry.end) {
+    document.getElementById("description").innerHTML +=
+      "<br><strong>THE END</strong>";
+  }
 }
 
 export function makeChoice(nextEntry, effects) {
@@ -82,18 +93,23 @@ export function updateInventory() {
 
 // Save game state to localStorage
 export function saveGame() {
+  console.log("Saving current state to localStorage:", currentState);
   saveState("gameState", currentState);
 }
 
 // Load game state from localStorage
 export function loadGame() {
   const savedState = loadState("gameState");
+  console.log("Loaded state from localStorage:", savedState);
   if (savedState) {
-    currentState = savedState;
+    Object.assign(currentState, savedState);
+    console.log("Current state after loading:", currentState);
     displayEntry(currentState.currentEntry);
     updateHealth(0); // Refresh health display
     updateSanity(0); // Refresh sanity display
     updateInventory(); // Refresh inventory display
     updateTime(0); // Refresh date display
+  } else {
+    console.log("No saved state found in localStorage.");
   }
 }

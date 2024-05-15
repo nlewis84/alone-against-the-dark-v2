@@ -11,18 +11,19 @@ export let gameData;
 export let currentState;
 export let currentDate = new Date(1931, 8, 1); // Start on September 1, 1931
 
-export function initializeGame() {
-  getData("data/gameData.json")
-    .then((data) => {
-      gameData = data;
-      startGame();
-    })
-    .catch((error) => {
-      console.error(
-        "There has been a problem with your fetch operation:",
-        error
-      );
-    });
+export function setGameData(data) {
+  gameData = data;
+}
+
+export async function initializeGame() {
+  try {
+    const data = await getData("data/gameData.json");
+    setGameData(data);
+    startGame();
+    displayEntry("1"); // Ensure the first entry is displayed
+  } catch (error) {
+    console.error("There has been a problem with your fetch operation:", error);
+  }
 }
 
 export function startGame() {
