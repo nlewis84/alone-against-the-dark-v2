@@ -31,25 +31,29 @@ export function displayEntry(entryId) {
   const choicesContainer = document.getElementById("choices");
   choicesContainer.innerHTML = "";
   entry.choices.forEach((choice) => {
-    const button = document.createElement("button");
-    button.innerText = choice.text;
-    button.className =
-      "px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2";
-    if (choice.effects && choice.effects.check) {
-      button.onclick = () => {
-        const success = makeSkillCheck(
-          choice.effects.check.skill,
-          currentState.skills,
-          currentState
-        );
-        displayEntry(
-          success ? choice.effects.check.success : choice.effects.check.failure
-        );
-      };
-    } else {
-      button.onclick = () => makeChoice(choice.nextEntry, choice.effects);
+    if (checkRequirements(choice.requirements)) {
+      const button = document.createElement("button");
+      button.innerText = choice.text;
+      button.className =
+        "px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2";
+      if (choice.effects && choice.effects.check) {
+        button.onclick = () => {
+          const success = makeSkillCheck(
+            choice.effects.check.skill,
+            currentState.skills,
+            currentState
+          );
+          displayEntry(
+            success
+              ? choice.effects.check.success
+              : choice.effects.check.failure
+          );
+        };
+      } else {
+        button.onclick = () => makeChoice(choice.nextEntry, choice.effects);
+      }
+      choicesContainer.appendChild(button);
     }
-    choicesContainer.appendChild(button);
   });
 
   if (entry.end) {
@@ -123,4 +127,27 @@ export function loadGame() {
   } else {
     console.log("No saved state found in localStorage.");
   }
+}
+
+export function checkRequirements(requirements) {
+  console.log("current state", currentState);
+  if (requirements) {
+    if (requirements.dateAfter) {
+      const dateAfter = new Date(requirements.dateAfter);
+      if (currentDate <= dateAfter) {
+        return false;
+      }
+    }
+    if (requirements.character) {
+      if (currentState.character !== requirements.character) {
+        return false;
+      }
+    }
+    if (requirements.characterNot) {
+      if (currentState.character === requirements.characterNot) {
+        return false;
+      }
+    }
+  }
+  return true;
 }

@@ -45,6 +45,7 @@ export async function initializeGame() {
 export function startGame() {
   currentState = {
     currentEntry: "1",
+    character: "Professor Grunewald",
     ...gameData.investigators["Professor Grunewald"],
   };
   displayEntry(currentState.currentEntry);
@@ -67,6 +68,7 @@ function switchToNextInvestigator() {
     const nextInvestigator = investigatorOrder[currentInvestigatorIndex];
     currentState = {
       currentEntry: nextInvestigator.entry,
+      character: nextInvestigator.name,
       ...gameData.investigators[nextInvestigator.name],
     };
     displayEntry(currentState.currentEntry);

@@ -1,10 +1,13 @@
 {
-  "arkhamLocations": {
-    "Hospital": 136,
-    "Police Station": 80,
-    "University": 48,
-    "Library": 125,
-    "Miskatonic University": 168,
-    "Arkham Sanitarium": 172
+  "Arkham": {
+    "Advertiser": "60",
+    "Depot": "16",
+    "First National Bank": "3",
+    "General Store": "38",
+    "Bee's Diner": "593",
+    "Grunewald's Home": "102",
+    "Harding House": "113",
+    "Hospital": "585",
+    "Miskatonic University": "82"
   }
 }

@@ -9,9 +9,21 @@
     "title": "GRUNEWALD'S HOME",
     "description": "If it is after 8 September, go to 147. If not, and if you’re Grunewald, you can rest and have a repast: go to any Arkham Location. If you’re not Grunewald, go to 120.",
     "choices": [
-      { "text": "After 8 September", "nextEntry": "147" },
-      { "text": "Rest and repast", "nextEntry": "Arkham Location" },
-      { "text": "Not Grunewald", "nextEntry": "120" }
+      {
+        "text": "After 8 September",
+        "nextEntry": "147",
+        "requirements": { "dateAfter": "1931-09-08" }
+      },
+      {
+        "text": "Rest and repast",
+        "nextEntry": "Arkham Location",
+        "requirements": { "character": "Professor Grunewald" }
+      },
+      {
+        "text": "Not Grunewald",
+        "nextEntry": "120",
+        "requirements": { "characterNot": "Professor Grunewald" }
+      }
     ],
     "traceNumbers": ["13"]
   },
