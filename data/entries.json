@@ -65,7 +65,10 @@
     "description": "Deposits and withdrawals are possible between 9-3. M-F. If you’re Prof. Grunewald, your account is here, and you can withdraw up to the Cash amount noted on the investigator sheet.\n\nGo to any Arkham Location.",
     "choices": [
       { "text": "Withdraw Cash", "nextEntry": "Arkham Location" },
-      { "text": "Finish at bank", "nextEntry": "Arkham Location" }
+      {
+        "text": "Finish at bank",
+        "nextEntry": "Arkham Location"
+      }
     ],
     "traceNumbers": ["Arkham Location"]
   },

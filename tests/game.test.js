@@ -246,4 +246,18 @@ describe("Game Logic", () => {
     const choices = document.getElementById("choices").children;
     expect(choices.length).toBe(1); // One choice for Arkham locations
   });
+
+  test("should advance time based on effects", () => {
+    // Set the initial conditions
+    setCurrentDate(new Date(1931, 8, 2, 6, 0)); // Sep 2, 1931 at 6:00 AM
+    displayEntry("13");
+
+    // Directly invoke the choice's effect as it would be from clicking the button
+    makeChoice("102", {});
+
+    // Expected time after making the choice
+    const expectedDate = new Date(1931, 8, 2, 7, 0); // Sep 2, 1931 at 7:00 AM
+
+    expect(getCurrentDate()).toEqual(expectedDate);
+  });
 });
