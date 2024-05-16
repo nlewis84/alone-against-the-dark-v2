@@ -1,12 +1,42 @@
-import { currentState, gameData, currentDate } from "./gameState.js";
+import {
+  currentState,
+  gameData,
+  getCurrentDate,
+  setCurrentDate,
+} from "./gameState.js";
 import { saveState, loadState } from "../utils/storage.js";
 import { rollDice, makeSkillCheck } from "../utils/dice.js";
 
-export function updateTime(hours) {
-  currentDate.setHours(currentDate.getHours() + hours);
+export function updateTime(hours, setHour = null, timeSuffix = null) {
+  const date = getCurrentDate();
+  if (setHour !== null) {
+    date.setHours(setHour);
+  } else {
+    date.setHours(date.getHours() + hours);
+  }
+  setCurrentDate(date);
+
+  // Handle special designations for time like 'N' for Noon and 'M' for Midnight
+  let hour = getCurrentDate().getHours();
+  let suffix = hour >= 12 ? "PM" : "AM";
+  hour = hour % 12;
+  hour = hour ? hour : 12; // Convert hour '0' to '12'
+
+  let timeString;
+  if (timeSuffix) {
+    timeString =
+      timeSuffix === "N"
+        ? "Noon"
+        : timeSuffix === "M"
+        ? "Midnight"
+        : `${hour}${timeSuffix} ${suffix}`;
+  } else {
+    timeString = `${hour}:00 ${suffix}`;
+  }
+
   document.getElementById(
     "date"
-  ).innerText = `Date: ${currentDate.toDateString()}`;
+  ).innerText = `Date: ${getCurrentDate().toDateString()}, Time: ${timeString}`;
 }
 
 export function displayEntry(entryId) {
@@ -104,9 +134,11 @@ export function isLocationAvailable(availability) {
     return true;
   }
 
-  const currentDay = currentDate.toLocaleString("en-US", { weekday: "long" });
-  const currentHour = currentDate.getHours();
+  const currentDay = getCurrentDate().toLocaleString("en-US", {
+    weekday: "long",
+  });
 
+  // Check if the current day is in the daysOfWeek list
   if (
     availability.daysOfWeek &&
     !availability.daysOfWeek.includes(currentDay)
@@ -114,10 +146,7 @@ export function isLocationAvailable(availability) {
     return false;
   }
 
-  if (availability.hours && !isWithinHours(currentHour, availability.hours)) {
-    return false;
-  }
-
+  // Check character-specific availability, if applicable
   if (
     availability.character &&
     availability.character !== currentState.character
@@ -138,18 +167,29 @@ function isWithinHours(currentHour, hours) {
 }
 
 export function makeChoice(nextEntry, effects) {
+  // Automatically advance time by one hour for any action, unless specified otherwise
+  const timeChange = effects && effects.time !== undefined ? effects.time : 1;
+  updateTime(timeChange);
+
   if (effects) {
     if (effects.health !== undefined) {
-      updateHealth(effects.health - currentState.health); // Set health to the specified value
+      updateHealth(effects.health - currentState.health);
     }
     if (effects.sanity !== undefined) {
-      updateSanity(effects.sanity - currentState.sanity); // Set sanity to the specified value
+      updateSanity(effects.sanity - currentState.sanity);
     }
     if (effects.inventory) {
       effects.inventory.forEach((item) => addItem(item));
     }
-    if (effects.time) {
-      updateTime(effects.time);
+    // Handle day advance with a default or specified hour
+    if (effects.dayAdvance) {
+      const newDate = new Date(getCurrentDate()); // Clone currentDate to manipulate it
+      newDate.setDate(newDate.getDate() + 1); // Advance by one day
+      setCurrentDate(newDate); // Update the global currentDate
+      updateTime(
+        0,
+        effects.defaultHour !== undefined ? effects.defaultHour : 6
+      ); // Default to 6 AM or specified hour
     }
   }
 
@@ -205,6 +245,8 @@ export function loadGame() {
 }
 
 export function checkRequirements(requirements) {
+  const currentDate = getCurrentDate();
+
   if (requirements) {
     if (requirements.dateAfter) {
       const dateAfter = new Date(requirements.dateAfter);

@@ -1,5 +1,6 @@
 import {
-  currentDate,
+  setCurrentDate,
+  getCurrentDate,
   initializeGame,
   currentState,
   handleInvestigatorDeath,
@@ -34,6 +35,8 @@ const locationTablesData = JSON.parse(
 
 describe("Game Logic", () => {
   beforeEach(() => {
+    setCurrentDate(new Date(1931, 8, 1, 6));
+
     global.fetch = jest.fn((url) => {
       if (url.includes("investigators.json")) {
         return Promise.resolve({
@@ -127,12 +130,16 @@ describe("Game Logic", () => {
   });
 
   test("should update the current time correctly", () => {
-    const initialDate = new Date(1931, 8, 1);
+    const initialDate = getCurrentDate();
+    setCurrentDate(new Date(initialDate)); // Use setter to isolate test effect
+
     const hoursToAdd = 5;
     updateTime(hoursToAdd);
-    const updatedDate = new Date(initialDate);
-    updatedDate.setHours(initialDate.getHours() + hoursToAdd);
-    expect(new Date(currentDate)).toEqual(updatedDate);
+
+    const expectedDate = new Date(initialDate);
+    expectedDate.setHours(expectedDate.getHours() + hoursToAdd);
+
+    expect(getCurrentDate()).toEqual(expectedDate);
   });
 
   test("should update the inventory display correctly", () => {
@@ -208,8 +215,7 @@ describe("Game Logic", () => {
   });
 
   test("should display Arkham locations", () => {
-    currentDate.setFullYear(1931, 8, 1);
-    currentDate.setHours(10);
+    setCurrentDate(new Date(1931, 8, 1, 10, 10));
     displayLocations("Arkham");
     const choices = document.getElementById("choices").children;
     const availableLocations = Object.keys(locationTablesData["Arkham"]).filter(
@@ -220,15 +226,21 @@ describe("Game Logic", () => {
   });
 
   test("should handle conditional choices based on current date", () => {
-    currentDate.setFullYear(1931, 8, 9);
+    setCurrentDate(new Date(1931, 8, 1, 10, 0));
     currentState.character = "Professor Grunewald";
     displayEntry("102");
     const choices = document.getElementById("choices").children;
-    expect(choices.length).toBe(2); // One choice for date after 8 September, and one for Arkham locations
+    expect(choices.length).toBe(1);
+
+    setCurrentDate(new Date(1931, 8, 9, 10, 0));
+    currentState.character = "Professor Grunewald";
+    displayEntry("102");
+    const choicesPartTwo = document.getElementById("choices").children;
+    expect(choicesPartTwo.length).toBe(2);
   });
 
   test("should handle choices with character requirements", () => {
-    currentDate.setFullYear(1931, 8, 1);
+    setCurrentDate(new Date(1931, 8, 1, 10, 0));
     currentState.character = "Professor Grunewald";
     displayEntry("102");
     const choices = document.getElementById("choices").children;

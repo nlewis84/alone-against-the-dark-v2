@@ -2,7 +2,16 @@
   "13": {
     "title": "START",
     "description": "For you, Professor Louis Grunewald, this first day of September 1931 has been tiring and uncomfortable. Light mist has covered Arkham for most of the day. You held two uninspired undergraduate classes at Miskatonic University, and you met with the new chairman of the literature Department, a giddy Technocrat. You survey your desk and see that a stack of papers to grade has already formed. You’re enjoying your second pipe of the evening, and putting off grading papers, when the doorbell rings. To your surprise, it’s a telegraphic messenger.\n\n“It arrived at Kingspoint Head station not more than an hour ago,” the boy says.\n\nYou sign for it, and slip a dime into the youngster’s hand. “Oh, thank you, sir!” You open the envelope and scan the contents (Handout: Dark 1, see page 12).\n\nMy goodness, you think. Imagine! Dotty old Gliere in prison! You recall that he had gone to Greece to work on his book concerning primitive myths. What has he gotten himself into? Should you wire money? You recall all the amusing discussions you’ve had with him, and a sudden insight lets you understand that Tibor Gliere had no close friends except for you. Should you go help him? You suppose the University will grant you leave. But do you want to go?\n\nWith uncommon speed you decide to go to Athens to help Gliere. You write him a wire, and another to Ernest Holt, a wealthy New York financier and a good friend of yours. If you get into hot water, Holt will help, and so, you decide to keep him posted on your progress. You give both telegrams to the waiting messenger, along with the necessary funds.\n\nWhat to do now? You’ll go to the bank first thing in the morning to get travel funds. As for Trans-Atlantic schedules, well the Advertiser surely carries that information. As you pack, you wonder if you should check Gliere’s room at Mrs. Harding’s boarding house. Maybe you could get a clue about Gliere’s activities or a hint about his arrest.\n\nYour passport is in order; your clothes and sundries are packed. You’d best turn in. You’re going on a little trip. When you awake, it is Sept. 2; go to 102.",
-    "choices": [{ "text": "Advance", "nextEntry": "102" }],
+    "choices": [
+      {
+        "text": "Advance",
+        "nextEntry": "102",
+        "effects": {
+          "dayAdvance": true,
+          "defaultHour": 6
+        }
+      }
+    ],
     "traceNumbers": ["START"]
   },
   "102": {

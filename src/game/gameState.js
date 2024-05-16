@@ -13,7 +13,15 @@ export let gameData = {
   locationTables: {},
 };
 export let currentState;
-export let currentDate = new Date(1931, 8, 1); // Start on September 1, 1931
+let currentDate = new Date(1931, 8, 1); // Keep it enclosed within the module
+
+export function setCurrentDate(date) {
+  currentDate = date;
+}
+
+export function getCurrentDate() {
+  return currentDate;
+}
 
 export function setGameData(type, data) {
   gameData[type] = data;
