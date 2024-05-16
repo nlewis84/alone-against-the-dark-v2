@@ -89,6 +89,11 @@ describe("Game Logic", () => {
     expect(document.getElementById("description").innerHTML).toContain(
       "Professor Louis Grunewald, this first day of September 1931"
     );
+
+    displayLocations("Arkham");
+    expect(document.getElementById("description").innerHTML).toContain(
+      "Arkham Locations"
+    );
   });
 
   test("should make choice and apply effects", () => {

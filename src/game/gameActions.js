@@ -70,8 +70,16 @@ export function displayLocations(locationType) {
   const locations = gameData.locationTables[locationType];
   if (!locations) {
     console.error(`${locationType} Location Table not found.`);
+    document.getElementById(
+      "description"
+    ).innerText = `Error: ${locationType} Location Table not found.`;
     return;
   }
+
+  // Update the description to explicitly mention the location type being displayed
+  document.getElementById(
+    "description"
+  ).innerHTML = `<strong>${locationType} Locations:</strong><br>Select a location from the list below:`;
 
   const choicesContainer = document.getElementById("choices");
   choicesContainer.innerHTML = "";
