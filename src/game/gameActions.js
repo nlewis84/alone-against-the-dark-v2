@@ -123,13 +123,11 @@ export function displayLocations(locationType) {
 }
 
 export function isLocationAvailable(availability) {
-  if (availability.alwaysOpen) {
-    return true
-  }
-
-  const currentDay = getCurrentDate().toLocaleString('en-US', {
+  const currentDate = getCurrentDate()
+  const currentDay = currentDate.toLocaleString('en-US', {
     weekday: 'long',
   })
+  const currentHour = currentDate.getHours()
 
   // Check if the current day is in the daysOfWeek list
   if (
@@ -144,6 +142,11 @@ export function isLocationAvailable(availability) {
     availability.character &&
     availability.character !== currentState.character
   ) {
+    return false
+  }
+
+  // Check hours of operation
+  if (availability.hours && !isWithinHours(currentHour, availability.hours)) {
     return false
   }
 
