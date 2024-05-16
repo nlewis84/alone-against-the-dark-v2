@@ -216,19 +216,25 @@ export function updateInventory() {
 
 // Save game state to localStorage
 export function saveGame() {
-  saveState("gameState", currentState);
+  const saveData = {
+    ...currentState,
+    currentDate: getCurrentDate().toISOString(), // Save the current date as an ISO string
+  };
+  saveState("gameState", saveData);
 }
 
 // Load game state from localStorage
 export function loadGame() {
   const savedState = loadState("gameState");
   if (savedState) {
+    setCurrentDate(new Date(savedState.currentDate)); // Set the date from the loaded state
+    delete savedState.currentDate; // Remove the date from the state object to avoid conflicts
     Object.assign(currentState, savedState);
     displayEntry(currentState.currentEntry);
     updateHealth(0); // Refresh health display
     updateSanity(0); // Refresh sanity display
     updateInventory(); // Refresh inventory display
-    updateTime(0); // Refresh date display
+    updateTime(0); // Refresh date display explicitly after setting state
   } else {
     console.log("No saved state found in localStorage.");
   }

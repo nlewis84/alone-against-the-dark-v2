@@ -151,17 +151,31 @@ describe("Game Logic", () => {
   });
 
   test("should save the game state to localStorage", () => {
-    saveGame();
-    const savedState = JSON.parse(localStorage.getItem("gameState"));
-    expect(savedState).toEqual(currentState);
-  });
-
-  test("should load the game state from localStorage", () => {
-    // Add item to inventory before saving
+    setCurrentDate(new Date(1931, 8, 1, 12, 0)); // Noon, September 1, 1931
     addItem("Magical Artifact");
     saveGame();
 
-    // Modify the current state
+    const savedState = JSON.parse(localStorage.getItem("gameState"));
+
+    // Check each property individually, ignore direct date comparison in object
+    expect(savedState.health).toEqual(currentState.health);
+    expect(savedState.sanity).toEqual(currentState.sanity);
+    expect(savedState.inventory).toEqual(currentState.inventory);
+    expect(new Date(savedState.currentDate)).toEqual(getCurrentDate()); // Compare dates as Date objects
+
+    // Optionally, you can check other properties as needed
+  });
+
+  test("should load the game state from localStorage, including date and time", () => {
+    // Set initial conditions
+    setCurrentDate(new Date(1931, 8, 1, 12, 0)); // Noon, September 1, 1931
+    addItem("Magical Artifact");
+
+    // Save game state including current date and time
+    saveGame();
+
+    // Modify the current state to simulate a change
+    setCurrentDate(new Date(1931, 8, 2, 13, 0)); // 1 PM, September 2, 1931
     currentState.health = 50;
     currentState.sanity = 50;
     currentState.inventory = [];
@@ -169,13 +183,14 @@ describe("Game Logic", () => {
     // Load the saved state
     loadGame();
 
-    // Verify the state matches the expected values
+    // Verify that the state matches the expected values including date and time
     expect(currentState).toMatchObject({
       health: 100,
       sanity: 100,
       inventory: ["Magical Artifact"],
       skills: expect.any(Object),
     });
+    expect(getCurrentDate()).toEqual(new Date(1931, 8, 1, 12, 0)); // Check if the date and time are correctly loaded
   });
 
   test("should switch to the next investigator upon death", () => {
