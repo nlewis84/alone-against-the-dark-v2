@@ -1,186 +1,281 @@
 {
-  "13": {
-    "title": "START",
-    "description": "For you, Professor Louis Grunewald, this first day of September 1931 has been tiring and uncomfortable. Light mist has covered Arkham for most of the day. You held two uninspired undergraduate classes at Miskatonic University, and you met with the new chairman of the literature Department, a giddy Technocrat. You survey your desk and see that a stack of papers to grade has already formed. You’re enjoying your second pipe of the evening, and putting off grading papers, when the doorbell rings. To your surprise, it’s a telegraphic messenger.\n\n“It arrived at Kingspoint Head station not more than an hour ago,” the boy says.\n\nYou sign for it, and slip a dime into the youngster’s hand. “Oh, thank you, sir!” You open the envelope and scan the contents (Handout: Dark 1, see page 12).\n\nMy goodness, you think. Imagine! Dotty old Gliere in prison! You recall that he had gone to Greece to work on his book concerning primitive myths. What has he gotten himself into? Should you wire money? You recall all the amusing discussions you’ve had with him, and a sudden insight lets you understand that Tibor Gliere had no close friends except for you. Should you go help him? You suppose the University will grant you leave. But do you want to go?\n\nWith uncommon speed you decide to go to Athens to help Gliere. You write him a wire, and another to Ernest Holt, a wealthy New York financier and a good friend of yours. If you get into hot water, Holt will help, and so, you decide to keep him posted on your progress. You give both telegrams to the waiting messenger, along with the necessary funds.\n\nWhat to do now? You’ll go to the bank first thing in the morning to get travel funds. As for Trans-Atlantic schedules, well the Advertiser surely carries that information. As you pack, you wonder if you should check Gliere’s room at Mrs. Harding’s boarding house. Maybe you could get a clue about Gliere’s activities or a hint about his arrest.\n\nYour passport is in order; your clothes and sundries are packed. You’d best turn in. You’re going on a little trip. When you awake, it is Sept. 2; go to 102.",
+  "1": {
     "choices": [
       {
-        "text": "Advance",
-        "nextEntry": "102",
+        "nextEntry": "166",
+        "text": "Go to 166"
+      },
+      {
+        "nextEntry": "177",
+        "text": "Go to 177"
+      }
+    ],
+    "description": "He’s lying. Return to your previous entry:\n• If looking around the Museum of Archaeology where you have chanced upon Pisistratos, go to 166.\n• If you are interrogating Pisistratos in his office, go to 177.",
+    "traceNumbers": []
+  },
+  "3": {
+    "choices": [
+      {
+        "nextEntry": "Arkham Location",
+        "text": "Withdraw Cash"
+      },
+      {
+        "nextEntry": "Arkham Location",
+        "text": "Finish at bank"
+      }
+    ],
+    "description": "Deposits and withdrawals are possible between 9-3. M-F. If you’re Prof. Grunewald, your account is here, and you can withdraw up to the Cash amount noted on the investigator sheet.\n\nGo to any Arkham Location.",
+    "title": "ARKHAM FIRST NATIONAL BANK",
+    "traceNumbers": ["Arkham Location"]
+  },
+  "9": {
+    "choices": [
+      {
+        "effects": {
+          "check": {
+            "failure": 10,
+            "skill": "Dodge",
+            "success": 187
+          }
+        },
+        "nextEntry": "10",
+        "text": "Attempt Dodge roll"
+      }
+    ],
+    "description": "The man is an Egyptian. His posture seems threatening. To run past him, attempt a Dodge roll:",
+    "traceNumbers": []
+  },
+  "13": {
+    "choices": [
+      {
         "effects": {
           "dayAdvance": true,
           "defaultHour": 6
-        }
+        },
+        "nextEntry": "102",
+        "text": "Advance"
       }
     ],
+    "description": "For you, Professor Louis Grunewald, this first day of September 1931 has been tiring and uncomfortable. Light mist has covered Arkham for most of the day. You held two uninspired undergraduate classes at Miskatonic University, and you met with the new chairman of the literature Department, a giddy Technocrat. You survey your desk and see that a stack of papers to grade has already formed. You’re enjoying your second pipe of the evening, and putting off grading papers, when the doorbell rings. To your surprise, it’s a telegraphic messenger.\n\n“It arrived at Kingspoint Head station not more than an hour ago,” the boy says.\n\nYou sign for it, and slip a dime into the youngster’s hand. “Oh, thank you, sir!” You open the envelope and scan the contents (Handout: Dark 1, see page 12).\n\nMy goodness, you think. Imagine! Dotty old Gliere in prison! You recall that he had gone to Greece to work on his book concerning primitive myths. What has he gotten himself into? Should you wire money? You recall all the amusing discussions you’ve had with him, and a sudden insight lets you understand that Tibor Gliere had no close friends except for you. Should you go help him? You suppose the University will grant you leave. But do you want to go?\n\nWith uncommon speed you decide to go to Athens to help Gliere. You write him a wire, and another to Ernest Holt, a wealthy New York financier and a good friend of yours. If you get into hot water, Holt will help, and so, you decide to keep him posted on your progress. You give both telegrams to the waiting messenger, along with the necessary funds.\n\nWhat to do now? You’ll go to the bank first thing in the morning to get travel funds. As for Trans-Atlantic schedules, well the Advertiser surely carries that information. As you pack, you wonder if you should check Gliere’s room at Mrs. Harding’s boarding house. Maybe you could get a clue about Gliere’s activities or a hint about his arrest.\n\nYour passport is in order; your clothes and sundries are packed. You’d best turn in. You’re going on a little trip. When you awake, it is Sept. 2; go to 102.",
+    "title": "START",
     "traceNumbers": ["START"]
   },
-  "102": {
-    "title": "GRUNEWALD'S HOME",
-    "description": "If it is after 8 September, go to 147. If not, and if you’re Grunewald, you can rest and have a repast: go to any Arkham Location. If you’re not Grunewald, go to 120.",
-    "choices": [
-      {
-        "text": "After 8 September",
-        "nextEntry": "147",
-        "requirements": { "dateAfter": "1931-09-08" }
-      },
-      {
-        "text": "Rest and repast",
-        "nextEntry": "Arkham Location",
-        "requirements": { "character": "Professor Grunewald" }
-      },
-      {
-        "text": "Not Grunewald",
-        "nextEntry": "120",
-        "requirements": { "characterNot": "Professor Grunewald" }
-      }
-    ],
-    "traceNumbers": ["13"]
-  },
-  "60": {
-    "title": "ARKHAM ADVERTISER",
-    "description": "Information available by phone: for scheduled sailings of ocean liners, go to 136. For news of Athens, go to 80. For each hour spent browsing through the paper’s back-issue files, you can attempt one of the following rolls once:\n\n• For a successful Library Use roll, go to 48.\n• For a successful Spot Hidden roll, go to 125.\n• You may also attempt a Luck roll, if you succeed, go to 168.\n• If it is October or later, go to 172 as well.\n\nOnce finished at the newspaper, go to any Arkham Location.",
-    "choices": [
-      { "text": "Scheduled sailings of ocean liners", "nextEntry": "136" },
-      { "text": "News of Athens", "nextEntry": "80" },
-      { "text": "Library Use roll", "nextEntry": "48" },
-      { "text": "Spot Hidden roll", "nextEntry": "125" },
-      { "text": "Luck roll", "nextEntry": "168" },
-      { "text": "October or later", "nextEntry": "172" },
-      { "text": "Finish at newspaper", "nextEntry": "Arkham Location" }
-    ],
-    "traceNumbers": ["Arkham Location"]
-  },
   "16": {
-    "title": "ARKHAM DEPOT",
+    "choices": [
+      {
+        "nextEntry": "Arkham Location",
+        "text": "Arriving in Arkham"
+      },
+      {
+        "nextEntry": "64",
+        "text": "Heading to Boston"
+      },
+      {
+        "nextEntry": "Arkham Location",
+        "text": "Other Arkham Location"
+      }
+    ],
     "description": "If arriving in Arkham, go to any Arkham Location.\n\nIf heading to Boston, trains leave at 9am, noon, and 5pm. The trip takes an hour. You may wait for your train (on arrival in Boston, go to 64), or go to any other Arkham Location.",
-    "choices": [
-      { "text": "Arriving in Arkham", "nextEntry": "Arkham Location" },
-      { "text": "Heading to Boston", "nextEntry": "64" },
-      { "text": "Other Arkham Location", "nextEntry": "Arkham Location" }
-    ],
+    "title": "ARKHAM DEPOT",
     "traceNumbers": ["Arkham Location"]
-  },
-  "3": {
-    "title": "ARKHAM FIRST NATIONAL BANK",
-    "description": "Deposits and withdrawals are possible between 9-3. M-F. If you’re Prof. Grunewald, your account is here, and you can withdraw up to the Cash amount noted on the investigator sheet.\n\nGo to any Arkham Location.",
-    "choices": [
-      { "text": "Withdraw Cash", "nextEntry": "Arkham Location" },
-      {
-        "text": "Finish at bank",
-        "nextEntry": "Arkham Location"
-      }
-    ],
-    "traceNumbers": ["Arkham Location"]
-  },
-  "38": {
-    "title": "RETAIL STORE",
-    "description": "This retailer accepts currency from any country. You can buy most any item. You also can buy a hand-to-hand weapon or a handgun. Then go to any location on the appropriate location table:\n\n• Arkham Location Table.\n• New York Location Table.\n• Athens Location Table.\n• Egypt Location Table.\n• Bremen Location Table.",
-    "choices": [
-      { "text": "Buy item", "nextEntry": "Arkham Location" },
-      { "text": "Buy weapon", "nextEntry": "Arkham Location" },
-      { "text": "Finish shopping", "nextEntry": "Arkham Location" }
-    ],
-    "traceNumbers": ["Arkham Location"]
-  },
-  "593": {
-    "title": "BEE'S DINER",
-    "description": "A small diner offering basic meals. It's a place to sit down and have a meal while gathering your thoughts.\n\nGo to any Arkham Location.",
-    "choices": [{ "text": "Finish meal", "nextEntry": "Arkham Location" }],
-    "traceNumbers": ["Arkham Location"]
-  },
-  "113": {
-    "title": "HARDING HOUSE",
-    "description": "A boarding house where Tibor Gliere rented a room. You might find some clues here.\n\nIf you want to speak to the landlady, go to 45. If you want to try sneaking in later at night, go to 90.",
-    "choices": [
-      { "text": "Speak to the landlady", "nextEntry": "45" },
-      { "text": "Sneak in later", "nextEntry": "90" }
-    ],
-    "traceNumbers": ["Arkham Location"]
-  },
-  "585": {
-    "title": "HOSPITAL",
-    "description": "The hospital is always open. You can receive treatment for injuries or illnesses here.\n\nGo to any Arkham Location.",
-    "choices": [
-      { "text": "Receive treatment", "nextEntry": "Arkham Location" },
-      { "text": "Finish at hospital", "nextEntry": "Arkham Location" }
-    ],
-    "traceNumbers": ["Arkham Location"]
-  },
-  "82": {
-    "title": "MISKATONIC UNIVERSITY",
-    "description": "Information available by phone: the MU library is open 9am to 9pm, Mon-Sat.\n\n• To visit the library, go to 145.\n• To see Dr. Martin Fen, Chairman of the History Department—before or on 8 Sept., go to 122—after 8 Sept., go to 143.\n• To see the Dean—before or on Sept. 8, go to 100—after Sept. 8, go to 197.\n\nOnce finished in the library, go to any Arkham Location.",
-    "choices": [
-      { "text": "Visit the library", "nextEntry": "145" },
-      { "text": "See Dr. Martin Fen (before 8 Sept.)", "nextEntry": "122" },
-      { "text": "See Dr. Martin Fen (after 8 Sept.)", "nextEntry": "143" },
-      { "text": "See the Dean (before 8 Sept.)", "nextEntry": "100" },
-      { "text": "See the Dean (after 8 Sept.)", "nextEntry": "197" },
-      { "text": "Finish at university", "nextEntry": "Arkham Location" }
-    ],
-    "traceNumbers": ["Arkham Location"]
-  },
-  "1": {
-    "description": "He’s lying. Return to your previous entry:\n• If looking around the Museum of Archaeology where you have chanced upon Pisistratos, go to 166.\n• If you are interrogating Pisistratos in his office, go to 177.",
-    "choices": [
-      { "text": "Go to 166", "nextEntry": "166" },
-      { "text": "Go to 177", "nextEntry": "177" }
-    ],
-    "traceNumbers": []
-  },
-  "9": {
-    "description": "The man is an Egyptian. His posture seems threatening. To run past him, attempt a Dodge roll:",
-    "choices": [
-      {
-        "text": "Attempt Dodge roll",
-        "nextEntry": "10",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": 187,
-            "failure": 10
-          }
-        }
-      }
-    ],
-    "traceNumbers": []
   },
   "36": {
-    "title": "ERNEST HOLT’S APARTMENT",
-    "description": "Something is wrong. You learned long ago to trust your hunches. Grunewald’s telegrams stopped without explanation 72 hours ago; your inquiries have gone unanswered. Should you alert your agents scattered across the globe? Judiciously sipping superb brandy, at last you decide against the employment of proxies. Grunewald hinted of mysteries beyond the capacities of mere assistants. You trust his judgment and decide to go yourself. You scrawl instructions to subordinates and dictate phone messages to a secretary whom you have callously woken from a sound sleep. Your holdings will tend themselves for a few weeks. Your passport is in order. You’ll pull strings to get an assortment of visas overnight: mere governments cannot keep Ernest Holt from aiding a friend. A liner sails soon. Jenkins can have you packed and ready to go in an hour. You have plenty of time. It’s a pity your experimental trans-Atlantic passenger plane isn’t quite ready, though that would be fun! You find yourself eagerly anticipating action in the field. You feel ready for anything. You call Lydia Lau at The New York Sun. A despicable rag of a newspaper, but a crackerjack young lady with lots of talent. Miss Lau has heard nothing from Grunewald. You notice her professional interest grow as you talk, and you ask her to write nothing for a few days. “I’m sure there’s a proper explanation,” you say grandly, but somehow you know that neither of you believes that statement. Now you sleep. You’ll attend to details tomorrow. When you wake, go to any New York Location.",
     "choices": [
       {
-        "text": "Go to any New York Location",
-        "nextEntry": "New York Location"
+        "nextEntry": "New York Location",
+        "text": "Go to any New York Location"
       }
     ],
+    "description": "Something is wrong. You learned long ago to trust your hunches. Grunewald’s telegrams stopped without explanation 72 hours ago; your inquiries have gone unanswered. Should you alert your agents scattered across the globe? Judiciously sipping superb brandy, at last you decide against the employment of proxies. Grunewald hinted of mysteries beyond the capacities of mere assistants. You trust his judgment and decide to go yourself. You scrawl instructions to subordinates and dictate phone messages to a secretary whom you have callously woken from a sound sleep. Your holdings will tend themselves for a few weeks. Your passport is in order. You’ll pull strings to get an assortment of visas overnight: mere governments cannot keep Ernest Holt from aiding a friend. A liner sails soon. Jenkins can have you packed and ready to go in an hour. You have plenty of time. It’s a pity your experimental trans-Atlantic passenger plane isn’t quite ready, though that would be fun! You find yourself eagerly anticipating action in the field. You feel ready for anything. You call Lydia Lau at The New York Sun. A despicable rag of a newspaper, but a crackerjack young lady with lots of talent. Miss Lau has heard nothing from Grunewald. You notice her professional interest grow as you talk, and you ask her to write nothing for a few days. “I’m sure there’s a proper explanation,” you say grandly, but somehow you know that neither of you believes that statement. Now you sleep. You’ll attend to details tomorrow. When you wake, go to any New York Location.",
+    "title": "ERNEST HOLT’S APARTMENT",
     "traceNumbers": []
   },
   "37": {
-    "title": "Lydia Lau's Apartment",
-    "description": "You flirted with the City Editor, and then polished up the National Editor. As usual, your skills and your baby-blues got you what you wanted, and you don’t mind giving an old goat a lift now and then. Besides, this could be the biggest story of your young life, or so you hope. Headlines sail through your imagination: “MISKATONIC MYSTERY!” “GAL GUMSHOE TRACKS DOWN MISSING PROFESSOR!” “FINANCIER FOUND ALIVE!” And your by-line is under every one. With Gliere dead, and Holt and Grunewald missing, you’re pretty sure that the story behind this one will be a real jaw-dropper— and probably dangerous. Holt’s been missing for 72 hours. You thoughtfully pack the gigantic revolver given to you by Bruno the vice-squad cop. A girl can’t be too careful, you decide. You can leave soon on one of the regular liners, and in the meantime do some shopping and research—maybe even make a trip to Arkham. You send a telegram to your beau, Devon Wilson, aboard the USS Rochester, telling him your plans and that you’ll keep in touch. The Sun’s circulation boost from this story should blow that pipsqueak Daily News right out of the water, you dreamily calculate. As for you, it’ll be goodbye New York—hello Pulitzer Prize! In the morning, go to any New York Location.",
     "choices": [
       {
-        "text": "Go to any New York Location",
-        "nextEntry": "New York Location"
+        "nextEntry": "New York Location",
+        "text": "Go to any New York Location"
       }
     ],
+    "description": "You flirted with the City Editor, and then polished up the National Editor. As usual, your skills and your baby-blues got you what you wanted, and you don’t mind giving an old goat a lift now and then. Besides, this could be the biggest story of your young life, or so you hope. Headlines sail through your imagination: “MISKATONIC MYSTERY!” “GAL GUMSHOE TRACKS DOWN MISSING PROFESSOR!” “FINANCIER FOUND ALIVE!” And your by-line is under every one. With Gliere dead, and Holt and Grunewald missing, you’re pretty sure that the story behind this one will be a real jaw-dropper— and probably dangerous. Holt’s been missing for 72 hours. You thoughtfully pack the gigantic revolver given to you by Bruno the vice-squad cop. A girl can’t be too careful, you decide. You can leave soon on one of the regular liners, and in the meantime do some shopping and research—maybe even make a trip to Arkham. You send a telegram to your beau, Devon Wilson, aboard the USS Rochester, telling him your plans and that you’ll keep in touch. The Sun’s circulation boost from this story should blow that pipsqueak Daily News right out of the water, you dreamily calculate. As for you, it’ll be goodbye New York—hello Pulitzer Prize! In the morning, go to any New York Location.",
+    "title": "Lydia Lau's Apartment",
     "traceNumbers": []
   },
-  "554": {
-    "title": "USS Rochester",
-    "description": "Your ship, the USS Rochester, lies snugly at anchor. Ordinarily, as the dashing Lt. Devon Wilson, you’d be storming the gangplank to start your month’s leave with a spree, but Nora’s alarming telegrams abruptly stopped exactly seven days ago, while you were still at sea. You must find her. You study her photo in its Deco frame and then carefully pack it. You’d give everything you have to get her back. As you pack, a chill runs down your spine: Gliere was a suicide, Grunewald and Holt mysteriously lost, and now Nora! You decide to include your service revolver in your bags, and you resolve to equip yourself for any eventuality at that nearby store. The Rochester is in the port location you wish; choose from: New York, Athens, Alexandria, or Bremen. Pick up any equipment or supplies you want and then go to any location on the appropriate Location Tables: • New York Location Table. • Athens Location Table. • Alexandria—Egypt Location Table. • Bremen Location Table.",
+  "38": {
     "choices": [
       {
-        "text": "Go to any New York Location",
-        "nextEntry": "New York Location"
+        "nextEntry": "Arkham Location",
+        "text": "Buy item"
       },
-      { "text": "Go to any Athens Location", "nextEntry": "Athens Location" },
       {
-        "text": "Go to any Alexandria Location",
-        "nextEntry": "Alexandria Location"
+        "nextEntry": "Arkham Location",
+        "text": "Buy weapon"
       },
-      { "text": "Go to any Bremen Location", "nextEntry": "Bremen Location" }
+      {
+        "nextEntry": "Arkham Location",
+        "text": "Finish shopping"
+      }
     ],
+    "description": "This retailer accepts currency from any country. You can buy most any item. You also can buy a hand-to-hand weapon or a handgun. Then go to any location on the appropriate location table:\n\n• Arkham Location Table.\n• New York Location Table.\n• Athens Location Table.\n• Egypt Location Table.\n• Bremen Location Table.",
+    "title": "RETAIL STORE",
+    "traceNumbers": ["Arkham Location"]
+  },
+  "60": {
+    "choices": [
+      {
+        "nextEntry": "136",
+        "text": "Scheduled sailings of ocean liners"
+      },
+      {
+        "nextEntry": "80",
+        "text": "News of Athens"
+      },
+      {
+        "nextEntry": "48",
+        "text": "Library Use roll"
+      },
+      {
+        "nextEntry": "125",
+        "text": "Spot Hidden roll"
+      },
+      {
+        "nextEntry": "168",
+        "text": "Luck roll"
+      },
+      {
+        "nextEntry": "172",
+        "text": "October or later"
+      },
+      {
+        "nextEntry": "Arkham Location",
+        "text": "Finish at newspaper"
+      }
+    ],
+    "description": "You can look up scheduled sailings. You notice a newspaper with news of Athens. For each hour spent browsing through the paper’s back-issue files, you can attempt one of the following rolls once.",
+    "title": "ARKHAM ADVERTISER",
+    "traceNumbers": ["Arkham Location"]
+  },
+  "82": {
+    "choices": [
+      {
+        "nextEntry": "145",
+        "text": "Visit the library"
+      },
+      {
+        "nextEntry": "122",
+        "text": "See Dr. Martin Fen (before 8 Sept.)"
+      },
+      {
+        "nextEntry": "143",
+        "text": "See Dr. Martin Fen (after 8 Sept.)"
+      },
+      {
+        "nextEntry": "100",
+        "text": "See the Dean (before 8 Sept.)"
+      },
+      {
+        "nextEntry": "197",
+        "text": "See the Dean (after 8 Sept.)"
+      },
+      {
+        "nextEntry": "Arkham Location",
+        "text": "Finish at university"
+      }
+    ],
+    "description": "Information available by phone: the MU library is open 9am to 9pm, Mon-Sat.\n\n• To visit the library, go to 145.\n• To see Dr. Martin Fen, Chairman of the History Department—before or on 8 Sept., go to 122—after 8 Sept., go to 143.\n• To see the Dean—before or on Sept. 8, go to 100—after Sept. 8, go to 197.\n\nOnce finished in the library, go to any Arkham Location.",
+    "title": "MISKATONIC UNIVERSITY",
+    "traceNumbers": ["Arkham Location"]
+  },
+  "102": {
+    "choices": [
+      {
+        "nextEntry": "147",
+        "requirements": {
+          "dateAfter": "1931-09-08"
+        },
+        "text": "After 8 September"
+      },
+      {
+        "nextEntry": "Arkham Location",
+        "requirements": {
+          "character": "Professor Grunewald"
+        },
+        "text": "Rest and repast"
+      },
+      {
+        "nextEntry": "120",
+        "requirements": {
+          "characterNot": "Professor Grunewald"
+        },
+        "text": "Not Grunewald"
+      }
+    ],
+    "description": "If it is after 8 September, go to 147. If not, and if you’re Grunewald, you can rest and have a repast: go to any Arkham Location. If you’re not Grunewald, go to 120.",
+    "title": "GRUNEWALD'S HOME",
+    "traceNumbers": ["13"]
+  },
+  "113": {
+    "choices": [
+      {
+        "nextEntry": "45",
+        "text": "Speak to the landlady"
+      },
+      {
+        "nextEntry": "90",
+        "text": "Sneak in later"
+      }
+    ],
+    "description": "A boarding house where Tibor Gliere rented a room. You might find some clues here.\n\nIf you want to speak to the landlady, go to 45. If you want to try sneaking in later at night, go to 90.",
+    "title": "HARDING HOUSE",
+    "traceNumbers": ["Arkham Location"]
+  },
+  "554": {
+    "choices": [
+      {
+        "nextEntry": "New York Location",
+        "text": "Go to any New York Location"
+      },
+      {
+        "nextEntry": "Athens Location",
+        "text": "Go to any Athens Location"
+      },
+      {
+        "nextEntry": "Alexandria Location",
+        "text": "Go to any Alexandria Location"
+      },
+      {
+        "nextEntry": "Bremen Location",
+        "text": "Go to any Bremen Location"
+      }
+    ],
+    "description": "Your ship, the USS Rochester, lies snugly at anchor. Ordinarily, as the dashing Lt. Devon Wilson, you’d be storming the gangplank to start your month’s leave with a spree, but Nora’s alarming telegrams abruptly stopped exactly seven days ago, while you were still at sea. You must find her. You study her photo in its Deco frame and then carefully pack it. You’d give everything you have to get her back. As you pack, a chill runs down your spine: Gliere was a suicide, Grunewald and Holt mysteriously lost, and now Nora! You decide to include your service revolver in your bags, and you resolve to equip yourself for any eventuality at that nearby store. The Rochester is in the port location you wish; choose from: New York, Athens, Alexandria, or Bremen. Pick up any equipment or supplies you want and then go to any location on the appropriate Location Tables: • New York Location Table. • Athens Location Table. • Alexandria—Egypt Location Table. • Bremen Location Table.",
+    "title": "USS Rochester",
     "traceNumbers": []
+  },
+  "585": {
+    "choices": [
+      {
+        "nextEntry": "Arkham Location",
+        "text": "Receive treatment"
+      },
+      {
+        "nextEntry": "Arkham Location",
+        "text": "Finish at hospital"
+      }
+    ],
+    "description": "The hospital is always open. You can receive treatment for injuries or illnesses here.\n\nGo to any Arkham Location.",
+    "title": "HOSPITAL",
+    "traceNumbers": ["Arkham Location"]
+  },
+  "593": {
+    "choices": [
+      {
+        "nextEntry": "Arkham Location",
+        "text": "Finish meal"
+      }
+    ],
+    "description": "A small diner offering basic meals. It's a place to sit down and have a meal while gathering your thoughts.\n\nGo to any Arkham Location.",
+    "title": "BEE'S DINER",
+    "traceNumbers": ["Arkham Location"]
   }
 }
