@@ -49,6 +49,11 @@ export function displayEntry(entryId) {
               : choice.effects.check.failure
           );
         };
+      } else if (choice.nextEntry.includes("Location")) {
+        const locationTable = choice.nextEntry.replace(" Location", "");
+        button.onclick = () => {
+          displayLocations(locationTable);
+        };
       } else {
         button.onclick = () => makeChoice(choice.nextEntry, choice.effects);
       }
@@ -60,6 +65,27 @@ export function displayEntry(entryId) {
     document.getElementById("description").innerHTML +=
       "<br><strong>THE END</strong>";
   }
+}
+
+export function displayLocations(locationTableName) {
+  const locations = gameData.locationTables[locationTableName];
+  if (!locations) {
+    console.error(`${locationTableName} Location Table not found.`);
+    return;
+  }
+  const choicesContainer = document.getElementById("choices");
+  choicesContainer.innerHTML = "";
+
+  Object.keys(locations).forEach((location) => {
+    const button = document.createElement("button");
+    button.innerText = location;
+    button.className =
+      "px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2";
+    button.onclick = () => {
+      displayEntry(locations[location]);
+    };
+    choicesContainer.appendChild(button);
+  });
 }
 
 export function makeChoice(nextEntry, effects) {
@@ -130,7 +156,6 @@ export function loadGame() {
 }
 
 export function checkRequirements(requirements) {
-  console.log("current state", currentState);
   if (requirements) {
     if (requirements.dateAfter) {
       const dateAfter = new Date(requirements.dateAfter);

@@ -14,7 +14,7 @@ import {
   updateInventory,
   saveGame,
   loadGame,
-  checkRequirements,
+  displayLocations,
 } from "../src/game/gameActions.js";
 import { rollDice, makeSkillCheck } from "../src/utils/dice.js";
 import fs from "fs";
@@ -26,6 +26,9 @@ const investigatorsData = JSON.parse(
 );
 const entriesData = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, "../data/entries.json"))
+);
+const locationTablesData = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, "../data/locationTables.json"))
 );
 
 describe("Game Logic", () => {
@@ -41,6 +44,12 @@ describe("Game Logic", () => {
         return Promise.resolve({
           ok: true,
           json: () => Promise.resolve(entriesData),
+        });
+      }
+      if (url.includes("locationTables.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(locationTablesData),
         });
       }
       return Promise.reject(new Error("Unknown URL"));
@@ -189,6 +198,14 @@ describe("Game Logic", () => {
     // Verify that the game is over
     expect(console.log).toHaveBeenCalledWith(
       "All investigators are dead. Game over."
+    );
+  });
+
+  test("should display locations", () => {
+    displayLocations("Arkham");
+    const choices = document.getElementById("choices").children;
+    expect(choices.length).toBe(
+      Object.keys(locationTablesData["Arkham"]).length
     );
   });
 

@@ -10,6 +10,7 @@ import {
 export let gameData = {
   investigators: {},
   entries: {},
+  locationTables: {},
 };
 export let currentState;
 export let currentDate = new Date(1931, 8, 1); // Start on September 1, 1931
@@ -29,12 +30,14 @@ let currentInvestigatorIndex = 0;
 
 export async function initializeGame() {
   try {
-    const [investigators, entries] = await Promise.all([
+    const [investigators, entries, locationTables] = await Promise.all([
       getData("data/investigators.json"),
       getData("data/entries.json"),
+      getData("data/locationTables.json"),
     ]);
     setGameData("investigators", investigators);
     setGameData("entries", entries);
+    setGameData("locationTables", locationTables);
     startGame();
     displayEntry("13"); // Ensure the first entry is displayed
   } catch (error) {
@@ -44,7 +47,7 @@ export async function initializeGame() {
 
 export function startGame() {
   currentState = {
-    currentEntry: "1",
+    currentEntry: "13",
     character: "Professor Grunewald",
     ...gameData.investigators["Professor Grunewald"],
   };
@@ -55,13 +58,11 @@ export function startGame() {
   updateTime(0); // Initialize date display
 }
 
-// Add this function to handle investigator death
 export function handleInvestigatorDeath() {
-  console.log(`${investigatorOrder[currentInvestigatorIndex].name} has died.`);
+  console.log(`${currentState.character} has died.`);
   switchToNextInvestigator();
 }
 
-// Existing switchToNextInvestigator function
 function switchToNextInvestigator() {
   currentInvestigatorIndex++;
   if (currentInvestigatorIndex < investigatorOrder.length) {
