@@ -1,192 +1,98 @@
 {
-  "1": {
+  "13": {
     "title": "START",
-    "description": "You wake up in a dark room. There's a door to your left and a window to your right.",
-    "choices": [
-      { "text": "Open the door", "nextEntry": "2" },
-      { "text": "Open the window", "nextEntry": "10" }
-    ],
-    "traceNumbers": []
+    "description": "For you, Professor Louis Grunewald, this first day of September 1931 has been tiring and uncomfortable. Light mist has covered Arkham for most of the day. You held two uninspired undergraduate classes at Miskatonic University, and you met with the new chairman of the literature Department, a giddy Technocrat. You survey your desk and see that a stack of papers to grade has already formed. You’re enjoying your second pipe of the evening, and putting off grading papers, when the doorbell rings. To your surprise, it’s a telegraphic messenger.\n\n“It arrived at Kingspoint Head station not more than an hour ago,” the boy says.\n\nYou sign for it, and slip a dime into the youngster’s hand. “Oh, thank you, sir!” You open the envelope and scan the contents (Handout: Dark 1, see page 12).\n\nMy goodness, you think. Imagine! Dotty old Gliere in prison! You recall that he had gone to Greece to work on his book concerning primitive myths. What has he gotten himself into? Should you wire money? You recall all the amusing discussions you’ve had with him, and a sudden insight lets you understand that Tibor Gliere had no close friends except for you. Should you go help him? You suppose the University will grant you leave. But do you want to go?\n\nWith uncommon speed you decide to go to Athens to help Gliere. You write him a wire, and another to Ernest Holt, a wealthy New York financier and a good friend of yours. If you get into hot water, Holt will help, and so, you decide to keep him posted on your progress. You give both telegrams to the waiting messenger, along with the necessary funds.\n\nWhat to do now? You’ll go to the bank first thing in the morning to get travel funds. As for Trans-Atlantic schedules, well the Advertiser surely carries that information. As you pack, you wonder if you should check Gliere’s room at Mrs. Harding’s boarding house. Maybe you could get a clue about Gliere’s activities or a hint about his arrest.\n\nYour passport is in order; your clothes and sundries are packed. You’d best turn in. You’re going on a little trip. When you awake, it is Sept. 2; go to 102.",
+    "choices": [{ "text": "Advance", "nextEntry": "102" }],
+    "traceNumbers": ["START"]
   },
-  "2": {
-    "title": "HALLWAY",
-    "description": "You step into a dimly lit hallway. There's a noise coming from the end of the hallway.",
+  "102": {
+    "title": "GRUNEWALD'S HOME",
+    "description": "If it is after 8 September, go to 147. If not, and if you’re Grunewald, you can rest and have a repast: go to any Arkham Location. If you’re not Grunewald, go to 120.",
     "choices": [
-      { "text": "Investigate the noise", "nextEntry": "3" },
-      { "text": "Leave the building", "nextEntry": "20" }
+      { "text": "After 8 September", "nextEntry": "147" },
+      { "text": "Rest and repast", "nextEntry": "Arkham Location" },
+      { "text": "Not Grunewald", "nextEntry": "120" }
     ],
-    "traceNumbers": ["1"]
+    "traceNumbers": ["13"]
+  },
+  "60": {
+    "title": "ARKHAM ADVERTISER",
+    "description": "Information available by phone: for scheduled sailings of ocean liners, go to 136. For news of Athens, go to 80. For each hour spent browsing through the paper’s back-issue files, you can attempt one of the following rolls once:\n\n• For a successful Library Use roll, go to 48.\n• For a successful Spot Hidden roll, go to 125.\n• You may also attempt a Luck roll, if you succeed, go to 168.\n• If it is October or later, go to 172 as well.\n\nOnce finished at the newspaper, go to any Arkham Location.",
+    "choices": [
+      { "text": "Scheduled sailings of ocean liners", "nextEntry": "136" },
+      { "text": "News of Athens", "nextEntry": "80" },
+      { "text": "Library Use roll", "nextEntry": "48" },
+      { "text": "Spot Hidden roll", "nextEntry": "125" },
+      { "text": "Luck roll", "nextEntry": "168" },
+      { "text": "October or later", "nextEntry": "172" },
+      { "text": "Finish at newspaper", "nextEntry": "Arkham Location" }
+    ],
+    "traceNumbers": ["Arkham Location"]
+  },
+  "16": {
+    "title": "ARKHAM DEPOT",
+    "description": "If arriving in Arkham, go to any Arkham Location.\n\nIf heading to Boston, trains leave at 9am, noon, and 5pm. The trip takes an hour. You may wait for your train (on arrival in Boston, go to 64), or go to any other Arkham Location.",
+    "choices": [
+      { "text": "Arriving in Arkham", "nextEntry": "Arkham Location" },
+      { "text": "Heading to Boston", "nextEntry": "64" },
+      { "text": "Other Arkham Location", "nextEntry": "Arkham Location" }
+    ],
+    "traceNumbers": ["Arkham Location"]
   },
   "3": {
-    "title": "NOISE SOURCE",
-    "description": "You find the source of the noise. It's a person rummaging through a box.",
+    "title": "ARKHAM FIRST NATIONAL BANK",
+    "description": "Deposits and withdrawals are possible between 9-3. M-F. If you’re Prof. Grunewald, your account is here, and you can withdraw up to the Cash amount noted on the investigator sheet.\n\nGo to any Arkham Location.",
     "choices": [
-      { "text": "Confront the person", "nextEntry": "4" },
-      { "text": "Sneak past them", "nextEntry": "5" }
+      { "text": "Withdraw Cash", "nextEntry": "Arkham Location" },
+      { "text": "Finish at bank", "nextEntry": "Arkham Location" }
     ],
-    "traceNumbers": ["2"]
+    "traceNumbers": ["Arkham Location"]
   },
-  "4": {
-    "title": "CONFRONTATION",
-    "description": "The person is startled and attacks you!",
-    "specialInstructions": "Attempt a DEX roll to see who acts first:",
+  "38": {
+    "title": "RETAIL STORE",
+    "description": "This retailer accepts currency from any country. You can buy most any item. You also can buy a hand-to-hand weapon or a handgun. Then go to any location on the appropriate location table:\n\n• Arkham Location Table.\n• New York Location Table.\n• Athens Location Table.\n• Egypt Location Table.\n• Bremen Location Table.",
     "choices": [
-      {
-        "text": "Attempt DEX roll",
-        "nextEntry": "21",
-        "effects": {
-          "check": {
-            "skill": "DEX",
-            "success": 22,
-            "failure": 23
-          }
-        }
-      }
+      { "text": "Buy item", "nextEntry": "Arkham Location" },
+      { "text": "Buy weapon", "nextEntry": "Arkham Location" },
+      { "text": "Finish shopping", "nextEntry": "Arkham Location" }
     ],
-    "traceNumbers": ["3"]
+    "traceNumbers": ["Arkham Location"]
   },
-  "5": {
-    "title": "STEALTH CHECK",
-    "description": "You try to sneak past the person.",
-    "specialInstructions": "Attempt a Stealth roll to avoid detection:",
+  "593": {
+    "title": "BEE'S DINER",
+    "description": "A small diner offering basic meals. It's a place to sit down and have a meal while gathering your thoughts.\n\nGo to any Arkham Location.",
+    "choices": [{ "text": "Finish meal", "nextEntry": "Arkham Location" }],
+    "traceNumbers": ["Arkham Location"]
+  },
+  "113": {
+    "title": "HARDING HOUSE",
+    "description": "A boarding house where Tibor Gliere rented a room. You might find some clues here.\n\nIf you want to speak to the landlady, go to 45. If you want to try sneaking in later at night, go to 90.",
     "choices": [
-      {
-        "text": "Attempt Stealth roll",
-        "nextEntry": "6",
-        "effects": {
-          "check": {
-            "skill": "Stealth",
-            "success": 7,
-            "failure": 8
-          }
-        }
-      }
+      { "text": "Speak to the landlady", "nextEntry": "45" },
+      { "text": "Sneak in later", "nextEntry": "90" }
     ],
-    "traceNumbers": ["3"]
+    "traceNumbers": ["Arkham Location"]
   },
-  "6": {
-    "title": "STEALTH RESULT",
-    "description": "You successfully sneak past the person and find an exit.",
-    "choices": [{ "text": "Leave the building", "nextEntry": "20" }],
-    "traceNumbers": ["5"]
-  },
-  "7": {
-    "title": "SUCCESS",
-    "description": "You sneak past the person unnoticed and continue your journey.",
-    "choices": [{ "text": "Leave the building", "nextEntry": "20" }],
-    "traceNumbers": ["5"]
-  },
-  "8": {
-    "title": "FAILURE",
-    "description": "You make too much noise and the person notices you!",
-    "choices": [{ "text": "Confront them", "nextEntry": "4" }],
-    "traceNumbers": ["5"]
-  },
-  "10": {
-    "title": "DARK ALLEY",
-    "description": "You find yourself in a dark alley. Shadows move around you, making you feel uneasy.",
-    "specialInstructions": "Attempt a Stealth roll to avoid detection:",
+  "585": {
+    "title": "HOSPITAL",
+    "description": "The hospital is always open. You can receive treatment for injuries or illnesses here.\n\nGo to any Arkham Location.",
     "choices": [
-      {
-        "text": "Attempt Stealth roll",
-        "nextEntry": "11",
-        "effects": {
-          "check": {
-            "skill": "Stealth",
-            "success": 12,
-            "failure": 13
-          }
-        }
-      }
+      { "text": "Receive treatment", "nextEntry": "Arkham Location" },
+      { "text": "Finish at hospital", "nextEntry": "Arkham Location" }
     ],
-    "traceNumbers": ["1"]
+    "traceNumbers": ["Arkham Location"]
   },
-  "11": {
-    "description": "You successfully avoid detection and move silently through the alley.",
-    "choices": [{ "text": "Continue", "nextEntry": "14" }],
-    "traceNumbers": ["10"]
-  },
-  "12": {
-    "description": "You make too much noise and attract attention. You must find a way to escape.",
-    "choices": [{ "text": "Run", "nextEntry": "15" }],
-    "traceNumbers": ["10"]
-  },
-  "14": {
-    "description": "You reach the end of the alley and find an exit.",
-    "choices": [{ "text": "Leave the alley", "nextEntry": "20" }],
-    "traceNumbers": ["11"]
-  },
-  "15": {
-    "description": "You run and manage to escape the alley.",
-    "choices": [{ "text": "Continue", "nextEntry": "20" }],
-    "traceNumbers": ["12"]
-  },
-  "20": {
-    "title": "ENCOUNTER",
-    "description": "A menacing figure approaches you with a knife in hand. Prepare to defend yourself.",
-    "specialInstructions": "Attempt a DEX roll to see who acts first:",
+  "82": {
+    "title": "MISKATONIC UNIVERSITY",
+    "description": "Information available by phone: the MU library is open 9am to 9pm, Mon-Sat.\n\n• To visit the library, go to 145.\n• To see Dr. Martin Fen, Chairman of the History Department—before or on 8 Sept., go to 122—after 8 Sept., go to 143.\n• To see the Dean—before or on Sept. 8, go to 100—after Sept. 8, go to 197.\n\nOnce finished in the library, go to any Arkham Location.",
     "choices": [
-      {
-        "text": "Attempt DEX roll",
-        "nextEntry": "21",
-        "effects": {
-          "check": {
-            "skill": "DEX",
-            "success": 22,
-            "failure": 23
-          }
-        }
-      }
+      { "text": "Visit the library", "nextEntry": "145" },
+      { "text": "See Dr. Martin Fen (before 8 Sept.)", "nextEntry": "122" },
+      { "text": "See Dr. Martin Fen (after 8 Sept.)", "nextEntry": "143" },
+      { "text": "See the Dean (before 8 Sept.)", "nextEntry": "100" },
+      { "text": "See the Dean (after 8 Sept.)", "nextEntry": "197" },
+      { "text": "Finish at university", "nextEntry": "Arkham Location" }
     ],
-    "traceNumbers": ["2", "6", "7", "14", "15"]
-  },
-  "21": {
-    "description": "You manage to act first. Do you want to attack or try to escape?",
-    "choices": [
-      { "text": "Attack", "nextEntry": "24" },
-      { "text": "Escape", "nextEntry": "25" }
-    ],
-    "traceNumbers": ["20"]
-  },
-  "22": {
-    "description": "The attacker strikes first, and you must defend yourself.",
-    "choices": [{ "text": "Defend", "nextEntry": "26" }],
-    "traceNumbers": ["20"]
-  },
-  "23": {
-    "description": "The attacker catches you off guard and lands a blow. You take 1D6 damage.",
-    "choices": [{ "text": "Continue", "nextEntry": "27" }],
-    "traceNumbers": ["20"]
-  },
-  "24": {
-    "description": "You successfully fend off the attacker and escape unharmed.",
-    "choices": [{ "text": "Continue", "nextEntry": "28" }],
-    "traceNumbers": ["21"]
-  },
-  "25": {
-    "description": "You escape the encounter unharmed and continue your journey.",
-    "choices": [{ "text": "Continue", "nextEntry": "28" }],
-    "traceNumbers": ["21"]
-  },
-  "26": {
-    "description": "You defend yourself and manage to escape the encounter.",
-    "choices": [{ "text": "Continue", "nextEntry": "28" }],
-    "traceNumbers": ["22"]
-  },
-  "27": {
-    "description": "You take damage but manage to fend off the attacker.",
-    "choices": [{ "text": "Continue", "nextEntry": "28" }],
-    "traceNumbers": ["23"]
-  },
-  "28": {
-    "description": "You continue your journey, having survived the encounter.",
-    "choices": [{ "text": "Continue", "nextEntry": "30" }],
-    "traceNumbers": ["24", "25", "26", "27"]
-  },
-  "30": {
-    "description": "You stumble into a trap and realize there's no way out. It's the end of your journey.",
-    "choices": [],
-    "traceNumbers": ["28"],
-    "end": true
+    "traceNumbers": ["Arkham Location"]
   }
 }

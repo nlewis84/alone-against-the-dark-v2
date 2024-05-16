@@ -76,7 +76,7 @@ describe("Game Logic", () => {
   test("should display correct entry", () => {
     displayEntry("1");
     expect(document.getElementById("description").innerHTML).toContain(
-      "There's a door to your left"
+      "Professor Louis Grunewald, this first day of September 1931"
     );
   });
 

@@ -36,7 +36,7 @@ export async function initializeGame() {
     setGameData("investigators", investigators);
     setGameData("entries", entries);
     startGame();
-    displayEntry("1"); // Ensure the first entry is displayed
+    displayEntry("13"); // Ensure the first entry is displayed
   } catch (error) {
     console.error("There has been a problem with your fetch operation:", error);
   }
