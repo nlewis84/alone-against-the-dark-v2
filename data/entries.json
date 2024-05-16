@@ -123,32 +123,59 @@
   "60": {
     "choices": [
       {
-        "nextEntry": "136",
-        "text": "Scheduled sailings of ocean liners"
+        "text": "Scheduled sailings of ocean liners",
+        "nextEntry": "136"
       },
       {
-        "nextEntry": "80",
-        "text": "News of Athens"
+        "text": "News of Athens",
+        "nextEntry": "80"
       },
       {
+        "text": "Library Use roll",
         "nextEntry": "48",
-        "text": "Library Use roll"
+        "effects": {
+          "check": {
+            "skill": "Library Use",
+            "success": 187,
+            "failure": 10
+          },
+          "time": 1
+        }
       },
       {
+        "text": "Spot Hidden roll",
         "nextEntry": "125",
-        "text": "Spot Hidden roll"
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": 187,
+            "failure": 10
+          },
+          "time": 1
+        }
       },
       {
+        "text": "Luck roll",
         "nextEntry": "168",
-        "text": "Luck roll"
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": 187,
+            "failure": 10
+          },
+          "time": 1
+        }
       },
       {
+        "text": "October or later",
         "nextEntry": "172",
-        "text": "October or later"
+        "requirements": {
+          "dateAfter": "1931-09-30"
+        }
       },
       {
-        "nextEntry": "Arkham Location",
-        "text": "Finish at newspaper"
+        "text": "Finish at newspaper",
+        "nextEntry": "Arkham Location"
       }
     ],
     "description": "You can look up scheduled sailings. You notice a newspaper with news of Athens. For each hour spent browsing through the paper’s back-issue files, you can attempt one of the following rolls once.",
