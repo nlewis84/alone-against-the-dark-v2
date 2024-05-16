@@ -1,13 +1,475 @@
 {
   "Arkham": {
-    "Advertiser": "60",
-    "Depot": "16",
-    "First National Bank": "3",
-    "General Store": "38",
-    "Bee's Diner": "593",
-    "Grunewald's Home": "102",
-    "Harding House": "113",
-    "Hospital": "585",
-    "Miskatonic University": "82"
+    "Advertiser": {
+      "entry": "60",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [8, 17]
+      }
+    },
+    "Depot": {
+      "entry": "16",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "First National Bank": {
+      "entry": "3",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [9, 15]
+      }
+    },
+    "General Store": {
+      "entry": "38",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [8, 17]
+      }
+    },
+    "Bee’s Diner": {
+      "entry": "593",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [6, 17]
+      }
+    },
+    "Grunewald’s Home": {
+      "entry": "102",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Harding House": {
+      "entry": "113",
+      "availability": {
+        "hours": [6, 21]
+      }
+    },
+    "Hospital": {
+      "entry": "585",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Miskatonic University": {
+      "entry": "82",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [8, 17]
+      }
+    }
+  },
+  "Boston": {
+    "Boston Railway Station": {
+      "entry": "64",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Hospital": {
+      "entry": "585",
+      "availability": {
+        "alwaysOpen": true
+      }
+    }
+  },
+  "New York": {
+    "Pier 56: Cunard Lines": {
+      "entry": "104",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Grand Central Rail Station & Restaurant": {
+      "entry": "146",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Empire General Merchandise Emporium": {
+      "entry": "38",
+      "availability": {
+        "daysOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "hours": [8, 19]
+      }
+    },
+    "E.S. Wilentz Booksellers": {
+      "entry": "54",
+      "availability": {
+        "daysOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "hours": [10, 18]
+      }
+    },
+    "Greek Consulate": {
+      "entry": "30",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [9, 12, 14, 18]
+      }
+    },
+    "Holt’s Apartment": {
+      "entry": "36",
+      "availability": {
+        "character": "Lydia Lau"
+      }
+    },
+    "Hospital": {
+      "entry": "585",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Hotel with Room Service": {
+      "entry": "583",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "New York Public Library": {
+      "entry": "74",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "New York Sun Newspaper": {
+      "entry": "86",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [5, 14]
+      }
+    },
+    "On-The-Street Food Vendors": {
+      "entry": "586",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Taxis": {
+      "entry": "56",
+      "availability": {
+        "alwaysOpen": true
+      }
+    }
+  },
+  "Athens": {
+    "Athens Airport": {
+      "entry": "181",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Athens Bureau of Investigation": {
+      "entry": "130",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [9, 12, 15, 19]
+      }
+    },
+    "Athens Hall of Justice": {
+      "entry": "87",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [9, 12, 15, 19]
+      }
+    },
+    "Athens Harbor": {
+      "entry": "173",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Athens Railway Station & Restaurant": {
+      "entry": "183",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Hospital": {
+      "entry": "585",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Hotels - Inexpensive": {
+      "entry": "424",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Hotels - Moderate": {
+      "entry": "101",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Hotels - Expensive (with room service)": {
+      "entry": "127",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Motorship Kyonas": {
+      "entry": "160",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "National Museum of Archaeology": {
+      "entry": "118",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [9, 12, 15, 19]
+      }
+    },
+    "New York Sun (European Edition)": {
+      "entry": "65",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "On-The-Street Food Vendors": {
+      "entry": "586",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Parthenon, The": {
+      "entry": "194",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Piosotos Café": {
+      "entry": "20",
+      "availability": {
+        "daysOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "hours": [6, 2]
+      }
+    },
+    "Spyro, Outfitter and Supplier": {
+      "entry": "38",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [8, 12, 14, 18]
+      }
+    },
+    "Taxis": {
+      "entry": "58",
+      "availability": {
+        "alwaysOpen": true
+      }
+    }
+  },
+  "Egypt": {
+    "Al Azhar University": {
+      "entry": "149",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [7, 11, 15, 18]
+      }
+    },
+    "Alexandria Harbor and Rail Station": {
+      "entry": "195",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Alexandria Outfitters and Suppliers": {
+      "entry": "38",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [8, 12, 15, 19]
+      }
+    },
+    "Cairo Airport": {
+      "entry": "196",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Cairo Museum - Before October 30th": {
+      "entry": "206",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [9, 12, 14, 18]
+      }
+    },
+    "Cairo Museum - After October 30th": {
+      "entry": "300",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [9, 12, 14, 18]
+      }
+    },
+    "Cairo Police": {
+      "entry": "144",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Cairo Railway Station & Restaurant": {
+      "entry": "205",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Fuzira Marketplace": {
+      "entry": "134",
+      "availability": {
+        "daysOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "hours": [6, 11, 16, 20]
+      }
+    },
+    "Hotels": {
+      "entry": "164",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Hospital": {
+      "entry": "585",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "On-The-Street Food Vendors": {
+      "entry": "586",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Other Sleeping Arrangements": {
+      "entry": "154",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Retail Merchandise": {
+      "entry": "38",
+      "availability": {
+        "daysOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "hours": [8, 12, 15, 19]
+      }
+    },
+    "Taxis": {
+      "entry": "103",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Tell-el-Amarna": {
+      "entry": "324",
+      "availability": {
+        "daysOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "hours": [10, 18]
+      }
+    }
+  },
+  "Bremen": {
+    "Bremen Airport": {
+      "entry": "450",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Bremerhaven (Bremen’s Port)": {
+      "entry": "449",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Bremen Rail Station": {
+      "entry": "449",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Der Freischütz Inn": {
+      "entry": "461",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Geschaft Krankhausen": {
+      "entry": "38",
+      "availability": {
+        "daysOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "hours": [7, 17]
+      }
+    },
+    "Hospital": {
+      "entry": "585",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Steamship The Dark Sea": {
+      "entry": "486",
+      "availability": {
+        "daysOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "hours": [8, 20]
+      }
+    }
   }
 }

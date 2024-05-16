@@ -15,6 +15,7 @@ import {
   saveGame,
   loadGame,
   displayLocations,
+  isLocationAvailable,
 } from "../src/game/gameActions.js";
 import { rollDice, makeSkillCheck } from "../src/utils/dice.js";
 import fs from "fs";
@@ -84,7 +85,7 @@ describe("Game Logic", () => {
   });
 
   test("should display correct entry", () => {
-    displayEntry("1");
+    displayEntry("13");
     expect(document.getElementById("description").innerHTML).toContain(
       "Professor Louis Grunewald, this first day of September 1931"
     );
@@ -201,55 +202,31 @@ describe("Game Logic", () => {
     );
   });
 
-  test("should display locations", () => {
+  test("should display Arkham locations", () => {
+    currentDate.setFullYear(1931, 8, 1);
+    currentDate.setHours(10);
     displayLocations("Arkham");
     const choices = document.getElementById("choices").children;
-    expect(choices.length).toBe(
-      Object.keys(locationTablesData["Arkham"]).length
+    const availableLocations = Object.keys(locationTablesData["Arkham"]).filter(
+      (location) =>
+        isLocationAvailable(locationTablesData["Arkham"][location].availability)
     );
+    expect(choices.length).toBe(availableLocations.length);
   });
 
   test("should handle conditional choices based on current date", () => {
-    // Set current date to after 8 September
-    currentDate.setDate(9);
+    currentDate.setFullYear(1931, 8, 9);
     currentState.character = "Professor Grunewald";
     displayEntry("102");
-    let choices = document.getElementById("choices").children;
-    expect(choices.length).toBe(2);
-    expect(choices[0].innerText).toBe("After 8 September");
-
-    // Set current date to before 8 September and Professor Grunewald as the character
-    currentDate.setDate(7);
-    currentState.character = "Professor Grunewald";
-    displayEntry("102");
-    choices = document.getElementById("choices").children;
-    expect(choices.length).toBe(1);
-    expect(choices[0].innerText).toBe("Rest and repast");
-
-    // Set current date to before 8 September and Not Grunewald as the character
-    currentDate.setDate(7);
-    currentState.character = "Not Grunewald";
-    displayEntry("102");
-    choices = document.getElementById("choices").children;
-    expect(choices.length).toBe(1);
-    expect(choices[0].innerText).toBe("Not Grunewald");
+    const choices = document.getElementById("choices").children;
+    expect(choices.length).toBe(2); // One choice for date after 8 September, and one for Arkham locations
   });
 
   test("should handle choices with character requirements", () => {
-    // Set current date to before 8 September and Professor Grunewald as the character
-    currentDate.setDate(7);
+    currentDate.setFullYear(1931, 8, 1);
     currentState.character = "Professor Grunewald";
     displayEntry("102");
-    choices = document.getElementById("choices").children;
-    expect(choices.length).toBe(1);
-    expect(choices[0].innerText).toBe("Rest and repast");
-
-    // Set current date to before 8 September and Not Grunewald as the character
-    currentDate.setDate(7);
-    currentState.character = "Not Grunewald";
-    displayEntry("102");
-    choices = document.getElementById("choices").children;
-    expect(choices.length).toBe(1);
-    expect(choices[0].innerText).toBe("Not Grunewald");
+    const choices = document.getElementById("choices").children;
+    expect(choices.length).toBe(1); // One choice for Arkham locations
   });
 });

@@ -49,10 +49,9 @@ export function displayEntry(entryId) {
               : choice.effects.check.failure
           );
         };
-      } else if (choice.nextEntry.includes("Location")) {
-        const locationTable = choice.nextEntry.replace(" Location", "");
+      } else if (choice.nextEntry.endsWith(" Location")) {
         button.onclick = () => {
-          displayLocations(locationTable);
+          displayLocations(choice.nextEntry.replace(" Location", ""));
         };
       } else {
         button.onclick = () => makeChoice(choice.nextEntry, choice.effects);
@@ -67,25 +66,67 @@ export function displayEntry(entryId) {
   }
 }
 
-export function displayLocations(locationTableName) {
-  const locations = gameData.locationTables[locationTableName];
+export function displayLocations(locationType) {
+  const locations = gameData.locationTables[locationType];
   if (!locations) {
-    console.error(`${locationTableName} Location Table not found.`);
+    console.error(`${locationType} Location Table not found.`);
     return;
   }
+
   const choicesContainer = document.getElementById("choices");
   choicesContainer.innerHTML = "";
 
   Object.keys(locations).forEach((location) => {
-    const button = document.createElement("button");
-    button.innerText = location;
-    button.className =
-      "px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2";
-    button.onclick = () => {
-      displayEntry(locations[location]);
-    };
-    choicesContainer.appendChild(button);
+    const locationData = locations[location];
+    if (isLocationAvailable(locationData.availability)) {
+      const button = document.createElement("button");
+      button.innerText = location;
+      button.className =
+        "px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2";
+      button.onclick = () => {
+        displayEntry(locationData.entry);
+      };
+      choicesContainer.appendChild(button);
+    }
   });
+}
+
+export function isLocationAvailable(availability) {
+  if (availability.alwaysOpen) {
+    return true;
+  }
+
+  const currentDay = currentDate.toLocaleString("en-US", { weekday: "long" });
+  const currentHour = currentDate.getHours();
+
+  if (
+    availability.daysOfWeek &&
+    !availability.daysOfWeek.includes(currentDay)
+  ) {
+    return false;
+  }
+
+  if (availability.hours && !isWithinHours(currentHour, availability.hours)) {
+    return false;
+  }
+
+  if (
+    availability.character &&
+    availability.character !== currentState.character
+  ) {
+    return false;
+  }
+
+  return true;
+}
+
+function isWithinHours(currentHour, hours) {
+  for (let i = 0; i < hours.length; i += 2) {
+    if (currentHour >= hours[i] && currentHour < hours[i + 1]) {
+      return true;
+    }
+  }
+  return false;
 }
 
 export function makeChoice(nextEntry, effects) {
