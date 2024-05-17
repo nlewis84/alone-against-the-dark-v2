@@ -3,6 +3,8 @@ import {
   gameData,
   getCurrentDate,
   setCurrentDate,
+  getTempDescription,
+  setTempDescription,
 } from './gameState.js'
 import { saveState, loadState } from '../utils/storage.js'
 import { rollDice, makeSkillCheck } from '../utils/dice.js'
@@ -79,28 +81,51 @@ export function displayEntry(entryId) {
     }
   }
 
+  let descriptionWithTemp =
+    (getTempDescription() ? `\n${getTempDescription()} ` : '') +
+    entry.description
+  setTempDescription('') // Clear the temporary description after using it
+
   updateDescription(
     entryId,
     entry.title,
-    entry.description,
+    descriptionWithTemp,
     entry.specialInstructions,
   )
 
-  updateChoices(entry.choices, checkRequirements, (choice) => {
-    if (choice.effects && choice.effects.check) {
-      const success = makeSkillCheck(
-        choice.effects.check.skill,
-        currentState.skills,
-        currentState,
+  const choicesContainer = document.getElementById('choices')
+  choicesContainer.innerHTML = ''
+  entry.choices.forEach((choice) => {
+    if (checkRequirements(choice.requirements)) {
+      const button = createButton(
+        choice.text,
+        'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
+        () => {
+          if (choice.effects && choice.effects.diceRoll) {
+            handleOutcomeBasedEncounter(choice)
+          } else if (choice.effects && choice.effects.check) {
+            const success = makeSkillCheck(
+              choice.effects.check.skill,
+              currentState.skills,
+              currentState,
+            )
+            displayEntry(
+              success
+                ? choice.effects.check.success
+                : choice.effects.check.failure,
+            )
+          } else if (choice.nextEntry.endsWith(' Location')) {
+            currentState.currentEntry = choice.nextEntry.replace(
+              ' Location',
+              '',
+            )
+            displayLocations(choice.nextEntry.replace(' Location', ''))
+          } else {
+            makeChoice(choice.nextEntry, choice.effects)
+          }
+        },
       )
-      displayEntry(
-        success ? choice.effects.check.success : choice.effects.check.failure,
-      )
-    } else if (choice.nextEntry.endsWith(' Location')) {
-      currentState.currentEntry = choice.nextEntry.replace(' Location', '')
-      displayLocations(choice.nextEntry.replace(' Location', ''))
-    } else {
-      makeChoice(choice.nextEntry, choice.effects)
+      choicesContainer.appendChild(button)
     }
   })
 
@@ -291,4 +316,81 @@ export function checkRequirements(requirements) {
     }
   }
   return true
+}
+
+export function handleOutcomeBasedEncounter(choice) {
+  const roll = rollDice(6) // Simulate a 1D6 roll
+  const outcomes = choice.effects.outcomes
+  let matchedOutcome = findOutcomeForRoll(roll, outcomes) // Adjust this to handle range keys like "1-5"
+
+  if (matchedOutcome) {
+    setTempDescription(matchedOutcome.description || 'Unexpected outcome.')
+    if (matchedOutcome.damage) {
+      const damageAmount = parseAndComputeDamage(matchedOutcome.damage)
+      updateHealth(-damageAmount)
+    }
+    if (matchedOutcome.nextEntry) {
+      displayEntry(matchedOutcome.nextEntry)
+    }
+  } else {
+    console.error('No outcome defined for roll: ' + roll)
+    document.getElementById('description').innerText +=
+      '\nError: Unexpected dice roll result.'
+  }
+}
+
+export function findOutcomeForRoll(roll, outcomes) {
+  for (let key in outcomes) {
+    if (key.includes('-')) {
+      const [start, end] = key.split('-').map(Number)
+      if (roll >= start && roll <= end) {
+        return outcomes[key]
+      }
+    } else if (parseInt(key) === roll) {
+      return outcomes[key]
+    }
+  }
+  return null // If no match found
+}
+
+export function parseAndComputeDamage(damageInput, diceRoller = rollDice) {
+  if (typeof damageInput === 'number') {
+    return damageInput
+  } else if (typeof damageInput === 'string') {
+    const cleanedInput = damageInput.replace(/\s+/g, '')
+    const parts = cleanedInput.split(/([+\-])/)
+
+    let totalDamage = 0
+    let currentModifier = '+'
+
+    parts.forEach((part) => {
+      if (part === '+' || part === '-') {
+        currentModifier = part
+      } else {
+        const dicePattern = /^(\d+)D(\d+)$/i
+        const match = part.match(dicePattern)
+
+        let value = 0
+        if (match) {
+          const numberOfDice = parseInt(match[1], 10)
+          const sidesOfDice = parseInt(match[2], 10)
+          for (let i = 0; i < numberOfDice; i++) {
+            value += diceRoller(sidesOfDice)
+          }
+        } else {
+          value = parseInt(part, 10)
+        }
+
+        if (currentModifier === '+') {
+          totalDamage += value
+        } else if (currentModifier === '-') {
+          totalDamage -= value
+        }
+      }
+    })
+
+    return totalDamage
+  }
+  console.error('Invalid damage input format: ' + damageInput)
+  return 0
 }

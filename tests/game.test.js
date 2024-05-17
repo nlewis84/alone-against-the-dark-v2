@@ -17,6 +17,10 @@ import {
   loadGame,
   displayLocations,
   isLocationAvailable,
+  setTempDescription,
+  handleOutcomeBasedEncounter,
+  parseAndComputeDamage,
+  findOutcomeForRoll,
 } from '../src/game/gameActions.js'
 import { rollDice, makeSkillCheck } from '../src/utils/dice.js'
 import fs from 'fs'
@@ -312,5 +316,89 @@ describe('Game Logic', () => {
     displayLocations('Arkham')
     choices = document.getElementById('choices').children
     expect(choices.length).toBe(9) // 9 locations should be open at this time
+  })
+
+  // Use the setter function in your tests
+  test('should display entry with concatenated temporary description and clear it after', () => {
+    setTempDescription('Temporary effect occurred.')
+    displayEntry('13')
+    expect(document.getElementById('description').innerHTML).toContain(
+      'Temporary effect occurred. For you, Professor Louis Grunewald',
+    )
+    setTempDescription('') // Clear after use
+    displayEntry('13')
+    expect(document.getElementById('description').innerHTML).not.toContain(
+      'Temporary effect occurred.',
+    )
+  })
+
+  test('should handle outcomes based on ranged dice rolls', () => {
+    const outcomes = {
+      '1-2': {
+        description: 'Guard shoots, causing damage.',
+        damage: '1D8',
+      },
+      3: {
+        description: 'Guard attempts to grab.',
+        nextEntry: '230_combat',
+      },
+    }
+
+    // Testing different rolls
+    expect(findOutcomeForRoll(1, outcomes)).toEqual({
+      description: 'Guard shoots, causing damage.',
+      damage: '1D8',
+    })
+
+    expect(findOutcomeForRoll(2, outcomes)).toEqual({
+      description: 'Guard shoots, causing damage.',
+      damage: '1D8',
+    })
+
+    expect(findOutcomeForRoll(3, outcomes)).toEqual({
+      description: 'Guard attempts to grab.',
+      nextEntry: '230_combat',
+    })
+
+    // Ensure that it returns null if no match is found
+    expect(findOutcomeForRoll(4, outcomes)).toBeNull()
+  })
+
+  test('should correctly parse and compute complex damage expressions', () => {
+    const damageString = '1D6+4'
+    const mockDiceRoller = () => 3 // This function will always return 3
+
+    const result = parseAndComputeDamage(damageString, mockDiceRoller)
+    expect(result).toBe(7) // 3 (from mockDiceRoller) + 4
+  })
+
+  test('should handle different formats of damage input', () => {
+    // Test static number input
+    expect(parseAndComputeDamage(20)).toBe(20)
+
+    // Test single dice roll
+    const mockDiceRollerSingle = () => 5 // Always returns 5
+    expect(parseAndComputeDamage('1D8', mockDiceRollerSingle)).toBe(5)
+
+    // Test multiple dice rolls adding up
+    const mockDiceRollerMultiple = jest
+      .fn()
+      .mockReturnValueOnce(3)
+      .mockReturnValueOnce(4)
+    expect(parseAndComputeDamage('2D6', mockDiceRollerMultiple)).toBe(7) // 3 + 4
+
+    // Test dice roll with addition
+    const mockDiceRollerAdd = jest
+      .fn()
+      .mockReturnValueOnce(6)
+      .mockReturnValueOnce(1)
+    expect(parseAndComputeDamage('1D6+2', mockDiceRollerAdd)).toBe(8) // 6 + 2
+
+    // Test dice roll with subtraction
+    const mockDiceRollerSubtract = jest
+      .fn()
+      .mockReturnValueOnce(2)
+      .mockReturnValueOnce(3)
+    expect(parseAndComputeDamage('1D4-1', mockDiceRollerSubtract)).toBe(1) // 2 - 1
   })
 })

@@ -13,6 +13,16 @@ export let gameData = {
   locationTables: {},
 }
 export let currentState
+let _tempDescription = ''
+
+export function getTempDescription() {
+  return _tempDescription
+}
+
+export function setTempDescription(value) {
+  _tempDescription = value
+}
+
 let currentDate = new Date(1931, 8, 1) // Keep it enclosed within the module
 
 export function setCurrentDate(date) {
@@ -47,7 +57,7 @@ export async function initializeGame() {
     setGameData('entries', entries)
     setGameData('locationTables', locationTables)
     startGame()
-    displayEntry('13') // Ensure the first entry is displayed
+    displayEntry('230_guard_3_combat') // Ensure the first entry is displayed
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error)
   }
