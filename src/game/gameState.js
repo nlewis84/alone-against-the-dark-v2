@@ -57,7 +57,7 @@ export function startGame() {
   currentState = {
     currentEntry: '13',
     character: 'Professor Grunewald',
-    currentLocale: 'Egypt', // Default starting locale
+    currentLocale: 'Arkham', // Default starting locale
     ...gameData.investigators['Professor Grunewald'],
   }
   displayEntry(currentState.currentEntry)

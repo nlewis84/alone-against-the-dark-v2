@@ -432,5 +432,217 @@
       }
     ],
     "traceNumbers": ["290", "236", "209", "302", "Egypt Location"]
+  },
+  "209": {
+    "description": "The Karpathos Device is there, with interesting background information. Its appearance is remarkably modern, resembling aluminum but obviously of great strength. Its enclosure is electrically guarded to prevent theft. Need a refresher on the Karpathos Device?",
+    "choices": [
+      {
+        "text": "Go to 168 for more information on the Device.",
+        "nextEntry": "168"
+      },
+      {
+        "text": "Return to 206, or explore other ideas about the Device.",
+        "nextEntry": "206"
+      },
+      {
+        "text": "Explore other ideas about the Device.",
+        "nextEntry": "211"
+      }
+    ],
+    "traceNumbers": ["206"]
+  },
+  "211": {
+    "description": "Having come so far and seen much danger, you believe the fate of the world might depend on your actions. How could you not attempt to secure the Karpathos Device?",
+    "choices": [
+      {
+        "text": "Attempt the theft now.",
+        "nextEntry": "229"
+      },
+      {
+        "text": "Hide until the museum closes and then attempt the theft.",
+        "nextEntry": "281"
+      },
+      {
+        "text": "Reconsider and return to 206.",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["209"]
+  },
+  "229": {
+    "description": "The Karpathos Device is secured within a thick glass enclosure with an alarm system. What do you do?",
+    "choices": [
+      {
+        "text": "Try smashing the glass.",
+        "nextEntry": "280"
+      },
+      {
+        "text": "Leave it be and return to 206.",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["211"]
+  },
+  "230": {
+    "description": "The glass shatters loudly as you grab the Device. It is heavy and the alarm sounds, attracting immediate attention.",
+    "choices": [
+      {
+        "text": "Escape with the Device, make a DEX check.",
+        "effects": {
+          "check": {
+            "skill": "DEX",
+            "success": "293",
+            "failure": "574"
+          }
+        }
+      },
+      {
+        "text": "A guard shoots at you, take 1D8 damage if failed DEX.",
+        "effects": {
+          "health": -8
+        }
+      }
+    ],
+    "traceNumbers": ["280"]
+  },
+  "249": {
+    "description": "Caught by authorities, you face long years in prison unless you find a way to escape or mitigate the situation.",
+    "choices": [
+      {
+        "text": "Surrender and go to 315, or if claiming innocence, go to 574.",
+        "nextEntry": "574"
+      }
+    ],
+    "traceNumbers": ["274", "293"]
+  },
+  "263": {
+    "description": "The museum comes alive with unnatural forces. Navigate through perilous encounters using your skills.",
+    "choices": [
+      {
+        "text": "Successfully navigate, using Spot Hidden, Dodge, and INT rolls.",
+        "nextEntry": "274"
+      }
+    ],
+    "traceNumbers": ["276"]
+  },
+  "274": {
+    "description": "After escaping the museum, police are quick to respond. Your actions now determine your next steps.",
+    "choices": [
+      {
+        "text": "Attempt a Stealth roll to escape.",
+        "nextEntry": "301"
+      },
+      {
+        "text": "Admit your actions to the police, go to 315.",
+        "nextEntry": "315"
+      },
+      {
+        "text": "Attempt a Fast Talk or Persuade roll to pass through police.",
+        "nextEntry": "301"
+      }
+    ],
+    "traceNumbers": ["263"]
+  },
+  "276": {
+    "description": "The sounds of pursuit grow louder. Can you escape the growing horror?",
+    "choices": [
+      {
+        "text": "Attempt to escape the horror, go to 263.",
+        "nextEntry": "263"
+      }
+    ],
+    "traceNumbers": ["280"]
+  },
+  "280": {
+    "description": "The thick glass protecting the Device needs to be broken. Each blow you strike costs you physically.",
+    "choices": [
+      {
+        "text": "Break the glass and grab the Device, go to 230.",
+        "nextEntry": "230"
+      },
+      {
+        "text": "Wait until night and try again, go to 276.",
+        "nextEntry": "276"
+      }
+    ],
+    "traceNumbers": ["229", "281"]
+  },
+  "281": {
+    "description": "You decide to wait out the closing hours hidden in the shadows of the museum.",
+    "choices": [
+      {
+        "effects": {
+          "check": {
+            "failure": "Egypt",
+            "skill": "Stealth",
+            "success": 280
+          }
+        },
+        "text": "Attempt to hide and wait, go to 280.",
+        "nextEntry": "281"
+      }
+    ],
+    "traceNumbers": ["211"]
+  },
+  "293": {
+    "description": "With the Karpathos Device in your possession, decide your next action carefully.",
+    "choices": [
+      {
+        "text": "Decide what to do with the Device, then go to 249.",
+        "nextEntry": "249"
+      },
+      {
+        "text": "Attempt to escape with the Device, go to 301.",
+        "nextEntry": "301"
+      }
+    ],
+    "traceNumbers": ["230", "301"]
+  },
+  "301": {
+    "description": "You've managed to escape with the Device. Now you must decide how to proceed.",
+    "choices": [
+      {
+        "text": "Proceed with your escape, go to 293.",
+        "nextEntry": "293"
+      },
+      {
+        "text": "Surrender to the authorities, go to 315.",
+        "nextEntry": "315"
+      }
+    ],
+    "traceNumbers": ["274"]
+  },
+  "315": {
+    "description": "After turning yourself in, you face the consequences of your actions as you are taken into custody.",
+    "choices": [
+      {
+        "text": "Face the legal consequences, go to 574.",
+        "nextEntry": "574"
+      }
+    ],
+    "traceNumbers": ["249", "274", "301"]
+  },
+  "574": {
+    "description": "Your failure leads to catastrophic global events. Depending on your location, the results vary dramatically.",
+    "choices": [
+      {
+        "text": "End the game, reflecting on the outcomes of your choices.",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": [
+      "100",
+      "173",
+      "315",
+      "525",
+      "529",
+      "530",
+      "541",
+      "542",
+      "566",
+      "567"
+    ]
   }
 }
