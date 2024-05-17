@@ -1,27 +1,38 @@
 const fs = require('fs')
+const path = require('path')
 
-// Read the JSON file
-const jsonData = require('../data/entries.json')
+// Load JSON data
+const jsonData = require(path.join(__dirname, '../data/entries.json'))
 
-// Function to recursively sort object keys
-function sortObject(obj) {
-  if (typeof obj !== 'object' || obj === null) {
-    return obj
-  }
-  if (Array.isArray(obj)) {
-    return obj.map(sortObject)
-  }
-  const sortedKeys = Object.keys(obj)
-    .sort()
-    .reduce((result, key) => {
-      result[key] = sortObject(obj[key])
-      return result
-    }, {})
-  return sortedKeys
+// Custom sorting function for enhanced alphanumeric sorting
+function customSort(a, b) {
+  const regex = /^(\d+)(\D*)/ // This will capture any non-digit characters following the initial number sequence.
+
+  const matchA = a.match(regex)
+  const matchB = b.match(regex)
+
+  const numA = parseInt(matchA[1], 10)
+  const numB = parseInt(matchB[1], 10)
+  if (numA !== numB) return numA - numB
+
+  const suffixA = matchA[2]
+  const suffixB = matchB[2]
+  return suffixA.localeCompare(suffixB)
 }
 
-// Sort the JSON data
-const sortedJson = sortObject(jsonData)
+// Sort the top-level keys of jsonData and rebuild the JSON object
+const sortedKeys = Object.keys(jsonData).sort(customSort)
+console.log(sortedKeys) // Debug: print sorted keys
 
-// Write the sorted JSON back to file
-fs.writeFileSync('./sorted_output.json', JSON.stringify(sortedJson, null, 2))
+const sortedJson = {}
+sortedKeys.forEach((key) => {
+  sortedJson[key] = jsonData[key]
+})
+
+// Write the sorted JSON back to the file
+fs.writeFileSync(
+  path.join(__dirname, '../data/sorted_entries.json'),
+  JSON.stringify(sortedJson, null, 2),
+  'utf8',
+)
+console.log('Top-level entries sorted and saved to sorted_entries.json')

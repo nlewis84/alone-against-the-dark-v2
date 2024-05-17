@@ -120,6 +120,16 @@
     "title": "RETAIL STORE",
     "traceNumbers": ["Arkham Location"]
   },
+  "48": {
+    "description": "“Aristotle Mylonas, Director of the National Museum of Archaeology in Athens, died today in a bizarre automobile accident. His car, apparently going much too fast, spun through the railing of a stone bridge across the Illissus River. This internationally known scholar, largely responsible for the protection of many Greek national treasures, will be sorely missed. A reclusive man, Mylonas was unmarried and without other family. He declared always that his beloved Greece was both mother and father to him.”—Arkham Advertiser, July 1, 1931",
+    "choices": [
+      {
+        "text": "Return to newspaper",
+        "nextEntry": "60"
+      }
+    ],
+    "traceNumbers": ["60"]
+  },
   "60": {
     "choices": [
       {
@@ -181,6 +191,16 @@
     "description": "You can look up scheduled sailings. You notice a newspaper with news of Athens. For each hour spent browsing through the paper’s back-issue files, you can attempt one of the following rolls once.",
     "title": "ARKHAM ADVERTISER",
     "traceNumbers": ["Arkham Location"]
+  },
+  "80": {
+    "description": "“In a gala ceremony, Zeno Pisistratos was installed as curator of the National Museum of Archaeology at Athens today. Pisistratos, an expert in Greek and Egyptian antiquities, is said to be interested in arranging exchange-exhibits with other important world museums.” —Arkham Advertiser, July 20, 1931.",
+    "choices": [
+      {
+        "text": "Return to newspaper",
+        "nextEntry": "60"
+      }
+    ],
+    "traceNumbers": ["60"]
   },
   "82": {
     "choices": [
@@ -256,87 +276,18 @@
     "title": "HARDING HOUSE",
     "traceNumbers": ["Arkham Location"]
   },
-  "554": {
+  "125": {
+    "description": "“Greek sponge divers have recovered a puzzling device off the island of Karpathos, a small island between Crete and Turkey. The device is a mechanism believed to be thousands of years old, yet bright and untarnished, as though made yesterday. Scientists have declined comment on the metal from which the device is made. Archaeological experts from the National Museum have taken possession of the oddity for further study.”—Arkham Advertiser, June 8, 1900.",
     "choices": [
       {
-        "nextEntry": "New York Location",
-        "text": "Go to any New York Location"
-      },
-      {
-        "nextEntry": "Athens Location",
-        "text": "Go to any Athens Location"
-      },
-      {
-        "nextEntry": "Alexandria Location",
-        "text": "Go to any Alexandria Location"
-      },
-      {
-        "nextEntry": "Bremen Location",
-        "text": "Go to any Bremen Location"
+        "text": "Return to newspaper",
+        "nextEntry": "60"
       }
     ],
-    "description": "Your ship, the USS Rochester, lies snugly at anchor. Ordinarily, as the dashing Lt. Devon Wilson, you’d be storming the gangplank to start your month’s leave with a spree, but Nora’s alarming telegrams abruptly stopped exactly seven days ago, while you were still at sea. You must find her. You study her photo in its Deco frame and then carefully pack it. You’d give everything you have to get her back. As you pack, a chill runs down your spine: Gliere was a suicide, Grunewald and Holt mysteriously lost, and now Nora! You decide to include your service revolver in your bags, and you resolve to equip yourself for any eventuality at that nearby store. The Rochester is in the port location you wish; choose from: New York, Athens, Alexandria, or Bremen. Pick up any equipment or supplies you want and then go to any location on the appropriate Location Tables: • New York Location Table. • Athens Location Table. • Alexandria—Egypt Location Table. • Bremen Location Table.",
-    "title": "USS Rochester",
-    "traceNumbers": []
-  },
-  "585": {
-    "choices": [
-      {
-        "nextEntry": "Arkham Location",
-        "text": "Receive treatment"
-      },
-      {
-        "nextEntry": "Arkham Location",
-        "text": "Finish at hospital"
-      }
-    ],
-    "description": "The hospital is always open. You can receive treatment for injuries or illnesses here.\n\nGo to any Arkham Location.",
-    "title": "HOSPITAL",
-    "traceNumbers": ["Arkham Location"]
-  },
-  "593": {
-    "choices": [
-      {
-        "nextEntry": "Arkham Location",
-        "text": "Finish meal"
-      }
-    ],
-    "description": "A small diner offering basic meals. It's a place to sit down and have a meal while gathering your thoughts.\n\nGo to any Arkham Location.",
-    "title": "BEE'S DINER",
-    "traceNumbers": ["Arkham Location"]
+    "traceNumbers": ["60"]
   },
   "136": {
     "description": "A Cunard liner departs Pier 56 in New York City every Saturday for Athens and Alexandria, with intermediate stops. The trip takes nine days to Athens and one more to Alexandria.",
-    "choices": [
-      {
-        "text": "Return to newspaper",
-        "nextEntry": "60"
-      }
-    ],
-    "traceNumbers": ["60"]
-  },
-  "80": {
-    "description": "“In a gala ceremony, Zeno Pisistratos was installed as curator of the National Museum of Archaeology at Athens today. Pisistratos, an expert in Greek and Egyptian antiquities, is said to be interested in arranging exchange-exhibits with other important world museums.” —Arkham Advertiser, July 20, 1931.",
-    "choices": [
-      {
-        "text": "Return to newspaper",
-        "nextEntry": "60"
-      }
-    ],
-    "traceNumbers": ["60"]
-  },
-  "48": {
-    "description": "“Aristotle Mylonas, Director of the National Museum of Archaeology in Athens, died today in a bizarre automobile accident. His car, apparently going much too fast, spun through the railing of a stone bridge across the Illissus River. This internationally known scholar, largely responsible for the protection of many Greek national treasures, will be sorely missed. A reclusive man, Mylonas was unmarried and without other family. He declared always that his beloved Greece was both mother and father to him.”—Arkham Advertiser, July 1, 1931",
-    "choices": [
-      {
-        "text": "Return to newspaper",
-        "nextEntry": "60"
-      }
-    ],
-    "traceNumbers": ["60"]
-  },
-  "125": {
-    "description": "“Greek sponge divers have recovered a puzzling device off the island of Karpathos, a small island between Crete and Turkey. The device is a mechanism believed to be thousands of years old, yet bright and untarnished, as though made yesterday. Scientists have declined comment on the metal from which the device is made. Archaeological experts from the National Museum have taken possession of the oddity for further study.”—Arkham Advertiser, June 8, 1900.",
     "choices": [
       {
         "text": "Return to newspaper",
@@ -483,274 +434,6 @@
     ],
     "traceNumbers": ["211"]
   },
-  "230a": {
-    "description": "The glass shatters loudly as you grab the Karpathos Device. It is surprisingly heavy. Unfortunately, the noise attracts immediate attention. Make a DEX check to see if you can escape before the guard unstraps his revolver and takes a shot at you.",
-    "choices": [
-      {
-        "text": "Attempt to escape with the Device, make a DEX check.",
-        "effects": {
-          "check": {
-            "skill": "DEX",
-            "success": "230b",
-            "failure": "230c"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["280"]
-  },
-  "230b": {
-    "description": "You sprint through the halls, evading the guard. As you turn a corner, you face the first of three more guards stationed in successive rooms.",
-    "choices": [
-      {
-        "text": "Navigate past the first guard",
-        "nextEntry": "230d"
-      }
-    ],
-    "traceNumbers": ["230a"]
-  },
-  "230c": {
-    "description": "The guard fires his revolver. Take 1D8 damage if he hits. If you survive, you must still try to escape through the museum.",
-    "effects": {
-      "health": {
-        "diceRoll": "1D100",
-        "success": -8,
-        "failure": 0,
-        "threshold": 25
-      }
-    },
-    "choices": [
-      {
-        "text": "Continue to flee despite the injury.",
-        "nextEntry": "230b"
-      }
-    ],
-    "traceNumbers": ["230a"]
-  },
-  "230d": {
-    "description": "You are now facing the first guard. Roll 1D6 to determine the guard's action.",
-    "choices": [
-      {
-        "text": "Face the first guard",
-        "nextEntry": "230_guard_1_action"
-      }
-    ],
-    "traceNumbers": ["230b", "230c"]
-  },
-  "230e": {
-    "description": "After dealing with the first guard, you now face the second guard.",
-    "choices": [
-      {
-        "text": "Navigate past the second guard",
-        "nextEntry": "230_guard_2_action"
-      }
-    ],
-    "traceNumbers": ["230d", "230_guard_1_action"]
-  },
-  "230f": {
-    "description": "Having navigated past the second guard, you now face the third and final guard.",
-    "choices": [
-      {
-        "text": "Navigate past the final guard",
-        "nextEntry": "230_guard_3_action"
-      }
-    ],
-    "traceNumbers": ["230e", "230_guard_2_action"]
-  },
-  "230_guard_1_action": {
-    "description": "The first guard reacts. Roll 1D6 to determine the guard's action.",
-    "choices": [
-      {
-        "text": "Roll for first guard's action",
-        "effects": {
-          "diceRoll": "1D6",
-          "outcomes": {
-            "1-5": {
-              "description": "The first guard shoots at you, causing 1D8 damage.",
-              "damage": "1D8",
-              "nextEntry": "230_guard_2_action"
-            },
-            "6": {
-              "description": "The first guard attempts to grab you.",
-              "nextEntry": "230_guard_1_combat"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["230b", "230c"]
-  },
-  "230_guard_1_combat": {
-    "description": "The first guard has grabbed you! Fight back with the Karpathos Device or try to dodge.",
-    "choices": [
-      {
-        "text": "Fight with the Device",
-        "effects": {
-          "check": {
-            "skill": "Fighting (Brawl)",
-            "success": "230_guard_2_action",
-            "failure": "574"
-          }
-        }
-      },
-      {
-        "text": "Attempt to dodge",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": "230_guard_2_action",
-            "failure": "574"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["230_guard_1_action"]
-  },
-  "230_guard_2_action": {
-    "description": "Now, you face the second guard. Roll 1D6 to see his reaction.",
-    "choices": [
-      {
-        "text": "Roll for second guard's action",
-        "effects": {
-          "diceRoll": "1D6",
-          "outcomes": {
-            "1-5": {
-              "description": "The second guard shoots at you, causing 1D8 damage.",
-              "damage": "1D8",
-              "nextEntry": "230_guard_3_action"
-            },
-            "6": {
-              "description": "The second guard attempts to grab you.",
-              "nextEntry": "230_guard_2_combat"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["230_guard_1_action", "230_guard_1_combat"]
-  },
-  "230_guard_2_combat": {
-    "description": "The second guard has grabbed you! Decide your next move.",
-    "choices": [
-      {
-        "text": "Fight back using the Device",
-        "effects": {
-          "check": {
-            "skill": "Fighting (Brawl)",
-            "success": "230_guard_3_action",
-            "failure": "574"
-          }
-        }
-      },
-      {
-        "text": "Try to dodge the grab",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": "230_guard_3_action",
-            "failure": "574"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["230_guard_2_action"]
-  },
-  "230_guard_3_action": {
-    "description": "You now confront the third and final guard. Roll 1D6 to determine his actions.",
-    "choices": [
-      {
-        "text": "Roll for third guard's action",
-        "effects": {
-          "diceRoll": "1D6",
-          "outcomes": {
-            "1-5": {
-              "description": "The third guard shoots, causing 1D8 damage, but you escape his pursuit!",
-              "damage": "1D8",
-              "nextEntry": "293"
-            },
-            "6": {
-              "description": "The third guard tries to grab you.",
-              "nextEntry": "230_guard_3_combat"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["230_guard_2_action", "230_guard_2_combat"]
-  },
-  "230_guard_3_combat": {
-    "description": "The final guard has made his move to grab you. How will you respond?",
-    "choices": [
-      {
-        "text": "Use the Karpathos Device to fight",
-        "effects": {
-          "check": {
-            "skill": "Brawl",
-            "success": "293",
-            "failure": "574"
-          }
-        }
-      },
-      {
-        "text": "Dodge the grab attempt",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": "293",
-            "failure": "574"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["230_guard_3_action"]
-  },
-  "249a": {
-    "description": "The authorities are hot on your trail, your fate hangs in the balance.",
-    "choices": [
-      {
-        "text": "Surrender to the police.",
-        "nextEntry": "315"
-      },
-      {
-        "text": "Resist arrest and try to escape.",
-        "nextEntry": "249d"
-      },
-      {
-        "text": "Attempt to destroy the Karpathos Device.",
-        "nextEntry": "249b"
-      }
-    ],
-    "traceNumbers": ["274", "293"]
-  },
-  "249b": {
-    "description": "You find that the Device is impervious to your hasty assaults. But the Nile is only a few paces distant. You consider whether to throw it into the river to prevent its misuse.",
-    "choices": [
-      {
-        "text": "Throw the Device into the Nile.",
-        "nextEntry": "249c"
-      },
-      {
-        "text": "Reconsider and surrender to the police.",
-        "nextEntry": "315"
-      }
-    ],
-    "traceNumbers": ["249a"]
-  },
-  "249c": {
-    "description": "You steal a felucca and slowly drift downstream. Sometime later you judge it safe, and drop the heavy Device into the Nile itself, so that it will sink down into the deep silts that have lain there undisturbed for millennia. Later, the police find you and capture you. You serve seven years in an Egyptian prison, only to return home penniless, disgraced, and without home or friends. Your life is ruined, and until you die you never know whether you did the right thing in Cairo all those years before. But you did, of course. Well done! You saved the world. THE END.",
-    "end": true,
-    "traceNumbers": ["249b"]
-  },
-  "249d": {
-    "description": "It doesn't take long for the police to surround you and reclaim the Karpathos Device. As for you, the police arrest you and you spend several years in prison, before being released and returned to America.",
-    "choices": [
-      {
-        "text": "Reflect on your choices.",
-        "nextEntry": "574"
-      }
-    ],
-    "traceNumbers": ["249a"]
-  },
   "263": {
     "description": "The museum comes alive with unnatural forces. Navigate through perilous encounters using your skills.",
     "choices": [
@@ -858,6 +541,29 @@
     ],
     "traceNumbers": ["249a", "274", "301"]
   },
+  "554": {
+    "choices": [
+      {
+        "nextEntry": "New York Location",
+        "text": "Go to any New York Location"
+      },
+      {
+        "nextEntry": "Athens Location",
+        "text": "Go to any Athens Location"
+      },
+      {
+        "nextEntry": "Alexandria Location",
+        "text": "Go to any Alexandria Location"
+      },
+      {
+        "nextEntry": "Bremen Location",
+        "text": "Go to any Bremen Location"
+      }
+    ],
+    "description": "Your ship, the USS Rochester, lies snugly at anchor. Ordinarily, as the dashing Lt. Devon Wilson, you’d be storming the gangplank to start your month’s leave with a spree, but Nora’s alarming telegrams abruptly stopped exactly seven days ago, while you were still at sea. You must find her. You study her photo in its Deco frame and then carefully pack it. You’d give everything you have to get her back. As you pack, a chill runs down your spine: Gliere was a suicide, Grunewald and Holt mysteriously lost, and now Nora! You decide to include your service revolver in your bags, and you resolve to equip yourself for any eventuality at that nearby store. The Rochester is in the port location you wish; choose from: New York, Athens, Alexandria, or Bremen. Pick up any equipment or supplies you want and then go to any location on the appropriate Location Tables: • New York Location Table. • Athens Location Table. • Alexandria—Egypt Location Table. • Bremen Location Table.",
+    "title": "USS Rochester",
+    "traceNumbers": []
+  },
   "574": {
     "description": "You have failed! Depending where you are, your experiences vary. Coastline lines suffer dramatic flooding and panic ensues. Scientists claim the Earth has somehow shifted on its axis and that terrible consequences will follow. Indeed, they do. Storms of primeval force sweep the continents. Melting polar ice fuels the flooding, while terrifying ice storms strike at the heart of civilization. Once it begins, much of the world of humankind is destroyed within days. The City of the Old Ones has a new master, and the whole world pays for your failure. Your revolver has a bullet in the chamber. Whether you choose to use it or not, it is ... THE END.",
     "choices": [
@@ -880,5 +586,299 @@
       "566",
       "567"
     ]
+  },
+  "585": {
+    "choices": [
+      {
+        "nextEntry": "Arkham Location",
+        "text": "Receive treatment"
+      },
+      {
+        "nextEntry": "Arkham Location",
+        "text": "Finish at hospital"
+      }
+    ],
+    "description": "The hospital is always open. You can receive treatment for injuries or illnesses here.\n\nGo to any Arkham Location.",
+    "title": "HOSPITAL",
+    "traceNumbers": ["Arkham Location"]
+  },
+  "593": {
+    "choices": [
+      {
+        "nextEntry": "Arkham Location",
+        "text": "Finish meal"
+      }
+    ],
+    "description": "A small diner offering basic meals. It's a place to sit down and have a meal while gathering your thoughts.\n\nGo to any Arkham Location.",
+    "title": "BEE'S DINER",
+    "traceNumbers": ["Arkham Location"]
+  },
+  "230_guard_1_action": {
+    "description": "The first guard reacts. Roll 1D6 to determine the guard's action.",
+    "choices": [
+      {
+        "text": "Roll for first guard's action",
+        "effects": {
+          "diceRoll": "1D6",
+          "outcomes": {
+            "6": {
+              "description": "The first guard attempts to grab you.",
+              "nextEntry": "230_guard_1_combat"
+            },
+            "1-5": {
+              "description": "The first guard shoots at you, causing 1D8 damage.",
+              "damage": "1D8",
+              "nextEntry": "230_guard_2_action"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["230b", "230c"]
+  },
+  "230_guard_1_combat": {
+    "description": "The first guard has grabbed you! Fight back with the Karpathos Device or try to dodge.",
+    "choices": [
+      {
+        "text": "Fight with the Device",
+        "effects": {
+          "check": {
+            "skill": "Fighting (Brawl)",
+            "success": "230_guard_2_action",
+            "failure": "574"
+          }
+        }
+      },
+      {
+        "text": "Attempt to dodge",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": "230_guard_2_action",
+            "failure": "574"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["230_guard_1_action"]
+  },
+  "230_guard_2_action": {
+    "description": "Now, you face the second guard. Roll 1D6 to see his reaction.",
+    "choices": [
+      {
+        "text": "Roll for second guard's action",
+        "effects": {
+          "diceRoll": "1D6",
+          "outcomes": {
+            "6": {
+              "description": "The second guard attempts to grab you.",
+              "nextEntry": "230_guard_2_combat"
+            },
+            "1-5": {
+              "description": "The second guard shoots at you, causing 1D8 damage.",
+              "damage": "1D8",
+              "nextEntry": "230_guard_3_action"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["230_guard_1_action", "230_guard_1_combat"]
+  },
+  "230_guard_2_combat": {
+    "description": "The second guard has grabbed you! Decide your next move.",
+    "choices": [
+      {
+        "text": "Fight back using the Device",
+        "effects": {
+          "check": {
+            "skill": "Fighting (Brawl)",
+            "success": "230_guard_3_action",
+            "failure": "574"
+          }
+        }
+      },
+      {
+        "text": "Try to dodge the grab",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": "230_guard_3_action",
+            "failure": "574"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["230_guard_2_action"]
+  },
+  "230_guard_3_action": {
+    "description": "You now confront the third and final guard. Roll 1D6 to determine his actions.",
+    "choices": [
+      {
+        "text": "Roll for third guard's action",
+        "effects": {
+          "diceRoll": "1D6",
+          "outcomes": {
+            "6": {
+              "description": "The third guard tries to grab you.",
+              "nextEntry": "230_guard_3_combat"
+            },
+            "1-5": {
+              "description": "The third guard shoots, causing 1D8 damage, but you escape his pursuit!",
+              "damage": "1D8",
+              "nextEntry": "293"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["230_guard_2_action", "230_guard_2_combat"]
+  },
+  "230_guard_3_combat": {
+    "description": "The final guard has made his move to grab you. How will you respond?",
+    "choices": [
+      {
+        "text": "Use the Karpathos Device to fight",
+        "effects": {
+          "check": {
+            "skill": "Brawl",
+            "success": "293",
+            "failure": "574"
+          }
+        }
+      },
+      {
+        "text": "Dodge the grab attempt",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": "293",
+            "failure": "574"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["230_guard_3_action"]
+  },
+  "230a": {
+    "description": "The glass shatters loudly as you grab the Karpathos Device. It is surprisingly heavy. Unfortunately, the noise attracts immediate attention. Make a DEX check to see if you can escape before the guard unstraps his revolver and takes a shot at you.",
+    "choices": [
+      {
+        "text": "Attempt to escape with the Device, make a DEX check.",
+        "effects": {
+          "check": {
+            "skill": "DEX",
+            "success": "230b",
+            "failure": "230c"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["280"]
+  },
+  "230b": {
+    "description": "You sprint through the halls, evading the guard. As you turn a corner, you face the first of three more guards stationed in successive rooms.",
+    "choices": [
+      {
+        "text": "Navigate past the first guard",
+        "nextEntry": "230d"
+      }
+    ],
+    "traceNumbers": ["230a"]
+  },
+  "230c": {
+    "description": "The guard fires his revolver. Take 1D8 damage if he hits. If you survive, you must still try to escape through the museum.",
+    "effects": {
+      "health": {
+        "diceRoll": "1D100",
+        "success": -8,
+        "failure": 0,
+        "threshold": 25
+      }
+    },
+    "choices": [
+      {
+        "text": "Continue to flee despite the injury.",
+        "nextEntry": "230b"
+      }
+    ],
+    "traceNumbers": ["230a"]
+  },
+  "230d": {
+    "description": "You are now facing the first guard. Roll 1D6 to determine the guard's action.",
+    "choices": [
+      {
+        "text": "Face the first guard",
+        "nextEntry": "230_guard_1_action"
+      }
+    ],
+    "traceNumbers": ["230b", "230c"]
+  },
+  "230e": {
+    "description": "After dealing with the first guard, you now face the second guard.",
+    "choices": [
+      {
+        "text": "Navigate past the second guard",
+        "nextEntry": "230_guard_2_action"
+      }
+    ],
+    "traceNumbers": ["230d", "230_guard_1_action"]
+  },
+  "230f": {
+    "description": "Having navigated past the second guard, you now face the third and final guard.",
+    "choices": [
+      {
+        "text": "Navigate past the final guard",
+        "nextEntry": "230_guard_3_action"
+      }
+    ],
+    "traceNumbers": ["230e", "230_guard_2_action"]
+  },
+  "249a": {
+    "description": "The authorities are hot on your trail, your fate hangs in the balance.",
+    "choices": [
+      {
+        "text": "Surrender to the police.",
+        "nextEntry": "315"
+      },
+      {
+        "text": "Resist arrest and try to escape.",
+        "nextEntry": "249d"
+      },
+      {
+        "text": "Attempt to destroy the Karpathos Device.",
+        "nextEntry": "249b"
+      }
+    ],
+    "traceNumbers": ["274", "293"]
+  },
+  "249b": {
+    "description": "You find that the Device is impervious to your hasty assaults. But the Nile is only a few paces distant. You consider whether to throw it into the river to prevent its misuse.",
+    "choices": [
+      {
+        "text": "Throw the Device into the Nile.",
+        "nextEntry": "249c"
+      },
+      {
+        "text": "Reconsider and surrender to the police.",
+        "nextEntry": "315"
+      }
+    ],
+    "traceNumbers": ["249a"]
+  },
+  "249c": {
+    "description": "You steal a felucca and slowly drift downstream. Sometime later you judge it safe, and drop the heavy Device into the Nile itself, so that it will sink down into the deep silts that have lain there undisturbed for millennia. Later, the police find you and capture you. You serve seven years in an Egyptian prison, only to return home penniless, disgraced, and without home or friends. Your life is ruined, and until you die you never know whether you did the right thing in Cairo all those years before. But you did, of course. Well done! You saved the world. THE END.",
+    "end": true,
+    "traceNumbers": ["249b"]
+  },
+  "249d": {
+    "description": "It doesn't take long for the police to surround you and reclaim the Karpathos Device. As for you, the police arrest you and you spend several years in prison, before being released and returned to America.",
+    "choices": [
+      {
+        "text": "Reflect on your choices.",
+        "nextEntry": "574"
+      }
+    ],
+    "traceNumbers": ["249a"]
   }
 }
