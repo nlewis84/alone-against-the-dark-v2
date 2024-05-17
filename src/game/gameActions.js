@@ -293,6 +293,12 @@ export function checkRequirements(requirements) {
   const currentDate = getCurrentDate()
 
   if (requirements) {
+    if (requirements.dateBefore) {
+      const dateBefore = new Date(requirements.dateBefore)
+      if (currentDate >= dateBefore) {
+        return false
+      }
+    }
     if (requirements.dateAfter) {
       const dateAfter = new Date(requirements.dateAfter)
       if (currentDate <= dateAfter) {

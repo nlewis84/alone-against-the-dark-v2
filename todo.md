@@ -1,17 +1,41 @@
-209
-211
-229
 230 - need to code night requirement into the checks
-249
-263
-274
-276
-280
 281 - test out the failed stealth test
-293
-301
-315
-574 - test out endGame effect
+1 - should return the user to their previous entry with only a single choice
+3 - Cash choice only available for Professor Grunewald
+9 - a successful dodge should advance a day in addition to going to 187
+38 - need to code purchasing an item and managing money
+82 - test the dateBefore and dateAfter
+102 - test these choices
+263 - I need to create 263a, 263b, and 263c for these successive checks, if the player fails any of them, THE END
+280 - code the requirement that checks the time
+
+START CHECKING - 585 (line 632 of entries.json)
+
+2 -
+7 -
+11 -
+23 -
+24 -
+28 -
+29 -
+32 -
+45 -
+46 -
+49 -
+51 -
+52 -
+53 -
+67 -
+72 -
+89 -
+90 -
+121 - this one adds a spell!
+124 -
+141 -
+150 -
+208 -
+212 -
+282 -
 
 236
 244

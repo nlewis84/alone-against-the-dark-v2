@@ -11,7 +11,7 @@
       }
     ],
     "description": "He’s lying. Return to your previous entry:\n• If looking around the Museum of Archaeology where you have chanced upon Pisistratos, go to 166.\n• If you are interrogating Pisistratos in his office, go to 177.",
-    "traceNumbers": []
+    "traceNumbers": ["166", "177"]
   },
   "3": {
     "choices": [
@@ -24,7 +24,7 @@
         "text": "Finish at bank"
       }
     ],
-    "description": "Deposits and withdrawals are possible between 9-3. M-F. If you’re Prof. Grunewald, your account is here, and you can withdraw up to the Cash amount noted on the investigator sheet.\n\nGo to any Arkham Location.",
+    "description": "Deposits and withdrawals are possible between 9-3. M-F. If you’re Prof. Grunewald, your account is here, and you can withdraw up to the Cash amount noted on the investigator sheet.",
     "title": "ARKHAM FIRST NATIONAL BANK",
     "traceNumbers": ["Arkham Location"]
   },
@@ -39,11 +39,11 @@
           }
         },
         "nextEntry": "10",
-        "text": "Attempt Dodge roll"
+        "text": "Try to run past the man"
       }
     ],
-    "description": "The man is an Egyptian. His posture seems threatening. To run past him, attempt a Dodge roll:",
-    "traceNumbers": []
+    "description": "The man is an Egyptian. His posture seems threatening.",
+    "traceNumbers": ["47"]
   },
   "13": {
     "choices": [
@@ -69,13 +69,9 @@
       {
         "nextEntry": "64",
         "text": "Heading to Boston"
-      },
-      {
-        "nextEntry": "Arkham Location",
-        "text": "Other Arkham Location"
       }
     ],
-    "description": "If arriving in Arkham, go to any Arkham Location.\n\nIf heading to Boston, trains leave at 9am, noon, and 5pm. The trip takes an hour. You may wait for your train (on arrival in Boston, go to 64), or go to any other Arkham Location.",
+    "description": "If arriving in Arkham, go to any Arkham Location.\n\nIf heading to Boston, the trip takes an hour.",
     "title": "ARKHAM DEPOT",
     "traceNumbers": ["Arkham Location"]
   },
@@ -88,7 +84,7 @@
     ],
     "description": "Something is wrong. You learned long ago to trust your hunches. Grunewald’s telegrams stopped without explanation 72 hours ago; your inquiries have gone unanswered. Should you alert your agents scattered across the globe? Judiciously sipping superb brandy, at last you decide against the employment of proxies. Grunewald hinted of mysteries beyond the capacities of mere assistants. You trust his judgment and decide to go yourself. You scrawl instructions to subordinates and dictate phone messages to a secretary whom you have callously woken from a sound sleep. Your holdings will tend themselves for a few weeks. Your passport is in order. You’ll pull strings to get an assortment of visas overnight: mere governments cannot keep Ernest Holt from aiding a friend. A liner sails soon. Jenkins can have you packed and ready to go in an hour. You have plenty of time. It’s a pity your experimental trans-Atlantic passenger plane isn’t quite ready, though that would be fun! You find yourself eagerly anticipating action in the field. You feel ready for anything. You call Lydia Lau at The New York Sun. A despicable rag of a newspaper, but a crackerjack young lady with lots of talent. Miss Lau has heard nothing from Grunewald. You notice her professional interest grow as you talk, and you ask her to write nothing for a few days. “I’m sure there’s a proper explanation,” you say grandly, but somehow you know that neither of you believes that statement. Now you sleep. You’ll attend to details tomorrow. When you wake, go to any New York Location.",
     "title": "ERNEST HOLT’S APARTMENT",
-    "traceNumbers": []
+    "traceNumbers": ["START"]
   },
   "37": {
     "choices": [
@@ -99,7 +95,7 @@
     ],
     "description": "You flirted with the City Editor, and then polished up the National Editor. As usual, your skills and your baby-blues got you what you wanted, and you don’t mind giving an old goat a lift now and then. Besides, this could be the biggest story of your young life, or so you hope. Headlines sail through your imagination: “MISKATONIC MYSTERY!” “GAL GUMSHOE TRACKS DOWN MISSING PROFESSOR!” “FINANCIER FOUND ALIVE!” And your by-line is under every one. With Gliere dead, and Holt and Grunewald missing, you’re pretty sure that the story behind this one will be a real jaw-dropper— and probably dangerous. Holt’s been missing for 72 hours. You thoughtfully pack the gigantic revolver given to you by Bruno the vice-squad cop. A girl can’t be too careful, you decide. You can leave soon on one of the regular liners, and in the meantime do some shopping and research—maybe even make a trip to Arkham. You send a telegram to your beau, Devon Wilson, aboard the USS Rochester, telling him your plans and that you’ll keep in touch. The Sun’s circulation boost from this story should blow that pipsqueak Daily News right out of the water, you dreamily calculate. As for you, it’ll be goodbye New York—hello Pulitzer Prize! In the morning, go to any New York Location.",
     "title": "Lydia Lau's Apartment",
-    "traceNumbers": []
+    "traceNumbers": ["START"]
   },
   "38": {
     "choices": [
@@ -118,7 +114,13 @@
     ],
     "description": "This retailer accepts currency from any country. You can buy most any item. You also can buy a hand-to-hand weapon or a handgun. Then go to any location on the appropriate location table:\n\n• Arkham Location Table.\n• New York Location Table.\n• Athens Location Table.\n• Egypt Location Table.\n• Bremen Location Table.",
     "title": "RETAIL STORE",
-    "traceNumbers": ["Arkham Location"]
+    "traceNumbers": [
+      "Arkham Location",
+      "New York Location",
+      "Athens Location",
+      "Egypt Location",
+      "Bremen Location"
+    ]
   },
   "48": {
     "description": "“Aristotle Mylonas, Director of the National Museum of Archaeology in Athens, died today in a bizarre automobile accident. His car, apparently going much too fast, spun through the railing of a stone bridge across the Illissus River. This internationally known scholar, largely responsible for the protection of many Greek national treasures, will be sorely missed. A reclusive man, Mylonas was unmarried and without other family. He declared always that his beloved Greece was both mother and father to him.”—Arkham Advertiser, July 1, 1931",
@@ -210,26 +212,38 @@
       },
       {
         "nextEntry": "122",
-        "text": "See Dr. Martin Fen (before 8 Sept.)"
+        "requirements": {
+          "dateBefore": "1931-09-09"
+        },
+        "text": "See Dr. Martin Fen"
       },
       {
         "nextEntry": "143",
-        "text": "See Dr. Martin Fen (after 8 Sept.)"
+        "requirements": {
+          "dateAfter": "1931-09-08"
+        },
+        "text": "See Dr. Martin Fen"
       },
       {
         "nextEntry": "100",
-        "text": "See the Dean (before 8 Sept.)"
+        "requirements": {
+          "dateBefore": "1931-09-09"
+        },
+        "text": "See the Dean"
       },
       {
         "nextEntry": "197",
-        "text": "See the Dean (after 8 Sept.)"
+        "requirements": {
+          "dateAfter": "1931-09-08"
+        },
+        "text": "See the Dean"
       },
       {
         "nextEntry": "Arkham Location",
         "text": "Finish at university"
       }
     ],
-    "description": "Information available by phone: the MU library is open 9am to 9pm, Mon-Sat.\n\n• To visit the library, go to 145.\n• To see Dr. Martin Fen, Chairman of the History Department—before or on 8 Sept., go to 122—after 8 Sept., go to 143.\n• To see the Dean—before or on Sept. 8, go to 100—after Sept. 8, go to 197.\n\nOnce finished in the library, go to any Arkham Location.",
+    "description": "The MU library is open 9am to 9pm, Mon-Sat.",
     "title": "MISKATONIC UNIVERSITY",
     "traceNumbers": ["Arkham Location"]
   },
@@ -238,6 +252,7 @@
       {
         "nextEntry": "147",
         "requirements": {
+          "characterNot": "Professor Grunewald",
           "dateAfter": "1931-09-08"
         },
         "text": "After 8 September"
@@ -252,27 +267,36 @@
       {
         "nextEntry": "120",
         "requirements": {
-          "characterNot": "Professor Grunewald"
+          "characterNot": "Professor Grunewald",
+          "dateBefore": "1931-09-09"
         },
         "text": "Not Grunewald"
       }
     ],
     "description": "If it is after 8 September, go to 147. If not, and if you’re Grunewald, you can rest and have a repast: go to any Arkham Location. If you’re not Grunewald, go to 120.",
     "title": "GRUNEWALD'S HOME",
-    "traceNumbers": ["13"]
+    "traceNumbers": []
   },
   "113": {
     "choices": [
       {
-        "nextEntry": "45",
-        "text": "Speak to the landlady"
+        "text": "Try to Fast Talk her",
+        "nextEntry": "23"
       },
       {
-        "nextEntry": "90",
-        "text": "Sneak in later"
+        "text": "Try to Charm her",
+        "nextEntry": "45"
+      },
+      {
+        "text": "Try to Persuade her",
+        "nextEntry": "67"
+      },
+      {
+        "text": "Try to Bribe her",
+        "nextEntry": "89"
       }
     ],
-    "description": "A boarding house where Tibor Gliere rented a room. You might find some clues here.\n\nIf you want to speak to the landlady, go to 45. If you want to try sneaking in later at night, go to 90.",
+    "description": "Mrs. Harding greets you amiably. She is uncertain whether she should show you Gliere’s room.",
     "title": "HARDING HOUSE",
     "traceNumbers": ["Arkham Location"]
   },
@@ -337,11 +361,11 @@
     "description": "You see the fabulous treasures of ancient Greece. You also find the stand where the Karpathos Device, replaced at the moment by a drawing and a photograph, is normally kept. The notes speculate that the Karpathos Device is some kind of astronomical clock designed to aid priests. Other scholars feel it may have been designed to actually create something material. Still others see it as merely an elaborate amusement for some wealthy noble or merchant. The origin of the device is not uncertain, nor has the substance of which it is made been determined.",
     "choices": [
       {
-        "text": "Go to 168 for more information on the Device and then return here.",
+        "text": "Learn more information on the Device.",
         "nextEntry": "168"
       },
       {
-        "text": "Make a Luck roll: if successful, go to 166; if failed, go to 118, or go to any Athens Location.",
+        "text": "Make a Luck roll",
         "effects": {
           "check": {
             "skill": "Luck",
@@ -362,37 +386,37 @@
     "description": "The museum is open 9am to noon, and from 3pm-6pm daily. Three exhibits in this great museum might interest you:",
     "choices": [
       {
-        "text": "For Treasures from the Pyramids, go to 290.",
+        "text": "For Treasures from the Pyramids",
         "nextEntry": "290"
       },
       {
-        "text": "For Tombs of the Ancients, go to 236.",
+        "text": "For Tombs of the Ancients",
         "nextEntry": "236"
       },
       {
-        "text": "For the Karpathos Device, go to 209.",
+        "text": "For the Karpathos Device",
         "nextEntry": "209"
       },
       {
-        "text": "If you might want to interview the curator, Amet Keh, go to 302.",
+        "text": "Interview the curator, Amet Keh",
         "nextEntry": "302"
       },
       {
-        "text": "Go to a Cairo location on the Egypt Location Table.",
+        "text": "Go to a Cairo location",
         "nextEntry": "Egypt Location"
       }
     ],
-    "traceNumbers": ["290", "236", "209", "302", "Egypt Location"]
+    "traceNumbers": ["Egypt Location"]
   },
   "209": {
     "description": "The Karpathos Device is there, with interesting background information. Its appearance is remarkably modern, resembling aluminum but obviously of great strength. Its enclosure is electrically guarded to prevent theft. Need a refresher on the Karpathos Device?",
     "choices": [
       {
-        "text": "Go to 168 for more information on the Device.",
+        "text": "Refresh your memory about the Device.",
         "nextEntry": "168"
       },
       {
-        "text": "Return to 206, or explore other ideas about the Device.",
+        "text": "Back to the main area of the museum.",
         "nextEntry": "206"
       },
       {
@@ -414,7 +438,7 @@
         "nextEntry": "281"
       },
       {
-        "text": "Reconsider and return to 206.",
+        "text": "Reconsider your actions.",
         "nextEntry": "206"
       }
     ],
@@ -428,14 +452,14 @@
         "nextEntry": "280"
       },
       {
-        "text": "Leave it be and return to 206.",
+        "text": "Leave it be.",
         "nextEntry": "206"
       }
     ],
     "traceNumbers": ["211"]
   },
   "263": {
-    "description": "The museum comes alive with unnatural forces. Navigate through perilous encounters using your skills.",
+    "description": "In the dim yellow night-lights of the museum, you can scarcely believe your eyes. The place has come alive with undead in many forms: from human mummies to megatheria in the natural history wing, all bizarrely returned to life! Everywhere you see the ominous, jerky shuffle of half-dead things. Instinctively you understand that these entities want to snuff out your life and baffle your purpose. You edge quietly along the halls, intent upon your escape from this hair-raising peril.",
     "choices": [
       {
         "text": "Successfully navigate, using Spot Hidden, Dodge, and INT rolls.",
@@ -445,49 +469,71 @@
     "traceNumbers": ["276"]
   },
   "274": {
-    "description": "After escaping the museum, police are quick to respond. Your actions now determine your next steps.",
+    "description": "Police cars come screeching up to the museum. You have several options, and should think about them all before choosing one:",
     "choices": [
       {
-        "text": "Attempt a Stealth roll to escape.",
-        "nextEntry": "301"
+        "text": "Try to sneak away",
+        "effects": {
+          "check": {
+            "skill": "Stealth",
+            "success": "301",
+            "failure": "315"
+          }
+        }
       },
       {
-        "text": "Admit your actions to the police, go to 315.",
+        "text": "Talk your way out of this",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": "301",
+            "failure": "315"
+          }
+        }
+      },
+      {
+        "text": "Persuade them that you belong here",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": "301",
+            "failure": "315"
+          }
+        }
+      },
+      {
+        "text": "Admit your actions to the police",
         "nextEntry": "315"
-      },
-      {
-        "text": "Attempt a Fast Talk or Persuade roll to pass through police.",
-        "nextEntry": "301"
       }
     ],
     "traceNumbers": ["263"]
   },
   "276": {
-    "description": "The sounds of pursuit grow louder. Can you escape the growing horror?",
+    "description": "But what is that sound you hear? Terror clutches your heart.",
     "choices": [
       {
-        "text": "Attempt to escape the horror, go to 263.",
+        "text": "Attempt to escape the horror",
         "nextEntry": "263"
       }
     ],
     "traceNumbers": ["280"]
   },
   "280": {
-    "description": "The thick glass protecting the Device needs to be broken. Each blow you strike costs you physically.",
+    "description": "The toughened glass around the Karpathos Device has 10 hit points. It breaks when a total of 10 points of damage has been inflicted upon it. You may use anything to break the glass, but if you use your fists in order to damage it, you lose 1 hit point for each blow. Perhaps you have a tool or weapon, or something you can throw at it?",
     "choices": [
       {
-        "text": "Break the glass and grab the Device, go to 230.",
+        "text": "Break the glass (not at night)",
         "nextEntry": "230a"
       },
       {
-        "text": "Wait until night and try again, go to 276.",
+        "text": "Break the glass (at night)",
         "nextEntry": "276"
       }
     ],
     "traceNumbers": ["229", "281"]
   },
   "281": {
-    "description": "You decide to wait out the closing hours hidden in the shadows of the museum.",
+    "description": "You decide to wait out the closing hours hidden in the shadows of the museum. If you fail, you will be ushered out.",
     "choices": [
       {
         "effects": {
@@ -497,7 +543,7 @@
             "success": 280
           }
         },
-        "text": "Attempt to hide and wait, go to 280.",
+        "text": "Attempt to hide and wait.",
         "nextEntry": "281"
       }
     ],
@@ -507,12 +553,8 @@
     "description": "You have evaded several of the guards and the Karpathos Device is in your possession, decide your next action carefully.",
     "choices": [
       {
-        "text": "Decide what to do with the Device, then go to 249.",
+        "text": "Decide what to do with the Device",
         "nextEntry": "249a"
-      },
-      {
-        "text": "Attempt to escape with the Device, go to 301.",
-        "nextEntry": "301"
       }
     ],
     "traceNumbers": ["230", "301"]
@@ -532,10 +574,10 @@
     "traceNumbers": ["274"]
   },
   "315": {
-    "description": "After turning yourself in, you face the consequences of your actions as you are taken into custody.",
+    "description": "You come forward, turn yourself into the police and confess everything. The Karpathos Device is taken from you and you rot in a hellish sanatorium for a long time. Eventually you are released.",
     "choices": [
       {
-        "text": "Face the legal consequences, go to 574.",
+        "text": "Face the consequences.",
         "nextEntry": "574"
       }
     ],
@@ -553,16 +595,16 @@
       },
       {
         "nextEntry": "Alexandria Location",
-        "text": "Go to any Alexandria Location"
+        "text": "Go to any Egypt Location"
       },
       {
         "nextEntry": "Bremen Location",
         "text": "Go to any Bremen Location"
       }
     ],
-    "description": "Your ship, the USS Rochester, lies snugly at anchor. Ordinarily, as the dashing Lt. Devon Wilson, you’d be storming the gangplank to start your month’s leave with a spree, but Nora’s alarming telegrams abruptly stopped exactly seven days ago, while you were still at sea. You must find her. You study her photo in its Deco frame and then carefully pack it. You’d give everything you have to get her back. As you pack, a chill runs down your spine: Gliere was a suicide, Grunewald and Holt mysteriously lost, and now Nora! You decide to include your service revolver in your bags, and you resolve to equip yourself for any eventuality at that nearby store. The Rochester is in the port location you wish; choose from: New York, Athens, Alexandria, or Bremen. Pick up any equipment or supplies you want and then go to any location on the appropriate Location Tables: • New York Location Table. • Athens Location Table. • Alexandria—Egypt Location Table. • Bremen Location Table.",
+    "description": "Your ship, the USS Rochester, lies snugly at anchor. Ordinarily, as the dashing Lt. Devon Wilson, you’d be storming the gangplank to start your month’s leave with a spree, but Nora’s alarming telegrams abruptly stopped exactly seven days ago, while you were still at sea. You must find her. You study her photo in its Deco frame and then carefully pack it. You’d give everything you have to get her back. As you pack, a chill runs down your spine: Gliere was a suicide, Grunewald and Holt mysteriously lost, and now Nora! You decide to include your service revolver in your bags, and you resolve to equip yourself for any eventuality at that nearby store. The Rochester is in the port location you wish; choose from: New York, Athens, Alexandria, or Bremen. Pick up any equipment or supplies you want and then go to any location below.",
     "title": "USS Rochester",
-    "traceNumbers": []
+    "traceNumbers": ["START"]
   },
   "574": {
     "description": "You have failed! Depending where you are, your experiences vary. Coastline lines suffer dramatic flooding and panic ensues. Scientists claim the Earth has somehow shifted on its axis and that terrible consequences will follow. Indeed, they do. Storms of primeval force sweep the continents. Melting polar ice fuels the flooding, while terrifying ice storms strike at the heart of civilization. Once it begins, much of the world of humankind is destroyed within days. The City of the Old Ones has a new master, and the whole world pays for your failure. Your revolver has a bullet in the chamber. Whether you choose to use it or not, it is ... THE END.",
