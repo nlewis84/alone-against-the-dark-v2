@@ -26,6 +26,47 @@ export function updateTime(hours, setHour = null, timeSuffix = null) {
     `Date: ${date.toDateString()}, Time: ${timeString}`
 }
 
+function createButton(text, className, onClick) {
+  const button = document.createElement('button')
+  button.innerText = text
+  button.className = className
+  button.onclick = onClick
+  return button
+}
+
+function updateDescription(entryId, title, description, specialInstructions) {
+  let entryText = `<strong>${entryId}. ${title || ''}</strong><br>`
+  if (specialInstructions) {
+    entryText += `<em>${specialInstructions}</em><br>`
+  }
+  entryText += description
+
+  document.getElementById('description').innerHTML = entryText
+}
+
+function updateChoices(choices, requirementsChecker, onClickHandler) {
+  const choicesContainer = document.getElementById('choices')
+  choicesContainer.innerHTML = ''
+
+  choices.forEach((choice) => {
+    if (requirementsChecker(choice.requirements)) {
+      const button = createButton(
+        choice.text,
+        'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
+        () => onClickHandler(choice),
+      )
+      choicesContainer.appendChild(button)
+    }
+  })
+}
+
+function displayError(entryId) {
+  console.error(`Entry with ID ${entryId} not found`)
+  document.getElementById('description').innerText =
+    `Error: Entry with ID ${entryId} not found.`
+  document.getElementById('choices').innerHTML = ''
+}
+
 export function displayEntry(entryId) {
   const entry = gameData.entries[entryId]
   if (!entry) {
@@ -33,54 +74,33 @@ export function displayEntry(entryId) {
       displayLocations(entryId)
       return
     } catch {
-      console.error(`Entry with ID ${entryId} not found`)
-      document.getElementById('description').innerText =
-        `Error: Entry with ID ${entryId} not found.`
-      document.getElementById('choices').innerHTML = ''
+      displayError(entryId)
       return
     }
   }
 
-  let entryText = `<strong>${entryId}. ${entry.title || ''}</strong><br>`
-  if (entry.specialInstructions) {
-    entryText += `<em>${entry.specialInstructions}</em><br>`
-  }
-  entryText += entry.description
+  updateDescription(
+    entryId,
+    entry.title,
+    entry.description,
+    entry.specialInstructions,
+  )
 
-  document.getElementById('description').innerHTML = entryText
-
-  const choicesContainer = document.getElementById('choices')
-  choicesContainer.innerHTML = ''
-  entry.choices.forEach((choice) => {
-    if (checkRequirements(choice.requirements)) {
-      const button = document.createElement('button')
-      button.innerText = choice.text
-      button.className =
-        'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2'
-      if (choice.effects && choice.effects.check) {
-        button.onclick = () => {
-          const success = makeSkillCheck(
-            choice.effects.check.skill,
-            currentState.skills,
-            currentState,
-          )
-          displayEntry(
-            success
-              ? choice.effects.check.success
-              : choice.effects.check.failure,
-          )
-        }
-      } else if (choice.nextEntry.endsWith(' Location')) {
-        button.onclick = () => {
-          currentState.currentEntry = choice.nextEntry.replace(' Location', '')
-          displayLocations(choice.nextEntry.replace(' Location', ''))
-        }
-      } else {
-        button.onclick = () => {
-          makeChoice(choice.nextEntry, choice.effects)
-        }
-      }
-      choicesContainer.appendChild(button)
+  updateChoices(entry.choices, checkRequirements, (choice) => {
+    if (choice.effects && choice.effects.check) {
+      const success = makeSkillCheck(
+        choice.effects.check.skill,
+        currentState.skills,
+        currentState,
+      )
+      displayEntry(
+        success ? choice.effects.check.success : choice.effects.check.failure,
+      )
+    } else if (choice.nextEntry.endsWith(' Location')) {
+      currentState.currentEntry = choice.nextEntry.replace(' Location', '')
+      displayLocations(choice.nextEntry.replace(' Location', ''))
+    } else {
+      makeChoice(choice.nextEntry, choice.effects)
     }
   })
 
@@ -93,10 +113,13 @@ export function displayEntry(entryId) {
 export function displayLocations(locationType) {
   const locations = gameData.locationTables[locationType]
   if (!locations) {
-    console.error(`${locationType} Location Table not found.`)
-    document.getElementById('description').innerText =
-      `Error: ${locationType} Location Table not found.`
-    return
+    if (parseInt(locationType, 10)) {
+      displayError(locationType)
+      return
+    } else {
+      displayError(locationType + ' Location Table')
+      return
+    }
   }
 
   document.getElementById('description').innerHTML =
@@ -108,15 +131,15 @@ export function displayLocations(locationType) {
   Object.keys(locations).forEach((location) => {
     const locationData = locations[location]
     if (isLocationAvailable(locationData.availability)) {
-      const button = document.createElement('button')
-      button.innerText = location
-      button.className =
-        'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2'
-      button.onclick = () => {
-        displayEntry(locationData.entry)
-        currentState.currentEntry = locationData.entry
-        updateTime(1) // Ensuring time updates each time a location is chosen
-      }
+      const button = createButton(
+        location,
+        'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
+        () => {
+          displayEntry(locationData.entry)
+          currentState.currentEntry = locationData.entry
+          updateTime(1) // Ensuring time updates each time a location is chosen
+        },
+      )
       choicesContainer.appendChild(button)
     }
   })
