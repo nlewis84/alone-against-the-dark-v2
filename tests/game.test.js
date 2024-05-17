@@ -97,6 +97,18 @@ describe('Game Logic', () => {
     expect(document.getElementById('description').innerHTML).toContain(
       'Arkham Locations',
     )
+
+    // Test invalid entry display
+    displayEntry('1300')
+    expect(document.getElementById('description').innerText).toContain(
+      'Error: Entry with ID 1300 not found.',
+    )
+
+    // Test invalid location display
+    displayLocations('McKinney')
+    expect(document.getElementById('description').innerText).toContain(
+      'Error: Entry with ID McKinney Location Table not found.',
+    )
   })
 
   test('should make choice and apply effects', () => {
