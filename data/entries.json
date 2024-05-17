@@ -381,5 +381,56 @@
       }
     ],
     "traceNumbers": ["60"]
+  },
+  "176": {
+    "description": "You see the fabulous treasures of ancient Greece. You also find the stand where the Karpathos Device, replaced at the moment by a drawing and a photograph, is normally kept. The notes speculate that the Karpathos Device is some kind of astronomical clock designed to aid priests. Other scholars feel it may have been designed to actually create something material. Still others see it as merely an elaborate amusement for some wealthy noble or merchant. The origin of the device is not uncertain, nor has the substance of which it is made been determined.",
+    "choices": [
+      {
+        "text": "Go to 168 for more information on the Device and then return here.",
+        "nextEntry": "168"
+      },
+      {
+        "text": "Make a Luck roll: if successful, go to 166; if failed, go to 118, or go to any Athens Location.",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": "166",
+            "failure": "118"
+          }
+        }
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["118", "166", "168"]
+  },
+  "206": {
+    "title": "CAIRO MUSEUM",
+    "description": "The museum is open 9am to noon, and from 3pm-6pm daily. Three exhibits in this great museum might interest you:",
+    "choices": [
+      {
+        "text": "For Treasures from the Pyramids, go to 290.",
+        "nextEntry": "290"
+      },
+      {
+        "text": "For Tombs of the Ancients, go to 236.",
+        "nextEntry": "236"
+      },
+      {
+        "text": "For the Karpathos Device, go to 209.",
+        "nextEntry": "209"
+      },
+      {
+        "text": "If you might want to interview the curator, Amet Keh, go to 302.",
+        "nextEntry": "302"
+      },
+      {
+        "text": "Go to a Cairo location on the Egypt Location Table.",
+        "nextEntry": "Egypt Location"
+      }
+    ],
+    "traceNumbers": ["290", "236", "209", "302", "Egypt Location"]
   }
 }
