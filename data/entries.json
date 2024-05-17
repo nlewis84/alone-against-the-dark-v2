@@ -136,8 +136,8 @@
         "effects": {
           "check": {
             "skill": "Library Use",
-            "success": 187,
-            "failure": 10
+            "success": 48,
+            "failure": 60
           },
           "time": 1
         }
@@ -148,8 +148,8 @@
         "effects": {
           "check": {
             "skill": "Spot Hidden",
-            "success": 187,
-            "failure": 10
+            "success": 125,
+            "failure": 60
           },
           "time": 1
         }
@@ -160,8 +160,8 @@
         "effects": {
           "check": {
             "skill": "Luck",
-            "success": 187,
-            "failure": 10
+            "success": 168,
+            "failure": 60
           },
           "time": 1
         }
@@ -304,5 +304,82 @@
     "description": "A small diner offering basic meals. It's a place to sit down and have a meal while gathering your thoughts.\n\nGo to any Arkham Location.",
     "title": "BEE'S DINER",
     "traceNumbers": ["Arkham Location"]
+  },
+  "136": {
+    "description": "A Cunard liner departs Pier 56 in New York City every Saturday for Athens and Alexandria, with intermediate stops. The trip takes nine days to Athens and one more to Alexandria.",
+    "choices": [
+      {
+        "text": "Return to newspaper",
+        "nextEntry": "60"
+      }
+    ],
+    "traceNumbers": ["60"]
+  },
+  "80": {
+    "description": "“In a gala ceremony, Zeno Pisistratos was installed as curator of the National Museum of Archaeology at Athens today. Pisistratos, an expert in Greek and Egyptian antiquities, is said to be interested in arranging exchange-exhibits with other important world museums.” —Arkham Advertiser, July 20, 1931.",
+    "choices": [
+      {
+        "text": "Return to newspaper",
+        "nextEntry": "60"
+      }
+    ],
+    "traceNumbers": ["60"]
+  },
+  "48": {
+    "description": "“Aristotle Mylonas, Director of the National Museum of Archaeology in Athens, died today in a bizarre automobile accident. His car, apparently going much too fast, spun through the railing of a stone bridge across the Illissus River. This internationally known scholar, largely responsible for the protection of many Greek national treasures, will be sorely missed. A reclusive man, Mylonas was unmarried and without other family. He declared always that his beloved Greece was both mother and father to him.”—Arkham Advertiser, July 1, 1931",
+    "choices": [
+      {
+        "text": "Return to newspaper",
+        "nextEntry": "60"
+      }
+    ],
+    "traceNumbers": ["60"]
+  },
+  "125": {
+    "description": "“Greek sponge divers have recovered a puzzling device off the island of Karpathos, a small island between Crete and Turkey. The device is a mechanism believed to be thousands of years old, yet bright and untarnished, as though made yesterday. Scientists have declined comment on the metal from which the device is made. Archaeological experts from the National Museum have taken possession of the oddity for further study.”—Arkham Advertiser, June 8, 1900.",
+    "choices": [
+      {
+        "text": "Return to newspaper",
+        "nextEntry": "60"
+      }
+    ],
+    "traceNumbers": ["60"]
+  },
+  "168": {
+    "description": "The archaeological team at the National Museum in Athens have reported on the Karpathos Device, noting the inexplicable markings on its surfaces and the complex network of gears and linkages. The team has established that the Device is at least 2,000 years old, although some suggest it might hold a more ancient date. The report implies an ancient level of technical achievement previously undreamt of by scholars. Cryptic Greek inscriptions were found on the outside edges of some gears, while some interior sections were marked with unusual Egyptian hieroglyphics. The team makes no guess about the function of the Device.",
+    "choices": [
+      {
+        "text": "If in Arkham",
+        "requirements": {
+          "currentLocale": "Arkham"
+        },
+        "nextEntry": "60"
+      },
+      {
+        "text": "If in Athens",
+        "requirements": {
+          "currentLocale": "Athens"
+        },
+        "nextEntry": "176"
+      },
+      {
+        "text": "If in Cairo",
+        "requirements": {
+          "currentLocale": "Egypt"
+        },
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["60", "176", "206"]
+  },
+  "172": {
+    "description": "Tibor Gliere’s suicide stunned Miskatonic University. The disappearance of Professor Grunewald under suspicious circumstances has set rumors flying. Dean Wilcox is puzzled, upset, and unwilling to give an interview, but his secretary confides that Dean Wilcox hasn’t a clue as to what is going on.",
+    "choices": [
+      {
+        "text": "Go to newspaper",
+        "nextEntry": "60"
+      }
+    ],
+    "traceNumbers": ["60"]
   }
 }

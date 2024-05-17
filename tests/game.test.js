@@ -274,6 +274,10 @@ describe('Game Logic', () => {
     displayEntry('102')
     const choices = document.getElementById('choices').children
     expect(choices.length).toBe(1) // One choice for Arkham locations
+
+    displayEntry('168')
+    const choicesPartTwo = document.getElementById('choices').children
+    expect(choicesPartTwo.length).toBe(1)
   })
 
   test('should advance time based on effects', () => {

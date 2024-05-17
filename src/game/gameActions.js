@@ -284,6 +284,11 @@ export function checkRequirements(requirements) {
         return false
       }
     }
+    if (requirements.currentLocale) {
+      if (currentState.currentLocale !== requirements.currentLocale) {
+        return false
+      }
+    }
   }
   return true
 }
