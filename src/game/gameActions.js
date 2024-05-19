@@ -307,6 +307,12 @@ export function loadGame() {
 export function checkRequirements(requirements) {
   const currentDate = getCurrentDate()
 
+  // Define night hours, for example from 21:00 (9 PM) to 5:00 (5 AM)
+  const isNightTime = (date) => {
+    const hour = date.getHours()
+    return hour >= 21 || hour < 5
+  }
+
   if (requirements) {
     if (requirements.dateBefore) {
       const dateBefore = new Date(requirements.dateBefore)
@@ -335,17 +341,21 @@ export function checkRequirements(requirements) {
         return false
       }
     }
-    // Check if the player's health is fully restored
     if (requirements.fullHealth) {
-      if (currentState.health < 100) {
+      if (currentState.health < currentState.maxHealth) {
         return false
       }
     }
-    // Check if the player's health is not fully restored
     if (requirements.notFullHealth) {
-      if (currentState.health >= 100) {
+      if (currentState.health >= currentState.maxHealth) {
         return false
       }
+    }
+    if (requirements.isNight && !isNightTime(currentDate)) {
+      return false // It must be night, but it's not
+    }
+    if (requirements.isNotNight && isNightTime(currentDate)) {
+      return false // It must not be night, but it is
     }
   }
   return true

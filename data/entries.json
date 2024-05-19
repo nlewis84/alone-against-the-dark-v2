@@ -523,10 +523,16 @@
     "choices": [
       {
         "text": "Break the glass (not at night)",
+        "requirements": {
+          "isNotNight": true
+        },
         "nextEntry": "230a"
       },
       {
         "text": "Break the glass (at night)",
+        "requirements": {
+          "isNight": true
+        },
         "nextEntry": "276"
       }
     ],

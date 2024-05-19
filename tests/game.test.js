@@ -500,4 +500,22 @@ describe('Game Logic', () => {
       )
     })
   })
+
+  describe('Time-based Entry Requirements', () => {
+    test('should correctly allow or restrict actions based on night or day', () => {
+      // Set the game state to daytime
+      setCurrentDate(new Date(1931, 8, 1, 14, 0)) // 2 PM, not night
+      displayEntry('280')
+      let daytimeButton = findChoiceButton('Break the glass (not at night)')
+      expect(daytimeButton).not.toBeNull()
+      expect(checkRequirements({ isNotNight: true })).toBe(true)
+
+      // Set the game state to nighttime
+      setCurrentDate(new Date(1931, 8, 1, 23, 0)) // 11 PM, night
+      displayEntry('280')
+      let nighttimeButton = findChoiceButton('Break the glass (at night)')
+      expect(nighttimeButton).not.toBeNull()
+      expect(checkRequirements({ isNight: true })).toBe(true)
+    })
+  })
 })
