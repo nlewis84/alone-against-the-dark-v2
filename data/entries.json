@@ -546,7 +546,7 @@
           "check": {
             "failure": "Egypt",
             "skill": "Stealth",
-            "success": 280
+            "success": "280"
           }
         },
         "text": "Attempt to hide and wait.",

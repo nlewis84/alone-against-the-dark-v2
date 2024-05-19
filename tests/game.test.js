@@ -518,4 +518,24 @@ describe('Game Logic', () => {
       expect(checkRequirements({ isNight: true })).toBe(true)
     })
   })
+
+  describe('Check Outcomes routing to specific entries or location tables', () => {
+    test('should consistently route to either entry 280 or Egypt Locations based on stealth skill check', async () => {
+      for (let i = 0; i < 5; i++) {
+        displayEntry('281')
+        const choiceButton = findChoiceButton('Attempt to hide and wait.')
+        choiceButton.click() // Simulate clicking the button for stealth check
+
+        try {
+          expect(document.getElementById('description').innerHTML).toContain(
+            'Egypt Locations',
+          )
+        } catch {
+          expect(document.getElementById('description').innerHTML).toContain(
+            'The toughened glass',
+          )
+        }
+      }
+    })
+  })
 })

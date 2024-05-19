@@ -1,4 +1,3 @@
-230 - need to code night requirement into the checks
 281 - test out the failed stealth test
 1 - should return the user to their previous entry with only a single choice
 3 - Cash choice only available for Professor Grunewald
