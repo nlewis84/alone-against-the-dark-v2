@@ -57,7 +57,7 @@ export async function initializeGame() {
     setGameData('entries', entries)
     setGameData('locationTables', locationTables)
     startGame()
-    displayEntry('230_guard_3_combat') // Ensure the first entry is displayed
+    displayEntry('230a') // Ensure the first entry is displayed
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error)
   }

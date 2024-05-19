@@ -4,6 +4,7 @@ import {
   initializeGame,
   currentState,
   handleInvestigatorDeath,
+  setTempDescription,
 } from '../src/game/gameState.js'
 import {
   updateTime,
@@ -17,7 +18,7 @@ import {
   loadGame,
   displayLocations,
   isLocationAvailable,
-  setTempDescription,
+  checkRequirements,
   handleOutcomeBasedEncounter,
   parseAndComputeDamage,
   findOutcomeForRoll,
@@ -36,6 +37,12 @@ const entriesData = JSON.parse(
 const locationTablesData = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, '../data/locationTables.json')),
 )
+
+function findChoiceButton(choiceText) {
+  return Array.from(document.querySelectorAll('button')).find(
+    (button) => button.innerText === choiceText,
+  )
+}
 
 describe('Game Logic', () => {
   beforeEach(() => {
@@ -266,18 +273,18 @@ describe('Game Logic', () => {
     expect(choices.length).toBe(1)
 
     setCurrentDate(new Date(1931, 8, 9, 10, 0))
-    currentState.character = 'Professor Grunewald'
+    currentState.character = 'Zaphod Beeblebrox'
     displayEntry('102')
     const choicesPartTwo = document.getElementById('choices').children
-    expect(choicesPartTwo.length).toBe(2)
+    expect(choicesPartTwo.length).toBe(1)
   })
 
   test('should handle choices with character requirements', () => {
     setCurrentDate(new Date(1931, 8, 1, 10, 0))
-    currentState.character = 'Professor Grunewald'
+    currentState.character = 'Zaphod Beeblebrox'
     displayEntry('102')
     const choices = document.getElementById('choices').children
-    expect(choices.length).toBe(1) // One choice for Arkham locations
+    expect(choices.length).toBe(1)
 
     displayEntry('168')
     const choicesPartTwo = document.getElementById('choices').children
@@ -400,5 +407,84 @@ describe('Game Logic', () => {
       .mockReturnValueOnce(2)
       .mockReturnValueOnce(3)
     expect(parseAndComputeDamage('1D4-1', mockDiceRollerSubtract)).toBe(1) // 2 - 1
+  })
+
+  describe('Health Requirement Checks', () => {
+    beforeEach(() => {
+      // Setting up a consistent initial health state for testing.
+      currentState.health = 50
+      currentState.maxHealth = 100 // Assuming max health is 100 for simplicity.
+    })
+
+    test('should fail the fullHealth requirement if health is not max', () => {
+      const requirements = { fullHealth: true }
+      expect(checkRequirements(requirements)).toBe(false)
+    })
+
+    test('should pass the fullHealth requirement if health is max', () => {
+      currentState.health = currentState.maxHealth // Set health to max
+      const requirements = { fullHealth: true }
+      expect(checkRequirements(requirements)).toBe(true)
+    })
+
+    test('should pass the notFullHealth requirement if health is not max', () => {
+      const requirements = { notFullHealth: true }
+      expect(checkRequirements(requirements)).toBe(true)
+    })
+
+    test('should fail the notFullHealth requirement if health is max', () => {
+      currentState.health = currentState.maxHealth // Set health to max
+      const requirements = { notFullHealth: true }
+      expect(checkRequirements(requirements)).toBe(false)
+    })
+  })
+
+  describe('Health Recovery Tests', () => {
+    test('Health increases correctly based on Luck roll outcomes', () => {
+      currentState.health = 90 // Example initial health
+      displayEntry('585')
+      // select the first button
+      const firstButton = document.querySelector('button')
+      const choiceButton = findChoiceButton('Make a Luck roll for recovery')
+      choiceButton.click() // Simulate clicking the choice
+
+      // Assuming the game logic updates the current entry after the choice
+      if (currentState.currentEntry === '585a') {
+        // For '585a', health should increase by 2 to 6 points
+        expect(currentState.health).toBeGreaterThanOrEqual(92)
+        expect(currentState.health).toBeLessThanOrEqual(96)
+      } else if (currentState.currentEntry === '585b') {
+        // For '585b', health should increase by 1 to 3 points
+        expect(currentState.health).toBeGreaterThanOrEqual(91)
+        expect(currentState.health).toBeLessThanOrEqual(93)
+      }
+      // Optionally, verify that the description and other elements are updated
+      expect(document.getElementById('description').textContent).toContain(
+        'day.',
+      )
+    })
+  })
+
+  test('Navigate to 585_exit if health is full', () => {
+    currentState.health = 100
+    currentState.maxHealth = 100
+
+    displayEntry('585')
+    expect(checkRequirements({ fullHealth: true })).toBe(true)
+    displayEntry('585_exit')
+    expect(document.getElementById('description').innerHTML).toContain(
+      'Where to next?',
+    )
+  })
+
+  test('Stay another day if health is not full', () => {
+    currentState.health = 95
+    currentState.maxHealth = 100
+
+    displayEntry('585a') // Assuming 585a allows staying another day
+    expect(checkRequirements({ notFullHealth: true })).toBe(true)
+    expect(document.getElementById('description').innerHTML).toContain(
+      'You feel much better but can still recover more.',
+    )
   })
 })

@@ -630,19 +630,133 @@
     ]
   },
   "585": {
+    "title": "HOSPITAL",
+    "description": "You get tender loving care at the hospital. Make a Luck roll to see how well you recover.",
     "choices": [
       {
-        "nextEntry": "Arkham Location",
-        "text": "Receive treatment"
+        "text": "Make a Luck roll for recovery",
+        "requirements": {
+          "notFullHealth": true
+        },
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "585a",
+              "modifyHealth": "2D3",
+              "message": "Your recovery is swift and effective. You gain 2D3 hit points for the first day."
+            },
+            "failure": {
+              "nextEntry": "585b",
+              "modifyHealth": "1D3",
+              "message": "Recovery is slow, but you still gain 1D3 hit points for the first day."
+            }
+          }
+        }
       },
       {
-        "nextEntry": "Arkham Location",
-        "text": "Finish at hospital"
+        "text": "Leave the hospital",
+        "requirements": {
+          "fullHealth": true
+        },
+        "nextEntry": "585_exit"
       }
     ],
-    "description": "The hospital is always open. You can receive treatment for injuries or illnesses here.\n\nGo to any Arkham Location.",
-    "title": "HOSPITAL",
-    "traceNumbers": ["Arkham Location"]
+    "traceNumbers": [
+      "Arkham Location",
+      "New York Location",
+      "Athens Location",
+      "Egypt Location",
+      "Bremen Location",
+      "The Dark Sea",
+      "Antarctic Base Camp"
+    ]
+  },
+  "585a": {
+    "description": "You feel much better but can still recover more.",
+    "choices": [
+      {
+        "text": "Stay another day to regain 1 hit point (up to your normal maximum)",
+        "requirements": {
+          "notFullHealth": true
+        },
+        "nextEntry": "585a"
+      },
+      {
+        "text": "Leave the hospital",
+        "nextEntry": "585_exit"
+      }
+    ]
+  },
+  "585b": {
+    "description": "Your condition is stable, but additional rest could help.",
+    "choices": [
+      {
+        "text": "Stay another day to regain 1 hit point (up to your normal maximum)",
+        "requirements": {
+          "notFullHealth": true
+        },
+        "nextEntry": "585b"
+      },
+      {
+        "text": "Leave the hospital",
+        "nextEntry": "585_exit"
+      }
+    ]
+  },
+  "585_exit": {
+    "description": "You decide it's time to leave the hospital. Where to next?",
+    "choices": [
+      {
+        "text": "Another Arkham Location",
+        "requirements": {
+          "currentLocale": "Arkham"
+        },
+        "nextEntry": "Arkham Location"
+      },
+      {
+        "text": "Another New York Location",
+        "requirements": {
+          "currentLocale": "New York"
+        },
+        "nextEntry": "New York Location"
+      },
+      {
+        "text": "Another Athens Location",
+        "requirements": {
+          "currentLocale": "Athens"
+        },
+        "nextEntry": "Athens Location"
+      },
+      {
+        "text": "Another Egypt Location",
+        "requirements": {
+          "currentLocale": "Egypt"
+        },
+        "nextEntry": "Egypt Location"
+      },
+      {
+        "text": "Another Bremen Location",
+        "requirements": {
+          "currentLocale": "Bremen"
+        },
+        "nextEntry": "Bremen Location"
+      },
+      {
+        "text": "Back to The Dark Sea",
+        "requirements": {
+          "currentLocale": "The Dark Sea"
+        },
+        "nextEntry": "480"
+      },
+      {
+        "text": "Back to Antarctic Base Camp",
+        "requirements": {
+          "currentLocale": "Antarctic Base Camp"
+        },
+        "nextEntry": "520"
+      }
+    ]
   },
   "593": {
     "choices": [

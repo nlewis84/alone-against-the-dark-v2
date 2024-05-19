@@ -109,11 +109,26 @@ export function displayEntry(entryId) {
               currentState.skills,
               currentState,
             )
-            displayEntry(
-              success
-                ? choice.effects.check.success
-                : choice.effects.check.failure,
-            )
+            const checkResult = success
+              ? choice.effects.check.success
+              : choice.effects.check.failure
+
+            // Check if the result is a string (entry ID) or an object (new structured outcome)
+            if (choice.effects && choice.effects.diceRoll) {
+              handleOutcomeBasedEncounter(choice)
+            } else if (typeof checkResult === 'string') {
+              displayEntry(checkResult)
+            } else if (typeof checkResult === 'object') {
+              if (checkResult.modifyHealth) {
+                updateHealth(parseInt(checkResult.modifyHealth)) // Ensure you parse the modifyHealth result if it's a string like "2D3"
+              }
+
+              if (checkResult.message) {
+                setTempDescription(checkResult.message)
+              }
+
+              displayEntry(checkResult.nextEntry)
+            }
           } else if (choice.nextEntry.endsWith(' Location')) {
             currentState.currentEntry = choice.nextEntry.replace(
               ' Location',
@@ -317,6 +332,18 @@ export function checkRequirements(requirements) {
     }
     if (requirements.currentLocale) {
       if (currentState.currentLocale !== requirements.currentLocale) {
+        return false
+      }
+    }
+    // Check if the player's health is fully restored
+    if (requirements.fullHealth) {
+      if (currentState.health < 100) {
+        return false
+      }
+    }
+    // Check if the player's health is not fully restored
+    if (requirements.notFullHealth) {
+      if (currentState.health >= 100) {
         return false
       }
     }
