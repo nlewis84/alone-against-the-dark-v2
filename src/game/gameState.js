@@ -57,7 +57,7 @@ export async function initializeGame() {
     setGameData('entries', entries)
     setGameData('locationTables', locationTables)
     startGame()
-    displayEntry('230a') // Ensure the first entry is displayed
+    displayEntry('230a') // Ensure the first entry is displayed ... should be 13
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error)
   }
@@ -67,7 +67,7 @@ export function startGame() {
   currentState = {
     currentEntry: '13',
     character: 'Professor Grunewald',
-    currentLocale: 'Arkham', // Default starting locale
+    currentLocale: 'Arkham', // Default starting locale ... should be Arkham
     ...gameData.investigators['Professor Grunewald'],
   }
   displayEntry(currentState.currentEntry)
