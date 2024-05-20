@@ -13,7 +13,10 @@
     "choices": [
       {
         "nextEntry": "Arkham Location",
-        "text": "Withdraw Cash"
+        "text": "Withdraw Cash",
+        "requirements": {
+          "character": "Professor Grunewald"
+        }
       },
       {
         "nextEntry": "Arkham Location",
@@ -29,9 +32,9 @@
       {
         "effects": {
           "check": {
-            "failure": 10,
+            "failure": "10",
             "skill": "Dodge",
-            "success": 187
+            "success": "187"
           }
         },
         "nextEntry": "10",
@@ -144,8 +147,8 @@
         "effects": {
           "check": {
             "skill": "Library Use",
-            "success": 48,
-            "failure": 60
+            "success": "48",
+            "failure": "60"
           },
           "time": 1
         }
@@ -156,8 +159,8 @@
         "effects": {
           "check": {
             "skill": "Spot Hidden",
-            "success": 125,
-            "failure": 60
+            "success": "125",
+            "failure": "60"
           },
           "time": 1
         }
@@ -168,8 +171,8 @@
         "effects": {
           "check": {
             "skill": "Luck",
-            "success": 168,
-            "failure": 60
+            "success": "168",
+            "failure": "60"
           },
           "time": 1
         }
