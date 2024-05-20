@@ -33,6 +33,16 @@ export function getCurrentDate() {
   return currentDate
 }
 
+// Getter for previousEntry
+export function getPreviousEntry() {
+  return currentState.previousEntry
+}
+
+// Setter for previousEntry
+export function setPreviousEntry(entryId) {
+  currentState.previousEntry = entryId
+}
+
 export function setGameData(type, data) {
   gameData[type] = data
 }
@@ -66,6 +76,7 @@ export async function initializeGame() {
 export function startGame() {
   currentState = {
     currentEntry: '13',
+    previousEntry: 'START',
     character: 'Professor Grunewald',
     currentLocale: 'Arkham', // Default starting locale ... should be Arkham
     ...gameData.investigators['Professor Grunewald'],
@@ -88,6 +99,7 @@ function switchToNextInvestigator() {
     const nextInvestigator = investigatorOrder[currentInvestigatorIndex]
     currentState = {
       currentEntry: nextInvestigator.entry,
+      previousEntry: currentState.currentEntry,
       character: nextInvestigator.name,
       ...gameData.investigators[nextInvestigator.name],
     }

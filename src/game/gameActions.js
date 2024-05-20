@@ -5,6 +5,8 @@ import {
   setCurrentDate,
   getTempDescription,
   setTempDescription,
+  setPreviousEntry,
+  getPreviousEntry,
 } from './gameState.js'
 import { saveState, loadState } from '../utils/storage.js'
 import { rollDice, makeSkillCheck } from '../utils/dice.js'
@@ -70,6 +72,9 @@ function displayError(entryId) {
 }
 
 export function displayEntry(entryId) {
+  if (entryId === 'previousEntry') {
+    entryId = getPreviousEntry() || currentState.currentEntry
+  }
   const entry = gameData.entries[entryId]
   if (!entry) {
     try {
@@ -229,6 +234,10 @@ export function makeChoice(nextEntry, effects) {
   // Automatically advance time by one hour for any action, unless specified otherwise
   const timeChange = effects && effects.time !== undefined ? effects.time : 1
   updateTime(timeChange)
+
+  if (nextEntry !== 'previousEntry') {
+    setPreviousEntry(currentState.currentEntry) // Only update if not reverting to the previous entry
+  }
 
   if (effects) {
     if (effects.health !== undefined) {

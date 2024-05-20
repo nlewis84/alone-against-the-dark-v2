@@ -1,5 +1,3 @@
-281 - test out the failed stealth test
-1 - should return the user to their previous entry with only a single choice
 3 - Cash choice only available for Professor Grunewald
 9 - a successful dodge should advance a day in addition to going to 187
 38 - need to code purchasing an item and managing money

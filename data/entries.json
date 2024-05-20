@@ -2,15 +2,11 @@
   "1": {
     "choices": [
       {
-        "nextEntry": "166",
-        "text": "Go to 166"
-      },
-      {
-        "nextEntry": "177",
-        "text": "Go to 177"
+        "nextEntry": "previousEntry",
+        "text": "Return to your last location"
       }
     ],
-    "description": "He’s lying. Return to your previous entry:\n• If looking around the Museum of Archaeology where you have chanced upon Pisistratos, go to 166.\n• If you are interrogating Pisistratos in his office, go to 177.",
+    "description": "He’s lying.",
     "traceNumbers": ["166", "177"]
   },
   "3": {

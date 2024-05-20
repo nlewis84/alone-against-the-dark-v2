@@ -5,6 +5,8 @@ import {
   currentState,
   handleInvestigatorDeath,
   setTempDescription,
+  setGameData,
+  getPreviousEntry,
 } from '../src/game/gameState.js'
 import {
   updateTime,
@@ -19,7 +21,6 @@ import {
   displayLocations,
   isLocationAvailable,
   checkRequirements,
-  handleOutcomeBasedEncounter,
   parseAndComputeDamage,
   findOutcomeForRoll,
 } from '../src/game/gameActions.js'
@@ -536,6 +537,44 @@ describe('Game Logic', () => {
           )
         }
       }
+    })
+  })
+
+  describe('displayEntry Functionality', () => {
+    test('should navigate to previous entry correctly', () => {
+      setGameData('entries', {
+        1: {
+          description: 'Entry 1 Description',
+          choices: [
+            {
+              text: 'Return to your last location',
+              nextEntry: 'previousEntry',
+            },
+          ],
+        },
+        13: {
+          description: 'Entry 13 Description',
+          choices: [
+            {
+              text: 'Go to 1',
+              nextEntry: '1',
+            },
+          ],
+        },
+      }) // Assuming entry '1' is a return point, simulate navigating to '1'
+      displayEntry('13')
+      const choiceButton = findChoiceButton('Go to 1')
+      choiceButton.click() // Simulate the button click that leads to previous entry
+      const choiceButton2 = findChoiceButton('Return to your last location')
+      choiceButton2.click() // Simulate the button click that leads to previous entry
+
+      // The previousEntry should be updated to '13' before moving to '1'
+      expect(getPreviousEntry()).toBe('13')
+
+      // Check if it returns to the previous valid entry
+      expect(document.getElementById('description').innerHTML).toContain(
+        'Entry 13 Description',
+      )
     })
   })
 })
