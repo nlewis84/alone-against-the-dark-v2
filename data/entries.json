@@ -9,6 +9,16 @@
     "description": "He’s lying.",
     "traceNumbers": ["166", "177"]
   },
+  "2": {
+    "description": "The room is silent. You feel about for the light switch. You find it, and gently press it on. Oops! It’s Mrs. Harding’s room! What a mistake! You see her turn and rise from the bedclothes, her frightened face screaming. As the scream pierces your ears, you hear the boarders begin to stir. The residents are coming! But what’s focusing your attention is the shotgun Mrs. Harding is reaching for. You’d better run!",
+    "traceNumbers": ["52"],
+    "choices": [
+      {
+        "nextEntry": "Arkham Location",
+        "text": "Escape!"
+      }
+    ]
+  },
   "3": {
     "choices": [
       {
@@ -27,6 +37,37 @@
     "title": "ARKHAM FIRST NATIONAL BANK",
     "traceNumbers": ["Arkham Location"]
   },
+  "7": {
+    "description": "The window opens smoothly, and you enter. You try to move as quietly as possible.",
+    "choices": [
+      {
+        "effects": {
+          "check": {
+            "failure": "51",
+            "skill": "Stealth",
+            "success": "7a"
+          }
+        },
+        "nextEntry": "51",
+        "text": "Try to run past the man"
+      }
+    ],
+    "traceNumbers": ["28", "90"]
+  },
+  "7a": {
+    "description": "You realize that you have no idea where Gliere's room is. You go upstairs. All the doors are closed; none have names on them.",
+    "choices": [
+      {
+        "text": "Try one of the doors",
+        "nextEntry": "51"
+      },
+      {
+        "text": "Leave the house",
+        "nextEntry": "Arkham Location"
+      }
+    ],
+    "traceNumbers": ["7"]
+  },
   "9": {
     "choices": [
       {
@@ -43,6 +84,11 @@
     ],
     "description": "The man is an Egyptian. His posture seems threatening.",
     "traceNumbers": ["47"]
+  },
+  "11": {
+    "description": "Before you enter, you sense something beyond the door. Putting your ear to the door, you listen.",
+    "nextEntry": "141",
+    "traceNumbers": ["52"]
   },
   "13": {
     "choices": [
@@ -73,6 +119,34 @@
     "description": "If arriving in Arkham, go to any Arkham Location.\n\nIf heading to Boston, the trip takes an hour.",
     "title": "ARKHAM DEPOT",
     "traceNumbers": ["Arkham Location"]
+  },
+  "23": {
+    "description": "“Don’t try and flim-flam me! This is my boarding house and I’ll allow in whom I wish!” She slams the door.",
+    "traceNumbers": ["113"],
+    "choices": [
+      {
+        "text": "Try sneaking in later at night",
+        "nextEntry": "90",
+        "effects": {
+          "dayAdvance": true,
+          "defaultHour": 1
+        }
+      },
+      {
+        "text": "Go to another Arkham Location",
+        "nextEntry": "Arkham Location"
+      }
+    ]
+  },
+  "24": {
+    "description": "This constellations map is quite similar to the copy of Ptolemy’s found in the Miskatonic University collection. Strangely enough, the star patterns here are slightly twisted or even completely skewed. In fact some stars are missing completely.",
+    "traceNumbers": ["72", "150"],
+    "choices": [
+      {
+        "text": "Keep looking around the room",
+        "nextEntry": "150"
+      }
+    ]
   },
   "36": {
     "choices": [
