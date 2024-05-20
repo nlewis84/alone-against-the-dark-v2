@@ -1,8 +1,5 @@
-3 - Cash choice only available for Professor Grunewald
 9 - a successful dodge should advance a day in addition to going to 187
 38 - need to code purchasing an item and managing money
-82 - test the dateBefore and dateAfter
-102 - test these choices
 263 - I need to create 263a, 263b, and 263c for these successive checks, if the player fails any of them, THE END
 280 - code the requirement that checks the time
 
