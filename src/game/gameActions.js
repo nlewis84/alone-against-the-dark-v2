@@ -231,12 +231,11 @@ function isWithinHours(currentHour, hours) {
 }
 
 export function makeChoice(nextEntry, effects) {
-  // Automatically advance time by one hour for any action, unless specified otherwise
   const timeChange = effects && effects.time !== undefined ? effects.time : 1
   updateTime(timeChange)
 
   if (nextEntry !== 'previousEntry') {
-    setPreviousEntry(currentState.currentEntry) // Only update if not reverting to the previous entry
+    setPreviousEntry(currentState.currentEntry)
   }
 
   if (effects) {
@@ -249,12 +248,29 @@ export function makeChoice(nextEntry, effects) {
     if (effects.inventory) {
       effects.inventory.forEach((item) => addItem(item))
     }
-    // Handle day advance with a default or specified hour
     if (effects.dayAdvance) {
-      const newDate = new Date(getCurrentDate()) // Clone currentDate to manipulate it
-      newDate.setDate(newDate.getDate() + 1) // Advance by one day
-      setCurrentDate(newDate) // Update the global currentDate
-      updateTime(0, effects.defaultHour !== undefined ? effects.defaultHour : 6) // Default to 6 AM or specified hour
+      const newDate = new Date(getCurrentDate())
+      newDate.setDate(newDate.getDate() + 1)
+      setCurrentDate(newDate)
+      updateTime(0, effects.defaultHour !== undefined ? effects.defaultHour : 6)
+    }
+
+    // Handle skill checks that may influence the next entry
+    if (effects.check) {
+      const success = makeSkillCheck(effects.check.skill, currentState.skills)
+      const checkResult = success
+        ? effects.check.success
+        : effects.check.failure
+
+      // Special handling for successful dodge that leads to a new entry and a day advance
+      if (success && effects.check.success === '187') {
+        const newDate = new Date(getCurrentDate())
+        newDate.setDate(newDate.getDate() + 1) // Advance the day on successful dodge
+        setCurrentDate(newDate)
+        updateTime(0, 6) // Optionally set a specific time, e.g., 6 AM
+      }
+
+      nextEntry = checkResult // Update nextEntry based on the outcome of the skill check
     }
   }
 

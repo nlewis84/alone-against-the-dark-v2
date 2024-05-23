@@ -69,20 +69,24 @@
     "traceNumbers": ["7"]
   },
   "9": {
+    "description": "The man is an Egyptian. His posture seems threatening.",
     "choices": [
       {
+        "text": "Try to run past the man",
+        "nextEntry": "10",
         "effects": {
           "check": {
-            "failure": "10",
             "skill": "Dodge",
-            "success": "187"
+            "failure": "10",
+            "success": "187",
+            "successEffects": {
+              "dayAdvance": true,
+              "defaultHour": 6
+            }
           }
-        },
-        "nextEntry": "10",
-        "text": "Try to run past the man"
+        }
       }
     ],
-    "description": "The man is an Egyptian. His posture seems threatening.",
     "traceNumbers": ["47"]
   },
   "11": {

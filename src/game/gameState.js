@@ -67,7 +67,7 @@ export async function initializeGame() {
     setGameData('entries', entries)
     setGameData('locationTables', locationTables)
     startGame()
-    displayEntry('230a') // Ensure the first entry is displayed ... should be 13
+    displayEntry('9') // Ensure the first entry is displayed ... should be 13
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error)
   }

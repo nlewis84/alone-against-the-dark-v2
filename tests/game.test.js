@@ -158,6 +158,46 @@ describe('Game Logic', () => {
     })
   })
 
+  describe('Skill Checks and Effects', () => {
+    beforeEach(async () => {
+      // Ensure that initializeGame function or similar setup function is called
+      await initializeGame()
+
+      displayEntry('9')
+    })
+
+    test('Dodge check should correctly handle success and failure outcomes', async () => {
+      for (let i = 0; i < 5; i++) {
+        const initialDate = getCurrentDate()
+
+        const firstButton = document.querySelector('button')
+        firstButton.click() // Simulate clicking the choice
+        const newDate = getCurrentDate()
+        const success = currentState.currentEntry === '187'
+        const failure = currentState.currentEntry === '10'
+
+        if (success) {
+          // Expectations for a successful dodge
+          expect(document.getElementById('description').innerHTML).toContain(
+            'Successfully dodged and moved to next day',
+          )
+          expect(newDate.getDate()).toBe(initialDate.getDate() + 1) // Date should advance by one day
+          expect(newDate.getHours()).toBe(6) // Time should be set to 6 AM
+        } else if (failure) {
+          // Expectations for a failed dodge
+          expect(document.getElementById('description').innerHTML).toContain(
+            'Failed to dodge.',
+          )
+          expect(newDate).toEqual(initialDate) // Date should not change
+        }
+
+        // Reset the current state and date for the next iteration
+        setCurrentDate(new Date(1931, 8, 1, 12, 0))
+        currentState.currentEntry = '9' // Reset to the starting entry
+      }
+    })
+  })
+
   describe('Time and State Management', () => {
     test('should update the current time correctly', () => {
       const initialDate = getCurrentDate()
