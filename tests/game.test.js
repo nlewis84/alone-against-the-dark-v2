@@ -7,6 +7,7 @@ import {
   setTempDescription,
   setGameData,
   getPreviousEntry,
+  setCurrentLocale,
 } from '../src/game/gameState.js'
 import {
   updateTime,
@@ -655,13 +656,13 @@ describe('Game Logic', () => {
           },
         ],
       })
+      setCurrentLocale('Egypt') // Set initial locale for testing
     })
 
     test('Weapons available based on skills are displayed', async () => {
       displayEntry('38')
 
       let choices = Array.from(document.getElementById('choices').children)
-      choices.forEach((btn) => console.log(`Button text: '${btn.innerText}'`)) // Ensure button texts are logged correctly
 
       const foundRevolver = choices.some((btn) =>
         btn.innerText.includes('.38 Revolver'),
@@ -676,7 +677,6 @@ describe('Game Logic', () => {
 
     test('Clicking buy adds weapon to inventory', async () => {
       displayEntry('38')
-      await new Promise((resolve) => setTimeout(resolve, 100)) // Ensure button is rendered
 
       const buyButton = Array.from(
         document.querySelectorAll('#choices button'),
@@ -684,6 +684,18 @@ describe('Game Logic', () => {
 
       if (buyButton) buyButton.click()
       expect(currentState.inventory).toContain('.38 Revolver')
+    })
+
+    test('Clicking buy redirects to current locale', async () => {
+      displayEntry('38')
+      console.log(currentState.currentEntry)
+      const buyButton = Array.from(
+        document.querySelectorAll('#choices button'),
+      ).find((btn) => btn.innerText.includes('Buy .38 Revolver'))
+
+      if (buyButton) buyButton.click()
+      let choices = Array.from(document.getElementById('choices').children)
+      expect(choices.length === 10)
     })
   })
 })

@@ -44,6 +44,14 @@ export function setPreviousEntry(entryId) {
   currentState.previousEntry = entryId
 }
 
+export function getCurrentLocale() {
+  return currentState.currentLocale
+}
+
+export function setCurrentLocale(locale) {
+  currentState.currentLocale = locale
+}
+
 export function setGameData(type, data) {
   gameData[type] = data
 }
@@ -72,7 +80,7 @@ export async function initializeGame() {
     setGameData('locationTables', locationTables)
     setGameData('weapons', weapons)
     startGame()
-    displayEntry('9') // Ensure the first entry is displayed ... should be 13
+    displayEntry('38') // Ensure the first entry is displayed ... should be 13
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error)
   }

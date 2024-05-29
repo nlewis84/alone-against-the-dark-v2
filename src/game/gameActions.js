@@ -7,6 +7,8 @@ import {
   setTempDescription,
   setPreviousEntry,
   getPreviousEntry,
+  setCurrentLocale,
+  getCurrentLocale,
 } from './gameState.js'
 import { saveState, loadState } from '../utils/storage.js'
 import { rollDice, makeSkillCheck } from '../utils/dice.js'
@@ -111,7 +113,7 @@ export function displayEntry(entryId) {
             'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
             () => {
               addItem(weapon.name)
-              displayEntry('Arkham') // Redirect to location selection after purchase
+              displayEntry(getCurrentLocale())
             },
           )
           choicesContainer.appendChild(weaponButton)
