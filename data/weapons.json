@@ -1,0 +1,204 @@
+{
+  "Handguns": [
+    {
+      "name": ".22 Short Automatic",
+      "skill": "Firearms (Handgun)",
+      "damage": "1D6",
+      "malfunction": 100
+    },
+    {
+      "name": ".25 Derringer",
+      "skill": "Firearms (Handgun)",
+      "damage": "1D6",
+      "malfunction": 100
+    },
+    {
+      "name": ".32 Revolver",
+      "skill": "Firearms (Handgun)",
+      "damage": "1D8",
+      "malfunction": 100
+    },
+    {
+      "name": ".38 Revolver",
+      "skill": "Firearms (Handgun)",
+      "damage": "1D10",
+      "malfunction": 100
+    },
+    {
+      "name": ".38 Automatic",
+      "skill": "Firearms (Handgun)",
+      "damage": "1D10",
+      "malfunction": 99
+    },
+    {
+      "name": "Model P08 Luger",
+      "skill": "Firearms (Handgun)",
+      "damage": "1D10",
+      "malfunction": 99
+    },
+    {
+      "name": ".41 Revolver",
+      "skill": "Firearms (Handgun)",
+      "damage": "1D10",
+      "malfunction": 100
+    },
+    {
+      "name": ".45 Revolver",
+      "skill": "Firearms (Handgun)",
+      "damage": "1D10+2",
+      "malfunction": 100
+    },
+    {
+      "name": ".45 Automatic",
+      "skill": "Firearms (Handgun)",
+      "damage": "1D10+2",
+      "malfunction": 100
+    }
+  ],
+  "Rifles": [
+    {
+      "name": ".22 Bolt-Action Rifle",
+      "skill": "Firearms (Rifle)",
+      "damage": "1D6+1",
+      "malfunction": 90
+    },
+    {
+      "name": ".30 Lever-Action Carbine",
+      "skill": "Firearms (Rifle)",
+      "damage": "2D6",
+      "malfunction": 98
+    },
+    {
+      "name": "45 Martini-Henry Rifle",
+      "skill": "Firearms (Rifle)",
+      "damage": "1D8+1D6+3",
+      "malfunction": 100
+    },
+    {
+      "name": "Col. Moran's Air Rifle",
+      "skill": "Firearms (Rifle)",
+      "damage": "2D6+1",
+      "malfunction": 88
+    },
+    {
+      "name": ".303 Lee-Enfield",
+      "skill": "Firearms (Rifle)",
+      "damage": "2D6+4",
+      "malfunction": 100
+    },
+    {
+      "name": ".30-06 Bolt-Action Rifle",
+      "skill": "Firearms (Rifle)",
+      "damage": "2D6+4",
+      "malfunction": 100
+    },
+    {
+      "name": "Elephant Gun",
+      "skill": "Firearms (Rifle)",
+      "damage": "3D6+4",
+      "malfunction": 100
+    }
+  ],
+  "SMGs": [
+    {
+      "name": "Thompson",
+      "skill": "Firearms (SMG)",
+      "damage": "1D10+2",
+      "malfunction": 96
+    },
+    {
+      "name": "Bergmann MP18",
+      "skill": "Firearms (SMG)",
+      "damage": "1D10",
+      "malfunction": 96
+    }
+  ],
+  "Shotguns": [
+    {
+      "name": "12-gauge Shotgun",
+      "skill": "Firearms (Shotgun)",
+      "damage": "4D6",
+      "malfunction": 100
+    },
+    {
+      "name": "20-gauge Shotgun",
+      "skill": "Firearms (Shotgun)",
+      "damage": "2D6",
+      "malfunction": 100
+    },
+    {
+      "name": "16-gauge Shotgun",
+      "skill": "Firearms (Shotgun)",
+      "damage": "2D6+2",
+      "malfunction": 100
+    }
+  ],
+  "Melee": [
+    {
+      "name": "Brass Knuckles",
+      "skill": "Brawl",
+      "damage": "1D3+1+DB",
+      "malfunction": null
+    },
+    {
+      "name": "Burning Torch",
+      "skill": "Brawl",
+      "damage": "1D6",
+      "malfunction": null
+    },
+    {
+      "name": "Blackjack",
+      "skill": "Brawl",
+      "damage": "1D8+DB",
+      "malfunction": null
+    },
+    {
+      "name": "Baseball Bat",
+      "skill": "Brawl",
+      "damage": "1D8+DB",
+      "malfunction": null
+    },
+    {
+      "name": "Nightstick",
+      "skill": "Brawl",
+      "damage": "1D6+DB",
+      "malfunction": null
+    },
+    {
+      "name": "Garrote",
+      "skill": "Stealth",
+      "damage": "1D6+DB",
+      "malfunction": null
+    },
+    {
+      "name": "Crossbow",
+      "skill": "Firearms (bow)",
+      "damage": "1D8+2",
+      "malfunction": 96
+    },
+    {
+      "name": "Hatchet",
+      "skill": "Brawl",
+      "damage": "1D6+1+DB",
+      "malfunction": null
+    },
+    {
+      "name": "Machete",
+      "skill": "Brawl",
+      "damage": "1D8+DB",
+      "malfunction": null
+    },
+    {
+      "name": "Switchblade",
+      "skill": "Brawl",
+      "damage": "1D4+DB",
+      "malfunction": null
+    },
+    {
+      "name": "Carving Knife",
+      "skill": "Brawl",
+      "damage": "1D4+2+DB",
+      "malfunction": null
+    }
+  ]
+}

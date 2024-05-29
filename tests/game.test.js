@@ -38,6 +38,9 @@ const entriesData = JSON.parse(
 const locationTablesData = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, '../data/locationTables.json')),
 )
+const weaponsData = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '../data/weapons.json')),
+)
 
 function findChoiceButton(choiceText) {
   return Array.from(document.querySelectorAll('button')).find(
@@ -66,6 +69,12 @@ describe('Game Logic', () => {
         return Promise.resolve({
           ok: true,
           json: () => Promise.resolve(locationTablesData),
+        })
+      }
+      if (url.includes('weapons.json')) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(weaponsData),
         })
       }
       return Promise.reject(new Error('Unknown URL'))
@@ -615,6 +624,66 @@ describe('Game Logic', () => {
       expect(document.getElementById('description').innerHTML).toContain(
         'Entry 13 Description',
       )
+    })
+  })
+
+  describe('Entry 38 - Weapon Purchasing', () => {
+    beforeEach(async () => {
+      await initializeGame() // Ensure game initialization is complete
+      currentState.skills = {
+        'Firearms (Handgun)': 50,
+        Brawl: 40,
+      }
+      setGameData('weapons', {
+        Handguns: [
+          {
+            name: '.38 Revolver',
+            skill: 'Firearms (Handgun)',
+            damage: '1D10',
+            malfunction: 100,
+          },
+        ],
+        Rifles: [],
+        Shotguns: [],
+        SMGs: [],
+        Melee: [
+          {
+            name: 'Baseball Bat',
+            skill: 'Brawl',
+            damage: '1D8+DB',
+            malfunction: null,
+          },
+        ],
+      })
+    })
+
+    test('Weapons available based on skills are displayed', async () => {
+      displayEntry('38')
+
+      let choices = Array.from(document.getElementById('choices').children)
+      choices.forEach((btn) => console.log(`Button text: '${btn.innerText}'`)) // Ensure button texts are logged correctly
+
+      const foundRevolver = choices.some((btn) =>
+        btn.innerText.includes('.38 Revolver'),
+      )
+      const foundBat = choices.some((btn) =>
+        btn.innerText.includes('Baseball Bat'),
+      )
+
+      expect(foundRevolver).toBeTruthy()
+      expect(foundBat).toBeTruthy()
+    })
+
+    test('Clicking buy adds weapon to inventory', async () => {
+      displayEntry('38')
+      await new Promise((resolve) => setTimeout(resolve, 100)) // Ensure button is rendered
+
+      const buyButton = Array.from(
+        document.querySelectorAll('#choices button'),
+      ).find((btn) => btn.innerText.includes('Buy .38 Revolver'))
+
+      if (buyButton) buyButton.click()
+      expect(currentState.inventory).toContain('.38 Revolver')
     })
   })
 })

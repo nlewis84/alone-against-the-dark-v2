@@ -1,4 +1,4 @@
-38 - need to code purchasing an item and managing money
+38 - need to code purchasing an item
 263 - I need to create 263a, 263b, and 263c for these successive checks, if the player fails any of them, THE END
 280 - code the requirement that checks the time
 

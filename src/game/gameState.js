@@ -11,6 +11,7 @@ export let gameData = {
   investigators: {},
   entries: {},
   locationTables: {},
+  weapons: {},
 }
 export let currentState
 let _tempDescription = ''
@@ -58,14 +59,18 @@ let currentInvestigatorIndex = 0
 
 export async function initializeGame() {
   try {
-    const [investigators, entries, locationTables] = await Promise.all([
-      getData('data/investigators.json'),
-      getData('data/entries.json'),
-      getData('data/locationTables.json'),
-    ])
+    const [investigators, entries, locationTables, weapons] = await Promise.all(
+      [
+        getData('data/investigators.json'),
+        getData('data/entries.json'),
+        getData('data/locationTables.json'),
+        getData('data/weapons.json'),
+      ],
+    )
     setGameData('investigators', investigators)
     setGameData('entries', entries)
     setGameData('locationTables', locationTables)
+    setGameData('weapons', weapons)
     startGame()
     displayEntry('9') // Ensure the first entry is displayed ... should be 13
   } catch (error) {

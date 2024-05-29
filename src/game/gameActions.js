@@ -100,6 +100,26 @@ export function displayEntry(entryId) {
 
   const choicesContainer = document.getElementById('choices')
   choicesContainer.innerHTML = ''
+
+  if (entryId === '38') {
+    const weaponCategories = ['Handguns', 'Rifles', 'SMGs', 'Shotguns', 'Melee']
+    weaponCategories.forEach((category) => {
+      gameData.weapons[category].forEach((weapon) => {
+        if (hasSkill(weapon.skill)) {
+          const weaponButton = createButton(
+            `Buy ${weapon.name}`,
+            'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
+            () => {
+              addItem(weapon.name)
+              displayEntry('Arkham') // Redirect to location selection after purchase
+            },
+          )
+          choicesContainer.appendChild(weaponButton)
+        }
+      })
+    })
+  }
+
   entry.choices.forEach((choice) => {
     if (checkRequirements(choice.requirements)) {
       const button = createButton(
@@ -461,4 +481,17 @@ export function parseAndComputeDamage(damageInput, diceRoller = rollDice) {
   }
   console.error('Invalid damage input format: ' + damageInput)
   return 0
+}
+
+function findWeaponByName(name) {
+  const categories = ['Handguns', 'Rifles', 'SMGs', 'Shotguns', 'Melee']
+  for (const category of categories) {
+    const weapon = gameData[category].find((weapon) => weapon.name === name)
+    if (weapon) return weapon
+  }
+  return null
+}
+
+function hasSkill(skillName) {
+  return currentState.skills[skillName] && currentState.skills[skillName] > 0
 }
