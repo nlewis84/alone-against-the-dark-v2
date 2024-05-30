@@ -212,7 +212,7 @@
         "nextEntry": "Bremen Location"
       }
     ],
-    "description": "This retailer accepts currency from any country. You can buy most any item. You also can buy a hand-to-hand weapon or a handgun. Then go to any location on the appropriate location table:\n\n• Arkham Location Table.\n• New York Location Table.\n• Athens Location Table.\n• Egypt Location Table.\n• Bremen Location Table.",
+    "description": "This retailer accepts currency from any country.",
     "title": "RETAIL STORE",
     "traceNumbers": [
       "Arkham Location",
