@@ -559,14 +559,76 @@
     "traceNumbers": ["211"]
   },
   "263": {
-    "description": "In the dim yellow night-lights of the museum, you can scarcely believe your eyes. The place has come alive with undead in many forms: from human mummies to megatheria in the natural history wing, all bizarrely returned to life! Everywhere you see the ominous, jerky shuffle of half-dead things. Instinctively you understand that these entities want to snuff out your life and baffle your purpose. You edge quietly along the halls, intent upon your escape from this hair-raising peril.",
+    "description": "In the dim yellow night-lights of the museum, you can scarcely believe your eyes. The place has come alive with undead in many forms: from human mummies to megatheria in the natural history wing, all bizarrely returned to life! Everywhere you see the ominous, jerky shuffle of half-dead things. Instinctively you understand that these entities want to snuff out your life and baffle your purpose. You edge quietly along the halls, intent upon your escape from this hair-raising peril. To escape, you need to make successful Spot Hidden, Dodge, and INT rolls respectively, without missing any of the rolls.",
     "choices": [
       {
-        "text": "Successfully navigate, using Spot Hidden, Dodge, and INT rolls.",
-        "nextEntry": "274"
+        "text": "Attempt to Spot Hidden",
+        "nextEntry": "263a"
       }
-    ],
-    "traceNumbers": ["276"]
+    ]
+  },
+  "263a": {
+    "description": "You focus intently, trying to spot a safe path through the menacing shadows.",
+    "choices": [
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": "263b",
+            "failure": {
+              "nextEntry": "263",
+              "damage": 1,
+              "message": "A mummy's hand brushes against you as you fail to notice a crucial detail!"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "263b": {
+    "description": "Having spotted a possible path, you now need to dodge the groping hands of the undead.",
+    "choices": [
+      {
+        "text": "Attempt to Dodge",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": "263c",
+            "failure": {
+              "nextEntry": "263",
+              "damage": 1,
+              "message": "You stumble as a hand clutches at your foot, causing minor injuries!"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "263c": {
+    "description": "One last challenge: apply your intellect to find the safest exit route.",
+    "choices": [
+      {
+        "text": "Use your intelligence",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "274",
+              "damage": {
+                "diceRoll": "1D4+1",
+                "message": "You hurl yourself through a plate glass window to escape, suffering cuts in the process."
+              }
+            },
+            "failure": {
+              "nextEntry": "263",
+              "damage": 1,
+              "message": "A wrong turn! You're swiped by a clawed appendage as you miscalculate your route."
+            }
+          }
+        }
+      }
+    ]
   },
   "274": {
     "description": "Police cars come screeching up to the museum. You have several options, and should think about them all before choosing one:",

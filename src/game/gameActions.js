@@ -88,6 +88,9 @@ export function displayEntry(entryId) {
     }
   }
 
+  // Update currentEntry in the state
+  currentState.currentEntry = entryId
+
   let descriptionWithTemp =
     (getTempDescription() ? `\n${getTempDescription()} ` : '') +
     entry.description
@@ -148,6 +151,12 @@ export function displayEntry(entryId) {
             } else if (typeof checkResult === 'object') {
               if (checkResult.modifyHealth) {
                 updateHealth(parseInt(checkResult.modifyHealth)) // Ensure you parse the modifyHealth result if it's a string like "2D3"
+              }
+
+              if (checkResult.damage) {
+                // Using parseAndComputeDamage to calculate damage before updating health
+                const damage = parseAndComputeDamage(checkResult.damage)
+                updateHealth(-damage) // Negate the damage since it's harmful
               }
 
               if (checkResult.message) {

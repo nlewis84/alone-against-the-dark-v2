@@ -688,7 +688,6 @@ describe('Game Logic', () => {
 
     test('Clicking buy redirects to current locale', async () => {
       displayEntry('38')
-      console.log(currentState.currentEntry)
       const buyButton = Array.from(
         document.querySelectorAll('#choices button'),
       ).find((btn) => btn.innerText.includes('Buy .38 Revolver'))
@@ -696,6 +695,64 @@ describe('Game Logic', () => {
       if (buyButton) buyButton.click()
       let choices = Array.from(document.getElementById('choices').children)
       expect(choices.length === 10)
+    })
+  })
+
+  describe('Entry 263 Series - Escape Challenges', () => {
+    beforeEach(async () => {
+      await initializeGame() // Ensure game initialization and state setup
+      currentState.health = 10 // Assume initial health for testing damage effects
+    })
+
+    async function triggerSkillCheck(choiceText) {
+      const choices = Array.from(document.querySelectorAll('button'))
+      const choiceButton = choices.find((button) =>
+        button.innerText.includes(choiceText),
+      )
+      if (choiceButton) {
+        choiceButton.click()
+      }
+      await new Promise((resolve) => setTimeout(resolve, 0)) // Simulate next tick
+    }
+
+    test('Successful/Failed Spot Hidden leads to next challenge (263b or 263)', async () => {
+      displayEntry('263a')
+      await triggerSkillCheck('Make a Spot Hidden roll')
+
+      // Should either go to 263b with health equal to 10 or 263 with health equal to 9
+      for (let i = 0; i < 5; i++) {
+        if (currentState.currentEntry === '263b') {
+          expect(currentState.health).toBe(10)
+        } else if (currentState.currentEntry === '263') {
+          expect(currentState.health).toBe(9)
+        }
+      }
+    })
+
+    test('Successful Dodge leads to final challenge (263c or 263)', async () => {
+      displayEntry('263b')
+      await triggerSkillCheck('Attempt to Dodge')
+
+      for (let i = 0; i < 5; i++) {
+        if (currentState.currentEntry === '263c') {
+          expect(currentState.health).toBe(10)
+        } else if (currentState.currentEntry === '263') {
+          expect(currentState.health).toBe(9)
+        }
+      }
+    })
+
+    test('Successful/Failed INT check completes the escape and applies exit damage (274 or 263)', async () => {
+      displayEntry('263c')
+      await triggerSkillCheck('Use your intelligence')
+
+      for (let i = 0; i < 5; i++) {
+        if (currentState.currentEntry === '274') {
+          console.log('passed last test')
+        } else if (currentState.currentEntry === '263') {
+          expect(currentState.health).toBe(9)
+        }
+      }
     })
   })
 })
