@@ -153,7 +153,7 @@
     ]
   },
   "28": {
-    "description": "The door is locked. If you want to try the window, go to 7. If you want to pick its lock, make a successful Locksmith or Hard Mechanical Repair roll. If you want to pry open the window, succeed at an STR roll.",
+    "description": "The door is locked, but you can try the window. If you want to pick the door lock, make a successful Locksmith or Hard Mechanical Repair roll. If you want to pry open the window, succeed at an STR roll.",
     "choices": [
       {
         "text": "Try the window",
@@ -206,6 +206,22 @@
         }
       }
     ]
+  },
+  "29": {
+    "description": "You see strange, bird-like markings and some scribbled words in the Professor’s familiar hand. Three of the words seem paired with the symbols—'old', 'heavens', 'cold'.",
+    "choices": [
+      {
+        "text": "Attempt to decipher the markings with an INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": "124",
+            "failure": "150"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["150"]
   },
   "36": {
     "choices": [
