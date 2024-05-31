@@ -615,10 +615,8 @@
             "skill": "INT",
             "success": {
               "nextEntry": "274",
-              "damage": {
-                "diceRoll": "1D4+1",
-                "message": "You hurl yourself through a plate glass window to escape, suffering cuts in the process."
-              }
+              "damage": "1D4+1",
+              "message": "You hurl yourself through a plate glass window to escape, suffering cuts in the process."
             },
             "failure": {
               "nextEntry": "263",
