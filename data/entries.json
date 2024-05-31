@@ -152,6 +152,61 @@
       }
     ]
   },
+  "28": {
+    "description": "The door is locked. If you want to try the window, go to 7. If you want to pick its lock, make a successful Locksmith or Hard Mechanical Repair roll. If you want to pry open the window, succeed at an STR roll.",
+    "choices": [
+      {
+        "text": "Try the window",
+        "nextEntry": "7"
+      },
+      {
+        "text": "Pick the lock",
+        "effects": {
+          "check": {
+            "skill": "Locksmith",
+            "success": "28a",
+            "failure": "90"
+          }
+        }
+      },
+      {
+        "text": "Attempt Hard Mechanical Repair",
+        "effects": {
+          "check": {
+            "skill": "Hard Mechanical Repair",
+            "success": "28a",
+            "failure": "90"
+          }
+        }
+      },
+      {
+        "text": "Pry open the window with an STR roll",
+        "effects": {
+          "check": {
+            "skill": "STR",
+            "success": "28a",
+            "failure": "90"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["90"]
+  },
+  "28a": {
+    "description": "You've managed to enter the Harding House without causing too much disturbance. Now, you must navigate quietly.",
+    "choices": [
+      {
+        "text": "Attempt Stealth to scout the house",
+        "effects": {
+          "check": {
+            "skill": "Stealth",
+            "success": "52",
+            "failure": "51"
+          }
+        }
+      }
+    ]
+  },
   "36": {
     "choices": [
       {
@@ -679,7 +734,7 @@
     "traceNumbers": ["280"]
   },
   "280": {
-    "description": "The toughened glass around the Karpathos Device has 10 hit points. It breaks when a total of 10 points of damage has been inflicted upon it. You may use anything to break the glass, but if you use your fists in order to damage it, you lose 1 hit point for each blow. Perhaps you have a tool or weapon, or something you can throw at it?",
+    "description": "There is toughened glass around the Karpathos Device. Perhaps you have a tool or weapon, or something you can throw at it?",
     "choices": [
       {
         "text": "Break the glass (not at night)",
@@ -931,7 +986,7 @@
         "text": "Finish meal"
       }
     ],
-    "description": "A small diner offering basic meals. It's a place to sit down and have a meal while gathering your thoughts.\n\nGo to any Arkham Location.",
+    "description": "A small diner offering basic meals. It's a place to sit down and have a meal while gathering your thoughts.",
     "title": "BEE'S DINER",
     "traceNumbers": ["Arkham Location"]
   },

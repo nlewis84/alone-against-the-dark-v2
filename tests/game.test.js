@@ -583,7 +583,7 @@ describe('Game Logic', () => {
           )
         } catch {
           expect(document.getElementById('description').innerHTML).toContain(
-            'The toughened glass',
+            'There is toughened glass',
           )
         }
       }

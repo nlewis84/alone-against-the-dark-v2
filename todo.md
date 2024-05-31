@@ -1,5 +1,3 @@
-280 - code the requirement that checks the time
-
 START CHECKING - 593 (line 761 of entries.json)
 
 2 - done
@@ -7,7 +5,7 @@ START CHECKING - 593 (line 761 of entries.json)
 11 - done
 23 - done
 24 - done
-28 -
+28 - done
 29 -
 32 -
 45 -
