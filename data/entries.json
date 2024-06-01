@@ -224,6 +224,22 @@
     ],
     "traceNumbers": ["150"]
   },
+  "32": {
+    "description": "In rifling through Gliere’s notes and letters, you find a portion of manuscript: “The Great Upheaval Myths Correlated with Climatic Change” by T. Gliere. Skimming, you see a bizarre collection of tales mentioning nearly every rumored land, from Atlantis to Mu. Many stories you do not recognize at all. Apparently, Gliere sought historical and physical evidence for these sunken and frozen legends of lands. He seems to have found common dates for the devastation myths found in nearly every culture. Interesting.",
+    "choices": [
+      {
+        "text": "Attempt to Spot Hidden details in the manuscript",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": "53",
+            "failure": "150"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["150"]
+  },
   "36": {
     "choices": [
       {
@@ -293,6 +309,31 @@
       "Egypt Location",
       "Bremen Location"
     ]
+  },
+  "45": {
+    "description": "“That’s just fancy talk! I know your sort! Professor Gliere specifically instructed that no one disturb his room.” She slams the door.",
+    "choices": [
+      {
+        "text": "Try sneaking in later at night",
+        "nextEntry": "90"
+      },
+      {
+        "text": "Go to another Arkham Location",
+        "nextEntry": "Arkham Location"
+      }
+    ],
+    "traceNumbers": ["67", "113"]
+  },
+  "46": {
+    "description": "Curious, you think. That symbol looks almost like a map (see image below). You take the notepaper with you.",
+    "image": "src/assets/images/maps/map46.png",
+    "choices": [
+      {
+        "text": "Take the notepaper and continue your investigation",
+        "nextEntry": "150"
+      }
+    ],
+    "traceNumbers": ["49", "294"]
   },
   "48": {
     "description": "“Aristotle Mylonas, Director of the National Museum of Archaeology in Athens, died today in a bizarre automobile accident. His car, apparently going much too fast, spun through the railing of a stone bridge across the Illissus River. This internationally known scholar, largely responsible for the protection of many Greek national treasures, will be sorely missed. A reclusive man, Mylonas was unmarried and without other family. He declared always that his beloved Greece was both mother and father to him.”—Arkham Advertiser, July 1, 1931",
