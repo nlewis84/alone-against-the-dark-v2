@@ -747,9 +747,7 @@ describe('Game Logic', () => {
       await triggerSkillCheck('Use your intelligence')
 
       for (let i = 0; i < 5; i++) {
-        if (currentState.currentEntry === '274') {
-          console.log('passed last test')
-        } else if (currentState.currentEntry === '263') {
+        if (currentState.currentEntry === '263') {
           expect(currentState.health).toBe(9)
         }
       }

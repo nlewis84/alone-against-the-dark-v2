@@ -1,15 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville&display=swap');
 
 /* Apply global styles */
 body {
-  font-family: "Libre Baskerville", serif;
+  font-family: 'Libre Baskerville', serif;
   background-color: #f8f8f8;
   color: #333;
 }
 
 /* Custom button styles */
 button {
-  font-family: "Cinzel", serif;
+  font-family: 'Cinzel', serif;
   font-size: 1.1rem;
 }
 
@@ -41,10 +41,12 @@ button {
   border: 2px solid #b38e2e; /* Slightly darker gold border */
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  font-family: "Cinzel", serif;
+  font-family: 'Cinzel', serif;
   font-size: 1.1rem;
   text-transform: uppercase;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 #choices button:hover {
@@ -60,14 +62,33 @@ button {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   margin-right: 0.5rem;
-  font-family: "Cinzel", serif;
+  font-family: 'Cinzel', serif;
   font-size: 1.1rem;
   text-transform: uppercase;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 #saveButton:hover,
 #loadButton:hover {
   background-color: #b38e2e;
   border-color: #a07c27;
+}
+
+#imageContainer {
+  border: 2px solid #ccc; /* Light grey border, adjust color as needed */
+  background: #f0f0f0; /* Light background, adjust color as needed */
+  padding: 10px; /* Adds space inside the container, around the image */
+  margin: 20px auto; /* Centers the container and adds space around it */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 50%; /* Limits the size and ensures it doesn't get too large */
+  border-radius: 10px; /* Rounded corners */
+}
+
+img {
+  display: block; /* Removes bottom margin/gap */
+  width: 100%; /* Makes the image expand to fill the container */
+  height: auto; /* Keeps the image ratio intact */
+  border-radius: 8px; /* Rounded corners for the image itself if desired */
 }

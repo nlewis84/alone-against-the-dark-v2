@@ -19,8 +19,5 @@ export function makeSkillCheck(skill, skills, stats, difficulty = 'normal') {
       break
   }
 
-  console.log(
-    `Rolled: ${roll}, Required for ${difficulty} check: ${requiredValue}`,
-  )
   return roll <= requiredValue
 }

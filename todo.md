@@ -7,7 +7,8 @@ START CHECKING - 593 (line 761 of entries.json)
 24 - done
 28 - done
 29 - done
-32 -
+32 - done
+10 -
 45 -
 46 -
 49 -
@@ -21,7 +22,7 @@ START CHECKING - 593 (line 761 of entries.json)
 121 - this one adds a spell!
 124 -
 141 -
-150 -
+150 - kinda done...
 208 -
 212 -
 282 -

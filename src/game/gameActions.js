@@ -103,6 +103,9 @@ export function displayEntry(entryId) {
     entry.specialInstructions,
   )
 
+  // Display the image associated with the entry
+  displayImage(entry.image)
+
   const choicesContainer = document.getElementById('choices')
   choicesContainer.innerHTML = ''
 
@@ -185,6 +188,29 @@ export function displayEntry(entryId) {
     document.getElementById('description').innerHTML +=
       '<br><strong>THE END</strong>'
   }
+}
+
+function displayImage(imagePath) {
+  const imageContainer = document.getElementById('imageContainer')
+  if (imageContainer) {
+    if (imagePath) {
+      // Create and append the image element if imagePath is provided
+      imageContainer.innerHTML = `<img src="${imagePath}" alt="Entry Image" class="max-w-full h-auto rounded-lg shadow-lg">`
+      imageContainer.style.display = 'block' // Ensure the container is visible when there is an image
+    } else {
+      // Clear the container and hide it if no imagePath is provided
+      imageContainer.innerHTML = ''
+      imageContainer.style.display = 'none' // Hide the container to avoid empty space
+    }
+  }
+}
+
+function createImage(imagePath, className) {
+  const image = document.createElement('img')
+  image.src = imagePath
+  image.alt = 'Entry Image'
+  image.className = className // Apply Tailwind CSS classes dynamically
+  return image
 }
 
 export function displayLocations(locationType) {
