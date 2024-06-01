@@ -106,6 +106,15 @@ export function displayEntry(entryId) {
   // Display the image associated with the entry
   displayImage(entry.image)
 
+  handleEntryChoices(entryId, entry)
+
+  if (entry.end) {
+    document.getElementById('description').innerHTML +=
+      '<br><strong>THE END</strong>'
+  }
+}
+
+function handleEntryChoices(entryId, entry) {
   const choicesContainer = document.getElementById('choices')
   choicesContainer.innerHTML = ''
 
@@ -183,11 +192,6 @@ export function displayEntry(entryId) {
       choicesContainer.appendChild(button)
     }
   })
-
-  if (entry.end) {
-    document.getElementById('description').innerHTML +=
-      '<br><strong>THE END</strong>'
-  }
 }
 
 function displayImage(imagePath) {
