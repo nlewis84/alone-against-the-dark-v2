@@ -173,7 +173,8 @@
         "text": "Attempt Hard Mechanical Repair",
         "effects": {
           "check": {
-            "skill": "Hard Mechanical Repair",
+            "skill": "Mechanical Repair",
+            "difficulty": "hard",
             "success": "28a",
             "failure": "90"
           }

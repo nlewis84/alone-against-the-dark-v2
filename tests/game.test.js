@@ -755,4 +755,43 @@ describe('Game Logic', () => {
       }
     })
   })
+
+  describe('makeSkillCheck function', () => {
+    const skills = {
+      Locksmith: 50, // 50% chance for a normal roll
+      MechanicalRepair: 50, // For hard checks, this would be 25%
+      STR: 80, // For extreme checks, this would be 16%
+    }
+    const stats = {}
+
+    const runSkillCheckMultipleTimes = (skill, level, trials = 5) => {
+      let successes = 0
+      for (let i = 0; i < trials; i++) {
+        const result = makeSkillCheck(skill, skills, stats, level)
+        if (result) successes++
+      }
+      return successes
+    }
+
+    test('normal difficulty checks are statistically consistent', () => {
+      const successes = runSkillCheckMultipleTimes('Locksmith', 'normal')
+      // Expect roughly half the trials to succeed, give or take
+      expect(successes).toBeGreaterThanOrEqual(1)
+      expect(successes).toBeLessThanOrEqual(4)
+    })
+
+    test('hard difficulty checks are statistically consistent', () => {
+      const successes = runSkillCheckMultipleTimes('MechanicalRepair', 'hard')
+      // Expect roughly a quarter of the trials to succeed, give or take
+      expect(successes).toBeGreaterThanOrEqual(0)
+      expect(successes).toBeLessThanOrEqual(3)
+    })
+
+    test('extreme difficulty checks are statistically consistent', () => {
+      const successes = runSkillCheckMultipleTimes('STR', 'extreme')
+      // Expect roughly one-fifth of the trials to succeed, give or take
+      expect(successes).toBeGreaterThanOrEqual(0)
+      expect(successes).toBeLessThanOrEqual(2)
+    })
+  })
 })

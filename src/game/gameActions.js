@@ -138,6 +138,7 @@ export function displayEntry(entryId) {
               choice.effects.check.skill,
               currentState.skills,
               currentState,
+              choice.effects.check.difficulty,
             )
             const checkResult = success
               ? choice.effects.check.success
@@ -288,7 +289,12 @@ export function makeChoice(nextEntry, effects) {
 
     // Handle skill checks that may influence the next entry
     if (effects.check) {
-      const success = makeSkillCheck(effects.check.skill, currentState.skills)
+      const success = makeSkillCheck(
+        effects.check.skill,
+        currentState.skills,
+        currentState,
+        choice.effects.check.difficulty,
+      )
       const checkResult = success
         ? effects.check.success
         : effects.check.failure
