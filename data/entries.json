@@ -534,7 +534,93 @@
     "traceNumbers": ["60"]
   },
   "150": {
-    "description": "You enter and cautiously turn on a light to see a room in proper professorial confusion. Scattered about are books of myths and fables, and there are bundles of clippings from various foreign newspapers. For each hour you spend here, you can attempt one roll for one of the following skills. Each skill may be tried once daily."
+    "title": "Professorial Study",
+    "description": "You enter and cautiously turn on a light to see a room in proper professorial confusion. Scattered about are books of myths and fables, and there are bundles of clippings from various foreign newspapers. For each hour you spend here, you can attempt one roll for one of the following skills. Each skill may be tried once daily.",
+    "choices": [
+      {
+        "text": "Attempt an Astronomy roll",
+        "nextEntry": "24",
+        "effects": {
+          "check": {
+            "skill": "Astronomy",
+            "success": "24",
+            "failure": "150"
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a Science (Cryptography) roll",
+        "nextEntry": "29",
+        "effects": {
+          "check": {
+            "skill": "Science (Cryptography)",
+            "success": "29",
+            "failure": "150"
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a Cthulhu Mythos roll",
+        "nextEntry": "121",
+        "effects": {
+          "check": {
+            "skill": "Cthulhu Mythos",
+            "success": "121",
+            "failure": "150"
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt an INT roll",
+        "nextEntry": "32",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": "32",
+            "failure": "150"
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a Luck roll",
+        "nextEntry": "49",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": "49",
+            "failure": "150"
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a Spot Hidden roll",
+        "nextEntry": "72",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": "72",
+            "failure": "150"
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Sneak out with a Stealth roll",
+        "effects": {
+          "check": {
+            "skill": "Stealth",
+            "success": "Arkham",
+            "failure": "51"
+          },
+          "dailyLimit": 1
+        }
+      }
+    ]
   },
   "168": {
     "description": "The archaeological team at the National Museum in Athens have reported on the Karpathos Device, noting the inexplicable markings on its surfaces and the complex network of gears and linkages. The team has established that the Device is at least 2,000 years old, although some suggest it might hold a more ancient date. The report implies an ancient level of technical achievement previously undreamt of by scholars. Cryptic Greek inscriptions were found on the outside edges of some gears, while some interior sections were marked with unusual Egyptian hieroglyphics. The team makes no guess about the function of the Device.",

@@ -119,26 +119,16 @@ function handleEntryChoices(entryId, entry) {
   choicesContainer.innerHTML = ''
 
   if (entryId === '38') {
-    const weaponCategories = ['Handguns', 'Rifles', 'SMGs', 'Shotguns', 'Melee']
-    weaponCategories.forEach((category) => {
-      gameData.weapons[category].forEach((weapon) => {
-        if (hasSkill(weapon.skill)) {
-          const weaponButton = createButton(
-            `Buy ${weapon.name}`,
-            'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
-            () => {
-              addItem(weapon.name)
-              displayEntry(getCurrentLocale())
-            },
-          )
-          choicesContainer.appendChild(weaponButton)
-        }
-      })
-    })
+    handleSpecialEntry38(choicesContainer) // Assuming handleSpecialEntry38 is defined to handle entry 38 specifics
   }
 
   entry.choices.forEach((choice) => {
-    if (checkRequirements(choice.requirements)) {
+    const hasSkillCheck = choice.effects?.check?.skill
+    const canUseSkillToday = hasSkillCheck
+      ? canUseSkill(entryId, choice.effects.check.skill)
+      : true // Only call canUseSkill if there's a skill to check
+
+    if (checkRequirements(choice.requirements) && canUseSkillToday) {
       const button = createButton(
         choice.text,
         'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
@@ -156,27 +146,17 @@ function handleEntryChoices(entryId, entry) {
               ? choice.effects.check.success
               : choice.effects.check.failure
 
+            if (success || choice.effects.dailyLimit) {
+              // Record usage if daily limit applies
+              recordSkillUsage(entryId, choice.effects.check.skill)
+            }
             // Check if the result is a string (entry ID) or an object (new structured outcome)
             if (choice.effects && choice.effects.diceRoll) {
               handleOutcomeBasedEncounter(choice)
             } else if (typeof checkResult === 'string') {
               displayEntry(checkResult)
             } else if (typeof checkResult === 'object') {
-              if (checkResult.modifyHealth) {
-                updateHealth(parseInt(checkResult.modifyHealth)) // Ensure you parse the modifyHealth result if it's a string like "2D3"
-              }
-
-              if (checkResult.damage) {
-                // Using parseAndComputeDamage to calculate damage before updating health
-                const damage = parseAndComputeDamage(checkResult.damage)
-                updateHealth(-damage) // Negate the damage since it's harmful
-              }
-
-              if (checkResult.message) {
-                setTempDescription(checkResult.message)
-              }
-
-              displayEntry(checkResult.nextEntry)
+              handleComplexOutcome(checkResult)
             }
           } else if (choice.nextEntry.endsWith(' Location')) {
             currentState.currentEntry = choice.nextEntry.replace(
@@ -191,6 +171,43 @@ function handleEntryChoices(entryId, entry) {
       )
       choicesContainer.appendChild(button)
     }
+  })
+}
+
+function handleComplexOutcome(checkResult) {
+  if (checkResult.modifyHealth) {
+    updateHealth(parseInt(checkResult.modifyHealth)) // Ensure you parse the modifyHealth result if it's a string like "2D3"
+  }
+
+  if (checkResult.damage) {
+    // Using parseAndComputeDamage to calculate damage before updating health
+    const damage = parseAndComputeDamage(checkResult.damage)
+    updateHealth(-damage) // Negate the damage since it's harmful
+  }
+
+  if (checkResult.message) {
+    setTempDescription(checkResult.message)
+  }
+
+  displayEntry(checkResult.nextEntry)
+}
+
+function handleSpecialEntry38(choicesContainer) {
+  const weaponCategories = ['Handguns', 'Rifles', 'SMGs', 'Shotguns', 'Melee']
+  weaponCategories.forEach((category) => {
+    gameData.weapons[category].forEach((weapon) => {
+      if (hasSkill(weapon.skill)) {
+        const weaponButton = createButton(
+          `Buy ${weapon.name}`,
+          'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
+          () => {
+            addItem(weapon.name)
+            displayEntry(getCurrentLocale())
+          },
+        )
+        choicesContainer.appendChild(weaponButton)
+      }
+    })
   })
 }
 
@@ -451,6 +468,27 @@ export function checkRequirements(requirements) {
     }
   }
   return true
+}
+
+export function recordSkillUsage(entryId, skill) {
+  const today = getCurrentDate().toISOString().split('T')[0] // Ensure date is formatted correctly
+
+  if (!currentState.dailySkillUsage[entryId]) {
+    currentState.dailySkillUsage[entryId] = {}
+  }
+  currentState.dailySkillUsage[entryId][skill] = today
+}
+
+export function canUseSkill(entryId, skill) {
+  const today = getCurrentDate().toISOString().split('T')[0]
+  if (!currentState.dailySkillUsage[entryId]) {
+    currentState.dailySkillUsage[entryId] = {}
+  }
+  const skillUsedToday = currentState.dailySkillUsage[entryId][skill] === today
+  console.log(
+    `Checking if skill ${skill} at entry ${entryId} can be used today: ${!skillUsedToday}`,
+  )
+  return !skillUsedToday
 }
 
 export function handleOutcomeBasedEncounter(choice) {

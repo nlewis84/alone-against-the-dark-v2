@@ -92,6 +92,7 @@ export function startGame() {
     previousEntry: 'START',
     character: 'Professor Grunewald',
     currentLocale: 'Arkham', // Default starting locale ... should be Arkham
+    dailySkillUsage: {},
     ...gameData.investigators['Professor Grunewald'],
   }
   displayEntry(currentState.currentEntry)
@@ -114,6 +115,7 @@ function switchToNextInvestigator() {
       currentEntry: nextInvestigator.entry,
       previousEntry: currentState.currentEntry,
       character: nextInvestigator.name,
+      dailySkillUsage: {},
       ...gameData.investigators[nextInvestigator.name],
     }
     displayEntry(currentState.currentEntry)

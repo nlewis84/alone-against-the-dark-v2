@@ -10,6 +10,7 @@ import {
   setCurrentLocale,
 } from '../src/game/gameState.js'
 import {
+  recordSkillUsage,
   updateTime,
   displayEntry,
   makeChoice,
@@ -505,8 +506,6 @@ describe('Game Logic', () => {
     test('Health increases correctly based on Luck roll outcomes', () => {
       currentState.health = 90 // Example initial health
       displayEntry('585')
-      // select the first button
-      const firstButton = document.querySelector('button')
       const choiceButton = findChoiceButton('Make a Luck roll for recovery')
       choiceButton.click() // Simulate clicking the choice
 
@@ -572,11 +571,11 @@ describe('Game Logic', () => {
 
   describe('Check Outcomes routing to specific entries or location tables', () => {
     test('should consistently route to either entry 280 or Egypt Locations based on stealth skill check', async () => {
-      for (let i = 0; i < 5; i++) {
-        displayEntry('281')
-        const choiceButton = findChoiceButton('Attempt to hide and wait.')
-        choiceButton.click() // Simulate clicking the button for stealth check
+      displayEntry('281')
+      const choiceButton = findChoiceButton('Attempt to hide and wait.')
+      choiceButton.click() // Simulate clicking the button for stealth check
 
+      for (let i = 0; i < 5; i++) {
         try {
           expect(document.getElementById('description').innerHTML).toContain(
             'Egypt Locations',
@@ -790,6 +789,40 @@ describe('Game Logic', () => {
       // Expect roughly one-fifth of the trials to succeed, give or take
       expect(successes).toBeGreaterThanOrEqual(0)
       expect(successes).toBeLessThanOrEqual(2)
+    })
+  })
+
+  describe('Entry 150 Skill Checks', () => {
+    beforeEach(async () => {
+      await initializeGame() // Make sure the game is set to its initial state
+      setCurrentDate(new Date(1931, 8, 1)) // Set the date to September 1, 1931
+    })
+
+    test('should display the correct number of choices based on dailySkillUsage', () => {
+      displayEntry('150') // Display the entry which has skill checks
+
+      // Assuming each skill can only be tried once daily, and initially all should be available
+      let choicesContainer = document.getElementById('choices')
+      expect(choicesContainer.children.length).toBe(7) // Initially, all 7 choices should be available
+
+      // Simulate a successful skill check for Astronomy, which should mark it as used
+      recordSkillUsage('150', 'Astronomy')
+
+      // Redisplay the entry to update available choices
+      displayEntry('150')
+
+      // Check the number of available choices again
+      choicesContainer = document.getElementById('choices')
+      const buttons = choicesContainer.querySelectorAll('button')
+      const expectedNumberOfChoices = 6 // One less because Astronomy is used
+
+      expect(buttons.length).toBe(expectedNumberOfChoices)
+
+      // Additionally, confirm that the button for the Astronomy skill check is not present
+      const astronomyButton = Array.from(buttons).find((button) =>
+        button.textContent.includes('Attempt an Astronomy roll'),
+      )
+      expect(astronomyButton).toBeUndefined() // The Astronomy choice should not be available
     })
   })
 })
