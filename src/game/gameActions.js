@@ -485,9 +485,7 @@ export function canUseSkill(entryId, skill) {
     currentState.dailySkillUsage[entryId] = {}
   }
   const skillUsedToday = currentState.dailySkillUsage[entryId][skill] === today
-  console.log(
-    `Checking if skill ${skill} at entry ${entryId} can be used today: ${!skillUsedToday}`,
-  )
+
   return !skillUsedToday
 }
 

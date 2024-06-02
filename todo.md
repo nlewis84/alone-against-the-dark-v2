@@ -22,7 +22,7 @@ START CHECKING - 593 (line 761 of entries.json)
 121 - this one adds a spell!
 124 -
 141 -
-150 - kinda done...we need to implement a daily limit for a skill check
+150 - done
 208 -
 212 -
 282 -
