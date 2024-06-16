@@ -6,7 +6,7 @@
 28 - done
 29 - done
 32 - done
-10 -
+10 - done
 45 -
 46 -
 49 -
@@ -24,6 +24,7 @@
 208 -
 212 -
 282 -
+187 - Done kinda....need to actually code these choices correctly!
 
 236
 244

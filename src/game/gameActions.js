@@ -73,11 +73,22 @@ function displayError(entryId) {
   document.getElementById('choices').innerHTML = ''
 }
 
+let lastDisplayedEntry = null
+
 export function displayEntry(entryId) {
+  if (lastDisplayedEntry === '187' && entryId === '10d') {
+    console.log('Prevented display of 10d following 187')
+    return // Prevent the specific unwanted transition
+  }
+
   if (entryId === 'previousEntry') {
     entryId = getPreviousEntry() || currentState.currentEntry
   }
   const entry = gameData.entries[entryId]
+
+  // Update state and display logic as usual
+  lastDisplayedEntry = entryId // Update last displayed entry
+
   if (!entry) {
     try {
       displayLocations(entryId)
@@ -660,54 +671,84 @@ function startCombat(entryId, combatDetails) {
 }
 
 function handleCombatRound(actionType) {
-  if (!currentState.combat.isActive) return
-
-  const opponent = currentState.combat.opponent
-  let playerAttackSuccess =
-    rollDice(100) <= parseInt(currentState.skills['Firearms (Handgun)'], 10) // Assuming using Firearms skill
-
-  if (actionType === 'fight' && playerAttackSuccess) {
-    const damageToOpponent = parseAndComputeDamage(opponent.damage)
-    opponent.health -= damageToOpponent // Player damages opponent
-
-    if (opponent.health <= 0) {
-      endCombat()
-      displayEntry(currentState.combat.outcome.win)
-    } else {
-      // Opponent's turn to attack
-      let opponentAttackSuccess =
-        rollDice(100) <= parseInt(opponent.attackChance, 10)
-      if (opponentAttackSuccess) {
-        const damageToPlayer = parseAndComputeDamage('1D6') // Example damage
-        updateHealth(-damageToPlayer) // Opponent damages player
-        if (currentState.health <= 0) {
-          endCombat()
-          displayEntry(currentState.combat.outcome.lose)
-        }
-      }
-      updateCombatStatus() // Update UI after handling combat
-    }
-  } else if (actionType === 'start') {
-    // Consider what should happen at the start of combat, perhaps prompt for the first attack?
-    updateCombatStatus()
+  if (!currentState.combat.isActive) {
+    console.log('Combat has already ended, exiting round.')
+    return
   }
+
+  const { opponent } = currentState.combat
+  console.log(
+    `Handling combat round: ${actionType}, Opponent Health: ${opponent.health}`,
+  )
+
+  if (actionType === 'fight') {
+    let playerAttackSuccess =
+      rollDice(100) <=
+      parseInt(currentState.skills['Firearms (Handgun)'] || 50, 10)
+    if (playerAttackSuccess) {
+      const damageToOpponent = parseAndComputeDamage(opponent.damage)
+      opponent.health -= damageToOpponent
+      console.log(
+        `Player attacked successfully, new opponent health: ${opponent.health}`,
+      )
+    }
+  }
+
+  if (actionType !== 'start') {
+    let opponentAttackSuccess =
+      rollDice(100) <= parseInt(opponent.attackChance, 10)
+    if (opponentAttackSuccess) {
+      const damageToPlayer = parseAndComputeDamage(opponent.damage)
+      currentState.health -= damageToPlayer
+      updateHealthDisplay()
+      console.log(
+        `Opponent attacked successfully, new player health: ${currentState.health}`,
+      )
+    }
+  }
+
+  if (currentState.health <= 0) {
+    console.log('Player defeated, handling loss.')
+    endCombat(currentState.combat.outcome.lose)
+    return
+  } else if (opponent.health <= 0) {
+    console.log('Opponent defeated, handling win.')
+    endCombat(currentState.combat.outcome.win)
+    return
+  }
+
+  if (currentState.combat.isActive) {
+    updateCombatStatus()
+  } else {
+    console.log('Combat is not active post-round, no UI update required.')
+  }
+}
+
+function endCombat(entry = null) {
+  console.log(`Ending combat, transition to entry: ${entry}`)
+  currentState.combat.isActive = false // Explicitly mark combat as inactive
+  updateCombatStatus() // Update any UI or status indicators
+
+  if (entry) {
+    console.log(`Displaying victory/defeat entry: ${entry}`)
+    setTimeout(() => displayEntry(entry), 100) // Use a slight delay to ensure all combat processes have ceased
+  }
+}
+
+function updateHealthDisplay() {
+  document.getElementById('health').innerText = `Health: ${currentState.health}`
 }
 
 function handleDodgeSuccess(entryId) {
   if (currentState.combat.isActive) {
-    endCombat() // End combat if it is active
-    displayEntry(entryId) // Move to the next appropriate entry after a successful dodge
+    endCombat(entryId) // End combat if it is active
+  } else {
+    displayEntry(entryId)
   }
-}
-
-function endCombat() {
-  currentState.combat.isActive = false
-  updateCombatStatus()
 }
 
 function updateCombatStatus() {
   const combatStatusContainer = document.getElementById('combatStatus')
-
   if (currentState.combat && currentState.combat.isActive) {
     combatStatusContainer.innerHTML = `
       <strong>Opponent: ${currentState.combat.opponent.name}</strong>
@@ -715,7 +756,7 @@ function updateCombatStatus() {
     `
     combatStatusContainer.style.display = 'block'
   } else {
-    combatStatusContainer.style.display = 'none' // Ensure this container is hidden when combat is not active
-    combatStatusContainer.innerHTML = '' // Optionally clear any inner HTML
+    combatStatusContainer.style.display = 'none'
+    combatStatusContainer.innerHTML = ''
   }
 }
