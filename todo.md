@@ -1,5 +1,3 @@
-START CHECKING - 593 (line 761 of entries.json)
-
 2 - done
 7 - done
 11 - done

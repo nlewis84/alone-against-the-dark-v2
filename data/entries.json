@@ -78,8 +78,8 @@
           "check": {
             "skill": "Dodge",
             "failure": "10",
-            "success": "187",
-            "successEffects": {
+            "success": {
+              "nextEntry": "187",
               "dayAdvance": true,
               "defaultHour": 6
             }
@@ -89,9 +89,102 @@
     ],
     "traceNumbers": ["47"]
   },
+  "10": {
+    "title": "Confrontation",
+    "description": "Attempt a DEX roll:",
+    "choices": [
+      {
+        "text": "Attempt a DEX roll to preemptively act",
+        "effects": {
+          "check": {
+            "skill": "DEX",
+            "success": "10a",
+            "failure": "10b"
+          }
+        }
+      }
+    ]
+  },
+  "10a": {
+    "title": "Quick Response",
+    "description": "You react swiftly, getting your weapon ready before the stranger can fully attack.",
+    "choices": [
+      {
+        "text": "Engage in combat",
+        "nextEntry": "10d"
+      }
+    ]
+  },
+  "10b": {
+    "title": "Caught Off Guard",
+    "description": "You fail to react in time. The man strikes first with his knife, aiming a deadly blow.",
+    "choices": [
+      {
+        "text": "Fight back",
+        "nextEntry": "10d"
+      }
+    ],
+    "effects": {
+      "health": {
+        "diceRoll": "1D100",
+        "success": -6,
+        "failure": 0,
+        "threshold": 50
+      }
+    }
+  },
+  "10c": {
+    "title": "Knife Wound",
+    "description": "The knife pierces through, wounding you severely. You must continue fighting for your life.",
+    "choices": [
+      {
+        "text": "Continue fighting",
+        "nextEntry": "10d"
+      }
+    ]
+  },
+  "10d": {
+    "title": "Combat Continues",
+    "description": "The battle rages on. Either party must fight until one can no longer continue.",
+    "choices": [
+      {
+        "text": "Attempt to Dodge",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": "187",
+            "failure": "10d"
+          }
+        }
+      },
+      {
+        "text": "Fight",
+        "nextEntry": "10d",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Mysterious Stranger",
+              "attackChance": "50%",
+              "damage": "1D6",
+              "dex": 60,
+              "health": 10,
+              "maxHealth": 10
+            },
+            "win": "187",
+            "lose": "end"
+          }
+        }
+      }
+    ]
+  },
   "11": {
     "description": "Before you enter, you sense something beyond the door. Putting your ear to the door, you listen.",
-    "nextEntry": "141",
+    "choices": [
+      {
+        "text": "Listen",
+        "nextEntry": "141"
+      }
+    ],
     "traceNumbers": ["52"]
   },
   "13": {
@@ -682,6 +775,49 @@
       }
     ],
     "traceNumbers": ["118", "166", "168"]
+  },
+  "187": {
+    "title": "CUNARD SHIP ACTIVITY TABLE",
+    "description": "The CUNARD liners are truly luxurious, with spacious rooms in nearly every class, remarkable recreation facilities, and superb cuisine. While you are aboard the liner, suspend hourly record keeping, but keep track of days. Resume hourly record keeping when you disembark at Athens.",
+    "schedule": {
+      "firstSunday": 73,
+      "firstMonday": 109,
+      "Tuesday": 126,
+      "Wednesday": 148,
+      "Thursday": 148,
+      "Friday": 192,
+      "Saturday": 193,
+      "secondSunday": 171,
+      "secondMonday": 173,
+      "secondTuesday": 195
+    },
+    "specialInstructions": [
+      "On the second Monday, you're in Athens: ignore any checks that day if you're continuing to Alexandria. If you disembark at Athens, resume hourly recordkeeping at noon.",
+      "On the second Tuesday, if you stayed aboard, you're in Alexandria: you have no checks that day either, but resume hourly recordkeeping at 1pm."
+    ],
+    "shipActivities": {
+      "Bingo": ["pm", "night"],
+      "Bridge": ["pm", "night"],
+      "Cinema": ["am", "pm", "night"],
+      "Cocktails": ["pm", "night"],
+      "Deck Tennis": ["am", "pm"],
+      "Library": ["am", "pm", "night"],
+      "Mah Jong": ["am", "pm", "night"],
+      "Nightclub": ["night"],
+      "Oil Painting": ["am", "pm"],
+      "Ping Pong": ["am", "pm", "night"],
+      "Rest on Deck Chairs": ["am", "pm"],
+      "Rest in Room": ["am", "pm", "night"],
+      "Sauna": ["am", "pm", "night"],
+      "Ship’s Tour": ["pm"],
+      "Shopping": ["am", "pm"],
+      "Shuffleboard": ["am", "pm"],
+      "Stroll Decks": ["am", "pm", "night"]
+    },
+    "choices": [],
+    "traceNumbers": [
+      69, 83, 104, 106, 109, 115, 126, 132, 142, 167, 189, 385, 579, 590
+    ]
   },
   "206": {
     "title": "CAIRO MUSEUM",
@@ -1315,7 +1451,7 @@
     "effects": {
       "health": {
         "diceRoll": "1D100",
-        "success": -8,
+        "success": "1D8",
         "failure": 0,
         "threshold": 25
       }

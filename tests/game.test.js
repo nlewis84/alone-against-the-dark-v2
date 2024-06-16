@@ -173,14 +173,12 @@ describe('Game Logic', () => {
     beforeEach(async () => {
       // Ensure that initializeGame function or similar setup function is called
       await initializeGame()
-
-      displayEntry('9')
     })
 
     test('Dodge check should correctly handle success and failure outcomes', async () => {
       for (let i = 0; i < 5; i++) {
+        displayEntry('9')
         const initialDate = getCurrentDate()
-
         const firstButton = document.querySelector('button')
         firstButton.click() // Simulate clicking the choice
         const newDate = getCurrentDate()
@@ -190,14 +188,15 @@ describe('Game Logic', () => {
         if (success) {
           // Expectations for a successful dodge
           expect(document.getElementById('description').innerHTML).toContain(
-            'Successfully dodged and moved to next day',
+            'CUNARD SHIP ACTIVITY TABLE',
           )
-          expect(newDate.getDate()).toBe(initialDate.getDate() + 1) // Date should advance by one day
-          expect(newDate.getHours()).toBe(6) // Time should be set to 6 AM
+          expect(document.getElementById('date').innerText).toContain(
+            'Wed Sep 02 1931',
+          ) // Date should advance by one day
         } else if (failure) {
           // Expectations for a failed dodge
           expect(document.getElementById('description').innerHTML).toContain(
-            'Failed to dodge.',
+            'Attempt a DEX roll:',
           )
           expect(newDate).toEqual(initialDate) // Date should not change
         }
@@ -823,6 +822,68 @@ describe('Game Logic', () => {
         button.textContent.includes('Attempt an Astronomy roll'),
       )
       expect(astronomyButton).toBeUndefined() // The Astronomy choice should not be available
+    })
+  })
+
+  describe('Dynamic Dice Roll Tests', () => {
+    beforeEach(async () => {
+      // Ensure the game is initialized to a clean state
+      await initializeGame()
+      currentState.health = 100
+    })
+
+    test('Entry 10b - Dice Roll Effects on Health', () => {
+      for (let i = 0; i < 5; i++) {
+        currentState.health = 100
+        const initialHealth = currentState.health
+        displayEntry('10b')
+
+        const fightButton = document.querySelector('button') // Modify selector as needed
+        fightButton.click()
+
+        const newHealth = currentState.health
+        const healthDecreased = newHealth < initialHealth
+        const noDamageTaken = newHealth === initialHealth
+
+        if (healthDecreased) {
+          // Verify that health decreases correctly
+          expect(newHealth).toBeGreaterThanOrEqual(initialHealth - 6)
+          expect(newHealth).toBeLessThanOrEqual(initialHealth - 1)
+        } else if (noDamageTaken) {
+          // Verify that no health is lost on failure
+          expect(newHealth).toBe(initialHealth)
+        }
+
+        // Reset the state for the next iteration
+        currentState.health = 100 // Reset health to a standard value
+      }
+    })
+
+    test('Entry 230c - Dice Roll Effects on Health', () => {
+      for (let i = 0; i < 5; i++) {
+        currentState.health = 100
+        const initialHealth = currentState.health
+        displayEntry('230c')
+
+        const continueButton = document.querySelector('button') // Modify selector as needed
+        continueButton.click()
+
+        const newHealth = currentState.health
+        const healthDecreased = newHealth < initialHealth
+        const noDamageTaken = newHealth === initialHealth
+
+        if (healthDecreased) {
+          // Verify that health decreases correctly
+          expect(newHealth).toBeGreaterThanOrEqual(initialHealth - 8)
+          expect(newHealth).toBeLessThanOrEqual(initialHealth - 1)
+        } else if (noDamageTaken) {
+          // Verify that no health is lost on failure
+          expect(newHealth).toBe(initialHealth)
+        }
+
+        // Reset the state for the next iteration
+        currentState.health = 100 // Reset health to a standard value
+      }
     })
   })
 })

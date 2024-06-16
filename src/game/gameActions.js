@@ -108,10 +108,44 @@ export function displayEntry(entryId) {
 
   handleEntryChoices(entryId, entry)
 
+  if (entry.effects) {
+    handleEntryEffects(entry.effects)
+  }
+
   if (entry.end) {
     document.getElementById('description').innerHTML +=
       '<br><strong>THE END</strong>'
   }
+}
+
+function handleEntryEffects(effects) {
+  if (effects.health) {
+    if (effects.health.diceRoll) {
+      const diceResult = rollDice(effects.health.diceRoll) // Simulate dice roll, ensure you have a function that supports rolling strings like "1D100"
+      const threshold = effects.health.threshold
+      let outcome = diceResult >= threshold
+      // ? rollDice(effects.health.success)
+      // : rollDice(effects.health.success)
+
+      // check to see if effects.health.success is an integer and outcome === true, pass it straight to updateHealth
+      // check to see if effects.health.failure is an integer and outcome === false, pass it straight to updateHealth
+      // in either case, based on the outcome, pass the effects.health.success or effects.health.failure to rollDice and then pass the result to updateHealth
+      if (typeof effects.health.success === 'number' && outcome) {
+        updateHealth(effects.health.success)
+      } else if (typeof effects.health.failure === 'number' && !outcome) {
+        updateHealth(effects.health.failure)
+      } else {
+        const success = rollDice(effects.health.success)
+        const failure = rollDice(effects.health.failure)
+
+        updateHealth(outcome ? -success : -failure)
+      }
+    } else if (typeof effects.health === 'number') {
+      updateHealth(effects.health)
+    }
+  }
+
+  // Handle other effects such as sanity, inventory updates, etc., similarly
 }
 
 function handleEntryChoices(entryId, entry) {
@@ -133,6 +167,10 @@ function handleEntryChoices(entryId, entry) {
         choice.text,
         'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
         () => {
+          if (entry.combat) {
+            startCombat(entryId, entry.combat)
+          }
+
           if (choice.effects && choice.effects.diceRoll) {
             handleOutcomeBasedEncounter(choice)
           } else if (choice.effects && choice.effects.check) {
@@ -158,7 +196,10 @@ function handleEntryChoices(entryId, entry) {
             } else if (typeof checkResult === 'object') {
               handleComplexOutcome(checkResult)
             }
-          } else if (choice.nextEntry.endsWith(' Location')) {
+          } else if (
+            choice.nextEntry &&
+            choice.nextEntry.endsWith(' Location')
+          ) {
             currentState.currentEntry = choice.nextEntry.replace(
               ' Location',
               '',
@@ -177,6 +218,14 @@ function handleEntryChoices(entryId, entry) {
 function handleComplexOutcome(checkResult) {
   if (checkResult.modifyHealth) {
     updateHealth(parseInt(checkResult.modifyHealth)) // Ensure you parse the modifyHealth result if it's a string like "2D3"
+  }
+
+  // Special handling for successful dodge that leads to a new entry and a day advance
+  if (checkResult.dayAdvance) {
+    const newDate = new Date(getCurrentDate())
+    newDate.setDate(newDate.getDate() + 1) // Advance the day on successful dodge
+    setCurrentDate(newDate)
+    updateTime(0, checkResult.defaultHour) // Optionally set a specific time, e.g., 6 AM
   }
 
   if (checkResult.damage) {
@@ -312,7 +361,6 @@ function isWithinHours(currentHour, hours) {
 export function makeChoice(nextEntry, effects) {
   const timeChange = effects && effects.time !== undefined ? effects.time : 1
   updateTime(timeChange)
-
   if (nextEntry !== 'previousEntry') {
     setPreviousEntry(currentState.currentEntry)
   }
@@ -334,6 +382,15 @@ export function makeChoice(nextEntry, effects) {
       updateTime(0, effects.defaultHour !== undefined ? effects.defaultHour : 6)
     }
 
+    // Initiate combat if combat effects are present
+    if (effects.combat) {
+      if (!currentState.combat || !currentState.combat.isActive) {
+        startCombat(nextEntry, effects.combat)
+      } else {
+        handleCombatRound('fight')
+      }
+    }
+
     // Handle skill checks that may influence the next entry
     if (effects.check) {
       const success = makeSkillCheck(
@@ -345,14 +402,6 @@ export function makeChoice(nextEntry, effects) {
       const checkResult = success
         ? effects.check.success
         : effects.check.failure
-
-      // Special handling for successful dodge that leads to a new entry and a day advance
-      if (success && effects.check.success === '187') {
-        const newDate = new Date(getCurrentDate())
-        newDate.setDate(newDate.getDate() + 1) // Advance the day on successful dodge
-        setCurrentDate(newDate)
-        updateTime(0, 6) // Optionally set a specific time, e.g., 6 AM
-      }
 
       nextEntry = checkResult // Update nextEntry based on the outcome of the skill check
     }
@@ -389,6 +438,7 @@ export function saveGame() {
   const saveData = {
     ...currentState,
     currentDate: getCurrentDate().toISOString(), // Save the current date as an ISO string
+    combat: currentState.combat,
   }
   saveState('gameState', saveData)
 }
@@ -402,6 +452,10 @@ export function loadGame() {
 
     delete savedState.currentDate // Remove the date from the state object to avoid conflicts
     Object.assign(currentState, savedState)
+
+    if (currentState.combat && currentState.combat.isActive) {
+      updateCombatStatus() // Refresh combat status display on load
+    }
 
     displayEntry(currentState.currentEntry)
     updateHealth(0) // Refresh health display
@@ -577,4 +631,71 @@ function findWeaponByName(name) {
 
 function hasSkill(skillName) {
   return currentState.skills[skillName] && currentState.skills[skillName] > 0
+}
+
+function startCombat(entryId, combatDetails) {
+  currentState.combat = {
+    isActive: true,
+    opponent: {
+      name: combatDetails.opponent.name,
+      attackChance: combatDetails.opponent.attackChance,
+      damage: combatDetails.opponent.damage,
+      dex: combatDetails.opponent.dex,
+      health: combatDetails.opponent.health, // Ensure health is initialized
+      maxHealth: combatDetails.opponent.maxHealth, // Ensure maxHealth is initialized
+    },
+    outcome: {
+      win: combatDetails.win,
+      lose: combatDetails.lose,
+      escape: combatDetails.escape,
+    },
+  }
+
+  handleCombatRound('start') // Ensure this initializes combat
+}
+
+function handleCombatRound(actionType) {
+  if (!currentState.combat.isActive) return
+
+  const { opponent } = currentState.combat
+  let combatSuccess = rollDice(100) <= parseInt(opponent.attackChance, 10)
+
+  if (actionType === 'fight' && combatSuccess) {
+    const damage = parseAndComputeDamage(opponent.damage)
+    opponent.health -= damage // Update opponent's health
+
+    if (opponent.health <= 0) {
+      endCombat()
+      displayEntry(currentState.combat.outcome.win)
+    } else {
+      updateCombatStatus() // Update UI after handling combat
+    }
+  } else if (actionType === 'start') {
+    // Consider what should happen at the start of combat, perhaps prompt for the first attack?
+    updateCombatStatus()
+  }
+}
+
+function endCombat() {
+  currentState.combat.isActive = false
+  updateCombatStatus()
+}
+
+function updateCombatStatus() {
+  const combatStatusContainer = document.getElementById('combatStatus')
+
+  if (
+    combatStatusContainer &&
+    currentState.combat &&
+    currentState.combat.isActive
+  ) {
+    combatStatusContainer.innerHTML = `
+      <strong>Opponent: ${currentState.combat.opponent.name}</strong>
+      <br>Health: ${currentState.combat.opponent.health}/${currentState.combat.opponent.maxHealth}
+    `
+    combatStatusContainer.style.display = 'block'
+  } else {
+    combatStatusContainer.style.display = 'none'
+    combatStatusContainer.innerHTML = ''
+  }
 }
