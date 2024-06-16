@@ -153,7 +153,11 @@
           "check": {
             "skill": "Dodge",
             "success": "187",
-            "failure": "10d"
+            "failure": {
+              "nextEntry": "10d",
+              "damage": "1D6",
+              "message": "The stranger lets loose a shot as you fail to dodge."
+            }
           }
         }
       },

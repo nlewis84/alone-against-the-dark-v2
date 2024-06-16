@@ -192,7 +192,12 @@ function handleEntryChoices(entryId, entry) {
             if (choice.effects && choice.effects.diceRoll) {
               handleOutcomeBasedEncounter(choice)
             } else if (typeof checkResult === 'string') {
-              displayEntry(checkResult)
+              if (choice.effects.check.skill === 'Dodge' && success) {
+                // If the successful check is specifically for "Dodge", handle ending combat
+                handleDodgeSuccess(checkResult)
+              } else {
+                displayEntry(checkResult)
+              }
             } else if (typeof checkResult === 'object') {
               handleComplexOutcome(checkResult)
             }
@@ -641,8 +646,8 @@ function startCombat(entryId, combatDetails) {
       attackChance: combatDetails.opponent.attackChance,
       damage: combatDetails.opponent.damage,
       dex: combatDetails.opponent.dex,
-      health: combatDetails.opponent.health, // Ensure health is initialized
-      maxHealth: combatDetails.opponent.maxHealth, // Ensure maxHealth is initialized
+      health: combatDetails.opponent.health,
+      maxHealth: combatDetails.opponent.maxHealth,
     },
     outcome: {
       win: combatDetails.win,
@@ -651,28 +656,47 @@ function startCombat(entryId, combatDetails) {
     },
   }
 
-  handleCombatRound('start') // Ensure this initializes combat
+  handleCombatRound('start') // Initialize the combat phase
 }
 
 function handleCombatRound(actionType) {
   if (!currentState.combat.isActive) return
 
-  const { opponent } = currentState.combat
-  let combatSuccess = rollDice(100) <= parseInt(opponent.attackChance, 10)
+  const opponent = currentState.combat.opponent
+  let playerAttackSuccess =
+    rollDice(100) <= parseInt(currentState.skills['Firearms (Handgun)'], 10) // Assuming using Firearms skill
 
-  if (actionType === 'fight' && combatSuccess) {
-    const damage = parseAndComputeDamage(opponent.damage)
-    opponent.health -= damage // Update opponent's health
+  if (actionType === 'fight' && playerAttackSuccess) {
+    const damageToOpponent = parseAndComputeDamage(opponent.damage)
+    opponent.health -= damageToOpponent // Player damages opponent
 
     if (opponent.health <= 0) {
       endCombat()
       displayEntry(currentState.combat.outcome.win)
     } else {
+      // Opponent's turn to attack
+      let opponentAttackSuccess =
+        rollDice(100) <= parseInt(opponent.attackChance, 10)
+      if (opponentAttackSuccess) {
+        const damageToPlayer = parseAndComputeDamage('1D6') // Example damage
+        updateHealth(-damageToPlayer) // Opponent damages player
+        if (currentState.health <= 0) {
+          endCombat()
+          displayEntry(currentState.combat.outcome.lose)
+        }
+      }
       updateCombatStatus() // Update UI after handling combat
     }
   } else if (actionType === 'start') {
     // Consider what should happen at the start of combat, perhaps prompt for the first attack?
     updateCombatStatus()
+  }
+}
+
+function handleDodgeSuccess(entryId) {
+  if (currentState.combat.isActive) {
+    endCombat() // End combat if it is active
+    displayEntry(entryId) // Move to the next appropriate entry after a successful dodge
   }
 }
 
@@ -684,18 +708,14 @@ function endCombat() {
 function updateCombatStatus() {
   const combatStatusContainer = document.getElementById('combatStatus')
 
-  if (
-    combatStatusContainer &&
-    currentState.combat &&
-    currentState.combat.isActive
-  ) {
+  if (currentState.combat && currentState.combat.isActive) {
     combatStatusContainer.innerHTML = `
       <strong>Opponent: ${currentState.combat.opponent.name}</strong>
       <br>Health: ${currentState.combat.opponent.health}/${currentState.combat.opponent.maxHealth}
     `
     combatStatusContainer.style.display = 'block'
   } else {
-    combatStatusContainer.style.display = 'none'
-    combatStatusContainer.innerHTML = ''
+    combatStatusContainer.style.display = 'none' // Ensure this container is hidden when combat is not active
+    combatStatusContainer.innerHTML = '' // Optionally clear any inner HTML
   }
 }
