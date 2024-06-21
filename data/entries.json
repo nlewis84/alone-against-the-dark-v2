@@ -191,6 +191,16 @@
     ],
     "traceNumbers": ["52"]
   },
+  "11b": {
+    "description": "Before you enter, you sense something beyond the door. You put your ear to the door, but are startled by someone behind you!",
+    "choices": [
+      {
+        "text": "Someone heard you!",
+        "nextEntry": "51"
+      }
+    ],
+    "traceNumbers": ["52"]
+  },
   "13": {
     "choices": [
       {
@@ -257,7 +267,7 @@
         "nextEntry": "7"
       },
       {
-        "text": "Pick the lock",
+        "text": "Pick the door lock",
         "effects": {
           "check": {
             "skill": "Locksmith",
@@ -442,6 +452,65 @@
     ],
     "traceNumbers": ["60"]
   },
+  "51": {
+    "description": "Suddenly, Mrs. Harding appears. “Why the idea!” She sputters. “I’ll count to three,” she says, her grip tightening on the shotgun she’s pointing in your general direction, “and then I’ll pull the trigger! One… two…” You quickly decide to leave.",
+    "choices": [
+      {
+        "text": "Run!",
+        "nextEntry": "Arkham Location"
+      }
+    ],
+    "traceNumbers": ["7", "28", "52", "141", "150"]
+  },
+  "52": {
+    "description": "You've managed to enter the Harding House without causing too much disturbance. Now, you must navigate quietly.",
+    "choices": [
+      {
+        "text": "Sneak into room A",
+        "effects": {
+          "check": {
+            "skill": "Stealth",
+            "success": "141",
+            "failure": "141b"
+          },
+          "dailyLimit": null
+        }
+      },
+      {
+        "text": "Sneak into room B",
+        "effects": {
+          "check": {
+            "skill": "Stealth",
+            "success": "2",
+            "failure": "2"
+          },
+          "dailyLimit": null
+        }
+      },
+      {
+        "text": "Sneak into room C",
+        "effects": {
+          "check": {
+            "skill": "Stealth",
+            "success": "11",
+            "failure": "11b"
+          },
+          "dailyLimit": null
+        }
+      },
+      {
+        "text": "Sneak into room D",
+        "effects": {
+          "check": {
+            "skill": "Stealth",
+            "success": "150",
+            "failure": "150b"
+          },
+          "dailyLimit": null
+        }
+      }
+    ]
+  },
   "60": {
     "choices": [
       {
@@ -557,6 +626,20 @@
     "title": "MISKATONIC UNIVERSITY",
     "traceNumbers": ["Arkham Location"]
   },
+  "90": {
+    "description": "The boarding house is quiet. You creep onto the porch.",
+    "choices": [
+      {
+        "nextEntry": "7",
+        "text": "Try the window"
+      },
+      {
+        "nextEntry": "28",
+        "text": "Try the door"
+      }
+    ],
+    "traceNumbers": ["23", "45", "89"]
+  },
   "102": {
     "choices": [
       {
@@ -583,7 +666,7 @@
         "text": "Not Grunewald"
       }
     ],
-    "description": "If it is after 8 September, go to 147. If not, and if you’re Grunewald, you can rest and have a repast: go to any Arkham Location. If you’re not Grunewald, go to 120.",
+    "description": "You are outside Grunewald's home.",
     "title": "GRUNEWALD'S HOME",
     "traceNumbers": []
   },
@@ -629,6 +712,26 @@
       }
     ],
     "traceNumbers": ["60"]
+  },
+  "141": {
+    "description": "You hear thunderous snores. This room is occupied and can’t be Gliere’s room; you better try a different door.",
+    "choices": [
+      {
+        "text": "Return to the hallway",
+        "nextEntry": "52"
+      }
+    ],
+    "traceNumbers": ["11", "52"]
+  },
+  "141b": {
+    "description": "You hear thunderous snores. This room is occupied and can’t be Gliere’s room; you better try a different door. Uh oh! Someone's coming!",
+    "choices": [
+      {
+        "text": "Someone heard you!",
+        "nextEntry": "51"
+      }
+    ],
+    "traceNumbers": ["11", "52"]
   },
   "150": {
     "title": "Professorial Study",
@@ -716,6 +819,16 @@
           },
           "dailyLimit": 1
         }
+      }
+    ]
+  },
+  "150b": {
+    "title": "Professorial Study",
+    "description": "You enter and cautiously turn on a light to see a room in proper professorial confusion. Scattered about are books of myths and fables, and there are bundles of clippings from various foreign newspapers. You hear shuffling behind you!",
+    "choices": [
+      {
+        "text": "Someone heard you!",
+        "nextEntry": "51"
       }
     ]
   },
