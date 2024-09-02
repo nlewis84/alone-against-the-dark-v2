@@ -617,6 +617,61 @@
     "title": "ARKHAM ADVERTISER",
     "traceNumbers": ["Arkham Location"]
   },
+  "64": {
+    "title": "BOSTON RAILWAY STATION",
+    "description": "There are trains to New York City’s Grand Central Station and Arkham. Should you miss the train, you have friends in Boston who will gladly put you up for the night for free. You can then catch your train in the morning.",
+    "choices": [
+      {
+        "text": "Take the 10am train to New York (arrives at 5pm)",
+        "effects": {
+          "setHour": 10,
+          "advanceTime": 6
+        },
+        "nextEntry": "146"
+      },
+      {
+        "text": "Take the 4pm train to New York (arrives at 10pm)",
+        "effects": {
+          "setHour": 16,
+          "advanceTime": 5
+        },
+        "nextEntry": "146"
+      },
+      {
+        "text": "Take the 10am train to Arkham (arrives at 11am)",
+        "effects": {
+          "setHour": 10,
+          "advanceTime": 0
+        },
+        "nextEntry": "16"
+      },
+      {
+        "text": "Take the 1pm train to Arkham (arrives at 2pm)",
+        "effects": {
+          "setHour": 13,
+          "advanceTime": 0
+        },
+        "nextEntry": "16"
+      },
+      {
+        "text": "Take the 6pm train to Arkham (arrives at 7pm)",
+        "effects": {
+          "setHour": 18,
+          "advanceTime": 0
+        },
+        "nextEntry": "16"
+      },
+      {
+        "text": "Stay overnight in Boston and catch a morning train",
+        "effects": {
+          "setHour": 6,
+          "dayAdvance": 0
+        },
+        "nextEntry": "64"
+      }
+    ],
+    "traceNumbers": ["16", "146"]
+  },
   "67": {
     "description": "Her eyes are wary, but she is listening.",
     "choices": [

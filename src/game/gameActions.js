@@ -23,7 +23,7 @@ export function updateTime(hours, setHour = null, timeSuffix = null) {
   setCurrentDate(date)
 
   let hour = date.getHours()
-  let suffix = hour >= 12 ? 'PM' : 'AM'
+  let suffix = timeSuffix || (hour >= 12 ? 'PM' : 'AM')
   hour = hour % 12
   hour = hour ? hour : 12 // Convert hour '0' to '12'
   let timeString = `${hour}:00 ${suffix}`
@@ -88,7 +88,6 @@ export function displayEntry(entryId) {
 
   // Update state and display logic as usual
   lastDisplayedEntry = entryId // Update last displayed entry
-
   if (!entry) {
     try {
       displayLocations(entryId)
@@ -185,6 +184,43 @@ function handleEntryChoices(entryId, entry) {
             startCombat(entryId, entry.combat)
           }
 
+          if (choice.effects) {
+            const currentDate = getCurrentDate()
+            const currentHour = currentDate.getHours()
+
+            if (choice.effects.setHour !== undefined) {
+              const targetHour = choice.effects.setHour
+
+              // Check if we need to advance the day first
+              if (targetHour < currentHour) {
+                console.log(
+                  `Advancing day by 1 as the target hour ${targetHour} is earlier than current hour ${currentHour}`,
+                )
+                currentDate.setDate(currentDate.getDate() + 1)
+              }
+
+              // Set the hour directly after potentially advancing the day
+              console.log(`Setting hour to: ${targetHour}`)
+              updateTime(0, targetHour)
+            }
+
+            if (choice.effects.advanceTime !== undefined) {
+              console.log(
+                `Advancing time by: ${choice.effects.advanceTime} hours`,
+              )
+              updateTime(choice.effects.advanceTime)
+            }
+
+            if (choice.effects.dayAdvance !== undefined) {
+              console.log(`Advancing day by: ${choice.effects.dayAdvance} days`)
+              currentDate.setDate(
+                currentDate.getDate() + choice.effects.dayAdvance,
+              )
+              setCurrentDate(currentDate)
+              console.log('New date:', currentDate.toDateString())
+            }
+          }
+
           if (choice.effects && choice.effects.diceRoll) {
             handleOutcomeBasedEncounter(choice)
           } else if (choice.effects && choice.effects.check) {
@@ -232,8 +268,6 @@ function handleEntryChoices(entryId, entry) {
             // This is where the effects are applied, including skill changes
             if (choice.effects && choice.effects.skills) {
               Object.keys(choice.effects.skills).forEach((skill) => {
-                console.log(`Processing skill: ${skill}`)
-
                 if (!currentState.skills[skill]) {
                   currentState.skills[skill] = 0
                 }
@@ -394,7 +428,6 @@ function isWithinHours(currentHour, hours) {
 }
 
 export function makeChoice(nextEntry, effects) {
-  console.log(effects)
   const timeChange = effects && effects.time !== undefined ? effects.time : 1
   updateTime(timeChange)
   if (nextEntry !== 'previousEntry') {

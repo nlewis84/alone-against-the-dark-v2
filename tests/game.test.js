@@ -945,12 +945,6 @@ describe('Game Logic', () => {
       await initializeGame() // Reset the game state before each test
     })
 
-    function logButtons(buttons) {
-      buttons.forEach((button, index) => {
-        console.log(`Button ${index + 1}: ${button.innerText}`)
-      })
-    }
-
     function getValidButtons() {
       return Array.from(document.querySelectorAll('button')).filter(
         (button) => button.innerText !== undefined,
@@ -964,7 +958,7 @@ describe('Game Logic', () => {
       displayEntry('82')
 
       const buttons = getValidButtons()
-      logButtons(buttons)
+
       expect(buttons.length).toBe(4)
 
       expect(buttons[0].innerText).toBe('Visit the library')
@@ -980,7 +974,7 @@ describe('Game Logic', () => {
       displayEntry('82')
 
       const buttons = getValidButtons()
-      logButtons(buttons)
+
       expect(buttons.length).toBe(4)
 
       expect(buttons[0].innerText).toBe('Visit the library')
@@ -996,11 +990,84 @@ describe('Game Logic', () => {
       displayEntry('82')
 
       const buttons = getValidButtons()
-      logButtons(buttons)
+
       expect(buttons.length).toBe(2)
 
       expect(buttons[0].innerText).toBe('Visit the library')
       expect(buttons[1].innerText).toBe('Finish at university')
+    })
+  })
+
+  describe('Entry 64 Tests', () => {
+    beforeEach(async () => {
+      await initializeGame() // Reset the game state before each test
+      setCurrentDate(new Date(1931, 8, 1, 8)) // Start at 8am on September 1, 1931
+    })
+
+    test('Take the 10am train to New York (arrives at 5pm)', () => {
+      displayEntry('64')
+
+      const firstButton = document.querySelector('button')
+      firstButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(17) // Expect time to be 5pm (17:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1, 1931
+    })
+
+    test('Take the 4pm train to New York (arrives at 10pm)', () => {
+      displayEntry('64')
+
+      const secondButton = document.querySelectorAll('button')[1]
+      secondButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(22) // Expect time to be 10pm (22:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1, 1931
+    })
+
+    test('Take the 10am train to Arkham (arrives at 11am)', () => {
+      displayEntry('64')
+
+      const thirdButton = document.querySelectorAll('button')[2]
+      thirdButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(11) // Expect time to be 11am (11:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1, 1931
+    })
+
+    test('Take the 1pm train to Arkham (arrives at 2pm)', () => {
+      displayEntry('64')
+
+      const fourthButton = document.querySelectorAll('button')[3]
+      fourthButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(14) // Expect time to be 2pm (14:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1, 1931
+    })
+
+    test('Take the 6pm train to Arkham (arrives at 7pm)', () => {
+      displayEntry('64')
+
+      const fifthButton = document.querySelectorAll('button')[4]
+      fifthButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(19) // Expect time to be 7pm (19:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1, 1931
+    })
+
+    test('Stay overnight in Boston and catch a morning train', () => {
+      displayEntry('64')
+
+      const sixthButton = document.querySelectorAll('button')[5]
+      sixthButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(7) // Expect time to still be 8am (08:00)
+      expect(updatedDate.getDate()).toBe(2) // Date should now be September 2, 1931
     })
   })
 })
