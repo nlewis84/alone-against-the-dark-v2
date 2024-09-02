@@ -939,4 +939,68 @@ describe('Game Logic', () => {
       expect(updatedHour).toBe(initialHour + 1)
     })
   })
+
+  describe('Entry 82 Tests', () => {
+    beforeEach(async () => {
+      await initializeGame() // Reset the game state before each test
+    })
+
+    function logButtons(buttons) {
+      buttons.forEach((button, index) => {
+        console.log(`Button ${index + 1}: ${button.innerText}`)
+      })
+    }
+
+    function getValidButtons() {
+      return Array.from(document.querySelectorAll('button')).filter(
+        (button) => button.innerText !== undefined,
+      )
+    }
+
+    test('Professor Grunewald before September 9, 1931', () => {
+      currentState.character = 'Professor Grunewald'
+      setCurrentDate(new Date(1931, 8, 1)) // September 8, 1931
+
+      displayEntry('82')
+
+      const buttons = getValidButtons()
+      logButtons(buttons)
+      expect(buttons.length).toBe(4)
+
+      expect(buttons[0].innerText).toBe('Visit the library')
+      expect(buttons[1].innerText).toBe('See Dr. Martin Fen')
+      expect(buttons[2].innerText).toBe('See the Dean')
+      expect(buttons[3].innerText).toBe('Finish at university')
+    })
+
+    test('Professor Grunewald on or after September 9, 1931', () => {
+      currentState.character = 'Professor Grunewald'
+      setCurrentDate(new Date(1931, 8, 10)) // September 9, 1931
+
+      displayEntry('82')
+
+      const buttons = getValidButtons()
+      logButtons(buttons)
+      expect(buttons.length).toBe(4)
+
+      expect(buttons[0].innerText).toBe('Visit the library')
+      expect(buttons[1].innerText).toBe('See Dr. Martin Fen')
+      expect(buttons[2].innerText).toBe('See the Dean')
+      expect(buttons[3].innerText).toBe('Finish at university')
+    })
+
+    test('Another character on or after September 9, 1931', () => {
+      currentState.character = 'Another Character'
+      setCurrentDate(new Date(1931, 8, 9)) // September 9, 1931
+
+      displayEntry('82')
+
+      const buttons = getValidButtons()
+      logButtons(buttons)
+      expect(buttons.length).toBe(2)
+
+      expect(buttons[0].innerText).toBe('Visit the library')
+      expect(buttons[1].innerText).toBe('Finish at university')
+    })
+  })
 })

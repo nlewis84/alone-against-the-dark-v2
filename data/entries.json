@@ -259,6 +259,26 @@
       }
     ]
   },
+  "25": {
+    "description": "“Aristotle Mylonas, while collecting an undeniably tremendous treasure house of Greek art, has been reluctant to loan or even to show some of the National Museum’s most interesting treasures. The Karpathos Device, for example, has not been displayed for years. Its loan to other museums is, according to Mylonas, unthinkable.”—Great Museums of the Modern World.",
+    "choices": [
+      {
+        "text": "Keep looking around the Museum",
+        "requirements": {
+          "currentLocale": "Arkham"
+        },
+        "nextEntry": "145"
+      },
+      {
+        "text": "If in New York, go to 74",
+        "requirements": {
+          "currentLocale": "New York"
+        },
+        "nextEntry": "74"
+      }
+    ],
+    "traceNumbers": ["63", "145"]
+  },
   "28": {
     "description": "The door is locked, but you can try the window. If you want to pick the door lock, make a successful Locksmith or Hard Mechanical Repair roll. If you want to pry open the window, succeed at an STR roll.",
     "choices": [
@@ -613,6 +633,16 @@
     ],
     "traceNumbers": ["113"]
   },
+  "70": {
+    "description": "“The myth of the cataclysm, or the upheaval, is one of the oldest tales and is found in nearly every culture. These imagined events occurred, according to some Nordic myths, three or four thousand years ago. Other legends, notably those told by the Shikastra sect of Tibet, date the world-changing disaster to as recently as 850 BC.”—T. Gliere, The Destruction Myths.",
+    "choices": [
+      {
+        "text": "Keep looking around the Museum",
+        "nextEntry": "145"
+      }
+    ],
+    "traceNumbers": ["145"]
+  },
   "72": {
     "description": "You find a map of the heavens, resting on one of the shelves.",
     "choices": [
@@ -646,6 +676,7 @@
       {
         "nextEntry": "122",
         "requirements": {
+          "character": "Professor Grunewald",
           "dateBefore": "1931-09-09"
         },
         "text": "See Dr. Martin Fen"
@@ -653,6 +684,7 @@
       {
         "nextEntry": "143",
         "requirements": {
+          "character": "Professor Grunewald",
           "dateAfter": "1931-09-08"
         },
         "text": "See Dr. Martin Fen"
@@ -660,6 +692,7 @@
       {
         "nextEntry": "100",
         "requirements": {
+          "character": "Professor Grunewald",
           "dateBefore": "1931-09-09"
         },
         "text": "See the Dean"
@@ -667,6 +700,7 @@
       {
         "nextEntry": "197",
         "requirements": {
+          "character": "Professor Grunewald",
           "dateAfter": "1931-09-08"
         },
         "text": "See the Dean"
@@ -711,6 +745,20 @@
       }
     ],
     "traceNumbers": ["23", "45", "89"]
+  },
+  "100": {
+    "description": "The Dean shakes his head, 'Out of the question, Grunewald. I already have that young dolt Perkins covering for Gliere. And now you want to leave? Not a chance, sir.' Does the Dean leave you no choice?",
+    "choices": [
+      {
+        "text": "Threaten to resign",
+        "nextEntry": "186"
+      },
+      {
+        "text": "Forget the whole business and let Gliere fend for himself",
+        "nextEntry": "574"
+      }
+    ],
+    "traceNumbers": ["82"]
   },
   "102": {
     "choices": [
@@ -802,6 +850,20 @@
     ],
     "traceNumbers": ["150"]
   },
+  "122": {
+    "description": "His eyes narrow when he hears your news. 'Gliere in jail? And you want to go rescue him? You’d best talk to Dean Wilcox.'",
+    "choices": [
+      {
+        "text": "Talk to the Dean",
+        "nextEntry": "100"
+      },
+      {
+        "text": "Don’t talk to the Dean, go to the library",
+        "nextEntry": "82"
+      }
+    ],
+    "traceNumbers": ["82"]
+  },
   "124": {
     "description": "They are Egyptian hieroglyphics. Make a successful Language (Hieroglyphics) roll.",
     "choices": [
@@ -857,6 +919,42 @@
       }
     ],
     "traceNumbers": ["11", "52"]
+  },
+  "145": {
+    "description": "For each hour at Miskatonic’s library, you may attempt one of the following actions.",
+    "choices": [
+      {
+        "text": "Attempt a Library Use roll",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "Library Use",
+            "success": "25",
+            "failure": "145"
+          }
+        }
+      },
+      {
+        "text": "Attempt a Spot Hidden roll",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "Spot Hidden",
+            "success": "70",
+            "failure": "145"
+          }
+        }
+      },
+      {
+        "text": "Return to Miskatonic University",
+        "nextEntry": "82"
+      },
+      {
+        "text": "Go to any Arkham Location",
+        "nextEntry": "Arkham Location"
+      }
+    ],
+    "traceNumbers": ["70", "82", "143"]
   },
   "150": {
     "title": "Professorial Study",
@@ -1018,6 +1116,20 @@
     ],
     "traceNumbers": ["118", "166", "168"]
   },
+  "186": {
+    "description": "“Oh. Resign? Ahem. My dear fellow, I apologize! I should have recognized how serious you were. Go! Save poor Gliere’s hide. I know you’ll do it speedily and judiciously. The University will certainly pay for your round-trip ticket.” As you leave, you hear footsteps move quickly away from the door. But when you look out, the hallway is empty.",
+    "choices": [
+      {
+        "text": "Return to the library",
+        "nextEntry": "82"
+      },
+      {
+        "text": "Go to any Arkham Location",
+        "nextEntry": "Arkham Location"
+      }
+    ],
+    "traceNumbers": ["100"]
+  },
   "187": {
     "title": "CUNARD SHIP ACTIVITY TABLE",
     "description": "The CUNARD liners are truly luxurious, with spacious rooms in nearly every class, remarkable recreation facilities, and superb cuisine. While you are aboard the liner, suspend hourly record keeping, but keep track of days. Resume hourly record keeping when you disembark at Athens.",
@@ -1087,6 +1199,16 @@
       }
     ],
     "traceNumbers": ["Egypt Location"]
+  },
+  "208": {
+    "description": "The symbol displays a strange mucous-like creature, covered in eyes and mouths—it looks like a shoggoth! A hideous monster capable of transforming its great mass into all manner of tools and shapes.",
+    "choices": [
+      {
+        "text": "Keep looking around the room",
+        "nextEntry": "150"
+      }
+    ],
+    "traceNumbers": ["282"]
   },
   "209": {
     "description": "The Karpathos Device is there, with interesting background information. Its appearance is remarkably modern, resembling aluminum but obviously of great strength. Its enclosure is electrically guarded to prevent theft. Need a refresher on the Karpathos Device?",

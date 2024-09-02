@@ -1,32 +1,9 @@
 Be able to select a spell from your inventory and learn it (or read a book); use entry 121.
 
-2 - done
-7 - done
-11 - done
-23 - done
-24 - done
-28 - done
-29 - done
-32 - done
-10 - done
-45 - done
-46 - done
-49 - done
-51 - done
-52 - done
-53 - done
-67 - done
-72 - done
-89 - done
-90 - done
-121 - done (ADD A SPELL!)
-124 -
-141 - done
-150 - done
-208 -
-212 -
-282 -
+121 - done (ADDED A SPELL!)
 187 - Done kinda....need to actually code these choices correctly!
+
+64
 
 236
 244
@@ -45,7 +22,7 @@ Be able to select a spell from your inventory and learn it (or read a book); use
 290
 298
 
-1
+1 - kinda...
 4
 17
 22-
