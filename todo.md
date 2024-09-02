@@ -3,7 +3,8 @@ Be able to select a spell from your inventory and learn it (or read a book); use
 121 - done (ADDED A SPELL!)
 187 - Done kinda....need to actually code these choices correctly!
 
-64
+64 - done
+146 -
 
 236
 244
