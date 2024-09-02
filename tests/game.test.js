@@ -886,4 +886,57 @@ describe('Game Logic', () => {
       }
     })
   })
+
+  describe('An entry can increase a skill', () => {
+    beforeEach(async () => {
+      // Initialize the game to reset the state before each test
+      await initializeGame()
+      // Set a known start date and time
+      setCurrentDate(new Date(1931, 8, 1, 12)) // Start at noon on September 1, 1931
+    })
+
+    test('should apply initial effects after moving from 121 to 150', () => {
+      // Display the entry 121 to trigger the effects
+      displayEntry('121')
+
+      // Check if Cthulhu Mythos skill is initially 0 in entry 121
+      expect(currentState.skills['Cthulhu Mythos']).toBe(0)
+
+      // Simulate clicking the button to go to 150
+      const firstButton = document.querySelector('button')
+      firstButton.click() // Simulate clicking the choice
+
+      // Check if Cthulhu Mythos skill has increased by 3 points in entry 150
+      expect(currentState.skills['Cthulhu Mythos']).toBe(3)
+    })
+  })
+
+  describe('Entries with time effects should advance the clock', () => {
+    beforeEach(async () => {
+      // Initialize the game to reset the state before each test
+      await initializeGame()
+      // Set a known start date and time
+      setCurrentDate(new Date(1931, 8, 1, 12)) // Start at noon on September 1, 1931
+    })
+
+    test('should advance time by 1 hour when attempting History roll in entry 212', () => {
+      // Display entry 212
+      displayEntry('212')
+
+      // Store the current time before the action
+      const initialDate = getCurrentDate()
+      const initialHour = initialDate.getHours()
+
+      // Simulate clicking the button to attempt the History roll
+      const firstButton = document.querySelector('button')
+      firstButton.click() // Simulate clicking the choice
+
+      // Get the new time after the action
+      const updatedDate = getCurrentDate()
+      const updatedHour = updatedDate.getHours()
+
+      // Check if the time has advanced by 1 hour
+      expect(updatedHour).toBe(initialHour + 1)
+    })
+  })
 })

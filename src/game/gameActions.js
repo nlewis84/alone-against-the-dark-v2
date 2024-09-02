@@ -188,6 +188,10 @@ function handleEntryChoices(entryId, entry) {
           if (choice.effects && choice.effects.diceRoll) {
             handleOutcomeBasedEncounter(choice)
           } else if (choice.effects && choice.effects.check) {
+            if (choice.effects.time) {
+              updateTime(choice.effects.time)
+            }
+
             const success = makeSkillCheck(
               choice.effects.check.skill,
               currentState.skills,
@@ -202,7 +206,7 @@ function handleEntryChoices(entryId, entry) {
               // Record usage if daily limit applies
               recordSkillUsage(entryId, choice.effects.check.skill)
             }
-            // Check if the result is a string (entry ID) or an object (new structured outcome)
+
             if (choice.effects && choice.effects.diceRoll) {
               handleOutcomeBasedEncounter(choice)
             } else if (typeof checkResult === 'string') {
@@ -225,6 +229,18 @@ function handleEntryChoices(entryId, entry) {
             )
             displayLocations(choice.nextEntry.replace(' Location', ''))
           } else {
+            // This is where the effects are applied, including skill changes
+            if (choice.effects && choice.effects.skills) {
+              Object.keys(choice.effects.skills).forEach((skill) => {
+                console.log(`Processing skill: ${skill}`)
+
+                if (!currentState.skills[skill]) {
+                  currentState.skills[skill] = 0
+                }
+
+                currentState.skills[skill] += choice.effects.skills[skill]
+              })
+            }
             makeChoice(choice.nextEntry, choice.effects)
           }
         },
@@ -378,6 +394,7 @@ function isWithinHours(currentHour, hours) {
 }
 
 export function makeChoice(nextEntry, effects) {
+  console.log(effects)
   const timeChange = effects && effects.time !== undefined ? effects.time : 1
   updateTime(timeChange)
   if (nextEntry !== 'previousEntry') {
@@ -441,15 +458,24 @@ export function updateSanity(amount) {
 }
 
 export function addItem(item) {
-  if (!currentState.inventory.includes(item)) {
+  if (item.type === 'book') {
+    currentState.inventory.push(item)
+  } else if (!currentState.inventory.includes(item)) {
     currentState.inventory.push(item)
   }
   updateInventory()
 }
 
 export function updateInventory() {
-  document.getElementById('inventory').innerText =
-    `Inventory: ${currentState.inventory.join(', ')}`
+  let inventoryText = 'Inventory: '
+  currentState.inventory.forEach((item) => {
+    if (item.type === 'book') {
+      inventoryText += `${item.name} (Book) `
+    } else {
+      inventoryText += `${item}`
+    }
+  })
+  document.getElementById('inventory').innerText = inventoryText.trim()
 }
 
 // Save game state to localStorage

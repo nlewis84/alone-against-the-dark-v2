@@ -452,6 +452,20 @@
     ],
     "traceNumbers": ["60"]
   },
+  "49": {
+    "description": "You find a piece of notepaper with a curious design.",
+    "choices": [
+      {
+        "text": "Look at it closely",
+        "nextEntry": "46"
+      },
+      {
+        "text": "Keep looking around the room",
+        "nextEntry": "150"
+      }
+    ],
+    "traceNumbers": ["150"]
+  },
   "51": {
     "description": "Suddenly, Mrs. Harding appears. “Why the idea!” She sputters. “I’ll count to three,” she says, her grip tightening on the shotgun she’s pointing in your general direction, “and then I’ll pull the trigger! One… two…” You quickly decide to leave.",
     "choices": [
@@ -510,6 +524,16 @@
         }
       }
     ]
+  },
+  "53": {
+    "description": "You find a letter from a Mr. Velikovsky, postmarked Palestine. The scrawl is difficult to read, but you can see that the author greets Gliere’s work 'with joy.' There is a page about the Vedas and how they confirm something called the 'Polar Reversal.' One portion deals with the 'Era of Fertility on the Frozen Continent.' Velikovsky reports that work on 'Freudian Heroes'—including Ikhenaten—continues.",
+    "choices": [
+      {
+        "text": "Keep looking around the room",
+        "nextEntry": "150"
+      }
+    ],
+    "traceNumbers": ["32"]
   },
   "60": {
     "choices": [
@@ -573,6 +597,36 @@
     "title": "ARKHAM ADVERTISER",
     "traceNumbers": ["Arkham Location"]
   },
+  "67": {
+    "description": "Her eyes are wary, but she is listening.",
+    "choices": [
+      {
+        "text": "Make a Persuade roll",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": "150",
+            "failure": "45"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["113"]
+  },
+  "72": {
+    "description": "You find a map of the heavens, resting on one of the shelves.",
+    "choices": [
+      {
+        "text": "Take a closer look",
+        "nextEntry": "24"
+      },
+      {
+        "text": "Return to 150",
+        "nextEntry": "150"
+      }
+    ],
+    "traceNumbers": ["150"]
+  },
   "80": {
     "description": "“In a gala ceremony, Zeno Pisistratos was installed as curator of the National Museum of Archaeology at Athens today. Pisistratos, an expert in Greek and Egyptian antiquities, is said to be interested in arranging exchange-exhibits with other important world museums.” —Arkham Advertiser, July 20, 1931.",
     "choices": [
@@ -625,6 +679,24 @@
     "description": "The MU library is open 9am to 9pm, Mon-Sat.",
     "title": "MISKATONIC UNIVERSITY",
     "traceNumbers": ["Arkham Location"]
+  },
+  "89": {
+    "description": "Mrs. Harding glares and slams the door in your face.",
+    "choices": [
+      {
+        "text": "Sneak in later, when everyone is sleeping",
+        "nextEntry": "90",
+        "effects": {
+          "dayAdvance": true,
+          "defaultHour": 1
+        }
+      },
+      {
+        "text": "Go to any Arkham Location",
+        "nextEntry": "Arkham Location"
+      }
+    ],
+    "traceNumbers": ["113"]
   },
   "90": {
     "description": "The boarding house is quiet. You creep onto the porch.",
@@ -692,6 +764,59 @@
     "description": "Mrs. Harding greets you amiably. She is uncertain whether she should show you Gliere’s room.",
     "title": "HARDING HOUSE",
     "traceNumbers": ["Arkham Location"]
+  },
+  "121": {
+    "description": "You see the book Nameless Cults, in the Golden Goblin Press edition. You thumb through it—vile stuff, you decide. Something about this book alarms and fascinates you and you spend an hour reading it over. Gain +3 Cthulhu Mythos skill points for your initial reading. You take the book with you.",
+    "choices": [
+      {
+        "text": "Keep looking around the room",
+        "nextEntry": "150",
+        "effects": {
+          "time": 1,
+          "skills": {
+            "Cthulhu Mythos": 3
+          },
+          "inventory": [
+            {
+              "type": "book",
+              "name": "Nameless Cults",
+              "initialEffect": {
+                "skills": {
+                  "Cthulhu Mythos": 3
+                }
+              },
+              "fullReadingEffect": {
+                "sanityLoss": "2D8",
+                "skills": {
+                  "Cthulhu Mythos": 9
+                },
+                "spell": {
+                  "name": "Summon Byakhee",
+                  "learningTime": "1D6"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "traceNumbers": ["150"]
+  },
+  "124": {
+    "description": "They are Egyptian hieroglyphics. Make a successful Language (Hieroglyphics) roll.",
+    "choices": [
+      {
+        "text": "Attempt to decipher the hieroglyphics",
+        "effects": {
+          "check": {
+            "skill": "Language (Hieroglyphics)",
+            "success": "212",
+            "failure": "150"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["29"]
   },
   "125": {
     "description": "“Greek sponge divers have recovered a puzzling device off the island of Karpathos, a small island between Crete and Turkey. The device is a mechanism believed to be thousands of years old, yet bright and untarnished, as though made yesterday. Scientists have declined comment on the metal from which the device is made. Archaeological experts from the National Museum have taken possession of the oddity for further study.”—Arkham Advertiser, June 8, 1900.",
@@ -999,6 +1124,23 @@
     ],
     "traceNumbers": ["209"]
   },
+  "212": {
+    "description": "You decipher four words from the hieroglyphics: 'ones,' 'spin,' 'city,' and 'top.' The rest baffle you.",
+    "choices": [
+      {
+        "text": "Attempt a History roll to understand more",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "History",
+            "success": "282",
+            "failure": "150"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["124"]
+  },
   "229": {
     "description": "The Karpathos Device is secured within a thick glass enclosure with an alarm system. What do you do?",
     "choices": [
@@ -1169,6 +1311,22 @@
       }
     ],
     "traceNumbers": ["211"]
+  },
+  "282": {
+    "description": "You understand four more hieroglyphs: 'Akhenaten,' 'tomb,' 'sunrise,' and 'secret.'",
+    "choices": [
+      {
+        "text": "Attempt a Cthulhu Mythos roll",
+        "effects": {
+          "check": {
+            "skill": "Cthulhu Mythos",
+            "success": "208",
+            "failure": "150"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["212"]
   },
   "293": {
     "description": "You have evaded several of the guards and the Karpathos Device is in your possession, decide your next action carefully.",

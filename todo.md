@@ -1,3 +1,5 @@
+Be able to select a spell from your inventory and learn it (or read a book); use entry 121.
+
 2 - done
 7 - done
 11 - done
@@ -7,17 +9,17 @@
 29 - done
 32 - done
 10 - done
-45 -
-46 -
-49 -
+45 - done
+46 - done
+49 - done
 51 - done
 52 - done
-53 -
-67 -
-72 -
-89 -
+53 - done
+67 - done
+72 - done
+89 - done
 90 - done
-121 - this one adds a spell!
+121 - done (ADD A SPELL!)
 124 -
 141 - done
 150 - done
