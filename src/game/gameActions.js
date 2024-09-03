@@ -162,8 +162,9 @@ function handleEntryChoices(entryId, entry) {
   const choicesContainer = document.getElementById('choices')
   choicesContainer.innerHTML = ''
 
+  // Handle special case for entry 38
   if (entryId === '38') {
-    handleSpecialEntry38(choicesContainer) // Assuming handleSpecialEntry38 is defined to handle entry 38 specifics
+    handleSpecialEntry38(choicesContainer)
   }
 
   entry.choices.forEach((choice) => {
@@ -172,9 +173,13 @@ function handleEntryChoices(entryId, entry) {
       ? canUseSkill(entryId, choice.effects.check.skill)
       : true // Only call canUseSkill if there's a skill to check
 
+    // Additional check for research topic limit
+    const canResearchToday = entryId !== '74' || canResearchTopic(entryId)
+
     if (
       checkRequirements(choice.requirements) &&
-      (canUseSkillToday || choice.effects.dailyLimit === null)
+      (canUseSkillToday || choice.effects.dailyLimit === null) &&
+      canResearchToday
     ) {
       const button = createButton(
         choice.text,
@@ -182,6 +187,10 @@ function handleEntryChoices(entryId, entry) {
         () => {
           if (entry.combat) {
             startCombat(entryId, entry.combat)
+          }
+
+          if (entryId === '74') {
+            recordResearchTopicUsage(entryId) // Track research topic usage
           }
 
           if (choice.effects) {
@@ -297,6 +306,22 @@ function handleEntryChoices(entryId, entry) {
       choicesContainer.appendChild(button)
     }
   })
+
+  // If the player has reached the research limit for entry 74, display a message
+  if (entryId === '74' && !canResearchTopic(entryId)) {
+    const message = document.createElement('p')
+    message.textContent =
+      'You have researched two topics today. Please come back tomorrow.'
+    choicesContainer.appendChild(message)
+
+    // Optionally add a button to go to another New York location
+    const button = createButton(
+      'Go to any New York Location',
+      'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
+      () => displayLocations('New York'),
+    )
+    choicesContainer.appendChild(button)
+  }
 }
 
 function handleComplexOutcome(checkResult) {
@@ -617,6 +642,40 @@ export function checkRequirements(requirements) {
     }
   }
   return true
+}
+
+export function recordResearchTopicUsage(entryId) {
+  const today = getCurrentDate().toISOString().split('T')[0] // Get the current date in 'YYYY-MM-DD' format
+
+  if (!currentState.dailyResearchUsage) {
+    currentState.dailyResearchUsage = {}
+  }
+
+  if (!currentState.dailyResearchUsage[today]) {
+    currentState.dailyResearchUsage[today] = {
+      topicsResearched: 0,
+    }
+  }
+
+  if (!currentState.dailyResearchUsage[today][entryId]) {
+    currentState.dailyResearchUsage[today][entryId] = 0
+  }
+
+  currentState.dailyResearchUsage[today][entryId] += 1
+}
+
+export function canResearchTopic(entryId) {
+  const today = getCurrentDate().toISOString().split('T')[0] // Get the current date in 'YYYY-MM-DD' format
+
+  if (
+    currentState.dailyResearchUsage &&
+    currentState.dailyResearchUsage[today] &&
+    currentState.dailyResearchUsage[today][entryId]
+  ) {
+    return currentState.dailyResearchUsage[today][entryId] < 2
+  }
+
+  return true // If no record, assume the player can research
 }
 
 export function recordSkillUsage(entryId, skill) {

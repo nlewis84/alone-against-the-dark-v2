@@ -732,6 +732,18 @@
     ],
     "traceNumbers": ["150"]
   },
+  "74": {
+    "title": "NEW YORK PUBLIC LIBRARY",
+    "description": "While not allowing browsers, the helpful librarians provide a selection of books on a topic. They are busy and understaffed, so only two topics may be researched per visit. You may go to another location and then return here in the same day.\n\nNo rolls are needed for these books. It takes two hours to study each topic.",
+    "choices": [
+      { "text": "Study Archaeology", "nextEntry": "116" },
+      { "text": "Study Egyptology", "nextEntry": "85" },
+      { "text": "Study Greece", "nextEntry": "63" },
+      { "text": "Study Occult", "nextEntry": "41" },
+      { "text": "Study other pertinent topics", "nextEntry": "138" }
+    ],
+    "traceNumbers": ["New York Location"]
+  },
   "80": {
     "description": "“In a gala ceremony, Zeno Pisistratos was installed as curator of the National Museum of Archaeology at Athens today. Pisistratos, an expert in Greek and Egyptian antiquities, is said to be interested in arranging exchange-exhibits with other important world museums.” —Arkham Advertiser, July 20, 1931.",
     "choices": [
@@ -916,6 +928,33 @@
     "description": "Mrs. Harding greets you amiably. She is uncertain whether she should show you Gliere’s room.",
     "title": "HARDING HOUSE",
     "traceNumbers": ["Arkham Location"]
+  },
+  "116": {
+    "description": "It is suggested that the Karpathos Device found in 1900 is in fact of Egyptian origin or design, but was, for some reason, stolen. In fact, some scholars have argued that it is one of the “wonder devices” of the Aten pyramids.",
+    "choices": [
+      {
+        "text": "Make a History roll",
+        "effects": {
+          "check": {
+            "skill": "History",
+            "success": "110",
+            "failure": "74"
+          }
+        }
+      },
+      {
+        "text": "Make a Hard Education roll",
+        "effects": {
+          "check": {
+            "skill": "EDU",
+            "difficulty": "hard",
+            "success": "110",
+            "failure": "74"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["74"]
   },
   "121": {
     "description": "You see the book Nameless Cults, in the Golden Goblin Press edition. You thumb through it—vile stuff, you decide. Something about this book alarms and fascinates you and you spend an hour reading it over. Gain +3 Cthulhu Mythos skill points for your initial reading. You take the book with you.",

@@ -9,13 +9,19 @@ New York Locations
 38 - done
 54
 56
-74
+74 - ...still working on research topics
 86
 104 - done
+116 - done
 146 - done
 583 - done
 585 - done
 586
+
+41
+63
+85
+138
 
 Egypt Locations
 236
