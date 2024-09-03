@@ -188,6 +188,30 @@ function handleEntryChoices(entryId, entry) {
             const currentDate = getCurrentDate()
             const currentHour = currentDate.getHours()
 
+            if (choice.effects.setDay !== undefined) {
+              const targetDay = choice.effects.setDay
+              const daysOfWeek = [
+                'Sunday',
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday',
+                'Saturday',
+              ]
+              const targetDayIndex = daysOfWeek.indexOf(targetDay)
+              const currentDayIndex = currentDate.getUTCDay()
+
+              // Calculate days to advance to the next occurrence of the target day
+              let daysToAdvance = targetDayIndex - currentDayIndex
+              if (daysToAdvance <= 0) {
+                daysToAdvance += 7
+              }
+
+              currentDate.setUTCDate(currentDate.getUTCDate() + daysToAdvance)
+              setCurrentDate(currentDate)
+            }
+
             if (choice.effects.setHour !== undefined) {
               const targetHour = choice.effects.setHour
 
@@ -212,12 +236,10 @@ function handleEntryChoices(entryId, entry) {
             }
 
             if (choice.effects.dayAdvance !== undefined) {
-              console.log(`Advancing day by: ${choice.effects.dayAdvance} days`)
               currentDate.setDate(
                 currentDate.getDate() + choice.effects.dayAdvance,
               )
               setCurrentDate(currentDate)
-              console.log('New date:', currentDate.toDateString())
             }
           }
 

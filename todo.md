@@ -3,9 +3,21 @@ Be able to select a spell from your inventory and learn it (or read a book); use
 121 - done (ADDED A SPELL!)
 187 - Done kinda....need to actually code these choices correctly!
 
-64 - done
-146 -
+New York Locations
+30
+36
+38 - done
+54
+56
+74
+86
+104 - done
+146 - done
+583
+585 - done
+586
 
+Egypt Locations
 236
 244
 247
@@ -68,7 +80,7 @@ Be able to select a spell from your inventory and learn it (or read a book); use
 497-
 587
 
-38
+38 - done
 103
 134
 144
