@@ -481,8 +481,16 @@ export function makeChoice(nextEntry, effects) {
 }
 
 export function updateHealth(amount) {
-  currentState.health += amount
-  document.getElementById('health').innerText = `Health: ${currentState.health}`
+  // only do this if you currentState.health is less thatn 100 and don't go over 100
+  if (currentState.health < 100 && currentState.health + amount <= 100) {
+    currentState.health += amount
+    document.getElementById('health').innerText =
+      `Health: ${currentState.health}`
+  } else if (currentState.health + amount >= 100) {
+    currentState.health = 100
+    document.getElementById('health').innerText =
+      `Health: ${currentState.health}`
+  }
 }
 
 export function updateSanity(amount) {

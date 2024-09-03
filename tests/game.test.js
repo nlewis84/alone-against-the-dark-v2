@@ -102,8 +102,36 @@ describe('Game Logic', () => {
 
   describe('Basic Gameplay Features', () => {
     test('should update health correctly', () => {
+      // Set initial health to a value below 100
+      currentState.health = 90
+
+      // Update health by 10
       updateHealth(10)
-      expect(currentState.health).toBe(110)
+
+      // Check that health is capped at 100
+      expect(currentState.health).toBe(100)
+      expect(document.getElementById('health').innerText).toBe('Health: 100')
+
+      // Update health by 10 again, but since it's already 100, it should not change
+      updateHealth(10)
+
+      // Health should still be 100
+      expect(currentState.health).toBe(100)
+      expect(document.getElementById('health').innerText).toBe('Health: 100')
+
+      // Set initial health to a value below 100 but ensure we don't exceed 100 with the addition
+      currentState.health = 95
+      updateHealth(10) // Try to add 10, but it should cap at 100
+
+      expect(currentState.health).toBe(100)
+      expect(document.getElementById('health').innerText).toBe('Health: 100')
+
+      // Set initial health to a value above 100 (should not be possible, but for thoroughness)
+      currentState.health = 105
+      updateHealth(10) // Adding more health should still cap it at 100
+
+      expect(currentState.health).toBe(100)
+      expect(document.getElementById('health').innerText).toBe('Health: 100')
     })
 
     test('should add item to inventory', () => {
