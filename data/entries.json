@@ -457,6 +457,72 @@
       "Bremen Location"
     ]
   },
+  "41": {
+    "description": "Attempt the appropriate Language roll for each of the following books. For each successful roll, spend two hours and go to the pertinent entry:",
+    "choices": [
+      {
+        "text": "Attempt a German roll for 'Die Mythe'",
+        "effects": {
+          "check": {
+            "skill": "Language (German)",
+            "success": {
+              "nextEntry": "62",
+              "advanceTime": 2
+            },
+            "failure": "41"
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a French roll for 'Cultes des Goules'",
+        "effects": {
+          "check": {
+            "skill": "Language (French)",
+            "success": {
+              "nextEntry": "84",
+              "advanceTime": 2
+            },
+            "failure": "41"
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a Latin roll for 'Liber Ivonis'",
+        "effects": {
+          "check": {
+            "skill": "Language (Latin)",
+            "success": {
+              "nextEntry": "140",
+              "advanceTime": 2
+            },
+            "failure": "41"
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt an English roll for 'Marvels of the Spirit World'",
+        "effects": {
+          "check": {
+            "skill": "Language (English)",
+            "success": {
+              "nextEntry": "159",
+              "advanceTime": 2
+            },
+            "failure": "41"
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Finish and return to 74",
+        "nextEntry": "74"
+      }
+    ],
+    "traceNumbers": ["62", "74", "84", "140", "159"]
+  },
   "45": {
     "description": "“That’s just fancy talk! I know your sort! Professor Gliere specifically instructed that no one disturb his room.” She slams the door.",
     "choices": [
@@ -636,6 +702,22 @@
     "description": "You can look up scheduled sailings. You notice a newspaper with news of Athens. For each hour spent browsing through the paper’s back-issue files, you can attempt one of the following rolls once.",
     "title": "ARKHAM ADVERTISER",
     "traceNumbers": ["Arkham Location"]
+  },
+  "62": {
+    "description": "The ancient myths refer to Gotterdammerung, the fall of the Gods. Inexplicably, almost all of these Northern myths say that the climate became colder after that fall.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": "117",
+            "failure": "74"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["41", "74"]
   },
   "63": {
     "description": "This democratic nation of freedom-loving peoples has a complex and lengthy history. They are fiercely protective of their rights, and even more protective of the precious artifacts of their heritage.",
@@ -1005,6 +1087,21 @@
       }
     ],
     "traceNumbers": ["74"]
+  },
+  "117": {
+    "description": "There is an etching of a supposedly enchanted symbol (see image below). You think the drawing important, and copy it down.",
+    "image": "src/assets/images/clues/clue117.png",
+    "choices": [
+      {
+        "text": "Look over the other books",
+        "nextEntry": "41"
+      },
+      {
+        "text": "Return to the New York Public Library",
+        "nextEntry": "74"
+      }
+    ],
+    "traceNumbers": ["62", "41", "74"]
   },
   "121": {
     "description": "You see the book Nameless Cults, in the Golden Goblin Press edition. You thumb through it—vile stuff, you decide. Something about this book alarms and fascinates you and you spend an hour reading it over. Gain +3 Cthulhu Mythos skill points for your initial reading. You take the book with you.",
