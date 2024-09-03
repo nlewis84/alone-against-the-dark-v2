@@ -7,17 +7,23 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="app">
+    <div id="header">
+      <div id="user-stats">
+        <span id="health">Health: 100</span>
+        <span id="sanity">Sanity: 100</span>
+        <div id="combatStatus"></div>
+        <span id="inventory">Inventory: .22 Short Automatic, Machete</span>
+        <span id="date">Date: Tue Sep 01 1931, Time: 1:00 PM</span>
+      </div>
+      <div>
+        <button id="saveButton">Save Game</button>
+        <button id="loadButton">Load Game</button>
+      </div>
+    </div>
+    <div id="game">
       <div id="description"></div>
-      <div id="choices"></div>
       <div id="imageContainer"></div>
-      <div id="health"></div>
-      <div id="sanity"></div>
-      <div id="inventory"></div>
-      <div id="date"></div>
-      <div id="combatStatus"></div>
-      <button id="saveButton">Save Game</button>
-      <button id="loadButton">Load Game</button>
+      <div id="choices"></div>
     </div>
     <script src="src/index.js" type="module"></script>
   </body>

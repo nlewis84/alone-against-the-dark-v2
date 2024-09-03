@@ -5,6 +5,7 @@ body {
   font-family: 'Libre Baskerville', serif;
   background-color: #f8f8f8;
   color: #333;
+  font-size: 1.25rem;
 }
 
 /* Custom button styles */
@@ -22,6 +23,7 @@ button {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: auto;
+  margin-top: 2rem;
 }
 
 /* Custom text styles */
@@ -31,15 +33,23 @@ button {
 }
 
 #choices {
-  display: flex;
-  gap: 1rem; /* Add space between buttons */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
 }
 
 #choices button {
-  background-color: #d4af37; /* Gold background */
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+
+  max-width: 200px;
+  padding: 1rem;
+  text-align: center;
+  background-color: #d4af37;
   color: black;
-  border: 2px solid #b38e2e; /* Slightly darker gold border */
-  padding: 0.5rem 1rem;
+  border: 2px solid #b38e2e;
   border-radius: 5px;
   font-family: 'Cinzel', serif;
   font-size: 1.1rem;
@@ -47,6 +57,12 @@ button {
   transition:
     background-color 0.3s,
     border-color 0.3s;
+}
+
+#choices button:nth-child(2n + 1),
+button:nth-child(2n + 2) {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #choices button:hover {
@@ -77,6 +93,8 @@ button {
 }
 
 #imageContainer {
+  max-width: 100%;
+  margin-bottom: 1.5rem;
   border: 2px solid #ccc; /* Light grey border, adjust color as needed */
   background: #f0f0f0; /* Light background, adjust color as needed */
   padding: 10px; /* Adds space inside the container, around the image */
