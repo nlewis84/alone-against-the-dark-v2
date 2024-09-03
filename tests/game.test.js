@@ -404,13 +404,20 @@ describe('Game Logic', () => {
     test('should handle choices with character requirements', () => {
       setCurrentDate(new Date(1931, 8, 1, 10, 0))
       currentState.character = 'Zaphod Beeblebrox'
+      setCurrentLocale('Egypt')
       displayEntry('102')
       const choices = document.getElementById('choices').children
       expect(choices.length).toBe(1)
 
+      setCurrentLocale('Arkham')
       displayEntry('168')
       const choicesPartTwo = document.getElementById('choices').children
       expect(choicesPartTwo.length).toBe(1)
+
+      setCurrentLocale('New York')
+      displayEntry('168')
+      const choicesPartThree = document.getElementById('choices').children
+      expect(choicesPartThree.length).toBe(0)
     })
 
     test('should display entry with concatenated temporary description and clear it after', () => {

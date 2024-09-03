@@ -359,14 +359,6 @@ function displayImage(imagePath) {
   }
 }
 
-function createImage(imagePath, className) {
-  const image = document.createElement('img')
-  image.src = imagePath
-  image.alt = 'Entry Image'
-  image.className = className // Apply Tailwind CSS classes dynamically
-  return image
-}
-
 export function displayLocations(locationType) {
   const locations = gameData.locationTables[locationType]
   if (!locations) {
@@ -378,6 +370,8 @@ export function displayLocations(locationType) {
       return
     }
   }
+
+  setCurrentLocale(locationType)
 
   document.getElementById('description').innerHTML =
     `<strong>${locationType} Locations:</strong><br>Select a location from the list below:`
