@@ -290,7 +290,7 @@
         "nextEntry": "145"
       },
       {
-        "text": "If in New York, go to 74",
+        "text": "Keep looking around the Library",
         "requirements": {
           "currentLocale": "New York"
         },
@@ -637,6 +637,26 @@
     "title": "ARKHAM ADVERTISER",
     "traceNumbers": ["Arkham Location"]
   },
+  "63": {
+    "description": "This democratic nation of freedom-loving peoples has a complex and lengthy history. They are fiercely protective of their rights, and even more protective of the precious artifacts of their heritage.",
+    "choices": [
+      {
+        "text": "Make a Education roll",
+        "effects": {
+          "check": {
+            "skill": "EDU",
+            "success": "25",
+            "failure": "74"
+          }
+        }
+      },
+      {
+        "text": "Keep looking around the Library",
+        "nextEntry": "74"
+      }
+    ],
+    "traceNumbers": ["74"]
+  },
   "64": {
     "title": "BOSTON RAILWAY STATION",
     "description": "There are trains to New York City’s Grand Central Station and Arkham. Should you miss the train, you have friends in Boston who will gladly put you up for the night for free. You can then catch your train in the morning.",
@@ -801,6 +821,26 @@
     "title": "MISKATONIC UNIVERSITY",
     "traceNumbers": ["Arkham Location"]
   },
+  "85": {
+    "description": "“Egypt today is an engaging mixture of ancient and modern. Camels and marketplaces are side-by-side with motorcars and luxurious hotels. Religions of various kinds play a special role in Egypt, some of them of a most unusual nature. It is best, for example, to avoid the cult of Aten, a mysterious and perhaps dangerous group found in the major cities of Cairo and Alexandria.”\n\n—Baedeker’s Guide to Egypt",
+    "choices": [
+      {
+        "text": "Make a Library Use roll",
+        "effects": {
+          "check": {
+            "skill": "Library Use",
+            "success": "161",
+            "failure": "74"
+          }
+        }
+      },
+      {
+        "text": "Continue",
+        "nextEntry": "74"
+      }
+    ],
+    "traceNumbers": ["74"]
+  },
   "89": {
     "description": "Mrs. Harding glares and slams the door in your face.",
     "choices": [
@@ -910,7 +950,7 @@
     "description": "Some of the wonderful devices were said to open secret chambers or panels in the tombs. These chambers were thought to be in places that looked like solid rock. No intact device has been found, though, nor have any such chambers been discovered.",
     "choices": [
       {
-        "text": "Continue",
+        "text": "Keep looking around the Library",
         "nextEntry": "74"
       }
     ],
@@ -1234,6 +1274,16 @@
         "nextEntry": "51"
       }
     ]
+  },
+  "161": {
+    "description": "You get specific directions to the Fuzira Marketplace. Two alternate names for the marketplace run through your mind: 'The place where anything can be lost or gained,' and, 'the place where souls are bartered.' You idly thumb through the volume. You think you would like to go to Egypt.",
+    "choices": [
+      {
+        "text": "Keep looking around the Library",
+        "nextEntry": "74"
+      }
+    ],
+    "traceNumbers": ["85"]
   },
   "168": {
     "description": "The archaeological team at the National Museum in Athens have reported on the Karpathos Device, noting the inexplicable markings on its surfaces and the complex network of gears and linkages. The team has established that the Device is at least 2,000 years old, although some suggest it might hold a more ancient date. The report implies an ancient level of technical achievement previously undreamt of by scholars. Cryptic Greek inscriptions were found on the outside edges of some gears, while some interior sections were marked with unusual Egyptian hieroglyphics. The team makes no guess about the function of the Device.",

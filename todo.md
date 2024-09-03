@@ -19,9 +19,10 @@ New York Locations
 586
 
 41
-63
-85
+63 - done
+85 - done
 138
+161 - done
 
 Egypt Locations
 236
