@@ -54,20 +54,6 @@
     ],
     "traceNumbers": ["28", "90"]
   },
-  "7a": {
-    "description": "You realize that you have no idea where Gliere's room is. You go upstairs. All the doors are closed; none have names on them.",
-    "choices": [
-      {
-        "text": "Try one of the doors",
-        "nextEntry": "51"
-      },
-      {
-        "text": "Leave the house",
-        "nextEntry": "Arkham Location"
-      }
-    ],
-    "traceNumbers": ["7"]
-  },
   "9": {
     "description": "The man is an Egyptian. His posture seems threatening.",
     "choices": [
@@ -105,98 +91,12 @@
       }
     ]
   },
-  "10a": {
-    "title": "Quick Response",
-    "description": "You react swiftly, getting your weapon ready before the stranger can fully attack.",
-    "choices": [
-      {
-        "text": "Engage in combat",
-        "nextEntry": "10d"
-      }
-    ]
-  },
-  "10b": {
-    "title": "Caught Off Guard",
-    "description": "You fail to react in time. The man strikes first with his knife, aiming a deadly blow.",
-    "choices": [
-      {
-        "text": "Fight back",
-        "nextEntry": "10d"
-      }
-    ],
-    "effects": {
-      "health": {
-        "diceRoll": "1D100",
-        "success": -6,
-        "failure": 0,
-        "threshold": 50
-      }
-    }
-  },
-  "10c": {
-    "title": "Knife Wound",
-    "description": "The knife pierces through, wounding you severely. You must continue fighting for your life.",
-    "choices": [
-      {
-        "text": "Continue fighting",
-        "nextEntry": "10d"
-      }
-    ]
-  },
-  "10d": {
-    "title": "Combat Continues",
-    "description": "The battle rages on. Either party must fight until one can no longer continue.",
-    "choices": [
-      {
-        "text": "Attempt to Dodge",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": "187",
-            "failure": {
-              "nextEntry": "10d",
-              "damage": "1D6",
-              "message": "The stranger lets loose a shot as you fail to dodge."
-            }
-          }
-        }
-      },
-      {
-        "text": "Fight",
-        "nextEntry": "10d",
-        "effects": {
-          "combat": {
-            "opponent": {
-              "name": "Mysterious Stranger",
-              "attackChance": "50%",
-              "damage": "1D6",
-              "dex": 60,
-              "health": 10,
-              "maxHealth": 10
-            },
-            "win": "187",
-            "lose": "end"
-          }
-        }
-      }
-    ]
-  },
   "11": {
     "description": "Before you enter, you sense something beyond the door. Putting your ear to the door, you listen.",
     "choices": [
       {
         "text": "Listen",
         "nextEntry": "141"
-      }
-    ],
-    "traceNumbers": ["52"]
-  },
-  "11b": {
-    "description": "Before you enter, you sense something beyond the door. You put your ear to the door, but are startled by someone behind you!",
-    "choices": [
-      {
-        "text": "Someone heard you!",
-        "nextEntry": "51"
       }
     ],
     "traceNumbers": ["52"]
@@ -339,21 +239,6 @@
       }
     ],
     "traceNumbers": ["90"]
-  },
-  "28a": {
-    "description": "You've managed to enter the Harding House without causing too much disturbance. Now, you must navigate quietly.",
-    "choices": [
-      {
-        "text": "Attempt Stealth to scout the house",
-        "effects": {
-          "check": {
-            "skill": "Stealth",
-            "success": "52",
-            "failure": "51"
-          }
-        }
-      }
-    ]
   },
   "29": {
     "description": "You see strange, bird-like markings and some scribbled words in the Professor’s familiar hand. Three of the words seem paired with the symbols—'old', 'heavens', 'cold'.",
@@ -842,11 +727,26 @@
     "title": "NEW YORK PUBLIC LIBRARY",
     "description": "While not allowing browsers, the helpful librarians provide a selection of books on a topic. They are busy and understaffed, so only two topics may be researched per visit. You may go to another location and then return here in the same day.\n\nNo rolls are needed for these books. It takes two hours to study each topic.",
     "choices": [
-      { "text": "Study Archaeology", "nextEntry": "116" },
-      { "text": "Study Egyptology", "nextEntry": "85" },
-      { "text": "Study Greece", "nextEntry": "63" },
-      { "text": "Study Occult", "nextEntry": "41" },
-      { "text": "Study other pertinent topics", "nextEntry": "138" }
+      {
+        "text": "Study Archaeology",
+        "nextEntry": "116"
+      },
+      {
+        "text": "Study Egyptology",
+        "nextEntry": "85"
+      },
+      {
+        "text": "Study Greece",
+        "nextEntry": "63"
+      },
+      {
+        "text": "Study Occult",
+        "nextEntry": "41"
+      },
+      {
+        "text": "Study other pertinent topics",
+        "nextEntry": "138"
+      }
     ],
     "traceNumbers": ["New York Location"]
   },
@@ -1300,16 +1200,6 @@
     ],
     "traceNumbers": ["11", "52"]
   },
-  "141b": {
-    "description": "You hear thunderous snores. This room is occupied and can’t be Gliere’s room; you better try a different door. Uh oh! Someone's coming!",
-    "choices": [
-      {
-        "text": "Someone heard you!",
-        "nextEntry": "51"
-      }
-    ],
-    "traceNumbers": ["11", "52"]
-  },
   "145": {
     "description": "For each hour at Miskatonic’s library, you may attempt one of the following actions.",
     "choices": [
@@ -1462,16 +1352,6 @@
       }
     ]
   },
-  "150b": {
-    "title": "Professorial Study",
-    "description": "You enter and cautiously turn on a light to see a room in proper professorial confusion. Scattered about are books of myths and fables, and there are bundles of clippings from various foreign newspapers. You hear shuffling behind you!",
-    "choices": [
-      {
-        "text": "Someone heard you!",
-        "nextEntry": "51"
-      }
-    ]
-  },
   "157": {
     "description": "You read about the Top of Aten, a rumored relic from the period of Akhenaten. The top, a magical device, in some sources is mentioned as the cause of the Old Kingdom’s fall. It was Akhenaten who came to possess it and who (some scholars hint) worshiped the ancient evil ones who designed it. Akhenaten’s strange disfigurement is said to have been caused by his meddling in bizarre magical rites.",
     "choices": [
@@ -1519,22 +1399,6 @@
       }
     ],
     "traceNumbers": ["41"]
-  },
-  "159_fail": {
-    "description": "You failed the Spot Hidden roll. You can continue looking through the Occult books, or return to the New York Public Library.",
-    "choices": [
-      {
-        "text": "Continue looking over the Occult books",
-        "nextEntry": "41",
-        "advanceTime": 1
-      },
-      {
-        "text": "Return to the New York Public Library",
-        "nextEntry": "74",
-        "advanceTime": 1
-      }
-    ],
-    "traceNumbers": ["159"]
   },
   "161": {
     "description": "You get specific directions to the Fuzira Marketplace. Two alternate names for the marketplace run through your mind: 'The place where anything can be lost or gained,' and, 'the place where souls are bartered.' You idly thumb through the volume. You think you would like to go to Egypt.",
@@ -1843,67 +1707,6 @@
       }
     ]
   },
-  "263a": {
-    "description": "You focus intently, trying to spot a safe path through the menacing shadows.",
-    "choices": [
-      {
-        "text": "Make a Spot Hidden roll",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": "263b",
-            "failure": {
-              "nextEntry": "263",
-              "damage": 1,
-              "message": "A mummy's hand brushes against you as you fail to notice a crucial detail!"
-            }
-          }
-        }
-      }
-    ]
-  },
-  "263b": {
-    "description": "Having spotted a possible path, you now need to dodge the groping hands of the undead.",
-    "choices": [
-      {
-        "text": "Attempt to Dodge",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": "263c",
-            "failure": {
-              "nextEntry": "263",
-              "damage": 1,
-              "message": "You stumble as a hand clutches at your foot, causing minor injuries!"
-            }
-          }
-        }
-      }
-    ]
-  },
-  "263c": {
-    "description": "One last challenge: apply your intellect to find the safest exit route.",
-    "choices": [
-      {
-        "text": "Use your intelligence",
-        "effects": {
-          "check": {
-            "skill": "INT",
-            "success": {
-              "nextEntry": "274",
-              "damage": "1D4+1",
-              "message": "You hurl yourself through a plate glass window to escape, suffering cuts in the process."
-            },
-            "failure": {
-              "nextEntry": "263",
-              "damage": 1,
-              "message": "A wrong turn! You're swiped by a clawed appendage as you miscalculate your route."
-            }
-          }
-        }
-      }
-    ]
-  },
   "274": {
     "description": "Police cars come screeching up to the museum. You have several options, and should think about them all before choosing one:",
     "choices": [
@@ -2148,92 +1951,6 @@
       "Antarctic Base Camp"
     ]
   },
-  "585a": {
-    "description": "You feel much better but can still recover more.",
-    "choices": [
-      {
-        "text": "Stay another day to regain 1 hit point (up to your normal maximum)",
-        "requirements": {
-          "notFullHealth": true
-        },
-        "nextEntry": "585a"
-      },
-      {
-        "text": "Leave the hospital",
-        "nextEntry": "585_exit"
-      }
-    ]
-  },
-  "585b": {
-    "description": "Your condition is stable, but additional rest could help.",
-    "choices": [
-      {
-        "text": "Stay another day to regain 1 hit point (up to your normal maximum)",
-        "requirements": {
-          "notFullHealth": true
-        },
-        "nextEntry": "585b"
-      },
-      {
-        "text": "Leave the hospital",
-        "nextEntry": "585_exit"
-      }
-    ]
-  },
-  "585_exit": {
-    "description": "You decide it's time to leave the hospital. Where to next?",
-    "choices": [
-      {
-        "text": "Another Arkham Location",
-        "requirements": {
-          "currentLocale": "Arkham"
-        },
-        "nextEntry": "Arkham Location"
-      },
-      {
-        "text": "Another New York Location",
-        "requirements": {
-          "currentLocale": "New York"
-        },
-        "nextEntry": "New York Location"
-      },
-      {
-        "text": "Another Athens Location",
-        "requirements": {
-          "currentLocale": "Athens"
-        },
-        "nextEntry": "Athens Location"
-      },
-      {
-        "text": "Another Egypt Location",
-        "requirements": {
-          "currentLocale": "Egypt"
-        },
-        "nextEntry": "Egypt Location"
-      },
-      {
-        "text": "Another Bremen Location",
-        "requirements": {
-          "currentLocale": "Bremen"
-        },
-        "nextEntry": "Bremen Location"
-      },
-      {
-        "text": "Back to The Dark Sea",
-        "requirements": {
-          "currentLocale": "The Dark Sea"
-        },
-        "nextEntry": "480"
-      },
-      {
-        "text": "Back to Antarctic Base Camp",
-        "requirements": {
-          "currentLocale": "Antarctic Base Camp"
-        },
-        "nextEntry": "520"
-      }
-    ]
-  },
   "593": {
     "choices": [
       {
@@ -2244,6 +1961,157 @@
     "description": "A small diner offering basic meals. It's a place to sit down and have a meal while gathering your thoughts.",
     "title": "BEE'S DINER",
     "traceNumbers": ["Arkham Location"]
+  },
+  "7a": {
+    "description": "You realize that you have no idea where Gliere's room is. You go upstairs. All the doors are closed; none have names on them.",
+    "choices": [
+      {
+        "text": "Try one of the doors",
+        "nextEntry": "51"
+      },
+      {
+        "text": "Leave the house",
+        "nextEntry": "Arkham Location"
+      }
+    ],
+    "traceNumbers": ["7"]
+  },
+  "10a": {
+    "title": "Quick Response",
+    "description": "You react swiftly, getting your weapon ready before the stranger can fully attack.",
+    "choices": [
+      {
+        "text": "Engage in combat",
+        "nextEntry": "10d"
+      }
+    ]
+  },
+  "10b": {
+    "title": "Caught Off Guard",
+    "description": "You fail to react in time. The man strikes first with his knife, aiming a deadly blow.",
+    "choices": [
+      {
+        "text": "Fight back",
+        "nextEntry": "10d"
+      }
+    ],
+    "effects": {
+      "health": {
+        "diceRoll": "1D100",
+        "success": -6,
+        "failure": 0,
+        "threshold": 50
+      }
+    }
+  },
+  "10c": {
+    "title": "Knife Wound",
+    "description": "The knife pierces through, wounding you severely. You must continue fighting for your life.",
+    "choices": [
+      {
+        "text": "Continue fighting",
+        "nextEntry": "10d"
+      }
+    ]
+  },
+  "10d": {
+    "title": "Combat Continues",
+    "description": "The battle rages on. Either party must fight until one can no longer continue.",
+    "choices": [
+      {
+        "text": "Attempt to Dodge",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": "187",
+            "failure": {
+              "nextEntry": "10d",
+              "damage": "1D6",
+              "message": "The stranger lets loose a shot as you fail to dodge."
+            }
+          }
+        }
+      },
+      {
+        "text": "Fight",
+        "nextEntry": "10d",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Mysterious Stranger",
+              "attackChance": "50%",
+              "damage": "1D6",
+              "dex": 60,
+              "health": 10,
+              "maxHealth": 10
+            },
+            "win": "187",
+            "lose": "end"
+          }
+        }
+      }
+    ]
+  },
+  "11b": {
+    "description": "Before you enter, you sense something beyond the door. You put your ear to the door, but are startled by someone behind you!",
+    "choices": [
+      {
+        "text": "Someone heard you!",
+        "nextEntry": "51"
+      }
+    ],
+    "traceNumbers": ["52"]
+  },
+  "28a": {
+    "description": "You've managed to enter the Harding House without causing too much disturbance. Now, you must navigate quietly.",
+    "choices": [
+      {
+        "text": "Attempt Stealth to scout the house",
+        "effects": {
+          "check": {
+            "skill": "Stealth",
+            "success": "52",
+            "failure": "51"
+          }
+        }
+      }
+    ]
+  },
+  "141b": {
+    "description": "You hear thunderous snores. This room is occupied and can’t be Gliere’s room; you better try a different door. Uh oh! Someone's coming!",
+    "choices": [
+      {
+        "text": "Someone heard you!",
+        "nextEntry": "51"
+      }
+    ],
+    "traceNumbers": ["11", "52"]
+  },
+  "150b": {
+    "title": "Professorial Study",
+    "description": "You enter and cautiously turn on a light to see a room in proper professorial confusion. Scattered about are books of myths and fables, and there are bundles of clippings from various foreign newspapers. You hear shuffling behind you!",
+    "choices": [
+      {
+        "text": "Someone heard you!",
+        "nextEntry": "51"
+      }
+    ]
+  },
+  "159_fail": {
+    "description": "You failed the Spot Hidden roll. You can continue looking through the Occult books, or return to the New York Public Library.",
+    "choices": [
+      {
+        "text": "Continue looking over the Occult books",
+        "nextEntry": "41",
+        "advanceTime": 1
+      },
+      {
+        "text": "Return to the New York Public Library",
+        "nextEntry": "74",
+        "advanceTime": 1
+      }
+    ],
+    "traceNumbers": ["159"]
   },
   "230_guard_1_action": {
     "description": "The first guard reacts. Roll 1D6 to determine the guard's action.",
@@ -2512,5 +2380,152 @@
       }
     ],
     "traceNumbers": ["249a"]
+  },
+  "263a": {
+    "description": "You focus intently, trying to spot a safe path through the menacing shadows.",
+    "choices": [
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": "263b",
+            "failure": {
+              "nextEntry": "263",
+              "damage": 1,
+              "message": "A mummy's hand brushes against you as you fail to notice a crucial detail!"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "263b": {
+    "description": "Having spotted a possible path, you now need to dodge the groping hands of the undead.",
+    "choices": [
+      {
+        "text": "Attempt to Dodge",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": "263c",
+            "failure": {
+              "nextEntry": "263",
+              "damage": 1,
+              "message": "You stumble as a hand clutches at your foot, causing minor injuries!"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "263c": {
+    "description": "One last challenge: apply your intellect to find the safest exit route.",
+    "choices": [
+      {
+        "text": "Use your intelligence",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "274",
+              "damage": "1D4+1",
+              "message": "You hurl yourself through a plate glass window to escape, suffering cuts in the process."
+            },
+            "failure": {
+              "nextEntry": "263",
+              "damage": 1,
+              "message": "A wrong turn! You're swiped by a clawed appendage as you miscalculate your route."
+            }
+          }
+        }
+      }
+    ]
+  },
+  "585_exit": {
+    "description": "You decide it's time to leave the hospital. Where to next?",
+    "choices": [
+      {
+        "text": "Another Arkham Location",
+        "requirements": {
+          "currentLocale": "Arkham"
+        },
+        "nextEntry": "Arkham Location"
+      },
+      {
+        "text": "Another New York Location",
+        "requirements": {
+          "currentLocale": "New York"
+        },
+        "nextEntry": "New York Location"
+      },
+      {
+        "text": "Another Athens Location",
+        "requirements": {
+          "currentLocale": "Athens"
+        },
+        "nextEntry": "Athens Location"
+      },
+      {
+        "text": "Another Egypt Location",
+        "requirements": {
+          "currentLocale": "Egypt"
+        },
+        "nextEntry": "Egypt Location"
+      },
+      {
+        "text": "Another Bremen Location",
+        "requirements": {
+          "currentLocale": "Bremen"
+        },
+        "nextEntry": "Bremen Location"
+      },
+      {
+        "text": "Back to The Dark Sea",
+        "requirements": {
+          "currentLocale": "The Dark Sea"
+        },
+        "nextEntry": "480"
+      },
+      {
+        "text": "Back to Antarctic Base Camp",
+        "requirements": {
+          "currentLocale": "Antarctic Base Camp"
+        },
+        "nextEntry": "520"
+      }
+    ]
+  },
+  "585a": {
+    "description": "You feel much better but can still recover more.",
+    "choices": [
+      {
+        "text": "Stay another day to regain 1 hit point (up to your normal maximum)",
+        "requirements": {
+          "notFullHealth": true
+        },
+        "nextEntry": "585a"
+      },
+      {
+        "text": "Leave the hospital",
+        "nextEntry": "585_exit"
+      }
+    ]
+  },
+  "585b": {
+    "description": "Your condition is stable, but additional rest could help.",
+    "choices": [
+      {
+        "text": "Stay another day to regain 1 hit point (up to your normal maximum)",
+        "requirements": {
+          "notFullHealth": true
+        },
+        "nextEntry": "585b"
+      },
+      {
+        "text": "Leave the hospital",
+        "nextEntry": "585_exit"
+      }
+    ]
   }
 }
