@@ -217,21 +217,14 @@ function handleEntryChoices(entryId, entry) {
 
               // Check if we need to advance the day first
               if (targetHour < currentHour) {
-                console.log(
-                  `Advancing day by 1 as the target hour ${targetHour} is earlier than current hour ${currentHour}`,
-                )
                 currentDate.setDate(currentDate.getDate() + 1)
               }
 
               // Set the hour directly after potentially advancing the day
-              console.log(`Setting hour to: ${targetHour}`)
               updateTime(0, targetHour)
             }
 
             if (choice.effects.advanceTime !== undefined) {
-              console.log(
-                `Advancing time by: ${choice.effects.advanceTime} hours`,
-              )
               updateTime(choice.effects.advanceTime)
             }
 

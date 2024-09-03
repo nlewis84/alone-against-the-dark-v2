@@ -1661,6 +1661,24 @@
       "567"
     ]
   },
+  "583": {
+    "title": "HOTEL",
+    "description": "What a find! This hotel is cheap, roomy, warm, spacious, comfortable, and clean.",
+    "choices": [
+      {
+        "text": "Get a room for the night",
+        "effects": {
+          "setHour": 6
+        },
+        "nextEntry": "New York Location"
+      },
+      {
+        "text": "Keep exploring New York",
+        "nextEntry": "New York Location"
+      }
+    ],
+    "traceNumbers": ["New York Location"]
+  },
   "585": {
     "title": "HOSPITAL",
     "description": "You get tender loving care at the hospital. Make a Luck roll to see how well you recover.",
