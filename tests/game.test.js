@@ -1105,4 +1105,69 @@ describe('Game Logic', () => {
       expect(updatedDate.getDate()).toBe(2) // Date should now be September 2, 1931
     })
   })
+
+  describe('Entry 41 Latin Roll Test', () => {
+    beforeEach(async () => {
+      await initializeGame() // Reset the game state before each test
+      currentState.skills = { 'Language (Latin)': 50 } // Set initial Latin skill
+      currentState.sanity = 100 // Set initial sanity
+    })
+
+    test('should successfully perform a Latin roll and navigate to entry 140', async () => {
+      // Mock dice roll to always succeed for testing
+      jest.spyOn(global.Math, 'random').mockReturnValue(0.3) // Assuming 50% chance, 0.3 should succeed
+
+      displayEntry('41') // Start at entry 41
+
+      // Find and click the button to attempt the Latin roll
+      const latinRollButton = findChoiceButton(
+        "Attempt a Latin roll for 'Liber Ivonis'",
+      )
+      latinRollButton.click()
+
+      // Verify the outcomes:
+      // - Navigated to entry 140
+      expect(currentState.currentEntry).toBe('140')
+
+      // - Cthulhu Mythos skill increased by 1
+      expect(currentState.skills['Cthulhu Mythos']).toBe(1)
+
+      // - Sanity decreased by 1
+      expect(currentState.sanity).toBe(99)
+
+      // Restore Math.random
+      jest.spyOn(global.Math, 'random').mockRestore()
+    })
+
+    test('should fail the Latin roll and stay at entry 41', async () => {
+      // Initialize Cthulhu Mythos skill to 0 if it's not already defined
+      if (!currentState.skills['Cthulhu Mythos']) {
+        currentState.skills['Cthulhu Mythos'] = 0
+      }
+
+      // Mock dice roll to always fail for testing
+      jest.spyOn(global.Math, 'random').mockReturnValue(0.8) // Assuming 50% chance, 0.8 should fail
+
+      displayEntry('41') // Start at entry 41
+
+      // Find and click the button to attempt the Latin roll
+      const latinRollButton = findChoiceButton(
+        "Attempt a Latin roll for 'Liber Ivonis'",
+      )
+      latinRollButton.click()
+
+      // Verify the outcomes:
+      // - Remain at entry 41
+      expect(currentState.currentEntry).toBe('41')
+
+      // - Cthulhu Mythos skill remains unchanged
+      expect(currentState.skills['Cthulhu Mythos']).toBe(0)
+
+      // - Sanity remains unchanged
+      expect(currentState.sanity).toBe(100)
+
+      // Restore Math.random
+      jest.spyOn(global.Math, 'random').mockRestore()
+    })
+  })
 })
