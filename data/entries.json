@@ -521,7 +521,7 @@
         }
       },
       {
-        "text": "Finish and return to 74",
+        "text": "Keep looking around the Library",
         "nextEntry": "74"
       }
     ],
@@ -911,7 +911,7 @@
     "description": "A chapter notes that the most bizarre case of 'undead' occurred among French Legionnaires in North Africa. Outpost guards were found strangled with flecks of dead, scaly skin still sticking to their throats.",
     "choices": [
       {
-        "text": "Continue looking over the books",
+        "text": "Continue looking over the Occult books",
         "nextEntry": "41"
       },
       {
@@ -1221,7 +1221,7 @@
               "nextEntry": "41",
               "choices": [
                 {
-                  "text": "Continue looking over the books",
+                  "text": "Continue looking over the Occult books",
                   "nextEntry": "41"
                 },
                 {
@@ -1418,6 +1418,70 @@
       }
     ]
   },
+  "157": {
+    "description": "You read about the Top of Aten, a rumored relic from the period of Akhenaten. The top, a magical device, in some sources is mentioned as the cause of the Old Kingdom’s fall. It was Akhenaten who came to possess it and who (some scholars hint) worshiped the ancient evil ones who designed it. Akhenaten’s strange disfigurement is said to have been caused by his meddling in bizarre magical rites.",
+    "choices": [
+      {
+        "text": "Continue looking over the Occult books",
+        "nextEntry": "41",
+        "advanceTime": 1
+      },
+      {
+        "text": "Return to the New York Public Library",
+        "nextEntry": "74",
+        "advanceTime": 1
+      }
+    ],
+    "traceNumbers": ["140"]
+  },
+  "159": {
+    "description": "It is said that the spirits of the Pharaohs haunt the pyramids, and that some unfortunates even have seen them.",
+    "choices": [
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "182",
+              "advanceTime": 1
+            },
+            "failure": {
+              "nextEntry": "159_fail",
+              "advanceTime": 1
+            }
+          }
+        }
+      },
+      {
+        "text": "Continue looking over the Occult books",
+        "nextEntry": "41",
+        "advanceTime": 1
+      },
+      {
+        "text": "Return to the New York Public Library",
+        "nextEntry": "74",
+        "advanceTime": 1
+      }
+    ],
+    "traceNumbers": [41]
+  },
+  "159_fail": {
+    "description": "You failed the Spot Hidden roll. You can continue looking through the Occult books, or return to the New York Public Library.",
+    "choices": [
+      {
+        "text": "Continue looking over the Occult books",
+        "nextEntry": "41",
+        "advanceTime": 1
+      },
+      {
+        "text": "Return to the New York Public Library",
+        "nextEntry": "74",
+        "advanceTime": 1
+      }
+    ],
+    "traceNumbers": [159]
+  },
   "161": {
     "description": "You get specific directions to the Fuzira Marketplace. Two alternate names for the marketplace run through your mind: 'The place where anything can be lost or gained,' and, 'the place where souls are bartered.' You idly thumb through the volume. You think you would like to go to Egypt.",
     "choices": [
@@ -1488,6 +1552,23 @@
       }
     ],
     "traceNumbers": ["118", "166", "168"]
+  },
+  "182": {
+    "description": "You find the symbol of the cult of Aten (see image below), the so-called Egyptian death cult. You think that you may have seen that shape before.",
+    "image": "src/assets/images/clues/clue182.png",
+    "choices": [
+      {
+        "text": "Continue looking over the Occult books",
+        "nextEntry": "41",
+        "advanceTime": 1
+      },
+      {
+        "text": "Return to the New York Public Library",
+        "nextEntry": "74",
+        "advanceTime": 1
+      }
+    ],
+    "traceNumbers": [159]
   },
   "186": {
     "description": "“Oh. Resign? Ahem. My dear fellow, I apologize! I should have recognized how serious you were. Go! Save poor Gliere’s hide. I know you’ll do it speedily and judiciously. The University will certainly pay for your round-trip ticket.” As you leave, you hear footsteps move quickly away from the door. But when you look out, the hallway is empty.",
