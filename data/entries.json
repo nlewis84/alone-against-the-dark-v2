@@ -217,19 +217,39 @@
     "traceNumbers": ["START"]
   },
   "16": {
+    "title": "ARKHAM DEPOT",
+    "description": "Trains to Boston leave at 9am, noon, and 5pm. The trip takes an hour. You may wait for your train, or go to any other Arkham Location.",
     "choices": [
       {
-        "nextEntry": "Arkham Location",
-        "text": "Arriving in Arkham"
+        "text": "Take the 9am train to Boston (arrives at 10am)",
+        "effects": {
+          "setHour": 9,
+          "advanceTime": 0
+        },
+        "nextEntry": "64"
       },
       {
-        "nextEntry": "64",
-        "text": "Heading to Boston"
+        "text": "Take the 12pm train to Boston (arrives at 1pm)",
+        "effects": {
+          "setHour": 12,
+          "advanceTime": 0
+        },
+        "nextEntry": "64"
+      },
+      {
+        "text": "Take the 5pm train to Boston (arrives at 6pm)",
+        "effects": {
+          "setHour": 17,
+          "advanceTime": 0
+        },
+        "nextEntry": "64"
+      },
+      {
+        "text": "Go to any Arkham Location",
+        "nextEntry": "Arkham Location"
       }
     ],
-    "description": "If arriving in Arkham, go to any Arkham Location.\n\nIf heading to Boston, the trip takes an hour.",
-    "title": "ARKHAM DEPOT",
-    "traceNumbers": ["Arkham Location"]
+    "traceNumbers": ["64", "Arkham Location"]
   },
   "23": {
     "description": "“Don’t try and flim-flam me! This is my boarding house and I’ll allow in whom I wish!” She slams the door.",
@@ -625,41 +645,41 @@
         "text": "Take the 10am train to New York (arrives at 5pm)",
         "effects": {
           "setHour": 10,
-          "advanceTime": 6
+          "advanceTime": 7
         },
-        "nextEntry": "146"
+        "nextEntry": "New York Location"
       },
       {
         "text": "Take the 4pm train to New York (arrives at 10pm)",
         "effects": {
           "setHour": 16,
-          "advanceTime": 5
+          "advanceTime": 6
         },
-        "nextEntry": "146"
+        "nextEntry": "New York Location"
       },
       {
         "text": "Take the 10am train to Arkham (arrives at 11am)",
         "effects": {
           "setHour": 10,
-          "advanceTime": 0
+          "advanceTime": 1
         },
-        "nextEntry": "16"
+        "nextEntry": "Arkham Location"
       },
       {
         "text": "Take the 1pm train to Arkham (arrives at 2pm)",
         "effects": {
           "setHour": 13,
-          "advanceTime": 0
+          "advanceTime": 1
         },
-        "nextEntry": "16"
+        "nextEntry": "Arkham Location"
       },
       {
         "text": "Take the 6pm train to Arkham (arrives at 7pm)",
         "effects": {
           "setHour": 18,
-          "advanceTime": 0
+          "advanceTime": 1
         },
-        "nextEntry": "16"
+        "nextEntry": "Arkham Location"
       },
       {
         "text": "Stay overnight in Boston and catch a morning train",
@@ -1010,6 +1030,33 @@
       }
     ],
     "traceNumbers": ["70", "82", "143"]
+  },
+  "146": {
+    "title": "GRAND CENTRAL STATION",
+    "description": "If departing for Boston, there are two departures for Boston every day. One leaves at 8am and arrives at 3pm; the second leaves at 6pm and arrives at 12:30am. From Boston you may connect with a local train for Arkham. Wait here for your train, or go to any New York Location.",
+    "choices": [
+      {
+        "text": "Take the 8am train to Boston (arrives at 3pm)",
+        "effects": {
+          "setHour": 8,
+          "advanceTime": 6
+        },
+        "nextEntry": "64"
+      },
+      {
+        "text": "Take the 6pm train to Boston (arrives at 12:00am)",
+        "effects": {
+          "setHour": 18,
+          "advanceTime": 5
+        },
+        "nextEntry": "64"
+      },
+      {
+        "text": "Go to any New York Location",
+        "nextEntry": "New York Location"
+      }
+    ],
+    "traceNumbers": ["64", "New York Location"]
   },
   "150": {
     "title": "Professorial Study",
