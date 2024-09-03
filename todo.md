@@ -5,11 +5,11 @@ Be able to select a spell from your inventory and learn it (or read a book); use
 
 New York Locations
 30
-36
+36 - done
 38 - done
 54
 56
-74 - ...still working on research topics
+74 - done
 86
 104 - done
 116 - done
@@ -17,17 +17,6 @@ New York Locations
 583 - done
 585 - done
 586
-
-41
-63 - done
-85 - done
-138 -
-161 - done
-62
-84 - done
-140
-159 - done
-182 - done
 
 Egypt Locations
 236

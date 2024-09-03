@@ -941,6 +941,20 @@
     ],
     "traceNumbers": ["74"]
   },
+  "88": {
+    "description": "While formerly fashionable, avant-garde has become politically suspect. The occult is faddish with many of the younger politicians. Various readings and portents are said to promise a bright future for the Fatherland.",
+    "choices": [
+      {
+        "text": "Continue your research into other topics",
+        "nextEntry": "138"
+      },
+      {
+        "text": "Keep looking around the Library",
+        "nextEntry": "74"
+      }
+    ],
+    "traceNumbers": [138]
+  },
   "89": {
     "description": "Mrs. Harding glares and slams the door in your face.",
     "choices": [
@@ -1121,6 +1135,20 @@
     ],
     "traceNumbers": ["62", "41", "74"]
   },
+  "119": {
+    "description": "The friendly natives of Micronesia seem to have some deep-seated fear of an angry god who will rise from the sea. British sailors, seeing the odd idols throughout the islands, named the god 'Old One-Eyed Reilly.'",
+    "choices": [
+      {
+        "text": "Continue your research into other topics",
+        "nextEntry": "138"
+      },
+      {
+        "text": "Keep looking around the Library",
+        "nextEntry": "74"
+      }
+    ],
+    "traceNumbers": ["138"]
+  },
   "121": {
     "description": "You see the book Nameless Cults, in the Golden Goblin Press edition. You thumb through it—vile stuff, you decide. Something about this book alarms and fascinates you and you spend an hour reading it over. Gain +3 Cthulhu Mythos skill points for your initial reading. You take the book with you.",
     "choices": [
@@ -1207,6 +1235,32 @@
       }
     ],
     "traceNumbers": ["60"]
+  },
+  "138": {
+    "description": "Your mind reels as you see all the areas you could study. Three in particular seem of interest.",
+    "choices": [
+      {
+        "text": "Study Polar Studies",
+        "nextEntry": "163"
+      },
+      {
+        "text": "Study Pacific Isles",
+        "nextEntry": "119"
+      },
+      {
+        "text": "Study Germany",
+        "nextEntry": "88"
+      },
+      {
+        "text": "Keep looking around the Library",
+        "nextEntry": "74"
+      },
+      {
+        "text": "Go to any New York Location",
+        "nextEntry": "New York Location"
+      }
+    ],
+    "traceNumbers": ["74", "119", "163"]
   },
   "140": {
     "description": "You read the following: 'Where is the Lost City of the Old Ones? Where are the treasures of the Eldritch Masters? Cursed are they, condemned by the shoggoths to lie buried, waiting in the ice, for one more turn of Aten’s Top.'",
@@ -1464,7 +1518,7 @@
         "advanceTime": 1
       }
     ],
-    "traceNumbers": [41]
+    "traceNumbers": ["41"]
   },
   "159_fail": {
     "description": "You failed the Spot Hidden roll. You can continue looking through the Occult books, or return to the New York Public Library.",
@@ -1480,7 +1534,7 @@
         "advanceTime": 1
       }
     ],
-    "traceNumbers": [159]
+    "traceNumbers": ["159"]
   },
   "161": {
     "description": "You get specific directions to the Fuzira Marketplace. Two alternate names for the marketplace run through your mind: 'The place where anything can be lost or gained,' and, 'the place where souls are bartered.' You idly thumb through the volume. You think you would like to go to Egypt.",
@@ -1491,6 +1545,28 @@
       }
     ],
     "traceNumbers": ["85"]
+  },
+  "163": {
+    "description": "“Instances of ‘Dementia Antarctica’ have been experienced by many parties exploring the frozen continent. The most recent and vivid account was rendered by the disaster-plagued journey of Lake to the unexplored northwest regions. The bizarre reports even shocked people familiar with the phenomenon. The rescue party succumbed to the isolation and cold, and all survivors spent months in sanitariums babbling about lost cities and subterranean horrors. Recently, specialists have suggested that an enriched diet will prevent such terrible delusions.”",
+    "choices": [
+      {
+        "text": "Attempt a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "184"
+            },
+            "failure": "138"
+          }
+        }
+      },
+      {
+        "text": "Continue your research into other topics",
+        "nextEntry": "138"
+      }
+    ],
+    "traceNumbers": ["138"]
   },
   "168": {
     "description": "The archaeological team at the National Museum in Athens have reported on the Karpathos Device, noting the inexplicable markings on its surfaces and the complex network of gears and linkages. The team has established that the Device is at least 2,000 years old, although some suggest it might hold a more ancient date. The report implies an ancient level of technical achievement previously undreamt of by scholars. Cryptic Greek inscriptions were found on the outside edges of some gears, while some interior sections were marked with unusual Egyptian hieroglyphics. The team makes no guess about the function of the Device.",
@@ -1563,12 +1639,26 @@
         "advanceTime": 1
       },
       {
-        "text": "Return to the New York Public Library",
+        "text": "Keep looking around the Library",
         "nextEntry": "74",
         "advanceTime": 1
       }
     ],
-    "traceNumbers": [159]
+    "traceNumbers": ["159"]
+  },
+  "184": {
+    "description": "Preparations are said to continue apace for the Starkweather-Moore expedition to Antarctica. The expedition will retrace the steps of the ill-fated Lake-Douglas party. The new expedition sets sail in December, from Bremerhaven.",
+    "choices": [
+      {
+        "text": "Continue your research into other topics",
+        "nextEntry": "138"
+      },
+      {
+        "text": "Keep looking around the Library",
+        "nextEntry": "74"
+      }
+    ],
+    "traceNumbers": ["163"]
   },
   "186": {
     "description": "“Oh. Resign? Ahem. My dear fellow, I apologize! I should have recognized how serious you were. Go! Save poor Gliere’s hide. I know you’ll do it speedily and judiciously. The University will certainly pay for your round-trip ticket.” As you leave, you hear footsteps move quickly away from the door. But when you look out, the hallway is empty.",
@@ -1624,7 +1714,20 @@
     },
     "choices": [],
     "traceNumbers": [
-      69, 83, 104, 106, 109, 115, 126, 132, 142, 167, 189, 385, 579, 590
+      "69",
+      "83",
+      "104",
+      "106",
+      "109",
+      "115",
+      "126",
+      "132",
+      "142",
+      "167",
+      "189",
+      "385",
+      "579",
+      "590"
     ]
   },
   "206": {
