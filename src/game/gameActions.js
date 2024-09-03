@@ -343,8 +343,24 @@ function handleComplexOutcome(checkResult) {
     updateHealth(-damage) // Negate the damage since it's harmful
   }
 
+  if (checkResult.sanity) {
+    // Useing parseAndComputeDamage to caluclate sanity damage before updating sanity
+    const sanityDamage = parseAndComputeDamage(checkResult.sanity)
+    updateSanity(-sanityDamage) // Negate the sanity damage since it's harmful
+  }
+
   if (checkResult.message) {
     setTempDescription(checkResult.message)
+  }
+
+  if (checkResult.skills) {
+    Object.keys(checkResult.skills).forEach((skill) => {
+      if (!currentState.skills[skill]) {
+        currentState.skills[skill] = 0
+      }
+
+      currentState.skills[skill] += checkResult.skills[skill]
+    })
   }
 
   displayEntry(checkResult.nextEntry)

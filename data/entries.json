@@ -495,7 +495,11 @@
             "skill": "Language (Latin)",
             "success": {
               "nextEntry": "140",
-              "advanceTime": 2
+              "advanceTime": 2,
+              "skills": {
+                "Cthulhu Mythos": 1
+              },
+              "sanity": 1
             },
             "failure": "41"
           },
@@ -903,6 +907,20 @@
     "title": "MISKATONIC UNIVERSITY",
     "traceNumbers": ["Arkham Location"]
   },
+  "84": {
+    "description": "A chapter notes that the most bizarre case of 'undead' occurred among French Legionnaires in North Africa. Outpost guards were found strangled with flecks of dead, scaly skin still sticking to their throats.",
+    "choices": [
+      {
+        "text": "Continue looking over the books",
+        "nextEntry": "41"
+      },
+      {
+        "text": "Return to the New York Public Library",
+        "nextEntry": "74"
+      }
+    ],
+    "traceNumbers": ["41", "74"]
+  },
   "85": {
     "description": "“Egypt today is an engaging mixture of ancient and modern. Camels and marketplaces are side-by-side with motorcars and luxurious hotels. Religions of various kinds play a special role in Egypt, some of them of a most unusual nature. It is best, for example, to avoid the cult of Aten, a mysterious and perhaps dangerous group found in the major cities of Cairo and Alexandria.”\n\n—Baedeker’s Guide to Egypt",
     "choices": [
@@ -1189,6 +1207,34 @@
       }
     ],
     "traceNumbers": ["60"]
+  },
+  "140": {
+    "description": "You read the following: 'Where is the Lost City of the Old Ones? Where are the treasures of the Eldritch Masters? Cursed are they, condemned by the shoggoths to lie buried, waiting in the ice, for one more turn of Aten’s Top.'",
+    "choices": [
+      {
+        "text": "Make a Language (Hieroglyphics) roll",
+        "effects": {
+          "check": {
+            "skill": "Language (Hieroglyphics)",
+            "success": "157",
+            "failure": {
+              "nextEntry": "41",
+              "choices": [
+                {
+                  "text": "Continue looking over the books",
+                  "nextEntry": "41"
+                },
+                {
+                  "text": "Return to the New York Public Library",
+                  "nextEntry": "74"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["41", "157", "74"]
   },
   "141": {
     "description": "You hear thunderous snores. This room is occupied and can’t be Gliere’s room; you better try a different door.",
