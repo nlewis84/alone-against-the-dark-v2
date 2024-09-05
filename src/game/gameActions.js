@@ -859,18 +859,7 @@ function handleCombatRound(actionType) {
 
   const { opponent } = currentState.combat
 
-  const playerHitMarker = document.getElementById('playerHitMarker')
-  const opponentHitMarker = document.getElementById('opponentHitMarker')
-
-  // Clear previous hit markers
-  if (playerHitMarker) {
-    playerHitMarker.innerText = ''
-    playerHitMarker.style.display = 'none' // Hide initially
-  }
-  if (opponentHitMarker) {
-    opponentHitMarker.innerText = ''
-    opponentHitMarker.style.display = 'none' // Hide initially
-  }
+  clearHitMarkers()
 
   // Player attack
   if (actionType === 'fight') {
@@ -885,17 +874,13 @@ function handleCombatRound(actionType) {
         `Player attacked successfully, new opponent health: ${opponent.health}`,
       )
 
-      // Update and show player hit marker
-      if (playerHitMarker) {
-        playerHitMarker.innerText = `You hit opponent for ${damageToOpponent} damage!`
-        playerHitMarker.style.display = 'block' // Show the marker
-      }
+      updateHitMarker(
+        document.getElementById('playerHitMarker'),
+        `You hit opponent for ${damageToOpponent} damage!`,
+      )
     } else {
       console.log('Player attack failed.')
-      if (playerHitMarker) {
-        playerHitMarker.innerText = 'You missed!'
-        playerHitMarker.style.display = 'block' // Show the marker
-      }
+      updateHitMarker(document.getElementById('playerHitMarker'), 'You missed!')
     }
   }
 
@@ -912,17 +897,16 @@ function handleCombatRound(actionType) {
         `Opponent attacked successfully, new player health: ${currentState.health}`,
       )
 
-      // Update and show opponent hit marker
-      if (opponentHitMarker) {
-        opponentHitMarker.innerText = `Opponent hit you for ${damageToPlayer} damage!`
-        opponentHitMarker.style.display = 'block' // Show the marker
-      }
+      updateHitMarker(
+        document.getElementById('opponentHitMarker'),
+        `Opponent hit you for ${damageToPlayer} damage!`,
+      )
     } else {
       console.log('Opponent attack failed.')
-      if (opponentHitMarker) {
-        opponentHitMarker.innerText = 'Opponent missed!'
-        opponentHitMarker.style.display = 'block' // Show the marker
-      }
+      updateHitMarker(
+        document.getElementById('opponentHitMarker'),
+        'Opponent missed!',
+      )
     }
   }
 
@@ -946,16 +930,7 @@ function handleCombatRound(actionType) {
 }
 
 function endCombat(entry = null) {
-  const playerHitMarker = document.getElementById('playerHitMarker')
-  const opponentHitMarker = document.getElementById('opponentHitMarker')
-  if (playerHitMarker) {
-    playerHitMarker.innerText = ''
-    playerHitMarker.style.display = 'none' // Hide initially
-  }
-  if (opponentHitMarker) {
-    opponentHitMarker.innerText = ''
-    opponentHitMarker.style.display = 'none' // Hide initially
-  }
+  clearHitMarkers() // Clear the hit markers when combat ends
 
   console.log(`Ending combat, transition to entry: ${entry}`)
   currentState.combat.isActive = false // Explicitly mark combat as inactive
@@ -991,5 +966,27 @@ function updateCombatStatus() {
   } else {
     combatStatusContainer.style.display = 'none'
     combatStatusContainer.innerHTML = ''
+  }
+}
+
+function updateHitMarker(markerElement, message) {
+  if (markerElement) {
+    markerElement.innerText = message
+    markerElement.style.display = 'block' // Show the marker
+  }
+}
+
+function clearHitMarkers() {
+  const playerHitMarker = document.getElementById('playerHitMarker')
+  const opponentHitMarker = document.getElementById('opponentHitMarker')
+
+  if (playerHitMarker) {
+    playerHitMarker.innerText = ''
+    playerHitMarker.style.display = 'none' // Hide the marker
+  }
+
+  if (opponentHitMarker) {
+    opponentHitMarker.innerText = ''
+    opponentHitMarker.style.display = 'none' // Hide the marker
   }
 }
