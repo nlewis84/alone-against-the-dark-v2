@@ -1542,16 +1542,16 @@
     "title": "CUNARD SHIP ACTIVITY TABLE",
     "description": "The CUNARD liners are truly luxurious, with spacious rooms in nearly every class, remarkable recreation facilities, and superb cuisine. While you are aboard the liner, suspend hourly record keeping, but keep track of days. Resume hourly record keeping when you disembark at Athens.",
     "schedule": {
-      "firstSunday": 73,
-      "firstMonday": 109,
-      "Tuesday": 126,
-      "Wednesday": 148,
-      "Thursday": 148,
-      "Friday": 192,
-      "Saturday": 193,
-      "secondSunday": 171,
-      "secondMonday": 173,
-      "secondTuesday": 195
+      "firstSunday": "73",
+      "firstMonday": "109",
+      "Tuesday": "126",
+      "Wednesday": "148",
+      "Thursday": "148",
+      "Friday": "192",
+      "Saturday": "193",
+      "secondSunday": "171",
+      "secondMonday": "173",
+      "secondTuesday": "195"
     },
     "specialInstructions": [
       "On the second Monday, you're in Athens: ignore any checks that day if you're continuing to Alexandria. If you disembark at Athens, resume hourly recordkeeping at noon.",

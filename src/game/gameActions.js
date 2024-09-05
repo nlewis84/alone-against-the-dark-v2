@@ -926,6 +926,7 @@ function handleDodgeSuccess(entryId) {
 
 function updateCombatStatus() {
   const combatStatusContainer = document.getElementById('combatStatus')
+
   if (currentState.combat && currentState.combat.isActive) {
     combatStatusContainer.innerHTML = `
       <strong>Opponent: ${currentState.combat.opponent.name}</strong>
