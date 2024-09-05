@@ -116,7 +116,9 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #f0f0f0;
+  background-color: #f8f8f8;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
   border-bottom: 2px solid #d4af37;
   position: sticky;
   top: 0;
@@ -153,6 +155,10 @@ img {
 #date-time {
   display: flex;
   gap: 2rem;
+
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 #calendar {
@@ -176,6 +182,12 @@ img {
   padding-bottom: 0.2rem;
 }
 
+#day-of-week {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.2rem;
+}
+
 #day {
   font-size: 1.5rem;
   font-weight: bold;
@@ -188,11 +200,9 @@ img {
   background-color: #fff;
   font-size: 1.5rem;
   color: #555;
-  text-align: center;
+  align-items: center;
   min-width: 100px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: '100%';
+  height: 50px;
   margin-right: 1rem;
 }

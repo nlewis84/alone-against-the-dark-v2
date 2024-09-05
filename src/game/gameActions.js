@@ -21,13 +21,18 @@ function updateCalendarAndTimeDisplay(date, timeString) {
 
   const dayElement = document.getElementById('day')
   const calendarHeaderElement = document.getElementById('calendar-header')
+  const dayOfWeekElement = document.getElementById('day-of-week') // New element for the day of the week
+
   if (dayElement) {
     dayElement.innerText = date.getDate()
   }
+
   if (calendarHeaderElement) {
-    calendarHeaderElement.innerText = `${date.toLocaleString('default', {
-      month: 'short',
-    })} ${date.getFullYear()}`
+    calendarHeaderElement.innerText = `${date.toLocaleString('default', { month: 'short' })} ${date.getFullYear()}`
+  }
+
+  if (dayOfWeekElement) {
+    dayOfWeekElement.innerText = `${date.toLocaleString('default', { weekday: 'long' })}` // Display the day of the week
   }
 }
 
