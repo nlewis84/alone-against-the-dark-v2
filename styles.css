@@ -266,3 +266,37 @@ img {
   color: #1c4f2b;
   border-color: rgba(0, 255, 0, 0.5); /* Green border to match text */
 }
+
+#healthMarker,
+#sanityMarker,
+#skillCheckMarker {
+  font-size: 1.25rem; /* Slightly increased font size */
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid #d4af37;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 10px;
+  display: none; /* Hidden by default */
+  text-transform: uppercase;
+}
+
+#healthMarker {
+  background-color: rgba(255, 0, 0, 0.1); /* Slightly muted red for health */
+  color: #b0382f;
+}
+
+#sanityMarker {
+  background-color: rgba(0, 0, 255, 0.1); /* Slightly muted blue for sanity */
+  color: #2f4fb0;
+}
+
+#skillCheckMarker {
+  background-color: rgba(
+    255,
+    255,
+    0,
+    0.1
+  ); /* Slightly muted yellow for skill checks */
+  color: #b0a02f;
+}

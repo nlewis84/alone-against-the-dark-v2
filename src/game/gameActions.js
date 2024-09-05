@@ -11,7 +11,7 @@ import {
   getCurrentLocale,
 } from './gameState.js'
 import { saveState, loadState } from '../utils/storage.js'
-import { rollDice, makeSkillCheck } from '../utils/dice.js'
+import { rollDice, makeSkillCheck, updateMarker } from '../utils/dice.js'
 
 function updateCalendarAndTimeDisplay(date, timeString) {
   const clockElement = document.getElementById('clock')
@@ -261,6 +261,7 @@ function handleEntryChoices(entryId, entry) {
             }
 
             if (choice.effects.dayAdvance !== undefined) {
+              console.log(getCurrentDate(), choice.effects.dayAdvance)
               currentDate.setDate(
                 currentDate.getDate() + choice.effects.dayAdvance,
               )
@@ -568,11 +569,27 @@ export function updateHealth(amount) {
     currentState.health = Math.min(currentState.health + amount, 100)
   }
   document.getElementById('health').innerText = `Health: ${currentState.health}`
+
+  const message =
+    amount > 0
+      ? `Health increased by ${amount}`
+      : `Health decreased by ${Math.abs(amount)}`
+  if (amount !== 0) {
+    updateMarker('healthMarker', message)
+  }
 }
 
 export function updateSanity(amount) {
   currentState.sanity += amount
   document.getElementById('sanity').innerText = `Sanity: ${currentState.sanity}`
+
+  const message =
+    amount > 0
+      ? `Sanity increased by ${amount}`
+      : `Sanity decreased by ${Math.abs(amount)}`
+  if (amount !== 0) {
+    updateMarker('sanityMarker', message)
+  }
 }
 
 export function addItem(item) {

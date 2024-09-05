@@ -34,5 +34,25 @@ export function makeSkillCheck(skill, skills, stats, difficulty = 'normal') {
   if (difficulty === 'hard') difficultyModifier = 0.5
   if (difficulty === 'extreme') difficultyModifier = 0.2
   const diceRoll = rollDice(100)
+
+  // Construct roll message and result message
+  const rollMessage = `Rolled ${diceRoll} against a modified skill value of ${skillValue * difficultyModifier}`
+  const resultMessage = success ? 'Skill check passed!' : 'Skill check failed!'
+
+  // Update the skill check marker with the roll result and outcome
+  updateMarker('skillCheckMarker', `${rollMessage}. ${resultMessage}`)
+
   return diceRoll <= skillValue * difficultyModifier
+}
+
+export function updateMarker(markerId, message) {
+  const marker = document.getElementById(markerId)
+  console.log(markerId, message, marker)
+  if (marker) {
+    marker.innerText = message
+    marker.style.display = 'block' // Show the marker
+    setTimeout(() => {
+      marker.style.display = 'none' // Hide the marker after a delay
+    }, 3000) // Hide after 3 seconds
+  }
 }
