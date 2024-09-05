@@ -26,6 +26,13 @@ button {
   margin-top: 2rem;
 }
 
+#game strong {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  display: block;
+}
+
 /* Custom text styles */
 #description,
 #choices {
