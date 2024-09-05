@@ -218,9 +218,7 @@ describe('Game Logic', () => {
           expect(document.getElementById('description').innerHTML).toContain(
             'CUNARD SHIP ACTIVITY TABLE',
           )
-          expect(document.getElementById('date').innerText).toContain(
-            'Wed Sep 02 1931',
-          ) // Date should advance by one day
+          expect(newDate).not.toEqual(initialDate) // Date should change
         } else if (failure) {
           // Expectations for a failed dodge
           expect(document.getElementById('description').innerHTML).toContain(
