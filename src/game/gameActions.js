@@ -859,25 +859,51 @@ function handleCombatRound(actionType) {
 
   const { opponent } = currentState.combat
 
+  const playerHitMarker = document.getElementById('playerHitMarker')
+  const opponentHitMarker = document.getElementById('opponentHitMarker')
+
+  // Clear previous hit markers
+  if (playerHitMarker) {
+    playerHitMarker.innerText = ''
+    playerHitMarker.style.display = 'none' // Hide initially
+  }
+  if (opponentHitMarker) {
+    opponentHitMarker.innerText = ''
+    opponentHitMarker.style.display = 'none' // Hide initially
+  }
+
+  // Player attack
   if (actionType === 'fight') {
     let playerAttackSuccess =
       rollDice(100) <=
       parseInt(currentState.skills['Firearms (Handgun)'] || 50, 10)
+
     if (playerAttackSuccess) {
       const damageToOpponent = parseAndComputeDamage(opponent.damage)
       opponent.health -= damageToOpponent
       console.log(
         `Player attacked successfully, new opponent health: ${opponent.health}`,
-        `damage was ${damageToOpponent}`,
       )
+
+      // Update and show player hit marker
+      if (playerHitMarker) {
+        playerHitMarker.innerText = `You hit opponent for ${damageToOpponent} damage!`
+        playerHitMarker.style.display = 'block' // Show the marker
+      }
     } else {
       console.log('Player attack failed.')
+      if (playerHitMarker) {
+        playerHitMarker.innerText = 'You missed!'
+        playerHitMarker.style.display = 'block' // Show the marker
+      }
     }
   }
 
+  // Opponent attack (if it's not the start of the combat)
   if (actionType !== 'start') {
     let opponentAttackSuccess =
       rollDice(100) <= parseInt(opponent.attackChance, 10)
+
     if (opponentAttackSuccess) {
       const damageToPlayer = parseAndComputeDamage(opponent.damage)
       currentState.health -= damageToPlayer
@@ -885,11 +911,22 @@ function handleCombatRound(actionType) {
       console.log(
         `Opponent attacked successfully, new player health: ${currentState.health}`,
       )
+
+      // Update and show opponent hit marker
+      if (opponentHitMarker) {
+        opponentHitMarker.innerText = `Opponent hit you for ${damageToPlayer} damage!`
+        opponentHitMarker.style.display = 'block' // Show the marker
+      }
     } else {
-      console.log('oponnent attack failed.')
+      console.log('Opponent attack failed.')
+      if (opponentHitMarker) {
+        opponentHitMarker.innerText = 'Opponent missed!'
+        opponentHitMarker.style.display = 'block' // Show the marker
+      }
     }
   }
 
+  // Check for end of combat
   if (currentState.health <= 0) {
     console.log('Player defeated, handling loss.')
     endCombat(currentState.combat.outcome.lose)
@@ -900,6 +937,7 @@ function handleCombatRound(actionType) {
     return
   }
 
+  // Update combat status if still active
   if (currentState.combat.isActive) {
     updateCombatStatus()
   } else {
@@ -908,6 +946,17 @@ function handleCombatRound(actionType) {
 }
 
 function endCombat(entry = null) {
+  const playerHitMarker = document.getElementById('playerHitMarker')
+  const opponentHitMarker = document.getElementById('opponentHitMarker')
+  if (playerHitMarker) {
+    playerHitMarker.innerText = ''
+    playerHitMarker.style.display = 'none' // Hide initially
+  }
+  if (opponentHitMarker) {
+    opponentHitMarker.innerText = ''
+    opponentHitMarker.style.display = 'none' // Hide initially
+  }
+
   console.log(`Ending combat, transition to entry: ${entry}`)
   currentState.combat.isActive = false // Explicitly mark combat as inactive
   updateCombatStatus() // Update any UI or status indicators
