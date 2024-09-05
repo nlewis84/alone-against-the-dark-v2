@@ -13,8 +13,27 @@ import {
 import { saveState, loadState } from '../utils/storage.js'
 import { rollDice, makeSkillCheck } from '../utils/dice.js'
 
+function updateCalendarAndTimeDisplay(date, timeString) {
+  const clockElement = document.getElementById('clock')
+  if (clockElement) {
+    clockElement.innerText = `${timeString}`
+  }
+
+  const dayElement = document.getElementById('day')
+  const calendarHeaderElement = document.getElementById('calendar-header')
+  if (dayElement) {
+    dayElement.innerText = date.getDate()
+  }
+  if (calendarHeaderElement) {
+    calendarHeaderElement.innerText = `${date.toLocaleString('default', {
+      month: 'short',
+    })} ${date.getFullYear()}`
+  }
+}
+
 export function updateTime(hours, setHour = null, timeSuffix = null) {
   const date = getCurrentDate()
+
   if (setHour !== null) {
     date.setHours(setHour)
   } else {
@@ -26,10 +45,9 @@ export function updateTime(hours, setHour = null, timeSuffix = null) {
   let suffix = timeSuffix || (hour >= 12 ? 'PM' : 'AM')
   hour = hour % 12
   hour = hour ? hour : 12 // Convert hour '0' to '12'
-  let timeString = `${hour}:00 ${suffix}`
 
-  document.getElementById('date').innerText =
-    `Date: ${date.toDateString()}, Time: ${timeString}`
+  const timeString = `${hour}:00 ${suffix}`
+  updateCalendarAndTimeDisplay(date, timeString)
 }
 
 function createButton(text, className, onClick) {

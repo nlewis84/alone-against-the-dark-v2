@@ -8,18 +8,32 @@
   </head>
   <body>
     <div id="header">
-      <div id="user-stats">
-        <span id="health">Health: 100</span>
-        <span id="sanity">Sanity: 100</span>
-        <div id="combatStatus"></div>
-        <span id="inventory">Inventory: .22 Short Automatic, Machete</span>
-        <span id="date">Date: Tue Sep 01 1931, Time: 1:00 PM</span>
+      <div id="stats">
+        <div class="stat-container">
+          <div class="stat-label">Health</div>
+          <div class="health" id="health">100</div>
+        </div>
+        <div class="stat-container">
+          <div class="stat-label">Sanity</div>
+          <div class="sanity" id="sanity">100</div>
+        </div>
+      </div>
+      <div id="combatStatus"></div>
+
+      <div id="date-time">
+        <div id="calendar">
+          <!-- Calendar styled date -->
+          <div id="calendar-header">Sep 1931</div>
+          <div id="day">2</div>
+        </div>
+        <div id="clock"></div>
       </div>
       <div>
         <button id="saveButton">Save Game</button>
         <button id="loadButton">Load Game</button>
       </div>
     </div>
+    <span id="inventory">Inventory: .22 Short Automatic, Machete</span>
     <div id="game">
       <div id="description"></div>
       <div id="imageContainer"></div>

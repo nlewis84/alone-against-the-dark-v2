@@ -66,8 +66,8 @@ button:nth-child(2n + 2) {
 }
 
 #choices button:hover {
-  background-color: #b38e2e; /* Darker gold on hover */
-  border-color: #a07c27; /* Even darker gold border on hover */
+  background-color: #b38e2e;
+  border-color: #a07c27;
 }
 
 #saveButton,
@@ -95,18 +95,104 @@ button:nth-child(2n + 2) {
 #imageContainer {
   max-width: 100%;
   margin-bottom: 1.5rem;
-  border: 2px solid #ccc; /* Light grey border, adjust color as needed */
-  background: #f0f0f0; /* Light background, adjust color as needed */
-  padding: 10px; /* Adds space inside the container, around the image */
-  margin: 20px auto; /* Centers the container and adds space around it */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  max-width: 50%; /* Limits the size and ensures it doesn't get too large */
-  border-radius: 10px; /* Rounded corners */
+  border: 2px solid #ccc;
+  background: #f0f0f0;
+  padding: 10px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 50%;
+  border-radius: 10px;
 }
 
 img {
-  display: block; /* Removes bottom margin/gap */
-  width: 100%; /* Makes the image expand to fill the container */
-  height: auto; /* Keeps the image ratio intact */
-  border-radius: 8px; /* Rounded corners for the image itself if desired */
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-bottom: 2px solid #d4af37;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+#stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat-container {
+  text-align: center;
+  border: 2px solid #d4af37;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: #fff;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #555;
+  border-bottom: 1px solid #d4af37;
+  margin-bottom: 0.3rem;
+  width: 100%;
+  padding-bottom: 0.2rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#date-time {
+  display: flex;
+  gap: 2rem;
+}
+
+#calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 2px solid #d4af37;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: #fff;
+}
+
+#calendar-header {
+  font-size: 0.9rem;
+  color: #555;
+  border-bottom: 1px solid #d4af37;
+  margin-bottom: 0.3rem;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 0.2rem;
+}
+
+#day {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#clock {
+  border: 2px solid #d4af37;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: #fff;
+  font-size: 1.5rem;
+  color: #555;
+  text-align: center;
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: '100%';
+  margin-right: 1rem;
 }
