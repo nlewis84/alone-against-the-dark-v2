@@ -2047,7 +2047,8 @@
             },
             "win": "187",
             "lose": "end"
-          }
+          },
+          "advanceTime": 0
         }
       }
     ]

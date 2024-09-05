@@ -502,7 +502,10 @@ function isWithinHours(currentHour, hours) {
 
 export function makeChoice(nextEntry, effects) {
   const timeChange = effects && effects.time !== undefined ? effects.time : 1
-  updateTime(timeChange)
+  if (effects && !effects?.combat) {
+    updateTime(timeChange)
+  }
+
   if (nextEntry !== 'previousEntry') {
     setPreviousEntry(currentState.currentEntry)
   }
@@ -554,16 +557,17 @@ export function makeChoice(nextEntry, effects) {
 }
 
 export function updateHealth(amount) {
-  // only do this if you currentState.health is less thatn 100 and don't go over 100
-  if (currentState.health < 100 && currentState.health + amount <= 100) {
+  // Only adjust if there is actual damage (negative values)
+  if (amount < 0) {
     currentState.health += amount
-    document.getElementById('health').innerText =
-      `Health: ${currentState.health}`
-  } else if (currentState.health + amount >= 100) {
-    currentState.health = 100
-    document.getElementById('health').innerText =
-      `Health: ${currentState.health}`
+    if (currentState.health < 0) {
+      currentState.health = 0 // Prevent health from going negative
+    }
+  } else if (amount > 0) {
+    // Handle healing but cap it at 100
+    currentState.health = Math.min(currentState.health + amount, 100)
   }
+  document.getElementById('health').innerText = `Health: ${currentState.health}`
 }
 
 export function updateSanity(amount) {
@@ -854,9 +858,6 @@ function handleCombatRound(actionType) {
   }
 
   const { opponent } = currentState.combat
-  console.log(
-    `Handling combat round: ${actionType}, Opponent Health: ${opponent.health}`,
-  )
 
   if (actionType === 'fight') {
     let playerAttackSuccess =
@@ -867,7 +868,10 @@ function handleCombatRound(actionType) {
       opponent.health -= damageToOpponent
       console.log(
         `Player attacked successfully, new opponent health: ${opponent.health}`,
+        `damage was ${damageToOpponent}`,
       )
+    } else {
+      console.log('Player attack failed.')
     }
   }
 
@@ -881,6 +885,8 @@ function handleCombatRound(actionType) {
       console.log(
         `Opponent attacked successfully, new player health: ${currentState.health}`,
       )
+    } else {
+      console.log('oponnent attack failed.')
     }
   }
 

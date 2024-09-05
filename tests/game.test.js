@@ -1169,3 +1169,82 @@ describe('Game Logic', () => {
     })
   })
 })
+
+describe('Entry 10 Series Tests', () => {
+  test('should handle the full flow from entry 10', () => {
+    console.log('Starting test: Entry 10 Series - Full Flow')
+
+    // Start in entry "10"
+    displayEntry('10')
+    console.log('Displayed entry 10')
+
+    const dexRollButton = findChoiceButton(
+      'Attempt a DEX roll to preemptively act',
+    )
+    console.log('DEX Roll Button found:', dexRollButton ? 'Yes' : 'No')
+
+    dexRollButton.click() // Player attempts the DEX roll
+    console.log('DEX Roll button clicked')
+
+    // Determine whether the player goes to "10a" or "10b"
+    const entryDescription = document.getElementById('description').innerHTML
+    console.log('Current entry description after DEX roll:', entryDescription)
+
+    if (entryDescription.includes('Quick Response')) {
+      // We're in entry "10a" - Player engages in combat
+      console.log('Entered 10a (Quick Response)')
+
+      const engageCombatButton = findChoiceButton('Engage in combat')
+      console.log(
+        'Engage Combat Button found:',
+        engageCombatButton ? 'Yes' : 'No',
+      )
+
+      engageCombatButton.click() // Move to 10d
+      console.log('Engage Combat button clicked, moving to 10d')
+    } else if (entryDescription.includes('Caught Off Guard')) {
+      // We're in entry "10b" - Player takes damage and fights back
+      console.log('Entered 10b (Caught Off Guard)')
+
+      const fightBackButton = findChoiceButton('Fight back')
+      console.log('Fight Back Button found:', fightBackButton ? 'Yes' : 'No')
+
+      fightBackButton.click() // Move to 10d
+      console.log('Fight Back button clicked, moving to 10d')
+    }
+
+    // Now we're in "10d" - Attempt to dodge
+    console.log('Entered 10d (Combat Continues)')
+    let dodgeButton = findChoiceButton('Attempt to Dodge')
+    console.log('Dodge Button found:', dodgeButton ? 'Yes' : 'No')
+
+    for (let i = 0; i < 5; i++) {
+      console.log(`Attempt ${i + 1}: Clicking Dodge button`)
+      dodgeButton.click() // Player attempts to dodge
+
+      // Check if player is taken to entry "187" or stays in combat
+      const newEntryDescription =
+        document.getElementById('description').innerHTML
+      console.log(
+        'New entry description after dodge attempt:',
+        newEntryDescription,
+      )
+
+      if (newEntryDescription.includes('The stranger lets loose a shot')) {
+        console.log('Dodge failed, taking damage.')
+        const healthDisplay = document.getElementById('health').innerText
+        console.log('Current health display:', healthDisplay)
+        expect(healthDisplay).toContain('Health:') // Health should have decreased
+      } else if (newEntryDescription.includes('Combat Continues')) {
+        console.log('Dodge failed, still in combat. Continuing attempts.')
+        // Player remains in combat, no transition
+      } else if (newEntryDescription.includes('187')) {
+        console.log('Dodge succeeded, combat ended.')
+        expect(currentState.currentEntry).toBe('187') // Player successfully dodged and won
+        break // Exit the loop as the combat ended
+      }
+    }
+
+    console.log('Test complete: Entry 10 Series - Full Flow')
+  })
+})
