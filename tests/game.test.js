@@ -508,7 +508,6 @@ describe('Game Logic', () => {
     beforeEach(() => {
       // Setting up a consistent initial health state for testing.
       currentState.health = 50
-      currentState.maxHealth = 100 // Assuming max health is 100 for simplicity.
     })
 
     test('should fail the fullHealth requirement if health is not max', () => {
@@ -517,7 +516,7 @@ describe('Game Logic', () => {
     })
 
     test('should pass the fullHealth requirement if health is max', () => {
-      currentState.health = currentState.maxHealth // Set health to max
+      currentState.health = 100
       const requirements = { fullHealth: true }
       expect(checkRequirements(requirements)).toBe(true)
     })
@@ -528,7 +527,7 @@ describe('Game Logic', () => {
     })
 
     test('should fail the notFullHealth requirement if health is max', () => {
-      currentState.health = currentState.maxHealth // Set health to max
+      currentState.health = 100
       const requirements = { notFullHealth: true }
       expect(checkRequirements(requirements)).toBe(false)
     })
@@ -561,7 +560,6 @@ describe('Game Logic', () => {
   describe('Health Requirement Checks', () => {
     test('Navigate to 585_exit if health is full', () => {
       currentState.health = 100
-      currentState.maxHealth = 100
 
       displayEntry('585')
       expect(checkRequirements({ fullHealth: true })).toBe(true)
@@ -573,13 +571,28 @@ describe('Game Logic', () => {
 
     test('Stay another day if health is not full', () => {
       currentState.health = 95
-      currentState.maxHealth = 100
 
       displayEntry('585a') // Assuming 585a allows staying another day
       expect(checkRequirements({ notFullHealth: true })).toBe(true)
       expect(document.getElementById('description').innerHTML).toContain(
         'You feel much better but can still recover more.',
       )
+    })
+
+    test('Expect 585 to not have Make a Luck roll button if health is full', () => {
+      currentState.health = 100
+
+      displayEntry('585')
+
+      let choices = Array.from(document.getElementById('choices').children)
+      expect(choices.length === 1)
+
+      currentState.health = 98
+
+      displayEntry('585')
+
+      let choices2 = Array.from(document.getElementById('choices').children)
+      expect(choices2.length === 2)
     })
   })
 

@@ -1935,9 +1935,6 @@
       },
       {
         "text": "Leave the hospital",
-        "requirements": {
-          "fullHealth": true
-        },
         "nextEntry": "585_exit"
       }
     ],

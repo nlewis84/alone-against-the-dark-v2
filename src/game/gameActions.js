@@ -261,7 +261,6 @@ function handleEntryChoices(entryId, entry) {
             }
 
             if (choice.effects.dayAdvance !== undefined) {
-              console.log(getCurrentDate(), choice.effects.dayAdvance)
               currentDate.setDate(
                 currentDate.getDate() + choice.effects.dayAdvance,
               )
@@ -689,12 +688,12 @@ export function checkRequirements(requirements) {
       }
     }
     if (requirements.fullHealth) {
-      if (currentState.health < currentState.maxHealth) {
+      if (currentState.health < 100) {
         return false
       }
     }
     if (requirements.notFullHealth) {
-      if (currentState.health >= currentState.maxHealth) {
+      if (currentState.health === 100) {
         return false
       }
     }
