@@ -1,46 +1,45 @@
-# Alone Against the Dark v2
+# 🌑 **Alone Against the Dark v2**
 
-## Overview
+## 🕯️ Overview
 
-"Alone Against the Dark v2" is an interactive, web-based choose-your-own-adventure game inspired by the rich mythos of Call of Cthulhu. Players navigate through a series of scenarios and make choices that will determine their fate in the face of cosmic horrors.
+_Alone Against the Dark v2_ is an interactive, web-based choose-your-own-adventure game inspired by the rich mythos of **Call of Cthulhu**. Players navigate through a series of scenarios and make choices that determine their fate in the face of cosmic horrors.
 
-## Features
+## ⚙️ Features
 
-- Interactive choose-your-own-adventure gameplay.
-- Rich narrative inspired by the Call of Cthulhu universe.
-- Dynamic outcomes based on player choices.
+- 🎮 **Interactive gameplay**: Make choices that impact the story and your survival.
+- 📜 **Rich narrative**: Inspired by the cosmic horror of the Call of Cthulhu universe.
+- 🔄 **Dynamic outcomes**: Your choices shape the world around you.
 
-## Getting Started
+## 🚀 Getting Started
 
-### Prerequisites
+### 💻 Prerequisites
 
-To run the game, you'll need:
+Ensure you have the following to run the game:
 
-- A modern web browser that supports HTML5, CSS3, and JavaScript.
+- A modern web browser (supports HTML5, CSS3, and JavaScript).
 
-### Running the Game
+### ▶️ Running the Game
 
-To start playing "Alone Against the Dark v2," follow these simple steps:
+To start playing _Alone Against the Dark v2_, follow these steps:
 
 1. **Open `index.html`:**
 
    - Locate the `index.html` file in the project directory.
    - Open `index.html` in your web browser to start the game.
 
-   Alternatively, for a better development experience with hot refresh:
+2. **Optional - Live Server**:
+   - For a better development experience:
+     - Install the "Live Server" extension in your code editor (**recommended for VS Code**).
+     - Right-click on `index.html` and select "Open with Live Server".
+     - This allows hot refresh, automatically reloading the game when changes are detected.
 
-   - Install the "Live Server" extension in your code editor (recommended for Visual Studio Code users).
-   - Right-click on the `index.html` file and select "Open with Live Server".
-   - This will launch the game in your default web browser and enable hot refresh, automatically reloading the game when changes to the files are detected.
+### 🔧 Utility Scripts
 
-### Utility Scripts
+#### 📝 Sorting JSON Data
 
-#### Sorting JSON Data
+The project includes a script to sort `entries.json`, maintaining the structured format of the game entries.
 
-The project includes a utility script to sort `entries.json`, which helps in maintaining the structured format of game entries.
-
-- **Node.js Script:**
-  To run the sorting script, execute the following command in your terminal:
+- **To Run the Sorting Script:**
 
   ```bash
   node scripts/sortJson.js
