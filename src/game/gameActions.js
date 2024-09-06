@@ -393,14 +393,31 @@ function handleComplexOutcome(checkResult) {
 
 function handleSpecialEntry38(choicesContainer) {
   const weaponCategories = ['Handguns', 'Rifles', 'SMGs', 'Shotguns', 'Melee']
+
+  // Filter the inventory to only include weapons
+  const inventoryWeapons = currentState.inventory.filter((item) =>
+    weaponCategories.some((category) =>
+      gameData.weapons[category].some((weapon) => weapon.name === item.name),
+    ),
+  )
+
   weaponCategories.forEach((category) => {
     gameData.weapons[category].forEach((weapon) => {
-      if (hasSkill(weapon.skill)) {
+      // Only display the weapon if the player has the required skill and doesn't already own it
+      if (
+        hasSkill(weapon.skill) &&
+        !inventoryWeapons.some((invWeapon) => invWeapon.name === weapon.name)
+      ) {
         const weaponButton = createButton(
           `Buy ${weapon.name}`,
           'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
           () => {
             addItem(weapon)
+
+            // Remove the button immediately after purchase
+            weaponButton.remove()
+
+            // Re-display the current locale
             displayEntry(getCurrentLocale())
           },
         )
