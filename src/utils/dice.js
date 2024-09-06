@@ -36,23 +36,41 @@ export function makeSkillCheck(skill, skills, stats, difficulty = 'normal') {
   const diceRoll = rollDice(100)
   const success = diceRoll <= skillValue * difficultyModifier
   // Construct roll message and result message
-  const rollMessage = `Rolled ${diceRoll} against a ${skill} value of ${skillValue * difficultyModifier}`
-  const resultMessage = success ? 'Skill check passed!' : 'Skill check failed!'
+  const rollMessage = `${diceRoll}`
+  const resultMessage = success ? 'Pass' : 'Fail'
 
   // Update the skill check marker with the roll result and outcome
-  updateMarker('skillCheckMarker', `${rollMessage}. ${resultMessage}`)
+  updateMarker('skillCheckMarker', `${rollMessage} ${resultMessage}`)
 
   return success
 }
 
 export function updateMarker(markerId, message) {
-  const marker = document.getElementById(markerId)
+  const markers = document.querySelectorAll(
+    '#healthMarker, #sanityMarker, #skillCheckMarker',
+  )
 
+  // Hide all other markers
+  markers.forEach((marker) => {
+    marker.style.opacity = '0' // Set opacity to 0 to fade out
+    marker.style.display = 'none' // Make sure it's hidden
+  })
+
+  // Display the new marker
+  const marker = document.getElementById(markerId)
   if (marker) {
     marker.innerText = message
-    marker.style.display = 'block'
+    marker.style.opacity = '1' // Fade in
+    marker.style.display = 'block' // Make sure it's visible
+
+    // Fade out after 6 seconds
+    setTimeout(() => {
+      marker.style.opacity = '0' // Fade out
+    }, 6000)
+
+    // Hide after the transition is complete
     setTimeout(() => {
       marker.style.display = 'none'
-    }, 6000)
+    }, 7000)
   }
 }

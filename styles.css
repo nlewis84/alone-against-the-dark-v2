@@ -270,33 +270,33 @@ img {
 #healthMarker,
 #sanityMarker,
 #skillCheckMarker {
-  font-size: 1.25rem; /* Slightly increased font size */
+  font-size: 1.25rem;
   font-weight: bold;
   text-align: center;
   border: 2px solid #d4af37;
   border-radius: 5px;
   margin: 10px 0;
   padding: 10px;
-  display: none; /* Hidden by default */
+  opacity: 0; /* Initially hidden via opacity */
+  transition: opacity 1s ease-in-out; /* Smooth transition */
   text-transform: uppercase;
+  position: fixed;
+  bottom: 20px; /* For the floating effect */
+  right: 20px;
+  z-index: 100;
 }
 
 #healthMarker {
-  background-color: rgba(255, 0, 0, 0.1); /* Slightly muted red for health */
+  background-color: rgba(255, 0, 0, 0.1);
   color: #b0382f;
 }
 
 #sanityMarker {
-  background-color: rgba(0, 0, 255, 0.1); /* Slightly muted blue for sanity */
+  background-color: rgba(0, 0, 255, 0.1);
   color: #2f4fb0;
 }
 
 #skillCheckMarker {
-  background-color: rgba(
-    255,
-    255,
-    0,
-    0.1
-  ); /* Slightly muted yellow for skill checks */
-  color: #b0a02f;
+  background-color: rgba(255, 255, 0, 0.1);
+  color: #7e7322;
 }
