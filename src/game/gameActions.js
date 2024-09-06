@@ -575,7 +575,11 @@ export function updateHealth(amount) {
       ? `Health increased by ${amount}`
       : `Health decreased by ${Math.abs(amount)}`
   if (amount !== 0) {
-    updateMarker('healthMarker', message)
+    if (currentState.health === 100) {
+      updateMarker('healthMarker', 'Health fully restored!')
+    } else {
+      updateMarker('healthMarker', message)
+    }
   }
 }
 
