@@ -655,15 +655,16 @@ export function addItem(item) {
 }
 
 export function updateInventory() {
-  let inventoryText = 'Inventory: '
+  let inventoryHTML = '<ul>' // Start the unordered list
   currentState.inventory.forEach((item) => {
     if (item.type === 'book') {
-      inventoryText += `${item.name} (Book) `
+      inventoryHTML += `<li>${item.name} (Book)</li>`
     } else {
-      inventoryText += `${item}`
+      inventoryHTML += `<li>${item}</li>`
     }
   })
-  document.getElementById('inventory').innerText = inventoryText.trim()
+  inventoryHTML += '</ul>' // Close the unordered list
+  document.getElementById('inventory').innerHTML = inventoryHTML.trim()
 }
 
 // Save game state to localStorage

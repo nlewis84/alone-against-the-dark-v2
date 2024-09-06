@@ -23,7 +23,7 @@ button {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 6rem;
 }
 
 #game strong {
@@ -129,7 +129,7 @@ img {
   border-bottom: 2px solid #d4af37;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 999;
 }
 
 #stats {
@@ -299,4 +299,108 @@ img {
 #skillCheckMarker {
   background-color: rgba(255, 255, 0, 0.1);
   color: #7e7322;
+}
+
+/* Styles for the Inventory Side Panel */
+#inventoryPanel {
+  position: fixed;
+  right: -350px; /* Increase this value to ensure it's fully hidden */
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #d4af37;
+  padding: 1.5rem;
+  box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  transition: right 0.4s ease-in-out;
+}
+
+#inventoryPanel.open {
+  right: 0; /* Slides in */
+}
+
+#inventoryPanel h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.7rem;
+  font-weight: 500;
+  text-transform: uppercase; /* Use uppercase to match other buttons */
+  margin-bottom: 1.5rem;
+  color: #fff; /* Contrasting white for clarity */
+}
+
+#inventoryPanel ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#inventoryPanel ul li {
+  background-color: rgba(255, 255, 255, 0.2); /* Lightened background */
+  padding: 0.75rem; /* Increased padding */
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Slightly stronger border */
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem; /* Increased font size */
+  color: #333; /* Darker text color for better contrast */
+  font-weight: bold; /* Make text bold for readability */
+  letter-spacing: 0.5px; /* Slight letter-spacing for clarity */
+}
+
+#inventoryPanel ul li:hover {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.4
+  ); /* Hover effect to make it interactive */
+}
+
+#inventoryPanel ul li::before {
+  content: '•'; /* Could also be an icon from Font Awesome or similar */
+  font-size: 1.5rem;
+  color: #fff; /* Matching color */
+  margin-right: 10px;
+}
+
+#inventoryPanel {
+  padding: 0rem 1.5rem; /* Add more padding for a balanced layout */
+}
+
+#closeInventory {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  background: #b38e2e; /* Match the button color scheme */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+#closeInventory:hover {
+  background-color: #a07c27;
+}
+
+#inventoryButton {
+  position: absolute;
+  right: 1.5rem;
+  top: 10rem; /* Just below the header */
+  background-color: #d4af37;
+  color: black;
+  border: 2px solid #b38e2e;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+#inventoryButton:hover {
+  background-color: #b38e2e;
 }

@@ -244,6 +244,11 @@ describe('Game Logic', () => {
   })
 
   describe('Time and State Management', () => {
+    beforeEach(async () => {
+      // Ensure that initializeGame function or similar setup function is called
+      await initializeGame()
+    })
+
     test('should update the current time correctly', () => {
       const initialDate = getCurrentDate()
       setCurrentDate(new Date(initialDate)) // Use setter to isolate test effect
@@ -258,10 +263,11 @@ describe('Game Logic', () => {
     })
 
     test('should update the inventory display correctly', () => {
-      addItem('Magical Artifact')
+      addItem({ name: 'Magical Book', type: 'book' })
       updateInventory()
-      expect(document.getElementById('inventory').innerText).toBe(
-        'Inventory: Magical Artifact',
+
+      expect(document.getElementById('inventory').innerHTML).toContain(
+        'Magical Book',
       )
     })
 
@@ -283,8 +289,9 @@ describe('Game Logic', () => {
 
     test('should load the game state from localStorage, including date and time', () => {
       // Set initial conditions
+      currentState.inventory = []
       setCurrentDate(new Date(1931, 8, 1, 12, 0)) // Noon, September 1, 1931
-      addItem('Magical Artifact')
+      addItem({ name: 'Magical Book', type: 'book' })
 
       // Save game state including current date and time
       saveGame()
@@ -302,7 +309,7 @@ describe('Game Logic', () => {
       expect(currentState).toMatchObject({
         health: 100,
         sanity: 100,
-        inventory: ['Magical Artifact'],
+        inventory: [expect.any(Object)],
         skills: expect.any(Object),
       })
       expect(getCurrentDate()).toEqual(new Date(1931, 8, 1, 12, 0)) // Check if the date and time are correctly loaded

@@ -32,6 +32,16 @@
         <button id="saveButton">Save Game</button>
         <button id="loadButton">Load Game</button>
       </div>
+      <button id="inventoryButton" class="inventory-btn">Inventory</button>
+    </div>
+
+    <!-- Inventory Side Panel -->
+    <div id="inventoryPanel" class="inventory-panel open">
+      <div class="inventory-header">
+        <h2>Inventory</h2>
+        <button id="closeInventory" class="close-btn">X</button>
+      </div>
+      <div id="inventory" class="inventory-content"></div>
     </div>
 
     <div id="combatStatus">
@@ -44,7 +54,6 @@
     <div id="sanityMarker"></div>
     <div id="skillCheckMarker"></div>
 
-    <span id="inventory">Inventory: .22 Short Automatic, Machete</span>
     <div id="game">
       <div id="description"></div>
       <div id="imageContainer"></div>
