@@ -841,6 +841,26 @@
     ],
     "traceNumbers": ["74"]
   },
+  "86": {
+    "title": "NEW YORK SUN",
+    "description": "“The oft-delayed Starkweather-Moore expedition to the Antarctic nears completion, with a late December departure now virtually certain. Bremerhaven, Germany, will be the expedition’s jumping-off point, and its last European port of call.”\n\n“An American professor, Dr. Tibor Gliere of Miskatonic University, has been arrested for the alleged theft of an antiquity. Miskatonic’s Dean Wilcox reports that a colleague, Professor Louis Grunewald, has gone to Athens to investigate the matter for the University.”",
+    "choices": [
+      {
+        "text": "There's more to learn here.",
+        "requirements": {
+          "dateAfter": "1931-09-08"
+        },
+        "nextEntry": "95"
+      },
+      {
+        "text": "Go to any New York Location.",
+        "requirements": {
+          "dateBefore": "1931-09-08"
+        },
+        "nextEntry": "New York Location"
+      }
+    ]
+  },
   "88": {
     "description": "While formerly fashionable, avant-garde has become politically suspect. The occult is faddish with many of the younger politicians. Various readings and portents are said to promise a bright future for the Fatherland.",
     "choices": [
@@ -886,6 +906,34 @@
       }
     ],
     "traceNumbers": ["23", "45", "89"]
+  },
+  "95": {
+    "description": "“Professor Gliere’s suicide has shocked and saddened the Miskatonic academic community. No word has yet come from Professor Grunewald.”",
+    "choices": [
+      {
+        "text": "There's more to learn here.",
+        "requirements": {
+          "dateAfter": "1931-10-15"
+        },
+        "nextEntry": "178"
+      },
+      {
+        "text": "Go to any New York Location.",
+        "requirements": {
+          "dateBefore": "1931-10-15",
+          "currentLocale": "New York"
+        },
+        "nextEntry": "New York Location"
+      },
+      {
+        "text": "Go to any Athens Location.",
+        "requirements": {
+          "dateBefore": "1931-10-15",
+          "currentLocale": "Athens"
+        },
+        "nextEntry": "Athens Location"
+      }
+    ]
   },
   "100": {
     "description": "The Dean shakes his head, 'Out of the question, Grunewald. I already have that young dolt Perkins covering for Gliere. And now you want to leave? Not a chance, sir.' Does the Dean leave you no choice?",
@@ -1352,6 +1400,15 @@
       }
     ]
   },
+  "156": {
+    "description": "“DEC. 20, BREMERHAVEN – The Starkweather-Moore expedition departed today under clear skies and calm seas. Despite the record cold temperatures, many came to the pier to see off the expedition.”",
+    "choices": [
+      {
+        "text": "Go to any New York Location.",
+        "nextEntry": "New York Location"
+      }
+    ]
+  },
   "157": {
     "description": "You read about the Top of Aten, a rumored relic from the period of Akhenaten. The top, a magical device, in some sources is mentioned as the cause of the Old Kingdom’s fall. It was Akhenaten who came to possess it and who (some scholars hint) worshiped the ancient evil ones who designed it. Akhenaten’s strange disfigurement is said to have been caused by his meddling in bizarre magical rites.",
     "choices": [
@@ -1493,6 +1550,26 @@
     ],
     "traceNumbers": ["118", "166", "168"]
   },
+  "178": {
+    "description": "The Karpathos Device has arrived safely in Cairo for an extended display. Curator Amet Keh is reported as thrilled to have it on loan.",
+    "choices": [
+      {
+        "text": "There's more to learn here.",
+        "requirements": {
+          "dateAfter": "1931-10-31"
+        },
+        "nextEntry": "190"
+      },
+      {
+        "text": "Go to any New York Location.",
+        "requirements": {
+          "dateBefore": "1931-10-31",
+          "currentLocale": "New York"
+        },
+        "nextEntry": "New York Location"
+      }
+    ]
+  },
   "182": {
     "description": "You find the symbol of the cult of Aten (see image below), the so-called Egyptian death cult. You think that you may have seen that shape before.",
     "image": "src/assets/images/clues/clue182.png",
@@ -1592,6 +1669,26 @@
       "385",
       "579",
       "590"
+    ]
+  },
+  "190": {
+    "description": "The disappearance of the Karpathos Device and of Amet Keh baffles the Egyptian authorities. Mr. Pisistratos of the National Museum in Athens will not comment.",
+    "choices": [
+      {
+        "text": "There's more to learn here.",
+        "requirements": {
+          "dateAfter": "1931-12-01"
+        },
+        "nextEntry": "156"
+      },
+      {
+        "text": "Go to any New York Location.",
+        "requirements": {
+          "dateBefore": "1931-12-01",
+          "currentLocale": "New York"
+        },
+        "nextEntry": "New York Location"
+      }
     ]
   },
   "206": {
@@ -1910,7 +2007,7 @@
   },
   "585": {
     "title": "HOSPITAL",
-    "description": "You get tender loving care at the hospital. Make a Luck roll to see how well you recover.",
+    "description": "You get tender loving care at the hospital.",
     "choices": [
       {
         "text": "Make a Luck roll for recovery",
