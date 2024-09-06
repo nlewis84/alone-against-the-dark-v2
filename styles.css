@@ -384,6 +384,7 @@ img {
   color: white;
   font-weight: bold;
   transition: background-color 0.3s ease;
+  border: none;
 }
 
 #closeInventory:hover {
