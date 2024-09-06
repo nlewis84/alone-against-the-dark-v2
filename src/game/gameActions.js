@@ -400,7 +400,7 @@ function handleSpecialEntry38(choicesContainer) {
           `Buy ${weapon.name}`,
           'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
           () => {
-            addItem(weapon.name)
+            addItem(weapon)
             displayEntry(getCurrentLocale())
           },
         )
@@ -415,7 +415,7 @@ function handleSpecialEntry54(choicesContainer) {
 
   // Filter the inventory to only include books from entry 54
   const inventoryBooks = currentState.inventory.filter((item) =>
-    books.some((book) => book.name === item),
+    books.some((book) => book.name === item.name),
   )
 
   // Track the number of books the player has already bought
@@ -435,7 +435,7 @@ function handleSpecialEntry54(choicesContainer) {
           `Buy ${book.name}`,
           'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
           () => {
-            addItem(book.name)
+            addItem(book)
             selectedBooks++ // Increment selected books count
 
             // Remove the button immediately after purchase
@@ -655,16 +655,47 @@ export function addItem(item) {
 }
 
 export function updateInventory() {
-  let inventoryHTML = '<ul>' // Start the unordered list
-  currentState.inventory.forEach((item) => {
-    if (item.type === 'book') {
-      inventoryHTML += `<li>${item.name} (Book)</li>`
-    } else {
-      inventoryHTML += `<li>${item}</li>`
-    }
-  })
-  inventoryHTML += '</ul>' // Close the unordered list
-  document.getElementById('inventory').innerHTML = inventoryHTML.trim()
+  // Group inventory items by type
+  const books = currentState.inventory.filter((item) => item.type === 'book')
+  const weapons = currentState.inventory.filter(
+    (item) => item.type === 'weapon',
+  )
+  const artifacts = currentState.inventory.filter(
+    (item) => item.type === 'artifact',
+  )
+
+  // Prepare HTML for inventory display
+  let inventoryHtml = ''
+
+  // Add books section if any
+  if (books.length > 0) {
+    inventoryHtml += `<h3>Books</h3><ul>`
+    books.forEach((book) => {
+      inventoryHtml += `<li>${book.name}</li>`
+    })
+    inventoryHtml += `</ul>`
+  }
+
+  // Add weapons section if any
+  if (weapons.length > 0) {
+    inventoryHtml += `<h3>Weapons</h3><ul>`
+    weapons.forEach((weapon) => {
+      inventoryHtml += `<li>${weapon.name}</li>`
+    })
+    inventoryHtml += `</ul>`
+  }
+
+  // Add artifacts section if any
+  if (artifacts.length > 0) {
+    inventoryHtml += `<h3>Artifacts</h3><ul>`
+    artifacts.forEach((artifact) => {
+      inventoryHtml += `<li>${artifact.name}</li>`
+    })
+    inventoryHtml += `</ul>`
+  }
+
+  // Display the sorted inventory
+  document.getElementById('inventory').innerHTML = inventoryHtml.trim()
 }
 
 // Save game state to localStorage

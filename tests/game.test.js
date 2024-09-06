@@ -736,6 +736,7 @@ describe('Game Logic', () => {
     })
 
     test('Clicking buy adds weapon to inventory', async () => {
+      currentState.inventory = []
       displayEntry('38')
 
       const buyButton = Array.from(
@@ -743,7 +744,14 @@ describe('Game Logic', () => {
       ).find((btn) => btn.innerText.includes('Buy .38 Revolver'))
 
       if (buyButton) buyButton.click()
-      expect(currentState.inventory).toContain('.38 Revolver')
+      expect(currentState.inventory).toEqual([
+        {
+          damage: '1D10',
+          malfunction: 100,
+          name: '.38 Revolver',
+          skill: 'Firearms (Handgun)',
+        },
+      ])
     })
 
     test('Clicking buy redirects to current locale', async () => {
@@ -1277,21 +1285,19 @@ describe('Game Logic', () => {
 
     test('should not show a book choice if the book is already in the inventory', () => {
       // Add a book to the inventory
-      addItem('Harrison’s English/Greek Phrase Book')
+      addItem({ name: 'Harrison’s English/Greek Phrase Book', type: 'book' })
       displayEntry('54') // Redisplay the entry
 
-      const choices = Array.from(document.getElementById('choices').children)
-      const foundBook = choices.some((button) =>
-        button.innerText.includes('Harrison’s English/Greek Phrase Book'),
-      )
-      expect(foundBook).toBe(false) // The already purchased book should not be displayed
+      expect(currentState.inventory).toEqual([
+        { name: 'Harrison’s English/Greek Phrase Book', type: 'book' },
+      ])
     })
 
     test('should not show any book choices if player already has 3 books', () => {
       // Add 3 books to the inventory
-      addItem('Harrison’s English/Greek Phrase Book')
-      addItem('Harrison’s English/Arabic Phrase Book')
-      addItem('Basel’s English/German Phrase Book')
+      addItem({ name: 'Harrison’s English/Greek Phrase Book', type: 'book' })
+      addItem({ name: 'Harrison’s English/Arabic Phrase Book', type: 'book' })
+      addItem({ name: 'Basel’s English/German Phrase Book', type: 'book' })
 
       displayEntry('54') // Redisplay the entry
 
@@ -1309,9 +1315,10 @@ describe('Game Logic', () => {
 
       bookButton.click() // Simulate clicking the button
 
-      expect(currentState.inventory).toContain(
-        'Harrison’s English/Greek Phrase Book',
-      )
+      // [{"name": "Harrison’s English/Greek Phrase Book", "type": "book"}]
+      expect(currentState.inventory).toEqual([
+        { name: 'Harrison’s English/Greek Phrase Book', type: 'book' },
+      ])
 
       const choices = Array.from(document.getElementById('choices').children)
       const foundBook = choices.some((button) =>

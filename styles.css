@@ -247,24 +247,24 @@ img {
   text-align: center;
   border: 2px solid #d4af37;
   border-radius: 5px;
-  margin: 5px auto; /* More compact margin */
+  margin: 5px auto;
   padding: 8px;
-  width: 260px; /* Slightly smaller width for cleaner alignment */
+  width: 260px;
   display: none;
   text-transform: uppercase;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #opponentHitMarker {
   background-color: rgba(255, 0, 0, 0.08);
   color: #b0382f;
-  border-color: rgba(255, 0, 0, 0.5); /* Red border to match text */
+  border-color: rgba(255, 0, 0, 0.5);
 }
 
 #playerHitMarker {
   background-color: rgba(0, 255, 0, 0.08);
   color: #1c4f2b;
-  border-color: rgba(0, 255, 0, 0.5); /* Green border to match text */
+  border-color: rgba(0, 255, 0, 0.5);
 }
 
 #healthMarker,
@@ -277,11 +277,11 @@ img {
   border-radius: 5px;
   margin: 10px 0;
   padding: 10px;
-  opacity: 0; /* Initially hidden via opacity */
-  transition: opacity 1s ease-in-out; /* Smooth transition */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
   text-transform: uppercase;
   position: fixed;
-  bottom: 20px; /* For the floating effect */
+  bottom: 20px;
   right: 20px;
   z-index: 100;
 }
@@ -304,7 +304,7 @@ img {
 /* Styles for the Inventory Side Panel */
 #inventoryPanel {
   position: fixed;
-  right: -350px; /* Increase this value to ensure it's fully hidden */
+  right: -350px;
   top: 0;
   width: 300px;
   height: 100%;
@@ -316,16 +316,24 @@ img {
 }
 
 #inventoryPanel.open {
-  right: 0; /* Slides in */
+  right: 0;
 }
 
 #inventoryPanel h2 {
   font-family: 'Cinzel', serif;
   font-size: 1.7rem;
   font-weight: 500;
-  text-transform: uppercase; /* Use uppercase to match other buttons */
+  text-transform: uppercase;
   margin-bottom: 1.5rem;
-  color: #fff; /* Contrasting white for clarity */
+  color: #fff;
+}
+
+#inventoryPanel h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  color: #fff;
 }
 
 #inventoryPanel ul {
@@ -334,35 +342,30 @@ img {
 }
 
 #inventoryPanel ul li {
-  background-color: rgba(255, 255, 255, 0.2); /* Lightened background */
-  padding: 0.75rem; /* Increased padding */
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.75rem;
   border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Slightly stronger border */
+  border: 1px solid rgba(255, 255, 255, 0.3);
   margin-bottom: 0.75rem;
-  font-size: 1.1rem; /* Increased font size */
-  color: #333; /* Darker text color for better contrast */
-  font-weight: bold; /* Make text bold for readability */
-  letter-spacing: 0.5px; /* Slight letter-spacing for clarity */
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
 #inventoryPanel ul li:hover {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.4
-  ); /* Hover effect to make it interactive */
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 #inventoryPanel ul li::before {
-  content: '•'; /* Could also be an icon from Font Awesome or similar */
+  content: '•';
   font-size: 1.5rem;
-  color: #fff; /* Matching color */
+  color: #fff;
   margin-right: 10px;
 }
 
 #inventoryPanel {
-  padding: 0rem 1.5rem; /* Add more padding for a balanced layout */
+  padding: 0rem 1.5rem;
 }
 
 #closeInventory {
@@ -371,7 +374,7 @@ img {
   right: 1rem;
   font-size: 1.25rem;
   cursor: pointer;
-  background: #b38e2e; /* Match the button color scheme */
+  background: #b38e2e;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -390,7 +393,7 @@ img {
 #inventoryButton {
   position: absolute;
   right: 1.5rem;
-  top: 10rem; /* Just below the header */
+  top: 10rem;
   background-color: #d4af37;
   color: black;
   border: 2px solid #b38e2e;
