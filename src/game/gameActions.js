@@ -188,6 +188,8 @@ function handleEntryChoices(entryId, entry) {
   // Handle special case for entry 38
   if (entryId === '38') {
     handleSpecialEntry38(choicesContainer)
+  } else if (entryId === '54') {
+    handleSpecialEntry54(choicesContainer)
   }
 
   entry.choices.forEach((choice) => {
@@ -405,6 +407,54 @@ function handleSpecialEntry38(choicesContainer) {
         choicesContainer.appendChild(weaponButton)
       }
     })
+  })
+}
+
+function handleSpecialEntry54(choicesContainer) {
+  const books = gameData.books.Books // Access the book data from the books.json file
+
+  // Filter the inventory to only include books from entry 54
+  const inventoryBooks = currentState.inventory.filter((item) =>
+    books.some((book) => book.name === item),
+  )
+
+  // Track the number of books the player has already bought
+  let selectedBooks = inventoryBooks.length
+
+  // If they already have 3 books, don't show any more book options
+  if (selectedBooks >= 3) {
+    return
+  }
+
+  // Loop through the available books and exclude books already in the inventory
+  books.forEach((book) => {
+    if (!inventoryBooks.includes(book.name)) {
+      // Only allow selecting books not in the player's inventory and if selectedBooks < 3
+      if (selectedBooks < 3) {
+        const bookButton = createButton(
+          `Buy ${book.name}`,
+          'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
+          () => {
+            addItem(book.name)
+            selectedBooks++ // Increment selected books count
+
+            // Remove the button immediately after purchase
+            bookButton.remove()
+
+            // After 3 selections, disable further purchases
+            if (selectedBooks >= 3) {
+              // remove all remaining books
+              choicesContainer.querySelectorAll('button').forEach((button) => {
+                if (button.textContent.startsWith('Buy ')) {
+                  button.remove()
+                }
+              })
+            }
+          },
+        )
+        choicesContainer.appendChild(bookButton)
+      }
+    }
   })
 }
 

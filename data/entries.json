@@ -530,6 +530,20 @@
     ],
     "traceNumbers": ["32"]
   },
+  "54": {
+    "choices": [
+      {
+        "nextEntry": "New York Location",
+        "requirements": {
+          "currentLocale": "New York"
+        },
+        "text": "Finish shopping"
+      }
+    ],
+    "description": "Three floors of books! Some titles interest you. You have enough suitcase room for no more than three.",
+    "title": "E.S. WILENTZ BOOKSTORE",
+    "traceNumbers": ["New York Location"]
+  },
   "60": {
     "choices": [
       {

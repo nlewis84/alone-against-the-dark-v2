@@ -1,0 +1,28 @@
+{
+  "Books": [
+    {
+      "name": "Harrison’s English/Greek Phrase Book",
+      "type": "book"
+    },
+    {
+      "name": "Harrison’s English/Arabic Phrase Book",
+      "type": "book"
+    },
+    {
+      "name": "Basel’s English/German Phrase Book",
+      "type": "book"
+    },
+    {
+      "name": "Cherry-Gerrard’s The Worst Journey in the World",
+      "type": "book"
+    },
+    {
+      "name": "Douglas Planchon’s With Lake in the Antarctic",
+      "type": "book"
+    },
+    {
+      "name": "Planchon’s Guide to South America",
+      "type": "book"
+    }
+  ]
+}

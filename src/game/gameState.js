@@ -12,6 +12,7 @@ export let gameData = {
   entries: {},
   locationTables: {},
   weapons: {},
+  books: {},
 }
 export let currentState
 let _tempDescription = ''
@@ -67,18 +68,19 @@ let currentInvestigatorIndex = 0
 
 export async function initializeGame() {
   try {
-    const [investigators, entries, locationTables, weapons] = await Promise.all(
-      [
+    const [investigators, entries, locationTables, weapons, books] =
+      await Promise.all([
         getData('data/investigators.json'),
         getData('data/entries.json'),
         getData('data/locationTables.json'),
         getData('data/weapons.json'),
-      ],
-    )
+        getData('data/books.json'),
+      ])
     setGameData('investigators', investigators)
     setGameData('entries', entries)
     setGameData('locationTables', locationTables)
     setGameData('weapons', weapons)
+    setGameData('books', books)
     updateTime(0, 20) // Initialize date display
     startGame()
     displayEntry('New York') // Ensure the first entry is displayed ... should be 13

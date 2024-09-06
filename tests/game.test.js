@@ -43,6 +43,9 @@ const locationTablesData = JSON.parse(
 const weaponsData = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, '../data/weapons.json')),
 )
+const booksData = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '../data/books.json')),
+)
 
 function findChoiceButton(choiceText) {
   return Array.from(document.querySelectorAll('button')).find(
@@ -77,6 +80,12 @@ describe('Game Logic', () => {
         return Promise.resolve({
           ok: true,
           json: () => Promise.resolve(weaponsData),
+        })
+      }
+      if (url.includes('books.json')) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(booksData),
         })
       }
       return Promise.reject(new Error('Unknown URL'))
@@ -1227,6 +1236,93 @@ describe('Game Logic', () => {
           break // Exit the loop as the combat ended
         }
       }
+    })
+  })
+
+  describe('Entry 54 - Bookstore Selection', () => {
+    const booksData = {
+      Books: [
+        { name: 'Harrison’s English/Greek Phrase Book', type: 'book' },
+        { name: 'Harrison’s English/Arabic Phrase Book', type: 'book' },
+        { name: 'Basel’s English/German Phrase Book', type: 'book' },
+        {
+          name: 'Cherry-Gerrard’s The Worst Journey in the World',
+          type: 'book',
+        },
+        { name: 'Douglas Planchon’s With Lake in the Antarctic', type: 'book' },
+        { name: 'Planchon’s Guide to South America', type: 'book' },
+      ],
+    }
+
+    beforeEach(async () => {
+      // Ensure the game is initialized to a clean state
+      await initializeGame()
+      // Reset the current state and inventory
+      currentState.inventory = []
+      setGameData('books', booksData)
+      displayEntry('54')
+    })
+
+    test('should display 6 book choices initially', () => {
+      const choices = Array.from(document.getElementById('choices').children)
+      expect(choices.length).toBe(7) // There are 6 books available initially and one new york button
+    })
+
+    test('should not show a book choice if the book is already in the inventory', () => {
+      // Add a book to the inventory
+      addItem('Harrison’s English/Greek Phrase Book')
+      displayEntry('54') // Redisplay the entry
+
+      const choices = Array.from(document.getElementById('choices').children)
+      const foundBook = choices.some((button) =>
+        button.innerText.includes('Harrison’s English/Greek Phrase Book'),
+      )
+      expect(foundBook).toBe(false) // The already purchased book should not be displayed
+    })
+
+    test('should not show any book choices if player already has 3 books', () => {
+      // Add 3 books to the inventory
+      addItem('Harrison’s English/Greek Phrase Book')
+      addItem('Harrison’s English/Arabic Phrase Book')
+      addItem('Basel’s English/German Phrase Book')
+
+      displayEntry('54') // Redisplay the entry
+
+      const choices = Array.from(document.getElementById('choices').children)
+      expect(choices.length).toBe(1) // No book choices should be displayed as the player already has 3 books and there is one new york button
+    })
+
+    test('should add a book to the inventory when clicked and remove the button', () => {
+      // Simulate clicking the button to purchase a book
+      const bookButton = Array.from(
+        document.querySelectorAll('#choices button'),
+      ).find((button) =>
+        button.innerText.includes('Harrison’s English/Greek Phrase Book'),
+      )
+
+      bookButton.click() // Simulate clicking the button
+
+      expect(currentState.inventory).toContain(
+        'Harrison’s English/Greek Phrase Book',
+      )
+
+      const choices = Array.from(document.getElementById('choices').children)
+      const foundBook = choices.some((button) =>
+        button.innerText.includes('Harrison’s English/Greek Phrase Book'),
+      )
+      expect(foundBook).toBe(false) // The button should be removed after purchase
+    })
+
+    test('should allow purchasing up to 3 books and then disable further choices', () => {
+      const [firstBookButton, secondBookButton, thirdBookButton] = Array.from(
+        document.querySelectorAll('#choices button'),
+      )
+
+      firstBookButton.click() // Purchase first book
+      secondBookButton.click() // Purchase second book
+      thirdBookButton.click() // Purchase third book
+
+      expect(currentState.inventory.length).toBe(3) // The inventory should have exactly 3 books
     })
   })
 })
