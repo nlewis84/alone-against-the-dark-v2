@@ -4,11 +4,12 @@ Be able to select a spell from your inventory and learn it (or read a book); use
 187 - Done kinda....need to actually code these choices correctly!
 
 New York Locations
-30
+12 - done
+30 - done
 36 - done
 38 - done
-54
-56
+54 - done
+56 - done
 74 - done
 86 - done
 95 - done
@@ -20,7 +21,7 @@ New York Locations
 146 - done
 583 - done
 585 - done
-586
+586 - done
 
 Egypt Locations
 236

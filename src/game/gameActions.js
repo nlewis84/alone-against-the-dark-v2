@@ -194,16 +194,25 @@ function handleEntryChoices(entryId, entry) {
 
   entry.choices.forEach((choice) => {
     const hasSkillCheck = choice.effects?.check?.skill
-    const canUseSkillToday = hasSkillCheck
-      ? canUseSkill(entryId, choice.effects.check.skill)
-      : true // Only call canUseSkill if there's a skill to check
 
     // Additional check for research topic limit
     const canResearchToday = entryId !== '74' || canResearchTopic(entryId)
 
+    // Variable for dailyLimit, it will either be choice.effect.dailyLimit, or choice.effects.dailyLimit will be null, or choice.effect.dailyLimit will not exist
+    // It should either be choice.effects.dailyLimit (number), or 0 for the other two situations.
+    const dailyLimit = choice.effects?.dailyLimit || 0
+
+    // Only call canUseSkill if dailyLimit is truthy
+    let canUseSkillToday
+    if (dailyLimit) {
+      canUseSkillToday = hasSkillCheck
+        ? canUseSkill(entryId, choice.effects.check.skill)
+        : true // Only call canUseSkill if there's a skill to check
+    }
+
     if (
       checkRequirements(choice.requirements) &&
-      (canUseSkillToday || choice.effects.dailyLimit === null) &&
+      (canUseSkillToday || dailyLimit === 0) &&
       canResearchToday
     ) {
       const button = createButton(
@@ -864,6 +873,7 @@ export function handleOutcomeBasedEncounter(choice) {
   const outcomes = choice.effects.outcomes
   let matchedOutcome = findOutcomeForRoll(roll, outcomes) // Adjust this to handle range keys like "1-5"
 
+  updateMarker('skillCheckMarker', `You rolled a ${roll}`)
   if (matchedOutcome) {
     setTempDescription(matchedOutcome.description || 'Unexpected outcome.')
     if (matchedOutcome.damage) {
