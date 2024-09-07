@@ -434,11 +434,12 @@ img {
 #submit-button {
   background-color: #ffc107;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 16px; /* Increase button font size */
 }
 
 #submit-button:hover {
@@ -447,7 +448,9 @@ img {
 
 /* Style the dropdowns */
 select {
-  padding: 5px;
+  padding: 8px 12px; /* Add padding inside the dropdowns */
   border-radius: 5px;
   border: 1px solid #ccc;
+  font-size: 20px; /* Increase font size for better readability */
+  font-family: inherit; /* Keep consistent font family */
 }

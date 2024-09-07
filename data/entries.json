@@ -1067,16 +1067,18 @@
       {
         "text": "Take the Saturday noon liner to Athens (arrives nine days later at noon)",
         "effects": {
-          "setDay": "Sunday",
-          "setHour": 5
+          "setDay": "Saturday",
+          "setHour": 0,
+          "advanceTime": 5
         },
         "nextEntry": "187"
       },
       {
         "text": "Take the Saturday noon liner to Alexandria (arrives ten days later at 1pm)",
         "effects": {
-          "setDay": "Sunday",
-          "setHour": 5
+          "setDay": "Saturday",
+          "setHour": 0,
+          "advanceTime": 5
         },
         "nextEntry": "187"
       },
@@ -1747,7 +1749,8 @@
       "189",
       "385",
       "579",
-      "590"
+      "590",
+      "New York Location"
     ]
   },
   "190": {

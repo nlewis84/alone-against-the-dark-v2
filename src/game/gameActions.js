@@ -491,97 +491,6 @@ function handleSpecialEntry54(choicesContainer) {
   })
 }
 
-function handleSpecialEntry187(choicesContainer) {
-  const shipActivities = {
-    Bingo: ['pm', 'night'],
-    Bridge: ['pm', 'night'],
-    Cinema: ['am', 'pm', 'night'],
-    Cocktails: ['pm', 'night'],
-    'Deck Tennis': ['am', 'pm'],
-    Library: ['am', 'pm', 'night'],
-    'Mah Jong': ['am', 'pm', 'night'],
-    Nightclub: ['night'],
-    'Oil Painting': ['am', 'pm'],
-    'Ping Pong': ['am', 'pm', 'night'],
-    'Rest on Deck Chairs': ['am', 'pm'],
-    'Rest in Room': ['am', 'pm', 'night'],
-    Sauna: ['am', 'pm', 'night'],
-    'Ship’s Tour': ['pm'],
-    Shopping: ['am', 'pm'],
-    Shuffleboard: ['am', 'pm'],
-    'Stroll Decks': ['am', 'pm', 'night'],
-  }
-
-  // Create a container for the activity selection
-  const activityContainer = document.createElement('div')
-  activityContainer.id = 'activity-selection'
-
-  // Instruction to select activities
-  const instruction = document.createElement('p')
-  instruction.textContent =
-    'Select one activity for each time slot (AM, PM, Night):'
-  activityContainer.appendChild(instruction)
-
-  // Helper function to create the activity dropdowns
-  function createActivityDropdown(timeSlot) {
-    const activityRow = document.createElement('div')
-    activityRow.classList.add('activity-row')
-
-    const label = document.createElement('label')
-    label.textContent = `Select ${timeSlot} activity:`
-    activityRow.appendChild(label)
-
-    const select = document.createElement('select')
-    select.name = timeSlot
-
-    Object.keys(shipActivities).forEach((activity) => {
-      if (shipActivities[activity].includes(timeSlot)) {
-        const option = document.createElement('option')
-        option.value = activity
-        option.textContent = activity
-        select.appendChild(option)
-      }
-    })
-
-    activityRow.appendChild(select)
-    activityContainer.appendChild(activityRow)
-  }
-
-  // Create dropdowns for am, pm, and night
-  ;['am', 'pm', 'night'].forEach(createActivityDropdown)
-
-  // Submit button to save the selected activities
-  const submitButton = createButton(
-    'Submit Activities',
-    'btn btn-primary',
-    () => {
-      const amActivity =
-        activityContainer.querySelector('select[name="am"]').value
-      const pmActivity =
-        activityContainer.querySelector('select[name="pm"]').value
-      const nightActivity = activityContainer.querySelector(
-        'select[name="night"]',
-      ).value
-
-      if (amActivity && pmActivity && nightActivity) {
-        console.log('Activities selected for Cunard Ship:', {
-          am: amActivity,
-          pm: pmActivity,
-          night: nightActivity,
-        })
-      } else {
-        console.error('Please select activities for all time slots.')
-      }
-    },
-  )
-
-  submitButton.id = 'submit-button' // Assign the styling ID
-  activityContainer.appendChild(submitButton)
-
-  // Append everything to choices container
-  choicesContainer.appendChild(activityContainer)
-}
-
 function displayImage(imagePath) {
   const imageContainer = document.getElementById('imageContainer')
   if (imageContainer) {
@@ -1216,4 +1125,202 @@ function clearHitMarkers() {
     opponentHitMarker.innerText = ''
     opponentHitMarker.style.display = 'none' // Hide the marker
   }
+}
+
+function startShipJourney() {
+  const currentDate = getCurrentDate() // Retrieve the current in-game date
+  currentState.shipJourneyStartDate = currentDate // Store the start date in the game state
+  currentState.onShip = true // Mark that the player is on the ship
+}
+
+function calculateJourneyDay() {
+  const currentDate = getCurrentDate()
+  const startDate = currentState.shipJourneyStartDate
+
+  // Calculate the number of days between startDate and currentDate
+  const timeDifference = currentDate.getTime() - startDate.getTime()
+  const daysPassed = Math.floor(timeDifference / (1000 * 3600 * 24)) // Convert milliseconds to days
+
+  return daysPassed // Returns the day of the journey
+}
+
+function getScheduleEntryForDay(journeyDay) {
+  const schedule = gameData.entries['187'].schedule
+
+  switch (journeyDay) {
+    case 0:
+      return schedule.firstSunday
+    case 1:
+      return schedule.firstMonday
+    case 2:
+      return schedule.Tuesday
+    case 3:
+      return schedule.Wednesday
+    case 4:
+      return schedule.Thursday
+    case 5:
+      return schedule.Friday
+    case 6:
+      return schedule.Saturday
+    case 7:
+      return schedule.secondSunday
+    case 8:
+      return schedule.secondMonday
+    case 9:
+      return schedule.secondTuesday
+    default:
+      return null // For days beyond the schedule
+  }
+}
+function checkIfDisembarked() {
+  const journeyDay = calculateJourneyDay()
+
+  if (journeyDay === 8 && currentState.currentLocation === 'Athens') {
+    resumeHourlyRecordkeeping('12:00 PM') // Second Monday: Disembarking in Athens
+    return true // Indicate disembarkation
+  } else if (
+    journeyDay === 9 &&
+    currentState.currentLocation === 'Alexandria'
+  ) {
+    resumeHourlyRecordkeeping('1:00 PM') // Second Tuesday: Disembarking in Alexandria
+    return true // Indicate disembarkation
+  }
+
+  return false // Player is still on the ship
+}
+
+function saveSelectedActivities(amActivity, pmActivity, nightActivity) {
+  currentState.shipActivities = {
+    am: amActivity,
+    pm: pmActivity,
+    night: nightActivity,
+  }
+
+  console.log('Selected activities saved:', currentState.shipActivities)
+}
+
+function displaySelectedActivities() {
+  if (currentState.shipActivities) {
+    console.log('Your selected activities for today:')
+    console.log('AM:', currentState.shipActivities.am)
+    console.log('PM:', currentState.shipActivities.pm)
+    console.log('Night:', currentState.shipActivities.night)
+  }
+}
+
+function handleSpecialEntry187(choicesContainer) {
+  if (!currentState.shipJourneyStartDate) {
+    startShipJourney() // Start the journey if it hasn't started
+  }
+
+  const journeyDay = calculateJourneyDay() // Calculate the current day of the journey
+
+  // Handle disembarkation if we're on specific days
+  if (checkIfDisembarked()) {
+    return // If disembarked, don't display the activity choices for the ship
+  }
+
+  // Show the activities for today
+  const shipActivities = {
+    Bingo: ['pm', 'night'],
+    Bridge: ['pm', 'night'],
+    Cinema: ['am', 'pm', 'night'],
+    Cocktails: ['pm', 'night'],
+    'Deck Tennis': ['am', 'pm'],
+    Library: ['am', 'pm', 'night'],
+    'Mah Jong': ['am', 'pm', 'night'],
+    Nightclub: ['night'],
+    'Oil Painting': ['am', 'pm'],
+    'Ping Pong': ['am', 'pm', 'night'],
+    'Rest on Deck Chairs': ['am', 'pm'],
+    'Rest in Room': ['am', 'pm', 'night'],
+    Sauna: ['am', 'pm', 'night'],
+    'Ship’s Tour': ['pm'],
+    Shopping: ['am', 'pm'],
+    Shuffleboard: ['am', 'pm'],
+    'Stroll Decks': ['am', 'pm', 'night'],
+  }
+
+  // Create the UI for activity selection
+  const activityContainer = document.createElement('div')
+  activityContainer.id = 'activity-selection'
+
+  const instruction = document.createElement('p')
+  instruction.textContent =
+    'Select one activity for each time slot (AM, PM, Night):'
+  activityContainer.appendChild(instruction)
+
+  function createActivityDropdown(timeSlot) {
+    const activityRow = document.createElement('div')
+    activityRow.classList.add('activity-row')
+
+    const label = document.createElement('label')
+    label.textContent = `Select ${timeSlot} activity:`
+    activityRow.appendChild(label)
+
+    const select = document.createElement('select')
+    select.name = timeSlot
+
+    Object.keys(shipActivities).forEach((activity) => {
+      if (shipActivities[activity].includes(timeSlot)) {
+        const option = document.createElement('option')
+        option.value = activity
+        option.textContent = activity
+        select.appendChild(option)
+      }
+    })
+
+    activityRow.appendChild(select)
+    activityContainer.appendChild(activityRow)
+  }
+
+  ;['am', 'pm', 'night'].forEach(createActivityDropdown)
+
+  // Submit button to save the selected activities and proceed to the day's schedule entry
+  const submitButton = createButton(
+    'Submit Activities',
+    'btn btn-primary',
+    () => {
+      const amActivity =
+        activityContainer.querySelector('select[name="am"]').value
+      const pmActivity =
+        activityContainer.querySelector('select[name="pm"]').value
+      const nightActivity = activityContainer.querySelector(
+        'select[name="night"]',
+      ).value
+
+      if (amActivity && pmActivity && nightActivity) {
+        // Save selected activities
+        saveSelectedActivities(amActivity, pmActivity, nightActivity)
+        console.log('Activities selected for Cunard Ship:', {
+          am: amActivity,
+          pm: pmActivity,
+          night: nightActivity,
+        })
+
+        // Get the schedule entry for the current journey day and display it
+        const journeyDay = calculateJourneyDay() // Recalculate the journey day
+        const scheduleEntry = getScheduleEntryForDay(journeyDay) // Get the entry for this day
+        displayEntry(scheduleEntry) // Display the corresponding entry
+      } else {
+        console.error('Please select activities for all time slots.')
+      }
+    },
+  )
+
+  submitButton.id = 'submit-button' // Assign the styling ID
+  activityContainer.appendChild(submitButton)
+  choicesContainer.appendChild(activityContainer)
+}
+
+function resumeHourlyRecordkeeping(hour = null) {
+  currentState.hourlyTracking = true // Resume hourly tracking
+
+  if (hour) {
+    const currentDate = getCurrentDate()
+    currentDate.setHours(hour.split(':')[0]) // Set the current hour
+    setCurrentDate(currentDate) // Update the game's current date/time
+  }
+
+  console.log('Hourly recordkeeping resumed at', hour ? hour : 'current hour')
 }
