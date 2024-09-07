@@ -116,7 +116,8 @@
             "failure": {
               "description": "You spend three hours recovering and mark off 1 hit point.",
               "advanceTime": 3,
-              "health": -1
+              "modifyHealth": -1,
+              "nextEntry": "586"
             }
           }
         }
@@ -2704,7 +2705,7 @@
     ]
   },
   "586": {
-    "description": "Small fast-food stands occur in every city: hot dogs, falafel, and so on. Then roll 1D10: if the roll is a 10, go to entry 12.",
+    "description": "Small fast-food stands occur in every city: hot dogs, falafel, and so on.",
     "choices": [
       {
         "text": "Buy and eat some food",
@@ -2721,6 +2722,10 @@
             }
           }
         }
+      },
+      {
+        "text": "Keep exploring",
+        "nextEntry": "New York"
       }
     ],
     "traceNumbers": ["12"]

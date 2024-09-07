@@ -1274,18 +1274,24 @@ describe('Game Logic', () => {
       await initializeGame()
       // Reset the current state and inventory
       currentState.inventory = []
+
+      setCurrentLocale('New York')
       setGameData('books', booksData)
       displayEntry('54')
     })
 
     test('should display 6 book choices initially', () => {
       currentState.inventory = []
+
+      setCurrentLocale('New York')
       const choices = Array.from(document.getElementById('choices').children)
-      expect(choices.length).toBe(6) // There are 6 books available initially
+      expect(choices.length).toBe(7) // There are 6 books available initially plus a NYC button
     })
 
     test('should not show a book choice if the book is already in the inventory', () => {
       currentState.inventory = []
+
+      setCurrentLocale('New York')
       // Add a book to the inventory
       addItem({ name: 'Harrison’s English/Greek Phrase Book', type: 'book' })
       displayEntry('54') // Redisplay the entry
@@ -1297,6 +1303,8 @@ describe('Game Logic', () => {
 
     test('should not show any book choices if player already has 3 books', () => {
       currentState.inventory = []
+
+      setCurrentLocale('New York')
       // Add 3 books to the inventory
       addItem({ name: 'Harrison’s English/Greek Phrase Book', type: 'book' })
       addItem({ name: 'Harrison’s English/Arabic Phrase Book', type: 'book' })
@@ -1306,11 +1314,13 @@ describe('Game Logic', () => {
 
       const choices = Array.from(document.getElementById('choices').children)
       console.log(choices)
-      expect(choices.length).toBe(0) // No book choices should be displayed as the player already has 3 books
+      expect(choices.length).toBe(1) // No book choices should be displayed as the player already has 3 books plus NYC button
     })
 
     test('should add a book to the inventory when clicked and remove the button', () => {
       currentState.inventory = []
+
+      setCurrentLocale('New York')
       // Simulate clicking the button to purchase a book
       const bookButton = Array.from(
         document.querySelectorAll('#choices button'),
@@ -1334,6 +1344,8 @@ describe('Game Logic', () => {
 
     test('should allow purchasing up to 3 books and then disable further choices', () => {
       currentState.inventory = []
+
+      setCurrentLocale('New York')
       const [firstBookButton, secondBookButton, thirdBookButton] = Array.from(
         document.querySelectorAll('#choices button'),
       )

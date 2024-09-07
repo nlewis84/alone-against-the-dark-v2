@@ -371,6 +371,10 @@ function handleComplexOutcome(checkResult) {
     updateTime(0, checkResult.defaultHour) // Optionally set a specific time, e.g., 6 AM
   }
 
+  if (checkResult.advanceTime !== undefined) {
+    updateTime(checkResult.advanceTime)
+  }
+
   if (checkResult.damage) {
     // Using parseAndComputeDamage to calculate damage before updating health
     const damage = parseAndComputeDamage(checkResult.damage)
