@@ -1,27 +1,12 @@
 Be able to select a spell from your inventory and learn it (or read a book); use entry 121.
 
-121 - done (ADDED A SPELL!)
 187 - Done kinda....need to actually code these choices correctly!
 
+Arkham Locations
+DONE
+
 New York Locations
-12 - done
-30 - done
-36 - done
-38 - done
-54 - done
-56 - done
-74 - done
-86 - done
-95 - done
-178 - done
-156 - done
-190 - done
-104 - done
-116 - done
-146 - done
-583 - done
-585 - done
-586 - done
+DONE
 
 Egypt Locations
 236
