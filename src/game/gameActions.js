@@ -818,6 +818,36 @@ export function checkRequirements(requirements) {
     if (requirements.isNotNight && isNightTime(currentDate)) {
       return false // It must not be night, but it is
     }
+
+    // Inclusive scheduled activity check with strict matching for existing activities
+    if (requirements.scheduledActivity) {
+      const { am, pm, night } = currentState.shipActivities || {}
+
+      // Normalize by trimming extra spaces, converting to lowercase, and replacing curly quotes with straight quotes
+      const normalizeString = (str) =>
+        str ? str.trim().toLowerCase().replace(/[’']/g, "'") : null
+
+      const normalizedAM = normalizeString(am)
+      const normalizedPM = normalizeString(pm)
+      const normalizedNight = normalizeString(night)
+
+      const requiredAM = normalizeString(requirements.scheduledActivity.am)
+      const requiredPM = normalizeString(requirements.scheduledActivity.pm)
+      const requiredNight = normalizeString(
+        requirements.scheduledActivity.night,
+      )
+
+      // Perform strict matching, but don't return early for undefined values
+      const matchesAM = requiredAM === undefined || normalizedAM === requiredAM
+      const matchesPM = requiredPM === undefined || normalizedPM === requiredPM
+      const matchesNight =
+        requiredNight === undefined || normalizedNight === requiredNight
+
+      // If none of the scheduled activities match, return false
+      if (!matchesAM && !matchesPM && !matchesNight) {
+        return false // Return false if none of the required activities match
+      }
+    }
   }
   return true
 }

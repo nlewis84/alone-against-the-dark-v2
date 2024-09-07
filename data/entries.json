@@ -804,6 +804,48 @@
     ],
     "traceNumbers": ["150"]
   },
+  "73": {
+    "title": "FIRST SUNDAY",
+    "description": "You are enjoying your first Sunday on the ship.",
+    "choices": [
+      {
+        "text": "Rest in Room",
+        "nextEntry": "167",
+        "requirements": {
+          "scheduledActivity": {
+            "am": "Rest in Room",
+            "pm": "Rest in Room",
+            "night": "Rest in Room"
+          }
+        }
+      },
+      {
+        "text": "Notice anything on the Ship's Tour?",
+        "nextEntry": "69",
+        "requirements": {
+          "scheduledActivity": {
+            "pm": "Ship's Tour"
+          }
+        },
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": "69",
+            "failure": "187"
+          }
+        }
+      },
+      {
+        "text": "Time for bed",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ],
+    "traceNumbers": ["8", "187"]
+  },
   "74": {
     "title": "NEW YORK PUBLIC LIBRARY",
     "description": "While not allowing browsers, the helpful librarians provide a selection of books on a topic. They are busy and understaffed, so only two topics may be researched per visit. You may go to another location and then return here in the same day.\n\nNo rolls are needed for these books. It takes two hours to study each topic.",
@@ -1729,7 +1771,7 @@
       "Rest on Deck Chairs": ["am", "pm"],
       "Rest in Room": ["am", "pm", "night"],
       "Sauna": ["am", "pm", "night"],
-      "Ship’s Tour": ["pm"],
+      "Ship's Tour": ["pm"],
       "Shopping": ["am", "pm"],
       "Shuffleboard": ["am", "pm"],
       "Stroll Decks": ["am", "pm", "night"]
