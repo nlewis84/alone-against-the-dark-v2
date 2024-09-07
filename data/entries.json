@@ -1062,23 +1062,21 @@
   },
   "104": {
     "title": "PIER 56: CUNARD LINES",
-    "description": "The representative informs you that a liner departs each Saturday at noon, reaching Athens at noon nine days later, and Alexandria at 1pm one day later. Tickets are available and include all meals. Upon departure, go to 187. In the meantime, you may go to any New York Location.",
+    "description": "The representative informs you that a liner departs each Saturday at noon, reaching Athens at noon nine days later, and Alexandria at 1pm one day later. Tickets are available and include all meals.",
     "choices": [
       {
         "text": "Take the Saturday noon liner to Athens (arrives nine days later at noon)",
         "effects": {
-          "setDay": "Saturday",
-          "setHour": 12,
-          "advanceTime": 215
+          "setDay": "Sunday",
+          "setHour": 5
         },
         "nextEntry": "187"
       },
       {
         "text": "Take the Saturday noon liner to Alexandria (arrives ten days later at 1pm)",
         "effects": {
-          "setDay": "Saturday",
-          "setHour": 12,
-          "advanceTime": 240
+          "setDay": "Sunday",
+          "setHour": 5
         },
         "nextEntry": "187"
       },
@@ -1698,7 +1696,7 @@
   },
   "187": {
     "title": "CUNARD SHIP ACTIVITY TABLE",
-    "description": "The CUNARD liners are truly luxurious, with spacious rooms in nearly every class, remarkable recreation facilities, and superb cuisine. While you are aboard the liner, suspend hourly record keeping, but keep track of days. Resume hourly record keeping when you disembark at Athens.",
+    "description": "The CUNARD liners are truly luxurious, with spacious rooms in nearly every class, remarkable recreation facilities, and superb cuisine. While you are aboard the liner, suspend hourly record keeping, but keep track of days. Resume hourly record keeping when you disembark at Athens or Alexandria.",
     "schedule": {
       "firstSunday": "73",
       "firstMonday": "109",

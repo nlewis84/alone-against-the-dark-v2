@@ -190,6 +190,9 @@ function handleEntryChoices(entryId, entry) {
     handleSpecialEntry38(choicesContainer)
   } else if (entryId === '54') {
     handleSpecialEntry54(choicesContainer)
+  } else if (entryId === '187') {
+    setCurrentLocale('Cunard Ship')
+    handleSpecialEntry187(choicesContainer)
   }
 
   entry.choices.forEach((choice) => {
@@ -486,6 +489,97 @@ function handleSpecialEntry54(choicesContainer) {
       }
     }
   })
+}
+
+function handleSpecialEntry187(choicesContainer) {
+  const shipActivities = {
+    Bingo: ['pm', 'night'],
+    Bridge: ['pm', 'night'],
+    Cinema: ['am', 'pm', 'night'],
+    Cocktails: ['pm', 'night'],
+    'Deck Tennis': ['am', 'pm'],
+    Library: ['am', 'pm', 'night'],
+    'Mah Jong': ['am', 'pm', 'night'],
+    Nightclub: ['night'],
+    'Oil Painting': ['am', 'pm'],
+    'Ping Pong': ['am', 'pm', 'night'],
+    'Rest on Deck Chairs': ['am', 'pm'],
+    'Rest in Room': ['am', 'pm', 'night'],
+    Sauna: ['am', 'pm', 'night'],
+    'Ship’s Tour': ['pm'],
+    Shopping: ['am', 'pm'],
+    Shuffleboard: ['am', 'pm'],
+    'Stroll Decks': ['am', 'pm', 'night'],
+  }
+
+  // Create a container for the activity selection
+  const activityContainer = document.createElement('div')
+  activityContainer.id = 'activity-selection'
+
+  // Instruction to select activities
+  const instruction = document.createElement('p')
+  instruction.textContent =
+    'Select one activity for each time slot (AM, PM, Night):'
+  activityContainer.appendChild(instruction)
+
+  // Helper function to create the activity dropdowns
+  function createActivityDropdown(timeSlot) {
+    const activityRow = document.createElement('div')
+    activityRow.classList.add('activity-row')
+
+    const label = document.createElement('label')
+    label.textContent = `Select ${timeSlot} activity:`
+    activityRow.appendChild(label)
+
+    const select = document.createElement('select')
+    select.name = timeSlot
+
+    Object.keys(shipActivities).forEach((activity) => {
+      if (shipActivities[activity].includes(timeSlot)) {
+        const option = document.createElement('option')
+        option.value = activity
+        option.textContent = activity
+        select.appendChild(option)
+      }
+    })
+
+    activityRow.appendChild(select)
+    activityContainer.appendChild(activityRow)
+  }
+
+  // Create dropdowns for am, pm, and night
+  ;['am', 'pm', 'night'].forEach(createActivityDropdown)
+
+  // Submit button to save the selected activities
+  const submitButton = createButton(
+    'Submit Activities',
+    'btn btn-primary',
+    () => {
+      const amActivity =
+        activityContainer.querySelector('select[name="am"]').value
+      const pmActivity =
+        activityContainer.querySelector('select[name="pm"]').value
+      const nightActivity = activityContainer.querySelector(
+        'select[name="night"]',
+      ).value
+
+      if (amActivity && pmActivity && nightActivity) {
+        console.log('Activities selected for Cunard Ship:', {
+          am: amActivity,
+          pm: pmActivity,
+          night: nightActivity,
+        })
+      } else {
+        console.error('Please select activities for all time slots.')
+      }
+    },
+  )
+
+  submitButton.id = 'submit-button' // Assign the styling ID
+  activityContainer.appendChild(submitButton)
+
+  // Append everything to choices container
+  choicesContainer.appendChild(activityContainer)
 }
 
 function displayImage(imagePath) {
