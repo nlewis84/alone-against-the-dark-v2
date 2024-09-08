@@ -275,6 +275,7 @@ function handleEntryChoices(entryId, entry) {
 
             if (choice.effects.advanceTime !== undefined) {
               updateTime(choice.effects.advanceTime)
+              console.log('advance time', currentDate)
             }
 
             if (choice.effects.dayAdvance !== undefined) {
@@ -1202,8 +1203,20 @@ function calculateJourneyDay() {
   const currentDate = getCurrentDate()
   const startDate = currentState.shipJourneyStartDate
 
-  // Calculate the number of days between startDate and currentDate
-  const timeDifference = currentDate.getTime() - startDate.getTime()
+  // Reset hours, minutes, and seconds to 0 for both dates to compare only the calendar day
+  const startDay = new Date(
+    startDate.getFullYear(),
+    startDate.getMonth(),
+    startDate.getDate(),
+  )
+  const currentDay = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+    currentDate.getDate(),
+  )
+
+  // Calculate the number of full days between startDate and currentDate
+  const timeDifference = currentDay.getTime() - startDay.getTime()
   const daysPassed = Math.floor(timeDifference / (1000 * 3600 * 24)) // Convert milliseconds to days
 
   return daysPassed // Returns the day of the journey
@@ -1279,7 +1292,7 @@ function handleSpecialEntry187(choicesContainer) {
   }
 
   const journeyDay = calculateJourneyDay() // Calculate the current day of the journey
-
+  console.log('Journey day:', journeyDay)
   // Handle disembarkation if we're on specific days
   if (checkIfDisembarked()) {
     return // If disembarked, don't display the activity choices for the ship

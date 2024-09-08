@@ -9,12 +9,7 @@ Be able to select a spell from your inventory and learn it (or read a book); use
 187 - Done kinda....need to actually code these choices correctly!
 
 Cunard Ship
-47 - code hasVisited and hasNotVisited to requirements
-585_exit - maybe add a advance time this for Cunard Ship? Like this:
-"effects": {
-"setHour": 23,
-"advanceTime": 6
-}
+Code the 2nd day locations
 
 Egypt Locations
 236

@@ -78,11 +78,7 @@
           "check": {
             "skill": "Dodge",
             "failure": "10",
-            "success": {
-              "nextEntry": "187",
-              "dayAdvance": true,
-              "defaultHour": 6
-            }
+            "success": "10f"
           }
         }
       }
@@ -912,12 +908,10 @@
           }
         },
         "effects": {
-          "setHour": 23,
-          "advanceTime": 6,
           "check": {
             "skill": "INT",
             "success": "69",
-            "failure": "187"
+            "failure": "73a"
           }
         }
       },
@@ -931,6 +925,19 @@
       }
     ],
     "traceNumbers": ["8", "187"]
+  },
+  "73a": {
+    "description": "No. The ship is huge, but nothing strikes you as out of the ordinary.",
+    "choices": [
+      {
+        "text": "Proceed to the next day",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ]
   },
   "74": {
     "title": "NEW YORK PUBLIC LIBRARY",
@@ -2453,7 +2460,7 @@
         "effects": {
           "check": {
             "skill": "Dodge",
-            "success": "187",
+            "success": "10f",
             "failure": {
               "nextEntry": "10d",
               "damage": "1D6",
@@ -2475,10 +2482,36 @@
               "health": 10,
               "maxHealth": 10
             },
-            "win": "187",
+            "win": "10e",
             "lose": "end"
           },
           "advanceTime": 0
+        }
+      }
+    ]
+  },
+  "10e": {
+    "description": "You were able to defeat the enemy.",
+    "choices": [
+      {
+        "text": "Rest for the night",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ]
+  },
+  "10f": {
+    "description": "You slipped away from the enemy.",
+    "choices": [
+      {
+        "text": "Rest for the night",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
         }
       }
     ]
@@ -2885,6 +2918,10 @@
       },
       {
         "text": "Rest for the night",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        },
         "requirements": {
           "currentLocale": "Cunard Ship"
         },
