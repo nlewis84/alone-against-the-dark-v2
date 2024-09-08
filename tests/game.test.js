@@ -1405,4 +1405,39 @@ describe('Game Logic', () => {
       expect(checkRequirements(requirements)).toBe(false) // Requirement not met
     })
   })
+
+  describe('Requirements - notCurrentLocale', () => {
+    beforeEach(() => {
+      // Initialize the game to reset the state before each test
+      initializeGame()
+      currentState.health = 90 // Set initial health for testing
+    })
+
+    test('should block choice when player is in the restricted locale (Cunard Ship)', () => {
+      // Set the current locale to Cunard Ship, which should block the choice
+      setCurrentLocale('Cunard Ship')
+
+      const requirements = {
+        notFullHealth: true,
+        notCurrentLocale: 'Cunard Ship',
+      }
+
+      // Check that the requirements fail when in Cunard Ship
+      expect(checkRequirements(requirements)).toBe(false)
+    })
+
+    test('should allow choice when player is not in the restricted locale', () => {
+      // Set the current locale to something other than Cunard Ship
+      setCurrentLocale('New York')
+      currentState.health = 90
+
+      const requirements = {
+        notFullHealth: true,
+        notCurrentLocale: 'Cunard Ship',
+      }
+
+      // Check that the requirements pass when not in Cunard Ship
+      expect(checkRequirements(requirements)).toBe(true)
+    })
+  })
 })

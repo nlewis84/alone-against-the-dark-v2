@@ -15,7 +15,6 @@ Cunard Ship
 "setHour": 23,
 "advanceTime": 6
 }
-585b - stay another day should not be an option for Cunard Ship
 
 Egypt Locations
 236

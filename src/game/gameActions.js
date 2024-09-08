@@ -818,6 +818,11 @@ export function checkRequirements(requirements) {
         return false
       }
     }
+    if (requirements.notCurrentLocale) {
+      if (currentState.currentLocale === requirements.notCurrentLocale) {
+        return false
+      }
+    }
     if (requirements.fullHealth) {
       if (currentState.health < 100) {
         return false
