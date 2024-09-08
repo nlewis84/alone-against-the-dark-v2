@@ -513,12 +513,12 @@
     "traceNumbers": ["49", "294"]
   },
   "47": {
-    "description": "If you have already survived this entry, the steward is harmless. If not, read on. A new steward enters, carrying fresh towels for your stateroom. He looks Egyptian.",
+    "description": "A new steward enters, carrying fresh towels for your stateroom. He looks Egyptian.",
     "choices": [
       {
         "text": "Do you notice anything?",
         "requirements": {
-          "hasNotVisited": "167"
+          "hasNotVisited": "47"
         },
         "effects": {
           "check": {
@@ -531,7 +531,7 @@
       {
         "text": "Make a Anthropology roll",
         "requirements": {
-          "hasNotVisited": "167"
+          "hasNotVisited": "47"
         },
         "effects": {
           "check": {
@@ -544,7 +544,7 @@
       {
         "text": "Make a Luck roll",
         "requirements": {
-          "hasNotVisited": "167"
+          "hasNotVisited": "47"
         },
         "effects": {
           "check": {
@@ -558,7 +558,7 @@
         "text": "Get some rest and wake up tomorrow morning",
         "nextEntry": "187",
         "requirements": {
-          "hasVisited": "167"
+          "hasVisited": "47"
         },
         "effects": {
           "setHour": 23,
@@ -1271,7 +1271,7 @@
               "health": 3,
               "maxHealth": 3
             },
-            "win": "47",
+            "win": "585",
             "lose": "585"
           }
         }

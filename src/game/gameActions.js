@@ -145,6 +145,9 @@ export function displayEntry(entryId) {
     handleEntryEffects(entry.effects)
   }
 
+  // Track the visited entry
+  addVisitedEntry(entryId) // Only called once per entry visit
+
   if (entry.end) {
     document.getElementById('description').innerHTML +=
       '<br><strong>THE END</strong>'
@@ -737,6 +740,9 @@ export function saveGame() {
     ...currentState,
     currentDate: getCurrentDate().toISOString(), // Save the current date as an ISO string
     combat: currentState.combat,
+    visitedEntries: Array.from(currentState.visitedEntries),
+    onShip: currentState.onShip,
+    shipJourneyStartDate: currentState.shipJourneyStartDate,
   }
   saveState('gameState', saveData)
 }
@@ -753,6 +759,16 @@ export function loadGame() {
 
     if (currentState.combat && currentState.combat.isActive) {
       updateCombatStatus() // Refresh combat status display on load
+    }
+
+    // Convert visitedEntries back to a Set
+    currentState.visitedEntries = new Set(savedState.visitedEntries || [])
+
+    // Convert shipJourneyStartDate back to a Date object if it exists
+    if (savedState.shipJourneyStartDate) {
+      currentState.shipJourneyStartDate = new Date(
+        savedState.shipJourneyStartDate,
+      )
     }
 
     displayEntry(currentState.currentEntry)
@@ -817,6 +833,20 @@ export function checkRequirements(requirements) {
     }
     if (requirements.isNotNight && isNightTime(currentDate)) {
       return false // It must not be night, but it is
+    }
+
+    // Check if the player has visited a specific entry
+    if (requirements.hasVisited) {
+      if (!currentState.visitedEntries.has(requirements.hasVisited)) {
+        return false // The required entry has not been visited
+      }
+    }
+
+    // Check if the player has not visited a specific entry
+    if (requirements.hasNotVisited) {
+      if (currentState.visitedEntries.has(requirements.hasNotVisited)) {
+        return false // The entry has been visited, but it should not have been
+      }
     }
 
     // Inclusive scheduled activity check with strict matching for existing activities
@@ -1353,4 +1383,10 @@ function resumeHourlyRecordkeeping(hour = null) {
   }
 
   console.log('Hourly recordkeeping resumed at', hour ? hour : 'current hour')
+}
+
+export function addVisitedEntry(entryId) {
+  if (!currentState.visitedEntries.has(entryId)) {
+    currentState.visitedEntries.add(entryId)
+  }
 }

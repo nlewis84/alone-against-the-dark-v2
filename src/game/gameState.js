@@ -99,6 +99,7 @@ export function startGame() {
     combat: {
       isActive: false,
     },
+    visitedEntries: new Set(),
     ...gameData.investigators['Professor Grunewald'],
   }
   displayEntry(currentState.currentEntry)
@@ -125,6 +126,9 @@ function switchToNextInvestigator() {
       combat: {
         isActive: false,
       },
+      visitedEntries: currentState.visitedEntries,
+      onShip: false,
+      shipJourneyStartDate: null,
       ...gameData.investigators[nextInvestigator.name],
     }
     displayEntry(currentState.currentEntry)

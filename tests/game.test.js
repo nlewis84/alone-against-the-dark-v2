@@ -25,6 +25,7 @@ import {
   checkRequirements,
   parseAndComputeDamage,
   findOutcomeForRoll,
+  addVisitedEntry,
 } from '../src/game/gameActions.js'
 import { rollDice, makeSkillCheck } from '../src/utils/dice.js'
 import fs from 'fs'
@@ -1355,6 +1356,53 @@ describe('Game Logic', () => {
       thirdBookButton.click() // Purchase third book
 
       expect(currentState.inventory.length).toBe(3) // The inventory should have exactly 3 books
+    })
+  })
+
+  describe('Visited Entries and Requirements', () => {
+    beforeEach(() => {
+      // Reset the visitedEntries set before each test
+      currentState.visitedEntries = new Set()
+    })
+
+    test('should track visited entries', () => {
+      // Add an entry and check if it is tracked
+      addVisitedEntry('585')
+      expect(currentState.visitedEntries.has('585')).toBe(true)
+
+      // Adding the same entry again should not duplicate it
+      addVisitedEntry('585')
+      expect(currentState.visitedEntries.size).toBe(1) // Still only one entry
+    })
+
+    test('should pass hasVisited requirement if entry was visited', () => {
+      // Add entry '585' to visitedEntries
+      addVisitedEntry('585')
+
+      // Check if requirements with hasVisited '585' pass
+      const requirements = { hasVisited: '585' }
+      expect(checkRequirements(requirements)).toBe(true) // Requirement met
+    })
+
+    test('should fail hasVisited requirement if entry was not visited', () => {
+      // Entry '585' has not been visited yet
+      const requirements = { hasVisited: '585' }
+      expect(checkRequirements(requirements)).toBe(false) // Requirement not met
+    })
+
+    test('should pass hasNotVisited requirement if entry was not visited', () => {
+      // Entry '585' has not been visited
+      const requirements = { hasNotVisited: '585' }
+      expect(checkRequirements(requirements)).toBe(true) // Requirement met
+    })
+
+    test('should fail hasNotVisited requirement if entry was visited', () => {
+      // Add entry '585' to visitedEntries
+      addVisitedEntry('585')
+
+      // Check if requirements with hasNotVisited '585' fail
+      const requirements = { hasNotVisited: '585' }
+      expect(checkRequirements(requirements)).toBe(false) // Requirement not met
     })
   })
 })
