@@ -2884,6 +2884,13 @@
         "nextEntry": "Arkham Location"
       },
       {
+        "text": "Rest for the night",
+        "requirements": {
+          "currentLocale": "Cunard Ship"
+        },
+        "nextEntry": "187"
+      },
+      {
         "text": "Another New York Location",
         "requirements": {
           "currentLocale": "New York"

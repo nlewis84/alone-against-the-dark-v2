@@ -10,7 +10,11 @@ Be able to select a spell from your inventory and learn it (or read a book); use
 
 Cunard Ship
 47 - code hasVisited and hasNotVisited to requirements
-585_exit - add Cunard Ship Location exit button
+585_exit - maybe add a advance time this for Cunard Ship? Like this:
+"effects": {
+"setHour": 23,
+"advanceTime": 6
+}
 
 Egypt Locations
 236
