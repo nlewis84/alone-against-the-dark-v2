@@ -1,12 +1,16 @@
-Be able to select a spell from your inventory and learn it (or read a book); use entry 121.
-
-187 - Done kinda....need to actually code these choices correctly!
-
 Arkham Locations
 DONE
 
 New York Locations
 DONE
+
+Be able to select a spell from your inventory and learn it (or read a book); use entry 121.
+
+187 - Done kinda....need to actually code these choices correctly!
+
+Cunard Ship
+47 - code hasVisited and hasNotVisited to requirements
+585_exit - add Cunard Ship Location exit button
 
 Egypt Locations
 236
