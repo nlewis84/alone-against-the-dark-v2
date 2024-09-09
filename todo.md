@@ -19,13 +19,15 @@ Code the 6th day (friday) locations
 189
 
 7th/8th Days (saturday/sunday)
-171
-167
-96
-203
-385
-142
-132
+171 - teste
+167 - check that it makes sense for these days
+96 - test
+203 - test
+385 - test
+142 - test
+132 - test
+9th day should not show activites dropdowns and the button should say stay onboard for Alexandria, and setHour 23, advanceTime 13. other button should say exit at Athens and set time to Noon.
+10th day should also not show activites dropdowns and the button should say this is your stop for Alexandria, and set time to 1PM
 
 Athens Harbor
 173
