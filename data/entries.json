@@ -564,6 +564,19 @@
     ],
     "traceNumbers": ["167", "187"]
   },
+  "47b": {
+    "description": "You are exhausted and cannot continue without rest.",
+    "choices": [
+      {
+        "text": "Get some rest and wake up tomorrow morning",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ]
+  },
   "48": {
     "description": "“Aristotle Mylonas, Director of the National Museum of Archaeology in Athens, died today in a bizarre automobile accident. His car, apparently going much too fast, spun through the railing of a stone bridge across the Illissus River. This internationally known scholar, largely responsible for the protection of many Greek national treasures, will be sorely missed. A reclusive man, Mylonas was unmarried and without other family. He declared always that his beloved Greece was both mother and father to him.”—Arkham Advertiser, July 1, 1931",
     "choices": [
@@ -1283,7 +1296,7 @@
         "effects": {
           "check": {
             "skill": "Dodge",
-            "success": "47",
+            "success": "47b",
             "failure": {
               "nextEntry": "106a",
               "damage": "1D6",
@@ -2807,7 +2820,7 @@
         "effects": {
           "check": {
             "skill": "Dodge",
-            "success": "47",
+            "success": "47b",
             "failure": {
               "nextEntry": "106a",
               "damage": "1D6",
@@ -2829,7 +2842,7 @@
               "health": 10,
               "maxHealth": 10
             },
-            "win": "47",
+            "win": "47b",
             "lose": "end"
           },
           "advanceTime": 0
@@ -2882,6 +2895,130 @@
       }
     ],
     "traceNumbers": ["11", "52"]
+  },
+  "148": {
+    "title": "FOURTH DAY",
+    "description": "You are enjoying your fourth day on the ship.",
+    "choices": [
+      {
+        "text": "Stroll Decks (am)",
+        "nextEntry": "135",
+        "requirements": {
+          "scheduledActivity": {
+            "am": "Stroll Decks"
+          },
+          "hasNotVisited": "135"
+        }
+      },
+      {
+        "text": "Play Shuffleboard (pm)",
+        "nextEntry": "135",
+        "requirements": {
+          "scheduledActivity": {
+            "pm": "Shuffleboard"
+          },
+          "hasNotVisited": "135"
+        }
+      },
+      {
+        "text": "Stroll Decks (night)",
+        "nextEntry": "135",
+        "requirements": {
+          "scheduledActivity": {
+            "night": "Stroll Decks"
+          },
+          "hasNotVisited": "135"
+        }
+      },
+      {
+        "text": "Who is that person over there?",
+        "nextEntry": "579",
+        "requirements": {
+          "hasVisited": "135"
+        }
+      },
+      {
+        "text": "Move on to the next day",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ],
+    "traceNumbers": ["135", "187", "193", "579"]
+  },
+  "135": {
+    "description": "As you walk down a corridor, you feel uneasy. Attempt a Spot Hidden roll to see if you notice something strange.",
+    "choices": [
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "135a"
+            },
+            "failure": {
+              "nextEntry": "106",
+              "message": "You fail to notice anything unusual and continue walking. Suddenly, there is movement to your side and a small man rushes at you."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["106", "148"]
+  },
+  "135a": {
+    "description": "You notice a small Egyptian fellow lurking ahead of you. You may have seen him before. He holds something in his hand shiny in his hand. You are down a side passage now and have quickened your pace. Now you hear his footsteps scurry after you. Is it only your imagination, or are the corridor lights dimming?",
+    "choices": [
+      {
+        "text": "Make a Know (EDU) roll",
+        "effects": {
+          "check": {
+            "skill": "EDU",
+            "success": {
+              "nextEntry": "148b",
+              "message": "You successfully reach the deck and the safety of the promenade. You are ready to call it a day and get some rest."
+            },
+            "failure": {
+              "nextEntry": "106",
+              "message": "You take a wrong turn and find yourself at a locked hatch labeled 'No Admittance.'"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["106", "187"]
+  },
+  "148b": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Rest for the night",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ],
+    "traceNumbers": ["148"]
+  },
+  "579": {
+    "description": "A chance flirtation leads you to the ship’s casino. You find yourself at the baccarat table, and luck is on your side. You win $87!",
+    "choices": [
+      {
+        "text": "Celebrate your win",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6,
+          "message": "You don't remember much about last night, but what you do makes you grin."
+        }
+      }
+    ],
+    "traceNumbers": ["148", "187"]
   },
   "150b": {
     "title": "Professorial Study",

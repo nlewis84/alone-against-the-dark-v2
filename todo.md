@@ -1,4 +1,5 @@
 Code the `endGame` effect to actually do something
+Add Picture to 69, 86 from book
 
 Arkham Locations
 DONE
@@ -14,6 +15,9 @@ Cunard Ship
 code each days' activities to only work once (generally)
 106, 155a - code the Retrieve a weapon to let the player pick a weapon to attack with, maybe extra options for available weapons?
 Code the 4th day locations
+148 - done
+135 - test it
+579 - I don't think you can actually get to this one
 
 Athens Harbor
 173
