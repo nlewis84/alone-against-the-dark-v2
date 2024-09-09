@@ -9,7 +9,21 @@ Be able to select a spell from your inventory and learn it (or read a book); use
 187 - Done kinda....need to actually code these choices correctly!
 
 Cunard Ship
-Code the 2nd day locations
+106 - code the Retrieve a weapon to let the player pick a weapon to attack with
+Code the 3rd day locations
+126
+111
+137
+133
+61
+155
+139
+
+Athens Harbor
+173
+
+Alexandria Harbor
+195
 
 Egypt Locations
 236

@@ -927,7 +927,7 @@
     "traceNumbers": ["8", "187"]
   },
   "73a": {
-    "description": "No. The ship is huge, but nothing strikes you as out of the ordinary.",
+    "description": "The ship is huge, but nothing strikes you as out of the ordinary.",
     "choices": [
       {
         "text": "Proceed to the next day",
@@ -1022,6 +1022,49 @@
     "description": "The MU library is open 9am to 9pm, Mon-Sat.",
     "title": "MISKATONIC UNIVERSITY",
     "traceNumbers": ["Arkham Location"]
+  },
+  "83": {
+    "description": "The ship is bustling with activity.",
+    "choices": [
+      {
+        "text": "Something peaks your interest",
+        "nextEntry": "69",
+        "requirements": {
+          "hasNotVisited": "69"
+        }
+      },
+      {
+        "text": "Ask around about suspicions",
+        "requirements": {
+          "hasVisited": "69"
+        },
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": "115",
+            "failure": "83a"
+          }
+        }
+      },
+      {
+        "text": "Move on a day",
+        "nextEntry": "73a"
+      }
+    ],
+    "traceNumbers": ["69", "115", "187"]
+  },
+  "83a": {
+    "description": "You ask about the foreign pari seen on deck, but no one seems to know what you are talking about.",
+    "choices": [
+      {
+        "text": "Proceed to the next day",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ]
   },
   "84": {
     "description": "A chapter notes that the most bizarre case of 'undead' occurred among French Legionnaires in North Africa. Outpost guards were found strangled with flecks of dead, scaly skin still sticking to their throats.",
@@ -1326,6 +1369,48 @@
       }
     ]
   },
+  "109": {
+    "title": "FIRST MONDAY",
+    "description": "You are enjoying your first Monday on the ship.",
+    "choices": [
+      {
+        "text": "Stroll Decks (am)",
+        "nextEntry": "83",
+        "requirements": {
+          "scheduledActivity": {
+            "am": "Stroll Decks"
+          }
+        }
+      },
+      {
+        "text": "Rest on Deck Chairs (pm)",
+        "nextEntry": "83",
+        "requirements": {
+          "scheduledActivity": {
+            "pm": "Rest on Deck Chairs"
+          }
+        }
+      },
+      {
+        "text": "Have a few Cocktails (night)",
+        "nextEntry": "83",
+        "requirements": {
+          "scheduledActivity": {
+            "night": "Cocktails"
+          }
+        }
+      },
+      {
+        "text": "Move on to the next day",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ],
+    "traceNumbers": ["83", "187"]
+  },
   "110": {
     "description": "Some of the wonderful devices were said to open secret chambers or panels in the tombs. These chambers were thought to be in places that looked like solid rock. No intact device has been found, though, nor have any such chambers been discovered.",
     "choices": [
@@ -1358,6 +1443,20 @@
     "description": "Mrs. Harding greets you amiably. She is uncertain whether she should show you Gliere’s room.",
     "title": "HARDING HOUSE",
     "traceNumbers": ["Arkham Location"]
+  },
+  "115": {
+    "description": "You ask the purser about the foreign pair seen on deck. 'Egyptian, I believe. Rather a strange lot, I’d say. Haven’t been giving you any trouble, have they?' You thank him and leave.",
+    "choices": [
+      {
+        "text": "Take a rest",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ],
+    "traceNumbers": ["83"]
   },
   "116": {
     "description": "It is suggested that the Karpathos Device found in 1900 is in fact of Egyptian origin or design, but was, for some reason, stolen. In fact, some scholars have argued that it is one of the “wonder devices” of the Aten pyramids.",
