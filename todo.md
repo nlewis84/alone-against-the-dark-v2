@@ -13,18 +13,7 @@ Be able to select a spell from your inventory and learn it (or read a book); use
 Cunard Ship
 code each days' activities to only work once (generally)
 106, 155a - code the Retrieve a weapon to let the player pick a weapon to attack with, maybe extra options for available weapons?
-Code the 3rd day locations
-126 - done
-111 - done
-137 - done
-133 - done
-61 - done
-155 - done
-139 - done
-137b - done
-155a - fix the choice to be able to have combat
-155b - needs to deal some damage on entry
-155c - check sanity loss?
+Code the 4th day locations
 
 Athens Harbor
 173

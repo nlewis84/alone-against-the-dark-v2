@@ -739,6 +739,16 @@
     "title": "ARKHAM ADVERTISER",
     "traceNumbers": ["Arkham Location"]
   },
+  "61": {
+    "description": "You notice flakes of dry skin; someone has left behind his or her sunburn, you think. Quite out of place to do it in this fine shop. You look around and see two figures, one short and one tall, staring directly at you. You quickly leave the shop.",
+    "choices": [
+      {
+        "text": "Leave the shop and move on with your day",
+        "nextEntry": "126"
+      }
+    ],
+    "traceNumbers": ["133", "126"]
+  },
   "62": {
     "description": "The ancient myths refer to Gotterdammerung, the fall of the Gods. Inexplicably, almost all of these Northern myths say that the climate became colder after that fall.",
     "choices": [
@@ -926,19 +936,6 @@
     ],
     "traceNumbers": ["8", "187"]
   },
-  "73a": {
-    "description": "The ship is huge, but nothing strikes you as out of the ordinary.",
-    "choices": [
-      {
-        "text": "Proceed to the next day",
-        "nextEntry": "187",
-        "effects": {
-          "setHour": 23,
-          "advanceTime": 6
-        }
-      }
-    ]
-  },
   "74": {
     "title": "NEW YORK PUBLIC LIBRARY",
     "description": "While not allowing browsers, the helpful librarians provide a selection of books on a topic. They are busy and understaffed, so only two topics may be researched per visit. You may go to another location and then return here in the same day.\n\nNo rolls are needed for these books. It takes two hours to study each topic.",
@@ -1052,19 +1049,6 @@
       }
     ],
     "traceNumbers": ["69", "115", "187"]
-  },
-  "83a": {
-    "description": "You ask about the foreign pari seen on deck, but no one seems to know what you are talking about.",
-    "choices": [
-      {
-        "text": "Proceed to the next day",
-        "nextEntry": "187",
-        "effects": {
-          "setHour": 23,
-          "advanceTime": 6
-        }
-      }
-    ]
   },
   "84": {
     "description": "A chapter notes that the most bizarre case of 'undead' occurred among French Legionnaires in North Africa. Outpost guards were found strangled with flecks of dead, scaly skin still sticking to their throats.",
@@ -1329,46 +1313,6 @@
     ],
     "traceNumbers": ["47", "135", "187"]
   },
-  "106a": {
-    "title": "Combat Continues",
-    "description": "The battle rages on. Either party must fight until one can no longer continue.",
-    "choices": [
-      {
-        "text": "Attempt to Dodge",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": "47",
-
-            "failure": {
-              "nextEntry": "106a",
-              "damage": "1D6",
-              "message": "The stranger lets loose a shot as you fail to dodge."
-            }
-          }
-        }
-      },
-      {
-        "text": "Fight",
-        "nextEntry": "10d",
-        "effects": {
-          "combat": {
-            "opponent": {
-              "name": "Mysterious Stranger",
-              "attackChance": "50%",
-              "damage": "1D6",
-              "dex": 60,
-              "health": 10,
-              "maxHealth": 10
-            },
-            "win": "47",
-            "lose": "end"
-          },
-          "advanceTime": 0
-        }
-      }
-    ]
-  },
   "109": {
     "title": "FIRST MONDAY",
     "description": "You are enjoying your first Monday on the ship.",
@@ -1420,6 +1364,22 @@
       }
     ],
     "traceNumbers": ["116"]
+  },
+  "111": {
+    "description": "The film today is Alfred Hitchcock’s Murder. You look forward to seeing the film and feel that young Hitchcock is a promising director.",
+    "choices": [
+      {
+        "text": "Watch the film and make a Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": "137",
+            "failure": "137b"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["126", "137"]
   },
   "113": {
     "choices": [
@@ -1591,34 +1551,8 @@
     ],
     "traceNumbers": ["60"]
   },
-  "61": {
-    "description": "You notice flakes of dry skin; someone has left behind his or her sunburn, you think. Quite out of place to do it in this fine shop. You look around and see two figures, one short and one tall, staring directly at you. You quickly leave the shop.",
-    "choices": [
-      {
-        "text": "Leave the shop and move on with your day",
-        "nextEntry": "126"
-      }
-    ],
-    "traceNumbers": ["133", "126"]
-  },
-  "111": {
-    "description": "The film today is Alfred Hitchcock’s Murder. You look forward to seeing the film and feel that young Hitchcock is a promising director.",
-    "choices": [
-      {
-        "text": "Watch the film and make a Listen roll",
-        "effects": {
-          "check": {
-            "skill": "Listen",
-            "success": "137",
-            "failure": "137b"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["126", "137"]
-  },
   "126": {
-    "title": "SECOND TUESDAY",
+    "title": "FIRST TUESDAY",
     "description": "You are enjoying your second Tuesday on the ship.",
     "choices": [
       {
@@ -1681,6 +1615,16 @@
     ],
     "traceNumbers": ["61", "126"]
   },
+  "136": {
+    "description": "A Cunard liner departs Pier 56 in New York City every Saturday for Athens and Alexandria, with intermediate stops. The trip takes nine days to Athens and one more to Alexandria.",
+    "choices": [
+      {
+        "text": "Return to newspaper",
+        "nextEntry": "60"
+      }
+    ],
+    "traceNumbers": ["60"]
+  },
   "137": {
     "description": "You hear two people coming down the row of seats and sit behind you. Entering, you noticed that the theater was nearly empty.",
     "choices": [
@@ -1702,225 +1646,6 @@
       }
     ],
     "traceNumbers": ["111", "126", "187"]
-  },
-  "137b": {
-    "description": "Just as you become aware of people behind you, two massive, leathery hands clamp around your neck like a vise and start to strangle you.",
-    "choices": [
-      {
-        "text": "Try to break free with a Hard Strength roll",
-        "effects": {
-          "check": {
-            "skill": "STR",
-            "difficulty": "hard",
-            "tries": "1D6",
-            "success": {
-              "nextEntry": "126",
-              "message": "You succeed in breaking free and run out of the theater to safety."
-            },
-            "failure": {
-              "nextEntry": "137c",
-              "message": "You have been murdered... THE END."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["137"]
-  },
-  "137c": {
-    "description": "You have failed all your attempts to escape. As the strangulation intensifies, your vision fades... THE END.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["137b"]
-  },
-  "139": {
-    "description": "Just at that moment, one of the ship’s officers enters, distracting the thing—allowing you to get away! The officer, his hair standing on end, wisely turns on his heels and runs with you down the hall to safety. The captain has you guarded for the rest of the trip; no sign of your attackers are found. You have no more ship activities selections.",
-    "choices": [
-      {
-        "text": "Disembark at Athens",
-        "nextEntry": "173"
-      },
-      {
-        "text": "Disembark at Alexandria",
-        "nextEntry": "195",
-        "requirements": {
-          "destination": "Alexandria"
-        }
-      }
-    ],
-    "effects": {
-      "skipRemainingDays": true
-    },
-    "traceNumbers": ["155", "173", "195"]
-  },
-  "155": {
-    "description": "The library is deserted. Well, peace and quiet is just what you crave. You’re examining the newest Agatha Christie novel when a short, sullen-looking fellow enters the room, followed by a tall man wearing a cowl. You nod uneasily and then return to your book, uncomfortably aware that they are moving nearer. You look up again. The short man smiles, and pulls out a gleaming dagger.",
-    "choices": [
-      {
-        "text": "Draw your weapon (if you have one)",
-        "effects": {
-          "check": {
-            "skill": "DEX",
-            "success": {
-              "nextEntry": "155a",
-              "message": "You quickly draw your weapon before the attacker strikes."
-            },
-            "failure": {
-              "nextEntry": "155b",
-              "modifyHealth": -3,
-              "message": "You fail to draw your weapon in time and the attacker strikes."
-            }
-          }
-        }
-      },
-      {
-        "text": "Dodge the blow",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": {
-              "nextEntry": "155c",
-              "message": "You manage to dodge the attack and try to escape."
-            },
-            "failure": {
-              "nextEntry": "155b",
-              "modifyHealth": -3,
-              "message": "You fail to dodge and are struck by the dagger."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["126", "139", "155a", "155b", "155c"]
-  },
-  "155a": {
-    "description": "You draw your weapon and prepare to fight. Make a DEX roll to attack first.",
-    "choices": [
-      {
-        "text": "Attack with your weapon",
-        "effects": {
-          "check": {
-            "skill": "DEX",
-            "success": {
-              "nextEntry": "155b",
-              "message": "You manage to hit the short man and take 1D6 damage."
-            },
-            "failure": {
-              "nextEntry": "155b",
-              "message": "You miss and the short man hits you."
-            }
-          }
-        }
-      }
-    ]
-  },
-  "155b": {
-    "description": "The short man stabs you with his dagger. You must fight or dodge to survive.",
-    "choices": [
-      {
-        "text": "Fight back",
-        "nextEntry": "155b",
-        "effects": {
-          "combat": {
-            "opponent": {
-              "name": "Short Man",
-              "attackChance": "50%",
-              "damage": "1D6",
-              "health": 8,
-              "maxHealth": 8
-            },
-            "win": "155c",
-            "lose": "155e"
-          }
-        }
-      },
-      {
-        "text": "Try to dodge and escape",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": {
-              "nextEntry": "155c",
-              "message": "You dodge the blow and try to escape."
-            },
-            "failure": {
-              "nextEntry": "155b",
-              "damage": "1D6",
-              "message": "The stranger lets loose a shot as you fail to dodge."
-            }
-          }
-        }
-      }
-    ]
-  },
-  "155c": {
-    "description": "The short man falls, but the tall hooded figure blocks the exit. As you launch a desperate series of attacks to make your escape, you see your blows (knife, bullets, etc.) go through him into the bulkheads, as if he were a ghost! His inhuman glowing eyes are now visible within the gloom of the cowl, and you feel a deathly chill in the air.",
-    "choices": [
-      {
-        "text": "Make a Sanity roll",
-        "effects": {
-          "check": {
-            "skill": "Sanity",
-            "success": {
-              "nextEntry": "139",
-              "message": "You manage to keep your sanity and attempt to escape."
-            },
-            "failure": {
-              "sanityLoss": "1D6",
-              "nextEntry": "155d"
-            }
-          }
-        }
-      }
-    ]
-  },
-  "155d": {
-    "description": "His hands reach out towards you!",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "139",
-              "message": "You narrowly escape the horrifying figure."
-            },
-            "failure": {
-              "modifyHealth": -100,
-              "nextEntry": "155e"
-            }
-          }
-        }
-      }
-    ]
-  },
-  "155e": {
-    "description": "The tall figure’s hands close around your throat, and you feel a cold, clammy grip on your soul. You are dead.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ]
-  },
-  "136": {
-    "description": "A Cunard liner departs Pier 56 in New York City every Saturday for Athens and Alexandria, with intermediate stops. The trip takes nine days to Athens and one more to Alexandria.",
-    "choices": [
-      {
-        "text": "Return to newspaper",
-        "nextEntry": "60"
-      }
-    ],
-    "traceNumbers": ["60"]
   },
   "138": {
     "description": "Your mind reels as you see all the areas you could study. Three in particular seem of interest.",
@@ -1947,6 +1672,26 @@
       }
     ],
     "traceNumbers": ["74", "119", "163"]
+  },
+  "139": {
+    "description": "Just at that moment, one of the ship’s officers enters, distracting the thing—allowing you to get away! The officer, his hair standing on end, wisely turns on his heels and runs with you down the hall to safety. The captain has you guarded for the rest of the trip; no sign of your attackers are found. You have no more ship activities selections.",
+    "choices": [
+      {
+        "text": "Disembark at Athens",
+        "nextEntry": "173"
+      },
+      {
+        "text": "Disembark at Alexandria",
+        "nextEntry": "195",
+        "requirements": {
+          "destination": "Alexandria"
+        }
+      }
+    ],
+    "effects": {
+      "skipRemainingDays": true
+    },
+    "traceNumbers": ["155", "173", "195"]
   },
   "140": {
     "description": "You read the following: 'Where is the Lost City of the Old Ones? Where are the treasures of the Eldritch Masters? Cursed are they, condemned by the shoggoths to lie buried, waiting in the ice, for one more turn of Aten’s Top.'",
@@ -2137,6 +1882,46 @@
         }
       }
     ]
+  },
+  "155": {
+    "description": "The library is deserted. Well, peace and quiet is just what you crave. You’re examining the newest Agatha Christie novel when a short, sullen-looking fellow enters the room, followed by a tall man wearing a cowl. You nod uneasily and then return to your book, uncomfortably aware that they are moving nearer. You look up again. The short man smiles, and pulls out a gleaming dagger.",
+    "choices": [
+      {
+        "text": "Draw your weapon (if you have one)",
+        "effects": {
+          "check": {
+            "skill": "DEX",
+            "success": {
+              "nextEntry": "155a",
+              "message": "You quickly draw your weapon before the attacker strikes."
+            },
+            "failure": {
+              "nextEntry": "155b",
+              "modifyHealth": -3,
+              "message": "You fail to draw your weapon in time and the attacker strikes."
+            }
+          }
+        }
+      },
+      {
+        "text": "Dodge the blow",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "155c",
+              "message": "You manage to dodge the attack and try to escape."
+            },
+            "failure": {
+              "nextEntry": "155b",
+              "modifyHealth": -3,
+              "message": "You fail to dodge and are struck by the dagger."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["126", "139", "155a", "155b", "155c"]
   },
   "156": {
     "description": "“DEC. 20, BREMERHAVEN – The Starkweather-Moore expedition departed today under clear skies and calm seas. Despite the record cold temperatures, many came to the pier to see off the expedition.”",
@@ -2808,6 +2593,32 @@
       "Antarctic Base Camp"
     ]
   },
+  "586": {
+    "description": "Small fast-food stands occur in every city: hot dogs, falafel, and so on.",
+    "choices": [
+      {
+        "text": "Buy and eat some food",
+        "effects": {
+          "diceRoll": "1D10",
+          "outcomes": {
+            "1": {
+              "description": "That food really hit the spot!",
+              "nextEntry": "New York"
+            },
+            "2-10": {
+              "description": "The food tasted all right at the time, but now your stomach is churning.",
+              "nextEntry": "12"
+            }
+          }
+        }
+      },
+      {
+        "text": "Keep exploring",
+        "nextEntry": "New York"
+      }
+    ],
+    "traceNumbers": ["12"]
+  },
   "593": {
     "choices": [
       {
@@ -2961,6 +2772,107 @@
       }
     ]
   },
+  "73a": {
+    "description": "The ship is huge, but nothing strikes you as out of the ordinary.",
+    "choices": [
+      {
+        "text": "Proceed to the next day",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ]
+  },
+  "83a": {
+    "description": "You ask about the foreign pari seen on deck, but no one seems to know what you are talking about.",
+    "choices": [
+      {
+        "text": "Proceed to the next day",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ]
+  },
+  "106a": {
+    "title": "Combat Continues",
+    "description": "The battle rages on. Either party must fight until one can no longer continue.",
+    "choices": [
+      {
+        "text": "Attempt to Dodge",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": "47",
+            "failure": {
+              "nextEntry": "106a",
+              "damage": "1D6",
+              "message": "The stranger lets loose a shot as you fail to dodge."
+            }
+          }
+        }
+      },
+      {
+        "text": "Fight",
+        "nextEntry": "10d",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Mysterious Stranger",
+              "attackChance": "50%",
+              "damage": "1D6",
+              "dex": 60,
+              "health": 10,
+              "maxHealth": 10
+            },
+            "win": "47",
+            "lose": "end"
+          },
+          "advanceTime": 0
+        }
+      }
+    ]
+  },
+  "137b": {
+    "description": "Just as you become aware of people behind you, two massive, leathery hands clamp around your neck like a vise and start to strangle you.",
+    "choices": [
+      {
+        "text": "Try to break free with a Hard Strength roll",
+        "effects": {
+          "check": {
+            "skill": "STR",
+            "difficulty": "hard",
+            "tries": "1D6",
+            "success": {
+              "nextEntry": "126",
+              "message": "You succeed in breaking free and run out of the theater to safety."
+            },
+            "failure": {
+              "nextEntry": "137c",
+              "message": "You have been murdered... THE END."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["137"]
+  },
+  "137c": {
+    "description": "You have failed all your attempts to escape. As the strangulation intensifies, your vision fades... THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["137b"]
+  },
   "141b": {
     "description": "You hear thunderous snores. This room is occupied and can’t be Gliere’s room; you better try a different door. Uh oh! Someone's coming!",
     "choices": [
@@ -2978,6 +2890,119 @@
       {
         "text": "Someone heard you!",
         "nextEntry": "51"
+      }
+    ]
+  },
+  "155a": {
+    "description": "You draw your weapon and prepare to fight. Make a DEX roll to attack first.",
+    "choices": [
+      {
+        "text": "Attack with your weapon",
+        "effects": {
+          "check": {
+            "skill": "DEX",
+            "success": {
+              "nextEntry": "155b",
+              "message": "You manage to hit the short man and take 1D6 damage."
+            },
+            "failure": {
+              "nextEntry": "155b",
+              "message": "You miss and the short man hits you."
+            }
+          }
+        }
+      }
+    ]
+  },
+  "155b": {
+    "description": "The short man stabs you with his dagger. You must fight or dodge to survive.",
+    "choices": [
+      {
+        "text": "Fight back",
+        "nextEntry": "155b",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Short Man",
+              "attackChance": "50%",
+              "damage": "1D6",
+              "health": 8,
+              "maxHealth": 8
+            },
+            "win": "155c",
+            "lose": "155e"
+          }
+        }
+      },
+      {
+        "text": "Try to dodge and escape",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "155c",
+              "message": "You dodge the blow and try to escape."
+            },
+            "failure": {
+              "nextEntry": "155b",
+              "damage": "1D6",
+              "message": "The stranger lets loose a shot as you fail to dodge."
+            }
+          }
+        }
+      }
+    ]
+  },
+  "155c": {
+    "description": "The short man falls, but the tall hooded figure blocks the exit. As you launch a desperate series of attacks to make your escape, you see your blows (knife, bullets, etc.) go through him into the bulkheads, as if he were a ghost! His inhuman glowing eyes are now visible within the gloom of the cowl, and you feel a deathly chill in the air.",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "nextEntry": "139",
+              "message": "You manage to keep your sanity and attempt to escape."
+            },
+            "failure": {
+              "sanity": "1D6",
+              "nextEntry": "155d"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "155d": {
+    "description": "His hands reach out towards you!",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "139",
+              "message": "You narrowly escape the horrifying figure."
+            },
+            "failure": {
+              "modifyHealth": -100,
+              "nextEntry": "155e"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "155e": {
+    "description": "The tall figure’s hands close around your throat, and you feel a cold, clammy grip on your soul. You are dead.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
       }
     ]
   },
@@ -3424,31 +3449,5 @@
         "nextEntry": "585_exit"
       }
     ]
-  },
-  "586": {
-    "description": "Small fast-food stands occur in every city: hot dogs, falafel, and so on.",
-    "choices": [
-      {
-        "text": "Buy and eat some food",
-        "effects": {
-          "diceRoll": "1D10",
-          "outcomes": {
-            "2-10": {
-              "description": "The food tasted all right at the time, but now your stomach is churning.",
-              "nextEntry": "12"
-            },
-            "1": {
-              "description": "That food really hit the spot!",
-              "nextEntry": "New York"
-            }
-          }
-        }
-      },
-      {
-        "text": "Keep exploring",
-        "nextEntry": "New York"
-      }
-    ],
-    "traceNumbers": ["12"]
   }
 }
