@@ -9,15 +9,23 @@ DONE
 
 Be able to select a spell from your inventory and learn it (or read a book); use entry 121.
 
-187 - Done kinda....need to actually code these choices correctly!
+187 - keep working on this
 
 Cunard Ship
 code each days' activities to only work once (generally)
 106, 155a - code the Retrieve a weapon to let the player pick a weapon to attack with, maybe extra options for available weapons?
-Code the 4th day locations
-148 - done
-135 - test it
-579 - I don't think you can actually get to this one
+Code the 6th day (friday) locations
+192 - make it like 126, but don't show options if the player has already seen them. If they have been to 111, 133, and 155, show 590 as a choice
+189
+
+7th/8th Days (saturday/sunday)
+171
+167
+96
+203
+385
+142
+132
 
 Athens Harbor
 173
