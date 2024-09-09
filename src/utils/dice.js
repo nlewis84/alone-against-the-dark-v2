@@ -28,21 +28,61 @@ export function rollDice(input) {
   return 0
 }
 
-export function makeSkillCheck(skill, skills, stats, difficulty = 'normal') {
+export function makeSkillCheck(
+  skill,
+  skills,
+  stats,
+  difficulty = 'normal',
+  tries = null,
+) {
   const skillValue = skills[skill] !== undefined ? skills[skill] : stats[skill]
   let difficultyModifier = 1
   if (difficulty === 'hard') difficultyModifier = 0.5
   if (difficulty === 'extreme') difficultyModifier = 0.2
-  const diceRoll = rollDice(100)
-  const success = diceRoll <= skillValue * difficultyModifier
-  // Construct roll message and result message
-  const rollMessage = `${diceRoll}`
-  const resultMessage = success ? 'Pass' : 'Fail'
 
-  // Update the skill check marker with the roll result and outcome
-  updateMarker('skillCheckMarker', `${rollMessage} ${resultMessage}`)
+  // Handle tries if provided
+  if (tries !== null) {
+    const parsedTries = rollDice(tries)
+    // Check if the player has enough tries left
+    let remainingTries = parsedTries
+    while (remainingTries > 0) {
+      const diceRoll = rollDice(100)
+      const success = diceRoll <= skillValue * difficultyModifier
 
-  return success
+      const rollMessage = `${diceRoll}`
+      const resultMessage = success ? 'Pass' : 'Fail'
+
+      if (success) {
+        // Update the skill check marker with the roll result and outcome
+        // tell the user that they passed on the nth try
+        updateMarker(
+          'skillCheckMarker',
+          `${rollMessage} ${resultMessage} (passed on try ${parsedTries - remainingTries + 1})`,
+        )
+        return success // Return as true if success
+      }
+
+      remainingTries--
+    }
+
+    // Tell the user that they failed {tries} times
+    updateMarker('skillCheckMarker', `Failed ${parsedTries} times.`)
+
+    // If all tries fail, return failure (false)
+    return false
+  } else {
+    // Standard single roll case
+    const diceRoll = rollDice(100)
+    const success = diceRoll <= skillValue * difficultyModifier
+
+    const rollMessage = `${diceRoll}`
+    const resultMessage = success ? 'Pass' : 'Fail'
+
+    // Update the skill check marker with the roll result and outcome
+    updateMarker('skillCheckMarker', `${rollMessage} ${resultMessage}`)
+
+    return success // Keep the return structure consistent (true/false)
+  }
 }
 
 export function updateMarker(markerId, message) {

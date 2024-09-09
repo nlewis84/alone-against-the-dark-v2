@@ -298,6 +298,7 @@ function handleEntryChoices(entryId, entry) {
               currentState.skills,
               currentState,
               choice.effects.check.difficulty,
+              choice.effects.check?.tries || null,
             )
             const checkResult = success
               ? choice.effects.check.success
