@@ -184,7 +184,7 @@ function handleEntryEffects(effects) {
   // Handle other effects such as sanity, inventory updates, etc., similarly
 }
 
-function handleEntryChoices(entryId, entry) {
+export function handleEntryChoices(entryId, entry) {
   const choicesContainer = document.getElementById('choices')
   choicesContainer.innerHTML = ''
 
@@ -276,13 +276,6 @@ function handleEntryChoices(entryId, entry) {
             if (choice.effects.advanceTime !== undefined) {
               updateTime(choice.effects.advanceTime)
             }
-
-            if (choice.effects.dayAdvance !== undefined) {
-              currentDate.setDate(
-                currentDate.getDate() + choice.effects.dayAdvance,
-              )
-              setCurrentDate(currentDate)
-            }
           }
 
           if (choice.effects && choice.effects.diceRoll) {
@@ -365,7 +358,7 @@ function handleEntryChoices(entryId, entry) {
   }
 }
 
-function handleComplexOutcome(checkResult) {
+export function handleComplexOutcome(checkResult) {
   if (checkResult.modifyHealth) {
     updateHealth(parseInt(checkResult.modifyHealth)) // Ensure you parse the modifyHealth result if it's a string like "2D3"
   }
@@ -607,10 +600,13 @@ export function makeChoice(nextEntry, effects) {
     if (effects.inventory) {
       effects.inventory.forEach((item) => addItem(item))
     }
+
     if (effects.dayAdvance) {
       const newDate = new Date(getCurrentDate())
-      newDate.setDate(newDate.getDate() + 1)
+      newDate.setDate(newDate.getDate() + effects.dayAdvance)
       setCurrentDate(newDate)
+
+      // Optionally, update time to default hour (6 AM) if needed
       updateTime(0, effects.defaultHour !== undefined ? effects.defaultHour : 6)
     }
 
@@ -629,7 +625,7 @@ export function makeChoice(nextEntry, effects) {
         effects.check.skill,
         currentState.skills,
         currentState,
-        choice.effects.check.difficulty,
+        effects.check.difficulty,
       )
       const checkResult = success
         ? effects.check.success

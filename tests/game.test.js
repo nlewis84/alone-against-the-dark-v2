@@ -24,6 +24,8 @@ import {
   isLocationAvailable,
   checkRequirements,
   parseAndComputeDamage,
+  handleComplexOutcome,
+  handleEntryChoices,
   findOutcomeForRoll,
   addVisitedEntry,
 } from '../src/game/gameActions.js'
@@ -1314,7 +1316,7 @@ describe('Game Logic', () => {
       displayEntry('54') // Redisplay the entry
 
       const choices = Array.from(document.getElementById('choices').children)
-      console.log(choices)
+
       expect(choices.length).toBe(1) // No book choices should be displayed as the player already has 3 books plus NYC button
     })
 
@@ -1470,6 +1472,63 @@ describe('Game Logic', () => {
       // Test on day 6 - choice should not be available
       setJourneyDay(6)
       expect(checkRequirements(choiceRequirements)).toBe(false)
+    })
+  })
+
+  describe('Day and Time Effects in handleEntryChoices', () => {
+    let entryWithDayAdvance, entryWithNoDayAdvance
+
+    beforeEach(() => {
+      entryWithDayAdvance = {
+        choices: [
+          {
+            text: 'Advance the day by 1',
+            nextEntry: '100',
+            effects: {
+              dayAdvance: 1,
+            },
+          },
+        ],
+      }
+
+      entryWithNoDayAdvance = {
+        choices: [
+          {
+            text: 'Stay on the same day',
+            nextEntry: '100',
+            effects: {},
+          },
+        ],
+      }
+
+      // Reset the current date to a known value before each test
+      setCurrentDate(new Date(1931, 8, 1, 12, 0)) // Noon, September 1, 1931
+    })
+
+    test('should advance the day when dayAdvance effect is present', () => {
+      handleEntryChoices('123', entryWithDayAdvance)
+
+      const button = findChoiceButton('Advance the day by 1')
+      button.click()
+
+      const updatedDate = getCurrentDate()
+
+      // Expect the day to have advanced by 1
+      expect(updatedDate.getDate()).toBe(2)
+      expect(updatedDate.getHours()).toBe(6) // Time should set to 6AM
+    })
+
+    test('should not advance the day when dayAdvance effect is absent', () => {
+      handleEntryChoices('124', entryWithNoDayAdvance)
+
+      const button = findChoiceButton('Stay on the same day')
+      button.click()
+
+      const updatedDate = getCurrentDate()
+
+      // Expect the day to remain the same
+      expect(updatedDate.getDate()).toBe(1)
+      expect(updatedDate.getHours()).toBe(13) // Time should advance by one hour
     })
   })
 })
