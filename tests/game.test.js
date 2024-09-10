@@ -1476,7 +1476,10 @@ describe('Game Logic', () => {
   })
 
   describe('Day and Time Effects in handleEntryChoices', () => {
-    let entryWithDayAdvance, entryWithNoDayAdvance
+    let entryWithDayAdvance,
+      entryWithNoDayAdvance,
+      entryWithDefaultHour,
+      entryWithDayAdvanceAndDefaultHour
 
     beforeEach(() => {
       entryWithDayAdvance = {
@@ -1497,6 +1500,31 @@ describe('Game Logic', () => {
             text: 'Stay on the same day',
             nextEntry: '100',
             effects: {},
+          },
+        ],
+      }
+
+      entryWithDefaultHour = {
+        choices: [
+          {
+            text: 'Set default hour to 6AM',
+            nextEntry: '100',
+            effects: {
+              defaultHour: 6,
+            },
+          },
+        ],
+      }
+
+      entryWithDayAdvanceAndDefaultHour = {
+        choices: [
+          {
+            text: 'Advance the day and set default hour to 6AM',
+            nextEntry: '100',
+            effects: {
+              dayAdvance: 1,
+              defaultHour: 6,
+            },
           },
         ],
       }
@@ -1529,6 +1557,34 @@ describe('Game Logic', () => {
       // Expect the day to remain the same
       expect(updatedDate.getDate()).toBe(1)
       expect(updatedDate.getHours()).toBe(13) // Time should advance by one hour
+    })
+
+    test('should not change the hour when only defaultHour effect is present', () => {
+      handleEntryChoices('125', entryWithDefaultHour)
+
+      const button = findChoiceButton('Set default hour to 6AM')
+      button.click()
+
+      const updatedDate = getCurrentDate()
+
+      // Expect the day to remain the same and the hour to not change
+      expect(updatedDate.getDate()).toBe(1)
+      expect(updatedDate.getHours()).toBe(13) // Time should advance by one hour, defaultHour does nothing without dayAdvance
+    })
+
+    test('should advance the day and set default hour when both dayAdvance and defaultHour effects are present', () => {
+      handleEntryChoices('126', entryWithDayAdvanceAndDefaultHour)
+
+      const button = findChoiceButton(
+        'Advance the day and set default hour to 6AM',
+      )
+      button.click()
+
+      const updatedDate = getCurrentDate()
+
+      // Expect the day to have advanced by 1 and time set to defaultHour (6AM)
+      expect(updatedDate.getDate()).toBe(2)
+      expect(updatedDate.getHours()).toBe(6) // Time should be set to 6AM
     })
   })
 })
