@@ -1440,4 +1440,36 @@ describe('Game Logic', () => {
       expect(checkRequirements(requirements)).toBe(true)
     })
   })
+
+  describe('Entry 126 - dayOfJourney Requirement', () => {
+    test('should show the "A group seems to be gathering" choice only on day 5', () => {
+      initializeGame()
+      currentState.shipJourneyStartDate = new Date(1931, 8, 1) // Start date is September 1, 1931
+      // Function to simulate setting the current journey day
+      const setJourneyDay = (daysAfterStart) => {
+        const currentDate = new Date(1931, 8, 1) // Start on September 1, 1931
+        currentDate.setDate(currentDate.getDate() + daysAfterStart) // Advance by specified number of days
+        setCurrentDate(currentDate) // Update the game's current date
+      }
+
+      // Define the requirements for the choice "A group seems to be gathering"
+      const choiceRequirements = { dayOfJourney: 5 }
+
+      // Test on day 0 (start of journey) - choice should not be available
+      setJourneyDay(0)
+      expect(checkRequirements(choiceRequirements)).toBe(false)
+
+      // Test on day 4 - choice should not be available
+      setJourneyDay(4)
+      expect(checkRequirements(choiceRequirements)).toBe(false)
+
+      // Test on day 5 - choice should be available
+      setJourneyDay(5)
+      expect(checkRequirements(choiceRequirements)).toBe(true)
+
+      // Test on day 6 - choice should not be available
+      setJourneyDay(6)
+      expect(checkRequirements(choiceRequirements)).toBe(false)
+    })
+  })
 })

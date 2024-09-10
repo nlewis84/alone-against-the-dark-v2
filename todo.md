@@ -24,10 +24,7 @@ Be able to select a spell from your inventory and learn it (or read a book); use
 187 - keep working on this
 
 Cunard Ship
-code each days' activities to only work once (generally)
 106, 155a - code the Retrieve a weapon to let the player pick a weapon to attack with, maybe extra options for available weapons?
-Code the 6th day (friday) locations
-TODO - add test for 126 dayOfJourney
 
 8th day should not show activites dropdowns and the button should say Stay Onboard for Alexandria, and setHour 23, advanceTime 13. other button should say Get off at the Athens Pier and set time to Noon.
 9th day should also not show activites dropdowns and the button should say this is your stop for Alexandria, and set time to 1PM
