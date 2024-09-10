@@ -275,7 +275,6 @@ function handleEntryChoices(entryId, entry) {
 
             if (choice.effects.advanceTime !== undefined) {
               updateTime(choice.effects.advanceTime)
-              console.log('advance time', currentDate)
             }
 
             if (choice.effects.dayAdvance !== undefined) {
@@ -856,6 +855,13 @@ export function checkRequirements(requirements) {
       }
     }
 
+    if (requirements.dayOfJourney) {
+      const journeyDay = calculateJourneyDay()
+      if (journeyDay !== requirements.dayOfJourney) {
+        return false
+      }
+    }
+
     // Inclusive scheduled activity check with strict matching for existing activities
     if (requirements.scheduledActivity) {
       const { am, pm, night } = currentState.shipActivities || {}
@@ -1274,8 +1280,6 @@ function saveSelectedActivities(amActivity, pmActivity, nightActivity) {
     pm: pmActivity,
     night: nightActivity,
   }
-
-  console.log('Selected activities saved:', currentState.shipActivities)
 }
 
 function displaySelectedActivities() {
@@ -1288,8 +1292,19 @@ function displaySelectedActivities() {
 }
 
 function handleSpecialEntry187(choicesContainer) {
+  const currentDate = getCurrentDate()
+
+  // Only initialize if it's not already set
   if (!currentState.shipJourneyStartDate) {
-    startShipJourney() // Start the journey if it hasn't started
+    currentState.shipJourneyStartDate = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate(),
+      0,
+      0,
+      0, // Ensure the time is set to midnight
+    )
+    console.log('Ship journey started on:', currentState.shipJourneyStartDate)
   }
 
   const journeyDay = calculateJourneyDay() // Calculate the current day of the journey

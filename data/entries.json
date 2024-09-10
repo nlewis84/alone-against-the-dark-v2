@@ -165,8 +165,8 @@
     "choices": [
       {
         "effects": {
-          "dayAdvance": true,
-          "defaultHour": 6
+          "setHour": 23,
+          "advanceTime": 6
         },
         "nextEntry": "102",
         "text": "Advance"
@@ -1565,13 +1565,13 @@
     "traceNumbers": ["60"]
   },
   "126": {
-    "title": "FIRST TUESDAY",
-    "description": "You are enjoying your second Tuesday on the ship.",
+    "description": "You are enjoying a beautiful day on the ship.",
     "choices": [
       {
         "text": "Go to the Cinema (am)",
         "nextEntry": "111",
         "requirements": {
+          "hasNotVisited": "111",
           "scheduledActivity": {
             "am": "Cinema"
           }
@@ -1581,6 +1581,7 @@
         "text": "Go Shopping (pm)",
         "nextEntry": "133",
         "requirements": {
+          "hasNotVisited": "133",
           "scheduledActivity": {
             "pm": "Shopping"
           }
@@ -1590,13 +1591,21 @@
         "text": "Visit the Library (night)",
         "nextEntry": "155",
         "requirements": {
+          "hasNotVisited": "155",
           "scheduledActivity": {
             "night": "Library"
           }
         }
       },
       {
-        "text": "Move on to the next day",
+        "text": "A group seems to be gathering",
+        "nextEntry": "590",
+        "requirements": {
+          "dayOfJourney": 5
+        }
+      },
+      {
+        "text": "Rest for the night",
         "nextEntry": "187",
         "effects": {
           "setHour": 23,
@@ -1605,6 +1614,38 @@
       }
     ],
     "traceNumbers": ["61", "133", "137", "187", "192"]
+  },
+  "590": {
+    "description": "The purser tells you that skeet shooting from the fantail will soon begin.",
+    "choices": [
+      {
+        "text": "Get some shotgun practice",
+        "nextEntry": "189"
+      },
+      {
+        "text": "Rest for the night",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ],
+    "traceNumbers": ["192"]
+  },
+  "189": {
+    "description": "As you exhibit your prowess with a skeet gun, you hear a soft pop! Hearing a bullet whine past your ear. You wheel around. No gunman is in sight. The other shooters have not noticed the gunshot. Despite their stares, you abruptly leave the competition.",
+    "choices": [
+      {
+        "text": "Rest for the night",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ],
+    "traceNumbers": ["590"]
   },
   "133": {
     "description": "What a splendid ship! You have all the comforts of a big city within a few hundred feet of your cabin: beauty salon, fine men’s clothing, jewelry, sporting goods, books, etc. You decide to look at some new gloves.",
@@ -2083,6 +2124,7 @@
         "text": "Rest in Room (am)",
         "nextEntry": "167",
         "requirements": {
+          "hasNotVisited": "167",
           "scheduledActivity": {
             "am": "Rest in Room"
           }
@@ -2092,25 +2134,24 @@
         "text": "Oil Painting (pm)",
         "nextEntry": "96",
         "requirements": {
+          "hasNotVisited": "96",
           "scheduledActivity": {
             "pm": "Oil Painting"
           }
         }
       },
       {
+        "text": "Time for dinner",
+        "nextEntry": "385"
+      },
+      {
         "text": "Cocktails (night)",
         "nextEntry": "203",
         "requirements": {
+          "hasNotVisited": "203",
           "scheduledActivity": {
             "night": "Cocktails"
           }
-        }
-      },
-      {
-        "text": "Move on",
-        "nextEntry": "385",
-        "requirements": {
-          "visitedEntries": ["167", "96", "203"]
         }
       }
     ],
@@ -2139,6 +2180,16 @@
       }
     ],
     "traceNumbers": ["142", "132"]
+  },
+  "132": {
+    "description": "The man leaves you alone.",
+    "choices": [
+      {
+        "text": "Rest for the night",
+        "nextEntry": "187"
+      }
+    ],
+    "traceNumbers": ["203"]
   },
   "142": {
     "description": "“Martini, straight up, please.” He turns to you. “I couldn’t help but notice, old friend, that some strange people seem to follow you. A word of advice: stay off the deck, suspect everyone, stay out of the library and other lonely spots. I’ve seen these assassin types in action, by God.” You have never seen him before. He then talks about chess for a while, finishes his martini, and leaves. You never see him again.",
@@ -2276,7 +2327,7 @@
       "Tuesday": "126",
       "Wednesday": "148",
       "Thursday": "148",
-      "Friday": "192",
+      "Friday": "126",
       "Saturday": "171",
       "secondSunday": "171",
       "secondMonday": "173",
@@ -2989,8 +3040,7 @@
     "traceNumbers": ["11", "52"]
   },
   "148": {
-    "title": "FOURTH DAY",
-    "description": "You are enjoying your fourth day on the ship.",
+    "description": "You are enjoying another gorgeous day on the ship.",
     "choices": [
       {
         "text": "Stroll Decks (am)",

@@ -100,6 +100,7 @@ export function startGame() {
       isActive: false,
     },
     visitedEntries: new Set(),
+    shipJourneyStartDate: null,
     ...gameData.investigators['Professor Grunewald'],
   }
   displayEntry(currentState.currentEntry)

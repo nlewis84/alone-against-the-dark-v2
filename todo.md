@@ -1,5 +1,17 @@
 Code the `endGame` effect to actually do something
 Add Picture to 69, 86 from book
+TODO - 13 is advancing time wrong I think - add a test for it
+
+"effects": {
+"dayAdvance": true,
+"defaultHour": 6
+},
+doesn't work, but
+"effects": {
+"setHour": 23,
+"advanceTime": 6
+},
+does work
 
 Arkham Locations
 DONE
@@ -15,19 +27,10 @@ Cunard Ship
 code each days' activities to only work once (generally)
 106, 155a - code the Retrieve a weapon to let the player pick a weapon to attack with, maybe extra options for available weapons?
 Code the 6th day (friday) locations
-192 - make it like 126, but don't show options if the player has already seen them. If they have been to 111, 133, and 155, show 590 as a choice
-189
+TODO - add test for 126 dayOfJourney
 
-7th/8th Days (saturday/sunday)
-171 - teste
-167 - check that it makes sense for these days
-96 - test
-203 - test
-385 - test
-142 - test
-132 - test
-9th day should not show activites dropdowns and the button should say stay onboard for Alexandria, and setHour 23, advanceTime 13. other button should say exit at Athens and set time to Noon.
-10th day should also not show activites dropdowns and the button should say this is your stop for Alexandria, and set time to 1PM
+8th day should not show activites dropdowns and the button should say Stay Onboard for Alexandria, and setHour 23, advanceTime 13. other button should say Get off at the Athens Pier and set time to Noon.
+9th day should also not show activites dropdowns and the button should say this is your stop for Alexandria, and set time to 1PM
 
 Athens Harbor
 173
