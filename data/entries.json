@@ -845,8 +845,7 @@
       {
         "text": "Stay overnight in Boston and catch a morning train",
         "effects": {
-          "setHour": 6,
-          "dayAdvance": 0
+          "setHour": 6
         },
         "nextEntry": "64"
       }

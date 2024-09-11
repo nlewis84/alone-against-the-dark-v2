@@ -38,7 +38,6 @@ function updateCalendarAndTimeDisplay(date, timeString) {
 
 export function updateTime(hours, setHour = null, timeSuffix = null) {
   const date = getCurrentDate()
-
   if (setHour !== null) {
     date.setHours(setHour)
   } else {
@@ -235,7 +234,6 @@ export function handleEntryChoices(entryId, entry) {
 
           if (choice.effects) {
             const currentDate = getCurrentDate()
-            const currentHour = currentDate.getHours()
 
             if (choice.effects.setDay !== undefined) {
               const targetDay = choice.effects.setDay
@@ -259,22 +257,6 @@ export function handleEntryChoices(entryId, entry) {
 
               currentDate.setUTCDate(currentDate.getUTCDate() + daysToAdvance)
               setCurrentDate(currentDate)
-            }
-
-            if (choice.effects.setHour !== undefined) {
-              const targetHour = choice.effects.setHour
-
-              // Check if we need to advance the day first
-              if (targetHour < currentHour) {
-                currentDate.setDate(currentDate.getDate() + 1)
-              }
-
-              // Set the hour directly after potentially advancing the day
-              updateTime(0, targetHour)
-            }
-
-            if (choice.effects.advanceTime !== undefined) {
-              updateTime(choice.effects.advanceTime)
             }
           }
 
@@ -317,6 +299,27 @@ export function handleEntryChoices(entryId, entry) {
             choice.nextEntry &&
             choice.nextEntry.endsWith(' Location')
           ) {
+            if (choice.effects) {
+              if (choice.effects.setHour !== undefined) {
+                const newDate = new Date(getCurrentDate())
+                const targetHour = choice.effects.setHour
+                const currentHour = newDate.getHours()
+
+                // Check if we need to advance the day first
+                if (targetHour < currentHour) {
+                  newDate.setDate(newDate.getDate() + 1)
+                  setCurrentDate(newDate)
+                }
+                console.log(getCurrentDate(), targetHour)
+                // Set the hour directly after potentially advancing the day
+                updateTime(0, targetHour)
+              }
+
+              if (choice.effects.advanceTime !== undefined) {
+                updateTime(choice.effects.advanceTime)
+              }
+            }
+
             currentState.currentEntry = choice.nextEntry.replace(
               ' Location',
               '',
@@ -608,6 +611,24 @@ export function makeChoice(nextEntry, effects) {
 
       // Optionally, update time to default hour (6 AM) if needed
       updateTime(0, effects.defaultHour !== undefined ? effects.defaultHour : 6)
+    }
+    if (effects.setHour !== undefined) {
+      const newDate = new Date(getCurrentDate())
+      const targetHour = effects.setHour
+      const currentHour = newDate.getHours()
+
+      // Check if we need to advance the day first
+      if (targetHour < currentHour) {
+        newDate.setDate(newDate.getDate() + 1)
+        setCurrentDate(newDate)
+      }
+
+      // Set the hour directly after potentially advancing the day
+      updateTime(0, targetHour)
+    }
+
+    if (effects.advanceTime !== undefined) {
+      updateTime(effects.advanceTime)
     }
 
     // Initiate combat if combat effects are present

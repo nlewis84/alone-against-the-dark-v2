@@ -1074,10 +1074,15 @@ describe('Game Logic', () => {
   describe('Entry 64 Tests', () => {
     beforeEach(async () => {
       await initializeGame() // Reset the game state before each test
-      setCurrentDate(new Date(1931, 8, 1, 8)) // Start at 8am on September 1, 1931
     })
 
     test('Take the 10am train to New York (arrives at 5pm)', () => {
+      setCurrentDate(new Date(1931, 8, 1, 17, 0))
+
+      // Log the current date and time before advancing
+      const currentDate = getCurrentDate()
+
+      setCurrentDate(currentDate)
       displayEntry('64')
 
       const firstButton = document.querySelector('button')
@@ -1085,10 +1090,16 @@ describe('Game Logic', () => {
 
       const updatedDate = getCurrentDate()
       expect(updatedDate.getHours()).toBe(17) // Expect time to be 5pm (17:00)
-      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1, 1931
+      expect(updatedDate.getDate()).toBe(2) // Date should still be September 1, 1931
     })
 
     test('Take the 4pm train to New York (arrives at 10pm)', () => {
+      setCurrentDate(new Date(1931, 8, 1, 8, 0))
+
+      // Log the current date and time before advancing
+      const currentDate = getCurrentDate()
+
+      setCurrentDate(currentDate)
       displayEntry('64')
 
       const secondButton = document.querySelectorAll('button')[1]
@@ -1100,6 +1111,12 @@ describe('Game Logic', () => {
     })
 
     test('Take the 10am train to Arkham (arrives at 11am)', () => {
+      setCurrentDate(new Date(1931, 8, 1, 17, 0))
+
+      // Log the current date and time before advancing
+      const currentDate = getCurrentDate()
+
+      setCurrentDate(currentDate)
       displayEntry('64')
 
       const thirdButton = document.querySelectorAll('button')[2]
@@ -1107,10 +1124,16 @@ describe('Game Logic', () => {
 
       const updatedDate = getCurrentDate()
       expect(updatedDate.getHours()).toBe(11) // Expect time to be 11am (11:00)
-      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1, 1931
+      expect(updatedDate.getDate()).toBe(2) // Date should still be September 1, 1931
     })
 
     test('Take the 1pm train to Arkham (arrives at 2pm)', () => {
+      setCurrentDate(new Date(1931, 8, 1, 17, 0))
+
+      // Log the current date and time before advancing
+      const currentDate = getCurrentDate()
+
+      setCurrentDate(currentDate)
       displayEntry('64')
 
       const fourthButton = document.querySelectorAll('button')[3]
@@ -1118,10 +1141,16 @@ describe('Game Logic', () => {
 
       const updatedDate = getCurrentDate()
       expect(updatedDate.getHours()).toBe(14) // Expect time to be 2pm (14:00)
-      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1, 1931
+      expect(updatedDate.getDate()).toBe(2) // Date should still be September 1, 1931
     })
 
     test('Take the 6pm train to Arkham (arrives at 7pm)', () => {
+      setCurrentDate(new Date(1931, 8, 1, 18, 0))
+
+      // Log the current date and time before advancing
+      const currentDate = getCurrentDate()
+
+      setCurrentDate(currentDate)
       displayEntry('64')
 
       const fifthButton = document.querySelectorAll('button')[4]
@@ -1133,13 +1162,36 @@ describe('Game Logic', () => {
     })
 
     test('Stay overnight in Boston and catch a morning train', () => {
+      setCurrentDate(new Date(1931, 8, 1, 5, 0))
+
+      // Log the current date and time before advancing
+      const currentDate = getCurrentDate()
+
+      setCurrentDate(currentDate)
       displayEntry('64')
 
       const sixthButton = document.querySelectorAll('button')[5]
       sixthButton.click() // Simulate clicking the choice
 
       const updatedDate = getCurrentDate()
-      expect(updatedDate.getHours()).toBe(7) // Expect time to still be 8am (08:00)
+      expect(updatedDate.getHours()).toBe(6) // Expect time to be 6am (06:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should stay September 1, 1931
+    })
+
+    test('Stay overnight in Boston and catch a morning train (cross midnight)', () => {
+      setCurrentDate(new Date(1931, 8, 1, 7, 0))
+
+      // Log the current date and time before advancing
+      const currentDate = getCurrentDate()
+
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const sixthButton = document.querySelectorAll('button')[5]
+      sixthButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(6) // Expect time to be 6am (06:00)
       expect(updatedDate.getDate()).toBe(2) // Date should now be September 2, 1931
     })
   })
@@ -1479,7 +1531,11 @@ describe('Game Logic', () => {
     let entryWithDayAdvance,
       entryWithNoDayAdvance,
       entryWithDefaultHour,
-      entryWithDayAdvanceAndDefaultHour
+      entryWithDayAdvanceAndDefaultHour,
+      entryWithSetHour,
+      entryWithDayAdvanceAndSetHour,
+      entryWithAdvanceTime,
+      entryWithAdvanceTimeCrossingMidnight
 
     beforeEach(() => {
       entryWithDayAdvance = {
@@ -1529,6 +1585,55 @@ describe('Game Logic', () => {
         ],
       }
 
+      entryWithSetHour = {
+        choices: [
+          {
+            text: 'Set hour to 10PM',
+            nextEntry: '100',
+            effects: {
+              setHour: 22,
+            },
+          },
+        ],
+      }
+
+      entryWithDayAdvanceAndSetHour = {
+        choices: [
+          {
+            text: 'Advance the day and set hour to 10PM',
+            nextEntry: '100',
+            effects: {
+              dayAdvance: 1,
+              setHour: 22,
+            },
+          },
+        ],
+      }
+
+      entryWithAdvanceTime = {
+        choices: [
+          {
+            text: 'Advance time by 2 hours',
+            nextEntry: '100',
+            effects: {
+              advanceTime: 2,
+            },
+          },
+        ],
+      }
+
+      entryWithAdvanceTimeCrossingMidnight = {
+        choices: [
+          {
+            text: 'Advance time by 6 hours (cross midnight)',
+            nextEntry: '100',
+            effects: {
+              advanceTime: 6,
+            },
+          },
+        ],
+      }
+
       // Reset the current date to a known value before each test
       setCurrentDate(new Date(1931, 8, 1, 12, 0)) // Noon, September 1, 1931
     })
@@ -1543,7 +1648,7 @@ describe('Game Logic', () => {
 
       // Expect the day to have advanced by 1
       expect(updatedDate.getDate()).toBe(2)
-      expect(updatedDate.getHours()).toBe(6) // Time should set to 6AM
+      expect(updatedDate.getHours()).toBe(6) // Time should set to 6AM (default hour)
     })
 
     test('should not advance the day when dayAdvance effect is absent', () => {
@@ -1585,6 +1690,70 @@ describe('Game Logic', () => {
       // Expect the day to have advanced by 1 and time set to defaultHour (6AM)
       expect(updatedDate.getDate()).toBe(2)
       expect(updatedDate.getHours()).toBe(6) // Time should be set to 6AM
+    })
+
+    test('should set hour to 10PM when setHour effect is present', () => {
+      handleEntryChoices('127', entryWithSetHour)
+
+      const button = findChoiceButton('Set hour to 10PM')
+      button.click()
+
+      const updatedDate = getCurrentDate()
+
+      // Expect the day to remain the same and the hour to be set to 10PM
+      expect(updatedDate.getDate()).toBe(1)
+      expect(updatedDate.getHours()).toBe(22) // Time should be set to 10PM
+    })
+
+    test('should advance the day and set hour to 10PM when both dayAdvance and setHour effects are present', () => {
+      handleEntryChoices('128', entryWithDayAdvanceAndSetHour)
+
+      const button = findChoiceButton('Advance the day and set hour to 10PM')
+      button.click()
+
+      const updatedDate = getCurrentDate()
+
+      // Expect the day to have advanced by 1 and time set to 10PM
+      expect(updatedDate.getDate()).toBe(2)
+      expect(updatedDate.getHours()).toBe(22) // Time should be set to 10PM
+    })
+
+    test('should advance the time by 2 hours when advanceTime effect is present', () => {
+      handleEntryChoices('129', entryWithAdvanceTime)
+
+      const button = findChoiceButton('Advance time by 2 hours')
+      button.click()
+
+      const updatedDate = getCurrentDate()
+
+      // Expect the time to have advanced by 1 (by default) + the amount of time in advanceTime
+      expect(updatedDate.getDate()).toBe(1)
+      expect(updatedDate.getHours()).toBe(15) // Time should advance to 3PM
+    })
+
+    test('should advance time by 6 hours and cross midnight when advanceTime effect is present', () => {
+      setCurrentDate(new Date(1931, 8, 1, 17, 0))
+
+      // Log the current date and time before advancing
+      const currentDate = getCurrentDate()
+
+      handleEntryChoices('130', entryWithAdvanceTimeCrossingMidnight)
+
+      const button = findChoiceButton(
+        'Advance time by 6 hours (cross midnight)',
+      )
+      button.click()
+
+      // Log the updated date after clicking the button
+      const updatedDate = getCurrentDate()
+
+      // Log if midnight crossing logic is working as expected
+      const expectedDay = 2
+      const expectedHour = 0
+
+      // Assert the expected outcomes
+      expect(updatedDate.getDate()).toBe(expectedDay)
+      expect(updatedDate.getHours()).toBe(expectedHour)
     })
   })
 })
