@@ -1077,11 +1077,10 @@ describe('Game Logic', () => {
     })
 
     test('Take the 10am train to New York (arrives at 5pm)', () => {
-      setCurrentDate(new Date(1931, 8, 1, 17, 0))
+      // Test where the current time is after departure, so the day should change
+      setCurrentDate(new Date(1931, 8, 1, 17, 0)) // Start after train departure
 
-      // Log the current date and time before advancing
       const currentDate = getCurrentDate()
-
       setCurrentDate(currentDate)
       displayEntry('64')
 
@@ -1090,15 +1089,30 @@ describe('Game Logic', () => {
 
       const updatedDate = getCurrentDate()
       expect(updatedDate.getHours()).toBe(17) // Expect time to be 5pm (17:00)
-      expect(updatedDate.getDate()).toBe(2) // Date should still be September 1, 1931
+      expect(updatedDate.getDate()).toBe(2) // Date should advance to September 2
+    })
+
+    test('Take the 10am train to New York (arrives at 5pm, before departure)', () => {
+      // Test where the current time is before departure, so the day should not change
+      setCurrentDate(new Date(1931, 8, 1, 9, 0)) // Start before train departure
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const firstButton = document.querySelector('button')
+      firstButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(17) // Expect time to be 5pm (17:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1
     })
 
     test('Take the 4pm train to New York (arrives at 10pm)', () => {
-      setCurrentDate(new Date(1931, 8, 1, 8, 0))
+      // Similar pattern for other tests
+      setCurrentDate(new Date(1931, 8, 1, 8, 0)) // Start before train departure
 
-      // Log the current date and time before advancing
       const currentDate = getCurrentDate()
-
       setCurrentDate(currentDate)
       displayEntry('64')
 
@@ -1107,15 +1121,28 @@ describe('Game Logic', () => {
 
       const updatedDate = getCurrentDate()
       expect(updatedDate.getHours()).toBe(22) // Expect time to be 10pm (22:00)
-      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1, 1931
+      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1
+    })
+
+    test('Take the 4pm train to New York (after departure)', () => {
+      setCurrentDate(new Date(1931, 8, 1, 17, 0)) // Start after the train departs
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const secondButton = document.querySelectorAll('button')[1]
+      secondButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(22) // Expect time to be 10pm (22:00)
+      expect(updatedDate.getDate()).toBe(2) // Date should advance to September 2
     })
 
     test('Take the 10am train to Arkham (arrives at 11am)', () => {
-      setCurrentDate(new Date(1931, 8, 1, 17, 0))
+      setCurrentDate(new Date(1931, 8, 1, 17, 0)) // Start after the train departs
 
-      // Log the current date and time before advancing
       const currentDate = getCurrentDate()
-
       setCurrentDate(currentDate)
       displayEntry('64')
 
@@ -1124,15 +1151,160 @@ describe('Game Logic', () => {
 
       const updatedDate = getCurrentDate()
       expect(updatedDate.getHours()).toBe(11) // Expect time to be 11am (11:00)
-      expect(updatedDate.getDate()).toBe(2) // Date should still be September 1, 1931
+      expect(updatedDate.getDate()).toBe(2) // Date should advance to September 2
+    })
+
+    test('Take the 10am train to Arkham (before departure)', () => {
+      setCurrentDate(new Date(1931, 8, 1, 8, 0)) // Start before the train departs
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const thirdButton = document.querySelectorAll('button')[2]
+      thirdButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(11) // Expect time to be 11am (11:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1
+    })
+
+    // Continue this pattern for the other tests:
+    // - Before and after departure for each train time (1pm, 6pm, etc.)
+
+    test('Stay overnight in Boston and catch a morning train', () => {
+      setCurrentDate(new Date(1931, 8, 1, 5, 0)) // Early morning, before departure
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const sixthButton = document.querySelectorAll('button')[5]
+      sixthButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(6) // Expect time to be 6am (06:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1
+    })
+
+    test('Stay overnight in Boston and catch a morning train (cross midnight)', () => {
+      setCurrentDate(new Date(1931, 8, 1, 7, 0)) // After train departs
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const sixthButton = document.querySelectorAll('button')[5]
+      sixthButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(6) // Expect time to be 6am (06:00)
+      expect(updatedDate.getDate()).toBe(2) // Date should now be September 2
+    })
+  })
+  describe('Entry 64 Tests', () => {
+    beforeEach(async () => {
+      await initializeGame() // Reset the game state before each test
+    })
+
+    test('Take the 10am train to New York (arrives at 5pm)', () => {
+      // Test where the current time is after departure, so the day should change
+      setCurrentDate(new Date(1931, 8, 1, 17, 0)) // Start after train departure
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const firstButton = document.querySelector('button')
+      firstButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(17) // Expect time to be 5pm (17:00)
+      expect(updatedDate.getDate()).toBe(2) // Date should advance to September 2
+    })
+
+    test('Take the 10am train to New York (arrives at 5pm, before departure)', () => {
+      // Test where the current time is before departure, so the day should not change
+      setCurrentDate(new Date(1931, 8, 1, 9, 0)) // Start before train departure
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const firstButton = document.querySelector('button')
+      firstButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(17) // Expect time to be 5pm (17:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1
+    })
+
+    test('Take the 4pm train to New York (arrives at 10pm)', () => {
+      // Similar pattern for other tests
+      setCurrentDate(new Date(1931, 8, 1, 8, 0)) // Start before train departure
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const secondButton = document.querySelectorAll('button')[1]
+      secondButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(22) // Expect time to be 10pm (22:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1
+    })
+
+    test('Take the 4pm train to New York (after departure)', () => {
+      setCurrentDate(new Date(1931, 8, 1, 17, 0)) // Start after the train departs
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const secondButton = document.querySelectorAll('button')[1]
+      secondButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(22) // Expect time to be 10pm (22:00)
+      expect(updatedDate.getDate()).toBe(2) // Date should advance to September 2
+    })
+
+    test('Take the 10am train to Arkham (arrives at 11am)', () => {
+      setCurrentDate(new Date(1931, 8, 1, 17, 0)) // Start after the train departs
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const thirdButton = document.querySelectorAll('button')[2]
+      thirdButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(11) // Expect time to be 11am (11:00)
+      expect(updatedDate.getDate()).toBe(2) // Date should advance to September 2
+    })
+
+    test('Take the 10am train to Arkham (before departure)', () => {
+      setCurrentDate(new Date(1931, 8, 1, 8, 0)) // Start before the train departs
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const thirdButton = document.querySelectorAll('button')[2]
+      thirdButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(11) // Expect time to be 11am (11:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1
     })
 
     test('Take the 1pm train to Arkham (arrives at 2pm)', () => {
-      setCurrentDate(new Date(1931, 8, 1, 17, 0))
+      // Test starting after train departure
+      setCurrentDate(new Date(1931, 8, 1, 17, 0)) // Start after the train departs (5 PM)
 
-      // Log the current date and time before advancing
       const currentDate = getCurrentDate()
-
       setCurrentDate(currentDate)
       displayEntry('64')
 
@@ -1141,15 +1313,30 @@ describe('Game Logic', () => {
 
       const updatedDate = getCurrentDate()
       expect(updatedDate.getHours()).toBe(14) // Expect time to be 2pm (14:00)
-      expect(updatedDate.getDate()).toBe(2) // Date should still be September 1, 1931
+      expect(updatedDate.getDate()).toBe(2) // Date should advance to September 2
+    })
+
+    test('Take the 1pm train to Arkham (before departure)', () => {
+      // Test starting before train departure
+      setCurrentDate(new Date(1931, 8, 1, 11, 0)) // Start before the train departs (11 AM)
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const fourthButton = document.querySelectorAll('button')[3]
+      fourthButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(14) // Expect time to be 2pm (14:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should remain September 1
     })
 
     test('Take the 6pm train to Arkham (arrives at 7pm)', () => {
-      setCurrentDate(new Date(1931, 8, 1, 18, 0))
+      // Test starting after train departure
+      setCurrentDate(new Date(1931, 8, 1, 19, 0)) // Start after the train departs (7 PM)
 
-      // Log the current date and time before advancing
       const currentDate = getCurrentDate()
-
       setCurrentDate(currentDate)
       displayEntry('64')
 
@@ -1158,15 +1345,29 @@ describe('Game Logic', () => {
 
       const updatedDate = getCurrentDate()
       expect(updatedDate.getHours()).toBe(19) // Expect time to be 7pm (19:00)
-      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1, 1931
+      expect(updatedDate.getDate()).toBe(2) // Date should advance to September 2
+    })
+
+    test('Take the 6pm train to Arkham (before departure)', () => {
+      // Test starting before train departure
+      setCurrentDate(new Date(1931, 8, 1, 17, 0)) // Start before the train departs (5 PM)
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const fifthButton = document.querySelectorAll('button')[4]
+      fifthButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(19) // Expect time to be 7pm (19:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should remain September 1
     })
 
     test('Stay overnight in Boston and catch a morning train', () => {
-      setCurrentDate(new Date(1931, 8, 1, 5, 0))
+      setCurrentDate(new Date(1931, 8, 1, 5, 0)) // Early morning, before departure
 
-      // Log the current date and time before advancing
       const currentDate = getCurrentDate()
-
       setCurrentDate(currentDate)
       displayEntry('64')
 
@@ -1175,15 +1376,13 @@ describe('Game Logic', () => {
 
       const updatedDate = getCurrentDate()
       expect(updatedDate.getHours()).toBe(6) // Expect time to be 6am (06:00)
-      expect(updatedDate.getDate()).toBe(1) // Date should stay September 1, 1931
+      expect(updatedDate.getDate()).toBe(1) // Date should still be September 1
     })
 
     test('Stay overnight in Boston and catch a morning train (cross midnight)', () => {
-      setCurrentDate(new Date(1931, 8, 1, 7, 0))
+      setCurrentDate(new Date(1931, 8, 1, 7, 0)) // After train departs
 
-      // Log the current date and time before advancing
       const currentDate = getCurrentDate()
-
       setCurrentDate(currentDate)
       displayEntry('64')
 
@@ -1192,7 +1391,7 @@ describe('Game Logic', () => {
 
       const updatedDate = getCurrentDate()
       expect(updatedDate.getHours()).toBe(6) // Expect time to be 6am (06:00)
-      expect(updatedDate.getDate()).toBe(2) // Date should now be September 2, 1931
+      expect(updatedDate.getDate()).toBe(2) // Date should now be September 2
     })
   })
 

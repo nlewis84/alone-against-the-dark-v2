@@ -1,17 +1,5 @@
 Code the `endGame` effect to actually do something
 Add Picture to 69, 86 from book
-TODO - 13 is advancing time wrong I think - add a test for it
-
-"effects": {
-"dayAdvance": true,
-"defaultHour": 6
-},
-doesn't work, but
-"effects": {
-"setHour": 23,
-"advanceTime": 6
-},
-does work
 
 Arkham Locations
 DONE
