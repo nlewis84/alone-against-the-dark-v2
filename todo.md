@@ -1,27 +1,14 @@
-Code the `endGame` effect to actually do something
-Add Picture to 69, 86 from book
-
 Arkham Locations
 DONE
 
 New York Locations
 DONE
 
-Be able to select a spell from your inventory and learn it (or read a book); use entry 121.
+Athens Locations
+173 - test
 
-187 - keep working on this
-
-Cunard Ship
-106, 155a - code the Retrieve a weapon to let the player pick a weapon to attack with, maybe extra options for available weapons?
-
-8th day should not show activites dropdowns and the button should say Stay Onboard for Alexandria, and setHour 23, advanceTime 13. other button should say Get off at the Athens Pier and set time to Noon.
-9th day should also not show activites dropdowns and the button should say this is your stop for Alexandria, and set time to 1PM
-
-Athens Harbor
-173
-
-Alexandria Harbor
-195
+Alexandria Locations
+195 - test
 
 Egypt Locations
 236
@@ -101,3 +88,11 @@ Egypt Locations
 324
 585
 586
+
+Code the `endGame` effect to actually do something
+Add Picture to 69, 86 from book
+
+Be able to select a spell from your inventory and learn it (or read a book); use entry 121.
+
+Cunard Ship
+106, 155a - code the Retrieve a weapon to let the player pick a weapon to attack with, maybe extra options for available weapons?

@@ -58,7 +58,7 @@
     "description": "He takes your refusal without interest. 'Very well, sir. I shall return later.' He leaves and you stare at the walls of your silent room.",
     "choices": [
       {
-        "text": "Move on a day",
+        "text": "Rest for the night",
         "nextEntry": "187",
         "effects": {
           "setHour": 23,
@@ -756,7 +756,7 @@
     "description": "You notice flakes of dry skin; someone has left behind his or her sunburn, you think. Quite out of place to do it in this fine shop. You look around and see two figures, one short and one tall, staring directly at you. You quickly leave the shop.",
     "choices": [
       {
-        "text": "Leave the shop and move on with your day",
+        "text": "Leave the shop",
         "nextEntry": "126"
       }
     ],
@@ -1056,7 +1056,7 @@
         }
       },
       {
-        "text": "Move on a day",
+        "text": "Rest for the night",
         "nextEntry": "73a"
       }
     ],
@@ -1163,7 +1163,7 @@
     "traceNumbers": ["23", "45", "89"]
   },
   "91": {
-    "description": "Something glistens beneath his open jacket, troubling you. With a successful Dodge roll, you can push past him and escape; he will not follow; move on a day and go to the ship activity table at 187. If you fail the Dodge or wish confrontation, go to 10.",
+    "description": "Something glistens beneath his open jacket, troubling you.",
     "choices": [
       {
         "text": "Attempt a Dodge roll.",
@@ -1264,7 +1264,7 @@
       {
         "text": "Take the Saturday noon liner to Athens (arrives nine days later at noon)",
         "effects": {
-          "setDay": "Saturday",
+          "setDay": ["Saturday"],
           "setHour": 0,
           "advanceTime": 5
         },
@@ -1273,7 +1273,7 @@
       {
         "text": "Take the Saturday noon liner to Alexandria (arrives ten days later at 1pm)",
         "effects": {
-          "setDay": "Saturday",
+          "setDay": ["Saturday"],
           "setHour": 0,
           "advanceTime": 5
         },
@@ -1357,7 +1357,7 @@
         }
       },
       {
-        "text": "Move on to the next day",
+        "text": "Rest for the night",
         "nextEntry": "187",
         "effects": {
           "setHour": 23,
@@ -2077,7 +2077,7 @@
         "nextEntry": "47"
       },
       {
-        "text": "Move on a day",
+        "text": "Rest for the night",
         "nextEntry": "187",
         "requirements": {
           "hasVisited": "167"
@@ -2194,7 +2194,7 @@
     "description": "“Martini, straight up, please.” He turns to you. “I couldn’t help but notice, old friend, that some strange people seem to follow you. A word of advice: stay off the deck, suspect everyone, stay out of the library and other lonely spots. I’ve seen these assassin types in action, by God.” You have never seen him before. He then talks about chess for a while, finishes his martini, and leaves. You never see him again.",
     "choices": [
       {
-        "text": "Move on to the next day",
+        "text": "Rest for the night",
         "nextEntry": "187",
         "effects": {
           "setHour": 23,
@@ -2208,7 +2208,7 @@
     "description": "You are invited by your dinner partners to play poker. You're on a roll and win $17.",
     "choices": [
       {
-        "text": "Move on to the next day",
+        "text": "Rest for the night",
         "nextEntry": "187",
         "effects": {
           "setHour": 23,
@@ -2227,6 +2227,50 @@
       }
     ],
     "traceNumbers": ["60"]
+  },
+  "173": {
+    "title": "ATHENS HARBOR (PIRAEUS)",
+    "description": "If arriving by boat: approaching the coast, you see that it is similar to that of New England, with oddly-shaped inlets, gulfs, and headlands. But New England is cool, moist, and green; here, luxurious golden warmth pervades everything. The Greek republic, only seven years old, totters under the hardships of the worldwide depression. The people are eager for tourists, as foreign money is much needed. Your ship docks at the gaily-decorated harbor at Piraeus. Higher up in the hills beyond, Athens gleams beneath the midday sun. Many black automobiles bear the word 'taxi' hand-lettered on their sides.",
+    "specialInstructions": "If you decide to take a cab to the Bureau of Investigations, go to 130; otherwise, go to any Athens Location.",
+    "image": "src/assets/images/atmosphere/173.png",
+    "choices": [
+      {
+        "text": "Take a cab to the Bureau of Investigations",
+        "nextEntry": "130"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      },
+      {
+        "text": "Leave for Alexandria (Tuesday or Friday 3pm)",
+        "effects": {
+          "setDay": ["Tuesday", "Friday"],
+          "setHour": 15,
+          "advanceTime": 24
+        },
+        "nextEntry": "195"
+      },
+      {
+        "text": "Leave for Bremen (Tuesday or Saturday 4pm)",
+        "effects": {
+          "setDay": ["Tuesday", "Saturday"],
+          "setHour": 16,
+          "advanceTime": 120
+        },
+        "nextEntry": "449"
+      },
+      {
+        "text": "Leave for New York (Friday at noon)",
+        "effects": {
+          "setDay": ["Friday"],
+          "setHour": 12,
+          "advanceTime": 216
+        },
+        "nextEntry": "574"
+      }
+    ],
+    "traceNumbers": ["130", "195", "449", "574", "Athens Location"]
   },
   "176": {
     "description": "You see the fabulous treasures of ancient Greece. You also find the stand where the Karpathos Device, replaced at the moment by a drawing and a photograph, is normally kept. The notes speculate that the Karpathos Device is some kind of astronomical clock designed to aid priests. Other scholars feel it may have been designed to actually create something material. Still others see it as merely an elaborate amusement for some wealthy noble or merchant. The origin of the device is not uncertain, nor has the substance of which it is made been determined.",
@@ -2332,10 +2376,6 @@
       "secondMonday": "173",
       "secondTuesday": "195"
     },
-    "specialInstructions": [
-      "On the second Monday, you're in Athens: ignore any checks that day if you're continuing to Alexandria. If you disembark at Athens, resume hourly recordkeeping at noon.",
-      "On the second Tuesday, if you stayed aboard, you're in Alexandria: you have no checks that day either, but resume hourly recordkeeping at 1pm."
-    ],
     "shipActivities": {
       "Bingo": ["pm", "night"],
       "Bridge": ["pm", "night"],
@@ -2373,6 +2413,73 @@
       "590",
       "New York Location"
     ]
+  },
+  "195": {
+    "title": "ALEXANDRIA HARBOR AND RAIL STATION",
+    "description": "The docks and rail station are near one another, surrounded by a web of narrow streets filled with shops and cafes. If you've just arrived in Egypt, you can stay in Alexandria for a night and find an excellent room.",
+    "choices": [
+      {
+        "text": "Go to dockside cafes and entertainment",
+        "nextEntry": "221"
+      },
+      {
+        "text": "Spend an uneventful night at the hotel",
+        "nextEntry": "Egypt Location"
+      },
+      {
+        "text": "Catch the 10am train to Cairo (arrives in 1 hour)",
+        "effects": {
+          "setHour": 10,
+          "advanceTime": 1
+        },
+        "nextEntry": "205"
+      },
+      {
+        "text": "Catch the 1pm train to Cairo (arrives in 1 hour)",
+        "effects": {
+          "time": 0,
+          "setHour": 13,
+          "advanceTime": 1
+        },
+        "nextEntry": "205"
+      },
+      {
+        "text": "Catch the 6pm train to Cairo (arrives in 1 hour)",
+        "effects": {
+          "setHour": 18,
+          "advanceTime": 1
+        },
+        "nextEntry": "205"
+      },
+      {
+        "text": "Take the Wednesday or Saturday 3pm ship to Athens (arrives in 24 hours)",
+        "effects": {
+          "setDay": ["Wednesday", "Saturday"],
+          "setHour": 15,
+          "advanceTime": 24
+        },
+        "nextEntry": "173"
+      },
+      {
+        "text": "Take the Thursday noon ship to New York (arrives in 10 days)",
+        "effects": {
+          "setDay": ["Thursday"],
+          "setHour": 12,
+          "advanceTime": 240
+        },
+        "nextEntry": "574"
+      },
+      {
+        "text": "Take the Monday or Friday 4pm ship to Bremen (arrives in 144 hours)",
+        "effects": {
+          "setDay": ["Monday", "Friday"],
+          "setHour": 16,
+          "advanceTime": 144
+        },
+        "nextEntry": "449"
+      }
+    ],
+    "traceNumbers": ["221", "205", "173", "574", "449", "Egypt Location"]
   },
   "190": {
     "description": "The disappearance of the Karpathos Device and of Amet Keh baffles the Egyptian authorities. Mr. Pisistratos of the National Museum in Athens will not comment.",
@@ -3079,7 +3186,7 @@
         }
       },
       {
-        "text": "Move on to the next day",
+        "text": "Rest for the night",
         "nextEntry": "187",
         "effects": {
           "setHour": 23,

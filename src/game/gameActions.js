@@ -236,7 +236,10 @@ export function handleEntryChoices(entryId, entry) {
             const currentDate = getCurrentDate()
 
             if (choice.effects.setDay !== undefined) {
-              const targetDay = choice.effects.setDay
+              const targetDays = Array.isArray(choice.effects.setDay)
+                ? choice.effects.setDay
+                : [choice.effects.setDay] // Ensure it's an array
+
               const daysOfWeek = [
                 'Sunday',
                 'Monday',
@@ -246,17 +249,32 @@ export function handleEntryChoices(entryId, entry) {
                 'Friday',
                 'Saturday',
               ]
-              const targetDayIndex = daysOfWeek.indexOf(targetDay)
+
               const currentDayIndex = currentDate.getUTCDay()
+              let daysToAdvance = null
 
-              // Calculate days to advance to the next occurrence of the target day
-              let daysToAdvance = targetDayIndex - currentDayIndex
-              if (daysToAdvance <= 0) {
-                daysToAdvance += 7
+              targetDays.forEach((targetDay) => {
+                const targetDayIndex = daysOfWeek.indexOf(targetDay)
+
+                if (targetDayIndex === -1) return // Ignore invalid days
+
+                // Calculate forward difference only
+                let daysDifference = targetDayIndex - currentDayIndex
+                if (daysDifference < 0) {
+                  daysDifference += 7 // Always move forward, never backward
+                }
+
+                // Pick the smallest number of days to advance (closest forward target day)
+                if (daysToAdvance === null || daysDifference < daysToAdvance) {
+                  daysToAdvance = daysDifference
+                }
+              })
+
+              // Advance to the closest forward target day
+              if (daysToAdvance !== null) {
+                currentDate.setUTCDate(currentDate.getUTCDate() + daysToAdvance)
+                setCurrentDate(currentDate)
               }
-
-              currentDate.setUTCDate(currentDate.getUTCDate() + daysToAdvance)
-              setCurrentDate(currentDate)
             }
           }
 
@@ -1217,12 +1235,6 @@ function clearHitMarkers() {
   }
 }
 
-function startShipJourney() {
-  const currentDate = getCurrentDate() // Retrieve the current in-game date
-  currentState.shipJourneyStartDate = currentDate // Store the start date in the game state
-  currentState.onShip = true // Mark that the player is on the ship
-}
-
 function calculateJourneyDay() {
   const currentDate = getCurrentDate()
   const startDate = currentState.shipJourneyStartDate
@@ -1274,17 +1286,52 @@ function getScheduleEntryForDay(journeyDay) {
       return null // For days beyond the schedule
   }
 }
-function checkIfDisembarked() {
+function checkIfDisembarked(choicesContainer) {
   const journeyDay = calculateJourneyDay()
 
-  if (journeyDay === 8 && currentState.currentLocation === 'Athens') {
-    resumeHourlyRecordkeeping('12:00 PM') // Second Monday: Disembarking in Athens
+  // Handle specific logic for the 8th day (Monday, arriving at Athens)
+  if (journeyDay === 8) {
+    const getOffButton = createButton(
+      'Get off at the Athens Pier',
+      'btn btn-primary',
+      () => {
+        // Set the hour to Noon (12 PM)
+        updateTime(0, 12)
+        console.log('Got off at Athens Pier, time set to Noon.')
+        displayEntry('173')
+      },
+    )
+    choicesContainer.appendChild(getOffButton)
+
+    const stayOnboardButton = createButton(
+      'Stay onboard for Alexandria',
+      'btn btn-primary',
+      () => {
+        // Advance the day and set the hour to 8AM
+        updateTime(24)
+        console.log('Staying onboard, time advanced to 11 PM.')
+        displayEntry('187')
+      },
+    )
+    choicesContainer.appendChild(stayOnboardButton)
+
     return true // Indicate disembarkation
-  } else if (
-    journeyDay === 9 &&
-    currentState.currentLocation === 'Alexandria'
-  ) {
-    resumeHourlyRecordkeeping('1:00 PM') // Second Tuesday: Disembarking in Alexandria
+  }
+
+  // Handle specific logic for the 9th day (Tuesday, arriving at Alexandria)
+  if (journeyDay === 9) {
+    const alexandriaButton = createButton(
+      'This is your stop for Alexandria',
+      'btn btn-primary',
+      () => {
+        // Set the time to 1 PM
+        updateTime(0, 13)
+        console.log('Disembarked at Alexandria, time set to 1 PM.')
+        displayEntry('195')
+      },
+    )
+    choicesContainer.appendChild(alexandriaButton)
+
     return true // Indicate disembarkation
   }
 
@@ -1326,8 +1373,9 @@ function handleSpecialEntry187(choicesContainer) {
 
   const journeyDay = calculateJourneyDay() // Calculate the current day of the journey
   console.log('Journey day:', journeyDay)
+
   // Handle disembarkation if we're on specific days
-  if (checkIfDisembarked()) {
+  if (checkIfDisembarked(choicesContainer)) {
     return // If disembarked, don't display the activity choices for the ship
   }
 
@@ -1422,18 +1470,6 @@ function handleSpecialEntry187(choicesContainer) {
   submitButton.id = 'submit-button' // Assign the styling ID
   activityContainer.appendChild(submitButton)
   choicesContainer.appendChild(activityContainer)
-}
-
-function resumeHourlyRecordkeeping(hour = null) {
-  currentState.hourlyTracking = true // Resume hourly tracking
-
-  if (hour) {
-    const currentDate = getCurrentDate()
-    currentDate.setHours(hour.split(':')[0]) // Set the current hour
-    setCurrentDate(currentDate) // Update the game's current date/time
-  }
-
-  console.log('Hourly recordkeeping resumed at', hour ? hour : 'current hour')
 }
 
 export function addVisitedEntry(entryId) {
