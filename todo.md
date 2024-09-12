@@ -1,11 +1,24 @@
-Arkham Locations
-DONE
-
-New York Locations
-DONE
-
 Athens Locations
-173 - test
+15
+179
+201
+162
+223
+168 - Check that the locale is working
+87
+183
+585 - make sure it works in Athens
+424
+101
+127
+160
+118
+65
+586 - make it work for Athens
+194
+20
+38
+Be intentional about hiring interpretors
 
 Alexandria Locations
 195 - test
@@ -96,3 +109,4 @@ Be able to select a spell from your inventory and learn it (or read a book); use
 
 Cunard Ship
 106, 155a - code the Retrieve a weapon to let the player pick a weapon to attack with, maybe extra options for available weapons?
+Update description for 3

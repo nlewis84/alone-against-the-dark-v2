@@ -172,8 +172,9 @@
         "text": "Advance"
       }
     ],
-    "description": "For you, Professor Louis Grunewald, this first day of September 1931 has been tiring and uncomfortable. Light mist has covered Arkham for most of the day. You held two uninspired undergraduate classes at Miskatonic University, and you met with the new chairman of the literature Department, a giddy Technocrat. You survey your desk and see that a stack of papers to grade has already formed. You’re enjoying your second pipe of the evening, and putting off grading papers, when the doorbell rings. To your surprise, it’s a telegraphic messenger.\n\n“It arrived at Kingspoint Head station not more than an hour ago,” the boy says.\n\nYou sign for it, and slip a dime into the youngster’s hand. “Oh, thank you, sir!” You open the envelope and scan the contents (Handout: Dark 1, see page 12).\n\nMy goodness, you think. Imagine! Dotty old Gliere in prison! You recall that he had gone to Greece to work on his book concerning primitive myths. What has he gotten himself into? Should you wire money? You recall all the amusing discussions you’ve had with him, and a sudden insight lets you understand that Tibor Gliere had no close friends except for you. Should you go help him? You suppose the University will grant you leave. But do you want to go?\n\nWith uncommon speed you decide to go to Athens to help Gliere. You write him a wire, and another to Ernest Holt, a wealthy New York financier and a good friend of yours. If you get into hot water, Holt will help, and so, you decide to keep him posted on your progress. You give both telegrams to the waiting messenger, along with the necessary funds.\n\nWhat to do now? You’ll go to the bank first thing in the morning to get travel funds. As for Trans-Atlantic schedules, well the Advertiser surely carries that information. As you pack, you wonder if you should check Gliere’s room at Mrs. Harding’s boarding house. Maybe you could get a clue about Gliere’s activities or a hint about his arrest.\n\nYour passport is in order; your clothes and sundries are packed. You’d best turn in. You’re going on a little trip. When you awake, it is Sept. 2; go to 102.",
+    "description": "For you, Professor Louis Grunewald, this first day of September 1931 has been tiring and uncomfortable. Light mist has covered Arkham for most of the day. You held two uninspired undergraduate classes at Miskatonic University, and you met with the new chairman of the literature Department, a giddy Technocrat. You survey your desk and see that a stack of papers to grade has already formed. You’re enjoying your second pipe of the evening, and putting off grading papers, when the doorbell rings. To your surprise, it’s a telegraphic messenger.\n\n“It arrived at Kingspoint Head station not more than an hour ago,” the boy says.\n\nYou sign for it, and slip a dime into the youngster’s hand. “Oh, thank you, sir!” You open the envelope and scan the contents (see below).\n\nMy goodness, you think. Imagine! Dotty old Gliere in prison! You recall that he had gone to Greece to work on his book concerning primitive myths. What has he gotten himself into? Should you wire money? You recall all the amusing discussions you’ve had with him, and a sudden insight lets you understand that Tibor Gliere had no close friends except for you. Should you go help him? You suppose the University will grant you leave. But do you want to go?\n\nWith uncommon speed you decide to go to Athens to help Gliere. You write him a wire, and another to Ernest Holt, a wealthy New York financier and a good friend of yours. If you get into hot water, Holt will help, and so, you decide to keep him posted on your progress. You give both telegrams to the waiting messenger, along with the necessary funds.\n\nWhat to do now? You’ll go to the bank first thing in the morning to get travel funds. As for Trans-Atlantic schedules, well the Advertiser surely carries that information. As you pack, you wonder if you should check Gliere’s room at Mrs. Harding’s boarding house. Maybe you could get a clue about Gliere’s activities or a hint about his arrest.\n\nYour passport is in order; your clothes and sundries are packed. You’d best turn in. You’re going on a little trip. When you awake, it is Sept. 2.",
     "title": "START",
+    "image": "src/assets/images/clues/clue13.png",
     "traceNumbers": ["START"]
   },
   "16": {
@@ -2089,6 +2090,7 @@
     ],
     "traceNumbers": ["73", "171"]
   },
+
   "168": {
     "description": "The archaeological team at the National Museum in Athens have reported on the Karpathos Device, noting the inexplicable markings on its surfaces and the complex network of gears and linkages. The team has established that the Device is at least 2,000 years old, although some suggest it might hold a more ancient date. The report implies an ancient level of technical achievement previously undreamt of by scholars. Cryptic Greek inscriptions were found on the outside edges of some gears, while some interior sections were marked with unusual Egyptian hieroglyphics. The team makes no guess about the function of the Device.",
     "choices": [
@@ -2230,20 +2232,11 @@
   },
   "173": {
     "title": "ATHENS HARBOR (PIRAEUS)",
-    "description": "If arriving by boat: approaching the coast, you see that it is similar to that of New England, with oddly-shaped inlets, gulfs, and headlands. But New England is cool, moist, and green; here, luxurious golden warmth pervades everything. The Greek republic, only seven years old, totters under the hardships of the worldwide depression. The people are eager for tourists, as foreign money is much needed. Your ship docks at the gaily-decorated harbor at Piraeus. Higher up in the hills beyond, Athens gleams beneath the midday sun. Many black automobiles bear the word 'taxi' hand-lettered on their sides.",
-    "specialInstructions": "If you decide to take a cab to the Bureau of Investigations, go to 130; otherwise, go to any Athens Location.",
+    "description": "Approaching the coast, you see that it is similar to that of New England, with oddly-shaped inlets, gulfs, and headlands. But New England is cool, moist, and green; here, luxurious golden warmth pervades everything. The Greek republic, only seven years old, totters under the hardships of the worldwide depression. The people are eager for tourists, as foreign money is much needed. Your ship docks at the gaily-decorated harbor at Piraeus. Higher up in the hills beyond, Athens gleams beneath the midday sun. Many black automobiles bear the word 'taxi' hand-lettered on their sides.",
     "image": "src/assets/images/atmosphere/173.png",
     "choices": [
       {
-        "text": "Take a cab to the Bureau of Investigations",
-        "nextEntry": "130"
-      },
-      {
-        "text": "Go to any Athens Location",
-        "nextEntry": "Athens Location"
-      },
-      {
-        "text": "Leave for Alexandria (Tuesday or Friday 3pm)",
+        "text": "Take the Tuesday or Friday 3pm ship to Alexandria (arrives in 24 hours)",
         "effects": {
           "setDay": ["Tuesday", "Friday"],
           "setHour": 15,
@@ -2252,7 +2245,7 @@
         "nextEntry": "195"
       },
       {
-        "text": "Leave for Bremen (Tuesday or Saturday 4pm)",
+        "text": "Take the Tuesday or Saturday 4pm ship to Bremen (arrives in 5 days)",
         "effects": {
           "setDay": ["Tuesday", "Saturday"],
           "setHour": 16,
@@ -2261,16 +2254,288 @@
         "nextEntry": "449"
       },
       {
-        "text": "Leave for New York (Friday at noon)",
+        "text": "Take the Friday Noon ship to New York (arrives in 9 days)",
         "effects": {
           "setDay": ["Friday"],
           "setHour": 12,
-          "advanceTime": 216
+          "advanceTime": 192
         },
         "nextEntry": "574"
+      },
+      {
+        "text": "Take a cab to the Bureau of Investigations",
+        "nextEntry": "130"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
       }
     ],
     "traceNumbers": ["130", "195", "449", "574", "Athens Location"]
+  },
+  "130": {
+    "title": "ATHENS BUREAU OF INVESTIGATION",
+    "description": "You quickly locate the office of the investigator in charge of Gliere’s case, a Corporal Ilionas. After a few pleasantries, his words stun you.\n\n\"Sir, I regret to inform you that Professor Tibor Gliere is dead by his own hand. He has hanged himself. Perhaps he was too ashamed of his theft of the Karpathos Device from the museum. We do not know. But yes, a suicide. A sad end.\"\n\nYour mind reels. You have come all this way, to no purpose. You cannot believe that Gliere would end his own life, even though his career was in jeopardy. Is Ilionas positive?\n\n\"You suspect foul play? No, that is not reported. The pathologist found signs of self-mutilation, common enough with suicides. What? Oh—the doctor is vacationing in Switzerland. He will not be back for weeks.\" The Corporal considers for a moment. \"You can see Gliere’s cell, I suppose, unless someone new has been moved in. He was held at the Hall of Justice.\"",
+    "choices": [
+      {
+        "text": "Ask for more information about the case",
+        "nextEntry": "204"
+      },
+      {
+        "text": "Ask about getting a Greek interpreter",
+        "nextEntry": "170"
+      },
+      {
+        "text": "Take a cab to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["204", "170", "Athens Location"]
+  },
+  "131": {
+    "description": "A slender, dark-haired young fellow calls out, \"Hey, English! Taxi! Anywhere in Athens, five drachmas!\"",
+    "choices": [
+      {
+        "text": "Get in the taxi",
+        "nextEntry": "81"
+      },
+      {
+        "text": "Wait for another cab",
+        "nextEntry": "58"
+      }
+    ],
+    "traceNumbers": ["58", "81", "130", "204", "226", "248"]
+  },
+  "81": {
+    "description": "\"I’m Christos. Where to?\" You tell him and he’ll take you anyplace in Athens. Along the way he says, \"Listen, I’m a great interpreter. If you need help with Greek, you couldn’t do better than me. Fifty drachmas a day: I stay with you, drive you around. Like a guide. What do you say?\"\n\nWeighing his character, you think there’s some chance that he’ll abandon you and do a little celebrating on his own as you go from one point to another. But probably he can interpret just fine, and he seems to know where to go.",
+    "choices": [
+      {
+        "text": "Hire Christos as your interpreter",
+        "effects": {
+          "hiredAthens": "Christos"
+        },
+        "nextEntry": "Athens Location"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      },
+      {
+        "text": "Find another cab",
+        "nextEntry": "58"
+      }
+    ],
+    "traceNumbers": ["131"]
+  },
+  "170": {
+    "description": "After 2 hours of waiting around, Evgenia, an interpreter, is found for you. If you wish, you are able to hire Evgenia for the length of your stay.",
+    "choices": [
+      {
+        "text": "Hire Evgenia as your interpreter",
+        "effects": {
+          "hiredAthens": "Evgenia"
+        },
+        "nextEntry": "Athens Location"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "effects": {
+      "advanceTime": 2
+    },
+    "traceNumbers": ["130"]
+  },
+  "204": {
+    "description": "You ask to see Ilionas’ report. It says that Gliere refused to talk freely, but that he made libelous statements about Museum Director Pisistratos, and that he pleaded that the Karpathos Device not be sent to Cairo. It also notes that Gliere demanded protection even while he was in his cell.",
+    "choices": [
+      {
+        "text": "Ilionas seems ready to speak",
+        "nextEntry": "40",
+        "requirements": {
+          "hasNotVisited": "40"
+        }
+      },
+      {
+        "text": "Make a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": "226",
+            "failure": "204"
+          },
+          "dailyLimit": 1
+        },
+        "requirements": {
+          "hasNotVisited": "226"
+        }
+      },
+      {
+        "text": "Hail a cab",
+        "nextEntry": "131",
+        "requirements": {
+          "hasNotVisited": "131"
+        }
+      },
+      {
+        "text": "Hail a cab",
+        "nextEntry": "58",
+        "requirements": {
+          "hasVisited": "131"
+        }
+      }
+    ],
+
+    "traceNumbers": ["21", "40", "128", "130", "174"]
+  },
+  "174": {
+    "description": "The Karpathos Device is in Cairo at this moment.",
+    "choices": [
+      {
+        "text": "Continue your investigation",
+        "nextEntry": "204"
+      }
+    ],
+    "traceNumbers": ["21", "204"]
+  },
+  "58": {
+    "description": "You see three drivers standing near their cabs. One is young, another is an old man, and the third is nattily dressed. Which will you hire?\n\nIf you can successfully make a Psychology or a Spot Hidden roll, then go to 15 first, then choose.",
+    "choices": [
+      {
+        "text": "Make a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": "15",
+            "failure": "58"
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": "15",
+            "failure": "58"
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Hire the young driver",
+        "nextEntry": "179"
+      },
+      {
+        "text": "Hire the old driver",
+        "nextEntry": "201"
+      },
+      {
+        "text": "Hire the well-dressed driver",
+        "nextEntry": "223"
+      }
+    ],
+    "traceNumbers": ["81", "131", "201"]
+  },
+  "21": {
+    "description": "\"And the Karpathos Device,\" you ask, \"was it returned to the museum?\" He shakes his head. \"Oh, no. It was scheduled to be sent to the National Museum in Cairo for a special exhibit. The Device may be Egyptian, you see. The plans were not changed.\"",
+    "choices": [
+      {
+        "text": "It is September",
+        "requirements": {
+          "dateBefore": "1931-10-01"
+        },
+        "nextEntry": "128"
+      },
+      {
+        "text": "It is October, or later",
+        "requirements": {
+          "dateAfter": "1931-09-30"
+        },
+        "nextEntry": "174"
+      }
+    ],
+    "traceNumbers": ["40", "128", "174"]
+  },
+  "128": {
+    "description": "It’s on a ship right now, bound for Cairo.",
+    "choices": [
+      {
+        "text": "Continue investigation",
+        "nextEntry": "204"
+      }
+    ],
+    "traceNumbers": ["21", "204"]
+  },
+  "40": {
+    "description": "\"But yes, very strange . . . Professor Gliere first stealing that device, then taking his own life. I wish I could tell you more. The Karpathos Device is mysterious. No one knows its true nature. Perhaps the scholars at the National Museum can tell you about it.\"",
+    "choices": [
+      {
+        "text": "Make an INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": "21",
+            "failure": "204"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["21", "204"]
+  },
+  "226": {
+    "description": "The corporal is friendly, but nervous. You can tell that he is unconvinced by the death report. Something scares him, but he only mutters that he is glad the Karpathos Device has left the country.",
+    "choices": [
+      {
+        "text": "Try Fast Talk or Persuade",
+        "nextEntry": "248",
+        "requirements": {
+          "hasVisited": "204"
+        }
+      },
+      {
+        "text": "Hail a cab",
+        "nextEntry": "131",
+        "requirements": {
+          "hasNotVisited": "131"
+        }
+      },
+      {
+        "text": "Hail a cab",
+        "nextEntry": "58",
+        "requirements": {
+          "hasVisited": "131"
+        }
+      }
+    ],
+    "check": {
+      "skill": ["Fast Talk", "Persuade"],
+      "success": "248",
+      "failure": "131"
+    },
+    "traceNumbers": ["204", "131", "248"]
+  },
+  "248": {
+    "description": "\"Sir,\" says Ilionas, \"I have told you all I know. You must go. All that’s left are rumors, and they’re better obtained at the Piostos Cafe.\"\n\nYou skulk the hallways of the Bureau for a while, and find nothing.",
+    "choices": [
+      {
+        "text": "Hail a cab",
+        "nextEntry": "131",
+        "requirements": {
+          "hasNotVisited": "131"
+        }
+      },
+      {
+        "text": "Hail a cab",
+        "nextEntry": "58",
+        "requirements": {
+          "hasVisited": "131"
+        }
+      }
+    ],
+    "traceNumbers": ["226", "131"]
   },
   "176": {
     "description": "You see the fabulous treasures of ancient Greece. You also find the stand where the Karpathos Device, replaced at the moment by a drawing and a photograph, is normally kept. The notes speculate that the Karpathos Device is some kind of astronomical clock designed to aid priests. Other scholars feel it may have been designed to actually create something material. Still others see it as merely an elaborate amusement for some wealthy noble or merchant. The origin of the device is not uncertain, nor has the substance of which it is made been determined.",

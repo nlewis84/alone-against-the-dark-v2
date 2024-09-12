@@ -5,6 +5,7 @@ import {
   updateSanity,
   updateInventory,
   updateTime,
+  updateInterpreterDisplay,
 } from './gameActions.js'
 
 export let gameData = {
@@ -83,7 +84,7 @@ export async function initializeGame() {
     setGameData('books', books)
     updateTime(0, 20) // Initialize date display
     startGame()
-    displayEntry('13') // Ensure the first entry is displayed ... should be 13
+    displayEntry('58') // Ensure the first entry is displayed ... should be 13
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error)
   }
@@ -108,6 +109,7 @@ export function startGame() {
   updateSanity(0) // Initialize sanity display
   updateInventory() // Initialize inventory display
   updateTime(0) // Initialize date display
+  updateInterpreterDisplay()
 }
 
 export function handleInvestigatorDeath() {
@@ -130,6 +132,7 @@ function switchToNextInvestigator() {
       visitedEntries: currentState.visitedEntries,
       onShip: false,
       shipJourneyStartDate: null,
+      hiredAthens: null,
       ...gameData.investigators[nextInvestigator.name],
     }
     displayEntry(currentState.currentEntry)
@@ -137,6 +140,7 @@ function switchToNextInvestigator() {
     updateSanity(0)
     updateInventory()
     updateTime(0)
+    updateInterpreterDisplay()
   } else {
     console.log('All investigators are dead. Game over.')
   }

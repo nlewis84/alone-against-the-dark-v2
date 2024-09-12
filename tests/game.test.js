@@ -24,7 +24,6 @@ import {
   isLocationAvailable,
   checkRequirements,
   parseAndComputeDamage,
-  handleComplexOutcome,
   handleEntryChoices,
   findOutcomeForRoll,
   addVisitedEntry,
@@ -101,6 +100,7 @@ describe('Game Logic', () => {
       <div id="sanity"></div>
       <div id="inventory"></div>
       <div id="date"></div>
+      <div id="interpreter"></div>
       <button id="saveButton"></button>
       <button id="loadButton"></button>
     `

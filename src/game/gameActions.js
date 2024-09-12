@@ -63,11 +63,20 @@ function createButton(text, className, onClick) {
 }
 
 function updateDescription(entryId, title, description, specialInstructions) {
-  let entryText = `<strong>${entryId}. ${title || ''}</strong><br>`
+  let entryText = `<strong>${entryId}. ${title || ''}</strong>`
+
+  // Replace special characters for better rendering
+  description = description
+    .replace(/\\n\\n/g, '</p><p>') // Treat double newlines as paragraph breaks
+    .replace(/\\n/g, '<br>') // Treat single newlines as line breaks
+
+  // Use regex to find all types of quotes and italicize the content inside quotes
+  description = description.replace(/["“”](.*?)["“”]/g, '<em>$1</em>')
+
   if (specialInstructions) {
     entryText += `<em>${specialInstructions}</em><br>`
   }
-  entryText += description
+  entryText += `<p>${description}</p>` // Wrap description inside <p> tags
 
   document.getElementById('description').innerHTML = entryText
 }
@@ -183,6 +192,17 @@ function handleEntryEffects(effects) {
   // Handle other effects such as sanity, inventory updates, etc., similarly
 }
 
+export function updateInterpreterDisplay(name) {
+  const interpreterDiv = document.getElementById('interpreter')
+
+  if (name) {
+    interpreterDiv.style.display = 'block' // Show the div if a name is provided
+    document.getElementById('interpreterName').innerText = name
+  } else {
+    interpreterDiv.style.display = 'none' // Hide the div if no name is set
+  }
+}
+
 export function handleEntryChoices(entryId, entry) {
   const choicesContainer = document.getElementById('choices')
   choicesContainer.innerHTML = ''
@@ -234,6 +254,12 @@ export function handleEntryChoices(entryId, entry) {
 
           if (choice.effects) {
             const currentDate = getCurrentDate()
+
+            if (choice.effects.hiredAthens) {
+              currentState.hiredAthens = choice.effects.hiredAthens
+
+              updateInterpreterDisplay(choice.effects.hiredAthens)
+            }
 
             if (choice.effects.setDay !== undefined) {
               const targetDays = Array.isArray(choice.effects.setDay)
@@ -328,7 +354,7 @@ export function handleEntryChoices(entryId, entry) {
                   newDate.setDate(newDate.getDate() + 1)
                   setCurrentDate(newDate)
                 }
-                console.log(getCurrentDate(), targetHour)
+
                 // Set the hour directly after potentially advancing the day
                 updateTime(0, targetHour)
               }
@@ -779,6 +805,7 @@ export function saveGame() {
     visitedEntries: Array.from(currentState.visitedEntries),
     onShip: currentState.onShip,
     shipJourneyStartDate: currentState.shipJourneyStartDate,
+    hiredAthens: currentState.hiredAthens,
   }
   saveState('gameState', saveData)
 }
@@ -806,6 +833,9 @@ export function loadGame() {
         savedState.shipJourneyStartDate,
       )
     }
+
+    currentState.hiredAthens = savedState.hiredAthens
+    updateInterpreterDisplay(currentState.hiredAthens)
 
     displayEntry(currentState.currentEntry)
     updateHealth(0) // Refresh health display

@@ -24,6 +24,7 @@ button {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: auto;
   margin-top: 6rem;
+  position: relative;
 }
 
 #game strong {
@@ -37,6 +38,26 @@ button {
 #description,
 #choices {
   margin-bottom: 1.5rem;
+}
+
+#description {
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+#interpreter {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #eedea7;
+  border: 2px solid #b38e2e;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 9999px; /* This makes it a pill shape */
+  font-weight: bold;
+  z-index: 100; /* Ensure it stays above other content */
+  text-align: center;
+  font-size: 16px;
 }
 
 #choices {
@@ -107,7 +128,6 @@ button:nth-child(2n + 2) {
   padding: 10px;
   margin: 20px auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 50%;
   border-radius: 10px;
 }
 
