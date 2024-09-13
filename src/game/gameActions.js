@@ -956,6 +956,32 @@ export function checkRequirements(requirements) {
         return false // Return false if none of the required activities match
       }
     }
+
+    if (requirements.companion) {
+      if (!currentState.hiredAthens) {
+        return false
+      }
+    }
+
+    if (requirements.language) {
+      const languageSkill = `Language (${requirements.language})`
+      if (
+        !currentState.skills[languageSkill] ||
+        currentState.skills[languageSkill] === 0
+      ) {
+        return false
+      }
+    }
+
+    if (requirements.inventory) {
+      const hasItem = currentState.inventory.some(
+        (item) => item.name === requirements.inventory,
+      )
+
+      if (!hasItem) {
+        return false
+      }
+    }
   }
   return true
 }

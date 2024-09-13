@@ -2090,7 +2090,23 @@
     ],
     "traceNumbers": ["73", "171"]
   },
-
+  "118": {
+    "title": "NATIONAL MUSEUM OF ARCHAEOLOGY",
+    "description": "The museum is a treasure trove of ancient artifacts.",
+    "choices": [
+      {
+        "text": "Look around the museum",
+        "nextEntry": "176"
+      },
+      {
+        "text": "Try to see Pisistratos",
+        "nextEntry": "153",
+        "requirements": {
+          "dateBefore": "1931-12-01"
+        }
+      }
+    ]
+  },
   "168": {
     "description": "The archaeological team at the National Museum in Athens have reported on the Karpathos Device, noting the inexplicable markings on its surfaces and the complex network of gears and linkages. The team has established that the Device is at least 2,000 years old, although some suggest it might hold a more ancient date. The report implies an ancient level of technical achievement previously undreamt of by scholars. Cryptic Greek inscriptions were found on the outside edges of some gears, while some interior sections were marked with unusual Egyptian hieroglyphics. The team makes no guess about the function of the Device.",
     "choices": [
@@ -2463,7 +2479,7 @@
     "description": "It’s on a ship right now, bound for Cairo.",
     "choices": [
       {
-        "text": "Continue investigation",
+        "text": "Continue your investigation",
         "nextEntry": "204"
       }
     ],
@@ -2538,7 +2554,7 @@
     "traceNumbers": ["226", "131"]
   },
   "176": {
-    "description": "You see the fabulous treasures of ancient Greece. You also find the stand where the Karpathos Device, replaced at the moment by a drawing and a photograph, is normally kept. The notes speculate that the Karpathos Device is some kind of astronomical clock designed to aid priests. Other scholars feel it may have been designed to actually create something material. Still others see it as merely an elaborate amusement for some wealthy noble or merchant. The origin of the device is not uncertain, nor has the substance of which it is made been determined.",
+    "description": "You see the fabulous treasures of ancient Greece. You also find the stand where the Karpathos Device, replaced at the moment by a drawing and a photograph, is normally kept.\n\nThe notes speculate that the Karpathos Device is some kind of astronomical clock designed to aid priests. Other scholars feel it may have been designed to actually create something material. Still others see it as merely an elaborate amusement for some wealthy noble or merchant. The origin of the device is uncertain, and the substance of which it is made has not been determined.",
     "choices": [
       {
         "text": "Learn more information on the Device.",
@@ -4163,7 +4179,7 @@
     "description": "The Hall of Justice and the King’s Court of Appeals are open from 9am-noon, and from 3pm-7pm, Mon-Fri.\n\nIf Christos is with you, he knows exactly where to go; if you are alone, you spend an hour before you arrive at the right corridor and find the desk sergeant in charge of the jails. The sergeant speaks no English.",
     "choices": [
       {
-        "text": "Your interpreter has something to say",
+        "text": "Your interpreter can help translate",
         "nextEntry": "77",
         "requirements": {
           "companion": true
@@ -4171,7 +4187,7 @@
       },
       {
         "text": "Good thing you speak Greek",
-        "nextEntry": "77",
+        "nextEntry": "77a",
         "requirements": {
           "language": "Greek"
         }
@@ -4180,7 +4196,7 @@
         "text": "Maybe your phrasebook can help",
         "nextEntry": "6",
         "requirements": {
-          "inventory": "English/Greek Phrasebook"
+          "inventory": "Harrison’s English/Greek Phrase Book"
         }
       },
       {
@@ -4191,10 +4207,103 @@
         }
       },
       {
-        "text": "As you leave, the sergeant seems to remember something. He pulls a letter out of a drawer, and gestures that you may read it. Go to 539.",
+        "text": "Leave the Hall of Justice",
         "nextEntry": "539"
       }
     ],
     "traceNumbers": ["77", "6", "539"]
+  },
+  "77": {
+    "description": "Your interpreter tells you, 'Gliere hung himself, he killed himself. Yes, his body has been shipped to the United States. Apparently the Professor left nothing behind to be recovered.'",
+    "choices": [
+      {
+        "text": "Make a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "180"
+            },
+            "failure": {
+              "nextEntry": "87"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["87"]
+  },
+  "77a": {
+    "description": "'Gliere hung himself, he killed himself. Yes, his body has been shipped to the United States. The Professor left nothing behind to be recovered.'",
+    "choices": [
+      {
+        "text": "Make a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "180"
+            },
+            "failure": {
+              "nextEntry": "87"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["87"]
+  },
+  "180": {
+    "description": "The man appears afraid. Pressing him further, he admits fear, \"I don’t think Gliere killed himself. Someone wanted him dead. Someone or something! I don’t know … It had to do with the Karpathos Device. Gliere kept saying that it must not go to Egypt.\"",
+    "choices": [
+      {
+        "text": "Make a Persuade roll",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "nextEntry": "202"
+            },
+            "failure": {
+              "nextEntry": "87"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["77", "87"]
+  },
+  "202": {
+    "description": "He hesitates. \"Yes\", he says, \"Gliere was hanged, but his body and face were disfigured strangely. Huge welts ran down the length of the Professor’s body. To Ilionas’ eye, he looked like he’d been long dead before his neck was stretched.\"",
+    "choices": [
+      {
+        "text": "Continue your investigation",
+        "nextEntry": "87"
+      }
+    ],
+    "traceNumbers": ["180", "87"]
+  },
+  "6": {
+    "description": "There is a big difference between using a phrase book and speaking a language. You have real trouble in being understood or understanding what is being said to you.\n\nYou are going to need an interpreter—they speak English at the Athens Bureau of Investigation, perhaps you could find something there?",
+    "choices": [
+      {
+        "text": "Continue your investigation",
+        "nextEntry": "87"
+      },
+      {
+        "text": "Another Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["87"]
+  },
+  "539": {
+    "description": "As you turn to leave, the sargeant seems to remember something then hands over a piece of paper. Unfolding it, you recognize Gliere’s tiny, precise script. There is no date and no signature:\n\nDr. Louis Grunewald\nMiskatonic University\nArkham, Mass., U.S.A.\n\nDear Louis\n\nI fear it is too late for me. Though with the best of motives, the authorities foolishly apprehended me before I could accomplish destruction of the Karpathos Device, and thereby they have re-endangered the world. If, to prevent my further interference, the cult of Aten tries to murder me while I am trapped in this cell, I do not see how they can fail their purpose.\n\nThis letter, therefore, must convince you of the truth I tell and relate to you what must be done about it. You must do it or see that it is done, else our world is doomed.\n\nThough our discussions have acquainted you with some of what I now write, you have never accepted my arcane conclusions. I beg you now to do so, at least for the length of this letter. What follows is the situation, as I understand it.\n\nAn Alexandrian-era sorcerer, one Ephegon of Karpathos, was reputed to have constructed a mechanism perfectly replicating the movement of the spheres. According to certain fragmentary evidences, this device was to be sent to Egypt, to agents of the notorious cult of Aten. The record is dim. Perhaps it was designed in Egypt and built in Kerpathos, but I digress.\n\nOnce installed in Egypt, the mechanism could be used in a great ceremony presaging the end of the world. It would somehow align the forces of nature with the metaphysical powers of an unnamed, exceedingly evil god. The product of the ceremony would be another device, this one very simple: a crystal octahedron, which could be spun like a child’s top. It is the Top of Aten, a thing of as great magical power as the device which produced it was a wonder of natural science.\n\nBy bringing the Top of Aten “farthest south” to the “last city of the oldest beings,” and then summoning their god, the cult intended to use their cosmic gyro to alter the rotational axis of the Earth, thereby bringing a strange land (surely Antarctica) once more to life. In the process, the annoying “lands of the stick folk”—literally, the lands of men—would be destroyed.\n\nBut the ship carrying the device to Egypt was lost in a great storm, and then Ephegon died. The ceremony was never begun.\n\nYou’ll recall the mysteries surrounding the Miskatonic expedition to Antarctica, and its tragic outcome; and you know that the Starkweather-Moore expedition leaves Bremen this winter to return to Antarctica and reopen the terrible questions which Lake first raised. But have you heard of the Karpathos Device—the strange instrument recovered near the island of Karpathos? After examining it, I knew that this was Ephegon’s device!\n\nLouis, it is my firm conviction that this tale is true, that a great scheme to change the world has been reactivated by the cult of Aten. Perhaps they employed great magic to manipulate destiny, or perhaps they are exceedingly cunning and evaluate every event for what they may gain of it, but their hour has come round again.\n\nOthers also believe this. An erudite and cruel man named Stanford has lent me subtle aid, but says that for arcane reasons he may do no more: he is not a friend, but says that in this thing he serves his god! A kinder, gentler Greek gentleman has also helped. Both seem to represent greater powers than man, perhaps beyond our ken.\n\nBut the cult of Aten is strong. At least one among them is no man at all, but a …\n\nHere the letter ends. There is no second sheet. There is nothing on the reverse of the sheet.\n\nAs you struggle to digest and evaluate the letter, the guard casually informs you that nothing else of Gliere’s is now at the prison.",
+    "choices": [
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ]
   }
 }

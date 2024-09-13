@@ -1955,4 +1955,102 @@ describe('Game Logic', () => {
       expect(updatedDate.getHours()).toBe(expectedHour)
     })
   })
+
+  describe('Entry 87 - Hall of Justice', () => {
+    beforeEach(() => {
+      // Reset currentState and initialize game before each test
+      initializeGame()
+      currentState.hiredAthens = false
+      currentState.skills = {}
+      currentState.inventory = []
+    })
+
+    test('should show "Your interpreter can help translate" button when companion is with you', () => {
+      currentState.hiredAthens = true // Player has a companion (Christos)
+      displayEntry('87')
+
+      const buttons = Array.from(document.querySelectorAll('button'))
+      const choiceButton = buttons.find((button) =>
+        button.innerText.includes('Your interpreter can help translate'),
+      )
+      expect(choiceButton).not.toBeNull() // The button should render
+    })
+
+    test('should not show "Your interpreter can help translate" button when companion is not with you', () => {
+      currentState.hiredAthens = false // Player does not have a companion
+      displayEntry('87')
+
+      const buttons = Array.from(document.querySelectorAll('button')).filter(
+        (button) => button.innerText && button.innerText.trim() !== '',
+      )
+
+      expect(buttons.length).toBe(2) // Only the always-visible buttons should render
+    })
+
+    test('should show "Good thing you speak Greek" button when player speaks Greek', () => {
+      currentState.skills = { 'Language (Greek)': 50 } // Player knows Greek
+      displayEntry('87')
+
+      const buttons = Array.from(document.querySelectorAll('button'))
+      const choiceButton = buttons.find((button) =>
+        button.innerText.includes('Good thing you speak Greek'),
+      )
+      expect(choiceButton).not.toBeNull() // The button should render
+    })
+
+    test('should not show "Good thing you speak Greek" button when player does not speak Greek', () => {
+      currentState.skills = { 'Language (Greek)': 0 } // Player does not know Greek
+      displayEntry('87')
+
+      const buttons = Array.from(document.querySelectorAll('button')).filter(
+        (button) => button.innerText && button.innerText.trim() !== '',
+      )
+      expect(buttons.length).toBe(2) // Only the always-visible buttons should render
+    })
+
+    test('should show "Maybe your phrasebook can help" button when player has the phrasebook', () => {
+      currentState.inventory = [
+        { name: 'Harrison’s English/Greek Phrase Book', type: 'book' },
+      ] // Player has the phrasebook
+      displayEntry('87')
+
+      const buttons = Array.from(document.querySelectorAll('button'))
+      const choiceButton = buttons.find((button) =>
+        button.innerText.includes('Maybe your phrasebook can help'),
+      )
+      expect(choiceButton).not.toBeNull() // The button should render
+    })
+
+    test('should not show "Maybe your phrasebook can help" button when player does not have the phrasebook', () => {
+      currentState.inventory = [
+        { name: 'Harrison’s English/Arabic Phrase Book', type: 'book' },
+      ] // Player does not have the English/Greek Phrase Book
+      displayEntry('87')
+
+      const buttons = Array.from(document.querySelectorAll('button')).filter(
+        (button) => button.innerText && button.innerText.trim() !== '',
+      )
+      expect(buttons.length).toBe(2) // Only the always-visible buttons should render
+    })
+
+    test('should always show "Look for someone who speaks English" button', () => {
+      displayEntry('87')
+
+      const buttons = Array.from(document.querySelectorAll('button'))
+      const choiceButton = buttons.find((button) =>
+        button.innerText.includes('Look for someone who speaks English'),
+      )
+      expect(choiceButton).not.toBeNull() // This button should always render
+    })
+
+    test('should always show "Leave the Hall of Justice" button', () => {
+      displayEntry('87')
+
+      const buttons = Array.from(document.querySelectorAll('button'))
+      const choiceButton = buttons.find((button) =>
+        button.innerText.includes('Leave the Hall of Justice'),
+      )
+      expect(choiceButton).not.toBeNull() // This button should always render
+    })
+  })
 })
