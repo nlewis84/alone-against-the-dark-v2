@@ -1,11 +1,17 @@
 Athens Locations
-15
-179
-201
-162
-223
+15 - done
+179 - done
+201 - done
+162 - done
+223 - done
 168 - Check that the locale is working
-87
+87 - code these options to actually work
+77
+180
+202
+6
+539 - add text to the start of this that the sergeant seems to remember something, then he hands over the paper
+
 183
 585 - make sure it works in Athens
 424

@@ -4099,5 +4099,102 @@
         "nextEntry": "585_exit"
       }
     ]
+  },
+  "15": {
+    "description": "Nobody goes near the well-dressed driver. Perhaps there’s something odd about that. The old fellow looks shaky, but serene, while the young driver looks friendly, but perhaps overly brash.",
+    "choices": [
+      {
+        "text": "Pick a driver",
+        "nextEntry": "58"
+      }
+    ],
+    "traceNumbers": ["58"]
+  },
+  "179": {
+    "description": "The young fellow takes you wherever you want to go.",
+    "choices": [
+      {
+        "text": "Go to any Athens Location.",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["58"]
+  },
+  "201": {
+    "description": "The old man questions you about your visit. He seems almost suspicious.",
+    "choices": [
+      {
+        "text": "Get out of the cab and get another",
+        "nextEntry": "58"
+      },
+      {
+        "text": "Answer the questions",
+        "nextEntry": "162"
+      },
+      {
+        "text": "Instruct the driver to be quiet and take you where you want",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["58", "162"]
+  },
+  "162": {
+    "description": "“You have wandered into something beyond your wildest dreams,” he says. “My friends wish to help you. Find out what you must, then meet me at the Parthenon at sundown.”",
+    "choices": [
+      {
+        "text": "Go to any Athens Location.",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["201"]
+  },
+  "223": {
+    "description": "“May I be of assistance?” the man asks. “I too was once a stranger in this sacred land. My temporary employment allows me to stay here while I work on my book. Where can I take you?”\n\nHe is Richard Hawkes. He will take you wherever you want to go, all the while chatting amiably about the splendors of Greece. He hints that he knows something you wish to know, and tells you to meet him at 6pm at the Piostos Cafe.",
+    "choices": [
+      {
+        "text": "Go to any Athens Location.",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["58"]
+  },
+  "87": {
+    "title": "ATHENS HALL OF JUSTICE",
+    "description": "The Hall of Justice and the King’s Court of Appeals are open from 9am-noon, and from 3pm-7pm, Mon-Fri.\n\nIf Christos is with you, he knows exactly where to go; if you are alone, you spend an hour before you arrive at the right corridor and find the desk sergeant in charge of the jails. The sergeant speaks no English.",
+    "choices": [
+      {
+        "text": "Your interpreter has something to say",
+        "nextEntry": "77",
+        "requirements": {
+          "companion": true
+        }
+      },
+      {
+        "text": "Good thing you speak Greek",
+        "nextEntry": "77",
+        "requirements": {
+          "language": "Greek"
+        }
+      },
+      {
+        "text": "Maybe your phrasebook can help",
+        "nextEntry": "6",
+        "requirements": {
+          "inventory": "English/Greek Phrasebook"
+        }
+      },
+      {
+        "text": "Look for someone who speaks English",
+        "nextEntry": "77",
+        "effects": {
+          "advanceTime": 2
+        }
+      },
+      {
+        "text": "As you leave, the sergeant seems to remember something. He pulls a letter out of a drawer, and gestures that you may read it. Go to 539.",
+        "nextEntry": "539"
+      }
+    ],
+    "traceNumbers": ["77", "6", "539"]
   }
 }
