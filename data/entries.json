@@ -5144,5 +5144,319 @@
         }
       }
     ]
+  },
+  "101": {
+    "title": "MODERATE HOTEL",
+    "description": "This hotel offers a clean room and a quiet night of sleep.",
+    "choices": [
+      {
+        "text": "Spend a second night here",
+        "nextEntry": "26",
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "moderateHotelStays"
+          }
+        },
+        "requirements": {
+          "minHotelStays": {
+            "moderateHotelStays": 1
+          }
+        }
+      },
+      {
+        "text": "Go to an Athens location in the morning",
+        "nextEntry": "Athens Location",
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "moderateHotelStays"
+          }
+        },
+        "requirements": {
+          "currentLocale": "Athens",
+          "requiredHotelStays": {
+            "moderateHotelStays": 0
+          }
+        }
+      },
+      {
+        "text": "Go to an Egypt location in the morning",
+        "nextEntry": "Egypt Location",
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "moderateHotelStays"
+          }
+        },
+        "requirements": {
+          "currentLocale": "Egypt",
+          "requiredHotelStays": {
+            "moderateHotelStays": 0
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["26"]
+  },
+  "127": {
+    "title": "EXPENSIVE HOTEL",
+    "description": "This is the best class of hotel. It has 24-hour room service.",
+    "choices": [
+      {
+        "text": "Stay for the second night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 1
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "9-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-8": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for the third night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 2
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "8-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-7": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 4th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 3
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "6-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-5": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 5th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 4
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "6-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-5": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 6th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 5
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "5-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-4": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 7th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 6
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "4-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-3": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 8th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 7
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "3-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-2": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 9th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 8
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "2-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 10th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 9
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "1-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            }
+          }
+        }
+      },
+      {
+        "text": "Spend the night then head to an Athens location",
+        "nextEntry": "Athens",
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          }
+        },
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 0
+          },
+          "currentLocale": "Athens"
+        }
+      },
+      {
+        "text": "Spend the night then head to an Egypt location",
+        "nextEntry": "Egypt",
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          }
+        },
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 0
+          },
+          "currentLocale": "Egypt"
+        }
+      }
+    ],
+    "traceNumbers": ["26"]
   }
 }

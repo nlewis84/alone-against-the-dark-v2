@@ -305,6 +305,17 @@ export function handleEntryChoices(entryId, entry) {
           }
 
           if (choice.effects && choice.effects.diceRoll) {
+            if (choice.effects && choice.effects.increment) {
+              const counter = choice.effects.increment.counter
+              if (counter === 'moderateHotelStays') {
+                currentState.moderateHotelStays =
+                  (currentState.moderateHotelStays || 0) + 1
+              } else if (counter === 'expensiveHotelStays') {
+                currentState.expensiveHotelStays =
+                  (currentState.expensiveHotelStays || 0) + 1
+              }
+            }
+
             handleOutcomeBasedEncounter(choice)
           } else if (choice.effects && choice.effects.check) {
             if (choice.effects.time) {
@@ -325,6 +336,18 @@ export function handleEntryChoices(entryId, entry) {
             if (success || choice.effects.dailyLimit) {
               // Record usage if daily limit applies
               recordSkillUsage(entryId, choice.effects.check.skill)
+            }
+
+            if (choice.effects && choice.effects.increment) {
+              const counter = choice.effects.increment.counter
+
+              if (counter === 'moderateHotelStays') {
+                currentState.moderateHotelStays =
+                  (currentState.moderateHotelStays || 0) + 1
+              } else if (counter === 'expensiveHotelStays') {
+                currentState.expensiveHotelStays =
+                  (currentState.expensiveHotelStays || 0) + 1
+              }
             }
 
             if (choice.effects && choice.effects.diceRoll) {
@@ -361,6 +384,17 @@ export function handleEntryChoices(entryId, entry) {
 
               if (choice.effects.advanceTime !== undefined) {
                 updateTime(choice.effects.advanceTime)
+              }
+
+              if (choice.effects.increment) {
+                const counter = choice.effects.increment.counter
+                if (counter === 'moderateHotelStays') {
+                  currentState.moderateHotelStays =
+                    (currentState.moderateHotelStays || 0) + 1
+                } else if (counter === 'expensiveHotelStays') {
+                  currentState.expensiveHotelStays =
+                    (currentState.expensiveHotelStays || 0) + 1
+                }
               }
             }
 
@@ -703,6 +737,17 @@ export function makeChoice(nextEntry, effects) {
 
       nextEntry = checkResult // Update nextEntry based on the outcome of the skill check
     }
+
+    if (effects.increment) {
+      const counter = effects.increment.counter
+      if (counter === 'moderateHotelStays') {
+        currentState.moderateHotelStays =
+          (currentState.moderateHotelStays || 0) + 1
+      } else if (counter === 'expensiveHotelStays') {
+        currentState.expensiveHotelStays =
+          (currentState.expensiveHotelStays || 0) + 1
+      }
+    }
   }
 
   currentState.currentEntry = nextEntry
@@ -811,6 +856,8 @@ export function saveGame() {
     onShip: currentState.onShip,
     shipJourneyStartDate: currentState.shipJourneyStartDate,
     hiredAthens: currentState.hiredAthens,
+    moderateHotelStays: currentState.moderateHotelStays,
+    expensiveHotelStays: currentState.expensiveHotelStays,
   }
   saveState('gameState', saveData)
 }
@@ -841,6 +888,9 @@ export function loadGame() {
 
     currentState.hiredAthens = savedState.hiredAthens
     updateInterpreterDisplay(currentState.hiredAthens)
+
+    currentState.moderateHotelStays = savedState.moderateHotelStays
+    currentState.expensiveHotelStays = savedState.expensiveHotelStays
 
     displayEntry(currentState.currentEntry)
     updateHealth(0) // Refresh health display
@@ -993,6 +1043,69 @@ export function checkRequirements(requirements) {
       const { name, minValue } = requirements.skill
       if (!currentState.skills[name] || currentState.skills[name] < minValue) {
         return false
+      }
+    }
+
+    if (requirements.minHotelStays) {
+      const { moderateHotelStays, expensiveHotelStays } =
+        requirements.minHotelStays
+
+      // Check for minimum moderateHotelStays
+      if (moderateHotelStays !== undefined) {
+        const playerModerateStays = currentState.moderateHotelStays || 0 // Default to 0 if undefined
+        if (playerModerateStays < moderateHotelStays) {
+          return false // Player hasn't met the minimum moderate stays requirement
+        }
+      }
+
+      // Check for minimum expensiveHotelStays
+      if (expensiveHotelStays !== undefined) {
+        const playerExpensiveStays = currentState.expensiveHotelStays || 0 // Default to 0 if undefined
+        if (playerExpensiveStays < expensiveHotelStays) {
+          return false // Player hasn't met the minimum expensive stays requirement
+        }
+      }
+    }
+
+    if (requirements.minHotelStays) {
+      const { moderateHotelStays, expensiveHotelStays } =
+        requirements.minHotelStays
+
+      // Check for minimum moderateHotelStays
+      if (moderateHotelStays !== undefined) {
+        const playerModerateStays = currentState.moderateHotelStays || 0 // Default to 0 if undefined
+        if (playerModerateStays < moderateHotelStays) {
+          return false // Player hasn't met the minimum moderate stays requirement
+        }
+      }
+
+      // Check for minimum expensiveHotelStays
+      if (expensiveHotelStays !== undefined) {
+        const playerExpensiveStays = currentState.expensiveHotelStays || 0 // Default to 0 if undefined
+        if (playerExpensiveStays < expensiveHotelStays) {
+          return false // Player hasn't met the minimum expensive stays requirement
+        }
+      }
+    }
+
+    if (requirements.requiredHotelStays) {
+      const { moderateHotelStays, expensiveHotelStays } =
+        requirements.requiredHotelStays
+
+      // Check for moderateHotelStays requirement
+      if (moderateHotelStays !== undefined) {
+        const playerModerateStays = currentState.moderateHotelStays || 0 // Default to 0 if undefined
+        if (playerModerateStays !== moderateHotelStays) {
+          return false // Player hasn't met the exact moderate stays requirement
+        }
+      }
+
+      // Check for expensiveHotelStays requirement
+      if (expensiveHotelStays !== undefined) {
+        const playerExpensiveStays = currentState.expensiveHotelStays || 0 // Default to 0 if undefined
+        if (playerExpensiveStays !== expensiveHotelStays) {
+          return false // Player hasn't met the exact expensive stays requirement
+        }
       }
     }
   }

@@ -2098,4 +2098,50 @@ describe('Game Logic', () => {
       expect(result).toBe(false) // Should fail since the player does not have Pilot (Helicopter)
     })
   })
+
+  describe('requiredHotelStays requirement', () => {
+    it('should pass when player has the exact required moderateHotelStays', () => {
+      // Ensure currentState has the exact moderateHotelStays required
+      currentState.moderateHotelStays = 2
+      const requirements = { requiredHotelStays: { moderateHotelStays: 2 } }
+
+      expect(checkRequirements(requirements)).toBe(true)
+    })
+
+    it('should fail when player has different moderateHotelStays than required', () => {
+      currentState.moderateHotelStays = 1
+      const requirements = { requiredHotelStays: { moderateHotelStays: 2 } }
+
+      expect(checkRequirements(requirements)).toBe(false)
+    })
+
+    it('should pass when player has the exact required expensiveHotelStays', () => {
+      // Ensure currentState has the exact expensiveHotelStays required
+      currentState.expensiveHotelStays = 3
+      const requirements = { requiredHotelStays: { expensiveHotelStays: 3 } }
+
+      expect(checkRequirements(requirements)).toBe(true)
+    })
+
+    it('should fail when player has different expensiveHotelStays than required', () => {
+      currentState.expensiveHotelStays = 1
+      const requirements = { requiredHotelStays: { expensiveHotelStays: 3 } }
+
+      expect(checkRequirements(requirements)).toBe(false)
+    })
+
+    it('should pass when player has no moderateHotelStays and requirement is 0', () => {
+      // currentState.moderateHotelStays is undefined, equivalent to 0
+      const requirements = { requiredHotelStays: { moderateHotelStays: 0 } }
+
+      expect(checkRequirements(requirements)).toBe(true)
+    })
+
+    it('should fail when player has no moderateHotelStays and requirement is 1', () => {
+      // currentState.moderateHotelStays is undefined, but requirement is 1
+      const requirements = { requiredHotelStays: { moderateHotelStays: 1 } }
+
+      expect(checkRequirements(requirements)).toBe(false)
+    })
+  })
 })
