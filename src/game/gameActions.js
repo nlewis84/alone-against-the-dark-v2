@@ -380,6 +380,11 @@ export function handleEntryChoices(entryId, entry) {
                 currentState.skills[skill] += choice.effects.skills[skill]
               })
             }
+
+            if (choice.message) {
+              setTempDescription(choice.message)
+            }
+
             makeChoice(choice.nextEntry, choice.effects)
           }
         },

@@ -4830,5 +4830,285 @@
       }
     ],
     "traceNumbers": ["451", "452"]
+  },
+  "424": {
+    "title": "INEXPENSIVE ATHENS HOTEL",
+    "description": "This fleabag hotel is not exactly clean and sanitary, but it is quiet.",
+    "choices": [
+      {
+        "text": "Take a room",
+        "nextEntry": "26"
+      },
+      {
+        "text": "Another Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": []
+  },
+  "26": {
+    "description": "As you enter the hotel, something gives you pause. You hesitate for a moment, noticing strangers in the lobby who seem to watch you. One of the strangers seems to hide his face.",
+    "choices": [
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "123",
+              "message": "You notice the strangers watching you."
+            },
+            "failure": {
+              "nextEntry": "123",
+              "message": "You fail to notice anything unusual."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["101", "127", "424"]
+  },
+  "123": {
+    "description": "You go to your room.",
+    "choices": [
+      {
+        "text": "Make a Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "123b",
+              "message": "You hear footsteps outside your door."
+            },
+            "failure": {
+              "nextEntry": "185",
+              "message": "You fail to notice anything unusual."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["26", "164", "185", "123b"]
+  },
+  "123b": {
+    "description": "They are at your door and you hear the door rattle slightly. You must decide what to do next.",
+    "choices": [
+      {
+        "text": "Make a Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "594",
+              "message": "You hear footsteps outside your door."
+            },
+            "failure": {
+              "nextEntry": "185",
+              "message": "You fail to notice anything unusual."
+            }
+          }
+        }
+      },
+      {
+        "text": "Look out the window",
+        "nextEntry": "594",
+        "message": "You see a fire escape leading down to safety."
+      },
+      {
+        "text": "Lock the door",
+        "nextEntry": "185",
+        "message": "You lock the door. As you step away, you see it unlock and door starts to open."
+      },
+      {
+        "text": "Hide in the bathroom",
+        "nextEntry": "185",
+        "message": "You hide in the bathroom, hoping to remain undetected. You hear the door open in the other room, footsteps approaching the bathroom door, then the bathroom door swings open."
+      },
+      {
+        "text": "Hide under the bed",
+        "nextEntry": "185",
+        "message": "You crawl under the bed, hoping the strangers don't find you. You hear the door open."
+      },
+      {
+        "text": "Order the strangers to leave",
+        "nextEntry": "185",
+        "message": "The door starts to open and you shout for them to leave your room. There is laughter on the other side of the door."
+      },
+      {
+        "text": "Ready your weapon",
+        "nextEntry": "185a",
+        "message": "You ready your weapon, prepared for anything as the door opens. Two figures enter, a short man holding a wicked-looking dagger and a tall man dressed in a shadowy cloak. The short man comes at you, ready to strike."
+      }
+    ],
+    "traceNumbers": ["26", "164", "185", "594"]
+  },
+  "185": {
+    "description": "Two figures enter, a short man holding a wicked-looking dagger and a tall man dressed in a shadowy cloak. The short man comes at you, ready to strike.",
+    "choices": [
+      {
+        "text": "Make a DEX roll to ready your weapon",
+        "effects": {
+          "check": {
+            "skill": "DEX",
+            "success": {
+              "nextEntry": "185a",
+              "message": "You manage to draw your weapon just in time!"
+            },
+            "failure": {
+              "nextEntry": "185b",
+              "message": "The short man lunges with his dagger before you can react."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["123"]
+  },
+  "185a": {
+    "description": "The short man with the dagger lunges at you. If you wound him for 8 or more hit points, he falls unconscious. Otherwise, he keeps stabbing while you fight back or dodge. If you have a handgun, you may fire at point-blank range (with a bonus die).",
+    "choices": [
+      {
+        "text": "Attack the short man",
+        "nextEntry": "185c"
+      },
+      {
+        "text": "Dodge the short man's attack",
+        "nextEntry": "185d"
+      }
+    ],
+    "traceNumbers": ["185"]
+  },
+  "185b": {
+    "description": "The short man lunges at you with the dagger! You must attempt to dodge the blow.",
+    "choices": [
+      {
+        "text": "Make a Dodge roll",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "185a",
+              "message": "You evade the blow, and now have a chance to fight back."
+            },
+            "failure": {
+              "damage": "1D6",
+              "nextEntry": "185a",
+              "message": "The dagger cuts deep as you fail to dodge in time."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["185"]
+  },
+  "185c": {
+    "description": "You strike back at the short man. If you manage to deal 8 or more hit points of damage, he breaks off the attack and falls unconscious.",
+    "choices": [
+      {
+        "text": "If the short man is unconscious, move on",
+        "nextEntry": "185e"
+      },
+      {
+        "text": "If the short man is still fighting, keep attacking",
+        "nextEntry": "185a"
+      }
+    ],
+    "traceNumbers": ["185"]
+  },
+  "185d": {
+    "description": "You try to dodge the short man's attack and make a run for it. If you succeed, you manage to escape.",
+    "choices": [
+      {
+        "text": "Make a Dodge roll",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "185e",
+              "message": "You manage to dodge and make a break for it!"
+            },
+            "failure": {
+              "damage": "1D6",
+              "nextEntry": "185a",
+              "message": "The short man cuts you as you fail to dodge."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["185"]
+  },
+  "185e": {
+    "description": "You manage to get past the short man, but now the tall hooded figure blocks your escape. His inhuman glowing eyes are visible within the gloom of the cowl, and you feel a deathly chill in the air.",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "nextEntry": "185f",
+              "message": "You manage to hold yourself together, but the sight of the hooded figure shakes you."
+            },
+            "failure": {
+              "damageSanity": "1D6",
+              "nextEntry": "185f",
+              "message": "You lose your composure as you witness the ghostly figure's horror."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["185"]
+  },
+  "185f": {
+    "description": "Now the hooded figure reaches out for you. You can feel the cold emanating from its form. You can try to attack or dodge to escape.",
+    "choices": [
+      {
+        "text": "Attack the hooded figure",
+        "effects": {
+          "check": {
+            "skill": "Fighting",
+            "success": {
+              "nextEntry": "AthensLocation",
+              "message": "You strike through the figure and escape!"
+            },
+            "failure": {
+              "nextEntry": "185g",
+              "message": "Your attacks pass through the ghostly figure with no effect."
+            }
+          }
+        }
+      },
+      {
+        "text": "Dodge the hooded figure's attack",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "AthensLocation",
+              "message": "You manage to dodge and escape!"
+            },
+            "failure": {
+              "nextEntry": "185g",
+              "message": "You fail to dodge, and the figure reaches for you!"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["185"]
+  },
+  "185g": {
+    "description": "The hooded figure grabs you, its cold hands tightening around your throat. You struggle, but the cold overtakes you. This is the end... THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["185f"]
   }
 }
