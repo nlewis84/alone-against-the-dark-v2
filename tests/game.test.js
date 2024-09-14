@@ -2053,4 +2053,49 @@ describe('Game Logic', () => {
       expect(choiceButton).not.toBeNull() // This button should always render
     })
   })
+
+  describe('checkRequirements - Skill Requirement', () => {
+    beforeEach(() => {
+      // Reset currentState before each test
+      currentState.skills = {
+        'Pilot (Aircraft)': 10,
+      }
+    })
+
+    test('should pass when player has the required skill level', () => {
+      const requirements = {
+        skill: {
+          name: 'Pilot (Aircraft)',
+          minValue: 5,
+        },
+      }
+
+      const result = checkRequirements(requirements)
+      expect(result).toBe(true) // Should pass since the player has 10 in Pilot (Aircraft)
+    })
+
+    test('should fail when player does not have the required skill level', () => {
+      const requirements = {
+        skill: {
+          name: 'Pilot (Aircraft)',
+          minValue: 15,
+        },
+      }
+
+      const result = checkRequirements(requirements)
+      expect(result).toBe(false) // Should fail since the player only has 10 in Pilot (Aircraft)
+    })
+
+    test('should fail when player does not have the skill at all', () => {
+      const requirements = {
+        skill: {
+          name: 'Pilot (Helicopter)',
+          minValue: 5,
+        },
+      }
+
+      const result = checkRequirements(requirements)
+      expect(result).toBe(false) // Should fail since the player does not have Pilot (Helicopter)
+    })
+  })
 })

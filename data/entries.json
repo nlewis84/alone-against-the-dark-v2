@@ -3056,7 +3056,7 @@
     "traceNumbers": ["START"]
   },
   "574": {
-    "description": "You have failed! Depending where you are, your experiences vary. Coastline lines suffer dramatic flooding and panic ensues. Scientists claim the Earth has somehow shifted on its axis and that terrible consequences will follow. Indeed, they do. Storms of primeval force sweep the continents. Melting polar ice fuels the flooding, while terrifying ice storms strike at the heart of civilization. Once it begins, much of the world of humankind is destroyed within days. The City of the Old Ones has a new master, and the whole world pays for your failure. Your revolver has a bullet in the chamber. Whether you choose to use it or not, it is ... THE END.",
+    "description": "You have failed! Depending where you are, your experiences vary. Coastline lines suffer dramatic flooding and panic ensues. Scientists claim the Earth has somehow shifted on its axis and that terrible consequences will follow. Indeed, they do. Storms of primeval force sweep the continents. Melting polar ice fuels the flooding, while terrifying ice storms strike at the heart of civilization. Once it begins, much of the world of humankind is destroyed within days. The City of the Old Ones has a new master, and the whole world pays for your failure. Your revolver has a bullet in the chamber. Whether you choose to use it or not, it is ...\n\nTHE END.",
     "choices": [
       {
         "text": "GAME OVER",
@@ -3396,7 +3396,7 @@
             },
             "failure": {
               "nextEntry": "137c",
-              "message": "You have been murdered... THE END."
+              "message": "You have been murdered..."
             }
           }
         }
@@ -3405,7 +3405,7 @@
     "traceNumbers": ["137"]
   },
   "137c": {
-    "description": "You have failed all your attempts to escape. As the strangulation intensifies, your vision fades... THE END.",
+    "description": "You have failed all your attempts to escape. As the strangulation intensifies, your vision fades...\n\nTHE END.",
     "choices": [
       {
         "text": "GAME OVER",
@@ -3942,8 +3942,15 @@
     "traceNumbers": ["249a"]
   },
   "249c": {
-    "description": "You steal a felucca and slowly drift downstream. Sometime later you judge it safe, and drop the heavy Device into the Nile itself, so that it will sink down into the deep silts that have lain there undisturbed for millennia. Later, the police find you and capture you. You serve seven years in an Egyptian prison, only to return home penniless, disgraced, and without home or friends. Your life is ruined, and until you die you never know whether you did the right thing in Cairo all those years before. But you did, of course. Well done! You saved the world. THE END.",
-    "end": true,
+    "description": "You steal a felucca and slowly drift downstream. Sometime later you judge it safe, and drop the heavy Device into the Nile itself, so that it will sink down into the deep silts that have lain there undisturbed for millennia. Later, the police find you and capture you. You serve seven years in an Egyptian prison, only to return home penniless, disgraced, and without home or friends. Your life is ruined, and until you die you never know whether you did the right thing in Cairo all those years before. But you did, of course. Well done! You saved the world.\n\nTHE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
     "traceNumbers": ["249b"]
   },
   "249d": {
@@ -4303,6 +4310,185 @@
       {
         "text": "Go to any Athens Location",
         "nextEntry": "Athens Location"
+      }
+    ]
+  },
+  "181": {
+    "title": "ATHENS AIRPORT",
+    "description": "At the tiny airport, three aircraft sit beside the airstrip. A Douglas M2 mail plane, ten years old and looking it, rests alone. A Ford TN-Motor waits in front of an open hangar. A Fokker T-2, a strange bird with its snub nose, has a mechanic working on it. You notice a single bystander who seems to watch you intently.\n\nInquiries at the office reveal that the TN-Motor makes regular flights to Cairo. It leaves at 8am daily. The mail plane is not delivering mail anymore. The pilot, Jacques Risee, sits in the tiny bar.\n\nThe clerk says that the Fokker is unavailable, but if you want, you can look it over.",
+    "choices": [
+      {
+        "text": "Buy a ticket and return for the next TN-Motor flight to Cairo",
+        "effects": {
+          "setHour": 8,
+          "advanceTime": 0
+        },
+        "nextEntry": "99"
+      },
+      {
+        "text": "Talk to Jacques Risee at the bar",
+        "nextEntry": "57"
+      },
+      {
+        "text": "Look over the Fokker T-2",
+        "nextEntry": "43"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["99", "57", "43", "Athens Location"]
+  },
+  "57": {
+    "description": "Jacques smiles gallantly, \"I am trying to interest wealthy Greeks in the romance of the air. But my little service has not been well received, mmmh? Yet perhaps I may take you somewhere?\"",
+    "choices": [
+      {
+        "text": "Accept Jacques' offer to fly you",
+        "nextEntry": "92"
+      },
+      {
+        "text": "Return to the airport",
+        "nextEntry": "181"
+      }
+    ],
+    "traceNumbers": ["181"]
+  },
+  "92": {
+    "description": "He will take you to Cairo or Bremen, with no questions asked. In order to have daylight to complete the trip, he must take off before noon.\n\nThe flight will be a windswept adventure in an open-cockpit biplane. \"Ooh lah lah!\"",
+    "choices": [
+      {
+        "text": "Fly to Cairo",
+        "nextEntry": "196",
+        "effects": {
+          "setHour": 12,
+          "advanceTime": 3
+        }
+      },
+      {
+        "text": "Fly to Bremen",
+        "nextEntry": "450",
+        "effects": {
+          "setHour": 12,
+          "advanceTime": 5
+        }
+      },
+      {
+        "text": "Return to the airport",
+        "nextEntry": "181"
+      }
+    ],
+    "traceNumbers": ["57", "181"]
+  },
+  "196": {
+    "title": "CAIRO AIRPORT",
+    "description": "Around the airport you detect an odor resembling manure. You also see many British troops. A few planes are scattered about the tarmac. Regular flights are available on a Ford Tri-Motor and on a smaller (but steadier) Northrop Alpha.",
+    "choices": [
+      {
+        "text": "Find a taxi",
+        "nextEntry": "103"
+      },
+      {
+        "text": "Get information on flights to Athens (departs at 3pm)",
+        "nextEntry": "181",
+        "effects": {
+          "setHour": 15,
+          "advanceTime": 3
+        }
+      },
+      {
+        "text": "Get information on flights to Bremen (departs at 9am)",
+        "nextEntry": "450",
+        "effects": {
+          "setHour": 9,
+          "advanceTime": 8
+        }
+      },
+      {
+        "text": "Go to any Egypt Location",
+        "nextEntry": "Egypt Location"
+      }
+    ],
+    "traceNumbers": ["103", "181", "450"]
+  },
+  "450": {
+    "title": "BREMEN AIRPORT",
+    "description": "A free shuttle runs between the airport and the harbor. It is cold and foggy; you were lucky to arrive before a landing was impossible.",
+    "choices": [
+      {
+        "text": "Take the shuttle to the harbor",
+        "nextEntry": "449"
+      }
+    ],
+    "traceNumbers": ["449"]
+  },
+  "43": {
+    "description": "The plane has been abandoned, but it looks in good condition. A tempting thought enters your mind: steal it.",
+    "choices": [
+      {
+        "text": "Check out the plane and get it started",
+        "nextEntry": "98",
+        "requirements": {
+          "skill": {
+            "name": "Pilot (Aircraft)",
+            "minValue": 5
+          }
+        }
+      },
+      {
+        "text": "Nah, that's a bad idea",
+        "nextEntry": "181"
+      }
+    ],
+    "traceNumbers": ["44", "181"]
+  },
+  "98": {
+    "description": "The plane’s engine roars into life. You smugly taxi down the runway and head the craft expertly into the wind. You give her the throttle and the plane hurtles down the tarmac and into the air. You’re airborne!",
+    "choices": [
+      {
+        "text": "Make a Pilot (Aircraft) roll",
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "98b"
+            },
+            "failure": {
+              "nextEntry": "98a"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["43"]
+  },
+  "98a": {
+    "description": "You lose control of the plane as it climbs, the nose dips suddenly, and despite your efforts, you crash into the ground. The world goes black as the plane explodes in flames. This is the end of your journey.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ]
+  },
+  "98b": {
+    "description": "You manage to keep the plane steady and continue flying through the skies. Now, make a successful Navigate roll to reach Cairo Airport. Fail the roll and you land somewhere else.",
+    "choices": [
+      {
+        "text": "Make a Navigate roll",
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "nextEntry": "196"
+            },
+            "failure": {
+              "nextEntry": "94"
+            }
+          }
+        }
       }
     ]
   }

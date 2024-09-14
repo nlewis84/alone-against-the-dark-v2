@@ -982,6 +982,14 @@ export function checkRequirements(requirements) {
         return false
       }
     }
+
+    // Check if the player has the required skill and the minimum value for that skill
+    if (requirements.skill) {
+      const { name, minValue } = requirements.skill
+      if (!currentState.skills[name] || currentState.skills[name] < minValue) {
+        return false
+      }
+    }
   }
   return true
 }

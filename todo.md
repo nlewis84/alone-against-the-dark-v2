@@ -1,5 +1,4 @@
 Athens Locations
-
 183
 585 - make sure it works in Athens
 424
@@ -17,7 +16,12 @@ Be intentional about hiring interpretors
 Alexandria Locations
 195 - test
 
+Bremen Locations
+450 - code 449
+
 Egypt Locations
+94 - This is the plane lost (from 98)
+196 - Make the flight to athens work for the same day if you are there at 3PM, code 103, same for bremen flight if you are there at 9AM
 236
 244
 247
@@ -34,6 +38,9 @@ Egypt Locations
 207
 290
 298
+
+Bremen Location
+450 - code 449
 
 1 - kinda...
 4
