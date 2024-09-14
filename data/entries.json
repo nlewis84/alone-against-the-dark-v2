@@ -4912,7 +4912,7 @@
       {
         "text": "Look out the window",
         "nextEntry": "594",
-        "message": "You see a fire escape leading down to safety."
+        "message": "Very sensible! You see a fire escape leading down to safety."
       },
       {
         "text": "Lock the door",
@@ -4943,7 +4943,7 @@
     "traceNumbers": ["26", "164", "185", "594"]
   },
   "185": {
-    "description": "Two figures enter, a short man holding a wicked-looking dagger and a tall man dressed in a shadowy cloak. The short man comes at you, ready to strike.",
+    "description": "Two figures enter: a short man holding a wicked-looking dagger and a tall man dressed in a shadowy cloak. The short man lunges at you with a dagger. You must act quickly.",
     "choices": [
       {
         "text": "Make a DEX roll to ready your weapon",
@@ -4956,7 +4956,8 @@
             },
             "failure": {
               "nextEntry": "185b",
-              "message": "The short man lunges with his dagger before you can react."
+              "message": "The short man lunges with his dagger before you can react.",
+              "damage": "1D6"
             }
           }
         }
@@ -4965,142 +4966,145 @@
     "traceNumbers": ["123"]
   },
   "185a": {
-    "description": "The short man with the dagger lunges at you. If you wound him for 8 or more hit points, he falls unconscious. Otherwise, he keeps stabbing while you fight back or dodge. If you have a handgun, you may fire at point-blank range (with a bonus die).",
+    "description": "You have your weapon ready. The short man lunges at you with his dagger. You must defend yourself or fight back.",
     "choices": [
       {
-        "text": "Attack the short man",
-        "nextEntry": "185c"
+        "text": "Fight back",
+        "nextEntry": "185b",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Short Man",
+              "attackChance": "50%",
+              "damage": "1D6",
+              "health": 8,
+              "maxHealth": 8
+            },
+            "win": "185c",
+            "lose": "185d"
+          }
+        }
       },
       {
-        "text": "Dodge the short man's attack",
-        "nextEntry": "185d"
+        "text": "Dodge the attack",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "185d",
+              "message": "You successfully dodge the short man's attack."
+            },
+            "failure": {
+              "damage": "1D6",
+              "nextEntry": "185b",
+              "message": "The short man's dagger finds its mark, injuring you."
+            }
+          }
+        }
       }
     ],
     "traceNumbers": ["185"]
   },
   "185b": {
-    "description": "The short man lunges at you with the dagger! You must attempt to dodge the blow.",
+    "description": "You must act quickly to defend yourself.",
     "choices": [
       {
-        "text": "Make a Dodge roll",
+        "text": "Fight back",
+        "nextEntry": "185b",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Short Man",
+              "attackChance": "50%",
+              "damage": "1D6",
+              "health": 8,
+              "maxHealth": 8
+            },
+            "win": "185c",
+            "lose": "185d"
+          }
+        }
+      },
+      {
+        "text": "Dodge",
         "effects": {
           "check": {
             "skill": "Dodge",
             "success": {
-              "nextEntry": "185a",
-              "message": "You evade the blow, and now have a chance to fight back."
+              "nextEntry": "185d",
+              "message": "You successfully dodge the attack."
             },
             "failure": {
               "damage": "1D6",
-              "nextEntry": "185a",
-              "message": "The dagger cuts deep as you fail to dodge in time."
+              "nextEntry": "185b",
+              "message": "The short man's dagger finds its mark, injuring you."
             }
           }
         }
       }
     ],
-    "traceNumbers": ["185"]
+    "traceNumbers": ["185a"]
   },
   "185c": {
-    "description": "You strike back at the short man. If you manage to deal 8 or more hit points of damage, he breaks off the attack and falls unconscious.",
+    "description": "You manage to wound the short man, and he collapses unconscious from the damage. As you look around, the tall man in the cloak blocks the exit, his eyes glowing ominously. The air grows deathly cold.",
     "choices": [
       {
-        "text": "If the short man is unconscious, move on",
+        "text": "Confront the tall figure",
         "nextEntry": "185e"
-      },
-      {
-        "text": "If the short man is still fighting, keep attacking",
-        "nextEntry": "185a"
       }
     ],
     "traceNumbers": ["185"]
   },
   "185d": {
-    "description": "You try to dodge the short man's attack and make a run for it. If you succeed, you manage to escape.",
+    "description": "You evade the short man, and you still have a chance to survive. The tall man is blocking the exit. His eyes glow in the shadow of his cloak.",
     "choices": [
       {
-        "text": "Make a Dodge roll",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": {
-              "nextEntry": "185e",
-              "message": "You manage to dodge and make a break for it!"
-            },
-            "failure": {
-              "damage": "1D6",
-              "nextEntry": "185a",
-              "message": "The short man cuts you as you fail to dodge."
-            }
-          }
-        }
+        "text": "Confront the tall figure",
+        "nextEntry": "185e"
       }
     ],
-    "traceNumbers": ["185"]
+    "traceNumbers": ["185b"]
   },
   "185e": {
-    "description": "You manage to get past the short man, but now the tall hooded figure blocks your escape. His inhuman glowing eyes are visible within the gloom of the cowl, and you feel a deathly chill in the air.",
+    "description": "The tall man seems inhuman, his glowing eyes locked on you. You feel a deathly chill emanating from him. You must make a decision quickly.",
     "choices": [
       {
-        "text": "Make a Sanity roll",
+        "text": "Attack the tall figure",
         "effects": {
           "check": {
-            "skill": "Sanity",
+            "skill": "Fighting (Brawl)",
             "success": {
-              "nextEntry": "185f",
-              "message": "You manage to hold yourself together, but the sight of the hooded figure shakes you."
-            },
-            "failure": {
-              "damageSanity": "1D6",
-              "nextEntry": "185f",
-              "message": "You lose your composure as you witness the ghostly figure's horror."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["185"]
-  },
-  "185f": {
-    "description": "Now the hooded figure reaches out for you. You can feel the cold emanating from its form. You can try to attack or dodge to escape.",
-    "choices": [
-      {
-        "text": "Attack the hooded figure",
-        "effects": {
-          "check": {
-            "skill": "Fighting",
-            "success": {
-              "nextEntry": "AthensLocation",
-              "message": "You strike through the figure and escape!"
+              "nextEntry": "185h",
+              "message": "Your attack passes through the figure, and you lose your footing! You stumble forward and pass completely through the being, as if he were a ghost! You clamber out of the door and run out of the hotel."
             },
             "failure": {
               "nextEntry": "185g",
-              "message": "Your attacks pass through the ghostly figure with no effect."
+              "message": "Your desperate attack has no effect, passing through the figure as if he were a ghost! The figure moves closer."
             }
           }
         }
       },
       {
-        "text": "Dodge the hooded figure's attack",
+        "text": "Dodge and escape",
         "effects": {
           "check": {
             "skill": "Dodge",
             "success": {
-              "nextEntry": "AthensLocation",
-              "message": "You manage to dodge and escape!"
+              "nextEntry": "185i",
+              "message": "You dodge the figure and manage to escape!"
             },
             "failure": {
               "nextEntry": "185g",
-              "message": "You fail to dodge, and the figure reaches for you!"
+              "message": "You fail to dodge, and the figure grabs you."
             }
           }
         }
       }
     ],
-    "traceNumbers": ["185"]
+    "traceNumbers": ["185c"]
   },
   "185g": {
-    "description": "The hooded figure grabs you, its cold hands tightening around your throat. You struggle, but the cold overtakes you. This is the end... THE END.",
+    "description": "The hooded figure grabs you with cold, inhuman hands, and the life drains out of you as you struggle in vain. For you, this is...\n\nTHE END.",
     "choices": [
       {
         "text": "GAME OVER",
@@ -5109,6 +5113,36 @@
         }
       }
     ],
-    "traceNumbers": ["185f"]
+    "traceNumbers": ["185e"]
+  },
+  "185h": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Run out of the hotel",
+        "nextEntry": "Athens Location"
+      }
+    ]
+  },
+  "185i": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Run out of the hotel",
+        "nextEntry": "Athens Location"
+      }
+    ]
+  },
+  "594": {
+    "description": "You are able to climb down the fire escape, and make your way to another nearby hotel. You are safe for the night.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "Athens Location",
+        "effects": {
+          "setHour": 7
+        }
+      }
+    ]
   }
 }
