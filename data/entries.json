@@ -120,7 +120,7 @@
           "check": {
             "skill": "CON",
             "success": {
-              "description": "You recover quickly and go on your way.",
+              "message": "You recover quickly and go on your way.",
               "nextEntry": "New York"
             },
             "failure": {
@@ -4491,5 +4491,344 @@
         }
       }
     ]
+  },
+  "183": {
+    "title": "ATHENS RAILWAY STATION",
+    "description": "The train to Istanbul, Damascus, and finally Cairo leaves daily at 12 noon. It takes three days to make the trip. The train north to Vienna and then to Bremen leaves daily at 9am, and takes three days to arrive.\n\nYou notice that a man looks up from his newspaper and studies you intently.",
+    "choices": [
+      {
+        "text": "Take the train to Cairo",
+        "nextEntry": "42",
+        "effects": {
+          "setHour": 12,
+          "advanceTime": 0
+        }
+      },
+      {
+        "text": "Take the train to Bremen",
+        "nextEntry": "449",
+        "effects": {
+          "setHour": 9,
+          "advanceTime": 0
+        }
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["42", "449", "87"]
+  },
+  "42": {
+    "description": "You board the train and are faced with a choice of accommodations. The crowded, smelly seats are certainly the more affordable option, but far from comfortable. Alternatively, you can pay for a private suite, complete with a toilet and basin, offering some privacy and comfort for the journey.",
+    "choices": [
+      {
+        "text": "Choose the crowded, smelly seat",
+        "nextEntry": "75"
+      },
+      {
+        "text": "Choose the private suite",
+        "nextEntry": "93"
+      }
+    ],
+    "traceNumbers": ["183"]
+  },
+  "75": {
+    "description": "After a long, cramped, and uncomfortable three-day journey, you finally arrive safely. The train offers further connections that could take you onward to Istanbul, Damascus, and eventually Cairo.",
+    "choices": [
+      {
+        "text": "Make connections to Cairo",
+        "effects": {
+          "advanceTime": 71
+        },
+        "nextEntry": "205"
+      }
+    ],
+    "traceNumbers": ["42", "151", "152"]
+  },
+  "93": {
+    "description": "You turn in for the night, the rhythmic clatter of the train soothing your mind as you drift off.",
+    "choices": [
+      {
+        "text": "Attempt a Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "97a",
+              "note": "Succeeded in Listen roll"
+            },
+            "failure": {
+              "nextEntry": "97b"
+            }
+          }
+        }
+      },
+      {
+        "text": "Attempt a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "97a",
+              "note": "Succeeded in Spot Hidden roll"
+            },
+            "failure": {
+              "nextEntry": "97b"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["42"]
+  },
+  "97a": {
+    "description": "You notice the slinky sound or smell the reptilian odor of asps. They are slithering on the floor, and two seem to be under the bedclothes! In moments, they’ll be at your head.",
+    "choices": [
+      {
+        "text": "Pull the emergency cord",
+        "nextEntry": "427"
+      },
+      {
+        "text": "Leap out the window",
+        "nextEntry": "151",
+        "effects": {
+          "health": -4
+        }
+      },
+      {
+        "text": "Jump to the door of your room",
+        "nextEntry": "152"
+      }
+    ],
+    "traceNumbers": ["93"]
+  },
+  "97b": {
+    "description": "You dream of walking through a field when you are startled to see a snake in the grass. You wake up with a start, only to realize that snakes are slithering under the sheets of your bed!",
+    "choices": [
+      {
+        "text": "Pull the emergency cord",
+        "nextEntry": "427"
+      },
+      {
+        "text": "Leap out the window",
+        "nextEntry": "151",
+        "effects": {
+          "health": -4
+        }
+      },
+      {
+        "text": "Jump to the door of your room",
+        "nextEntry": "152"
+      }
+    ],
+    "traceNumbers": ["93"]
+  },
+  "427": {
+    "description": "The tram lurches, throwing an asp against you. It strikes!",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "129"
+      }
+    ],
+    "traceNumbers": ["97"]
+  },
+  "129": {
+    "description": "The asp poison is strong. You can feel it coursing through your veins, and time is running out.",
+    "choices": [
+      {
+        "text": "Make a Hard CON roll",
+        "effects": {
+          "check": {
+            "skill": "CON",
+            "difficulty": "hard",
+            "success": {
+              "nextEntry": "129a",
+              "message": "You feel like you are fighting off the poison."
+            },
+            "failure": {
+              "damage": "1D4",
+              "nextEntry": "129a",
+              "message": "The poison surges through your body."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["427"]
+  },
+  "129a": {
+    "description": "You try to scream for help. Someone might hear you, but time is running out.",
+    "choices": [
+      {
+        "text": "Make a Luck roll to summon help",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "damage": "3D4",
+              "nextEntry": "129c",
+              "message": "Help arrives! A doctor and the conductor come running in. The conductor beats the snakes to death while the doctor tends to you, extracting the poison. It takes some time, but you are finally able to get some rest. You reach Cairo (without further incident) several days later."
+            },
+            "failure": {
+              "nextEntry": "129b"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["129"]
+  },
+  "129b": {
+    "description": "No one hears your screams. The poison is spreading, and your body is weakening. You must try to resist the effects.",
+    "choices": [
+      {
+        "text": "Make another Hard CON roll",
+        "effects": {
+          "check": {
+            "skill": "CON",
+            "difficulty": "hard",
+            "success": {
+              "nextEntry": "129a",
+              "message": "You feel like you are fighting off the poison."
+            },
+            "failure": {
+              "damage": "1D4",
+              "nextEntry": "129a",
+              "message": "The poison surges through your body."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["129a"]
+  },
+  "129c": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Depart at Cairo",
+        "nextEntry": "205",
+        "effects": {
+          "advanceTime": 71
+        }
+      }
+    ]
+  },
+  "205": {
+    "title": "CAIRO RAIL STATION",
+    "description": "You can get a good meal here between 5am and 8pm. An offensive odor, like the scent of manure, hangs over the station. Many British soldiers prowl about the area.",
+    "choices": [
+      {
+        "text": "Take the 9am train to Alexandria",
+        "effects": {
+          "setHour": 9,
+          "advanceTime": 1
+        },
+        "nextEntry": "195"
+      },
+      {
+        "text": "Take the 12 noon train to Alexandria",
+        "effects": {
+          "setHour": 12,
+          "advanceTime": 1
+        },
+        "nextEntry": "195"
+      },
+      {
+        "text": "Take the 5pm train to Alexandria",
+        "effects": {
+          "setHour": 17,
+          "advanceTime": 1
+        },
+        "nextEntry": "195"
+      },
+      {
+        "text": "Take the noon train to Athens (3-day trip)",
+        "effects": {
+          "setHour": 12,
+          "advanceTime": 72
+        },
+        "nextEntry": "183"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Egypt Location"
+      }
+    ],
+    "traceNumbers": ["195", "183"]
+  },
+  "151": {
+    "description": "The window gives way, and you tumble from the train, hitting the ground hard. You lose 1D6 hit points. At the next stop, you are forced to wait 24 hours for another train.",
+    "choices": [
+      {
+        "text": "Wait for the next train",
+        "effects": {
+          "advanceTime": 22
+        },
+        "nextEntry": "75"
+      }
+    ],
+    "traceNumbers": ["97"]
+  },
+  "152": {
+    "description": "You attempt to jump or dodge past the snakes. Your survival depends on your agility.",
+    "choices": [
+      {
+        "text": "Make a Jump roll",
+        "effects": {
+          "check": {
+            "skill": "Jump",
+            "success": {
+              "nextEntry": "75",
+              "message": "You successfully leap past the snakes and make it to safety."
+            },
+            "failure": {
+              "nextEntry": "129",
+              "message": "You fail to jump in time and are bitten by the snake."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Dodge roll",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "75",
+              "message": "You successfully dodge past the snakes and make it to safety."
+            },
+            "failure": {
+              "nextEntry": "129",
+              "message": "You fail to dodge in time and are bitten by the snake."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["97", "75", "129"]
+  },
+  "449": {
+    "title": "BREMEN HARBOR",
+    "description": "Bremerhaven, Bremen’s harbor area, appears quiet in the cold air of early morning. Dense, icy fog hangs over the port.",
+    "choices": [
+      {
+        "text": "It is before December 20",
+        "requirements": {
+          "dateBefore": "1931-12-20"
+        },
+        "nextEntry": "451"
+      },
+      {
+        "text": "It is December 20 or thereafter",
+        "requirements": {
+          "dateAfter": "1931-12-19"
+        },
+        "nextEntry": "452"
+      }
+    ],
+    "traceNumbers": ["451", "452"]
   }
 }

@@ -639,10 +639,10 @@ export function makeChoice(nextEntry, effects) {
 
   if (effects) {
     if (effects.health !== undefined) {
-      updateHealth(effects.health - currentState.health)
+      updateHealth(effects.health)
     }
     if (effects.sanity !== undefined) {
-      updateSanity(effects.sanity - currentState.sanity)
+      updateSanity(effects.sanity)
     }
     if (effects.inventory) {
       effects.inventory.forEach((item) => addItem(item))

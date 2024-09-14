@@ -1,6 +1,4 @@
 Athens Locations
-183
-585 - make sure it works in Athens
 424
 101
 127
@@ -18,10 +16,12 @@ Alexandria Locations
 
 Bremen Locations
 450 - code 449
+449 - code 451 and 452
 
 Egypt Locations
 94 - This is the plane lost (from 98)
 196 - Make the flight to athens work for the same day if you are there at 3PM, code 103, same for bremen flight if you are there at 9AM
+205 - code 12 noon to not advance day if it is currently, same for all buttons
 236
 244
 247
@@ -96,7 +96,7 @@ Bremen Location
 164
 195
 196
-205
+12 noon
 206
 300
 324
