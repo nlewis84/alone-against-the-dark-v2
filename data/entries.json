@@ -2,12 +2,22 @@
   "1": {
     "choices": [
       {
-        "nextEntry": "previousEntry",
-        "text": "Return to your last location"
+        "text": "Return to Pisistratos at the Museum of Archaeology",
+        "nextEntry": "166",
+        "requirements": {
+          "previousEntry": "166"
+        }
+      },
+      {
+        "text": "Return to interrogating Pisistratos in his office",
+        "nextEntry": "177",
+        "requirements": {
+          "previousEntry": "177b"
+        }
       }
     ],
     "description": "He’s lying.",
-    "traceNumbers": ["166", "177"]
+    "traceNumbers": ["166", "177b"]
   },
   "2": {
     "description": "The room is silent. You feel about for the light switch. You find it, and gently press it on. Oops! It’s Mrs. Harding’s room! What a mistake! You see her turn and rise from the bedclothes, her frightened face screaming. As the scream pierces your ears, you hear the boarders begin to stir. The residents are coming! But what’s focusing your attention is the shotgun Mrs. Harding is reaching for. You’d better run!",
@@ -2092,20 +2102,21 @@
   },
   "118": {
     "title": "NATIONAL MUSEUM OF ARCHAEOLOGY",
-    "description": "The museum is a treasure trove of ancient artifacts.",
+    "description": "To look around the museum, you can visit the exhibits or try to see Pisistratos, the Museum Director. After November, he is on vacation.",
     "choices": [
       {
         "text": "Look around the museum",
         "nextEntry": "176"
       },
       {
-        "text": "Try to see Pisistratos",
+        "text": "Try to see Pisistratos, the Museum Director",
         "nextEntry": "153",
         "requirements": {
           "dateBefore": "1931-12-01"
         }
       }
-    ]
+    ],
+    "traceNumbers": ["153", "176"]
   },
   "168": {
     "description": "The archaeological team at the National Museum in Athens have reported on the Karpathos Device, noting the inexplicable markings on its surfaces and the complex network of gears and linkages. The team has established that the Device is at least 2,000 years old, although some suggest it might hold a more ancient date. The report implies an ancient level of technical achievement previously undreamt of by scholars. Cryptic Greek inscriptions were found on the outside edges of some gears, while some interior sections were marked with unusual Egyptian hieroglyphics. The team makes no guess about the function of the Device.",
@@ -5458,5 +5469,297 @@
       }
     ],
     "traceNumbers": ["26"]
+  },
+  "160": {
+    "title": "MOTORSHIP KYONAS",
+    "description": "A peeling but sturdy-looking vessel rests beside the pier. It is the Kyonas. On deck, you see a sign: \"SHIP FOR HIRE - see Capt. Miko Rduka.\" If you want a secret way to leave Greece, this might be it. Rduka, the half Armenian and half Greek captain, will take you anywhere in the Mediterranean. It takes 24 hours to get the vessel loaded, fueled, and crewed.",
+    "choices": [
+      {
+        "text": "Hire the Kyonas to sail to Alexandria",
+        "nextEntry": "195",
+        "effects": {
+          "advanceTime": 71
+        }
+      },
+      {
+        "text": "Keep looking around Athens",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["78", "195"]
+  },
+  "166": {
+    "description": "You see Pisistratos, the Museum Director, showing the museum to an English dignitary. You rush up to him and quickly ask your questions. He briefly speaks but seems to want to dismiss you, saying he doesn't know why Gliere stole the antiquity.",
+    "choices": [
+      {
+        "text": "Make a Psychology roll about Gliere",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "17",
+              "message": "You detect something is off about his answer regarding Gliere."
+            },
+            "failure": {
+              "nextEntry": "166",
+              "message": "You don't notice anything unusual."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Psychology roll about the loan of the Karpathos Device",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "1",
+              "message": "He seems uncertain about the Karpathos Device's loan."
+            },
+            "failure": {
+              "nextEntry": "166",
+              "message": "You don't detect any hidden motives."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Psychology roll about the Karpathos Device being a clock",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "4",
+              "message": "There seems to be more to this 'clock' than he's saying."
+            },
+            "failure": {
+              "nextEntry": "166",
+              "message": "You can't tell if there's more to his explanation."
+            }
+          }
+        }
+      },
+      {
+        "text": "Return to the National Museum of Archaeology",
+        "nextEntry": "118"
+      },
+      {
+        "text": "Go to any Athens location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["17", "1", "4", "118", "176"]
+  },
+  "17": {
+    "description": "He's lying.",
+    "choices": [
+      {
+        "text": "Return to Pisistratos at the Museum of Archaeology",
+        "nextEntry": "166",
+        "requirements": {
+          "previousEntry": "166"
+        }
+      },
+      {
+        "text": "Return to interrogating Pisistratos in his office",
+        "nextEntry": "177",
+        "requirements": {
+          "previousEntry": "177a"
+        }
+      },
+      {
+        "text": "Return to talking to Amet Keh in Cairo",
+        "nextEntry": "350",
+        "requirements": {
+          "previousEntry": "350"
+        }
+      }
+    ],
+    "traceNumbers": ["166", "177", "350", "316", "346"]
+  },
+  "4": {
+    "description": "He's lying.",
+    "choices": [
+      {
+        "text": "Return to the motorship Kyonas talking to Christos",
+        "nextEntry": "160",
+        "requirements": {
+          "previousEntry": "160"
+        }
+      },
+      {
+        "text": "Return to Pisistratos at the Museum of Archaeology",
+        "nextEntry": "166",
+        "requirements": {
+          "previousEntry": "166"
+        }
+      },
+      {
+        "text": "Return to interrogating Pisistratos in his office",
+        "nextEntry": "177",
+        "requirements": {
+          "previousEntry": "177c"
+        }
+      }
+    ],
+    "traceNumbers": ["160", "166", "177c", "76"]
+  },
+  "153": {
+    "description": "A young secretary guards the door to the Museum Director’s office. She informs you in careful English that Mr. Pisistratos’ schedule is full.",
+    "choices": [
+      {
+        "text": "Argue with the secretary to see Pisistratos",
+        "nextEntry": "34"
+      },
+      {
+        "text": "Christos beckons to you",
+        "nextEntry": "22",
+        "requirements": {
+          "hiredCompanion": "Christos"
+        }
+      },
+      {
+        "text": "Return to the main area of the museum",
+        "nextEntry": "118"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["118"]
+  },
+  "34": {
+    "description": "Despite your best efforts, she will not change her mind and sends you on your way.",
+    "choices": [
+      {
+        "text": "Return to the main area of the museum",
+        "nextEntry": "118"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["118", "153"]
+  },
+  "22": {
+    "description": "Christos whispers to you, suggesting that you and he could just burst into the office. He grins slyly.",
+    "choices": [
+      {
+        "text": "Agree and burst into the office",
+        "nextEntry": "177"
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "118"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["118", "153", "177"]
+  },
+  "177": {
+    "description": "You push past the secretary and burst into Pisistratos’ office. He stands up, blinking. \"This is an outrage,\" he sputters in excellent English. Christos leaps upon him and pushes him back into the chair. \"Ask your questions boss,\" says Christos.",
+    "choices": [
+      {
+        "text": "Ask him why Gliere stole the device",
+        "nextEntry": "177a"
+      },
+      {
+        "text": "Question him about the loan of the Karpathos Device.",
+        "nextEntry": "177b"
+      },
+      {
+        "text": "Ask about the Karpathos Device being a clock",
+        "nextEntry": "177c"
+      },
+      {
+        "text": "Flee before the police arrive",
+        "nextEntry": "Athens Location",
+        "message": "You both run out of the office, leaving Pisistratos shouting curses at you."
+      }
+    ],
+    "traceNumbers": ["22", "17", "1", "4"]
+  },
+  "177a": {
+    "description": "You swagger over and grill the Museum Director. He tries to put you off, saying he doesn’t know why Gliere stole the Device.",
+    "choices": [
+      {
+        "text": "Attempt a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "17",
+              "message": "You detect something is off about his answer regarding Gliere.\n\n"
+            },
+            "failure": {
+              "nextEntry": "177",
+              "message": "You can't tell if he's lying.\n\n"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep questioning the Director",
+        "nextEntry": "177"
+      }
+    ]
+  },
+  "177b": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Attempt a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "1",
+              "message": "You sense he's hiding something about the loan.\n\n"
+            },
+            "failure": {
+              "nextEntry": "177",
+              "message": "You believe what he says about the loan.\n\n"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep questioning the Director",
+        "nextEntry": "177"
+      }
+    ]
+  },
+  "177c": {
+    "description": "You inquire further about the claim that the Karpathos Device is just a clock.",
+    "choices": [
+      {
+        "text": "Attempt a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "4",
+              "message": "You can tell he's being untruthful about the device being a clock.\n\n"
+            },
+            "failure": {
+              "nextEntry": "177",
+              "message": "You believe the Karpathos Device is just a clock.\n\n"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep questioning the Director",
+        "nextEntry": "177"
+      }
+    ]
   }
 }

@@ -261,6 +261,12 @@ export function handleEntryChoices(entryId, entry) {
               updateInterpreterDisplay(choice.effects.hiredAthens)
             }
 
+            if (choice.effects.hiredCairo) {
+              currentState.hiredCairo = choice.effects.hiredCairo
+
+              updateInterpreterDisplay(choice.effects.hiredCairo)
+            }
+
             if (choice.effects.setDay !== undefined) {
               const targetDays = Array.isArray(choice.effects.setDay)
                 ? choice.effects.setDay
@@ -316,11 +322,14 @@ export function handleEntryChoices(entryId, entry) {
               }
             }
 
+            // setPreviousEntry(currentState.currentEntry)
             handleOutcomeBasedEncounter(choice)
           } else if (choice.effects && choice.effects.check) {
             if (choice.effects.time) {
               updateTime(choice.effects.time)
             }
+
+            setPreviousEntry(currentState.currentEntry)
 
             const success = makeSkillCheck(
               choice.effects.check.skill,
@@ -402,6 +411,8 @@ export function handleEntryChoices(entryId, entry) {
               ' Location',
               '',
             )
+
+            // setPreviousEntry(currentState.currentEntry)
             displayLocations(choice.nextEntry.replace(' Location', ''))
           } else {
             // This is where the effects are applied, including skill changes
@@ -912,6 +923,13 @@ export function checkRequirements(requirements) {
   }
 
   if (requirements) {
+    if (requirements.previousEntry) {
+      console.log(currentState.previousEntry, requirements.previousEntry)
+      if (currentState.previousEntry !== requirements.previousEntry) {
+        return false
+      }
+    }
+
     if (requirements.dateBefore) {
       const dateBefore = new Date(requirements.dateBefore)
       if (currentDate >= dateBefore) {

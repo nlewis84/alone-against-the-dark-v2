@@ -1,7 +1,4 @@
 Athens Locations
-127 - done
-160
-118
 65
 586 - make it work for Athens
 194
@@ -17,6 +14,17 @@ Bremen Locations
 449 - code 451 and 452
 
 Egypt Locations
+
+---
+
+When CHRISTOS translates, add an option with:
+"requirements": {
+"companion": "Christos"
+}
+that takes the player to Entry 4 (or a copy of it) then takes the back to the entry before he translated
+
+---
+
 94 - This is the plane lost (from 98)
 196 - Make the flight to athens work for the same day if you are there at 3PM, code 103, same for bremen flight if you are there at 9AM
 205 - code 12 noon to not advance day if it is currently, same for all buttons

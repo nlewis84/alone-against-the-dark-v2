@@ -2144,4 +2144,41 @@ describe('Game Logic', () => {
       expect(checkRequirements(requirements)).toBe(false)
     })
   })
+
+  describe('Game Logic - previousEntry requirement', () => {
+    beforeEach(() => {
+      // Initialize or reset the game state before each test
+      currentState.previousEntry = null
+    })
+
+    test('should pass when previousEntry matches the requirement', () => {
+      // Set the current state with a matching previousEntry
+      currentState.previousEntry = '150'
+
+      const requirements = { previousEntry: '150' }
+
+      // Call checkRequirements and expect it to return true
+      expect(checkRequirements(requirements)).toBe(true)
+    })
+
+    test('should fail when previousEntry does not match the requirement', () => {
+      // Set the current state with a different previousEntry
+      currentState.previousEntry = '149'
+
+      const requirements = { previousEntry: '150' }
+
+      // Call checkRequirements and expect it to return false
+      expect(checkRequirements(requirements)).toBe(false)
+    })
+
+    test('should fail when previousEntry is undefined or null', () => {
+      // Ensure previousEntry is null or undefined
+      currentState.previousEntry = null
+
+      const requirements = { previousEntry: '150' }
+
+      // Call checkRequirements and expect it to return false
+      expect(checkRequirements(requirements)).toBe(false)
+    })
+  })
 })
