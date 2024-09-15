@@ -924,7 +924,6 @@ export function checkRequirements(requirements) {
 
   if (requirements) {
     if (requirements.previousEntry) {
-      console.log(currentState.previousEntry, requirements.previousEntry)
       if (currentState.previousEntry !== requirements.previousEntry) {
         return false
       }
