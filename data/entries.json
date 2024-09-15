@@ -47,6 +47,47 @@
     "title": "ARKHAM FIRST NATIONAL BANK",
     "traceNumbers": ["Arkham Location"]
   },
+  "4": {
+    "description": "He's lying.",
+    "choices": [
+      {
+        "text": "Return to the motorship Kyonas talking to Christos",
+        "nextEntry": "160",
+        "requirements": {
+          "previousEntry": "160"
+        }
+      },
+      {
+        "text": "Return to Pisistratos at the Museum of Archaeology",
+        "nextEntry": "166",
+        "requirements": {
+          "previousEntry": "166"
+        }
+      },
+      {
+        "text": "Return to interrogating Pisistratos in his office",
+        "nextEntry": "177",
+        "requirements": {
+          "previousEntry": "177c"
+        }
+      }
+    ],
+    "traceNumbers": ["160", "166", "177c", "76"]
+  },
+  "6": {
+    "description": "There is a big difference between using a phrase book and speaking a language. You have real trouble in being understood or understanding what is being said to you.\n\nYou are going to need an interpreter—they speak English at the Athens Bureau of Investigation, perhaps you could find something there?",
+    "choices": [
+      {
+        "text": "Continue your investigation",
+        "nextEntry": "87"
+      },
+      {
+        "text": "Another Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["87"]
+  },
   "7": {
     "description": "The window opens smoothly, and you enter. You try to move as quietly as possible.",
     "choices": [
@@ -187,6 +228,16 @@
     "image": "src/assets/images/clues/clue13.png",
     "traceNumbers": ["START"]
   },
+  "15": {
+    "description": "Nobody goes near the well-dressed driver. Perhaps there’s something odd about that. The old fellow looks shaky, but serene, while the young driver looks friendly, but perhaps overly brash.",
+    "choices": [
+      {
+        "text": "Pick a driver",
+        "nextEntry": "58"
+      }
+    ],
+    "traceNumbers": ["58"]
+  },
   "16": {
     "title": "ARKHAM DEPOT",
     "description": "Trains to Boston leave at 9am, noon, and 5pm. The trip takes an hour. You may wait for your train, or go to any other Arkham Location.",
@@ -221,6 +272,71 @@
       }
     ],
     "traceNumbers": ["64", "Arkham Location"]
+  },
+  "17": {
+    "description": "He's lying.",
+    "choices": [
+      {
+        "text": "Return to Pisistratos at the Museum of Archaeology",
+        "nextEntry": "166",
+        "requirements": {
+          "previousEntry": "166"
+        }
+      },
+      {
+        "text": "Return to interrogating Pisistratos in his office",
+        "nextEntry": "177",
+        "requirements": {
+          "previousEntry": "177a"
+        }
+      },
+      {
+        "text": "Return to talking to Amet Keh in Cairo",
+        "nextEntry": "350",
+        "requirements": {
+          "previousEntry": "350"
+        }
+      }
+    ],
+    "traceNumbers": ["166", "177", "350", "316", "346"]
+  },
+  "21": {
+    "description": "\"And the Karpathos Device,\" you ask, \"was it returned to the museum?\" He shakes his head. \"Oh, no. It was scheduled to be sent to the National Museum in Cairo for a special exhibit. The Device may be Egyptian, you see. The plans were not changed.\"",
+    "choices": [
+      {
+        "text": "It is September",
+        "requirements": {
+          "dateBefore": "1931-10-01"
+        },
+        "nextEntry": "128"
+      },
+      {
+        "text": "It is October, or later",
+        "requirements": {
+          "dateAfter": "1931-09-30"
+        },
+        "nextEntry": "174"
+      }
+    ],
+    "traceNumbers": ["40", "128", "174"]
+  },
+  "22": {
+    "description": "Christos whispers to you, suggesting that you and he could just burst into the office. He grins slyly.",
+    "choices": [
+      {
+        "text": "Agree and burst into the office",
+        "nextEntry": "177"
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "118"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["118", "153", "177"]
   },
   "23": {
     "description": "“Don’t try and flim-flam me! This is my boarding house and I’ll allow in whom I wish!” She slams the door.",
@@ -269,6 +385,28 @@
       }
     ],
     "traceNumbers": ["63", "145"]
+  },
+  "26": {
+    "description": "As you enter the hotel, something gives you pause. You hesitate for a moment, noticing strangers in the lobby who seem to watch you. One of the strangers seems to hide his face.",
+    "choices": [
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "123",
+              "message": "You notice the strangers watching you."
+            },
+            "failure": {
+              "nextEntry": "123",
+              "message": "You fail to notice anything unusual."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["101", "127", "424"]
   },
   "28": {
     "description": "The door is locked, but you can try the window. If you want to pick the door lock, make a successful Locksmith or Hard Mechanical Repair roll. If you want to pry open the window, succeed at an STR roll.",
@@ -354,6 +492,20 @@
     ],
     "traceNumbers": ["150"]
   },
+  "34": {
+    "description": "Despite your best efforts, she will not change her mind and sends you on your way.",
+    "choices": [
+      {
+        "text": "Return to the main area of the museum",
+        "nextEntry": "118"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["118", "153"]
+  },
   "36": {
     "choices": [
       {
@@ -424,6 +576,22 @@
       "Bremen Location"
     ]
   },
+  "40": {
+    "description": "\"But yes, very strange . . . Professor Gliere first stealing that device, then taking his own life. I wish I could tell you more. The Karpathos Device is mysterious. No one knows its true nature. Perhaps the scholars at the National Museum can tell you about it.\"",
+    "choices": [
+      {
+        "text": "Make an INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": "21",
+            "failure": "204"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["21", "204"]
+  },
   "41": {
     "description": "Attempt the appropriate Language roll for each of the following books. For each successful roll, spend two hours and go to the pertinent entry:",
     "choices": [
@@ -493,6 +661,40 @@
       }
     ],
     "traceNumbers": ["62", "74", "84", "140", "159"]
+  },
+  "42": {
+    "description": "You board the train and are faced with a choice of accommodations. The crowded, smelly seats are certainly the more affordable option, but far from comfortable. Alternatively, you can pay for a private suite, complete with a toilet and basin, offering some privacy and comfort for the journey.",
+    "choices": [
+      {
+        "text": "Choose the crowded, smelly seat",
+        "nextEntry": "75"
+      },
+      {
+        "text": "Choose the private suite",
+        "nextEntry": "93"
+      }
+    ],
+    "traceNumbers": ["183"]
+  },
+  "43": {
+    "description": "The plane has been abandoned, but it looks in good condition. A tempting thought enters your mind: steal it.",
+    "choices": [
+      {
+        "text": "Check out the plane and get it started",
+        "nextEntry": "98",
+        "requirements": {
+          "skill": {
+            "name": "Pilot (Aircraft)",
+            "minValue": 5
+          }
+        }
+      },
+      {
+        "text": "Nah, that's a bad idea",
+        "nextEntry": "181"
+      }
+    ],
+    "traceNumbers": ["44", "181"]
   },
   "45": {
     "description": "“That’s just fancy talk! I know your sort! Professor Gliere specifically instructed that no one disturb his room.” She slams the door.",
@@ -574,19 +776,6 @@
       }
     ],
     "traceNumbers": ["167", "187"]
-  },
-  "47b": {
-    "description": "You are exhausted and cannot continue without rest.",
-    "choices": [
-      {
-        "text": "Get some rest and wake up tomorrow morning",
-        "nextEntry": "187",
-        "effects": {
-          "setHour": 23,
-          "advanceTime": 6
-        }
-      }
-    ]
   },
   "48": {
     "description": "“Aristotle Mylonas, Director of the National Museum of Archaeology in Athens, died today in a bizarre automobile accident. His car, apparently going much too fast, spun through the railing of a stone bridge across the Illissus River. This internationally known scholar, largely responsible for the protection of many Greek national treasures, will be sorely missed. A reclusive man, Mylonas was unmarried and without other family. He declared always that his beloved Greece was both mother and father to him.”—Arkham Advertiser, July 1, 1931",
@@ -700,6 +889,60 @@
       }
     ],
     "traceNumbers": ["New York Location"]
+  },
+  "57": {
+    "description": "Jacques smiles gallantly, \"I am trying to interest wealthy Greeks in the romance of the air. But my little service has not been well received, mmmh? Yet perhaps I may take you somewhere?\"",
+    "choices": [
+      {
+        "text": "Accept Jacques' offer to fly you",
+        "nextEntry": "92"
+      },
+      {
+        "text": "Return to the airport",
+        "nextEntry": "181"
+      }
+    ],
+    "traceNumbers": ["181"]
+  },
+  "58": {
+    "description": "You see three drivers standing near their cabs. One is young, another is an old man, and the third is nattily dressed. Which will you hire?\n\nIf you can successfully make a Psychology or a Spot Hidden roll, then go to 15 first, then choose.",
+    "choices": [
+      {
+        "text": "Make a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": "15",
+            "failure": "58"
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": "15",
+            "failure": "58"
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Hire the young driver",
+        "nextEntry": "179"
+      },
+      {
+        "text": "Hire the old driver",
+        "nextEntry": "201"
+      },
+      {
+        "text": "Hire the well-dressed driver",
+        "nextEntry": "223"
+      }
+    ],
+    "traceNumbers": ["81", "131", "201"]
   },
   "60": {
     "choices": [
@@ -986,6 +1229,39 @@
     ],
     "traceNumbers": ["New York Location"]
   },
+  "75": {
+    "description": "After a long, cramped, and uncomfortable three-day journey, you finally arrive safely. The train offers further connections that could take you onward to Istanbul, Damascus, and eventually Cairo.",
+    "choices": [
+      {
+        "text": "Make connections to Cairo",
+        "effects": {
+          "advanceTime": 71
+        },
+        "nextEntry": "205"
+      }
+    ],
+    "traceNumbers": ["42", "151", "152"]
+  },
+  "77": {
+    "description": "Your interpreter tells you, 'Gliere hung himself, he killed himself. Yes, his body has been shipped to the United States. Apparently the Professor left nothing behind to be recovered.'",
+    "choices": [
+      {
+        "text": "Make a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "180"
+            },
+            "failure": {
+              "nextEntry": "87"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["87"]
+  },
   "80": {
     "description": "“In a gala ceremony, Zeno Pisistratos was installed as curator of the National Museum of Archaeology at Athens today. Pisistratos, an expert in Greek and Egyptian antiquities, is said to be interested in arranging exchange-exhibits with other important world museums.” —Arkham Advertiser, July 20, 1931.",
     "choices": [
@@ -995,6 +1271,27 @@
       }
     ],
     "traceNumbers": ["60"]
+  },
+  "81": {
+    "description": "\"I’m Christos. Where to?\" You tell him and he’ll take you anyplace in Athens. Along the way he says, \"Listen, I’m a great interpreter. If you need help with Greek, you couldn’t do better than me. Fifty drachmas a day: I stay with you, drive you around. Like a guide. What do you say?\"\n\nWeighing his character, you think there’s some chance that he’ll abandon you and do a little celebrating on his own as you go from one point to another. But probably he can interpret just fine, and he seems to know where to go.",
+    "choices": [
+      {
+        "text": "Hire Christos as your interpreter",
+        "effects": {
+          "hiredAthens": "Christos"
+        },
+        "nextEntry": "Athens Location"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      },
+      {
+        "text": "Find another cab",
+        "nextEntry": "58"
+      }
+    ],
+    "traceNumbers": ["131"]
   },
   "82": {
     "choices": [
@@ -1127,6 +1424,45 @@
       }
     ]
   },
+  "87": {
+    "title": "ATHENS HALL OF JUSTICE",
+    "description": "The Hall of Justice and the King’s Court of Appeals are open from 9am-noon, and from 3pm-7pm, Mon-Fri.\n\nIf Christos is with you, he knows exactly where to go; if you are alone, you spend an hour before you arrive at the right corridor and find the desk sergeant in charge of the jails. The sergeant speaks no English.",
+    "choices": [
+      {
+        "text": "Your interpreter can help translate",
+        "nextEntry": "77",
+        "requirements": {
+          "companion": true
+        }
+      },
+      {
+        "text": "Good thing you speak Greek",
+        "nextEntry": "77a",
+        "requirements": {
+          "language": "Greek"
+        }
+      },
+      {
+        "text": "Maybe your phrasebook can help",
+        "nextEntry": "6",
+        "requirements": {
+          "inventory": "Harrison’s English/Greek Phrase Book"
+        }
+      },
+      {
+        "text": "Look for someone who speaks English",
+        "nextEntry": "77",
+        "effects": {
+          "advanceTime": 2
+        }
+      },
+      {
+        "text": "Leave the Hall of Justice",
+        "nextEntry": "539"
+      }
+    ],
+    "traceNumbers": ["77", "6", "539"]
+  },
   "88": {
     "description": "While formerly fashionable, avant-garde has become politically suspect. The occult is faddish with many of the younger politicians. Various readings and portents are said to promise a bright future for the Fatherland.",
     "choices": [
@@ -1196,6 +1532,68 @@
     ],
     "traceNumbers": ["47", "187"]
   },
+  "92": {
+    "description": "He will take you to Cairo or Bremen, with no questions asked. In order to have daylight to complete the trip, he must take off before noon.\n\nThe flight will be a windswept adventure in an open-cockpit biplane. \"Ooh lah lah!\"",
+    "choices": [
+      {
+        "text": "Fly to Cairo",
+        "nextEntry": "196",
+        "effects": {
+          "setHour": 12,
+          "advanceTime": 3
+        }
+      },
+      {
+        "text": "Fly to Bremen",
+        "nextEntry": "450",
+        "effects": {
+          "setHour": 12,
+          "advanceTime": 5
+        }
+      },
+      {
+        "text": "Return to the airport",
+        "nextEntry": "181"
+      }
+    ],
+    "traceNumbers": ["57", "181"]
+  },
+  "93": {
+    "description": "You turn in for the night, the rhythmic clatter of the train soothing your mind as you drift off.",
+    "choices": [
+      {
+        "text": "Attempt a Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "97a",
+              "note": "Succeeded in Listen roll"
+            },
+            "failure": {
+              "nextEntry": "97b"
+            }
+          }
+        }
+      },
+      {
+        "text": "Attempt a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "97a",
+              "note": "Succeeded in Spot Hidden roll"
+            },
+            "failure": {
+              "nextEntry": "97b"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["42"]
+  },
   "95": {
     "description": "“Professor Gliere’s suicide has shocked and saddened the Miskatonic academic community. No word has yet come from Professor Grunewald.”",
     "choices": [
@@ -1224,6 +1622,36 @@
       }
     ]
   },
+  "96": {
+    "description": "While you enjoy painting on deck, you notice one of the female passengers quietly weeping. As you move to offer her comfort, you are transfixed by what she is painting: strange, stalk-like creatures standing in a weird landscape of oddly-angled buildings bathed in purple light. The creatures seem to be screaming, though they have no visible mouths. Horrified, you move away without saying anything.",
+    "choices": [
+      {
+        "text": "Return to your activities",
+        "nextEntry": "171"
+      }
+    ],
+    "traceNumbers": ["171"]
+  },
+  "98": {
+    "description": "The plane’s engine roars into life. You smugly taxi down the runway and head the craft expertly into the wind. You give her the throttle and the plane hurtles down the tarmac and into the air. You’re airborne!",
+    "choices": [
+      {
+        "text": "Make a Pilot (Aircraft) roll",
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "98b"
+            },
+            "failure": {
+              "nextEntry": "98a"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["43"]
+  },
   "100": {
     "description": "The Dean shakes his head, 'Out of the question, Grunewald. I already have that young dolt Perkins covering for Gliere. And now you want to leave? Not a chance, sir.' Does the Dean leave you no choice?",
     "choices": [
@@ -1237,6 +1665,60 @@
       }
     ],
     "traceNumbers": ["82"]
+  },
+  "101": {
+    "title": "MODERATE HOTEL",
+    "description": "This hotel offers a clean room and a quiet night of sleep.",
+    "choices": [
+      {
+        "text": "Spend a second night here",
+        "nextEntry": "26",
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "moderateHotelStays"
+          }
+        },
+        "requirements": {
+          "minHotelStays": {
+            "moderateHotelStays": 1
+          }
+        }
+      },
+      {
+        "text": "Go to an Athens location in the morning",
+        "nextEntry": "Athens Location",
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "moderateHotelStays"
+          }
+        },
+        "requirements": {
+          "currentLocale": "Athens",
+          "requiredHotelStays": {
+            "moderateHotelStays": 0
+          }
+        }
+      },
+      {
+        "text": "Go to an Egypt location in the morning",
+        "nextEntry": "Egypt Location",
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "moderateHotelStays"
+          }
+        },
+        "requirements": {
+          "currentLocale": "Egypt",
+          "requiredHotelStays": {
+            "moderateHotelStays": 0
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["26"]
   },
   "102": {
     "choices": [
@@ -1483,6 +1965,24 @@
     ],
     "traceNumbers": ["62", "41", "74"]
   },
+  "118": {
+    "title": "NATIONAL MUSEUM OF ARCHAEOLOGY",
+    "description": "To look around the museum, you can visit the exhibits or try to see Pisistratos, the Museum Director. After November, he is on vacation.",
+    "choices": [
+      {
+        "text": "Look around the museum",
+        "nextEntry": "176"
+      },
+      {
+        "text": "Try to see Pisistratos, the Museum Director",
+        "nextEntry": "153",
+        "requirements": {
+          "dateBefore": "1931-12-01"
+        }
+      }
+    ],
+    "traceNumbers": ["153", "176"]
+  },
   "119": {
     "description": "The friendly natives of Micronesia seem to have some deep-seated fear of an angry god who will rise from the sea. British sailors, seeing the odd idols throughout the islands, named the god 'Old One-Eyed Reilly.'",
     "choices": [
@@ -1547,6 +2047,28 @@
       }
     ],
     "traceNumbers": ["82"]
+  },
+  "123": {
+    "description": "You go to your room.",
+    "choices": [
+      {
+        "text": "Make a Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "123b",
+              "message": "You hear footsteps outside your door."
+            },
+            "failure": {
+              "nextEntry": "185",
+              "message": "You fail to notice anything unusual."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["26", "164", "185", "123b"]
   },
   "124": {
     "description": "They are Egyptian hieroglyphics. Make a successful Language (Hieroglyphics) roll.",
@@ -1625,37 +2147,342 @@
     ],
     "traceNumbers": ["61", "133", "137", "187", "192"]
   },
-  "590": {
-    "description": "The purser tells you that skeet shooting from the fantail will soon begin.",
+  "127": {
+    "title": "EXPENSIVE HOTEL",
+    "description": "This is the best class of hotel. It has 24-hour room service.",
     "choices": [
       {
-        "text": "Get some shotgun practice",
-        "nextEntry": "189"
+        "text": "Stay for the second night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 1
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "9-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-8": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
       },
       {
-        "text": "Rest for the night",
-        "nextEntry": "187",
+        "text": "Stay for the third night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 2
+          }
+        },
         "effects": {
-          "setHour": 23,
-          "advanceTime": 6
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "8-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-7": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 4th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 3
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "6-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-5": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 5th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 4
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "6-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-5": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 6th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 5
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "5-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-4": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 7th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 6
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "4-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-3": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 8th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 7
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "3-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-2": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 9th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 8
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "1": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            },
+            "2-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 10th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 9
+          }
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "1-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            }
+          }
+        }
+      },
+      {
+        "text": "Spend the night then head to an Athens location",
+        "nextEntry": "Athens",
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          }
+        },
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 0
+          },
+          "currentLocale": "Athens"
+        }
+      },
+      {
+        "text": "Spend the night then head to an Egypt location",
+        "nextEntry": "Egypt",
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          }
+        },
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 0
+          },
+          "currentLocale": "Egypt"
         }
       }
     ],
-    "traceNumbers": ["192"]
+    "traceNumbers": ["26"]
   },
-  "189": {
-    "description": "As you exhibit your prowess with a skeet gun, you hear a soft pop! Hearing a bullet whine past your ear. You wheel around. No gunman is in sight. The other shooters have not noticed the gunshot. Despite their stares, you abruptly leave the competition.",
+  "128": {
+    "description": "It’s on a ship right now, bound for Cairo.",
+    "choices": [
+      {
+        "text": "Continue your investigation",
+        "nextEntry": "204"
+      }
+    ],
+    "traceNumbers": ["21", "204"]
+  },
+  "129": {
+    "description": "The asp poison is strong. You can feel it coursing through your veins, and time is running out.",
+    "choices": [
+      {
+        "text": "Make a Hard CON roll",
+        "effects": {
+          "check": {
+            "skill": "CON",
+            "difficulty": "hard",
+            "success": {
+              "nextEntry": "129a",
+              "message": "You feel like you are fighting off the poison."
+            },
+            "failure": {
+              "damage": "1D4",
+              "nextEntry": "129a",
+              "message": "The poison surges through your body."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["427"]
+  },
+  "130": {
+    "title": "ATHENS BUREAU OF INVESTIGATION",
+    "description": "You quickly locate the office of the investigator in charge of Gliere’s case, a Corporal Ilionas. After a few pleasantries, his words stun you.\n\n\"Sir, I regret to inform you that Professor Tibor Gliere is dead by his own hand. He has hanged himself. Perhaps he was too ashamed of his theft of the Karpathos Device from the museum. We do not know. But yes, a suicide. A sad end.\"\n\nYour mind reels. You have come all this way, to no purpose. You cannot believe that Gliere would end his own life, even though his career was in jeopardy. Is Ilionas positive?\n\n\"You suspect foul play? No, that is not reported. The pathologist found signs of self-mutilation, common enough with suicides. What? Oh—the doctor is vacationing in Switzerland. He will not be back for weeks.\" The Corporal considers for a moment. \"You can see Gliere’s cell, I suppose, unless someone new has been moved in. He was held at the Hall of Justice.\"",
+    "choices": [
+      {
+        "text": "Ask for more information about the case",
+        "nextEntry": "204"
+      },
+      {
+        "text": "Ask about getting a Greek interpreter",
+        "nextEntry": "170"
+      },
+      {
+        "text": "Take a cab to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["204", "170", "Athens Location"]
+  },
+  "131": {
+    "description": "A slender, dark-haired young fellow calls out, \"Hey, English! Taxi! Anywhere in Athens, five drachmas!\"",
+    "choices": [
+      {
+        "text": "Get in the taxi",
+        "nextEntry": "81"
+      },
+      {
+        "text": "Wait for another cab",
+        "nextEntry": "58"
+      }
+    ],
+    "traceNumbers": ["58", "81", "130", "204", "226", "248"]
+  },
+  "132": {
+    "description": "The man leaves you alone.",
     "choices": [
       {
         "text": "Rest for the night",
-        "nextEntry": "187",
-        "effects": {
-          "setHour": 23,
-          "advanceTime": 6
-        }
+        "nextEntry": "187"
       }
     ],
-    "traceNumbers": ["590"]
+    "traceNumbers": ["203"]
   },
   "133": {
     "description": "What a splendid ship! You have all the comforts of a big city within a few hundred feet of your cabin: beauty salon, fine men’s clothing, jewelry, sporting goods, books, etc. You decide to look at some new gloves.",
@@ -1678,6 +2505,27 @@
       }
     ],
     "traceNumbers": ["61", "126"]
+  },
+  "135": {
+    "description": "As you walk down a corridor, you feel uneasy. Attempt a Spot Hidden roll to see if you notice something strange.",
+    "choices": [
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "135a"
+            },
+            "failure": {
+              "nextEntry": "106",
+              "message": "You fail to notice anything unusual and continue walking. Suddenly, there is movement to your side and a small man rushes at you."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["106", "148"]
   },
   "136": {
     "description": "A Cunard liner departs Pier 56 in New York City every Saturday for Athens and Alexandria, with intermediate stops. The trip takes nine days to Athens and one more to Alexandria.",
@@ -1795,6 +2643,20 @@
     ],
     "traceNumbers": ["11", "52"]
   },
+  "142": {
+    "description": "“Martini, straight up, please.” He turns to you. “I couldn’t help but notice, old friend, that some strange people seem to follow you. A word of advice: stay off the deck, suspect everyone, stay out of the library and other lonely spots. I’ve seen these assassin types in action, by God.” You have never seen him before. He then talks about chess for a while, finishes his martini, and leaves. You never see him again.",
+    "choices": [
+      {
+        "text": "Rest for the night",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ],
+    "traceNumbers": ["203", "187"]
+  },
   "145": {
     "description": "For each hour at Miskatonic’s library, you may attempt one of the following actions.",
     "choices": [
@@ -1857,6 +2719,57 @@
       }
     ],
     "traceNumbers": ["64", "New York Location"]
+  },
+  "148": {
+    "description": "You are enjoying another gorgeous day on the ship.",
+    "choices": [
+      {
+        "text": "Stroll Decks (am)",
+        "nextEntry": "135",
+        "requirements": {
+          "scheduledActivity": {
+            "am": "Stroll Decks"
+          },
+          "hasNotVisited": "135"
+        }
+      },
+      {
+        "text": "Play Shuffleboard (pm)",
+        "nextEntry": "135",
+        "requirements": {
+          "scheduledActivity": {
+            "pm": "Shuffleboard"
+          },
+          "hasNotVisited": "135"
+        }
+      },
+      {
+        "text": "Stroll Decks (night)",
+        "nextEntry": "135",
+        "requirements": {
+          "scheduledActivity": {
+            "night": "Stroll Decks"
+          },
+          "hasNotVisited": "135"
+        }
+      },
+      {
+        "text": "Who is that person over there?",
+        "nextEntry": "579",
+        "requirements": {
+          "hasVisited": "135"
+        }
+      },
+      {
+        "text": "Rest for the night",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ],
+    "traceNumbers": ["135", "187", "193", "579"]
   },
   "150": {
     "title": "Professorial Study",
@@ -1946,6 +2859,82 @@
         }
       }
     ]
+  },
+  "151": {
+    "description": "The window gives way, and you tumble from the train, hitting the ground hard. You lose 1D6 hit points. At the next stop, you are forced to wait 24 hours for another train.",
+    "choices": [
+      {
+        "text": "Wait for the next train",
+        "effects": {
+          "advanceTime": 22
+        },
+        "nextEntry": "75"
+      }
+    ],
+    "traceNumbers": ["97"]
+  },
+  "152": {
+    "description": "You attempt to jump or dodge past the snakes. Your survival depends on your agility.",
+    "choices": [
+      {
+        "text": "Make a Jump roll",
+        "effects": {
+          "check": {
+            "skill": "Jump",
+            "success": {
+              "nextEntry": "75",
+              "message": "You successfully leap past the snakes and make it to safety."
+            },
+            "failure": {
+              "nextEntry": "129",
+              "message": "You fail to jump in time and are bitten by the snake."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Dodge roll",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "75",
+              "message": "You successfully dodge past the snakes and make it to safety."
+            },
+            "failure": {
+              "nextEntry": "129",
+              "message": "You fail to dodge in time and are bitten by the snake."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["97", "75", "129"]
+  },
+  "153": {
+    "description": "A young secretary guards the door to the Museum Director’s office. She informs you in careful English that Mr. Pisistratos’ schedule is full.",
+    "choices": [
+      {
+        "text": "Argue with the secretary to see Pisistratos",
+        "nextEntry": "34"
+      },
+      {
+        "text": "Christos beckons to you",
+        "nextEntry": "22",
+        "requirements": {
+          "hiredCompanion": "Christos"
+        }
+      },
+      {
+        "text": "Return to the main area of the museum",
+        "nextEntry": "118"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["118"]
   },
   "155": {
     "description": "The library is deserted. Well, peace and quiet is just what you crave. You’re examining the newest Agatha Christie novel when a short, sullen-looking fellow enters the room, followed by a tall man wearing a cowl. You nod uneasily and then return to your book, uncomfortably aware that they are moving nearer. You look up again. The short man smiles, and pulls out a gleaming dagger.",
@@ -2044,6 +3033,24 @@
     ],
     "traceNumbers": ["41"]
   },
+  "160": {
+    "title": "MOTORSHIP KYONAS",
+    "description": "A peeling but sturdy-looking vessel rests beside the pier. It is the Kyonas. On deck, you see a sign: \"SHIP FOR HIRE - see Capt. Miko Rduka.\" If you want a secret way to leave Greece, this might be it. Rduka, the half Armenian and half Greek captain, will take you anywhere in the Mediterranean. It takes 24 hours to get the vessel loaded, fueled, and crewed.",
+    "choices": [
+      {
+        "text": "Hire the Kyonas to sail to Alexandria",
+        "nextEntry": "195",
+        "effects": {
+          "advanceTime": 71
+        }
+      },
+      {
+        "text": "Keep looking around Athens",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["78", "195"]
+  },
   "161": {
     "description": "You get specific directions to the Fuzira Marketplace. Two alternate names for the marketplace run through your mind: 'The place where anything can be lost or gained,' and, 'the place where souls are bartered.' You idly thumb through the volume. You think you would like to go to Egypt.",
     "choices": [
@@ -2053,6 +3060,16 @@
       }
     ],
     "traceNumbers": ["85"]
+  },
+  "162": {
+    "description": "“You have wandered into something beyond your wildest dreams,” he says. “My friends wish to help you. Find out what you must, then meet me at the Parthenon at sundown.”",
+    "choices": [
+      {
+        "text": "Go to any Athens Location.",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["201"]
   },
   "163": {
     "description": "“Instances of ‘Dementia Antarctica’ have been experienced by many parties exploring the frozen continent. The most recent and vivid account was rendered by the disaster-plagued journey of Lake to the unexplored northwest regions. The bizarre reports even shocked people familiar with the phenomenon. The rescue party succumbed to the isolation and cold, and all survivors spent months in sanitariums babbling about lost cities and subterranean horrors. Recently, specialists have suggested that an enriched diet will prevent such terrible delusions.”",
@@ -2075,6 +3092,68 @@
       }
     ],
     "traceNumbers": ["138"]
+  },
+  "166": {
+    "description": "You see Pisistratos, the Museum Director, showing the museum to an English dignitary. You rush up to him and quickly ask your questions. He briefly speaks but seems to want to dismiss you, saying he doesn't know why Gliere stole the antiquity.",
+    "choices": [
+      {
+        "text": "Make a Psychology roll about Gliere",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "17",
+              "message": "You detect something is off about his answer regarding Gliere."
+            },
+            "failure": {
+              "nextEntry": "166",
+              "message": "You don't notice anything unusual."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Psychology roll about the loan of the Karpathos Device",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "1",
+              "message": "He seems uncertain about the Karpathos Device's loan."
+            },
+            "failure": {
+              "nextEntry": "166",
+              "message": "You don't detect any hidden motives."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Psychology roll about the Karpathos Device being a clock",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "4",
+              "message": "There seems to be more to this 'clock' than he's saying."
+            },
+            "failure": {
+              "nextEntry": "166",
+              "message": "You can't tell if there's more to his explanation."
+            }
+          }
+        }
+      },
+      {
+        "text": "Return to the National Museum of Archaeology",
+        "nextEntry": "118"
+      },
+      {
+        "text": "Go to any Athens location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["17", "1", "4", "118", "176"]
   },
   "167": {
     "description": "You hear a knock at your cabin door. 'Cabin steward, sir. May I make up the room?'",
@@ -2099,24 +3178,6 @@
       }
     ],
     "traceNumbers": ["73", "171"]
-  },
-  "118": {
-    "title": "NATIONAL MUSEUM OF ARCHAEOLOGY",
-    "description": "To look around the museum, you can visit the exhibits or try to see Pisistratos, the Museum Director. After November, he is on vacation.",
-    "choices": [
-      {
-        "text": "Look around the museum",
-        "nextEntry": "176"
-      },
-      {
-        "text": "Try to see Pisistratos, the Museum Director",
-        "nextEntry": "153",
-        "requirements": {
-          "dateBefore": "1931-12-01"
-        }
-      }
-    ],
-    "traceNumbers": ["153", "176"]
   },
   "168": {
     "description": "The archaeological team at the National Museum in Athens have reported on the Karpathos Device, noting the inexplicable markings on its surfaces and the complex network of gears and linkages. The team has established that the Device is at least 2,000 years old, although some suggest it might hold a more ancient date. The report implies an ancient level of technical achievement previously undreamt of by scholars. Cryptic Greek inscriptions were found on the outside edges of some gears, while some interior sections were marked with unusual Egyptian hieroglyphics. The team makes no guess about the function of the Device.",
@@ -2144,6 +3205,26 @@
       }
     ],
     "traceNumbers": ["60", "176", "206"]
+  },
+  "170": {
+    "description": "After 2 hours of waiting around, Evgenia, an interpreter, is found for you. If you wish, you are able to hire Evgenia for the length of your stay.",
+    "choices": [
+      {
+        "text": "Hire Evgenia as your interpreter",
+        "effects": {
+          "hiredAthens": "Evgenia"
+        },
+        "nextEntry": "Athens Location"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "effects": {
+      "advanceTime": 2
+    },
+    "traceNumbers": ["130"]
   },
   "171": {
     "description": "You are reflecting on your activities for the day.",
@@ -2184,68 +3265,6 @@
       }
     ],
     "traceNumbers": ["132", "142", "187", "193"]
-  },
-  "96": {
-    "description": "While you enjoy painting on deck, you notice one of the female passengers quietly weeping. As you move to offer her comfort, you are transfixed by what she is painting: strange, stalk-like creatures standing in a weird landscape of oddly-angled buildings bathed in purple light. The creatures seem to be screaming, though they have no visible mouths. Horrified, you move away without saying anything.",
-    "choices": [
-      {
-        "text": "Return to your activities",
-        "nextEntry": "171"
-      }
-    ],
-    "traceNumbers": ["171"]
-  },
-  "203": {
-    "description": "As you sit at the bar, an elderly man nods to you and quietly asks if he may join you.",
-    "choices": [
-      {
-        "text": "Allow the man to join you",
-        "nextEntry": "142"
-      },
-      {
-        "text": "Politely decline",
-        "nextEntry": "132"
-      }
-    ],
-    "traceNumbers": ["142", "132"]
-  },
-  "132": {
-    "description": "The man leaves you alone.",
-    "choices": [
-      {
-        "text": "Rest for the night",
-        "nextEntry": "187"
-      }
-    ],
-    "traceNumbers": ["203"]
-  },
-  "142": {
-    "description": "“Martini, straight up, please.” He turns to you. “I couldn’t help but notice, old friend, that some strange people seem to follow you. A word of advice: stay off the deck, suspect everyone, stay out of the library and other lonely spots. I’ve seen these assassin types in action, by God.” You have never seen him before. He then talks about chess for a while, finishes his martini, and leaves. You never see him again.",
-    "choices": [
-      {
-        "text": "Rest for the night",
-        "nextEntry": "187",
-        "effects": {
-          "setHour": 23,
-          "advanceTime": 6
-        }
-      }
-    ],
-    "traceNumbers": ["203", "187"]
-  },
-  "385": {
-    "description": "You are invited by your dinner partners to play poker. You're on a roll and win $17.",
-    "choices": [
-      {
-        "text": "Rest for the night",
-        "nextEntry": "187",
-        "effects": {
-          "setHour": 23,
-          "advanceTime": 6
-        }
-      }
-    ],
-    "traceNumbers": ["171", "187"]
   },
   "172": {
     "description": "Tibor Gliere’s suicide stunned Miskatonic University. The disappearance of Professor Grunewald under suspicious circumstances has set rumors flying. Dean Wilcox is puzzled, upset, and unwilling to give an interview, but his secretary confides that Dean Wilcox hasn’t a clue as to what is going on.",
@@ -2300,122 +3319,6 @@
     ],
     "traceNumbers": ["130", "195", "449", "574", "Athens Location"]
   },
-  "130": {
-    "title": "ATHENS BUREAU OF INVESTIGATION",
-    "description": "You quickly locate the office of the investigator in charge of Gliere’s case, a Corporal Ilionas. After a few pleasantries, his words stun you.\n\n\"Sir, I regret to inform you that Professor Tibor Gliere is dead by his own hand. He has hanged himself. Perhaps he was too ashamed of his theft of the Karpathos Device from the museum. We do not know. But yes, a suicide. A sad end.\"\n\nYour mind reels. You have come all this way, to no purpose. You cannot believe that Gliere would end his own life, even though his career was in jeopardy. Is Ilionas positive?\n\n\"You suspect foul play? No, that is not reported. The pathologist found signs of self-mutilation, common enough with suicides. What? Oh—the doctor is vacationing in Switzerland. He will not be back for weeks.\" The Corporal considers for a moment. \"You can see Gliere’s cell, I suppose, unless someone new has been moved in. He was held at the Hall of Justice.\"",
-    "choices": [
-      {
-        "text": "Ask for more information about the case",
-        "nextEntry": "204"
-      },
-      {
-        "text": "Ask about getting a Greek interpreter",
-        "nextEntry": "170"
-      },
-      {
-        "text": "Take a cab to any Athens Location",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["204", "170", "Athens Location"]
-  },
-  "131": {
-    "description": "A slender, dark-haired young fellow calls out, \"Hey, English! Taxi! Anywhere in Athens, five drachmas!\"",
-    "choices": [
-      {
-        "text": "Get in the taxi",
-        "nextEntry": "81"
-      },
-      {
-        "text": "Wait for another cab",
-        "nextEntry": "58"
-      }
-    ],
-    "traceNumbers": ["58", "81", "130", "204", "226", "248"]
-  },
-  "81": {
-    "description": "\"I’m Christos. Where to?\" You tell him and he’ll take you anyplace in Athens. Along the way he says, \"Listen, I’m a great interpreter. If you need help with Greek, you couldn’t do better than me. Fifty drachmas a day: I stay with you, drive you around. Like a guide. What do you say?\"\n\nWeighing his character, you think there’s some chance that he’ll abandon you and do a little celebrating on his own as you go from one point to another. But probably he can interpret just fine, and he seems to know where to go.",
-    "choices": [
-      {
-        "text": "Hire Christos as your interpreter",
-        "effects": {
-          "hiredAthens": "Christos"
-        },
-        "nextEntry": "Athens Location"
-      },
-      {
-        "text": "Go to any Athens Location",
-        "nextEntry": "Athens Location"
-      },
-      {
-        "text": "Find another cab",
-        "nextEntry": "58"
-      }
-    ],
-    "traceNumbers": ["131"]
-  },
-  "170": {
-    "description": "After 2 hours of waiting around, Evgenia, an interpreter, is found for you. If you wish, you are able to hire Evgenia for the length of your stay.",
-    "choices": [
-      {
-        "text": "Hire Evgenia as your interpreter",
-        "effects": {
-          "hiredAthens": "Evgenia"
-        },
-        "nextEntry": "Athens Location"
-      },
-      {
-        "text": "Go to any Athens Location",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "effects": {
-      "advanceTime": 2
-    },
-    "traceNumbers": ["130"]
-  },
-  "204": {
-    "description": "You ask to see Ilionas’ report. It says that Gliere refused to talk freely, but that he made libelous statements about Museum Director Pisistratos, and that he pleaded that the Karpathos Device not be sent to Cairo. It also notes that Gliere demanded protection even while he was in his cell.",
-    "choices": [
-      {
-        "text": "Ilionas seems ready to speak",
-        "nextEntry": "40",
-        "requirements": {
-          "hasNotVisited": "40"
-        }
-      },
-      {
-        "text": "Make a Psychology roll",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": "226",
-            "failure": "204"
-          },
-          "dailyLimit": 1
-        },
-        "requirements": {
-          "hasNotVisited": "226"
-        }
-      },
-      {
-        "text": "Hail a cab",
-        "nextEntry": "131",
-        "requirements": {
-          "hasNotVisited": "131"
-        }
-      },
-      {
-        "text": "Hail a cab",
-        "nextEntry": "58",
-        "requirements": {
-          "hasVisited": "131"
-        }
-      }
-    ],
-
-    "traceNumbers": ["21", "40", "128", "130", "174"]
-  },
   "174": {
     "description": "The Karpathos Device is in Cairo at this moment.",
     "choices": [
@@ -2425,144 +3328,6 @@
       }
     ],
     "traceNumbers": ["21", "204"]
-  },
-  "58": {
-    "description": "You see three drivers standing near their cabs. One is young, another is an old man, and the third is nattily dressed. Which will you hire?\n\nIf you can successfully make a Psychology or a Spot Hidden roll, then go to 15 first, then choose.",
-    "choices": [
-      {
-        "text": "Make a Psychology roll",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": "15",
-            "failure": "58"
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Make a Spot Hidden roll",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": "15",
-            "failure": "58"
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Hire the young driver",
-        "nextEntry": "179"
-      },
-      {
-        "text": "Hire the old driver",
-        "nextEntry": "201"
-      },
-      {
-        "text": "Hire the well-dressed driver",
-        "nextEntry": "223"
-      }
-    ],
-    "traceNumbers": ["81", "131", "201"]
-  },
-  "21": {
-    "description": "\"And the Karpathos Device,\" you ask, \"was it returned to the museum?\" He shakes his head. \"Oh, no. It was scheduled to be sent to the National Museum in Cairo for a special exhibit. The Device may be Egyptian, you see. The plans were not changed.\"",
-    "choices": [
-      {
-        "text": "It is September",
-        "requirements": {
-          "dateBefore": "1931-10-01"
-        },
-        "nextEntry": "128"
-      },
-      {
-        "text": "It is October, or later",
-        "requirements": {
-          "dateAfter": "1931-09-30"
-        },
-        "nextEntry": "174"
-      }
-    ],
-    "traceNumbers": ["40", "128", "174"]
-  },
-  "128": {
-    "description": "It’s on a ship right now, bound for Cairo.",
-    "choices": [
-      {
-        "text": "Continue your investigation",
-        "nextEntry": "204"
-      }
-    ],
-    "traceNumbers": ["21", "204"]
-  },
-  "40": {
-    "description": "\"But yes, very strange . . . Professor Gliere first stealing that device, then taking his own life. I wish I could tell you more. The Karpathos Device is mysterious. No one knows its true nature. Perhaps the scholars at the National Museum can tell you about it.\"",
-    "choices": [
-      {
-        "text": "Make an INT roll",
-        "effects": {
-          "check": {
-            "skill": "INT",
-            "success": "21",
-            "failure": "204"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["21", "204"]
-  },
-  "226": {
-    "description": "The corporal is friendly, but nervous. You can tell that he is unconvinced by the death report. Something scares him, but he only mutters that he is glad the Karpathos Device has left the country.",
-    "choices": [
-      {
-        "text": "Try Fast Talk or Persuade",
-        "nextEntry": "248",
-        "requirements": {
-          "hasVisited": "204"
-        }
-      },
-      {
-        "text": "Hail a cab",
-        "nextEntry": "131",
-        "requirements": {
-          "hasNotVisited": "131"
-        }
-      },
-      {
-        "text": "Hail a cab",
-        "nextEntry": "58",
-        "requirements": {
-          "hasVisited": "131"
-        }
-      }
-    ],
-    "check": {
-      "skill": ["Fast Talk", "Persuade"],
-      "success": "248",
-      "failure": "131"
-    },
-    "traceNumbers": ["204", "131", "248"]
-  },
-  "248": {
-    "description": "\"Sir,\" says Ilionas, \"I have told you all I know. You must go. All that’s left are rumors, and they’re better obtained at the Piostos Cafe.\"\n\nYou skulk the hallways of the Bureau for a while, and find nothing.",
-    "choices": [
-      {
-        "text": "Hail a cab",
-        "nextEntry": "131",
-        "requirements": {
-          "hasNotVisited": "131"
-        }
-      },
-      {
-        "text": "Hail a cab",
-        "nextEntry": "58",
-        "requirements": {
-          "hasVisited": "131"
-        }
-      }
-    ],
-    "traceNumbers": ["226", "131"]
   },
   "176": {
     "description": "You see the fabulous treasures of ancient Greece. You also find the stand where the Karpathos Device, replaced at the moment by a drawing and a photograph, is normally kept.\n\nThe notes speculate that the Karpathos Device is some kind of astronomical clock designed to aid priests. Other scholars feel it may have been designed to actually create something material. Still others see it as merely an elaborate amusement for some wealthy noble or merchant. The origin of the device is uncertain, and the substance of which it is made has not been determined.",
@@ -2588,6 +3353,29 @@
     ],
     "traceNumbers": ["118", "166", "168"]
   },
+  "177": {
+    "description": "You push past the secretary and burst into Pisistratos’ office. He stands up, blinking. \"This is an outrage,\" he sputters in excellent English. Christos leaps upon him and pushes him back into the chair. \"Ask your questions boss,\" says Christos.",
+    "choices": [
+      {
+        "text": "Ask him why Gliere stole the device",
+        "nextEntry": "177a"
+      },
+      {
+        "text": "Question him about the loan of the Karpathos Device.",
+        "nextEntry": "177b"
+      },
+      {
+        "text": "Ask about the Karpathos Device being a clock",
+        "nextEntry": "177c"
+      },
+      {
+        "text": "Flee before the police arrive",
+        "nextEntry": "Athens Location",
+        "message": "You both run out of the office, leaving Pisistratos shouting curses at you."
+      }
+    ],
+    "traceNumbers": ["22", "17", "1", "4"]
+  },
   "178": {
     "description": "The Karpathos Device has arrived safely in Cairo for an extended display. Curator Amet Keh is reported as thrilled to have it on loan.",
     "choices": [
@@ -2608,6 +3396,63 @@
       }
     ]
   },
+  "179": {
+    "description": "The young fellow takes you wherever you want to go.",
+    "choices": [
+      {
+        "text": "Go to any Athens Location.",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["58"]
+  },
+  "180": {
+    "description": "The man appears afraid. Pressing him further, he admits fear, \"I don’t think Gliere killed himself. Someone wanted him dead. Someone or something! I don’t know … It had to do with the Karpathos Device. Gliere kept saying that it must not go to Egypt.\"",
+    "choices": [
+      {
+        "text": "Make a Persuade roll",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "nextEntry": "202"
+            },
+            "failure": {
+              "nextEntry": "87"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["77", "87"]
+  },
+  "181": {
+    "title": "ATHENS AIRPORT",
+    "description": "At the tiny airport, three aircraft sit beside the airstrip. A Douglas M2 mail plane, ten years old and looking it, rests alone. A Ford TN-Motor waits in front of an open hangar. A Fokker T-2, a strange bird with its snub nose, has a mechanic working on it. You notice a single bystander who seems to watch you intently.\n\nInquiries at the office reveal that the TN-Motor makes regular flights to Cairo. It leaves at 8am daily. The mail plane is not delivering mail anymore. The pilot, Jacques Risee, sits in the tiny bar.\n\nThe clerk says that the Fokker is unavailable, but if you want, you can look it over.",
+    "choices": [
+      {
+        "text": "Buy a ticket and return for the next TN-Motor flight to Cairo",
+        "effects": {
+          "setHour": 8,
+          "advanceTime": 0
+        },
+        "nextEntry": "99"
+      },
+      {
+        "text": "Talk to Jacques Risee at the bar",
+        "nextEntry": "57"
+      },
+      {
+        "text": "Look over the Fokker T-2",
+        "nextEntry": "43"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["99", "57", "43", "Athens Location"]
+  },
   "182": {
     "description": "You find the symbol of the cult of Aten (see image below), the so-called Egyptian death cult. You think that you may have seen that shape before.",
     "image": "src/assets/images/clues/clue182.png",
@@ -2625,6 +3470,33 @@
     ],
     "traceNumbers": ["159"]
   },
+  "183": {
+    "title": "ATHENS RAILWAY STATION",
+    "description": "The train to Istanbul, Damascus, and finally Cairo leaves daily at 12 noon. It takes three days to make the trip. The train north to Vienna and then to Bremen leaves daily at 9am, and takes three days to arrive.\n\nYou notice that a man looks up from his newspaper and studies you intently.",
+    "choices": [
+      {
+        "text": "Take the train to Cairo",
+        "nextEntry": "42",
+        "effects": {
+          "setHour": 12,
+          "advanceTime": 0
+        }
+      },
+      {
+        "text": "Take the train to Bremen",
+        "nextEntry": "449",
+        "effects": {
+          "setHour": 9,
+          "advanceTime": 0
+        }
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["42", "449", "87"]
+  },
   "184": {
     "description": "Preparations are said to continue apace for the Starkweather-Moore expedition to Antarctica. The expedition will retrace the steps of the ill-fated Lake-Douglas party. The new expedition sets sail in December, from Bremerhaven.",
     "choices": [
@@ -2638,6 +3510,29 @@
       }
     ],
     "traceNumbers": ["163"]
+  },
+  "185": {
+    "description": "Two figures enter: a short man holding a wicked-looking dagger and a tall man dressed in a shadowy cloak. The short man lunges at you with a dagger. You must act quickly.",
+    "choices": [
+      {
+        "text": "Make a DEX roll to ready your weapon",
+        "effects": {
+          "check": {
+            "skill": "DEX",
+            "success": {
+              "nextEntry": "185a",
+              "message": "You manage to draw your weapon just in time!"
+            },
+            "failure": {
+              "nextEntry": "185b",
+              "message": "The short man lunges with his dagger before you can react.",
+              "damage": "1D6"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["123"]
   },
   "186": {
     "description": "“Oh. Resign? Ahem. My dear fellow, I apologize! I should have recognized how serious you were. Go! Save poor Gliere’s hide. I know you’ll do it speedily and judiciously. The University will certainly pay for your round-trip ticket.” As you leave, you hear footsteps move quickly away from the door. But when you look out, the hallway is empty.",
@@ -2704,6 +3599,40 @@
       "579",
       "590",
       "New York Location"
+    ]
+  },
+  "189": {
+    "description": "As you exhibit your prowess with a skeet gun, you hear a soft pop! Hearing a bullet whine past your ear. You wheel around. No gunman is in sight. The other shooters have not noticed the gunshot. Despite their stares, you abruptly leave the competition.",
+    "choices": [
+      {
+        "text": "Rest for the night",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ],
+    "traceNumbers": ["590"]
+  },
+  "190": {
+    "description": "The disappearance of the Karpathos Device and of Amet Keh baffles the Egyptian authorities. Mr. Pisistratos of the National Museum in Athens will not comment.",
+    "choices": [
+      {
+        "text": "There's more to learn here.",
+        "requirements": {
+          "dateAfter": "1931-12-01"
+        },
+        "nextEntry": "156"
+      },
+      {
+        "text": "Go to any New York Location.",
+        "requirements": {
+          "dateBefore": "1931-12-01",
+          "currentLocale": "New York"
+        },
+        "nextEntry": "New York Location"
+      }
     ]
   },
   "195": {
@@ -2773,25 +3702,162 @@
     ],
     "traceNumbers": ["221", "205", "173", "574", "449", "Egypt Location"]
   },
-  "190": {
-    "description": "The disappearance of the Karpathos Device and of Amet Keh baffles the Egyptian authorities. Mr. Pisistratos of the National Museum in Athens will not comment.",
+  "196": {
+    "title": "CAIRO AIRPORT",
+    "description": "Around the airport you detect an odor resembling manure. You also see many British troops. A few planes are scattered about the tarmac. Regular flights are available on a Ford Tri-Motor and on a smaller (but steadier) Northrop Alpha.",
     "choices": [
       {
-        "text": "There's more to learn here.",
-        "requirements": {
-          "dateAfter": "1931-12-01"
-        },
-        "nextEntry": "156"
+        "text": "Find a taxi",
+        "nextEntry": "103"
       },
       {
-        "text": "Go to any New York Location.",
-        "requirements": {
-          "dateBefore": "1931-12-01",
-          "currentLocale": "New York"
-        },
-        "nextEntry": "New York Location"
+        "text": "Get information on flights to Athens (departs at 3pm)",
+        "nextEntry": "181",
+        "effects": {
+          "setHour": 15,
+          "advanceTime": 3
+        }
+      },
+      {
+        "text": "Get information on flights to Bremen (departs at 9am)",
+        "nextEntry": "450",
+        "effects": {
+          "setHour": 9,
+          "advanceTime": 8
+        }
+      },
+      {
+        "text": "Go to any Egypt Location",
+        "nextEntry": "Egypt Location"
       }
-    ]
+    ],
+    "traceNumbers": ["103", "181", "450"]
+  },
+  "201": {
+    "description": "The old man questions you about your visit. He seems almost suspicious.",
+    "choices": [
+      {
+        "text": "Get out of the cab and get another",
+        "nextEntry": "58"
+      },
+      {
+        "text": "Answer the questions",
+        "nextEntry": "162"
+      },
+      {
+        "text": "Instruct the driver to be quiet and take you where you want",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["58", "162"]
+  },
+  "202": {
+    "description": "He hesitates. \"Yes\", he says, \"Gliere was hanged, but his body and face were disfigured strangely. Huge welts ran down the length of the Professor’s body. To Ilionas’ eye, he looked like he’d been long dead before his neck was stretched.\"",
+    "choices": [
+      {
+        "text": "Continue your investigation",
+        "nextEntry": "87"
+      }
+    ],
+    "traceNumbers": ["180", "87"]
+  },
+  "203": {
+    "description": "As you sit at the bar, an elderly man nods to you and quietly asks if he may join you.",
+    "choices": [
+      {
+        "text": "Allow the man to join you",
+        "nextEntry": "142"
+      },
+      {
+        "text": "Politely decline",
+        "nextEntry": "132"
+      }
+    ],
+    "traceNumbers": ["142", "132"]
+  },
+  "204": {
+    "description": "You ask to see Ilionas’ report. It says that Gliere refused to talk freely, but that he made libelous statements about Museum Director Pisistratos, and that he pleaded that the Karpathos Device not be sent to Cairo. It also notes that Gliere demanded protection even while he was in his cell.",
+    "choices": [
+      {
+        "text": "Ilionas seems ready to speak",
+        "nextEntry": "40",
+        "requirements": {
+          "hasNotVisited": "40"
+        }
+      },
+      {
+        "text": "Make a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": "226",
+            "failure": "204"
+          },
+          "dailyLimit": 1
+        },
+        "requirements": {
+          "hasNotVisited": "226"
+        }
+      },
+      {
+        "text": "Hail a cab",
+        "nextEntry": "131",
+        "requirements": {
+          "hasNotVisited": "131"
+        }
+      },
+      {
+        "text": "Hail a cab",
+        "nextEntry": "58",
+        "requirements": {
+          "hasVisited": "131"
+        }
+      }
+    ],
+    "traceNumbers": ["21", "40", "128", "130", "174"]
+  },
+  "205": {
+    "title": "CAIRO RAIL STATION",
+    "description": "You can get a good meal here between 5am and 8pm. An offensive odor, like the scent of manure, hangs over the station. Many British soldiers prowl about the area.",
+    "choices": [
+      {
+        "text": "Take the 9am train to Alexandria",
+        "effects": {
+          "setHour": 9,
+          "advanceTime": 1
+        },
+        "nextEntry": "195"
+      },
+      {
+        "text": "Take the 12 noon train to Alexandria",
+        "effects": {
+          "setHour": 12,
+          "advanceTime": 1
+        },
+        "nextEntry": "195"
+      },
+      {
+        "text": "Take the 5pm train to Alexandria",
+        "effects": {
+          "setHour": 17,
+          "advanceTime": 1
+        },
+        "nextEntry": "195"
+      },
+      {
+        "text": "Take the noon train to Athens (3-day trip)",
+        "effects": {
+          "setHour": 12,
+          "advanceTime": 72
+        },
+        "nextEntry": "183"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Egypt Location"
+      }
+    ],
+    "traceNumbers": ["195", "183"]
   },
   "206": {
     "title": "CAIRO MUSEUM",
@@ -2883,6 +3949,48 @@
     ],
     "traceNumbers": ["124"]
   },
+  "223": {
+    "description": "“May I be of assistance?” the man asks. “I too was once a stranger in this sacred land. My temporary employment allows me to stay here while I work on my book. Where can I take you?”\n\nHe is Richard Hawkes. He will take you wherever you want to go, all the while chatting amiably about the splendors of Greece. He hints that he knows something you wish to know, and tells you to meet him at 6pm at the Piostos Cafe.",
+    "choices": [
+      {
+        "text": "Go to any Athens Location.",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["58"]
+  },
+  "226": {
+    "description": "The corporal is friendly, but nervous. You can tell that he is unconvinced by the death report. Something scares him, but he only mutters that he is glad the Karpathos Device has left the country.",
+    "choices": [
+      {
+        "text": "Try Fast Talk or Persuade",
+        "nextEntry": "248",
+        "requirements": {
+          "hasVisited": "204"
+        }
+      },
+      {
+        "text": "Hail a cab",
+        "nextEntry": "131",
+        "requirements": {
+          "hasNotVisited": "131"
+        }
+      },
+      {
+        "text": "Hail a cab",
+        "nextEntry": "58",
+        "requirements": {
+          "hasVisited": "131"
+        }
+      }
+    ],
+    "check": {
+      "skill": ["Fast Talk", "Persuade"],
+      "success": "248",
+      "failure": "131"
+    },
+    "traceNumbers": ["204", "131", "248"]
+  },
   "229": {
     "description": "The Karpathos Device is secured within a thick glass enclosure with an alarm system. What do you do?",
     "choices": [
@@ -2896,6 +4004,26 @@
       }
     ],
     "traceNumbers": ["211"]
+  },
+  "248": {
+    "description": "\"Sir,\" says Ilionas, \"I have told you all I know. You must go. All that’s left are rumors, and they’re better obtained at the Piostos Cafe.\"\n\nYou skulk the hallways of the Bureau for a while, and find nothing.",
+    "choices": [
+      {
+        "text": "Hail a cab",
+        "nextEntry": "131",
+        "requirements": {
+          "hasNotVisited": "131"
+        }
+      },
+      {
+        "text": "Hail a cab",
+        "nextEntry": "58",
+        "requirements": {
+          "hasVisited": "131"
+        }
+      }
+    ],
+    "traceNumbers": ["226", "131"]
   },
   "263": {
     "description": "In the dim yellow night-lights of the museum, you can scarcely believe your eyes. The place has come alive with undead in many forms: from human mummies to megatheria in the natural history wing, all bizarrely returned to life! Everywhere you see the ominous, jerky shuffle of half-dead things. Instinctively you understand that these entities want to snuff out your life and baffle your purpose. You edge quietly along the halls, intent upon your escape from this hair-raising peril. To escape, you need to make successful Spot Hidden, Dodge, and INT rolls respectively, without missing any of the rolls.",
@@ -3043,6 +4171,86 @@
     ],
     "traceNumbers": ["249a", "274", "301"]
   },
+  "385": {
+    "description": "You are invited by your dinner partners to play poker. You're on a roll and win $17.",
+    "choices": [
+      {
+        "text": "Rest for the night",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ],
+    "traceNumbers": ["171", "187"]
+  },
+  "424": {
+    "title": "INEXPENSIVE ATHENS HOTEL",
+    "description": "This fleabag hotel is not exactly clean and sanitary, but it is quiet.",
+    "choices": [
+      {
+        "text": "Take a room",
+        "nextEntry": "26"
+      },
+      {
+        "text": "Another Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": []
+  },
+  "427": {
+    "description": "The tram lurches, throwing an asp against you. It strikes!",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "129"
+      }
+    ],
+    "traceNumbers": ["97"]
+  },
+  "449": {
+    "title": "BREMEN HARBOR",
+    "description": "Bremerhaven, Bremen’s harbor area, appears quiet in the cold air of early morning. Dense, icy fog hangs over the port.",
+    "choices": [
+      {
+        "text": "It is before December 20",
+        "requirements": {
+          "dateBefore": "1931-12-20"
+        },
+        "nextEntry": "451"
+      },
+      {
+        "text": "It is December 20 or thereafter",
+        "requirements": {
+          "dateAfter": "1931-12-19"
+        },
+        "nextEntry": "452"
+      }
+    ],
+    "traceNumbers": ["451", "452"]
+  },
+  "450": {
+    "title": "BREMEN AIRPORT",
+    "description": "A free shuttle runs between the airport and the harbor. It is cold and foggy; you were lucky to arrive before a landing was impossible.",
+    "choices": [
+      {
+        "text": "Take the shuttle to the harbor",
+        "nextEntry": "449"
+      }
+    ],
+    "traceNumbers": ["449"]
+  },
+  "539": {
+    "description": "As you turn to leave, the sargeant seems to remember something then hands over a piece of paper. Unfolding it, you recognize Gliere’s tiny, precise script. There is no date and no signature:\n\nDr. Louis Grunewald\nMiskatonic University\nArkham, Mass., U.S.A.\n\nDear Louis\n\nI fear it is too late for me. Though with the best of motives, the authorities foolishly apprehended me before I could accomplish destruction of the Karpathos Device, and thereby they have re-endangered the world. If, to prevent my further interference, the cult of Aten tries to murder me while I am trapped in this cell, I do not see how they can fail their purpose.\n\nThis letter, therefore, must convince you of the truth I tell and relate to you what must be done about it. You must do it or see that it is done, else our world is doomed.\n\nThough our discussions have acquainted you with some of what I now write, you have never accepted my arcane conclusions. I beg you now to do so, at least for the length of this letter. What follows is the situation, as I understand it.\n\nAn Alexandrian-era sorcerer, one Ephegon of Karpathos, was reputed to have constructed a mechanism perfectly replicating the movement of the spheres. According to certain fragmentary evidences, this device was to be sent to Egypt, to agents of the notorious cult of Aten. The record is dim. Perhaps it was designed in Egypt and built in Kerpathos, but I digress.\n\nOnce installed in Egypt, the mechanism could be used in a great ceremony presaging the end of the world. It would somehow align the forces of nature with the metaphysical powers of an unnamed, exceedingly evil god. The product of the ceremony would be another device, this one very simple: a crystal octahedron, which could be spun like a child’s top. It is the Top of Aten, a thing of as great magical power as the device which produced it was a wonder of natural science.\n\nBy bringing the Top of Aten “farthest south” to the “last city of the oldest beings,” and then summoning their god, the cult intended to use their cosmic gyro to alter the rotational axis of the Earth, thereby bringing a strange land (surely Antarctica) once more to life. In the process, the annoying “lands of the stick folk”—literally, the lands of men—would be destroyed.\n\nBut the ship carrying the device to Egypt was lost in a great storm, and then Ephegon died. The ceremony was never begun.\n\nYou’ll recall the mysteries surrounding the Miskatonic expedition to Antarctica, and its tragic outcome; and you know that the Starkweather-Moore expedition leaves Bremen this winter to return to Antarctica and reopen the terrible questions which Lake first raised. But have you heard of the Karpathos Device—the strange instrument recovered near the island of Karpathos? After examining it, I knew that this was Ephegon’s device!\n\nLouis, it is my firm conviction that this tale is true, that a great scheme to change the world has been reactivated by the cult of Aten. Perhaps they employed great magic to manipulate destiny, or perhaps they are exceedingly cunning and evaluate every event for what they may gain of it, but their hour has come round again.\n\nOthers also believe this. An erudite and cruel man named Stanford has lent me subtle aid, but says that for arcane reasons he may do no more: he is not a friend, but says that in this thing he serves his god! A kinder, gentler Greek gentleman has also helped. Both seem to represent greater powers than man, perhaps beyond our ken.\n\nBut the cult of Aten is strong. At least one among them is no man at all, but a …\n\nHere the letter ends. There is no second sheet. There is nothing on the reverse of the sheet.\n\nAs you struggle to digest and evaluate the letter, the guard casually informs you that nothing else of Gliere’s is now at the prison.",
+    "choices": [
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ]
+  },
   "554": {
     "choices": [
       {
@@ -3088,6 +4296,21 @@
       "566",
       "567"
     ]
+  },
+  "579": {
+    "description": "A chance flirtation leads you to the ship’s casino. You find yourself at the baccarat table, and luck is on your side. You win $87!",
+    "choices": [
+      {
+        "text": "Celebrate your win",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6,
+          "message": "You don't remember much about last night, but what you do makes you grin."
+        }
+      }
+    ],
+    "traceNumbers": ["148", "187"]
   },
   "583": {
     "title": "HOTEL",
@@ -3173,6 +4396,24 @@
     ],
     "traceNumbers": ["12"]
   },
+  "590": {
+    "description": "The purser tells you that skeet shooting from the fantail will soon begin.",
+    "choices": [
+      {
+        "text": "Get some shotgun practice",
+        "nextEntry": "189"
+      },
+      {
+        "text": "Rest for the night",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ],
+    "traceNumbers": ["192"]
+  },
   "593": {
     "choices": [
       {
@@ -3183,6 +4424,18 @@
     "description": "A small diner offering basic meals. It's a place to sit down and have a meal while gathering your thoughts.",
     "title": "BEE'S DINER",
     "traceNumbers": ["Arkham Location"]
+  },
+  "594": {
+    "description": "You are able to climb down the fire escape, and make your way to another nearby hotel. You are safe for the night.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "Athens Location",
+        "effects": {
+          "setHour": 7
+        }
+      }
+    ]
   },
   "7a": {
     "description": "You realize that you have no idea where Gliere's room is. You go upstairs. All the doors are closed; none have names on them.",
@@ -3326,6 +4579,19 @@
       }
     ]
   },
+  "47b": {
+    "description": "You are exhausted and cannot continue without rest.",
+    "choices": [
+      {
+        "text": "Get some rest and wake up tomorrow morning",
+        "nextEntry": "187",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ]
+  },
   "73a": {
     "description": "The ship is huge, but nothing strikes you as out of the ordinary.",
     "choices": [
@@ -3339,6 +4605,26 @@
       }
     ]
   },
+  "77a": {
+    "description": "'Gliere hung himself, he killed himself. Yes, his body has been shipped to the United States. The Professor left nothing behind to be recovered.'",
+    "choices": [
+      {
+        "text": "Make a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "180"
+            },
+            "failure": {
+              "nextEntry": "87"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["87"]
+  },
   "83a": {
     "description": "You ask about the foreign pari seen on deck, but no one seems to know what you are talking about.",
     "choices": [
@@ -3348,6 +4634,78 @@
         "effects": {
           "setHour": 23,
           "advanceTime": 6
+        }
+      }
+    ]
+  },
+  "97a": {
+    "description": "You notice the slinky sound or smell the reptilian odor of asps. They are slithering on the floor, and two seem to be under the bedclothes! In moments, they’ll be at your head.",
+    "choices": [
+      {
+        "text": "Pull the emergency cord",
+        "nextEntry": "427"
+      },
+      {
+        "text": "Leap out the window",
+        "nextEntry": "151",
+        "effects": {
+          "health": -4
+        }
+      },
+      {
+        "text": "Jump to the door of your room",
+        "nextEntry": "152"
+      }
+    ],
+    "traceNumbers": ["93"]
+  },
+  "97b": {
+    "description": "You dream of walking through a field when you are startled to see a snake in the grass. You wake up with a start, only to realize that snakes are slithering under the sheets of your bed!",
+    "choices": [
+      {
+        "text": "Pull the emergency cord",
+        "nextEntry": "427"
+      },
+      {
+        "text": "Leap out the window",
+        "nextEntry": "151",
+        "effects": {
+          "health": -4
+        }
+      },
+      {
+        "text": "Jump to the door of your room",
+        "nextEntry": "152"
+      }
+    ],
+    "traceNumbers": ["93"]
+  },
+  "98a": {
+    "description": "You lose control of the plane as it climbs, the nose dips suddenly, and despite your efforts, you crash into the ground. The world goes black as the plane explodes in flames. This is the end of your journey.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ]
+  },
+  "98b": {
+    "description": "You manage to keep the plane steady and continue flying through the skies. Now, make a successful Navigate roll to reach Cairo Airport. Fail the roll and you land somewhere else.",
+    "choices": [
+      {
+        "text": "Make a Navigate roll",
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "nextEntry": "196"
+            },
+            "failure": {
+              "nextEntry": "94"
+            }
+          }
         }
       }
     ]
@@ -3390,6 +4748,138 @@
         }
       }
     ]
+  },
+  "123b": {
+    "description": "They are at your door and you hear the door rattle slightly. You must decide what to do next.",
+    "choices": [
+      {
+        "text": "Make a Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "594",
+              "message": "You hear footsteps outside your door."
+            },
+            "failure": {
+              "nextEntry": "185",
+              "message": "You fail to notice anything unusual."
+            }
+          }
+        }
+      },
+      {
+        "text": "Look out the window",
+        "nextEntry": "594",
+        "message": "Very sensible! You see a fire escape leading down to safety."
+      },
+      {
+        "text": "Lock the door",
+        "nextEntry": "185",
+        "message": "You lock the door. As you step away, you see it unlock and door starts to open."
+      },
+      {
+        "text": "Hide in the bathroom",
+        "nextEntry": "185",
+        "message": "You hide in the bathroom, hoping to remain undetected. You hear the door open in the other room, footsteps approaching the bathroom door, then the bathroom door swings open."
+      },
+      {
+        "text": "Hide under the bed",
+        "nextEntry": "185",
+        "message": "You crawl under the bed, hoping the strangers don't find you. You hear the door open."
+      },
+      {
+        "text": "Order the strangers to leave",
+        "nextEntry": "185",
+        "message": "The door starts to open and you shout for them to leave your room. There is laughter on the other side of the door."
+      },
+      {
+        "text": "Ready your weapon",
+        "nextEntry": "185a",
+        "message": "You ready your weapon, prepared for anything as the door opens. Two figures enter, a short man holding a wicked-looking dagger and a tall man dressed in a shadowy cloak. The short man comes at you, ready to strike."
+      }
+    ],
+    "traceNumbers": ["26", "164", "185", "594"]
+  },
+  "129a": {
+    "description": "You try to scream for help. Someone might hear you, but time is running out.",
+    "choices": [
+      {
+        "text": "Make a Luck roll to summon help",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "damage": "3D4",
+              "nextEntry": "129c",
+              "message": "Help arrives! A doctor and the conductor come running in. The conductor beats the snakes to death while the doctor tends to you, extracting the poison. It takes some time, but you are finally able to get some rest. You reach Cairo (without further incident) several days later."
+            },
+            "failure": {
+              "nextEntry": "129b"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["129"]
+  },
+  "129b": {
+    "description": "No one hears your screams. The poison is spreading, and your body is weakening. You must try to resist the effects.",
+    "choices": [
+      {
+        "text": "Make another Hard CON roll",
+        "effects": {
+          "check": {
+            "skill": "CON",
+            "difficulty": "hard",
+            "success": {
+              "nextEntry": "129a",
+              "message": "You feel like you are fighting off the poison."
+            },
+            "failure": {
+              "damage": "1D4",
+              "nextEntry": "129a",
+              "message": "The poison surges through your body."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["129a"]
+  },
+  "129c": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Depart at Cairo",
+        "nextEntry": "205",
+        "effects": {
+          "advanceTime": 71
+        }
+      }
+    ]
+  },
+  "135a": {
+    "description": "You notice a small Egyptian fellow lurking ahead of you. You may have seen him before. He holds something in his hand shiny in his hand. You are down a side passage now and have quickened your pace. Now you hear his footsteps scurry after you. Is it only your imagination, or are the corridor lights dimming?",
+    "choices": [
+      {
+        "text": "Make a Know (EDU) roll",
+        "effects": {
+          "check": {
+            "skill": "EDU",
+            "success": {
+              "nextEntry": "148b",
+              "message": "You successfully reach the deck and the safety of the promenade. You are ready to call it a day and get some rest."
+            },
+            "failure": {
+              "nextEntry": "106",
+              "message": "You take a wrong turn and find yourself at a locked hatch labeled 'No Admittance.'"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["106", "187"]
   },
   "137b": {
     "description": "Just as you become aware of people behind you, two massive, leathery hands clamp around your neck like a vise and start to strangle you.",
@@ -3437,100 +4927,6 @@
     ],
     "traceNumbers": ["11", "52"]
   },
-  "148": {
-    "description": "You are enjoying another gorgeous day on the ship.",
-    "choices": [
-      {
-        "text": "Stroll Decks (am)",
-        "nextEntry": "135",
-        "requirements": {
-          "scheduledActivity": {
-            "am": "Stroll Decks"
-          },
-          "hasNotVisited": "135"
-        }
-      },
-      {
-        "text": "Play Shuffleboard (pm)",
-        "nextEntry": "135",
-        "requirements": {
-          "scheduledActivity": {
-            "pm": "Shuffleboard"
-          },
-          "hasNotVisited": "135"
-        }
-      },
-      {
-        "text": "Stroll Decks (night)",
-        "nextEntry": "135",
-        "requirements": {
-          "scheduledActivity": {
-            "night": "Stroll Decks"
-          },
-          "hasNotVisited": "135"
-        }
-      },
-      {
-        "text": "Who is that person over there?",
-        "nextEntry": "579",
-        "requirements": {
-          "hasVisited": "135"
-        }
-      },
-      {
-        "text": "Rest for the night",
-        "nextEntry": "187",
-        "effects": {
-          "setHour": 23,
-          "advanceTime": 6
-        }
-      }
-    ],
-    "traceNumbers": ["135", "187", "193", "579"]
-  },
-  "135": {
-    "description": "As you walk down a corridor, you feel uneasy. Attempt a Spot Hidden roll to see if you notice something strange.",
-    "choices": [
-      {
-        "text": "Make a Spot Hidden roll",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "135a"
-            },
-            "failure": {
-              "nextEntry": "106",
-              "message": "You fail to notice anything unusual and continue walking. Suddenly, there is movement to your side and a small man rushes at you."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["106", "148"]
-  },
-  "135a": {
-    "description": "You notice a small Egyptian fellow lurking ahead of you. You may have seen him before. He holds something in his hand shiny in his hand. You are down a side passage now and have quickened your pace. Now you hear his footsteps scurry after you. Is it only your imagination, or are the corridor lights dimming?",
-    "choices": [
-      {
-        "text": "Make a Know (EDU) roll",
-        "effects": {
-          "check": {
-            "skill": "EDU",
-            "success": {
-              "nextEntry": "148b",
-              "message": "You successfully reach the deck and the safety of the promenade. You are ready to call it a day and get some rest."
-            },
-            "failure": {
-              "nextEntry": "106",
-              "message": "You take a wrong turn and find yourself at a locked hatch labeled 'No Admittance.'"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["106", "187"]
-  },
   "148b": {
     "description": "",
     "choices": [
@@ -3544,21 +4940,6 @@
       }
     ],
     "traceNumbers": ["148"]
-  },
-  "579": {
-    "description": "A chance flirtation leads you to the ship’s casino. You find yourself at the baccarat table, and luck is on your side. You win $87!",
-    "choices": [
-      {
-        "text": "Celebrate your win",
-        "nextEntry": "187",
-        "effects": {
-          "setHour": 23,
-          "advanceTime": 6,
-          "message": "You don't remember much about last night, but what you do makes you grin."
-        }
-      }
-    ],
-    "traceNumbers": ["148", "187"]
   },
   "150b": {
     "title": "Professorial Study",
@@ -3698,6 +5079,252 @@
       }
     ],
     "traceNumbers": ["159"]
+  },
+  "177a": {
+    "description": "You swagger over and grill the Museum Director. He tries to put you off, saying he doesn’t know why Gliere stole the Device.",
+    "choices": [
+      {
+        "text": "Attempt a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "17",
+              "message": "You detect something is off about his answer regarding Gliere.\n\n"
+            },
+            "failure": {
+              "nextEntry": "177",
+              "message": "You can't tell if he's lying.\n\n"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep questioning the Director",
+        "nextEntry": "177"
+      }
+    ]
+  },
+  "177b": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Attempt a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "1",
+              "message": "You sense he's hiding something about the loan.\n\n"
+            },
+            "failure": {
+              "nextEntry": "177",
+              "message": "You believe what he says about the loan.\n\n"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep questioning the Director",
+        "nextEntry": "177"
+      }
+    ]
+  },
+  "177c": {
+    "description": "You inquire further about the claim that the Karpathos Device is just a clock.",
+    "choices": [
+      {
+        "text": "Attempt a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "4",
+              "message": "You can tell he's being untruthful about the device being a clock.\n\n"
+            },
+            "failure": {
+              "nextEntry": "177",
+              "message": "You believe the Karpathos Device is just a clock.\n\n"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep questioning the Director",
+        "nextEntry": "177"
+      }
+    ]
+  },
+  "185a": {
+    "description": "You have your weapon ready. The short man lunges at you with his dagger. You must defend yourself or fight back.",
+    "choices": [
+      {
+        "text": "Fight back",
+        "nextEntry": "185b",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Short Man",
+              "attackChance": "50%",
+              "damage": "1D6",
+              "health": 8,
+              "maxHealth": 8
+            },
+            "win": "185c",
+            "lose": "185d"
+          }
+        }
+      },
+      {
+        "text": "Dodge the attack",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "185d",
+              "message": "You successfully dodge the short man's attack."
+            },
+            "failure": {
+              "damage": "1D6",
+              "nextEntry": "185b",
+              "message": "The short man's dagger finds its mark, injuring you."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["185"]
+  },
+  "185b": {
+    "description": "You must act quickly to defend yourself.",
+    "choices": [
+      {
+        "text": "Fight back",
+        "nextEntry": "185b",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Short Man",
+              "attackChance": "50%",
+              "damage": "1D6",
+              "health": 8,
+              "maxHealth": 8
+            },
+            "win": "185c",
+            "lose": "185d"
+          }
+        }
+      },
+      {
+        "text": "Dodge",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "185d",
+              "message": "You successfully dodge the attack."
+            },
+            "failure": {
+              "damage": "1D6",
+              "nextEntry": "185b",
+              "message": "The short man's dagger finds its mark, injuring you."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["185a"]
+  },
+  "185c": {
+    "description": "You manage to wound the short man, and he collapses unconscious from the damage. As you look around, the tall man in the cloak blocks the exit, his eyes glowing ominously. The air grows deathly cold.",
+    "choices": [
+      {
+        "text": "Confront the tall figure",
+        "nextEntry": "185e"
+      }
+    ],
+    "traceNumbers": ["185"]
+  },
+  "185d": {
+    "description": "You evade the short man, and you still have a chance to survive. The tall man is blocking the exit. His eyes glow in the shadow of his cloak.",
+    "choices": [
+      {
+        "text": "Confront the tall figure",
+        "nextEntry": "185e"
+      }
+    ],
+    "traceNumbers": ["185b"]
+  },
+  "185e": {
+    "description": "The tall man seems inhuman, his glowing eyes locked on you. You feel a deathly chill emanating from him. You must make a decision quickly.",
+    "choices": [
+      {
+        "text": "Attack the tall figure",
+        "effects": {
+          "check": {
+            "skill": "Fighting (Brawl)",
+            "success": {
+              "nextEntry": "185h",
+              "message": "Your attack passes through the figure, and you lose your footing! You stumble forward and pass completely through the being, as if he were a ghost! You clamber out of the door and run out of the hotel."
+            },
+            "failure": {
+              "nextEntry": "185g",
+              "message": "Your desperate attack has no effect, passing through the figure as if he were a ghost! The figure moves closer."
+            }
+          }
+        }
+      },
+      {
+        "text": "Dodge and escape",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "185i",
+              "message": "You dodge the figure and manage to escape!"
+            },
+            "failure": {
+              "nextEntry": "185g",
+              "message": "You fail to dodge, and the figure grabs you."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["185c"]
+  },
+  "185g": {
+    "description": "The hooded figure grabs you with cold, inhuman hands, and the life drains out of you as you struggle in vain. For you, this is...\n\nTHE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["185e"]
+  },
+  "185h": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Run out of the hotel",
+        "nextEntry": "Athens Location"
+      }
+    ]
+  },
+  "185i": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Run out of the hotel",
+        "nextEntry": "Athens Location"
+      }
+    ]
   },
   "230_guard_1_action": {
     "description": "The first guard reacts. Roll 1D6 to determine the guard's action.",
@@ -4131,1634 +5758,6 @@
       {
         "text": "Leave the hospital",
         "nextEntry": "585_exit"
-      }
-    ]
-  },
-  "15": {
-    "description": "Nobody goes near the well-dressed driver. Perhaps there’s something odd about that. The old fellow looks shaky, but serene, while the young driver looks friendly, but perhaps overly brash.",
-    "choices": [
-      {
-        "text": "Pick a driver",
-        "nextEntry": "58"
-      }
-    ],
-    "traceNumbers": ["58"]
-  },
-  "179": {
-    "description": "The young fellow takes you wherever you want to go.",
-    "choices": [
-      {
-        "text": "Go to any Athens Location.",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["58"]
-  },
-  "201": {
-    "description": "The old man questions you about your visit. He seems almost suspicious.",
-    "choices": [
-      {
-        "text": "Get out of the cab and get another",
-        "nextEntry": "58"
-      },
-      {
-        "text": "Answer the questions",
-        "nextEntry": "162"
-      },
-      {
-        "text": "Instruct the driver to be quiet and take you where you want",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["58", "162"]
-  },
-  "162": {
-    "description": "“You have wandered into something beyond your wildest dreams,” he says. “My friends wish to help you. Find out what you must, then meet me at the Parthenon at sundown.”",
-    "choices": [
-      {
-        "text": "Go to any Athens Location.",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["201"]
-  },
-  "223": {
-    "description": "“May I be of assistance?” the man asks. “I too was once a stranger in this sacred land. My temporary employment allows me to stay here while I work on my book. Where can I take you?”\n\nHe is Richard Hawkes. He will take you wherever you want to go, all the while chatting amiably about the splendors of Greece. He hints that he knows something you wish to know, and tells you to meet him at 6pm at the Piostos Cafe.",
-    "choices": [
-      {
-        "text": "Go to any Athens Location.",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["58"]
-  },
-  "87": {
-    "title": "ATHENS HALL OF JUSTICE",
-    "description": "The Hall of Justice and the King’s Court of Appeals are open from 9am-noon, and from 3pm-7pm, Mon-Fri.\n\nIf Christos is with you, he knows exactly where to go; if you are alone, you spend an hour before you arrive at the right corridor and find the desk sergeant in charge of the jails. The sergeant speaks no English.",
-    "choices": [
-      {
-        "text": "Your interpreter can help translate",
-        "nextEntry": "77",
-        "requirements": {
-          "companion": true
-        }
-      },
-      {
-        "text": "Good thing you speak Greek",
-        "nextEntry": "77a",
-        "requirements": {
-          "language": "Greek"
-        }
-      },
-      {
-        "text": "Maybe your phrasebook can help",
-        "nextEntry": "6",
-        "requirements": {
-          "inventory": "Harrison’s English/Greek Phrase Book"
-        }
-      },
-      {
-        "text": "Look for someone who speaks English",
-        "nextEntry": "77",
-        "effects": {
-          "advanceTime": 2
-        }
-      },
-      {
-        "text": "Leave the Hall of Justice",
-        "nextEntry": "539"
-      }
-    ],
-    "traceNumbers": ["77", "6", "539"]
-  },
-  "77": {
-    "description": "Your interpreter tells you, 'Gliere hung himself, he killed himself. Yes, his body has been shipped to the United States. Apparently the Professor left nothing behind to be recovered.'",
-    "choices": [
-      {
-        "text": "Make a Psychology roll",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "180"
-            },
-            "failure": {
-              "nextEntry": "87"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["87"]
-  },
-  "77a": {
-    "description": "'Gliere hung himself, he killed himself. Yes, his body has been shipped to the United States. The Professor left nothing behind to be recovered.'",
-    "choices": [
-      {
-        "text": "Make a Psychology roll",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "180"
-            },
-            "failure": {
-              "nextEntry": "87"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["87"]
-  },
-  "180": {
-    "description": "The man appears afraid. Pressing him further, he admits fear, \"I don’t think Gliere killed himself. Someone wanted him dead. Someone or something! I don’t know … It had to do with the Karpathos Device. Gliere kept saying that it must not go to Egypt.\"",
-    "choices": [
-      {
-        "text": "Make a Persuade roll",
-        "effects": {
-          "check": {
-            "skill": "Persuade",
-            "success": {
-              "nextEntry": "202"
-            },
-            "failure": {
-              "nextEntry": "87"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["77", "87"]
-  },
-  "202": {
-    "description": "He hesitates. \"Yes\", he says, \"Gliere was hanged, but his body and face were disfigured strangely. Huge welts ran down the length of the Professor’s body. To Ilionas’ eye, he looked like he’d been long dead before his neck was stretched.\"",
-    "choices": [
-      {
-        "text": "Continue your investigation",
-        "nextEntry": "87"
-      }
-    ],
-    "traceNumbers": ["180", "87"]
-  },
-  "6": {
-    "description": "There is a big difference between using a phrase book and speaking a language. You have real trouble in being understood or understanding what is being said to you.\n\nYou are going to need an interpreter—they speak English at the Athens Bureau of Investigation, perhaps you could find something there?",
-    "choices": [
-      {
-        "text": "Continue your investigation",
-        "nextEntry": "87"
-      },
-      {
-        "text": "Another Athens Location",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["87"]
-  },
-  "539": {
-    "description": "As you turn to leave, the sargeant seems to remember something then hands over a piece of paper. Unfolding it, you recognize Gliere’s tiny, precise script. There is no date and no signature:\n\nDr. Louis Grunewald\nMiskatonic University\nArkham, Mass., U.S.A.\n\nDear Louis\n\nI fear it is too late for me. Though with the best of motives, the authorities foolishly apprehended me before I could accomplish destruction of the Karpathos Device, and thereby they have re-endangered the world. If, to prevent my further interference, the cult of Aten tries to murder me while I am trapped in this cell, I do not see how they can fail their purpose.\n\nThis letter, therefore, must convince you of the truth I tell and relate to you what must be done about it. You must do it or see that it is done, else our world is doomed.\n\nThough our discussions have acquainted you with some of what I now write, you have never accepted my arcane conclusions. I beg you now to do so, at least for the length of this letter. What follows is the situation, as I understand it.\n\nAn Alexandrian-era sorcerer, one Ephegon of Karpathos, was reputed to have constructed a mechanism perfectly replicating the movement of the spheres. According to certain fragmentary evidences, this device was to be sent to Egypt, to agents of the notorious cult of Aten. The record is dim. Perhaps it was designed in Egypt and built in Kerpathos, but I digress.\n\nOnce installed in Egypt, the mechanism could be used in a great ceremony presaging the end of the world. It would somehow align the forces of nature with the metaphysical powers of an unnamed, exceedingly evil god. The product of the ceremony would be another device, this one very simple: a crystal octahedron, which could be spun like a child’s top. It is the Top of Aten, a thing of as great magical power as the device which produced it was a wonder of natural science.\n\nBy bringing the Top of Aten “farthest south” to the “last city of the oldest beings,” and then summoning their god, the cult intended to use their cosmic gyro to alter the rotational axis of the Earth, thereby bringing a strange land (surely Antarctica) once more to life. In the process, the annoying “lands of the stick folk”—literally, the lands of men—would be destroyed.\n\nBut the ship carrying the device to Egypt was lost in a great storm, and then Ephegon died. The ceremony was never begun.\n\nYou’ll recall the mysteries surrounding the Miskatonic expedition to Antarctica, and its tragic outcome; and you know that the Starkweather-Moore expedition leaves Bremen this winter to return to Antarctica and reopen the terrible questions which Lake first raised. But have you heard of the Karpathos Device—the strange instrument recovered near the island of Karpathos? After examining it, I knew that this was Ephegon’s device!\n\nLouis, it is my firm conviction that this tale is true, that a great scheme to change the world has been reactivated by the cult of Aten. Perhaps they employed great magic to manipulate destiny, or perhaps they are exceedingly cunning and evaluate every event for what they may gain of it, but their hour has come round again.\n\nOthers also believe this. An erudite and cruel man named Stanford has lent me subtle aid, but says that for arcane reasons he may do no more: he is not a friend, but says that in this thing he serves his god! A kinder, gentler Greek gentleman has also helped. Both seem to represent greater powers than man, perhaps beyond our ken.\n\nBut the cult of Aten is strong. At least one among them is no man at all, but a …\n\nHere the letter ends. There is no second sheet. There is nothing on the reverse of the sheet.\n\nAs you struggle to digest and evaluate the letter, the guard casually informs you that nothing else of Gliere’s is now at the prison.",
-    "choices": [
-      {
-        "text": "Go to any Athens Location",
-        "nextEntry": "Athens Location"
-      }
-    ]
-  },
-  "181": {
-    "title": "ATHENS AIRPORT",
-    "description": "At the tiny airport, three aircraft sit beside the airstrip. A Douglas M2 mail plane, ten years old and looking it, rests alone. A Ford TN-Motor waits in front of an open hangar. A Fokker T-2, a strange bird with its snub nose, has a mechanic working on it. You notice a single bystander who seems to watch you intently.\n\nInquiries at the office reveal that the TN-Motor makes regular flights to Cairo. It leaves at 8am daily. The mail plane is not delivering mail anymore. The pilot, Jacques Risee, sits in the tiny bar.\n\nThe clerk says that the Fokker is unavailable, but if you want, you can look it over.",
-    "choices": [
-      {
-        "text": "Buy a ticket and return for the next TN-Motor flight to Cairo",
-        "effects": {
-          "setHour": 8,
-          "advanceTime": 0
-        },
-        "nextEntry": "99"
-      },
-      {
-        "text": "Talk to Jacques Risee at the bar",
-        "nextEntry": "57"
-      },
-      {
-        "text": "Look over the Fokker T-2",
-        "nextEntry": "43"
-      },
-      {
-        "text": "Go to any Athens Location",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["99", "57", "43", "Athens Location"]
-  },
-  "57": {
-    "description": "Jacques smiles gallantly, \"I am trying to interest wealthy Greeks in the romance of the air. But my little service has not been well received, mmmh? Yet perhaps I may take you somewhere?\"",
-    "choices": [
-      {
-        "text": "Accept Jacques' offer to fly you",
-        "nextEntry": "92"
-      },
-      {
-        "text": "Return to the airport",
-        "nextEntry": "181"
-      }
-    ],
-    "traceNumbers": ["181"]
-  },
-  "92": {
-    "description": "He will take you to Cairo or Bremen, with no questions asked. In order to have daylight to complete the trip, he must take off before noon.\n\nThe flight will be a windswept adventure in an open-cockpit biplane. \"Ooh lah lah!\"",
-    "choices": [
-      {
-        "text": "Fly to Cairo",
-        "nextEntry": "196",
-        "effects": {
-          "setHour": 12,
-          "advanceTime": 3
-        }
-      },
-      {
-        "text": "Fly to Bremen",
-        "nextEntry": "450",
-        "effects": {
-          "setHour": 12,
-          "advanceTime": 5
-        }
-      },
-      {
-        "text": "Return to the airport",
-        "nextEntry": "181"
-      }
-    ],
-    "traceNumbers": ["57", "181"]
-  },
-  "196": {
-    "title": "CAIRO AIRPORT",
-    "description": "Around the airport you detect an odor resembling manure. You also see many British troops. A few planes are scattered about the tarmac. Regular flights are available on a Ford Tri-Motor and on a smaller (but steadier) Northrop Alpha.",
-    "choices": [
-      {
-        "text": "Find a taxi",
-        "nextEntry": "103"
-      },
-      {
-        "text": "Get information on flights to Athens (departs at 3pm)",
-        "nextEntry": "181",
-        "effects": {
-          "setHour": 15,
-          "advanceTime": 3
-        }
-      },
-      {
-        "text": "Get information on flights to Bremen (departs at 9am)",
-        "nextEntry": "450",
-        "effects": {
-          "setHour": 9,
-          "advanceTime": 8
-        }
-      },
-      {
-        "text": "Go to any Egypt Location",
-        "nextEntry": "Egypt Location"
-      }
-    ],
-    "traceNumbers": ["103", "181", "450"]
-  },
-  "450": {
-    "title": "BREMEN AIRPORT",
-    "description": "A free shuttle runs between the airport and the harbor. It is cold and foggy; you were lucky to arrive before a landing was impossible.",
-    "choices": [
-      {
-        "text": "Take the shuttle to the harbor",
-        "nextEntry": "449"
-      }
-    ],
-    "traceNumbers": ["449"]
-  },
-  "43": {
-    "description": "The plane has been abandoned, but it looks in good condition. A tempting thought enters your mind: steal it.",
-    "choices": [
-      {
-        "text": "Check out the plane and get it started",
-        "nextEntry": "98",
-        "requirements": {
-          "skill": {
-            "name": "Pilot (Aircraft)",
-            "minValue": 5
-          }
-        }
-      },
-      {
-        "text": "Nah, that's a bad idea",
-        "nextEntry": "181"
-      }
-    ],
-    "traceNumbers": ["44", "181"]
-  },
-  "98": {
-    "description": "The plane’s engine roars into life. You smugly taxi down the runway and head the craft expertly into the wind. You give her the throttle and the plane hurtles down the tarmac and into the air. You’re airborne!",
-    "choices": [
-      {
-        "text": "Make a Pilot (Aircraft) roll",
-        "effects": {
-          "check": {
-            "skill": "Pilot (Aircraft)",
-            "success": {
-              "nextEntry": "98b"
-            },
-            "failure": {
-              "nextEntry": "98a"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["43"]
-  },
-  "98a": {
-    "description": "You lose control of the plane as it climbs, the nose dips suddenly, and despite your efforts, you crash into the ground. The world goes black as the plane explodes in flames. This is the end of your journey.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ]
-  },
-  "98b": {
-    "description": "You manage to keep the plane steady and continue flying through the skies. Now, make a successful Navigate roll to reach Cairo Airport. Fail the roll and you land somewhere else.",
-    "choices": [
-      {
-        "text": "Make a Navigate roll",
-        "effects": {
-          "check": {
-            "skill": "Navigate",
-            "success": {
-              "nextEntry": "196"
-            },
-            "failure": {
-              "nextEntry": "94"
-            }
-          }
-        }
-      }
-    ]
-  },
-  "183": {
-    "title": "ATHENS RAILWAY STATION",
-    "description": "The train to Istanbul, Damascus, and finally Cairo leaves daily at 12 noon. It takes three days to make the trip. The train north to Vienna and then to Bremen leaves daily at 9am, and takes three days to arrive.\n\nYou notice that a man looks up from his newspaper and studies you intently.",
-    "choices": [
-      {
-        "text": "Take the train to Cairo",
-        "nextEntry": "42",
-        "effects": {
-          "setHour": 12,
-          "advanceTime": 0
-        }
-      },
-      {
-        "text": "Take the train to Bremen",
-        "nextEntry": "449",
-        "effects": {
-          "setHour": 9,
-          "advanceTime": 0
-        }
-      },
-      {
-        "text": "Go to any Athens Location",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["42", "449", "87"]
-  },
-  "42": {
-    "description": "You board the train and are faced with a choice of accommodations. The crowded, smelly seats are certainly the more affordable option, but far from comfortable. Alternatively, you can pay for a private suite, complete with a toilet and basin, offering some privacy and comfort for the journey.",
-    "choices": [
-      {
-        "text": "Choose the crowded, smelly seat",
-        "nextEntry": "75"
-      },
-      {
-        "text": "Choose the private suite",
-        "nextEntry": "93"
-      }
-    ],
-    "traceNumbers": ["183"]
-  },
-  "75": {
-    "description": "After a long, cramped, and uncomfortable three-day journey, you finally arrive safely. The train offers further connections that could take you onward to Istanbul, Damascus, and eventually Cairo.",
-    "choices": [
-      {
-        "text": "Make connections to Cairo",
-        "effects": {
-          "advanceTime": 71
-        },
-        "nextEntry": "205"
-      }
-    ],
-    "traceNumbers": ["42", "151", "152"]
-  },
-  "93": {
-    "description": "You turn in for the night, the rhythmic clatter of the train soothing your mind as you drift off.",
-    "choices": [
-      {
-        "text": "Attempt a Listen roll",
-        "effects": {
-          "check": {
-            "skill": "Listen",
-            "success": {
-              "nextEntry": "97a",
-              "note": "Succeeded in Listen roll"
-            },
-            "failure": {
-              "nextEntry": "97b"
-            }
-          }
-        }
-      },
-      {
-        "text": "Attempt a Spot Hidden roll",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "97a",
-              "note": "Succeeded in Spot Hidden roll"
-            },
-            "failure": {
-              "nextEntry": "97b"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["42"]
-  },
-  "97a": {
-    "description": "You notice the slinky sound or smell the reptilian odor of asps. They are slithering on the floor, and two seem to be under the bedclothes! In moments, they’ll be at your head.",
-    "choices": [
-      {
-        "text": "Pull the emergency cord",
-        "nextEntry": "427"
-      },
-      {
-        "text": "Leap out the window",
-        "nextEntry": "151",
-        "effects": {
-          "health": -4
-        }
-      },
-      {
-        "text": "Jump to the door of your room",
-        "nextEntry": "152"
-      }
-    ],
-    "traceNumbers": ["93"]
-  },
-  "97b": {
-    "description": "You dream of walking through a field when you are startled to see a snake in the grass. You wake up with a start, only to realize that snakes are slithering under the sheets of your bed!",
-    "choices": [
-      {
-        "text": "Pull the emergency cord",
-        "nextEntry": "427"
-      },
-      {
-        "text": "Leap out the window",
-        "nextEntry": "151",
-        "effects": {
-          "health": -4
-        }
-      },
-      {
-        "text": "Jump to the door of your room",
-        "nextEntry": "152"
-      }
-    ],
-    "traceNumbers": ["93"]
-  },
-  "427": {
-    "description": "The tram lurches, throwing an asp against you. It strikes!",
-    "choices": [
-      {
-        "text": "Continue",
-        "nextEntry": "129"
-      }
-    ],
-    "traceNumbers": ["97"]
-  },
-  "129": {
-    "description": "The asp poison is strong. You can feel it coursing through your veins, and time is running out.",
-    "choices": [
-      {
-        "text": "Make a Hard CON roll",
-        "effects": {
-          "check": {
-            "skill": "CON",
-            "difficulty": "hard",
-            "success": {
-              "nextEntry": "129a",
-              "message": "You feel like you are fighting off the poison."
-            },
-            "failure": {
-              "damage": "1D4",
-              "nextEntry": "129a",
-              "message": "The poison surges through your body."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["427"]
-  },
-  "129a": {
-    "description": "You try to scream for help. Someone might hear you, but time is running out.",
-    "choices": [
-      {
-        "text": "Make a Luck roll to summon help",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "damage": "3D4",
-              "nextEntry": "129c",
-              "message": "Help arrives! A doctor and the conductor come running in. The conductor beats the snakes to death while the doctor tends to you, extracting the poison. It takes some time, but you are finally able to get some rest. You reach Cairo (without further incident) several days later."
-            },
-            "failure": {
-              "nextEntry": "129b"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["129"]
-  },
-  "129b": {
-    "description": "No one hears your screams. The poison is spreading, and your body is weakening. You must try to resist the effects.",
-    "choices": [
-      {
-        "text": "Make another Hard CON roll",
-        "effects": {
-          "check": {
-            "skill": "CON",
-            "difficulty": "hard",
-            "success": {
-              "nextEntry": "129a",
-              "message": "You feel like you are fighting off the poison."
-            },
-            "failure": {
-              "damage": "1D4",
-              "nextEntry": "129a",
-              "message": "The poison surges through your body."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["129a"]
-  },
-  "129c": {
-    "description": "",
-    "choices": [
-      {
-        "text": "Depart at Cairo",
-        "nextEntry": "205",
-        "effects": {
-          "advanceTime": 71
-        }
-      }
-    ]
-  },
-  "205": {
-    "title": "CAIRO RAIL STATION",
-    "description": "You can get a good meal here between 5am and 8pm. An offensive odor, like the scent of manure, hangs over the station. Many British soldiers prowl about the area.",
-    "choices": [
-      {
-        "text": "Take the 9am train to Alexandria",
-        "effects": {
-          "setHour": 9,
-          "advanceTime": 1
-        },
-        "nextEntry": "195"
-      },
-      {
-        "text": "Take the 12 noon train to Alexandria",
-        "effects": {
-          "setHour": 12,
-          "advanceTime": 1
-        },
-        "nextEntry": "195"
-      },
-      {
-        "text": "Take the 5pm train to Alexandria",
-        "effects": {
-          "setHour": 17,
-          "advanceTime": 1
-        },
-        "nextEntry": "195"
-      },
-      {
-        "text": "Take the noon train to Athens (3-day trip)",
-        "effects": {
-          "setHour": 12,
-          "advanceTime": 72
-        },
-        "nextEntry": "183"
-      },
-      {
-        "text": "Go to any Cairo location",
-        "nextEntry": "Egypt Location"
-      }
-    ],
-    "traceNumbers": ["195", "183"]
-  },
-  "151": {
-    "description": "The window gives way, and you tumble from the train, hitting the ground hard. You lose 1D6 hit points. At the next stop, you are forced to wait 24 hours for another train.",
-    "choices": [
-      {
-        "text": "Wait for the next train",
-        "effects": {
-          "advanceTime": 22
-        },
-        "nextEntry": "75"
-      }
-    ],
-    "traceNumbers": ["97"]
-  },
-  "152": {
-    "description": "You attempt to jump or dodge past the snakes. Your survival depends on your agility.",
-    "choices": [
-      {
-        "text": "Make a Jump roll",
-        "effects": {
-          "check": {
-            "skill": "Jump",
-            "success": {
-              "nextEntry": "75",
-              "message": "You successfully leap past the snakes and make it to safety."
-            },
-            "failure": {
-              "nextEntry": "129",
-              "message": "You fail to jump in time and are bitten by the snake."
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Dodge roll",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": {
-              "nextEntry": "75",
-              "message": "You successfully dodge past the snakes and make it to safety."
-            },
-            "failure": {
-              "nextEntry": "129",
-              "message": "You fail to dodge in time and are bitten by the snake."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["97", "75", "129"]
-  },
-  "449": {
-    "title": "BREMEN HARBOR",
-    "description": "Bremerhaven, Bremen’s harbor area, appears quiet in the cold air of early morning. Dense, icy fog hangs over the port.",
-    "choices": [
-      {
-        "text": "It is before December 20",
-        "requirements": {
-          "dateBefore": "1931-12-20"
-        },
-        "nextEntry": "451"
-      },
-      {
-        "text": "It is December 20 or thereafter",
-        "requirements": {
-          "dateAfter": "1931-12-19"
-        },
-        "nextEntry": "452"
-      }
-    ],
-    "traceNumbers": ["451", "452"]
-  },
-  "424": {
-    "title": "INEXPENSIVE ATHENS HOTEL",
-    "description": "This fleabag hotel is not exactly clean and sanitary, but it is quiet.",
-    "choices": [
-      {
-        "text": "Take a room",
-        "nextEntry": "26"
-      },
-      {
-        "text": "Another Athens Location",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": []
-  },
-  "26": {
-    "description": "As you enter the hotel, something gives you pause. You hesitate for a moment, noticing strangers in the lobby who seem to watch you. One of the strangers seems to hide his face.",
-    "choices": [
-      {
-        "text": "Make a Spot Hidden roll",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "123",
-              "message": "You notice the strangers watching you."
-            },
-            "failure": {
-              "nextEntry": "123",
-              "message": "You fail to notice anything unusual."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["101", "127", "424"]
-  },
-  "123": {
-    "description": "You go to your room.",
-    "choices": [
-      {
-        "text": "Make a Listen roll",
-        "effects": {
-          "check": {
-            "skill": "Listen",
-            "success": {
-              "nextEntry": "123b",
-              "message": "You hear footsteps outside your door."
-            },
-            "failure": {
-              "nextEntry": "185",
-              "message": "You fail to notice anything unusual."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["26", "164", "185", "123b"]
-  },
-  "123b": {
-    "description": "They are at your door and you hear the door rattle slightly. You must decide what to do next.",
-    "choices": [
-      {
-        "text": "Make a Listen roll",
-        "effects": {
-          "check": {
-            "skill": "Listen",
-            "success": {
-              "nextEntry": "594",
-              "message": "You hear footsteps outside your door."
-            },
-            "failure": {
-              "nextEntry": "185",
-              "message": "You fail to notice anything unusual."
-            }
-          }
-        }
-      },
-      {
-        "text": "Look out the window",
-        "nextEntry": "594",
-        "message": "Very sensible! You see a fire escape leading down to safety."
-      },
-      {
-        "text": "Lock the door",
-        "nextEntry": "185",
-        "message": "You lock the door. As you step away, you see it unlock and door starts to open."
-      },
-      {
-        "text": "Hide in the bathroom",
-        "nextEntry": "185",
-        "message": "You hide in the bathroom, hoping to remain undetected. You hear the door open in the other room, footsteps approaching the bathroom door, then the bathroom door swings open."
-      },
-      {
-        "text": "Hide under the bed",
-        "nextEntry": "185",
-        "message": "You crawl under the bed, hoping the strangers don't find you. You hear the door open."
-      },
-      {
-        "text": "Order the strangers to leave",
-        "nextEntry": "185",
-        "message": "The door starts to open and you shout for them to leave your room. There is laughter on the other side of the door."
-      },
-      {
-        "text": "Ready your weapon",
-        "nextEntry": "185a",
-        "message": "You ready your weapon, prepared for anything as the door opens. Two figures enter, a short man holding a wicked-looking dagger and a tall man dressed in a shadowy cloak. The short man comes at you, ready to strike."
-      }
-    ],
-    "traceNumbers": ["26", "164", "185", "594"]
-  },
-  "185": {
-    "description": "Two figures enter: a short man holding a wicked-looking dagger and a tall man dressed in a shadowy cloak. The short man lunges at you with a dagger. You must act quickly.",
-    "choices": [
-      {
-        "text": "Make a DEX roll to ready your weapon",
-        "effects": {
-          "check": {
-            "skill": "DEX",
-            "success": {
-              "nextEntry": "185a",
-              "message": "You manage to draw your weapon just in time!"
-            },
-            "failure": {
-              "nextEntry": "185b",
-              "message": "The short man lunges with his dagger before you can react.",
-              "damage": "1D6"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["123"]
-  },
-  "185a": {
-    "description": "You have your weapon ready. The short man lunges at you with his dagger. You must defend yourself or fight back.",
-    "choices": [
-      {
-        "text": "Fight back",
-        "nextEntry": "185b",
-        "effects": {
-          "combat": {
-            "opponent": {
-              "name": "Short Man",
-              "attackChance": "50%",
-              "damage": "1D6",
-              "health": 8,
-              "maxHealth": 8
-            },
-            "win": "185c",
-            "lose": "185d"
-          }
-        }
-      },
-      {
-        "text": "Dodge the attack",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": {
-              "nextEntry": "185d",
-              "message": "You successfully dodge the short man's attack."
-            },
-            "failure": {
-              "damage": "1D6",
-              "nextEntry": "185b",
-              "message": "The short man's dagger finds its mark, injuring you."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["185"]
-  },
-  "185b": {
-    "description": "You must act quickly to defend yourself.",
-    "choices": [
-      {
-        "text": "Fight back",
-        "nextEntry": "185b",
-        "effects": {
-          "combat": {
-            "opponent": {
-              "name": "Short Man",
-              "attackChance": "50%",
-              "damage": "1D6",
-              "health": 8,
-              "maxHealth": 8
-            },
-            "win": "185c",
-            "lose": "185d"
-          }
-        }
-      },
-      {
-        "text": "Dodge",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": {
-              "nextEntry": "185d",
-              "message": "You successfully dodge the attack."
-            },
-            "failure": {
-              "damage": "1D6",
-              "nextEntry": "185b",
-              "message": "The short man's dagger finds its mark, injuring you."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["185a"]
-  },
-  "185c": {
-    "description": "You manage to wound the short man, and he collapses unconscious from the damage. As you look around, the tall man in the cloak blocks the exit, his eyes glowing ominously. The air grows deathly cold.",
-    "choices": [
-      {
-        "text": "Confront the tall figure",
-        "nextEntry": "185e"
-      }
-    ],
-    "traceNumbers": ["185"]
-  },
-  "185d": {
-    "description": "You evade the short man, and you still have a chance to survive. The tall man is blocking the exit. His eyes glow in the shadow of his cloak.",
-    "choices": [
-      {
-        "text": "Confront the tall figure",
-        "nextEntry": "185e"
-      }
-    ],
-    "traceNumbers": ["185b"]
-  },
-  "185e": {
-    "description": "The tall man seems inhuman, his glowing eyes locked on you. You feel a deathly chill emanating from him. You must make a decision quickly.",
-    "choices": [
-      {
-        "text": "Attack the tall figure",
-        "effects": {
-          "check": {
-            "skill": "Fighting (Brawl)",
-            "success": {
-              "nextEntry": "185h",
-              "message": "Your attack passes through the figure, and you lose your footing! You stumble forward and pass completely through the being, as if he were a ghost! You clamber out of the door and run out of the hotel."
-            },
-            "failure": {
-              "nextEntry": "185g",
-              "message": "Your desperate attack has no effect, passing through the figure as if he were a ghost! The figure moves closer."
-            }
-          }
-        }
-      },
-      {
-        "text": "Dodge and escape",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": {
-              "nextEntry": "185i",
-              "message": "You dodge the figure and manage to escape!"
-            },
-            "failure": {
-              "nextEntry": "185g",
-              "message": "You fail to dodge, and the figure grabs you."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["185c"]
-  },
-  "185g": {
-    "description": "The hooded figure grabs you with cold, inhuman hands, and the life drains out of you as you struggle in vain. For you, this is...\n\nTHE END.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["185e"]
-  },
-  "185h": {
-    "description": "",
-    "choices": [
-      {
-        "text": "Run out of the hotel",
-        "nextEntry": "Athens Location"
-      }
-    ]
-  },
-  "185i": {
-    "description": "",
-    "choices": [
-      {
-        "text": "Run out of the hotel",
-        "nextEntry": "Athens Location"
-      }
-    ]
-  },
-  "594": {
-    "description": "You are able to climb down the fire escape, and make your way to another nearby hotel. You are safe for the night.",
-    "choices": [
-      {
-        "text": "Continue",
-        "nextEntry": "Athens Location",
-        "effects": {
-          "setHour": 7
-        }
-      }
-    ]
-  },
-  "101": {
-    "title": "MODERATE HOTEL",
-    "description": "This hotel offers a clean room and a quiet night of sleep.",
-    "choices": [
-      {
-        "text": "Spend a second night here",
-        "nextEntry": "26",
-        "effects": {
-          "setHour": 7,
-          "increment": {
-            "counter": "moderateHotelStays"
-          }
-        },
-        "requirements": {
-          "minHotelStays": {
-            "moderateHotelStays": 1
-          }
-        }
-      },
-      {
-        "text": "Go to an Athens location in the morning",
-        "nextEntry": "Athens Location",
-        "effects": {
-          "setHour": 7,
-          "increment": {
-            "counter": "moderateHotelStays"
-          }
-        },
-        "requirements": {
-          "currentLocale": "Athens",
-          "requiredHotelStays": {
-            "moderateHotelStays": 0
-          }
-        }
-      },
-      {
-        "text": "Go to an Egypt location in the morning",
-        "nextEntry": "Egypt Location",
-        "effects": {
-          "setHour": 7,
-          "increment": {
-            "counter": "moderateHotelStays"
-          }
-        },
-        "requirements": {
-          "currentLocale": "Egypt",
-          "requiredHotelStays": {
-            "moderateHotelStays": 0
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["26"]
-  },
-  "127": {
-    "title": "EXPENSIVE HOTEL",
-    "description": "This is the best class of hotel. It has 24-hour room service.",
-    "choices": [
-      {
-        "text": "Stay for the second night",
-        "requirements": {
-          "requiredHotelStays": {
-            "expensiveHotelStays": 1
-          }
-        },
-        "effects": {
-          "setHour": 7,
-          "increment": {
-            "counter": "expensiveHotelStays"
-          },
-          "diceRoll": "1D10",
-          "outcomes": {
-            "9-10": {
-              "description": "The hotel is busy tonight.",
-              "nextEntry": "26"
-            },
-            "1-8": {
-              "description": "Nothing unusual happens during the night. You wake up refreshed.",
-              "nextEntry": "Athens"
-            }
-          }
-        }
-      },
-      {
-        "text": "Stay for the third night",
-        "requirements": {
-          "requiredHotelStays": {
-            "expensiveHotelStays": 2
-          }
-        },
-        "effects": {
-          "setHour": 7,
-          "increment": {
-            "counter": "expensiveHotelStays"
-          },
-          "diceRoll": "1D10",
-          "outcomes": {
-            "8-10": {
-              "description": "The hotel is busy tonight.",
-              "nextEntry": "26"
-            },
-            "1-7": {
-              "description": "Nothing unusual happens during the night. You wake up refreshed.",
-              "nextEntry": "Athens"
-            }
-          }
-        }
-      },
-      {
-        "text": "Stay for a 4th night",
-        "requirements": {
-          "requiredHotelStays": {
-            "expensiveHotelStays": 3
-          }
-        },
-        "effects": {
-          "setHour": 7,
-          "increment": {
-            "counter": "expensiveHotelStays"
-          },
-          "diceRoll": "1D10",
-          "outcomes": {
-            "6-10": {
-              "description": "The hotel is busy tonight.",
-              "nextEntry": "26"
-            },
-            "1-5": {
-              "description": "Nothing unusual happens during the night. You wake up refreshed.",
-              "nextEntry": "Athens"
-            }
-          }
-        }
-      },
-      {
-        "text": "Stay for a 5th night",
-        "requirements": {
-          "requiredHotelStays": {
-            "expensiveHotelStays": 4
-          }
-        },
-        "effects": {
-          "setHour": 7,
-          "increment": {
-            "counter": "expensiveHotelStays"
-          },
-          "diceRoll": "1D10",
-          "outcomes": {
-            "6-10": {
-              "description": "The hotel is busy tonight.",
-              "nextEntry": "26"
-            },
-            "1-5": {
-              "description": "Nothing unusual happens during the night. You wake up refreshed.",
-              "nextEntry": "Athens"
-            }
-          }
-        }
-      },
-      {
-        "text": "Stay for a 6th night",
-        "requirements": {
-          "requiredHotelStays": {
-            "expensiveHotelStays": 5
-          }
-        },
-        "effects": {
-          "setHour": 7,
-          "increment": {
-            "counter": "expensiveHotelStays"
-          },
-          "diceRoll": "1D10",
-          "outcomes": {
-            "5-10": {
-              "description": "The hotel is busy tonight.",
-              "nextEntry": "26"
-            },
-            "1-4": {
-              "description": "Nothing unusual happens during the night. You wake up refreshed.",
-              "nextEntry": "Athens"
-            }
-          }
-        }
-      },
-      {
-        "text": "Stay for a 7th night",
-        "requirements": {
-          "requiredHotelStays": {
-            "expensiveHotelStays": 6
-          }
-        },
-        "effects": {
-          "setHour": 7,
-          "increment": {
-            "counter": "expensiveHotelStays"
-          },
-          "diceRoll": "1D10",
-          "outcomes": {
-            "4-10": {
-              "description": "The hotel is busy tonight.",
-              "nextEntry": "26"
-            },
-            "1-3": {
-              "description": "Nothing unusual happens during the night. You wake up refreshed.",
-              "nextEntry": "Athens"
-            }
-          }
-        }
-      },
-      {
-        "text": "Stay for a 8th night",
-        "requirements": {
-          "requiredHotelStays": {
-            "expensiveHotelStays": 7
-          }
-        },
-        "effects": {
-          "setHour": 7,
-          "increment": {
-            "counter": "expensiveHotelStays"
-          },
-          "diceRoll": "1D10",
-          "outcomes": {
-            "3-10": {
-              "description": "The hotel is busy tonight.",
-              "nextEntry": "26"
-            },
-            "1-2": {
-              "description": "Nothing unusual happens during the night. You wake up refreshed.",
-              "nextEntry": "Athens"
-            }
-          }
-        }
-      },
-      {
-        "text": "Stay for a 9th night",
-        "requirements": {
-          "requiredHotelStays": {
-            "expensiveHotelStays": 8
-          }
-        },
-        "effects": {
-          "setHour": 7,
-          "increment": {
-            "counter": "expensiveHotelStays"
-          },
-          "diceRoll": "1D10",
-          "outcomes": {
-            "2-10": {
-              "description": "The hotel is busy tonight.",
-              "nextEntry": "26"
-            },
-            "1": {
-              "description": "Nothing unusual happens during the night. You wake up refreshed.",
-              "nextEntry": "Athens"
-            }
-          }
-        }
-      },
-      {
-        "text": "Stay for a 10th night",
-        "requirements": {
-          "requiredHotelStays": {
-            "expensiveHotelStays": 9
-          }
-        },
-        "effects": {
-          "setHour": 7,
-          "increment": {
-            "counter": "expensiveHotelStays"
-          },
-          "diceRoll": "1D10",
-          "outcomes": {
-            "1-10": {
-              "description": "The hotel is busy tonight.",
-              "nextEntry": "26"
-            }
-          }
-        }
-      },
-      {
-        "text": "Spend the night then head to an Athens location",
-        "nextEntry": "Athens",
-        "effects": {
-          "setHour": 7,
-          "increment": {
-            "counter": "expensiveHotelStays"
-          }
-        },
-        "requirements": {
-          "requiredHotelStays": {
-            "expensiveHotelStays": 0
-          },
-          "currentLocale": "Athens"
-        }
-      },
-      {
-        "text": "Spend the night then head to an Egypt location",
-        "nextEntry": "Egypt",
-        "effects": {
-          "setHour": 7,
-          "increment": {
-            "counter": "expensiveHotelStays"
-          }
-        },
-        "requirements": {
-          "requiredHotelStays": {
-            "expensiveHotelStays": 0
-          },
-          "currentLocale": "Egypt"
-        }
-      }
-    ],
-    "traceNumbers": ["26"]
-  },
-  "160": {
-    "title": "MOTORSHIP KYONAS",
-    "description": "A peeling but sturdy-looking vessel rests beside the pier. It is the Kyonas. On deck, you see a sign: \"SHIP FOR HIRE - see Capt. Miko Rduka.\" If you want a secret way to leave Greece, this might be it. Rduka, the half Armenian and half Greek captain, will take you anywhere in the Mediterranean. It takes 24 hours to get the vessel loaded, fueled, and crewed.",
-    "choices": [
-      {
-        "text": "Hire the Kyonas to sail to Alexandria",
-        "nextEntry": "195",
-        "effects": {
-          "advanceTime": 71
-        }
-      },
-      {
-        "text": "Keep looking around Athens",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["78", "195"]
-  },
-  "166": {
-    "description": "You see Pisistratos, the Museum Director, showing the museum to an English dignitary. You rush up to him and quickly ask your questions. He briefly speaks but seems to want to dismiss you, saying he doesn't know why Gliere stole the antiquity.",
-    "choices": [
-      {
-        "text": "Make a Psychology roll about Gliere",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "17",
-              "message": "You detect something is off about his answer regarding Gliere."
-            },
-            "failure": {
-              "nextEntry": "166",
-              "message": "You don't notice anything unusual."
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Psychology roll about the loan of the Karpathos Device",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "1",
-              "message": "He seems uncertain about the Karpathos Device's loan."
-            },
-            "failure": {
-              "nextEntry": "166",
-              "message": "You don't detect any hidden motives."
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Psychology roll about the Karpathos Device being a clock",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "4",
-              "message": "There seems to be more to this 'clock' than he's saying."
-            },
-            "failure": {
-              "nextEntry": "166",
-              "message": "You can't tell if there's more to his explanation."
-            }
-          }
-        }
-      },
-      {
-        "text": "Return to the National Museum of Archaeology",
-        "nextEntry": "118"
-      },
-      {
-        "text": "Go to any Athens location",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["17", "1", "4", "118", "176"]
-  },
-  "17": {
-    "description": "He's lying.",
-    "choices": [
-      {
-        "text": "Return to Pisistratos at the Museum of Archaeology",
-        "nextEntry": "166",
-        "requirements": {
-          "previousEntry": "166"
-        }
-      },
-      {
-        "text": "Return to interrogating Pisistratos in his office",
-        "nextEntry": "177",
-        "requirements": {
-          "previousEntry": "177a"
-        }
-      },
-      {
-        "text": "Return to talking to Amet Keh in Cairo",
-        "nextEntry": "350",
-        "requirements": {
-          "previousEntry": "350"
-        }
-      }
-    ],
-    "traceNumbers": ["166", "177", "350", "316", "346"]
-  },
-  "4": {
-    "description": "He's lying.",
-    "choices": [
-      {
-        "text": "Return to the motorship Kyonas talking to Christos",
-        "nextEntry": "160",
-        "requirements": {
-          "previousEntry": "160"
-        }
-      },
-      {
-        "text": "Return to Pisistratos at the Museum of Archaeology",
-        "nextEntry": "166",
-        "requirements": {
-          "previousEntry": "166"
-        }
-      },
-      {
-        "text": "Return to interrogating Pisistratos in his office",
-        "nextEntry": "177",
-        "requirements": {
-          "previousEntry": "177c"
-        }
-      }
-    ],
-    "traceNumbers": ["160", "166", "177c", "76"]
-  },
-  "153": {
-    "description": "A young secretary guards the door to the Museum Director’s office. She informs you in careful English that Mr. Pisistratos’ schedule is full.",
-    "choices": [
-      {
-        "text": "Argue with the secretary to see Pisistratos",
-        "nextEntry": "34"
-      },
-      {
-        "text": "Christos beckons to you",
-        "nextEntry": "22",
-        "requirements": {
-          "hiredCompanion": "Christos"
-        }
-      },
-      {
-        "text": "Return to the main area of the museum",
-        "nextEntry": "118"
-      },
-      {
-        "text": "Go to any Athens Location",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["118"]
-  },
-  "34": {
-    "description": "Despite your best efforts, she will not change her mind and sends you on your way.",
-    "choices": [
-      {
-        "text": "Return to the main area of the museum",
-        "nextEntry": "118"
-      },
-      {
-        "text": "Go to any Athens Location",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["118", "153"]
-  },
-  "22": {
-    "description": "Christos whispers to you, suggesting that you and he could just burst into the office. He grins slyly.",
-    "choices": [
-      {
-        "text": "Agree and burst into the office",
-        "nextEntry": "177"
-      },
-      {
-        "text": "Return to the museum entrance",
-        "nextEntry": "118"
-      },
-      {
-        "text": "Go to any Athens Location",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["118", "153", "177"]
-  },
-  "177": {
-    "description": "You push past the secretary and burst into Pisistratos’ office. He stands up, blinking. \"This is an outrage,\" he sputters in excellent English. Christos leaps upon him and pushes him back into the chair. \"Ask your questions boss,\" says Christos.",
-    "choices": [
-      {
-        "text": "Ask him why Gliere stole the device",
-        "nextEntry": "177a"
-      },
-      {
-        "text": "Question him about the loan of the Karpathos Device.",
-        "nextEntry": "177b"
-      },
-      {
-        "text": "Ask about the Karpathos Device being a clock",
-        "nextEntry": "177c"
-      },
-      {
-        "text": "Flee before the police arrive",
-        "nextEntry": "Athens Location",
-        "message": "You both run out of the office, leaving Pisistratos shouting curses at you."
-      }
-    ],
-    "traceNumbers": ["22", "17", "1", "4"]
-  },
-  "177a": {
-    "description": "You swagger over and grill the Museum Director. He tries to put you off, saying he doesn’t know why Gliere stole the Device.",
-    "choices": [
-      {
-        "text": "Attempt a Psychology roll",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "17",
-              "message": "You detect something is off about his answer regarding Gliere.\n\n"
-            },
-            "failure": {
-              "nextEntry": "177",
-              "message": "You can't tell if he's lying.\n\n"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Keep questioning the Director",
-        "nextEntry": "177"
-      }
-    ]
-  },
-  "177b": {
-    "description": "",
-    "choices": [
-      {
-        "text": "Attempt a Psychology roll",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "1",
-              "message": "You sense he's hiding something about the loan.\n\n"
-            },
-            "failure": {
-              "nextEntry": "177",
-              "message": "You believe what he says about the loan.\n\n"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Keep questioning the Director",
-        "nextEntry": "177"
-      }
-    ]
-  },
-  "177c": {
-    "description": "You inquire further about the claim that the Karpathos Device is just a clock.",
-    "choices": [
-      {
-        "text": "Attempt a Psychology roll",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "4",
-              "message": "You can tell he's being untruthful about the device being a clock.\n\n"
-            },
-            "failure": {
-              "nextEntry": "177",
-              "message": "You believe the Karpathos Device is just a clock.\n\n"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Keep questioning the Director",
-        "nextEntry": "177"
       }
     ]
   }
