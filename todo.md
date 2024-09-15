@@ -1,7 +1,12 @@
 Athens Locations
-65
-586 - make it work for Athens
 194
+14
+27
+31
+
+18
+19
+
 20
 38
 Be intentional about hiring interpretors

@@ -2980,8 +2980,18 @@
     "description": "“DEC. 20, BREMERHAVEN – The Starkweather-Moore expedition departed today under clear skies and calm seas. Despite the record cold temperatures, many came to the pier to see off the expedition.”",
     "choices": [
       {
-        "text": "Go to any New York Location.",
-        "nextEntry": "New York Location"
+        "text": "Return to Athens Locations",
+        "nextEntry": "Athens Location",
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      },
+      {
+        "text": "Return to New York Locations",
+        "nextEntry": "New York Location",
+        "requirements": {
+          "currentLocale": "New York"
+        }
       }
     ]
   },
@@ -3393,6 +3403,14 @@
           "currentLocale": "New York"
         },
         "nextEntry": "New York Location"
+      },
+      {
+        "text": "Go to any Athens Location.",
+        "nextEntry": "Athens Location",
+        "requirements": {
+          "dateBefore": "1931-10-31",
+          "currentLocale": "Athens"
+        }
       }
     ]
   },
@@ -3632,6 +3650,14 @@
           "currentLocale": "New York"
         },
         "nextEntry": "New York Location"
+      },
+      {
+        "text": "Go to any Athens Location.",
+        "requirements": {
+          "dateBefore": "1931-12-01",
+          "currentLocale": "Athens"
+        },
+        "nextEntry": "Athens Location"
       }
     ]
   },
@@ -4380,7 +4406,7 @@
           "outcomes": {
             "1": {
               "description": "That food really hit the spot!",
-              "nextEntry": "New York"
+              "nextEntry": "586a"
             },
             "2-10": {
               "description": "The food tasted all right at the time, but now your stomach is churning.",
@@ -4391,10 +4417,67 @@
       },
       {
         "text": "Keep exploring",
-        "nextEntry": "New York"
+        "nextEntry": "New York",
+        "requirements": {
+          "currentLocale": "New York"
+        }
+      },
+      {
+        "text": "Keep exploring",
+        "nextEntry": "Athens",
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      },
+      {
+        "text": "Keep exploring",
+        "nextEntry": "Egypt",
+        "requirements": {
+          "currentLocale": "Egypt"
+        }
+      },
+      {
+        "text": "Keep exploring",
+        "nextEntry": "Bremen",
+        "requirements": {
+          "currentLocale": "Bremen"
+        }
       }
     ],
     "traceNumbers": ["12"]
+  },
+  "586a": {
+    "description": "Keep exploring.",
+    "choices": [
+      {
+        "text": "Keep exploring",
+        "nextEntry": "New York",
+        "requirements": {
+          "currentLocale": "New York"
+        }
+      },
+      {
+        "text": "Keep exploring",
+        "nextEntry": "Athens",
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      },
+      {
+        "text": "Keep exploring",
+        "nextEntry": "Egypt",
+        "requirements": {
+          "currentLocale": "Egypt"
+        }
+      },
+      {
+        "text": "Keep exploring",
+        "nextEntry": "Bremen",
+        "requirements": {
+          "currentLocale": "Bremen"
+        }
+      }
+    ]
   },
   "590": {
     "description": "The purser tells you that skeet shooting from the fantail will soon begin.",
@@ -5758,6 +5841,140 @@
       {
         "text": "Leave the hospital",
         "nextEntry": "585_exit"
+      }
+    ]
+  },
+  "65": {
+    "title": "NEW YORK SUN (EUROPEAN EDITION)",
+    "description": "When you browse through the newspaper, you notice three items:\n\n\"Amet Keh, Director of the Cairo National Museum, eagerly awaits the arrival of the Karpathos Device, on loan from Athens.\"\n\n\"The casket bearing Professor Gliere, the academic thief from Miskatonic University, has been placed aboard the Urania for New York. A memorial service has been scheduled in Arkham, Mass., U.S.A.\"\n\n\"The Starkweather-Moore Expedition nears readiness as The Dark Sea heads for Bremen, Germany. Once there, final preparations include reinforcing the hull for the treacherous journey into the ice floes surrounding Antarctica.\"",
+    "choices": [
+      {
+        "text": "Continue reading",
+        "nextEntry": "95"
+      },
+      {
+        "text": "Return to Athens Locations",
+        "nextEntry": "Athens Location",
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      },
+      {
+        "text": "Return to New York Locations",
+        "nextEntry": "New York Location",
+        "requirements": {
+          "currentLocale": "New York"
+        }
+      }
+    ],
+    "traceNumbers": []
+  },
+  "194": {
+    "title": "THE PARTHENON",
+    "description": "The majestic temple columns glow golden-yellow in the setting sun, deepening to blue as you clamber across the rubble to reach the lonely inner court. The beauty of the scene somehow oppresses you, and gradually you sink into your own thoughts. As you ponder the suicide of Gliere, a scream abruptly brings you to the present. The cry seemed to come from nowhere.\n\nSuddenly you are aware of your isolation and vulnerability in the deepening gloom.",
+    "choices": [
+      {
+        "text": "Try to hide",
+        "nextEntry": "14"
+      },
+      {
+        "text": "Sneak away",
+        "nextEntry": "18"
+      },
+      {
+        "text": "Stroll away casually",
+        "nextEntry": "19"
+      },
+      {
+        "text": "Return to Athens Locations",
+        "nextEntry": "Athens Location",
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      }
+    ],
+    "traceNumbers": []
+  },
+  "14": {
+    "description": "You crouch in the gloomy shadows. Soon you hear slow, shuffling footsteps from many directions. Do you wish you’d run instead? Somehow you count yourself glad that you can’t make out the faces of the approaching figures—figures which move as though alive, and yet remind you of the dead! Now you’re sure they see you. You begin to panic.",
+    "choices": [
+      {
+        "text": "Run",
+        "nextEntry": "27"
+      },
+      {
+        "text": "Use Fast Talk to get out of this",
+        "nextEntry": "31"
+      },
+      {
+        "text": "Return to Athens Locations",
+        "nextEntry": "Athens Location",
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      }
+    ],
+    "traceNumbers": ["194"]
+  },
+  "27": {
+    "description": "Something grabs you. You must struggle to escape.",
+    "choices": [
+      {
+        "text": "Make a STR roll",
+        "effects": {
+          "check": {
+            "skill": "STR",
+            "success": {
+              "nextEntry": "33",
+              "message": "You tear yourself free from the grasp and escape."
+            },
+            "failure": {
+              "nextEntry": "27a",
+              "message": "Another thing grabs you, and you must fight against their combined strength."
+            }
+          }
+        }
+      },
+      {
+        "text": "Return to Athens Locations",
+        "nextEntry": "Athens Location",
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      }
+    ],
+    "traceNumbers": ["14", "18"]
+  },
+  "27a": {
+    "description": "A second thing grabs you. Their combined strength is overwhelming. Make an opposed roll against a combined STR of 140.",
+    "choices": [
+      {
+        "text": "Make an opposed STR roll against 140",
+        "effects": {
+          "check": {
+            "skill": "STR",
+            "opposedValue": 140,
+            "success": {
+              "nextEntry": "33",
+              "message": "You squirm free and escape."
+            },
+            "failure": {
+              "nextEntry": "27b",
+              "message": "A third figure grips you tightly, and you are unable to break free."
+            }
+          }
+        }
+      }
+    ]
+  },
+  "27b": {
+    "description": "A third one grips you, and all three begin tearing at your flesh. You scream as the figures overwhelm you.\n\nIt is ... THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
       }
     ]
   }
