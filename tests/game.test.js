@@ -2181,4 +2181,68 @@ describe('Game Logic', () => {
       expect(checkRequirements(requirements)).toBe(false)
     })
   })
+
+  describe('addItem effect', () => {
+    beforeEach(() => {
+      // Reset game state before each test
+      initializeGame() // Make sure the game is set to its initial state
+      setCurrentDate(new Date(1931, 8, 1)) // Set a specific date if needed
+    })
+
+    test('should add artifact item to inventory when choice is made', () => {
+      currentState.inventory = [] // Clear the inventory
+
+      // Define the effects with the addItem for an artifact
+      const effects = {
+        addItem: {
+          name: 'Ring of Power',
+          type: 'artifact',
+          description:
+            'A ring heavy with gold, covered with signs, most prominently a five-pointed star with a core of flame. It has power, particularly against dead things brought back to existence.',
+        },
+        setHour: 6,
+      }
+
+      // Simulate the choice to trigger addItem
+      makeChoice('Athens', effects)
+
+      // Check if the item has been added to the inventory
+      const addedItem = currentState.inventory.find(
+        (item) => item.name === 'Ring of Power',
+      )
+
+      // Verify the item was added and contains the correct details
+      expect(addedItem).toBeDefined() // Ensure the item exists
+      expect(addedItem.name).toBe('Ring of Power') // Check item name
+      expect(addedItem.type).toBe('artifact') // Check item type
+      expect(addedItem.description).toContain('A ring heavy with gold') // Check description content
+    })
+
+    test('should not add duplicate items to the inventory', () => {
+      currentState.inventory = [] // Clear the inventory
+
+      // Define the effects with the addItem for an artifact
+      const effects = {
+        addItem: {
+          name: 'Ring of Power',
+          type: 'artifact',
+          description:
+            'A ring heavy with gold, covered with signs, most prominently a five-pointed star with a core of flame. It has power, particularly against dead things brought back to existence.',
+        },
+        setHour: 6,
+      }
+
+      // Simulate adding the same item twice
+      makeChoice('Athens', effects)
+      makeChoice('Athens', effects)
+
+      // Check the inventory to ensure the item was only added once
+      const filteredItems = currentState.inventory.filter(
+        (item) => item.name === 'Ring of Power',
+      )
+
+      // Expect only one instance of the item in the inventory
+      expect(filteredItems.length).toBe(1)
+    })
+  })
 })

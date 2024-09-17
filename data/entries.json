@@ -5977,5 +5977,23 @@
         }
       }
     ]
+  },
+  "33": {
+    "description": "Trembling with fear, you reel down the road from the Parthenon. You spy a lone figure ahead, a white-haired old man who uses a walking cane. You babble a warning in English, supposing that the alarm alone in your voice will be enough to dissuade him from going closer to the horrors lurking in the Parthenon behind you.\n\nTo your surprise, he answers in English. His voice is slow, but it inspires your confidence. “Fear no more,” he says. “Tonight the stars themselves bind those things to the top of the sacred hill. We have nothing to fear here.”\n\nYour terror begins to lift like a veil. “Your friend was killed by one of those... creatures. You see them in museums, you know, looking like stuffed animals. Undead? Ghouls? Who knows their origin? Your friend Gliere saw them just before they killed him. That is as much as you and I need know.” He pauses. “Our lives we struggle in darkness. We are poor beings, who need the darkness in order to find the light.” As he says these words, the moon breaks through the clouds, and a calm beauty pervades the world. Your fears are quenched, your heart utterly at peace.\n\n“I have been on quests like yours. I have been a scholar of the unusual. I know the uncertainties and the terrors. There is nothing we mere mortals can do but strengthen our faith and struggle against the darkness.” The two of you walk slowly.\n\n“I do not know what Gliere had discovered. But I do know that while in prison he told someone that if the Karpathos Device was returned to its home, life as we know it will cease to exist.”\n\nHe turns to you, “I am at the end of my life. It is up to you to stop this evil, as your friend attempted so valiantly. Egypt is the answer. Go there, find the Karpathos Device, return it to the sea, or destroy it utterly.” He takes something from his hand. It is a ring, heavy with gold, curiously made, covered with signs, most prominently a five-pointed star with a core of flame. “I give you this. It has power, though perhaps not as much as you would want. Use it against dead things brought back to existence.”\n\nFor a moment a friendly hand has steadied you and restored your resolve. This warmth of feeling is what you fight for—and the numbing terror which chased you from the hill is what you despise.\n\nWhen you look up again, your new friend is gone. The road is empty. The encounter was like a dream. But the ring is still there. You slip it on a finger; it fits firmly and comfortably. Reaching the bottom of the hill, you find a cab and go to a hotel. You sleep peacefully.",
+    "choices": [
+      {
+        "text": "Go to any Athens Location",
+        "effects": {
+          "setHour": 6,
+          "addItem": {
+            "name": "Ring of Power",
+            "description": "A ring heavy with gold, covered with signs, most prominently a five-pointed star with a core of flame. It has power, particularly against dead things brought back to existence.",
+            "type": "artifact"
+          }
+        },
+        "nextEntry": "Athens"
+      }
+    ],
+    "traceNumbers": ["18", "19", "27"]
   }
 }

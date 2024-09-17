@@ -337,6 +337,7 @@ export function handleEntryChoices(entryId, entry) {
               currentState,
               choice.effects.check.difficulty,
               choice.effects.check?.tries || null,
+              choice.effects.check?.opposedValue || null,
             )
             const checkResult = success
               ? choice.effects.check.success
@@ -741,6 +742,8 @@ export function makeChoice(nextEntry, effects) {
         currentState.skills,
         currentState,
         effects.check.difficulty,
+        effects.check?.tries || null,
+        effects.check?.opposedValue || null,
       )
       const checkResult = success
         ? effects.check.success
@@ -758,6 +761,10 @@ export function makeChoice(nextEntry, effects) {
         currentState.expensiveHotelStays =
           (currentState.expensiveHotelStays || 0) + 1
       }
+    }
+
+    if (effects.addItem) {
+      addItem(effects.addItem)
     }
   }
 
