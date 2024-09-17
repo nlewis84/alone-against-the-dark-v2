@@ -84,7 +84,7 @@ export async function initializeGame() {
     setGameData('books', books)
     updateTime(0, 20) // Initialize date display
     startGame()
-    displayEntry('33') // Ensure the first entry is displayed ... should be 13
+    displayEntry('223') // Ensure the first entry is displayed ... should be 13
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error)
   }
@@ -102,6 +102,7 @@ export function startGame() {
     },
     visitedEntries: new Set(),
     shipJourneyStartDate: null,
+    scheduledMeetings: [],
     ...gameData.investigators['Professor Grunewald'],
   }
   displayEntry(currentState.currentEntry)

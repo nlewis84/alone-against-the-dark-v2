@@ -1,13 +1,10 @@
 Athens Locations
-194
-14
-27
-31
-
-18
-19
-
 20
+35
+107
+105
+35
+
 38
 Be intentional about hiring interpretors
 
@@ -45,6 +42,8 @@ that takes the player to Entry 4 (or a copy of it) then takes the back to the en
 372
 380
 408
+
+286 - The ring came from entry 33
 
 207
 290

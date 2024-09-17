@@ -406,6 +406,56 @@ export function handleEntryChoices(entryId, entry) {
                     (currentState.expensiveHotelStays || 0) + 1
                 }
               }
+
+              if (choice.effects.addItem) {
+                addItem(choice.effects.addItem)
+              }
+
+              // Handle scheduling a meeting
+              if (choice.effects.scheduleMeeting) {
+                console.log(choice.effects.scheduleMeeting)
+                if (!currentState.scheduledMeetings) {
+                  currentState.scheduledMeetings = []
+                }
+
+                // Add the new meeting to the scheduledMeetings array
+                currentState.scheduledMeetings.push({
+                  location: choice.effects.scheduleMeeting.location,
+                  entry: choice.effects.scheduleMeeting.entry,
+                  time: choice.effects.scheduleMeeting.time,
+                  meetingWith: choice.effects.scheduleMeeting.meetingWith,
+                })
+              }
+
+              // Remove the scheduled meeting once it's completed
+              if (choice.effects.meetingCompleted) {
+                // Find the corresponding meeting
+                const completedMeeting = currentState.scheduledMeetings.find(
+                  (meeting) =>
+                    meeting.entry === choice.effects.meetingCompleted.entry,
+                )
+
+                if (completedMeeting) {
+                  const newDate = new Date(getCurrentDate())
+                  const targetHour = completedMeeting.time
+                  const currentHour = newDate.getHours()
+
+                  // Check if we need to advance the day first
+                  if (targetHour < currentHour) {
+                    newDate.setDate(newDate.getDate() + 1)
+                    setCurrentDate(newDate)
+                  }
+
+                  updateTime(0, targetHour)
+
+                  // Remove the completed meeting
+                  currentState.scheduledMeetings =
+                    currentState.scheduledMeetings.filter(
+                      (meeting) =>
+                        meeting.entry !== choice.effects.meetingCompleted.entry,
+                    )
+                }
+              }
             }
 
             currentState.currentEntry = choice.nextEntry.replace(
@@ -766,6 +816,49 @@ export function makeChoice(nextEntry, effects) {
     if (effects.addItem) {
       addItem(effects.addItem)
     }
+
+    // Handle scheduling a meeting
+    if (effects.scheduleMeeting) {
+      console.log(effects.scheduleMeeting)
+      if (!currentState.scheduledMeetings) {
+        currentState.scheduledMeetings = []
+      }
+
+      // Add the new meeting to the scheduledMeetings array
+      currentState.scheduledMeetings.push({
+        location: effects.scheduleMeeting.location,
+        entry: effects.scheduleMeeting.entry,
+        time: effects.scheduleMeeting.time,
+        meetingWith: effects.scheduleMeeting.meetingWith,
+      })
+    }
+
+    // Remove the scheduled meeting once it's completed
+    if (effects.meetingCompleted) {
+      // Find the corresponding meeting
+      const completedMeeting = currentState.scheduledMeetings.find(
+        (meeting) => meeting.entry === effects.meetingCompleted.entry,
+      )
+
+      if (completedMeeting) {
+        const newDate = new Date(getCurrentDate())
+        const targetHour = completedMeeting.time
+        const currentHour = newDate.getHours()
+
+        // Check if we need to advance the day first
+        if (targetHour < currentHour) {
+          newDate.setDate(newDate.getDate() + 1)
+          setCurrentDate(newDate)
+        }
+
+        updateTime(0, targetHour)
+
+        // Remove the completed meeting
+        currentState.scheduledMeetings = currentState.scheduledMeetings.filter(
+          (meeting) => meeting.entry !== effects.meetingCompleted.entry,
+        )
+      }
+    }
   }
 
   currentState.currentEntry = nextEntry
@@ -876,6 +969,7 @@ export function saveGame() {
     hiredAthens: currentState.hiredAthens,
     moderateHotelStays: currentState.moderateHotelStays,
     expensiveHotelStays: currentState.expensiveHotelStays,
+    scheduledMeetings: currentState.scheduledMeetings,
   }
   saveState('gameState', saveData)
 }
@@ -909,6 +1003,8 @@ export function loadGame() {
 
     currentState.moderateHotelStays = savedState.moderateHotelStays
     currentState.expensiveHotelStays = savedState.expensiveHotelStays
+
+    currentState.scheduledMeetings = savedState.scheduledMeetings || []
 
     displayEntry(currentState.currentEntry)
     updateHealth(0) // Refresh health display
@@ -1033,6 +1129,16 @@ export function checkRequirements(requirements) {
       // If none of the scheduled activities match, return false
       if (!matchesAM && !matchesPM && !matchesNight) {
         return false // Return false if none of the required activities match
+      }
+    }
+
+    // Check for a scheduled meeting
+    if (requirements.scheduledMeeting) {
+      const meeting = currentState.scheduledMeetings?.find(
+        (m) => m.entry === requirements.scheduledMeeting.entry,
+      )
+      if (!meeting) {
+        return false
       }
     }
 

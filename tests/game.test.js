@@ -2245,4 +2245,110 @@ describe('Game Logic', () => {
       expect(filteredItems.length).toBe(1)
     })
   })
+
+  describe('Effects: scheduleMeeting', () => {
+    beforeEach(() => {
+      initializeGame() // Reset the game state
+    })
+
+    it('should schedule a meeting correctly', () => {
+      // Simulate a choice that schedules a meeting at Parthenon at 6 PM with Richard Hawkes
+      const effects = {
+        scheduleMeeting: {
+          location: 'Parthenon',
+          entry: '194',
+          time: 18, // 6 PM in 24-hour format
+          meetingWith: 'Richard Hawkes',
+        },
+      }
+
+      // Execute makeChoice with the effects
+      makeChoice('Athens Location', effects)
+
+      // Verify the meeting was scheduled correctly
+      expect(currentState.scheduledMeetings).toEqual([
+        {
+          location: 'Parthenon',
+          entry: '194',
+          time: 18,
+          meetingWith: 'Richard Hawkes',
+        },
+      ])
+    })
+  })
+
+  describe('Effects: meetingCompleted', () => {
+    beforeEach(() => {
+      initializeGame() // Reset the game state
+
+      // Add a scheduled meeting for the test
+      currentState.scheduledMeetings = [
+        {
+          location: 'Parthenon',
+          entry: '194',
+          time: 18,
+          meetingWith: 'Richard Hawkes',
+        },
+      ]
+    })
+
+    it('should complete a scheduled meeting and remove it from state', () => {
+      // Simulate a choice that completes the meeting at Parthenon
+      const effects = {
+        meetingCompleted: {
+          entry: '194',
+        },
+      }
+
+      // Execute makeChoice with the effects
+      makeChoice('Athens Location', effects)
+
+      // Verify the meeting was removed from the scheduledMeetings array
+      expect(currentState.scheduledMeetings).toEqual([])
+    })
+  })
+
+  describe('Requirements: scheduledMeeting', () => {
+    beforeEach(() => {
+      initializeGame() // Reset the game state
+    })
+
+    it('should allow the choice if a scheduled meeting exists', () => {
+      // Add a scheduled meeting for the test
+      currentState.scheduledMeetings = [
+        {
+          location: 'Piostos Cafe',
+          entry: '194',
+          time: 18,
+          meetingWith: 'Richard Hawkes',
+        },
+      ]
+
+      // Simulate the requirements for the scheduled meeting at the Parthenon
+      const requirements = {
+        scheduledMeeting: {
+          entry: '194',
+          meetingWith: 'Richard Hawkes',
+        },
+      }
+
+      // Execute checkRequirements to verify the meeting allows the choice
+      const result = checkRequirements(requirements)
+      expect(result).toBe(true) // The choice should be available
+    })
+
+    it('should block the choice if the scheduled meeting does not exist', () => {
+      // Simulate the requirements for a scheduled meeting at the Parthenon
+      const requirements = {
+        scheduledMeeting: {
+          location: 'Parthenon',
+          meetingWith: 'Richard Hawkes',
+        },
+      }
+
+      // Execute checkRequirements without any scheduled meetings
+      const result = checkRequirements(requirements)
+      expect(result).toBe(false) // The choice should be unavailable
+    })
+  })
 })

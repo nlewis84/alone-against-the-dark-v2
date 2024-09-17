@@ -3979,11 +3979,111 @@
     "description": "“May I be of assistance?” the man asks. “I too was once a stranger in this sacred land. My temporary employment allows me to stay here while I work on my book. Where can I take you?”\n\nHe is Richard Hawkes. He will take you wherever you want to go, all the while chatting amiably about the splendors of Greece. He hints that he knows something you wish to know, and tells you to meet him at 6pm at the Piostos Cafe.",
     "choices": [
       {
-        "text": "Go to any Athens Location.",
-        "nextEntry": "Athens Location"
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location",
+        "effects": {
+          "scheduleMeeting": {
+            "location": "Piostos Cafe",
+            "entry": "20",
+            "time": 18,
+            "meetingWith": "Richard Hawkes"
+          }
+        }
       }
     ],
     "traceNumbers": ["58"]
+  },
+  "20": {
+    "title": "PIOSOTOS CAFE",
+    "description": "As you enter the cafe, the thick, acrid tobacco smoke chokes you. The place is filled with laughing, gesticulating dockworkers and sailors. If you're here, expecting to meet someone, go to 35.\n\nLooking around, you can approach any of the following if you have Christos with you, or if you can make a successful Language (Greek) roll for each one you try:",
+    "choices": [
+      {
+        "text": "Wait for your meeting with Richard Hawkes",
+        "nextEntry": "35",
+        "requirements": {
+          "scheduledMeeting": {
+            "entry": "20",
+            "meetingWith": "Richard Hawkes"
+          }
+        },
+        "effects": {
+          "meetingCompleted": {
+            "entry": "20",
+            "meetingWith": "Richard Hawkes"
+          }
+        }
+      },
+      {
+        "text": "Approach the group in back playing cards",
+        "effects": {
+          "check": {
+            "skill": "Language (Greek)",
+            "success": {
+              "nextEntry": "107",
+              "message": "You successfully communicate with the group in back and join them."
+            },
+            "failure": {
+              "nextEntry": "20",
+              "message": "You fail to communicate with the group in back."
+            }
+          },
+          "requirements": {
+            "companion": "Christos"
+          }
+        },
+        "nextEntry": "107"
+      },
+      {
+        "text": "Approach the burly sailors at the bar",
+        "effects": {
+          "check": {
+            "skill": "Language (Greek)",
+            "success": {
+              "nextEntry": "105",
+              "message": "You manage to communicate with the sailors and approach them."
+            },
+            "failure": {
+              "nextEntry": "20",
+              "message": "You fail to communicate with the sailors."
+            }
+          },
+          "requirements": {
+            "companion": "Christos"
+          }
+        },
+        "nextEntry": "105"
+      },
+      {
+        "text": "Approach the Englishman alone at a table",
+        "nextEntry": "35"
+      },
+      {
+        "text": "Leave the cafe and return to any Athens Location",
+        "nextEntry": "Athens Location",
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      }
+    ],
+    "traceNumbers": ["35", "107", "105", "Athens Location"]
+  },
+  "35": {
+    "description": "The man is Richard Hawkes. He greets you warmly. \"An ouzo and some talk,\" he suggests. \"Look, I know you’re investigating Gliere’s death. I’ve talked to him once or twice. His death caused quite a stir. Well, to make a long story short, I have some interesting information concerning his crazy theft. I don’t have it here, but if you’d like to come back to my apartment, I can show it to you.\"",
+    "choices": [
+      {
+        "text": "Agree to go to his apartment",
+        "nextEntry": "79"
+      },
+      {
+        "text": "Schedule a meeting at the Parthenon at sunset",
+        "nextEntry": "Athens Location"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["20"]
   },
   "226": {
     "description": "The corporal is friendly, but nervous. You can tell that he is unconvinced by the death report. Something scares him, but he only mutters that he is glad the Karpathos Device has left the country.",
@@ -5995,5 +6095,61 @@
       }
     ],
     "traceNumbers": ["18", "19", "27"]
+  },
+  "31": {
+    "description": "Despite your best efforts, the dark figures continue to advance. You are surrounded and reaching hands grasp you, closing around different parts of your body, tighter and tighter. You whimper and then scream. The last thing you see is a nightmare of hollow eyes; the last thing you smell is the stench of fetid, hungry mouths. It is . . .\n\nTHE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["14", "19"]
+  },
+  "18": {
+    "description": "At first, you move silently, cunningly evading the ghastly, lifeless figures which shuffle across the court in search of you. Then you clumsily kick a loose stone that clatters across the court. All of the terrifying figures turn toward you.",
+    "choices": [
+      {
+        "text": "Make a Climb roll to escape",
+        "effects": {
+          "check": {
+            "skill": "Climb",
+            "success": {
+              "nextEntry": "33",
+              "message": "You manage to scale the fence and escape the encircling figures."
+            },
+            "failure": {
+              "nextEntry": "27",
+              "message": "You fail to climb the fence and the figures close in on you."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["33", "27", "194"]
+  },
+  "19": {
+    "description": "You whistle loudly to show that you’ve heard nothing and amble away. But in the gloom, you begin to see strangely cloaked figures shamble toward you from all sides. How foolish you were to have drawn attention to yourself!",
+    "choices": [
+      {
+        "text": "Make a Climb roll to escape",
+        "effects": {
+          "check": {
+            "skill": "Climb",
+            "success": {
+              "nextEntry": "33",
+              "message": "You manage to climb the fence and escape beyond the grasp of the creatures."
+            },
+            "failure": {
+              "nextEntry": "31",
+              "message": "You fail to climb the fence, and the creatures close in on you."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["33", "31", "194"]
   }
 }
