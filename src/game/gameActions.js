@@ -338,6 +338,7 @@ export function handleEntryChoices(entryId, entry) {
               choice.effects.check.difficulty,
               choice.effects.check?.tries || null,
               choice.effects.check?.opposedValue || null,
+              choice.effects.check?.bonus || 0,
             )
             const checkResult = success
               ? choice.effects.check.success
@@ -794,6 +795,7 @@ export function makeChoice(nextEntry, effects) {
         effects.check.difficulty,
         effects.check?.tries || null,
         effects.check?.opposedValue || null,
+        effects.check?.bonus || 0,
       )
       const checkResult = success
         ? effects.check.success

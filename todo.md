@@ -1,15 +1,5 @@
 Athens Locations
-20 - done
-35 - done
-107 - done
-581 - done
-105 - done
-35 - done
-79 -- need to test the saving of multiple checks
-112 - make sure displayed choices are correct and we handle requirements for multiple check results
-
 38
-Be intentional about hiring interpretors
 
 Alexandria Locations
 195 - test

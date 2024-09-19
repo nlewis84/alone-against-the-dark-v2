@@ -35,8 +35,13 @@ export function makeSkillCheck(
   difficulty = 'normal',
   tries = null,
   opposedValue = null,
+  bonus = 0,
 ) {
-  const skillValue = skills[skill] !== undefined ? skills[skill] : stats[skill]
+  let skillValue = skills[skill] !== undefined ? skills[skill] : stats[skill]
+
+  skillValue += bonus
+  console.log(skillValue)
+
   let difficultyModifier = 1
 
   if (difficulty === 'hard') difficultyModifier = 0.5
