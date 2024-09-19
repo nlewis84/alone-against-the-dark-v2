@@ -740,6 +740,15 @@ export function makeChoice(nextEntry, effects) {
   }
 
   if (effects) {
+    if (effects.setLocale) {
+      if (currentState.currentLocale !== effects.setLocale) {
+        // Clear location-specific data if leaving the current locale
+        currentState.hiredAthens = null
+      }
+      setCurrentLocale(effects.setLocale)
+      updateInterpreterDisplay(currentState.hiredAthens) // Update interpreter display if needed
+    }
+
     if (effects.health !== undefined) {
       updateHealth(effects.health)
     }

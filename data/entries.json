@@ -1540,7 +1540,8 @@
         "nextEntry": "196",
         "effects": {
           "setHour": 12,
-          "advanceTime": 3
+          "advanceTime": 3,
+          "setLocale": "Egypt"
         }
       },
       {
@@ -1548,7 +1549,8 @@
         "nextEntry": "450",
         "effects": {
           "setHour": 12,
-          "advanceTime": 5
+          "advanceTime": 5,
+          "setLocale": "Bremen"
         }
       },
       {
@@ -2595,6 +2597,9 @@
       {
         "text": "Disembark at Alexandria",
         "nextEntry": "195",
+        "effect": {
+          "setLocale": "Egypt"
+        },
         "requirements": {
           "destination": "Alexandria"
         }
@@ -3051,7 +3056,8 @@
         "text": "Hire the Kyonas to sail to Alexandria",
         "nextEntry": "195",
         "effects": {
-          "advanceTime": 71
+          "advanceTime": 71,
+          "setLocale": "Egypt"
         }
       },
       {
@@ -3296,7 +3302,8 @@
         "effects": {
           "setDay": ["Tuesday", "Friday"],
           "setHour": 15,
-          "advanceTime": 24
+          "advanceTime": 24,
+          "setLocale": "Egypt"
         },
         "nextEntry": "195"
       },
@@ -3305,7 +3312,8 @@
         "effects": {
           "setDay": ["Tuesday", "Saturday"],
           "setHour": 16,
-          "advanceTime": 120
+          "advanceTime": 120,
+          "setLocale": "Bremen"
         },
         "nextEntry": "449"
       },
@@ -3314,7 +3322,8 @@
         "effects": {
           "setDay": ["Friday"],
           "setHour": 12,
-          "advanceTime": 192
+          "advanceTime": 192,
+          "setLocale": "New York"
         },
         "nextEntry": "574"
       },
@@ -3452,7 +3461,8 @@
         "text": "Buy a ticket and return for the next TN-Motor flight to Cairo",
         "effects": {
           "setHour": 8,
-          "advanceTime": 0
+          "advanceTime": 0,
+          "setLocale": "Egypt"
         },
         "nextEntry": "99"
       },
@@ -3497,7 +3507,8 @@
         "nextEntry": "42",
         "effects": {
           "setHour": 12,
-          "advanceTime": 0
+          "advanceTime": 0,
+          "setLocale": "Egypt"
         }
       },
       {
@@ -3505,7 +3516,8 @@
         "nextEntry": "449",
         "effects": {
           "setHour": 9,
-          "advanceTime": 0
+          "advanceTime": 0,
+          "setLocale": "Bremen"
         }
       },
       {
@@ -3741,7 +3753,8 @@
         "nextEntry": "181",
         "effects": {
           "setHour": 15,
-          "advanceTime": 3
+          "advanceTime": 3,
+          "setLocale": "Athens"
         }
       },
       {
@@ -3749,7 +3762,8 @@
         "nextEntry": "450",
         "effects": {
           "setHour": 9,
-          "advanceTime": 8
+          "advanceTime": 8,
+          "setLocale": "Bremen"
         }
       },
       {
@@ -3850,7 +3864,8 @@
         "text": "Take the 9am train to Alexandria",
         "effects": {
           "setHour": 9,
-          "advanceTime": 1
+          "advanceTime": 1,
+          "setLocale": "Egypt"
         },
         "nextEntry": "195"
       },
@@ -3858,7 +3873,8 @@
         "text": "Take the 12 noon train to Alexandria",
         "effects": {
           "setHour": 12,
-          "advanceTime": 1
+          "advanceTime": 1,
+          "setLocale": "Egypt"
         },
         "nextEntry": "195"
       },
@@ -3866,7 +3882,8 @@
         "text": "Take the 5pm train to Alexandria",
         "effects": {
           "setHour": 17,
-          "advanceTime": 1
+          "advanceTime": 1,
+          "setLocale": "Egypt"
         },
         "nextEntry": "195"
       },
@@ -3874,7 +3891,8 @@
         "text": "Take the noon train to Athens (3-day trip)",
         "effects": {
           "setHour": 12,
-          "advanceTime": 72
+          "advanceTime": 72,
+          "setLocale": "Athens"
         },
         "nextEntry": "183"
       },
@@ -4261,7 +4279,7 @@
     "description": "You hear some deep breathing behind a nearby curtain.",
     "choices": [
       {
-        "text": "What is that smell?",
+        "text": "Is someone hidden behind the curtain?",
         "nextEntry": "112e"
       }
     ]
