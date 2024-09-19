@@ -2351,4 +2351,135 @@ describe('Game Logic', () => {
       expect(result).toBe(false) // The choice should be unavailable
     })
   })
+
+  describe('Check hasSuccess Requirement', () => {
+    beforeEach(() => {
+      initializeGame()
+    })
+
+    test('should allow progression if hasSuccess requirement is met', () => {
+      currentState.results = {
+        cthulhuMythosSuccess: true,
+        occultSuccess: false,
+        spotHiddenSuccess: true,
+        listenSuccess: false,
+      }
+      const requirements = {
+        hasSuccess: 'cthulhuMythosSuccess',
+      }
+
+      const result = checkRequirements(requirements)
+      expect(result).toBe(true) // Should allow progression
+    })
+
+    test('should block progression if hasSuccess requirement is not met', () => {
+      currentState.results = {
+        cthulhuMythosSuccess: true,
+        occultSuccess: false,
+        spotHiddenSuccess: true,
+        listenSuccess: false,
+      }
+
+      const requirements = {
+        hasSuccess: 'occultSuccess',
+      }
+
+      const result = checkRequirements(requirements)
+      expect(result).toBe(false) // Should block progression
+    })
+  })
+
+  describe('Check failedAllChecks Requirement', () => {
+    beforeEach(() => {
+      initializeGame()
+    })
+
+    test('should allow progression if all specified checks failed', () => {
+      currentState.results = {
+        cthulhuMythosSuccess: false,
+        occultSuccess: false,
+        spotHiddenSuccess: false,
+        listenSuccess: false,
+      }
+
+      const requirements = {
+        failedAllChecks: [
+          'cthulhuMythosSuccess',
+          'occultSuccess',
+          'spotHiddenSuccess',
+          'listenSuccess',
+        ],
+      }
+
+      const result = checkRequirements(requirements)
+      expect(result).toBe(true) // Should allow progression because all failed
+    })
+
+    test('should block progression if not all checks failed', () => {
+      currentState.results = {
+        spotHiddenSuccess: true, // One check succeeded
+      }
+
+      const requirements = {
+        failedAllChecks: [
+          'cthulhuMythosSuccess',
+          'occultSuccess',
+          'spotHiddenSuccess',
+          'listenSuccess',
+        ],
+      }
+
+      const result = checkRequirements(requirements)
+      expect(result).toBe(false) // Should block progression because one check succeeded
+    })
+  })
+
+  describe('Check anySuccess Requirement', () => {
+    beforeEach(() => {
+      initializeGame()
+    })
+
+    test('should allow progression if any specified check succeeded', () => {
+      currentState.results = {
+        cthulhuMythosSuccess: false,
+        occultSuccess: true,
+        spotHiddenSuccess: false,
+        listenSuccess: true,
+      }
+
+      const requirements = {
+        anySuccess: [
+          'cthulhuMythosSuccess',
+          'occultSuccess',
+          'spotHiddenSuccess',
+          'listenSuccess',
+        ],
+      }
+
+      const result = checkRequirements(requirements)
+      expect(result).toBe(true) // Should allow progression because at least one check succeeded
+    })
+
+    test('should block progression if none of the specified checks succeeded', () => {
+      // All checks failed in this case
+      currentState.results = {
+        cthulhuMythosSuccess: false,
+        occultSuccess: false,
+        spotHiddenSuccess: false,
+        listenSuccess: false,
+      }
+
+      const requirements = {
+        anySuccess: [
+          'cthulhuMythosSuccess',
+          'occultSuccess',
+          'spotHiddenSuccess',
+          'listenSuccess',
+        ],
+      }
+
+      const result = checkRequirements(requirements)
+      expect(result).toBe(false) // Should block progression because none of the checks succeeded
+    })
+  })
 })

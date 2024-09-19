@@ -1,9 +1,12 @@
 Athens Locations
-20
-35
-107
-105
-35
+20 - done
+35 - done
+107 - done
+581 - done
+105 - done
+35 - done
+79 -- need to test the saving of multiple checks
+112 - make sure displayed choices are correct and we handle requirements for multiple check results
 
 38
 Be intentional about hiring interpretors
@@ -121,3 +124,5 @@ Be able to select a spell from your inventory and learn it (or read a book); use
 Cunard Ship
 106, 155a - code the Retrieve a weapon to let the player pick a weapon to attack with, maybe extra options for available weapons?
 Update description for 3
+
+Add messages from checks to main Locations test 79-112 for this (successfull Dodge in 112f)

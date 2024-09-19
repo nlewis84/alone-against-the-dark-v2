@@ -817,6 +817,20 @@ export function makeChoice(nextEntry, effects) {
       addItem(effects.addItem)
     }
 
+    if (effects.multipleChecks) {
+      effects.multipleChecks.forEach((check) => {
+        const success = makeSkillCheck(
+          check.skill,
+          currentState.skills,
+          currentState,
+        )
+
+        // Save the result for later use (e.g., in entry 112)
+        currentState.results = currentState.results || {} // Initialize if not present
+        currentState.results[check.resultKey] = success
+      })
+    }
+
     // Handle scheduling a meeting
     if (effects.scheduleMeeting) {
       console.log(effects.scheduleMeeting)
@@ -1092,6 +1106,33 @@ export function checkRequirements(requirements) {
     if (requirements.hasNotVisited) {
       if (currentState.visitedEntries.has(requirements.hasNotVisited)) {
         return false // The entry has been visited, but it should not have been
+      }
+    }
+
+    if (requirements.hasSuccess) {
+      if (
+        !currentState.results ||
+        !currentState.results[requirements.hasSuccess]
+      ) {
+        return false // The required skill check was not successful
+      }
+    }
+
+    if (requirements.failedAllChecks) {
+      const allFailed = requirements.failedAllChecks.every(
+        (checkKey) => !currentState.results || !currentState.results[checkKey],
+      )
+      if (!allFailed) {
+        return false // At least one check succeeded, so this requirement is not met
+      }
+    }
+
+    if (requirements.anySuccess) {
+      const anySuccess = requirements.anySuccess.some(
+        (checkKey) => currentState.results && currentState.results[checkKey],
+      )
+      if (!anySuccess) {
+        return false // None of the required checks succeeded
       }
     }
 
