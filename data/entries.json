@@ -198,10 +198,17 @@
         }
       },
       {
-        "text": "Go to any Egypt Location",
-        "nextEntry": "Egypt",
+        "text": "Go to any Alexandria Location",
+        "nextEntry": "Alexandria",
         "requirements": {
-          "currentLocale": "Egypt"
+          "currentLocale": "Alexandria"
+        }
+      },
+      {
+        "text": "Go to any Cairo Location",
+        "nextEntry": "Cairo",
+        "requirements": {
+          "currentLocale": "Cairo"
         }
       }
     ],
@@ -209,7 +216,8 @@
       "586",
       "New York Location",
       "Athens Location",
-      "Egypt Location"
+      "Alexandria Location",
+      "Cairo Location"
     ]
   },
   "13": {
@@ -552,9 +560,16 @@
         "text": "Finish shopping"
       },
       {
-        "nextEntry": "Egypt Location",
+        "nextEntry": "Cairo Location",
         "requirements": {
-          "currentLocale": "Egypt"
+          "currentLocale": "Cairo"
+        },
+        "text": "Finish shopping"
+      },
+      {
+        "nextEntry": "Alexandria Location",
+        "requirements": {
+          "currentLocale": "Alexandria"
         },
         "text": "Finish shopping"
       },
@@ -572,7 +587,8 @@
       "Arkham Location",
       "New York Location",
       "Athens Location",
-      "Egypt Location",
+      "Alexandria Location",
+      "Cairo Location",
       "Bremen Location"
     ]
   },
@@ -1385,7 +1401,7 @@
     "traceNumbers": ["41", "74"]
   },
   "85": {
-    "description": "“Egypt today is an engaging mixture of ancient and modern. Camels and marketplaces are side-by-side with motorcars and luxurious hotels. Religions of various kinds play a special role in Egypt, some of them of a most unusual nature. It is best, for example, to avoid the cult of Aten, a mysterious and perhaps dangerous group found in the major cities of Cairo and Alexandria.”\n\n—Baedeker’s Guide to Egypt",
+    "description": "\"Egypt today is an engaging mixture of ancient and modern. Camels and marketplaces are side-by-side with motorcars and luxurious hotels. Religions of various kinds play a special role in Egypt, some of them of a most unusual nature. It is best, for example, to avoid the cult of Aten, a mysterious and perhaps dangerous group found in the major cities of Cairo and Alexandria.\"\n\n—Baedeker’s Guide to Egypt",
     "choices": [
       {
         "text": "Make a Library Use roll",
@@ -1541,7 +1557,7 @@
         "effects": {
           "setHour": 12,
           "advanceTime": 3,
-          "setLocale": "Egypt"
+          "setLocale": "Cairo"
         }
       },
       {
@@ -1704,8 +1720,8 @@
         }
       },
       {
-        "text": "Go to an Egypt location in the morning",
-        "nextEntry": "Egypt Location",
+        "text": "Go to an Alexandria location in the morning",
+        "nextEntry": "Alexandria Location",
         "effects": {
           "setHour": 7,
           "increment": {
@@ -1713,7 +1729,23 @@
           }
         },
         "requirements": {
-          "currentLocale": "Egypt",
+          "currentLocale": "Alexandria",
+          "requiredHotelStays": {
+            "moderateHotelStays": 0
+          }
+        }
+      },
+      {
+        "text": "Go to an Cairo location in the morning",
+        "nextEntry": "Cairo Location",
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "moderateHotelStays"
+          }
+        },
+        "requirements": {
+          "currentLocale": "Cairo",
           "requiredHotelStays": {
             "moderateHotelStays": 0
           }
@@ -2391,8 +2423,8 @@
         }
       },
       {
-        "text": "Spend the night then head to an Egypt location",
-        "nextEntry": "Egypt",
+        "text": "Spend the night then head to an Alexandria location",
+        "nextEntry": "Alexandria",
         "effects": {
           "setHour": 7,
           "increment": {
@@ -2403,7 +2435,23 @@
           "requiredHotelStays": {
             "expensiveHotelStays": 0
           },
-          "currentLocale": "Egypt"
+          "currentLocale": "Alexandria"
+        }
+      },
+      {
+        "text": "Spend the night then head to an Cairo location",
+        "nextEntry": "Cairo",
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          }
+        },
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 0
+          },
+          "currentLocale": "Cairo"
         }
       }
     ],
@@ -2598,7 +2646,7 @@
         "text": "Disembark at Alexandria",
         "nextEntry": "195",
         "effect": {
-          "setLocale": "Egypt"
+          "setLocale": "Alexandria"
         },
         "requirements": {
           "destination": "Alexandria"
@@ -3057,7 +3105,7 @@
         "nextEntry": "195",
         "effects": {
           "advanceTime": 71,
-          "setLocale": "Egypt"
+          "setLocale": "Alexandria"
         }
       },
       {
@@ -3215,7 +3263,7 @@
       {
         "text": "If in Cairo",
         "requirements": {
-          "currentLocale": "Egypt"
+          "currentLocale": "Cairo"
         },
         "nextEntry": "206"
       }
@@ -3303,7 +3351,7 @@
           "setDay": ["Tuesday", "Friday"],
           "setHour": 15,
           "advanceTime": 24,
-          "setLocale": "Egypt"
+          "setLocale": "Alexandria"
         },
         "nextEntry": "195"
       },
@@ -3462,7 +3510,7 @@
         "effects": {
           "setHour": 8,
           "advanceTime": 0,
-          "setLocale": "Egypt"
+          "setLocale": "Cairo"
         },
         "nextEntry": "99"
       },
@@ -3508,7 +3556,7 @@
         "effects": {
           "setHour": 12,
           "advanceTime": 0,
-          "setLocale": "Egypt"
+          "setLocale": "Cairo"
         }
       },
       {
@@ -3683,7 +3731,7 @@
       },
       {
         "text": "Spend an uneventful night at the hotel",
-        "nextEntry": "Egypt Location"
+        "nextEntry": "Alexandria Location"
       },
       {
         "text": "Catch the 10am train to Cairo (arrives in 1 hour)",
@@ -3715,7 +3763,8 @@
         "effects": {
           "setDay": ["Wednesday", "Saturday"],
           "setHour": 15,
-          "advanceTime": 24
+          "advanceTime": 24,
+          "setLocale": "Athens"
         },
         "nextEntry": "173"
       },
@@ -3724,7 +3773,8 @@
         "effects": {
           "setDay": ["Thursday"],
           "setHour": 12,
-          "advanceTime": 240
+          "advanceTime": 240,
+          "setLocale": "New York"
         },
         "nextEntry": "574"
       },
@@ -3733,12 +3783,13 @@
         "effects": {
           "setDay": ["Monday", "Friday"],
           "setHour": 16,
-          "advanceTime": 144
+          "advanceTime": 144,
+          "setLocale": "Bremen"
         },
         "nextEntry": "449"
       }
     ],
-    "traceNumbers": ["221", "205", "173", "574", "449", "Egypt Location"]
+    "traceNumbers": ["221", "205", "173", "574", "449", "Cairo Location"]
   },
   "196": {
     "title": "CAIRO AIRPORT",
@@ -3767,8 +3818,8 @@
         }
       },
       {
-        "text": "Go to any Egypt Location",
-        "nextEntry": "Egypt Location"
+        "text": "Go to any Cairo Location",
+        "nextEntry": "Cairo Location"
       }
     ],
     "traceNumbers": ["103", "181", "450"]
@@ -3865,7 +3916,7 @@
         "effects": {
           "setHour": 9,
           "advanceTime": 1,
-          "setLocale": "Egypt"
+          "setLocale": "Alexandria"
         },
         "nextEntry": "195"
       },
@@ -3874,7 +3925,7 @@
         "effects": {
           "setHour": 12,
           "advanceTime": 1,
-          "setLocale": "Egypt"
+          "setLocale": "Alexandria"
         },
         "nextEntry": "195"
       },
@@ -3883,7 +3934,7 @@
         "effects": {
           "setHour": 17,
           "advanceTime": 1,
-          "setLocale": "Egypt"
+          "setLocale": "Alexandria"
         },
         "nextEntry": "195"
       },
@@ -3898,7 +3949,7 @@
       },
       {
         "text": "Go to any Cairo location",
-        "nextEntry": "Egypt Location"
+        "nextEntry": "Cairo Location"
       }
     ],
     "traceNumbers": ["195", "183"]
@@ -3925,10 +3976,10 @@
       },
       {
         "text": "Go to a Cairo location",
-        "nextEntry": "Egypt Location"
+        "nextEntry": "Cairo Location"
       }
     ],
-    "traceNumbers": ["Egypt Location"]
+    "traceNumbers": ["Cairo Location"]
   },
   "208": {
     "description": "The symbol displays a strange mucous-like creature, covered in eyes and mouths—it looks like a shoggoth! A hideous monster capable of transforming its great mass into all manner of tools and shapes.",
@@ -4505,7 +4556,7 @@
       {
         "effects": {
           "check": {
-            "failure": "Egypt",
+            "failure": "Cairo",
             "skill": "Stealth",
             "success": "280"
           }
@@ -4658,7 +4709,7 @@
       },
       {
         "nextEntry": "Alexandria Location",
-        "text": "Go to any Egypt Location"
+        "text": "Go to any Alexandria Location"
       },
       {
         "nextEntry": "Bremen Location",
@@ -4759,7 +4810,8 @@
       "Arkham Location",
       "New York Location",
       "Athens Location",
-      "Egypt Location",
+      "Alexandria Location",
+      "Cairo Location",
       "Bremen Location",
       "The Dark Sea",
       "Antarctic Base Camp"
@@ -4800,9 +4852,16 @@
       },
       {
         "text": "Keep exploring",
-        "nextEntry": "Egypt",
+        "nextEntry": "Alexandria",
         "requirements": {
-          "currentLocale": "Egypt"
+          "currentLocale": "Alexandria"
+        }
+      },
+      {
+        "text": "Keep exploring",
+        "nextEntry": "Cairo",
+        "requirements": {
+          "currentLocale": "Cairo"
         }
       },
       {
@@ -4834,9 +4893,16 @@
       },
       {
         "text": "Keep exploring",
-        "nextEntry": "Egypt",
+        "nextEntry": "Alexandria",
         "requirements": {
-          "currentLocale": "Egypt"
+          "currentLocale": "Alexandria"
+        }
+      },
+      {
+        "text": "Keep exploring",
+        "nextEntry": "Cairo",
+        "requirements": {
+          "currentLocale": "Cairo"
         }
       },
       {
@@ -6150,11 +6216,18 @@
         "nextEntry": "Athens Location"
       },
       {
-        "text": "Another Egypt Location",
+        "text": "Another Alexandria Location",
         "requirements": {
-          "currentLocale": "Egypt"
+          "currentLocale": "Alexandria"
         },
-        "nextEntry": "Egypt Location"
+        "nextEntry": "Alexandria Location"
+      },
+      {
+        "text": "Another Cairo Location",
+        "requirements": {
+          "currentLocale": "Cairo"
+        },
+        "nextEntry": "Cairo Location"
       },
       {
         "text": "Another Bremen Location",

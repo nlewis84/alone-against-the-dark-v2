@@ -283,14 +283,7 @@
       }
     }
   },
-  "Egypt": {
-    "Al Azhar University": {
-      "entry": "149",
-      "availability": {
-        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "hours": [7, 11, 15, 18]
-      }
-    },
+  "Alexandria": {
     "Alexandria Harbor and Rail Station": {
       "entry": "195",
       "availability": {
@@ -302,6 +295,47 @@
       "availability": {
         "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         "hours": [8, 12, 15, 19]
+      }
+    },
+    "Hotels": {
+      "entry": "164",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Hospital": {
+      "entry": "585",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "On-The-Street Food Vendors": {
+      "entry": "586",
+      "availability": {
+        "alwaysOpen": true
+      }
+    },
+    "Retail Merchandise": {
+      "entry": "38",
+      "availability": {
+        "daysOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "hours": [8, 12, 15, 19]
+      }
+    }
+  },
+  "Cairo": {
+    "Al Azhar University": {
+      "entry": "149",
+      "availability": {
+        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "hours": [7, 11, 15, 18]
       }
     },
     "Cairo Airport": {

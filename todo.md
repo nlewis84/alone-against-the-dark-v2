@@ -1,8 +1,6 @@
-Athens Locations
-38
-
 Alexandria Locations
 195 - test
+103 -
 
 Bremen Locations
 450 - code 449

@@ -421,7 +421,7 @@ describe('Game Logic', () => {
     test('should handle choices with character requirements', () => {
       setCurrentDate(new Date(1931, 8, 1, 10, 0))
       currentState.character = 'Zaphod Beeblebrox'
-      setCurrentLocale('Egypt')
+      setCurrentLocale('Cairo')
       displayEntry('102')
       const choices = document.getElementById('choices').children
       expect(choices.length).toBe(1)
@@ -634,7 +634,7 @@ describe('Game Logic', () => {
   })
 
   describe('Check Outcomes routing to specific entries or location tables', () => {
-    test('should consistently route to either entry 280 or Egypt Locations based on stealth skill check', async () => {
+    test('should consistently route to either entry 280 or Cairo Locations based on stealth skill check', async () => {
       displayEntry('281')
       const choiceButton = findChoiceButton('Attempt to hide and wait.')
       choiceButton.click() // Simulate clicking the button for stealth check
@@ -642,7 +642,7 @@ describe('Game Logic', () => {
       for (let i = 0; i < 5; i++) {
         try {
           expect(document.getElementById('description').innerHTML).toContain(
-            'Egypt Locations',
+            'Cairo Locations',
           )
         } catch {
           expect(document.getElementById('description').innerHTML).toContain(
@@ -719,7 +719,7 @@ describe('Game Logic', () => {
           },
         ],
       })
-      setCurrentLocale('Egypt') // Set initial locale for testing
+      setCurrentLocale('Cairo') // Set initial locale for testing
     })
 
     test('Weapons available based on skills are displayed', async () => {
@@ -2263,7 +2263,7 @@ describe('Game Logic', () => {
       }
 
       // Execute makeChoice with the effects
-      makeChoice('Athens Location', effects)
+      makeChoice('Athens', effects)
 
       // Verify the meeting was scheduled correctly
       expect(currentState.scheduledMeetings).toEqual([
@@ -2301,7 +2301,7 @@ describe('Game Logic', () => {
       }
 
       // Execute makeChoice with the effects
-      makeChoice('Athens Location', effects)
+      makeChoice('Athens', effects)
 
       // Verify the meeting was removed from the scheduledMeetings array
       expect(currentState.scheduledMeetings).toEqual([])

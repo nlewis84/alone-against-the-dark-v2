@@ -40,7 +40,6 @@ export function makeSkillCheck(
   let skillValue = skills[skill] !== undefined ? skills[skill] : stats[skill]
 
   skillValue += bonus
-  console.log(skillValue)
 
   let difficultyModifier = 1
 

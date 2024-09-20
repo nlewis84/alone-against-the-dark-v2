@@ -844,7 +844,6 @@ export function makeChoice(nextEntry, effects) {
 
     // Handle scheduling a meeting
     if (effects.scheduleMeeting) {
-      console.log(effects.scheduleMeeting)
       if (!currentState.scheduledMeetings) {
         currentState.scheduledMeetings = []
       }
