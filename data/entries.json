@@ -1689,7 +1689,7 @@
     "description": "This hotel offers a clean room and a quiet night of sleep.",
     "choices": [
       {
-        "text": "Spend a second night here",
+        "text": "Spend another night here",
         "nextEntry": "26",
         "effects": {
           "setHour": 7,
@@ -1736,7 +1736,7 @@
         }
       },
       {
-        "text": "Go to an Cairo location in the morning",
+        "text": "Go to a Cairo location in the morning",
         "nextEntry": "Cairo Location",
         "effects": {
           "setHour": 7,
@@ -2096,7 +2096,7 @@
             },
             "failure": {
               "nextEntry": "185",
-              "message": "You fail to notice anything unusual."
+              "message": "There's a sudden commotion at the door and the handle turns."
             }
           }
         }
@@ -2190,7 +2190,8 @@
         "requirements": {
           "requiredHotelStays": {
             "expensiveHotelStays": 1
-          }
+          },
+          "currentLocale": "Athens"
         },
         "effects": {
           "setHour": 7,
@@ -2211,11 +2212,64 @@
         }
       },
       {
+        "text": "Stay for the second night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 1
+          },
+          "currentLocale": "Cairo"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "9-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-8": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Cairo"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for the second night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 1
+          },
+          "currentLocale": "Alexandria"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "9-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-8": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Alexandria"
+            }
+          }
+        }
+      },
+      {
         "text": "Stay for the third night",
         "requirements": {
           "requiredHotelStays": {
             "expensiveHotelStays": 2
-          }
+          },
+          "currentLocale": "Athens"
         },
         "effects": {
           "setHour": 7,
@@ -2236,11 +2290,142 @@
         }
       },
       {
+        "text": "Stay for the third night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 2
+          },
+          "currentLocale": "Alexandria"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "8-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-7": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Alexandria"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for the third night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 2
+          },
+          "currentLocale": "Cairo"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "8-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-7": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Cairo"
+            }
+          }
+        }
+      },
+      {
         "text": "Stay for a 4th night",
         "requirements": {
           "requiredHotelStays": {
             "expensiveHotelStays": 3
+          },
+          "currentLocale": "Athens"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "6-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-5": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Athens"
+            }
           }
+        }
+      },
+      {
+        "text": "Stay for a 4th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 3
+          },
+          "currentLocale": "Alexandria"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "6-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-5": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Alexandria"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 4th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 3
+          },
+          "currentLocale": "Cairo"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "6-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-5": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Cairo"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 5th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 4
+          },
+          "currentLocale": "Athens"
         },
         "effects": {
           "setHour": 7,
@@ -2265,7 +2450,8 @@
         "requirements": {
           "requiredHotelStays": {
             "expensiveHotelStays": 4
-          }
+          },
+          "currentLocale": "Alexandria"
         },
         "effects": {
           "setHour": 7,
@@ -2280,7 +2466,33 @@
             },
             "1-5": {
               "description": "Nothing unusual happens during the night. You wake up refreshed.",
-              "nextEntry": "Athens"
+              "nextEntry": "Alexandria"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 5th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 4
+          },
+          "currentLocale": "Cairo"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "6-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-5": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Cairo"
             }
           }
         }
@@ -2290,7 +2502,8 @@
         "requirements": {
           "requiredHotelStays": {
             "expensiveHotelStays": 5
-          }
+          },
+          "currentLocale": "Athens"
         },
         "effects": {
           "setHour": 7,
@@ -2311,11 +2524,64 @@
         }
       },
       {
+        "text": "Stay for a 6th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 5
+          },
+          "currentLocale": "Alexandria"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "5-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-4": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Alexandria"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 6th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 5
+          },
+          "currentLocale": "Cairo"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "5-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-4": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Cairo"
+            }
+          }
+        }
+      },
+      {
         "text": "Stay for a 7th night",
         "requirements": {
           "requiredHotelStays": {
             "expensiveHotelStays": 6
-          }
+          },
+          "currentLocale": "Athens"
         },
         "effects": {
           "setHour": 7,
@@ -2336,11 +2602,64 @@
         }
       },
       {
+        "text": "Stay for a 7th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 6
+          },
+          "currentLocale": "Alexandria"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "4-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-3": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Alexandria"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 7th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 6
+          },
+          "currentLocale": "Cairo"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "4-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-3": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Cairo"
+            }
+          }
+        }
+      },
+      {
         "text": "Stay for a 8th night",
         "requirements": {
           "requiredHotelStays": {
             "expensiveHotelStays": 7
-          }
+          },
+          "currentLocale": "Athens"
         },
         "effects": {
           "setHour": 7,
@@ -2361,11 +2680,64 @@
         }
       },
       {
+        "text": "Stay for a 8th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 7
+          },
+          "currentLocale": "Alexandria"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "3-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-2": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Alexandria"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 8th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 7
+          },
+          "currentLocale": "Cairo"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "3-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            },
+            "1-2": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Cairo"
+            }
+          }
+        }
+      },
+      {
         "text": "Stay for a 9th night",
         "requirements": {
           "requiredHotelStays": {
             "expensiveHotelStays": 8
-          }
+          },
+          "currentLocale": "Athens"
         },
         "effects": {
           "setHour": 7,
@@ -2377,6 +2749,58 @@
             "1": {
               "description": "Nothing unusual happens during the night. You wake up refreshed.",
               "nextEntry": "Athens"
+            },
+            "2-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 9th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 8
+          },
+          "currentLocale": "Alexandria"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "1": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Alexandria"
+            },
+            "2-10": {
+              "description": "The hotel is busy tonight.",
+              "nextEntry": "26"
+            }
+          }
+        }
+      },
+      {
+        "text": "Stay for a 9th night",
+        "requirements": {
+          "requiredHotelStays": {
+            "expensiveHotelStays": 8
+          },
+          "currentLocale": "Cairo"
+        },
+        "effects": {
+          "setHour": 7,
+          "increment": {
+            "counter": "expensiveHotelStays"
+          },
+          "diceRoll": "1D10",
+          "outcomes": {
+            "1": {
+              "description": "Nothing unusual happens during the night. You wake up refreshed.",
+              "nextEntry": "Cairo"
             },
             "2-10": {
               "description": "The hotel is busy tonight.",
@@ -2439,7 +2863,7 @@
         }
       },
       {
-        "text": "Spend the night then head to an Cairo location",
+        "text": "Spend the night then head to a Cairo location",
         "nextEntry": "Cairo",
         "effects": {
           "setHour": 7,
@@ -3730,8 +4154,8 @@
         "nextEntry": "221"
       },
       {
-        "text": "Spend an uneventful night at the hotel",
-        "nextEntry": "Alexandria Location"
+        "text": "Explore Alexandria",
+        "nextEntry": "Alexandria"
       },
       {
         "text": "Catch the 10am train to Cairo (arrives in 1 hour)",
@@ -3790,6 +4214,551 @@
       }
     ],
     "traceNumbers": ["221", "205", "173", "574", "449", "Cairo Location"]
+  },
+  "221": {
+    "description": "You are able to get a small meal. There are several groups of locals huddled about the area.",
+    "choices": [
+      {
+        "text": "Attempt to talk with the locals",
+        "effects": {
+          "check": {
+            "skill": "Language (Arabic)",
+            "success": {
+              "nextEntry": "219"
+            },
+            "failure": {
+              "nextEntry": "195"
+            }
+          }
+        },
+        "requirements": {
+          "language": "Arabic"
+        }
+      },
+      {
+        "text": "Explore Alexandria",
+        "nextEntry": "Alexandria"
+      }
+    ]
+  },
+  "219": {
+    "description": "You hear many stories about making money and about losing it. When you mention Cairo, they show no interest.",
+    "choices": [
+      {
+        "text": "Make a Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "227"
+            },
+            "failure": {
+              "nextEntry": "222"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "227": {
+    "description": "A narrow tunnel joins two streets. You welcome the coolness. Suddenly, you hear someone behind you. You prepared yourself for action, but then two policemen enter the tunnel ahead of you. The footsteps stop, then retreat: when you turn, you see only the fringe of a white robe going around a corner. You return to the hotel, unmolested.",
+    "choices": [
+      {
+        "text": "Explore Alexandria in the morning",
+        "nextEntry": "Alexandria",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
+      },
+      {
+        "text": "Depart for Cairo in the morning",
+        "effects": {
+          "setHour": 7
+        },
+        "nextEntry": "Cairo"
+      }
+    ],
+    "traceNumbers": ["240"]
+  },
+  "222": {
+    "description": "A narrow tunnel joins two streets. You welcome the coolness. Suddenly, you hear someone behind you say, \"Kaieeee! In the name of Aten!\"  The voice screams as a curved blade misses your neck by a fraction of an inch.",
+    "choices": [
+      {
+        "text": "Fight",
+        "nextEntry": "222c",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Attacker",
+              "attackChance": "70%",
+              "damage": "1D6+1",
+              "dex": 50,
+              "health": 6,
+              "maxHealth": 6
+            },
+            "win": "241",
+            "lose": "end"
+          },
+          "advanceTime": 0
+        }
+      },
+      {
+        "text": "Try to evade",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": "241",
+            "failure": {
+              "nextEntry": "222b",
+              "damage": "1D6",
+              "message": "You fail to evade the attacker, and he swings his blade at you. You must now fight to survive!"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["240"]
+  },
+  "222b": {
+    "description": "You fail to evade the attacker, and he swings his blade at you. You must now fight to survive!",
+    "choices": [
+      {
+        "text": "Fight",
+        "nextEntry": "222c",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Attacker",
+              "attackChance": "70%",
+              "damage": "1D6+1",
+              "dex": 50,
+              "health": 6,
+              "maxHealth": 6
+            },
+            "win": "241",
+            "lose": "end"
+          },
+          "advanceTime": 0
+        }
+      }
+    ]
+  },
+  "222c": {
+    "description": "You fight for your life!",
+    "choices": [
+      {
+        "text": "Fight",
+        "nextEntry": "222c",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Attacker",
+              "attackChance": "70%",
+              "damage": "1D6+1",
+              "dex": 50,
+              "health": 6,
+              "maxHealth": 6
+            },
+            "win": "241",
+            "lose": "end"
+          },
+          "advanceTime": 0
+        }
+      },
+      {
+        "text": "Try to evade",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": "241a",
+            "failure": {
+              "nextEntry": "222b",
+              "damage": "1D6",
+              "message": "You fail to evade the attacker, and he swings his blade at you. You must now fight to survive!"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "241": {
+    "description": "Your attacker falls heavily to the floor. You spend the night unmolested in the hotel. In the morning, you decide to head for Cairo.",
+    "choices": [
+      {
+        "text": "Head for Cairo",
+        "nextEntry": "Cairo"
+      }
+    ],
+    "traceNumbers": ["222"]
+  },
+  "241a": {
+    "description": "Your cat-like grace means you have evaded him and run away. You spend the night unmolested in the hotel. In the morning, you decide to head for Cairo.",
+    "choices": [
+      {
+        "text": "Head for Cairo",
+        "nextEntry": "Cairo"
+      }
+    ]
+  },
+  "164": {
+    "title": "HOTELS",
+    "description": "Space is a bit tight, but you must get a room. Roll 1D10 to see how you fare.",
+    "choices": [
+      {
+        "text": "Roll 1D10",
+        "effects": {
+          "diceRoll": "1D10",
+          "outcomes": {
+            "1": {
+              "description": "You find an available room.",
+              "nextEntry": "123"
+            },
+            "2": {
+              "description": "You find an available room.",
+              "nextEntry": "123"
+            },
+            "3": {
+              "description": "You find an available room.",
+              "nextEntry": "123"
+            },
+            "4": {
+              "description": "You find an available room.",
+              "nextEntry": "101"
+            },
+            "5": {
+              "description": "You find an available room.",
+              "nextEntry": "101"
+            },
+            "6": {
+              "description": "You find an available room.",
+              "nextEntry": "101"
+            },
+            "7": {
+              "description": "You find an available room.",
+              "nextEntry": "127"
+            },
+            "8": {
+              "description": "You find an available room.",
+              "nextEntry": "127"
+            },
+            "9": {
+              "description": "You find an available room.",
+              "nextEntry": "127"
+            },
+            "10": {
+              "description": "You find an available room.",
+              "nextEntry": "154"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["123", "101", "127", "154"]
+  },
+  "154": {
+    "description": "Many private homes, from huts to mansions, have rooms to let to visiting tourists. They are very safe.",
+    "choices": [
+      {
+        "text": "Attempt a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "198"
+            },
+            "failure": {
+              "nextEntry": "154a",
+              "message": "Nothing seems out of the ordinary."
+            }
+          }
+        }
+      },
+      {
+        "text": "Spend the night, then explore Cairo",
+        "nextEntry": "Cairo",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      },
+      {
+        "text": "Spend the night, then explore Alexandria",
+        "nextEntry": "Alexandria",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
+      }
+    ]
+  },
+  "154a": {
+    "description": "You try to get some shut eye.",
+    "choices": [
+      {
+        "text": "Spend the night, then explore Cairo",
+        "nextEntry": "Cairo",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      },
+      {
+        "text": "Spend the night, then explore Alexandria",
+        "nextEntry": "Alexandria",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
+      }
+    ]
+  },
+  "198": {
+    "description": "You ask your host if they speak English.",
+    "choices": [
+      {
+        "text": "Attempt a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "199",
+              "message": "\"I do speak English,\" your host says with a slight British accent."
+            },
+            "failure": {
+              "nextEntry": "198a",
+              "message": "Your host responds something in Arabic."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["154", "169", "200"]
+  },
+  "198a": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Attempt a Language (Arabic) roll",
+        "requirements": {
+          "language": "Arabic"
+        },
+        "effects": {
+          "check": {
+            "skill": "Language (Arabic)",
+            "success": {
+              "nextEntry": "199"
+            },
+            "failure": {
+              "nextEntry": "175"
+            }
+          }
+        }
+      },
+      {
+        "text": "Maybe your phrasebook can help",
+        "nextEntry": "175",
+        "requirements": {
+          "inventory": "Harrison’s English/Arabic Phrase Book"
+        }
+      },
+      {
+        "text": "Get a good night’s rest and explore Cairo",
+        "requirements": {
+          "currentLocale": "Cairo"
+        },
+        "effects": {
+          "setHour": 7
+        },
+        "nextEntry": "Cairo"
+      },
+      {
+        "text": "Get a good night’s rest and explore Alexandria",
+        "requirements": {
+          "currentLocale": "Alexandria"
+        },
+        "effects": {
+          "setHour": 7
+        },
+        "nextEntry": "Alexandria"
+      }
+    ],
+    "traceNumbers": ["154", "169", "200"]
+  },
+  "199": {
+    "description": "\"It is bad to be here now, sir. A most dangerous object has come back to our land and an ancient curse will be fulfilled.\"",
+    "choices": [
+      {
+        "text": "Try to Charm your host",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "nextEntry": "200"
+            },
+            "failure": {
+              "nextEntry": "154a",
+              "message": "Your host seems to be too frightened to be charmed."
+            }
+          }
+        }
+      },
+      {
+        "text": "Try to Fast Talk your host",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "nextEntry": "200"
+            },
+            "failure": {
+              "nextEntry": "154a",
+              "message": "Your host seems to be too frightened to be bribed."
+            }
+          }
+        }
+      },
+      {
+        "text": "Try to Persuade yout host",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "nextEntry": "200"
+            },
+            "failure": {
+              "nextEntry": "154a",
+              "message": "Your host seems to be too frightened to be persuaded."
+            }
+          }
+        }
+      },
+
+      {
+        "text": "Rest and explore Cairo in the morning",
+        "nextEntry": "Cairo",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      },
+      {
+        "text": "Rest and explore Alexandria in the morning",
+        "nextEntry": "Alexandria",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
+      }
+    ],
+    "traceNumbers": ["198"]
+  },
+  "200": {
+    "description": "\"The ancient door of Aten will open and the 'Top That Turns the World' returns to the blasphemous pit from which it came. Then once more our land is green, but your world disappears!\"",
+    "choices": [
+      {
+        "text": "Explore Cairo in the morning",
+        "nextEntry": "Cairo",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      },
+      {
+        "text": "Explore Alexandria in the morning",
+        "nextEntry": "Alexandria",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
+      }
+    ],
+    "traceNumbers": ["199"]
+  },
+  "175": {
+    "description": "Your host understands that you’re a scholar of some sort, and he acts scared. You question him, and you glean the words \"Aten,\" \"door,\" \"open,\" and then he leaves with an anxious prayer upon his lips.",
+    "choices": [
+      {
+        "text": "Attempt a History roll",
+        "effects": {
+          "check": {
+            "skill": "History",
+            "success": {
+              "nextEntry": "169"
+            },
+            "failure": {
+              "nextEntry": "154a",
+              "message": "Your host seems hesitant to speak further and you feel very tired."
+            }
+          }
+        }
+      },
+      {
+        "text": "Sleep soundly and explore Cairo in the morning",
+        "nextEntry": "Cairo",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      },
+      {
+        "text": "Sleep soundly and explore Alexandria in the morning",
+        "nextEntry": "Alexandria",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
+      }
+    ],
+    "traceNumbers": ["198"]
+  },
+  "169": {
+    "description": "You recall that Aten, the sun god, became the center of the new monotheistic cult founded by Akhenaten. The strange practices begun by the Pharaoh became more bizarre as the young ruler grew more deformed.\n\nYou ponder your adventures so far, thinking about the events that have brought you here.",
+    "choices": [
+      {
+        "text": "Explore Cairo in the morning",
+        "nextEntry": "Cairo",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      },
+      {
+        "text": "Explore Alexandria in the morning",
+        "nextEntry": "Alexandria",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
+      }
+    ],
+    "traceNumbers": ["175"]
   },
   "196": {
     "title": "CAIRO AIRPORT",
@@ -4951,6 +5920,29 @@
         "nextEntry": "Athens Location",
         "effects": {
           "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      },
+      {
+        "text": "Continue",
+        "nextEntry": "Alexandria Location",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
+      },
+      {
+        "text": "Continue",
+        "nextEntry": "Cairo Location",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
         }
       }
     ]
@@ -5840,7 +6832,24 @@
     "choices": [
       {
         "text": "Run out of the hotel",
-        "nextEntry": "Athens Location"
+        "nextEntry": "Athens Location",
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      },
+      {
+        "text": "Run out of the hotel",
+        "nextEntry": "Alexandria Location",
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
+      },
+      {
+        "text": "Run out of the hotel",
+        "nextEntry": "Cairo Location",
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
       }
     ]
   },

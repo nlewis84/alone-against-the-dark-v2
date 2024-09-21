@@ -324,6 +324,21 @@ export function handleEntryChoices(entryId, entry) {
 
             // setPreviousEntry(currentState.currentEntry)
             handleOutcomeBasedEncounter(choice)
+
+            if (choice.effects.setHour !== undefined) {
+              const newDate = new Date(getCurrentDate())
+              const targetHour = choice.effects.setHour
+              const currentHour = newDate.getHours()
+
+              // Check if we need to advance the day first
+              if (targetHour < currentHour) {
+                newDate.setDate(newDate.getDate() + 1)
+                setCurrentDate(newDate)
+              }
+
+              // Set the hour directly after potentially advancing the day
+              updateTime(0, targetHour)
+            }
           } else if (choice.effects && choice.effects.check) {
             if (choice.effects.time) {
               updateTime(choice.effects.time)
@@ -371,7 +386,12 @@ export function handleEntryChoices(entryId, entry) {
                 displayEntry(checkResult)
               }
             } else if (typeof checkResult === 'object') {
-              handleComplexOutcome(checkResult)
+              if (choice.effects.check.skill === 'Dodge' && success) {
+                // If the successful check is specifically for "Dodge", handle ending combat
+                handleDodgeSuccess(checkResult)
+              } else {
+                handleComplexOutcome(checkResult)
+              }
             }
           } else if (
             choice.nextEntry &&

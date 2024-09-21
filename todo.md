@@ -1,12 +1,11 @@
 Alexandria Locations
-195 - test
+
+Cairo Locations
 103 -
 
 Bremen Locations
 450 - code 449
 449 - code 451 and 452
-
-Egypt Locations
 
 ---
 
