@@ -1563,7 +1563,9 @@ function endCombat(entry = null) {
   currentState.combat.isActive = false // Explicitly mark combat as inactive
   updateCombatStatus() // Update any UI or status indicators
 
-  if (entry) {
+  if (typeof entry === 'object') {
+    handleComplexOutcome(entry)
+  } else {
     console.log(`Displaying victory/defeat entry: ${entry}`)
     setTimeout(() => displayEntry(entry), 100) // Use a slight delay to ensure all combat processes have ceased
   }
@@ -1577,7 +1579,11 @@ function handleDodgeSuccess(entryId) {
   if (currentState.combat.isActive) {
     endCombat(entryId) // End combat if it is active
   } else {
-    displayEntry(entryId)
+    if (typeof entryId === 'object') {
+      handleComplexOutcome(entryId)
+    } else {
+      displayEntry(entryId)
+    }
   }
 }
 

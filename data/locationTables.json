@@ -119,7 +119,7 @@
       "entry": "30",
       "availability": {
         "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "hours": [9, 12, 14, 18]
+        "hours": [9, 18]
       }
     },
     "Holt’s Apartment": {
@@ -177,14 +177,14 @@
       "entry": "130",
       "availability": {
         "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "hours": [9, 12, 15, 19]
+        "hours": [9, 19]
       }
     },
     "Athens Hall of Justice": {
       "entry": "87",
       "availability": {
         "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "hours": [9, 12, 15, 19]
+        "hours": [9, 19]
       }
     },
     "Athens Harbor": {
@@ -233,7 +233,7 @@
       "entry": "118",
       "availability": {
         "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "hours": [9, 12, 15, 19]
+        "hours": [9, 19]
       }
     },
     "New York Sun (European Edition)": {
@@ -273,7 +273,7 @@
       "entry": "38",
       "availability": {
         "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "hours": [8, 12, 14, 18]
+        "hours": [8, 18]
       }
     },
     "Taxis": {
@@ -294,7 +294,7 @@
       "entry": "38",
       "availability": {
         "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "hours": [8, 12, 15, 19]
+        "hours": [8, 19]
       }
     },
     "Hotels": {
@@ -326,7 +326,7 @@
           "Friday",
           "Saturday"
         ],
-        "hours": [8, 12, 15, 19]
+        "hours": [8, 19]
       }
     }
   },
@@ -335,7 +335,7 @@
       "entry": "149",
       "availability": {
         "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "hours": [7, 11, 15, 18]
+        "hours": [7, 18]
       }
     },
     "Cairo Airport": {
@@ -348,14 +348,14 @@
       "entry": "206",
       "availability": {
         "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "hours": [9, 12, 14, 18]
+        "hours": [9, 18]
       }
     },
     "Cairo Museum - After October 30th": {
       "entry": "300",
       "availability": {
         "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "hours": [9, 12, 14, 18]
+        "hours": [9, 18]
       }
     },
     "Cairo Police": {
@@ -382,7 +382,7 @@
           "Saturday",
           "Sunday"
         ],
-        "hours": [6, 11, 16, 20]
+        "hours": [6, 20]
       }
     },
     "Hotels": {
@@ -420,7 +420,7 @@
           "Friday",
           "Saturday"
         ],
-        "hours": [8, 12, 15, 19]
+        "hours": [8, 19]
       }
     },
     "Taxis": {

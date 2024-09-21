@@ -2,6 +2,7 @@ Alexandria Locations
 
 Cairo Locations
 103 -
+196 - Fix the language on the choices
 
 Bremen Locations
 450 - code 449

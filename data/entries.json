@@ -181,6 +181,72 @@
               "nextEntry": "586"
             }
           }
+        },
+        "requirements": {
+          "currentLocale": "New York"
+        }
+      },
+      {
+        "text": "Make a CON roll",
+        "effects": {
+          "check": {
+            "skill": "CON",
+            "success": {
+              "message": "You recover quickly and go on your way.",
+              "nextEntry": "Athens"
+            },
+            "failure": {
+              "description": "You spend three hours recovering and mark off 1 hit point.",
+              "advanceTime": 3,
+              "modifyHealth": -1,
+              "nextEntry": "586"
+            }
+          }
+        },
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      },
+      {
+        "text": "Make a CON roll",
+        "effects": {
+          "check": {
+            "skill": "CON",
+            "success": {
+              "message": "You recover quickly and go on your way.",
+              "nextEntry": "Alexandria"
+            },
+            "failure": {
+              "description": "You spend three hours recovering and mark off 1 hit point.",
+              "advanceTime": 3,
+              "modifyHealth": -1,
+              "nextEntry": "586"
+            }
+          }
+        },
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
+      },
+      {
+        "text": "Make a CON roll",
+        "effects": {
+          "check": {
+            "skill": "CON",
+            "success": {
+              "message": "You recover quickly and go on your way.",
+              "nextEntry": "Cairo"
+            },
+            "failure": {
+              "description": "You spend three hours recovering and mark off 1 hit point.",
+              "advanceTime": 3,
+              "modifyHealth": -1,
+              "nextEntry": "586"
+            }
+          }
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
         }
       },
       {
@@ -478,11 +544,14 @@
     "description": "Concerning Greek criminal matters, they advise visiting the Athens Bureau of Investigation on arrival. A Corporal Ilionas, they say, has handled the Gliere case. You ask for information about the National Museum and its treasures, but they have only an unhelpful travel brochure. They jokingly caution you about the cab drivers of Athens.",
     "choices": [
       {
-        "nextEntry": "New York Location",
-        "text": "Go to any New York Location"
+        "nextEntry": "New York",
+        "text": "Go to any New York Location",
+        "requirements": {
+          "currentLocale": "New York"
+        }
       }
     ],
-    "traceNumbers": ["New York Location"]
+    "traceNumbers": ["New York"]
   },
   "32": {
     "description": "In rifling through Gliere’s notes and letters, you find a portion of manuscript: “The Great Upheaval Myths Correlated with Climatic Change” by T. Gliere. Skimming, you see a bizarre collection of tales mentioning nearly every rumored land, from Atlantis to Mu. Many stories you do not recognize at all. Apparently, Gliere sought historical and physical evidence for these sunken and frozen legends of lands. He seems to have found common dates for the devastation myths found in nearly every culture. Interesting.",
@@ -4405,51 +4474,51 @@
   },
   "164": {
     "title": "HOTELS",
-    "description": "Space is a bit tight, but you must get a room. Roll 1D10 to see how you fare.",
+    "description": "Space is a bit tight, but you must get a room. Take your chances to see how you fare.",
     "choices": [
       {
-        "text": "Roll 1D10",
+        "text": "Try to find a room",
         "effects": {
           "diceRoll": "1D10",
           "outcomes": {
             "1": {
-              "description": "You find an available room.",
+              "description": "You feel uneasy with where you ended up, but at least this place is a roof over your head.",
               "nextEntry": "123"
             },
             "2": {
-              "description": "You find an available room.",
+              "description": "You feel uneasy with where you ended up, but at least this place is a roof over your head.",
               "nextEntry": "123"
             },
             "3": {
-              "description": "You find an available room.",
+              "description": "You feel uneasy with where you ended up, but at least this place is a roof over your head.",
               "nextEntry": "123"
             },
             "4": {
-              "description": "You find an available room.",
+              "description": "It's not much, but you are in luck.",
               "nextEntry": "101"
             },
             "5": {
-              "description": "You find an available room.",
+              "description": "It's not much, but you are in luck.",
               "nextEntry": "101"
             },
             "6": {
-              "description": "You find an available room.",
+              "description": "It's not much, but you are in luck.",
               "nextEntry": "101"
             },
             "7": {
-              "description": "You find an available room.",
+              "description": "It's not much, but you are in luck.",
               "nextEntry": "127"
             },
             "8": {
-              "description": "You find an available room.",
+              "description": "It's not much, but you are in luck.",
               "nextEntry": "127"
             },
             "9": {
-              "description": "You find an available room.",
+              "description": "It's not much, but you are in luck.",
               "nextEntry": "127"
             },
             "10": {
-              "description": "You find an available room.",
+              "description": "It's not much, but you are in luck.",
               "nextEntry": "154"
             }
           }
@@ -5378,8 +5447,33 @@
     "description": "The corporal is friendly, but nervous. You can tell that he is unconvinced by the death report. Something scares him, but he only mutters that he is glad the Karpathos Device has left the country.",
     "choices": [
       {
-        "text": "Try Fast Talk or Persuade",
-        "nextEntry": "248",
+        "text": "Try to Fast Talk the Corporal",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": "248",
+            "failure": {
+              "nextEntry": "131",
+              "message": "The corporal is having none of it and sees you out of the building."
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "204"
+        }
+      },
+      {
+        "text": "Try to Persuade the Corporal",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": "248",
+            "failure": {
+              "nextEntry": "131",
+              "message": "The corporal is having none of it and sees you out of the building."
+            }
+          }
+        },
         "requirements": {
           "hasVisited": "204"
         }
@@ -5399,11 +5493,7 @@
         }
       }
     ],
-    "check": {
-      "skill": ["Fast Talk", "Persuade"],
-      "success": "248",
-      "failure": "131"
-    },
+
     "traceNumbers": ["204", "131", "248"]
   },
   "229": {
