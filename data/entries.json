@@ -7592,5 +7592,15 @@
       }
     ],
     "traceNumbers": ["33", "31", "194"]
+  },
+  "103": {
+    "title": "CAIRO TAXIS",
+    "description": "On the few main streets of Cairo, cabs of every variety, from sleek new Packards to old Fords running on makeshift parts, can be found.",
+    "choices": [
+      {
+        "text": "Hire a driver for the day",
+        "nextEntry": "Cairo"
+      }
+    ]
   }
 }
