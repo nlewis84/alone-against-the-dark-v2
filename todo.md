@@ -1,7 +1,35 @@
 Alexandria Locations
 
 Cairo Locations
-103 -
+94 - needs a new mechanic to track water usage
+
+324 - outcomes
+
+The pyramid
+360
+
+The tell-el-amrna inn
+444
+584
+448
+319
+
+Car with the guide
+361
+344
+341
+
+341
+
+374
+318
+340
+383
+414
+
+134
+149
+
 196 - Fix the language on the choices
 
 Bremen Locations

@@ -27,6 +27,7 @@ import {
   handleEntryChoices,
   findOutcomeForRoll,
   addVisitedEntry,
+  handleOutcomeBasedEncounter,
 } from '../src/game/gameActions.js'
 import { rollDice, makeSkillCheck } from '../src/utils/dice.js'
 import fs from 'fs'
@@ -2480,6 +2481,35 @@ describe('Game Logic', () => {
 
       const result = checkRequirements(requirements)
       expect(result).toBe(false) // Should block progression because none of the checks succeeded
+    })
+  })
+
+  describe('handleOutcomeBasedEncounter - Simulate 10 Dice Rolls', () => {
+    test('should correctly handle 10 dice rolls, advancing time only on outcome 324', () => {
+      for (let i = 0; i < 10; i++) {
+        displayEntry('108')
+        setCurrentDate(new Date(1931, 8, 1, 6)) // September 1st, 1931, 6:00 AM
+        // Find the choice button for the dice roll
+        const choiceButton = findChoiceButton('Roll 1D10')
+
+        // Simulate clicking the button
+        choiceButton.click()
+
+        if (currentState.currentEntry === '324') {
+          // Time should have advanced by 48 hours if the outcome was 324
+          const expectedDate = new Date(1931, 8, 3, 6) // 48 hours later
+          expect(getCurrentDate()).toEqual(expectedDate)
+
+          // Reset the date for the next iteration
+          setCurrentDate(new Date(1931, 8, 1, 6)) // Reset to the start date
+        } else if (currentState.currentEntry === '321') {
+          // Time should not have advanced if the outcome was 321
+          const expectedDate = new Date(1931, 8, 1, 6) // Time should not change
+          expect(getCurrentDate()).toEqual(expectedDate)
+        } else {
+          throw new Error('Unexpected entry displayed')
+        }
+      }
     })
   })
 })

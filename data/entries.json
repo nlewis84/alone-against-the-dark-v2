@@ -7599,8 +7599,272 @@
     "choices": [
       {
         "text": "Hire a driver for the day",
+        "effects": {
+          "hiredCairo": "Taxi"
+        },
         "nextEntry": "Cairo"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo",
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
       }
     ]
+  },
+  "144": {
+    "title": "CAIRO POLICE",
+    "description": "Affable enough, they have no information concerning what you want to know. If it is after October 31, you may learn more.",
+    "choices": [
+      {
+        "text": "One of the officers seems interested in you.",
+        "nextEntry": "114",
+        "requirements": {
+          "dateAfter": "1931-10-31"
+        }
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo",
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      }
+    ]
+  },
+  "114": {
+    "description": "The officer says that the Karpathos Device is gone. As for who took it, there are only rumors and if you wish to seek such rumors out, you should head to the Fuzira Marketplace.",
+    "choices": [
+      {
+        "text": "Go to the Fuzira Marketplace",
+        "nextEntry": "134"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo",
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      }
+    ],
+    "traceNumbers": ["144"]
+  },
+  "134": {
+    "title": "FUZIRA MARKETPLACE",
+    "description": "The market thrives from early morning to after sunset. There are hundreds of shops and stalls. Many signs are in English, and many British troops idly walk around. You can choose from among the following:",
+    "choices": [
+      {
+        "text": "Caravans and travel",
+        "nextEntry": "384"
+      },
+      {
+        "text": "Pottery and artifacts",
+        "nextEntry": "374"
+      },
+      {
+        "text": "Fortune telling",
+        "nextEntry": "318"
+      },
+      {
+        "text": "An outdoor cafe",
+        "nextEntry": "340"
+      },
+      {
+        "text": "Outfitters and suppliers",
+        "nextEntry": "383"
+      },
+      {
+        "text": "A dagger-throw game",
+        "nextEntry": "414"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo",
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      }
+    ]
+  },
+  "384": {
+    "description": "You can either rent a car to get to Tell-el-Amarna, or try to join a caravan to visit the Quattarra Depression.",
+    "choices": [
+      {
+        "text": "Rent a car to go to Tell-el-Amarna",
+        "nextEntry": "320"
+      },
+      {
+        "text": "Join a caravan to visit the Quattarra Depression",
+        "nextEntry": "341"
+      }
+    ],
+    "traceNumbers": ["134"]
+  },
+  "320": {
+    "description": "You can rent a car for a week. It is a rough drive upriver to Tell-el-Amarna; a massive late flood of the Nile has closed both the railway and the regular passenger ship that runs up and down the river. The trip takes exactly 48 hours each way.",
+    "choices": [
+      {
+        "text": "Drive to Tell-el-Amarna",
+        "nextEntry": "324",
+        "effects": {
+          "advanceTime": 48,
+          "hiredCairo": "Car"
+        }
+      },
+      {
+        "text": "Hire a translator guide to go with you",
+        "nextEntry": "108"
+      }
+    ],
+    "traceNumbers": ["384"]
+  },
+  "324": {
+    "title": "TELL-EL-AMARNA",
+    "description": "The village is quiet. A gust of wind picks up dust along the empty road. Here and there a face looks out from a doorway. You spot the pyramid, one much smaller and less imposing than the pyramids at Giza. A well-trod path leads to the pyramid entrance.",
+    "choices": [
+      {
+        "text": "Inspect the pyramid",
+        "nextEntry": "360"
+      },
+      {
+        "text": "Spend the night at the inn",
+        "nextEntry": "444"
+      },
+      {
+        "text": "Return to your car",
+        "effects": {
+          "hiredCairo": null
+        },
+        "nextEntry": "361"
+      }
+    ],
+    "traceNumbers": ["Egypt Location"]
+  },
+  "108": {
+    "description": "You’re assigned a battered black Peugeot and a bright-eyed young Egyptian. He speaks some English but has no particular interest in your mission.",
+    "choices": [
+      {
+        "text": "Roll 1D10",
+        "effects": {
+          "diceRoll": "1D10",
+          "outcomes": {
+            "1-3": {
+              "description": "You sleep restlessly.",
+              "nextEntry": "321"
+            },
+            "4-10": {
+              "description": "You arrive safely a few days later.",
+              "nextEntry": "324",
+              "effects": {
+                "advanceTime": 48
+              }
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["320"]
+  },
+  "321": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Wake up the next morning",
+        "nextEntry": "321a",
+        "effects": {
+          "setHour": 6
+        }
+      }
+    ],
+    "traceNumbers": ["108"]
+  },
+  "321a": {
+    "description": "You wake up on the morning of the second day of the trip, and there’s no one in sight. You have been completely abandoned by your guide. You breathe a sigh of relief, though, as before he drove off in the car, he thoughtfully unloaded any gear belonging to you. Decide what you can carry; maybe you can pick up the rest later.\n\nTo reach safety you either can swim the Nile in high flood, or you can follow the car tracks back to that little village not too far away.",
+    "choices": [
+      {
+        "text": "Swim the Nile in high flood",
+        "nextEntry": "588"
+      },
+      {
+        "text": "Follow the car tracks to the village",
+        "nextEntry": "589"
+      }
+    ],
+    "traceNumbers": ["108"]
+  },
+  "588": {
+    "description": "The river is very strong, with much debris floating in it, and many crocodiles! You decide to go back to the village.",
+    "choices": [
+      {
+        "text": "Go back to the village",
+        "nextEntry": "589"
+      }
+    ],
+    "traceNumbers": ["321"]
+  },
+  "589": {
+    "description": "You follow the tire tracks across the sands. A strong south wind begins to blow.",
+    "choices": [
+      {
+        "text": "Continue following the tracks",
+        "nextEntry": "94"
+      }
+    ],
+    "traceNumbers": ["588"]
+  },
+  "444": {
+    "description": "The inn’s proprietors are fiercely aloof. To stay there anyway, you have several options:",
+    "choices": [
+      {
+        "text": "Stay at the inn",
+        "nextEntry": "447"
+      },
+      {
+        "text": "Eat at the inn",
+        "nextEntry": "584"
+      },
+      {
+        "text": "Rest in your car (if you still have it)",
+        "nextEntry": "448"
+      },
+      {
+        "text": "Sleep in the desert",
+        "nextEntry": "319"
+      },
+      {
+        "text": "Go to the pyramid",
+        "nextEntry": "360"
+      }
+    ],
+    "traceNumbers": ["324", "361", "584"]
+  },
+  "361": {
+    "description": "Your car (and driver) are gone! You have a few options to spend the night or try your luck at finding a way back:",
+    "choices": [
+      {
+        "text": "Spend the night at the village inn",
+        "nextEntry": "344"
+      },
+      {
+        "text": "Sleep in the desert",
+        "nextEntry": "319"
+      },
+      {
+        "text": "Make a Luck roll to find a caravan to Cairo",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "341"
+            },
+            "failure": {
+              "nextEntry": "319"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["324"]
   }
 }

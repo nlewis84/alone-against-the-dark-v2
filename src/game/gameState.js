@@ -84,7 +84,7 @@ export async function initializeGame() {
     setGameData('books', books)
     updateTime(0, 20) // Initialize date display
     startGame()
-    displayEntry('103') // Ensure the first entry is displayed ... should be 13
+    displayEntry('321a') // Ensure the first entry is displayed ... should be 13
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error)
   }
@@ -95,7 +95,7 @@ export function startGame() {
     currentEntry: '13',
     previousEntry: 'START',
     character: 'Professor Grunewald',
-    currentLocale: 'Arkham', // Default starting locale ... should be Arkham
+    currentLocale: 'Cairo', // Default starting locale ... should be Arkham
     dailySkillUsage: {},
     combat: {
       isActive: false,

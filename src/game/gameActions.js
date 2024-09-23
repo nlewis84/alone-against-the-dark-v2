@@ -261,10 +261,17 @@ export function handleEntryChoices(entryId, entry) {
               updateInterpreterDisplay(choice.effects.hiredAthens)
             }
 
-            if (choice.effects.hiredCairo) {
-              currentState.hiredCairo = choice.effects.hiredCairo
-
-              updateInterpreterDisplay(choice.effects.hiredCairo)
+            if (
+              choice.effects.hiredCairo ||
+              choice.effects.hiredCairo === null
+            ) {
+              if (choice.effects.hiredCairo === null) {
+                currentState.hiredCairo = null
+                updateInterpreterDisplay(null)
+              } else {
+                currentState.hiredCairo = choice.effects.hiredCairo
+                updateInterpreterDisplay(choice.effects.hiredCairo)
+              }
             }
 
             if (choice.effects.setDay !== undefined) {
@@ -764,9 +771,21 @@ export function makeChoice(nextEntry, effects) {
       if (currentState.currentLocale !== effects.setLocale) {
         // Clear location-specific data if leaving the current locale
         currentState.hiredAthens = null
+        currentState.hiredCairo = null
       }
       setCurrentLocale(effects.setLocale)
-      updateInterpreterDisplay(currentState.hiredAthens) // Update interpreter display if needed
+
+      // Switch case for effects.setLocale: Athens, Cairo, updateInterpreterDisplay(currentState.hired*****that locale)
+      switch (effects.setLocale) {
+        case 'Athens':
+          updateInterpreterDisplay(currentState.hiredAthens)
+          break
+        case 'Cairo':
+          updateInterpreterDisplay(currentState.hiredCairo)
+          break
+        default:
+          break
+      }
     }
 
     if (effects.health !== undefined) {
@@ -1380,6 +1399,13 @@ export function handleOutcomeBasedEncounter(choice) {
     }
     if (matchedOutcome.nextEntry) {
       displayEntry(matchedOutcome.nextEntry)
+    }
+
+    if (
+      matchedOutcome.effects &&
+      matchedOutcome.effects.advanceTime !== undefined
+    ) {
+      updateTime(matchedOutcome.effects.advanceTime)
     }
   } else {
     console.error('No outcome defined for roll: ' + roll)
