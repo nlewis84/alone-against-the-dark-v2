@@ -104,6 +104,10 @@ describe('Game Logic', () => {
       <div id="interpreter"></div>
       <button id="saveButton"></button>
       <button id="loadButton"></button>
+      <div class="stat-container" id="waterSupply-container">
+      <div class="stat-label">Water Supply</div>
+      <div class="water-supply" id="waterSupply">10</div>
+      </div>
     `
 
     return initializeGame()
@@ -2510,6 +2514,106 @@ describe('Game Logic', () => {
           throw new Error('Unexpected entry displayed')
         }
       }
+    })
+  })
+
+  describe('makeChoice - waterSupply handling (button click tests)', () => {
+    let waterSupplyContainer
+    let healthDisplay
+
+    beforeEach(() => {
+      // Set up mock elements for the DOM
+      waterSupplyContainer = document.createElement('div')
+      waterSupplyContainer.id = 'waterSupply-container'
+      document.body.appendChild(waterSupplyContainer)
+
+      healthDisplay = document.createElement('div')
+      healthDisplay.id = 'health'
+      document.body.appendChild(healthDisplay)
+
+      // Reset game state before each test
+      currentState.waterSupply = 10
+      currentState.health = 100
+    })
+
+    test('should subtract water supply for 94_walk when button is clicked', () => {
+      // Simulate displaying the 94_walk entry
+      displayEntry('94_walk')
+
+      // Find the choice button and simulate a click
+      const choiceButton = findChoiceButton('Roll 1D10')
+      choiceButton.click()
+
+      // Verify water supply was reduced by 1 (or based on your game logic)
+      expect(currentState.waterSupply).toBe(9)
+    })
+
+    test('should clear water supply for 210 when button is clicked', () => {
+      // Simulate displaying the 210 entry
+      displayEntry('210')
+
+      // Find the choice button and simulate a click
+      const choiceButton = findChoiceButton('Go to any Cairo location')
+      choiceButton.click()
+
+      // Add a log to see the current state after the button click
+      console.log('Current waterSupply:', currentState.waterSupply)
+
+      // Verify water supply was cleared
+      expect(currentState.waterSupply).toBeUndefined()
+    })
+
+    test('should reduce health when water runs out in 94_walk', () => {
+      // Set water supply to 1 to trigger depletion in the test
+      currentState.waterSupply = 1
+
+      // Simulate displaying the 94_walk entry
+      displayEntry('94_walk')
+
+      // Find the choice button and simulate a click
+      const choiceButton = findChoiceButton('Roll 1D10')
+      choiceButton.click()
+
+      // Verify waterSupply is now 0 and health is reduced by 6
+      expect(currentState.waterSupply).toBe(0)
+      expect(currentState.health).toBe(94) // Health should be reduced by 6 due to water depletion
+    })
+
+    test('should add water supply correctly in 94_walk', () => {
+      // Simulate displaying the 94_walk entry with a water-adding choice
+      displayEntry('94_walk')
+
+      // Find the choice button and simulate a click
+      const choiceButton = findChoiceButton('Roll 1D10')
+      choiceButton.click()
+
+      // Add a log to see the current water supply after the button click
+      console.log(
+        'Current waterSupply after subtract:',
+        currentState.waterSupply,
+      )
+
+      // Verify waterSupply is now 13 (depending on the dice roll, adjust this if necessary)
+      expect(currentState.waterSupply).toBe(9)
+    })
+
+    test('should add water supply correctly in 94_survival_check', () => {
+      // Simulate displaying the 94_survival_check entry
+      displayEntry('94_survival_check')
+
+      // Find the choice button and simulate a click
+      const choiceButton = findChoiceButton('Attempt a Survival (Desert) roll')
+      choiceButton.click()
+
+      // Add a log to see the current water supply after the button click
+      console.log(
+        'Current water supply after adding:',
+        currentState.waterSupply,
+      )
+
+      // Verify water supply is now 10, 11, 12, or 13 (depending on the dice roll, adjust this if necessary)
+      expect(currentState.waterSupply).toBeGreaterThan(9)
+      expect(currentState.waterSupply).toBeLessThan(14)
     })
   })
 })

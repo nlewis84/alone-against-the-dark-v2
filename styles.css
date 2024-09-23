@@ -179,6 +179,15 @@ img {
   font-weight: bold;
 }
 
+.water-supply {
+  font-size: 1.5rem;
+  color: #007bff; /* Blue color for water */
+}
+
+#waterSupply-container {
+  display: none; /* Initially hide the water supply container */
+}
+
 #date-time {
   display: flex;
   gap: 2rem;

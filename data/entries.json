@@ -175,7 +175,7 @@
               "nextEntry": "New York"
             },
             "failure": {
-              "description": "You spend three hours recovering and mark off 1 hit point.",
+              "message": "You spend three hours recovering and mark off 1 hit point.",
               "advanceTime": 3,
               "modifyHealth": -1,
               "nextEntry": "586"
@@ -196,7 +196,7 @@
               "nextEntry": "Athens"
             },
             "failure": {
-              "description": "You spend three hours recovering and mark off 1 hit point.",
+              "message": "You spend three hours recovering and mark off 1 hit point.",
               "advanceTime": 3,
               "modifyHealth": -1,
               "nextEntry": "586"
@@ -217,7 +217,7 @@
               "nextEntry": "Alexandria"
             },
             "failure": {
-              "description": "You spend three hours recovering and mark off 1 hit point.",
+              "message": "You spend three hours recovering and mark off 1 hit point.",
               "advanceTime": 3,
               "modifyHealth": -1,
               "nextEntry": "586"
@@ -238,7 +238,7 @@
               "nextEntry": "Cairo"
             },
             "failure": {
-              "description": "You spend three hours recovering and mark off 1 hit point.",
+              "message": "You spend three hours recovering and mark off 1 hit point.",
               "advanceTime": 3,
               "modifyHealth": -1,
               "nextEntry": "586"
@@ -3407,12 +3407,13 @@
     ]
   },
   "151": {
-    "description": "The window gives way, and you tumble from the train, hitting the ground hard. You lose 1D6 hit points. At the next stop, you are forced to wait 24 hours for another train.",
+    "description": "The window gives way, and you tumble from the train, hitting the ground hard. You lose 3 hit points. At the next stop, you are forced to wait 24 hours for another train.",
     "choices": [
       {
         "text": "Wait for the next train",
         "effects": {
-          "advanceTime": 22
+          "advanceTime": 22,
+          "health": -3
         },
         "nextEntry": "75"
       }
@@ -7773,14 +7774,15 @@
         "text": "Wake up the next morning",
         "nextEntry": "321a",
         "effects": {
-          "setHour": 6
+          "setHour": 6,
+          "hiredCairo": null
         }
       }
     ],
     "traceNumbers": ["108"]
   },
   "321a": {
-    "description": "You wake up on the morning of the second day of the trip, and there’s no one in sight. You have been completely abandoned by your guide. You breathe a sigh of relief, though, as before he drove off in the car, he thoughtfully unloaded any gear belonging to you. Decide what you can carry; maybe you can pick up the rest later.\n\nTo reach safety you either can swim the Nile in high flood, or you can follow the car tracks back to that little village not too far away.",
+    "description": "You wake up on the morning of the second day of the trip, and there’s no one in sight. You have been completely abandoned by your guide. You breathe a sigh of relief, though, as before he drove off in the car, he thoughtfully unloaded any gear belonging to you.\n\nTo reach safety you either can swim the Nile in high flood, or you can follow the car tracks back to that little village not too far away.",
     "choices": [
       {
         "text": "Swim the Nile in high flood",
@@ -7866,5 +7868,1217 @@
       }
     ],
     "traceNumbers": ["324"]
+  },
+  "94": {
+    "description": "You are lost somewhere in the great desert of North Africa. Your water will last 1D10 days. If you succeed with a Survival (Desert) roll, add 1D3 days to that total (you know how to best ration the water). Write down the number of days your water will last. Each time you go to another entry, subtract a day from your water total. When you run out of water, subtract 6 hit points each time you go to another entry. Halt the calculation when you reach other humans, or when you die. You start walking. The heat is incredible, but you must go on!",
+    "choices": [
+      {
+        "text": "Roll for water supply",
+        "nextEntry": "94_survival_check",
+        "effects": {
+          "description": "Your initial water supply is set.",
+          "setVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D10"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["98", "341", "589"]
+  },
+
+  "94_survival_check": {
+    "description": "If you succeed with a Survival (Desert) roll, you will add 1D3 days to your water supply.",
+    "choices": [
+      {
+        "text": "Attempt a Survival (Desert) roll",
+        "effects": {
+          "check": {
+            "skill": "Survival (Desert)",
+            "success": {
+              "message": "You ration the water well and extend your supply.",
+              "modifyVariable": {
+                "name": "waterSupply",
+                "value": {
+                  "diceRoll": "1D3"
+                },
+                "operation": "add"
+              },
+              "nextEntry": "94_walk"
+            },
+            "failure": {
+              "message": "You struggle to ration your water.",
+              "nextEntry": "94_walk"
+            }
+          }
+        },
+        "nextEntry": "94_walk"
+      }
+    ]
+  },
+
+  "94_walk": {
+    "description": "The heat is incredible, but you must go on. Roll 1D10 to determine where you go next.",
+    "choices": [
+      {
+        "text": "Roll 1D10",
+        "effects": {
+          "diceRoll": "1D10",
+          "outcomes": {
+            "1": {
+              "description": "This looks familiar.",
+              "nextEntry": "213",
+              "effects": {
+                "modifyVariable": {
+                  "name": "waterSupply",
+                  "value": 1,
+                  "operation": "subtract"
+                }
+              }
+            },
+            "2-4": {
+              "nextEntry": "235",
+              "description": "It's so hot out here.",
+              "effects": {
+                "modifyVariable": {
+                  "name": "waterSupply",
+                  "value": 1,
+                  "operation": "subtract"
+                }
+              }
+            },
+            "5-9": {
+              "nextEntry": "257",
+              "description": "Maybe there is some way you can orient yourself better.",
+              "effects": {
+                "modifyVariable": {
+                  "name": "waterSupply",
+                  "value": 1,
+                  "operation": "subtract"
+                }
+              }
+            },
+            "10": {
+              "nextEntry": "279",
+              "description": "This seems hopeless.",
+              "effects": {
+                "modifyVariable": {
+                  "name": "waterSupply",
+                  "value": 1,
+                  "operation": "subtract"
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+
+  "213": {
+    "description": "With a successful Navigate roll, you know where you are. If you fail the roll, you can wait for someone to pass by or walk for a day in a chosen direction.",
+    "choices": [
+      {
+        "text": "Attempt a Navigate roll",
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "message": "You know where you are.",
+              "nextEntry": "234"
+            },
+            "failure": {
+              "message": "You are still lost.",
+              "nextEntry": "256b"
+            }
+          }
+        }
+      },
+      {
+        "text": "Walk East",
+        "nextEntry": "278",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk North",
+        "nextEntry": "277",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk South",
+        "nextEntry": "269",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk West",
+        "nextEntry": "257",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["94", "257", "269"]
+  },
+  "235": {
+    "description": "If you could just get your bearings, you might know where you are.",
+    "choices": [
+      {
+        "text": "Attempt a Navigate roll",
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "message": "You know where you are.",
+              "nextEntry": "234"
+            },
+            "failure": {
+              "message": "You are still lost.",
+              "nextEntry": "256b"
+            }
+          }
+        }
+      },
+      {
+        "text": "Walk North",
+        "nextEntry": "257",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk East",
+        "nextEntry": "269",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk South",
+        "nextEntry": "232",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk West",
+        "nextEntry": "255",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["94", "232", "242", "255", "257", "269"]
+  },
+  "257": {
+    "description": "Maybe you can figure out how to orient yourself, otherwise you are going to need to keep walking.",
+    "choices": [
+      {
+        "text": "Attempt an Astronomy roll",
+        "effects": {
+          "check": {
+            "skill": "Astronomy",
+            "success": {
+              "message": "You succeed in your Astronomy roll.",
+              "nextEntry": "234"
+            },
+            "failure": {
+              "message": "You fail to navigate using the stars or knowledge.",
+              "nextEntry": "256b"
+            }
+          }
+        }
+      },
+      {
+        "text": "Attempt or Hard Know (half EDU) roll",
+        "effects": {
+          "check": {
+            "skill": "Know",
+            "difficulty": "hard",
+            "success": {
+              "message": "You succeed in your Hard Knowledge roll.",
+              "nextEntry": "234"
+            },
+            "failure": {
+              "message": "You fail to navigate using your knowledge.",
+              "nextEntry": "256b"
+            }
+          }
+        }
+      },
+      {
+        "text": "Walk North",
+        "nextEntry": "246",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk East",
+        "nextEntry": "213",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk South",
+        "nextEntry": "235",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk West",
+        "nextEntry": "283",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["94", "213", "235", "245", "283"]
+  },
+  "279": {
+    "description": "You no longer can doubt it. You have wandered far to the south, far into the desert. Death from thirst may follow unless you can retrace your steps. You stand on a hill. Farther yet to the south, you seem to see palm trees. Should you go there, or perhaps try to find your way north?",
+    "choices": [
+      {
+        "text": "Examine the vision of palm trees",
+        "nextEntry": "285",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Try to retrace your path West",
+        "nextEntry": "214",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Try to retrace your path North",
+        "nextEntry": "232",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Try to retrace your path East?",
+        "nextEntry": "246",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["214", "232", "246", "285"]
+  },
+  "234": {
+    "description": "You’re a born navigator! You figure correctly that you’re west of Cairo. In one day you enter the Giza suburbs west of the city.",
+    "choices": [
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "operation": "clear"
+          }
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      }
+    ],
+    "traceNumbers": ["213", "257", "278"]
+  },
+  "256a": {
+    "description": "You find a tiny puddle of water; it does not make you sick when you drink it. You don’t need to consume your own water supply this day—you have an extra day of life.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "message": "You top a rise and see Alexandria in the distance. That evening you’re in its streets.",
+              "nextEntry": "Alexandria",
+              "effects": {
+                "modifyVariable": {
+                  "name": "waterSupply",
+                  "operation": "clear"
+                }
+              }
+            },
+            "failure": {
+              "message": "You failed the Luck roll.",
+              "nextEntry": "220"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["213"]
+  },
+  "256b": {
+    "description": "You find a tiny puddle of water; it does not make you sick when you drink it. You don’t need to consume your own water supply this day—you have an extra day of life.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "message": "You top a rise and see Alexandria in the distance. That evening you’re in its streets.",
+              "nextEntry": "256_alexandria"
+            },
+            "failure": {
+              "message": "You failed the Luck roll.",
+              "nextEntry": "242"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["213"]
+  },
+  "256_alexandria": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Go to any Alexandria location",
+        "nextEntry": "Alexandria",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "operation": "clear"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["256b"]
+  },
+  "256_cairo": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "operation": "clear"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["256b"]
+  },
+  "277": {
+    "description": "You drink another day’s water ration, and stumble ahead. The rocks have sliced your fine leather shoes into ribbons. Your bleeding feet are unlikely to carry you much further. Then, suddenly, you see Alexandria in the distance! Salvation!",
+    "choices": [
+      {
+        "text": "Alexandria!",
+        "nextEntry": "195",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "operation": "clear"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["213", "245"]
+  },
+  "269": {
+    "description": "In a cleft of a ravine you find a pale white flower, the only thing growing for miles. It seems the most beautiful plant you have ever seen. You salute it, and take courage from it.",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "213",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "210",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "214",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "235",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["213", "214", "235"]
+  },
+  "278": {
+    "description": "You make your way forward, despite the searing sun and your aching feet. Somehow you feel you are headed in the right direction.",
+    "choices": [
+      {
+        "text": "Keep walking",
+        "nextEntry": "234",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["213"]
+  },
+  "210": {
+    "description": "You come to the Nile! After splashing in its refreshing waters, you follow the great river north. Catching rides with some engineers and then some archaeologists, you arrive in Cairo in 2 days.",
+    "choices": [
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo",
+        "effects": {
+          "advanceTime": 48,
+          "modifyVariable": {
+            "name": "waterSupply",
+            "operation": "clear"
+          }
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      }
+    ],
+    "traceNumbers": ["214", "269"]
+  },
+  "214": {
+    "description": "These desert lands all begin to look the same. Have you been going in circles? Should you change directions? Drink one day’s water, then choose a direction.",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "269",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "210",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "279",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "232",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["232", "269"]
+  },
+  "220": {
+    "description": "Is that something there crossing the desert?",
+    "choices": [
+      {
+        "text": "Try your Luck",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "message": "You meet a friendly caravan and travel to Cairo in 2 days.",
+              "nextEntry": "Cairo",
+              "effects": {
+                "advanceTime": 48,
+                "modifyVariable": {
+                  "name": "waterSupply",
+                  "operation": "clear"
+                }
+              }
+            },
+            "failure": {
+              "message": "It must have just been a mirage.",
+              "nextEntry": "232"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["256"]
+  },
+  "232": {
+    "description": "The burning desert sands have no end. Subtract another day’s water for this ordeal. Are you losing confidence? Do you want to change direction?",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "235",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "214",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "279",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "245",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["214", "220", "235", "246"]
+  },
+  "242": {
+    "description": "In the arid wastes you come across a trail!",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "message": "There is a caravan is approaching! They’re going to Cairo, and you’re saved!",
+              "nextEntry": "256_cairo",
+              "effects": {
+                "advanceTime": 48
+              }
+            },
+            "failure": {
+              "message": "You see a caravan in the distance, but it is moving away from you! In your weakened condition, you can’t hope to catch it. You collapse beside the trail, weeping.",
+              "nextEntry": "235",
+              "effects": {
+                "modifyVariable": {
+                  "name": "waterSupply",
+                  "value": 1,
+                  "operation": "subtract"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["256"]
+  },
+  "245": {
+    "description": "The next day you see a city on the horizon. Desperately you stumble toward it. The domes and minarets suddenly begin to tremble and disappear—a mirage! You were foolish to have imagined a city in the desert. Drink another day’s water ration and choose a direction.",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "255",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "232",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "279",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "299",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["257", "268"]
+  },
+  "246": {
+    "description": "You draw up just in time. Another few steps and you would have fallen a hundred feet into that ravine! You must get a grip on yourself. Drink another day’s water ration and choose a direction. And be careful!",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "255",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "232",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "279",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "299",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["232", "257"]
+  },
+  "255": {
+    "description": "The towering yellow sand clouds sweep over you, and you seek shelter from the fury in a nearby gully. The storm lasts the rest of the day. When you emerge, you see nothing you can recognize. Disheartened, you drink another day’s water ration and decide to choose a direction of travel.",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "283",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "235",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "245",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "299",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["235", "246", "283", "299"]
+  },
+  "283": {
+    "description": "The winds have exposed skeletons of men, horses, and camels—perhaps victims of some ancient vendetta. A jeweled dagger catches your eye. You’ll be able to sell it in Cairo for $100—if you make it back! Drink another day’s water ration and choose a direction.",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "268",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "health": -2,
+          "addItem": {
+            "name": "Jeweled Dagger",
+            "description": "$100",
+            "type": "artifact"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "257",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "addItem": {
+            "name": "Jeweled Dagger",
+            "description": "$100",
+            "type": "artifact"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "255",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "addItem": {
+            "name": "Jeweled Dagger",
+            "description": "$100",
+            "type": "artifact"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "299",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "addItem": {
+            "name": "Jeweled Dagger",
+            "description": "$100",
+            "type": "artifact"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["255", "257", "268", "299"]
+  },
+  "285": {
+    "description": "You discover an oasis! Your gamble pays off. Exhausted, you fall into the sweet, fresh water and drink your fill. Later, the inhabitants tend to you and, two days later, a party of traders takes you on the 2 day journey to Cairo.",
+    "choices": [
+      {
+        "text": "Travel with the traders",
+        "nextEntry": "134",
+        "effects": {
+          "advanceTime": 96,
+          "modifyVariable": {
+            "name": "waterSupply",
+            "operation": "clear"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["279", "299"]
+  },
+  "299": {
+    "description": "Your once-firm steps have weakened. You are very, very weary. Have you wandered too far west? Can you return?",
+    "choices": [
+      {
+        "text": "Attempt a Navigate roll",
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "message": "You find your way and continue.",
+              "nextEntry": "285"
+            },
+            "failure": {
+              "message": "You fail to navigate. Try a POW roll.",
+              "nextEntry": "299b"
+            }
+          }
+        }
+      },
+      {
+        "text": "Attempt a POW roll",
+        "effects": {
+          "check": {
+            "skill": "POW",
+            "success": {
+              "message": "Your inner strength guides you.",
+              "nextEntry": "285"
+            },
+            "failure": {
+              "message": "Your eyesight suddenly blurs. You must now rely on your survival skills.",
+              "nextEntry": "299_survival_check"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["246", "255", "268", "283"]
+  },
+  "299b": {
+    "description": "You can't give up now!",
+    "choices": [
+      {
+        "text": "Attempt a POW roll",
+        "effects": {
+          "check": {
+            "skill": "POW",
+            "success": {
+              "message": "Your inner strength guides you.",
+              "nextEntry": "285"
+            },
+            "failure": {
+              "message": "Your eyesight suddenly blurs. You must now rely on your survival skills.",
+              "nextEntry": "299_survival_check"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["246", "255", "268", "283"]
+  },
+  "299_survival_check": {
+    "description": "Make a Survival (Desert) roll. If successful, you can choose a direction. If you fail, it's the end of your journey.",
+    "choices": [
+      {
+        "text": "Attempt a Survival (Desert) roll",
+        "effects": {
+          "check": {
+            "skill": "Survival (Desert)",
+            "success": {
+              "message": "You survive and must choose a direction.",
+              "nextEntry": "299_survival_direction"
+            },
+            "failure": {
+              "message": "You are doomed.",
+              "nextEntry": "299_end"
+            }
+          }
+        },
+        "requirements": {
+          "skill": {
+            "name": "Survival (Desert)"
+          }
+        }
+      }
+    ]
+  },
+  "299_end": {
+    "description": "You must hope that a wiser, better-skilled investigator takes up the chase. As for you, it is ... THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ]
+  },
+  "299_survival_direction": {
+    "description": "You survive and must choose a direction.",
+    "choices": [
+      {
+        "text": "Go South",
+        "nextEntry": "255"
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "283"
+      },
+      {
+        "text": "You haven’t got a clue",
+        "nextEntry": "245"
+      }
+    ]
+  },
+  "268": {
+    "description": "You stumble and fall as fractured rock gives way beneath you; you incur a sprained ankle and lose 2 hit points from bruises and cuts. Perhaps you should throw away your water and end the torment now. The situation seems hopeless. But you resolve to struggle until the very end. You choose a direction and drink a day’s water ration.",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "254",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "modifyHealth": {
+            "value": {
+              "diceRoll": "1D2"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "246",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "modifyHealth": {
+            "value": {
+              "diceRoll": "1D2"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "283",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "modifyHealth": {
+            "value": {
+              "diceRoll": "1D2"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "299",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "modifyHealth": {
+            "value": {
+              "diceRoll": "1D2"
+            },
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["245", "283"]
+  },
+  "254": {
+    "description": "You come to a great body of water. It is the Mediterranean Sea! Soon you find a railway track and hitch a ride to Alexandria aboard a section gang handcar.",
+    "choices": [
+      {
+        "text": "Go to Alexandria",
+        "nextEntry": "195",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "operation": "clear"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["245", "268"]
   }
 }

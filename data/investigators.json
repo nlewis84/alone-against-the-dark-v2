@@ -71,6 +71,7 @@
       "Spot Hidden": 25,
       "Stealth": 20,
       "Survival": 10,
+      "Survival (Desert)": 10,
       "Swim": 20,
       "Throw": 20,
       "Track": 10
@@ -146,6 +147,7 @@
       "Spot Hidden": 60,
       "Stealth": 50,
       "Survival": 10,
+      "Survival (Desert)": 10,
       "Swim": 20,
       "Throw": 20,
       "Track": 10
@@ -296,6 +298,7 @@
       "Spot Hidden": 50,
       "Stealth": 20,
       "Survival": 10,
+      "Survival (Desert)": 10,
       "Swim": 20,
       "Throw": 30,
       "Track": 10

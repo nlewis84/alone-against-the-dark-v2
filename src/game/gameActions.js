@@ -539,6 +539,41 @@ export function handleComplexOutcome(checkResult) {
     updateHealth(parseInt(checkResult.modifyHealth)) // Ensure you parse the modifyHealth result if it's a string like "2D3"
   }
 
+  if (
+    checkResult.modifyVariable &&
+    checkResult.modifyVariable.name === 'waterSupply'
+  ) {
+    console.log('modifying in skill check')
+    const operation = checkResult.modifyVariable.operation || 'subtract' // Default operation
+
+    if (operation === 'clear') {
+      currentState.waterSupply = undefined
+
+      const waterSupplyContainer = document.getElementById(
+        'waterSupply-container',
+      )
+      waterSupplyContainer.style.display = 'none' // Hide the water supply container
+    } else {
+      const value = checkResult.modifyVariable.value.diceRoll
+        ? rollDice(checkResult.modifyVariable.value.diceRoll)
+        : checkResult.modifyVariable.value
+
+      if (operation === 'subtract') {
+        currentState.waterSupply = Math.max(0, currentState.waterSupply - value)
+      } else if (operation === 'add') {
+        currentState.waterSupply += value
+      }
+
+      updateWaterSupplyDisplay(currentState.waterSupply) // Update the UI for water supply
+
+      // If water runs out, reduce health
+      if (currentState.waterSupply <= 0) {
+        updateHealth(-6)
+        updateHealthDisplay(currentState.health) // Update the UI for health
+      }
+    }
+  }
+
   // Special handling for successful dodge that leads to a new entry and a day advance
   if (checkResult.dayAdvance) {
     const newDate = new Date(getCurrentDate())
@@ -767,6 +802,51 @@ export function makeChoice(nextEntry, effects) {
   }
 
   if (effects) {
+    // Handle water supply
+    if (effects.setVariable && effects.setVariable.name === 'waterSupply') {
+      currentState.waterSupply = effects.setVariable.value.diceRoll
+        ? rollDice(effects.setVariable.value.diceRoll)
+        : effects.setVariable.value
+      updateWaterSupplyDisplay(currentState.waterSupply) // Update the UI for water supply
+    }
+
+    if (
+      effects.modifyVariable &&
+      effects.modifyVariable.name === 'waterSupply'
+    ) {
+      const operation = effects.modifyVariable.operation || 'subtract' // Default operation
+
+      if (operation === 'clear') {
+        currentState.waterSupply = undefined
+
+        const waterSupplyContainer = document.getElementById(
+          'waterSupply-container',
+        )
+        waterSupplyContainer.style.display = 'none' // Hide the water supply container
+      } else {
+        const value = effects.modifyVariable.value.diceRoll
+          ? rollDice(effects.modifyVariable.value.diceRoll)
+          : effects.modifyVariable.value
+
+        if (operation === 'subtract') {
+          currentState.waterSupply = Math.max(
+            0,
+            currentState.waterSupply - value,
+          )
+        } else if (operation === 'add') {
+          currentState.waterSupply += value
+        }
+
+        updateWaterSupplyDisplay(currentState.waterSupply) // Update the UI for water supply
+
+        // If water runs out, reduce health
+        if (currentState.waterSupply <= 0) {
+          updateHealth(-6)
+          updateHealthDisplay(currentState.health) // Update the UI for health
+        }
+      }
+    }
+
     if (effects.setLocale) {
       if (currentState.currentLocale !== effects.setLocale) {
         // Clear location-specific data if leaving the current locale
@@ -976,6 +1056,18 @@ export function addItem(item) {
   updateInventory()
 }
 
+export function updateWaterSupplyDisplay(waterSupply) {
+  // Show the water supply container
+  const waterSupplyContainer = document.getElementById('waterSupply-container')
+  waterSupplyContainer.style.display = 'block' // Make it visible
+
+  const waterSupplyDiv = document.getElementById('waterSupply')
+
+  if (waterSupply !== undefined) {
+    waterSupplyDiv.innerText = waterSupply // Update the water supply display
+  }
+}
+
 export function updateInventory() {
   // Group inventory items by type
   const books = currentState.inventory.filter((item) => item.type === 'book')
@@ -1033,6 +1125,7 @@ export function saveGame() {
     moderateHotelStays: currentState.moderateHotelStays,
     expensiveHotelStays: currentState.expensiveHotelStays,
     scheduledMeetings: currentState.scheduledMeetings,
+    waterSupply: currentState.waterSupply,
   }
   saveState('gameState', saveData)
 }
@@ -1069,6 +1162,11 @@ export function loadGame() {
 
     currentState.scheduledMeetings = savedState.scheduledMeetings || []
 
+    currentState.waterSupply = savedState.waterSupply || 0
+    if (currentState.waterSupply > 0) {
+      updateWaterSupplyDisplay(currentState.waterSupply)
+    }
+
     displayEntry(currentState.currentEntry)
     updateHealth(0) // Refresh health display
     updateSanity(0) // Refresh sanity display
@@ -1089,6 +1187,13 @@ export function checkRequirements(requirements) {
   }
 
   if (requirements) {
+    // New logic for checking water supply
+    if (requirements.waterSupply !== undefined) {
+      if (currentState.waterSupply < requirements.waterSupply) {
+        return false // Player does not have enough water
+      }
+    }
+
     if (requirements.previousEntry) {
       if (currentState.previousEntry !== requirements.previousEntry) {
         return false
@@ -1261,6 +1366,7 @@ export function checkRequirements(requirements) {
     // Check if the player has the required skill and the minimum value for that skill
     if (requirements.skill) {
       const { name, minValue } = requirements.skill
+
       if (!currentState.skills[name] || currentState.skills[name] < minValue) {
         return false
       }
@@ -1406,6 +1512,60 @@ export function handleOutcomeBasedEncounter(choice) {
       matchedOutcome.effects.advanceTime !== undefined
     ) {
       updateTime(matchedOutcome.effects.advanceTime)
+    }
+
+    // Handle water supply
+    if (
+      matchedOutcome.effects &&
+      matchedOutcome.effects.setVariable &&
+      matchedOutcome.effects.setVariable.name === 'waterSupply'
+    ) {
+      currentState.waterSupply = matchedOutcome.effects.setVariable.value
+        .diceRoll
+        ? rollDice(matchedOutcome.effects.setVariable.value.diceRoll)
+        : matchedOutcome.effects.setVariable.value
+      console.log('set water level to ' + currentState.waterSupply)
+      updateWaterSupplyDisplay(currentState.waterSupply) // Update the UI for water supply
+    }
+
+    if (
+      matchedOutcome.effects &&
+      matchedOutcome.effects.modifyVariable &&
+      matchedOutcome.effects.modifyVariable.name === 'waterSupply'
+    ) {
+      const operation =
+        matchedOutcome.effects.modifyVariable.operation || 'subtract' // Default operation
+
+      if (operation === 'clear') {
+        currentState.waterSupply = undefined
+
+        const waterSupplyContainer = document.getElementById(
+          'waterSupply-container',
+        )
+        waterSupplyContainer.style.display = 'none' // Hide the water supply container
+      } else {
+        const value = matchedOutcome.effects.modifyVariable.value.diceRoll
+          ? rollDice(matchedOutcome.effects.modifyVariable.value.diceRoll)
+          : matchedOutcome.effects.modifyVariable.value
+
+        if (operation === 'subtract') {
+          console.log('subtracting ' + value + ' from water supply')
+          currentState.waterSupply = Math.max(
+            0,
+            currentState.waterSupply - value,
+          )
+        } else if (operation === 'add') {
+          currentState.waterSupply += value
+        }
+
+        updateWaterSupplyDisplay(currentState.waterSupply) // Update the UI for water supply
+
+        // If water runs out, reduce health
+        if (currentState.waterSupply <= 0) {
+          updateHealth(-6)
+          updateHealthDisplay(currentState.health) // Update the UI for health
+        }
+      }
     }
   } else {
     console.error('No outcome defined for roll: ' + roll)

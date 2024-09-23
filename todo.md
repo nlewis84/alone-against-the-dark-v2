@@ -1,8 +1,6 @@
 Alexandria Locations
 
 Cairo Locations
-94 - needs a new mechanic to track water usage
-
 324 - outcomes
 
 The pyramid
