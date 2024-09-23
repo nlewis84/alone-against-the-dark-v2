@@ -302,6 +302,27 @@
     "image": "src/assets/images/clues/clue13.png",
     "traceNumbers": ["START"]
   },
+  "14": {
+    "description": "You crouch in the gloomy shadows. Soon you hear slow, shuffling footsteps from many directions. Do you wish you’d run instead? Somehow you count yourself glad that you can’t make out the faces of the approaching figures—figures which move as though alive, and yet remind you of the dead! Now you’re sure they see you. You begin to panic.",
+    "choices": [
+      {
+        "text": "Run",
+        "nextEntry": "27"
+      },
+      {
+        "text": "Use Fast Talk to get out of this",
+        "nextEntry": "31"
+      },
+      {
+        "text": "Return to Athens Locations",
+        "nextEntry": "Athens Location",
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      }
+    ],
+    "traceNumbers": ["194"]
+  },
   "15": {
     "description": "Nobody goes near the well-dressed driver. Perhaps there’s something odd about that. The old fellow looks shaky, but serene, while the young driver looks friendly, but perhaps overly brash.",
     "choices": [
@@ -373,6 +394,134 @@
       }
     ],
     "traceNumbers": ["166", "177", "350", "316", "346"]
+  },
+  "18": {
+    "description": "At first, you move silently, cunningly evading the ghastly, lifeless figures which shuffle across the court in search of you. Then you clumsily kick a loose stone that clatters across the court. All of the terrifying figures turn toward you.",
+    "choices": [
+      {
+        "text": "Make a Climb roll to escape",
+        "effects": {
+          "check": {
+            "skill": "Climb",
+            "success": {
+              "nextEntry": "33",
+              "message": "You manage to scale the fence and escape the encircling figures."
+            },
+            "failure": {
+              "nextEntry": "27",
+              "message": "You fail to climb the fence and the figures close in on you."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["33", "27", "194"]
+  },
+  "19": {
+    "description": "You whistle loudly to show that you’ve heard nothing and amble away. But in the gloom, you begin to see strangely cloaked figures shamble toward you from all sides. How foolish you were to have drawn attention to yourself!",
+    "choices": [
+      {
+        "text": "Make a Climb roll to escape",
+        "effects": {
+          "check": {
+            "skill": "Climb",
+            "success": {
+              "nextEntry": "33",
+              "message": "You manage to climb the fence and escape beyond the grasp of the creatures."
+            },
+            "failure": {
+              "nextEntry": "31",
+              "message": "You fail to climb the fence, and the creatures close in on you."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["33", "31", "194"]
+  },
+  "20": {
+    "title": "PIOSOTOS CAFE",
+    "description": "As you enter the cafe, the thick, acrid tobacco smoke chokes you. The place is filled with laughing, gesticulating dockworkers and sailors.\n\nIt is bustling, but you don't hear any English being spoken.",
+    "choices": [
+      {
+        "text": "Wait for your meeting with Richard Hawkes",
+        "nextEntry": "35",
+        "requirements": {
+          "scheduledMeeting": {
+            "entry": "20",
+            "meetingWith": "Richard Hawkes"
+          }
+        },
+        "effects": {
+          "meetingCompleted": {
+            "entry": "20",
+            "meetingWith": "Richard Hawkes"
+          }
+        }
+      },
+      {
+        "text": "Talk to the group in back playing cards",
+        "effects": {
+          "check": {
+            "skill": "Language (Greek)",
+            "success": {
+              "nextEntry": "107",
+              "message": "You successfully communicate with the group in back and join them."
+            },
+            "failure": {
+              "nextEntry": "20",
+              "message": "You fail to communicate with the group in back."
+            }
+          }
+        },
+        "requirements": {
+          "language": "Greek"
+        },
+        "nextEntry": "107"
+      },
+      {
+        "text": "Approach the card game in the back with Christos",
+        "requirements": {
+          "companion": "Christos"
+        },
+        "nextEntry": "107a"
+      },
+      {
+        "text": "Approach the burly sailors at the bar",
+        "effects": {
+          "check": {
+            "skill": "Language (Greek)",
+            "success": {
+              "nextEntry": "105",
+              "message": "You manage to communicate with the sailors and approach them."
+            },
+            "failure": {
+              "nextEntry": "20",
+              "message": "You fail to communicate with the sailors."
+            }
+          }
+        },
+        "requirements": {
+          "language": "Greek"
+        },
+        "nextEntry": "105"
+      },
+      {
+        "text": "Approach the burly sailors at the bar with Christos",
+        "requirements": {
+          "companion": "Christos"
+        },
+        "nextEntry": "105a"
+      },
+      {
+        "text": "Leave the cafe and return to any Athens Location",
+        "nextEntry": "Athens Location",
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      }
+    ],
+    "traceNumbers": ["35", "107", "105", "Athens Location"]
   },
   "21": {
     "description": "\"And the Karpathos Device,\" you ask, \"was it returned to the museum?\" He shakes his head. \"Oh, no. It was scheduled to be sent to the National Museum in Cairo for a special exhibit. The Device may be Egyptian, you see. The plans were not changed.\"",
@@ -482,6 +631,35 @@
     ],
     "traceNumbers": ["101", "127", "424"]
   },
+  "27": {
+    "description": "Something grabs you. You must struggle to escape.",
+    "choices": [
+      {
+        "text": "Make a STR roll",
+        "effects": {
+          "check": {
+            "skill": "STR",
+            "success": {
+              "nextEntry": "33",
+              "message": "You tear yourself free from the grasp and escape."
+            },
+            "failure": {
+              "nextEntry": "27a",
+              "message": "Another thing grabs you, and you must fight against their combined strength."
+            }
+          }
+        }
+      },
+      {
+        "text": "Return to Athens Locations",
+        "nextEntry": "Athens Location",
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      }
+    ],
+    "traceNumbers": ["14", "18"]
+  },
   "28": {
     "description": "The door is locked, but you can try the window. If you want to pick the door lock, make a successful Locksmith or Hard Mechanical Repair roll. If you want to pry open the window, succeed at an STR roll.",
     "choices": [
@@ -553,6 +731,18 @@
     ],
     "traceNumbers": ["New York"]
   },
+  "31": {
+    "description": "Despite your best efforts, the dark figures continue to advance. You are surrounded and reaching hands grasp you, closing around different parts of your body, tighter and tighter. You whimper and then scream. The last thing you see is a nightmare of hollow eyes; the last thing you smell is the stench of fetid, hungry mouths. It is . . .\n\nTHE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["14", "19"]
+  },
   "32": {
     "description": "In rifling through Gliere’s notes and letters, you find a portion of manuscript: “The Great Upheaval Myths Correlated with Climatic Change” by T. Gliere. Skimming, you see a bizarre collection of tales mentioning nearly every rumored land, from Atlantis to Mu. Many stories you do not recognize at all. Apparently, Gliere sought historical and physical evidence for these sunken and frozen legends of lands. He seems to have found common dates for the devastation myths found in nearly every culture. Interesting.",
     "choices": [
@@ -569,6 +759,24 @@
     ],
     "traceNumbers": ["150"]
   },
+  "33": {
+    "description": "Trembling with fear, you reel down the road from the Parthenon. You spy a lone figure ahead, a white-haired old man who uses a walking cane. You babble a warning in English, supposing that the alarm alone in your voice will be enough to dissuade him from going closer to the horrors lurking in the Parthenon behind you.\n\nTo your surprise, he answers in English. His voice is slow, but it inspires your confidence. “Fear no more,” he says. “Tonight the stars themselves bind those things to the top of the sacred hill. We have nothing to fear here.”\n\nYour terror begins to lift like a veil. “Your friend was killed by one of those... creatures. You see them in museums, you know, looking like stuffed animals. Undead? Ghouls? Who knows their origin? Your friend Gliere saw them just before they killed him. That is as much as you and I need know.” He pauses. “Our lives we struggle in darkness. We are poor beings, who need the darkness in order to find the light.” As he says these words, the moon breaks through the clouds, and a calm beauty pervades the world. Your fears are quenched, your heart utterly at peace.\n\n“I have been on quests like yours. I have been a scholar of the unusual. I know the uncertainties and the terrors. There is nothing we mere mortals can do but strengthen our faith and struggle against the darkness.” The two of you walk slowly.\n\n“I do not know what Gliere had discovered. But I do know that while in prison he told someone that if the Karpathos Device was returned to its home, life as we know it will cease to exist.”\n\nHe turns to you, “I am at the end of my life. It is up to you to stop this evil, as your friend attempted so valiantly. Egypt is the answer. Go there, find the Karpathos Device, return it to the sea, or destroy it utterly.” He takes something from his hand. It is a ring, heavy with gold, curiously made, covered with signs, most prominently a five-pointed star with a core of flame. “I give you this. It has power, though perhaps not as much as you would want. Use it against dead things brought back to existence.”\n\nFor a moment a friendly hand has steadied you and restored your resolve. This warmth of feeling is what you fight for—and the numbing terror which chased you from the hill is what you despise.\n\nWhen you look up again, your new friend is gone. The road is empty. The encounter was like a dream. But the ring is still there. You slip it on a finger; it fits firmly and comfortably. Reaching the bottom of the hill, you find a cab and go to a hotel. You sleep peacefully.",
+    "choices": [
+      {
+        "text": "Go to any Athens Location",
+        "effects": {
+          "setHour": 6,
+          "addItem": {
+            "name": "Ring of Power",
+            "description": "A ring heavy with gold, covered with signs, most prominently a five-pointed star with a core of flame. It has power, particularly against dead things brought back to existence.",
+            "type": "artifact"
+          }
+        },
+        "nextEntry": "Athens"
+      }
+    ],
+    "traceNumbers": ["18", "19", "27"]
+  },
   "34": {
     "description": "Despite your best efforts, she will not change her mind and sends you on your way.",
     "choices": [
@@ -582,6 +790,24 @@
       }
     ],
     "traceNumbers": ["118", "153"]
+  },
+  "35": {
+    "description": "The man is Richard Hawkes. He greets you warmly. \"An ouzo and some talk,\" he suggests. \"Look, I know you’re investigating Gliere’s death. I’ve talked to him once or twice. His death caused quite a stir. Well, to make a long story short, I have some interesting information concerning his crazy theft. I don’t have it here, but if you’d like to come back to my apartment, I can show it to you.\"",
+    "choices": [
+      {
+        "text": "Agree to go to his apartment",
+        "nextEntry": "79"
+      },
+      {
+        "text": "Schedule a meeting at the Parthenon at sunset",
+        "nextEntry": "Athens Location"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["20"]
   },
   "36": {
     "choices": [
@@ -1191,6 +1417,31 @@
     ],
     "traceNumbers": ["16", "146"]
   },
+  "65": {
+    "title": "NEW YORK SUN (EUROPEAN EDITION)",
+    "description": "When you browse through the newspaper, you notice three items:\n\n\"Amet Keh, Director of the Cairo National Museum, eagerly awaits the arrival of the Karpathos Device, on loan from Athens.\"\n\n\"The casket bearing Professor Gliere, the academic thief from Miskatonic University, has been placed aboard the Urania for New York. A memorial service has been scheduled in Arkham, Mass., U.S.A.\"\n\n\"The Starkweather-Moore Expedition nears readiness as The Dark Sea heads for Bremen, Germany. Once there, final preparations include reinforcing the hull for the treacherous journey into the ice floes surrounding Antarctica.\"",
+    "choices": [
+      {
+        "text": "Continue reading",
+        "nextEntry": "95"
+      },
+      {
+        "text": "Return to Athens Locations",
+        "nextEntry": "Athens Location",
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      },
+      {
+        "text": "Return to New York Locations",
+        "nextEntry": "New York Location",
+        "requirements": {
+          "currentLocale": "New York"
+        }
+      }
+    ],
+    "traceNumbers": []
+  },
   "67": {
     "description": "Her eyes are wary, but she is listening.",
     "choices": [
@@ -1346,6 +1597,59 @@
       }
     ],
     "traceNumbers": ["87"]
+  },
+  "79": {
+    "description": "His small apartment is cluttered with books and filled with rich aromas. It is the room of a scholar.\n\nYou will now attempt several rolls to uncover more about this situation.",
+    "choices": [
+      {
+        "text": "Attempt Know (EDU), Cthulhu Mythos, Occult, Spot Hidden, and Listen rolls.",
+        "effects": {
+          "multipleChecks": [
+            {
+              "skill": "EDU",
+              "resultKey": "eduSuccess"
+            },
+            {
+              "skill": "Cthulhu Mythos",
+              "resultKey": "cthulhuMythosSuccess"
+            },
+            {
+              "skill": "Occult",
+              "resultKey": "occultSuccess"
+            },
+            {
+              "skill": "Spot Hidden",
+              "resultKey": "spotHiddenSuccess"
+            },
+            {
+              "skill": "Listen",
+              "resultKey": "listenSuccess"
+            }
+          ],
+          "saveResults": {
+            "success": [
+              {
+                "skill": "Cthulhu Mythos",
+                "resultKey": "cthulhuMythosSuccess"
+              },
+              {
+                "skill": "Occult",
+                "resultKey": "occultSuccess"
+              },
+              {
+                "skill": "Spot Hidden",
+                "resultKey": "spotHiddenSuccess"
+              },
+              {
+                "skill": "Listen",
+                "resultKey": "listenSuccess"
+              }
+            ]
+          }
+        },
+        "nextEntry": "112"
+      }
+    ]
   },
   "80": {
     "description": "“In a gala ceremony, Zeno Pisistratos was installed as curator of the National Museum of Archaeology at Athens today. Pisistratos, an expert in Greek and Egyptian antiquities, is said to be interested in arranging exchange-exhibits with other important world museums.” —Arkham Advertiser, July 20, 1931.",
@@ -1681,6 +1985,25 @@
     ],
     "traceNumbers": ["42"]
   },
+  "94": {
+    "description": "You are lost somewhere in the great desert of North Africa. Your water will last 1D10 days. If you succeed with a Survival (Desert) roll, add 1D3 days to that total (you know how to best ration the water). Write down the number of days your water will last. Each time you go to another entry, subtract a day from your water total. When you run out of water, subtract 6 hit points each time you go to another entry. Halt the calculation when you reach other humans, or when you die. You start walking. The heat is incredible, but you must go on!",
+    "choices": [
+      {
+        "text": "Roll for water supply",
+        "nextEntry": "94_survival_check",
+        "effects": {
+          "description": "Your initial water supply is set.",
+          "setVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D10"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["98", "341", "589"]
+  },
   "95": {
     "description": "“Professor Gliere’s suicide has shocked and saddened the Miskatonic academic community. No word has yet come from Professor Grunewald.”",
     "choices": [
@@ -1853,6 +2176,26 @@
     "title": "GRUNEWALD'S HOME",
     "traceNumbers": []
   },
+  "103": {
+    "title": "CAIRO TAXIS",
+    "description": "On the few main streets of Cairo, cabs of every variety, from sleek new Packards to old Fords running on makeshift parts, can be found.",
+    "choices": [
+      {
+        "text": "Hire a driver for the day",
+        "effects": {
+          "hiredCairo": "Taxi"
+        },
+        "nextEntry": "Cairo"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo",
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      }
+    ]
+  },
   "104": {
     "title": "PIER 56: CUNARD LINES",
     "description": "The representative informs you that a liner departs each Saturday at noon, reaching Athens at noon nine days later, and Alexandria at 1pm one day later. Tickets are available and include all meals.",
@@ -1881,6 +2224,16 @@
       }
     ],
     "traceNumbers": ["187", "New York Location"]
+  },
+  "105": {
+    "description": "The sailors talk about some kind of curse, which they say is leaving Greece. You also hear that the Kyonas, an ocean-going motorship, is for hire.",
+    "choices": [
+      {
+        "text": "Return to the café",
+        "nextEntry": "20"
+      }
+    ],
+    "traceNumbers": ["20"]
   },
   "106": {
     "description": "The small man pulls out a dagger and swings it toward your midsection with alarming speed, but it misses and sticks into the wall. Meanwhile, you can retrieve a weapon (if you carry one) or you can run.",
@@ -1920,6 +2273,45 @@
       }
     ],
     "traceNumbers": ["47", "135", "187"]
+  },
+  "107": {
+    "description": "You make out \"Gliere,\" and then a word like \"strangled.\" Then the men stop talking and look up at you.",
+    "choices": [
+      {
+        "text": "Gesture to ask to play",
+        "nextEntry": "581"
+      },
+      {
+        "text": "Leave the table",
+        "nextEntry": "20"
+      }
+    ],
+    "traceNumbers": ["20"]
+  },
+  "108": {
+    "description": "You’re assigned a battered black Peugeot and a bright-eyed young Egyptian. He speaks some English but has no particular interest in your mission.",
+    "choices": [
+      {
+        "text": "Roll 1D10",
+        "effects": {
+          "diceRoll": "1D10",
+          "outcomes": {
+            "1-3": {
+              "description": "You sleep restlessly.",
+              "nextEntry": "321"
+            },
+            "4-10": {
+              "description": "You arrive safely a few days later.",
+              "nextEntry": "324",
+              "effects": {
+                "advanceTime": 48
+              }
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["320"]
   },
   "109": {
     "title": "FIRST MONDAY",
@@ -1989,6 +2381,44 @@
     ],
     "traceNumbers": ["126", "137"]
   },
+  "112": {
+    "description": "You have a bad feeling about this.",
+    "choices": [
+      {
+        "text": "You passed your Occult or Cthulhu Mythos check.",
+        "nextEntry": "112a",
+        "requirements": {
+          "anySuccess": ["cthulhuMythosSuccess", "occultSuccess"]
+        }
+      },
+      {
+        "text": "You passed your Spot Hidden check.",
+        "nextEntry": "112b",
+        "requirements": {
+          "hasSuccess": "spotHiddenSuccess"
+        }
+      },
+      {
+        "text": "You passed your Listen check.",
+        "nextEntry": "112c",
+        "requirements": {
+          "hasSuccess": "listenSuccess"
+        }
+      },
+      {
+        "text": "Make an INT roll",
+        "nextEntry": "112d",
+        "requirements": {
+          "failedAllChecks": [
+            "cthulhuMythosSuccess",
+            "occultSuccess",
+            "spotHiddenSuccess",
+            "listenSuccess"
+          ]
+        }
+      }
+    ]
+  },
   "113": {
     "choices": [
       {
@@ -2011,6 +2441,23 @@
     "description": "Mrs. Harding greets you amiably. She is uncertain whether she should show you Gliere’s room.",
     "title": "HARDING HOUSE",
     "traceNumbers": ["Arkham Location"]
+  },
+  "114": {
+    "description": "The officer says that the Karpathos Device is gone. As for who took it, there are only rumors and if you wish to seek such rumors out, you should head to the Fuzira Marketplace.",
+    "choices": [
+      {
+        "text": "Go to the Fuzira Marketplace",
+        "nextEntry": "134"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo",
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      }
+    ],
+    "traceNumbers": ["144"]
   },
   "115": {
     "description": "You ask the purser about the foreign pair seen on deck. 'Egyptian, I believe. Rather a strange lot, I’d say. Haven’t been giving you any trouble, have they?' You thank him and leave.",
@@ -3049,6 +3496,43 @@
     ],
     "traceNumbers": ["61", "126"]
   },
+  "134": {
+    "title": "FUZIRA MARKETPLACE",
+    "description": "The market thrives from early morning to after sunset. There are hundreds of shops and stalls. Many signs are in English, and many British troops idly walk around. You can choose from among the following:",
+    "choices": [
+      {
+        "text": "Caravans and travel",
+        "nextEntry": "384"
+      },
+      {
+        "text": "Pottery and artifacts",
+        "nextEntry": "374"
+      },
+      {
+        "text": "Fortune telling",
+        "nextEntry": "318"
+      },
+      {
+        "text": "An outdoor cafe",
+        "nextEntry": "340"
+      },
+      {
+        "text": "Outfitters and suppliers",
+        "nextEntry": "383"
+      },
+      {
+        "text": "A dagger-throw game",
+        "nextEntry": "414"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo",
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      }
+    ]
+  },
   "135": {
     "description": "As you walk down a corridor, you feel uneasy. Attempt a Spot Hidden roll to see if you notice something strange.",
     "choices": [
@@ -3202,6 +3686,26 @@
       }
     ],
     "traceNumbers": ["203", "187"]
+  },
+  "144": {
+    "title": "CAIRO POLICE",
+    "description": "Affable enough, they have no information concerning what you want to know. If it is after October 31, you may learn more.",
+    "choices": [
+      {
+        "text": "One of the officers seems interested in you.",
+        "nextEntry": "114",
+        "requirements": {
+          "dateAfter": "1931-10-31"
+        }
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo",
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      }
+    ]
   },
   "145": {
     "description": "For each hour at Miskatonic’s library, you may attempt one of the following actions.",
@@ -3483,6 +3987,46 @@
     ],
     "traceNumbers": ["118"]
   },
+  "154": {
+    "description": "Many private homes, from huts to mansions, have rooms to let to visiting tourists. They are very safe.",
+    "choices": [
+      {
+        "text": "Attempt a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "198"
+            },
+            "failure": {
+              "nextEntry": "154a",
+              "message": "Nothing seems out of the ordinary."
+            }
+          }
+        }
+      },
+      {
+        "text": "Spend the night, then explore Cairo",
+        "nextEntry": "Cairo",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      },
+      {
+        "text": "Spend the night, then explore Alexandria",
+        "nextEntry": "Alexandria",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
+      }
+    ]
+  },
   "155": {
     "description": "The library is deserted. Well, peace and quiet is just what you crave. You’re examining the newest Agatha Christie novel when a short, sullen-looking fellow enters the room, followed by a tall man wearing a cowl. You nod uneasily and then return to your book, uncomfortably aware that they are moving nearer. You look up again. The short man smiles, and pulls out a gleaming dagger.",
     "choices": [
@@ -3651,6 +4195,61 @@
     ],
     "traceNumbers": ["138"]
   },
+  "164": {
+    "title": "HOTELS",
+    "description": "Space is a bit tight, but you must get a room. Take your chances to see how you fare.",
+    "choices": [
+      {
+        "text": "Try to find a room",
+        "effects": {
+          "diceRoll": "1D10",
+          "outcomes": {
+            "1": {
+              "description": "You feel uneasy with where you ended up, but at least this place is a roof over your head.",
+              "nextEntry": "123"
+            },
+            "2": {
+              "description": "You feel uneasy with where you ended up, but at least this place is a roof over your head.",
+              "nextEntry": "123"
+            },
+            "3": {
+              "description": "You feel uneasy with where you ended up, but at least this place is a roof over your head.",
+              "nextEntry": "123"
+            },
+            "4": {
+              "description": "It's not much, but you are in luck.",
+              "nextEntry": "101"
+            },
+            "5": {
+              "description": "It's not much, but you are in luck.",
+              "nextEntry": "101"
+            },
+            "6": {
+              "description": "It's not much, but you are in luck.",
+              "nextEntry": "101"
+            },
+            "7": {
+              "description": "It's not much, but you are in luck.",
+              "nextEntry": "127"
+            },
+            "8": {
+              "description": "It's not much, but you are in luck.",
+              "nextEntry": "127"
+            },
+            "9": {
+              "description": "It's not much, but you are in luck.",
+              "nextEntry": "127"
+            },
+            "10": {
+              "description": "It's not much, but you are in luck.",
+              "nextEntry": "154"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["123", "101", "127", "154"]
+  },
   "166": {
     "description": "You see Pisistratos, the Museum Director, showing the museum to an English dignitary. You rush up to him and quickly ask your questions. He briefly speaks but seems to want to dismiss you, saying he doesn't know why Gliere stole the antiquity.",
     "choices": [
@@ -3763,6 +4362,32 @@
       }
     ],
     "traceNumbers": ["60", "176", "206"]
+  },
+  "169": {
+    "description": "You recall that Aten, the sun god, became the center of the new monotheistic cult founded by Akhenaten. The strange practices begun by the Pharaoh became more bizarre as the young ruler grew more deformed.\n\nYou ponder your adventures so far, thinking about the events that have brought you here.",
+    "choices": [
+      {
+        "text": "Explore Cairo in the morning",
+        "nextEntry": "Cairo",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      },
+      {
+        "text": "Explore Alexandria in the morning",
+        "nextEntry": "Alexandria",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
+      }
+    ],
+    "traceNumbers": ["175"]
   },
   "170": {
     "description": "After 2 hours of waiting around, Evgenia, an interpreter, is found for you. If you wish, you are able to hire Evgenia for the length of your stay.",
@@ -3889,6 +4514,47 @@
       }
     ],
     "traceNumbers": ["21", "204"]
+  },
+  "175": {
+    "description": "Your host understands that you’re a scholar of some sort, and he acts scared. You question him, and you glean the words \"Aten,\" \"door,\" \"open,\" and then he leaves with an anxious prayer upon his lips.",
+    "choices": [
+      {
+        "text": "Attempt a History roll",
+        "effects": {
+          "check": {
+            "skill": "History",
+            "success": {
+              "nextEntry": "169"
+            },
+            "failure": {
+              "nextEntry": "154a",
+              "message": "Your host seems hesitant to speak further and you feel very tired."
+            }
+          }
+        }
+      },
+      {
+        "text": "Sleep soundly and explore Cairo in the morning",
+        "nextEntry": "Cairo",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      },
+      {
+        "text": "Sleep soundly and explore Alexandria in the morning",
+        "nextEntry": "Alexandria",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
+      }
+    ],
+    "traceNumbers": ["198"]
   },
   "176": {
     "description": "You see the fabulous treasures of ancient Greece. You also find the stand where the Karpathos Device, replaced at the moment by a drawing and a photograph, is normally kept.\n\nThe notes speculate that the Karpathos Device is some kind of astronomical clock designed to aid priests. Other scholars feel it may have been designed to actually create something material. Still others see it as merely an elaborate amusement for some wealthy noble or merchant. The origin of the device is uncertain, and the substance of which it is made has not been determined.",
@@ -4215,6 +4881,32 @@
       }
     ]
   },
+  "194": {
+    "title": "THE PARTHENON",
+    "description": "The majestic temple columns glow golden-yellow in the setting sun, deepening to blue as you clamber across the rubble to reach the lonely inner court. The beauty of the scene somehow oppresses you, and gradually you sink into your own thoughts. As you ponder the suicide of Gliere, a scream abruptly brings you to the present. The cry seemed to come from nowhere.\n\nSuddenly you are aware of your isolation and vulnerability in the deepening gloom.",
+    "choices": [
+      {
+        "text": "Try to hide",
+        "nextEntry": "14"
+      },
+      {
+        "text": "Sneak away",
+        "nextEntry": "18"
+      },
+      {
+        "text": "Stroll away casually",
+        "nextEntry": "19"
+      },
+      {
+        "text": "Return to Athens Locations",
+        "nextEntry": "Athens Location",
+        "requirements": {
+          "currentLocale": "Athens"
+        }
+      }
+    ],
+    "traceNumbers": []
+  },
   "195": {
     "title": "ALEXANDRIA HARBOR AND RAIL STATION",
     "description": "The docks and rail station are near one another, surrounded by a web of narrow streets filled with shops and cafes. If you've just arrived in Egypt, you can stay in Alexandria for a night and find an excellent room.",
@@ -4285,313 +4977,38 @@
     ],
     "traceNumbers": ["221", "205", "173", "574", "449", "Cairo Location"]
   },
-  "221": {
-    "description": "You are able to get a small meal. There are several groups of locals huddled about the area.",
+  "196": {
+    "title": "CAIRO AIRPORT",
+    "description": "Around the airport you detect an odor resembling manure. You also see many British troops. A few planes are scattered about the tarmac. Regular flights are available on a Ford Tri-Motor and on a smaller (but steadier) Northrop Alpha.",
     "choices": [
       {
-        "text": "Attempt to talk with the locals",
+        "text": "Find a taxi",
+        "nextEntry": "103"
+      },
+      {
+        "text": "Get information on flights to Athens (departs at 3pm)",
+        "nextEntry": "181",
         "effects": {
-          "check": {
-            "skill": "Language (Arabic)",
-            "success": {
-              "nextEntry": "219"
-            },
-            "failure": {
-              "nextEntry": "195"
-            }
-          }
-        },
-        "requirements": {
-          "language": "Arabic"
+          "setHour": 15,
+          "advanceTime": 3,
+          "setLocale": "Athens"
         }
       },
       {
-        "text": "Explore Alexandria",
-        "nextEntry": "Alexandria"
-      }
-    ]
-  },
-  "219": {
-    "description": "You hear many stories about making money and about losing it. When you mention Cairo, they show no interest.",
-    "choices": [
-      {
-        "text": "Make a Listen roll",
+        "text": "Get information on flights to Bremen (departs at 9am)",
+        "nextEntry": "450",
         "effects": {
-          "check": {
-            "skill": "Listen",
-            "success": {
-              "nextEntry": "227"
-            },
-            "failure": {
-              "nextEntry": "222"
-            }
-          }
-        }
-      }
-    ]
-  },
-  "227": {
-    "description": "A narrow tunnel joins two streets. You welcome the coolness. Suddenly, you hear someone behind you. You prepared yourself for action, but then two policemen enter the tunnel ahead of you. The footsteps stop, then retreat: when you turn, you see only the fringe of a white robe going around a corner. You return to the hotel, unmolested.",
-    "choices": [
-      {
-        "text": "Explore Alexandria in the morning",
-        "nextEntry": "Alexandria",
-        "effects": {
-          "setHour": 7
-        },
-        "requirements": {
-          "currentLocale": "Alexandria"
+          "setHour": 9,
+          "advanceTime": 8,
+          "setLocale": "Bremen"
         }
       },
       {
-        "text": "Depart for Cairo in the morning",
-        "effects": {
-          "setHour": 7
-        },
-        "nextEntry": "Cairo"
+        "text": "Go to any Cairo Location",
+        "nextEntry": "Cairo Location"
       }
     ],
-    "traceNumbers": ["240"]
-  },
-  "222": {
-    "description": "A narrow tunnel joins two streets. You welcome the coolness. Suddenly, you hear someone behind you say, \"Kaieeee! In the name of Aten!\"  The voice screams as a curved blade misses your neck by a fraction of an inch.",
-    "choices": [
-      {
-        "text": "Fight",
-        "nextEntry": "222c",
-        "effects": {
-          "combat": {
-            "opponent": {
-              "name": "Attacker",
-              "attackChance": "70%",
-              "damage": "1D6+1",
-              "dex": 50,
-              "health": 6,
-              "maxHealth": 6
-            },
-            "win": "241",
-            "lose": "end"
-          },
-          "advanceTime": 0
-        }
-      },
-      {
-        "text": "Try to evade",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": "241",
-            "failure": {
-              "nextEntry": "222b",
-              "damage": "1D6",
-              "message": "You fail to evade the attacker, and he swings his blade at you. You must now fight to survive!"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["240"]
-  },
-  "222b": {
-    "description": "You fail to evade the attacker, and he swings his blade at you. You must now fight to survive!",
-    "choices": [
-      {
-        "text": "Fight",
-        "nextEntry": "222c",
-        "effects": {
-          "combat": {
-            "opponent": {
-              "name": "Attacker",
-              "attackChance": "70%",
-              "damage": "1D6+1",
-              "dex": 50,
-              "health": 6,
-              "maxHealth": 6
-            },
-            "win": "241",
-            "lose": "end"
-          },
-          "advanceTime": 0
-        }
-      }
-    ]
-  },
-  "222c": {
-    "description": "You fight for your life!",
-    "choices": [
-      {
-        "text": "Fight",
-        "nextEntry": "222c",
-        "effects": {
-          "combat": {
-            "opponent": {
-              "name": "Attacker",
-              "attackChance": "70%",
-              "damage": "1D6+1",
-              "dex": 50,
-              "health": 6,
-              "maxHealth": 6
-            },
-            "win": "241",
-            "lose": "end"
-          },
-          "advanceTime": 0
-        }
-      },
-      {
-        "text": "Try to evade",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": "241a",
-            "failure": {
-              "nextEntry": "222b",
-              "damage": "1D6",
-              "message": "You fail to evade the attacker, and he swings his blade at you. You must now fight to survive!"
-            }
-          }
-        }
-      }
-    ]
-  },
-  "241": {
-    "description": "Your attacker falls heavily to the floor. You spend the night unmolested in the hotel. In the morning, you decide to head for Cairo.",
-    "choices": [
-      {
-        "text": "Head for Cairo",
-        "nextEntry": "Cairo"
-      }
-    ],
-    "traceNumbers": ["222"]
-  },
-  "241a": {
-    "description": "Your cat-like grace means you have evaded him and run away. You spend the night unmolested in the hotel. In the morning, you decide to head for Cairo.",
-    "choices": [
-      {
-        "text": "Head for Cairo",
-        "nextEntry": "Cairo"
-      }
-    ]
-  },
-  "164": {
-    "title": "HOTELS",
-    "description": "Space is a bit tight, but you must get a room. Take your chances to see how you fare.",
-    "choices": [
-      {
-        "text": "Try to find a room",
-        "effects": {
-          "diceRoll": "1D10",
-          "outcomes": {
-            "1": {
-              "description": "You feel uneasy with where you ended up, but at least this place is a roof over your head.",
-              "nextEntry": "123"
-            },
-            "2": {
-              "description": "You feel uneasy with where you ended up, but at least this place is a roof over your head.",
-              "nextEntry": "123"
-            },
-            "3": {
-              "description": "You feel uneasy with where you ended up, but at least this place is a roof over your head.",
-              "nextEntry": "123"
-            },
-            "4": {
-              "description": "It's not much, but you are in luck.",
-              "nextEntry": "101"
-            },
-            "5": {
-              "description": "It's not much, but you are in luck.",
-              "nextEntry": "101"
-            },
-            "6": {
-              "description": "It's not much, but you are in luck.",
-              "nextEntry": "101"
-            },
-            "7": {
-              "description": "It's not much, but you are in luck.",
-              "nextEntry": "127"
-            },
-            "8": {
-              "description": "It's not much, but you are in luck.",
-              "nextEntry": "127"
-            },
-            "9": {
-              "description": "It's not much, but you are in luck.",
-              "nextEntry": "127"
-            },
-            "10": {
-              "description": "It's not much, but you are in luck.",
-              "nextEntry": "154"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["123", "101", "127", "154"]
-  },
-  "154": {
-    "description": "Many private homes, from huts to mansions, have rooms to let to visiting tourists. They are very safe.",
-    "choices": [
-      {
-        "text": "Attempt a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "198"
-            },
-            "failure": {
-              "nextEntry": "154a",
-              "message": "Nothing seems out of the ordinary."
-            }
-          }
-        }
-      },
-      {
-        "text": "Spend the night, then explore Cairo",
-        "nextEntry": "Cairo",
-        "effects": {
-          "setHour": 7
-        },
-        "requirements": {
-          "currentLocale": "Cairo"
-        }
-      },
-      {
-        "text": "Spend the night, then explore Alexandria",
-        "nextEntry": "Alexandria",
-        "effects": {
-          "setHour": 7
-        },
-        "requirements": {
-          "currentLocale": "Alexandria"
-        }
-      }
-    ]
-  },
-  "154a": {
-    "description": "You try to get some shut eye.",
-    "choices": [
-      {
-        "text": "Spend the night, then explore Cairo",
-        "nextEntry": "Cairo",
-        "effects": {
-          "setHour": 7
-        },
-        "requirements": {
-          "currentLocale": "Cairo"
-        }
-      },
-      {
-        "text": "Spend the night, then explore Alexandria",
-        "nextEntry": "Alexandria",
-        "effects": {
-          "setHour": 7
-        },
-        "requirements": {
-          "currentLocale": "Alexandria"
-        }
-      }
-    ]
+    "traceNumbers": ["103", "181", "450"]
   },
   "198": {
     "description": "You ask your host if they speak English.",
@@ -4611,56 +5028,6 @@
             }
           }
         }
-      }
-    ],
-    "traceNumbers": ["154", "169", "200"]
-  },
-  "198a": {
-    "description": "",
-    "choices": [
-      {
-        "text": "Attempt a Language (Arabic) roll",
-        "requirements": {
-          "language": "Arabic"
-        },
-        "effects": {
-          "check": {
-            "skill": "Language (Arabic)",
-            "success": {
-              "nextEntry": "199"
-            },
-            "failure": {
-              "nextEntry": "175"
-            }
-          }
-        }
-      },
-      {
-        "text": "Maybe your phrasebook can help",
-        "nextEntry": "175",
-        "requirements": {
-          "inventory": "Harrison’s English/Arabic Phrase Book"
-        }
-      },
-      {
-        "text": "Get a good night’s rest and explore Cairo",
-        "requirements": {
-          "currentLocale": "Cairo"
-        },
-        "effects": {
-          "setHour": 7
-        },
-        "nextEntry": "Cairo"
-      },
-      {
-        "text": "Get a good night’s rest and explore Alexandria",
-        "requirements": {
-          "currentLocale": "Alexandria"
-        },
-        "effects": {
-          "setHour": 7
-        },
-        "nextEntry": "Alexandria"
       }
     ],
     "traceNumbers": ["154", "169", "200"]
@@ -4713,7 +5080,6 @@
           }
         }
       },
-
       {
         "text": "Rest and explore Cairo in the morning",
         "nextEntry": "Cairo",
@@ -4762,106 +5128,6 @@
       }
     ],
     "traceNumbers": ["199"]
-  },
-  "175": {
-    "description": "Your host understands that you’re a scholar of some sort, and he acts scared. You question him, and you glean the words \"Aten,\" \"door,\" \"open,\" and then he leaves with an anxious prayer upon his lips.",
-    "choices": [
-      {
-        "text": "Attempt a History roll",
-        "effects": {
-          "check": {
-            "skill": "History",
-            "success": {
-              "nextEntry": "169"
-            },
-            "failure": {
-              "nextEntry": "154a",
-              "message": "Your host seems hesitant to speak further and you feel very tired."
-            }
-          }
-        }
-      },
-      {
-        "text": "Sleep soundly and explore Cairo in the morning",
-        "nextEntry": "Cairo",
-        "effects": {
-          "setHour": 7
-        },
-        "requirements": {
-          "currentLocale": "Cairo"
-        }
-      },
-      {
-        "text": "Sleep soundly and explore Alexandria in the morning",
-        "nextEntry": "Alexandria",
-        "effects": {
-          "setHour": 7
-        },
-        "requirements": {
-          "currentLocale": "Alexandria"
-        }
-      }
-    ],
-    "traceNumbers": ["198"]
-  },
-  "169": {
-    "description": "You recall that Aten, the sun god, became the center of the new monotheistic cult founded by Akhenaten. The strange practices begun by the Pharaoh became more bizarre as the young ruler grew more deformed.\n\nYou ponder your adventures so far, thinking about the events that have brought you here.",
-    "choices": [
-      {
-        "text": "Explore Cairo in the morning",
-        "nextEntry": "Cairo",
-        "effects": {
-          "setHour": 7
-        },
-        "requirements": {
-          "currentLocale": "Cairo"
-        }
-      },
-      {
-        "text": "Explore Alexandria in the morning",
-        "nextEntry": "Alexandria",
-        "effects": {
-          "setHour": 7
-        },
-        "requirements": {
-          "currentLocale": "Alexandria"
-        }
-      }
-    ],
-    "traceNumbers": ["175"]
-  },
-  "196": {
-    "title": "CAIRO AIRPORT",
-    "description": "Around the airport you detect an odor resembling manure. You also see many British troops. A few planes are scattered about the tarmac. Regular flights are available on a Ford Tri-Motor and on a smaller (but steadier) Northrop Alpha.",
-    "choices": [
-      {
-        "text": "Find a taxi",
-        "nextEntry": "103"
-      },
-      {
-        "text": "Get information on flights to Athens (departs at 3pm)",
-        "nextEntry": "181",
-        "effects": {
-          "setHour": 15,
-          "advanceTime": 3,
-          "setLocale": "Athens"
-        }
-      },
-      {
-        "text": "Get information on flights to Bremen (departs at 9am)",
-        "nextEntry": "450",
-        "effects": {
-          "setHour": 9,
-          "advanceTime": 8,
-          "setLocale": "Bremen"
-        }
-      },
-      {
-        "text": "Go to any Cairo Location",
-        "nextEntry": "Cairo Location"
-      }
-    ],
-    "traceNumbers": ["103", "181", "450"]
   },
   "201": {
     "description": "The old man questions you about your visit. He seems almost suspicious.",
@@ -5048,6 +5314,26 @@
     ],
     "traceNumbers": ["206"]
   },
+  "210": {
+    "description": "You come to the Nile! After splashing in its refreshing waters, you follow the great river north. Catching rides with some engineers and then some archaeologists, you arrive in Cairo in 2 days.",
+    "choices": [
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo",
+        "effects": {
+          "advanceTime": 48,
+          "modifyVariable": {
+            "name": "waterSupply",
+            "operation": "clear"
+          }
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      }
+    ],
+    "traceNumbers": ["214", "269"]
+  },
   "211": {
     "description": "Having come so far and seen much danger, you believe the fate of the world might depend on your actions. How could you not attempt to secure the Karpathos Device?",
     "choices": [
@@ -5083,6 +5369,243 @@
     ],
     "traceNumbers": ["124"]
   },
+  "213": {
+    "description": "With a successful Navigate roll, you know where you are. If you fail the roll, you can wait for someone to pass by or walk for a day in a chosen direction.",
+    "choices": [
+      {
+        "text": "Attempt a Navigate roll",
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "message": "You know where you are.",
+              "nextEntry": "234"
+            },
+            "failure": {
+              "message": "You are still lost.",
+              "nextEntry": "256b"
+            }
+          }
+        }
+      },
+      {
+        "text": "Walk East",
+        "nextEntry": "278",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk North",
+        "nextEntry": "277",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk South",
+        "nextEntry": "269",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk West",
+        "nextEntry": "257",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["94", "257", "269"]
+  },
+  "214": {
+    "description": "These desert lands all begin to look the same. Have you been going in circles? Should you change directions? Drink one day’s water, then choose a direction.",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "269",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "210",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "279",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "232",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["232", "269"]
+  },
+  "219": {
+    "description": "You hear many stories about making money and about losing it. When you mention Cairo, they show no interest.",
+    "choices": [
+      {
+        "text": "Make a Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "227"
+            },
+            "failure": {
+              "nextEntry": "222"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "220": {
+    "description": "Is that something there crossing the desert?",
+    "choices": [
+      {
+        "text": "Try your Luck",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "message": "You meet a friendly caravan and travel to Cairo in 2 days.",
+              "nextEntry": "Cairo",
+              "effects": {
+                "advanceTime": 48,
+                "modifyVariable": {
+                  "name": "waterSupply",
+                  "operation": "clear"
+                }
+              }
+            },
+            "failure": {
+              "message": "It must have just been a mirage.",
+              "nextEntry": "232"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["256"]
+  },
+  "221": {
+    "description": "You are able to get a small meal. There are several groups of locals huddled about the area.",
+    "choices": [
+      {
+        "text": "Attempt to talk with the locals",
+        "effects": {
+          "check": {
+            "skill": "Language (Arabic)",
+            "success": {
+              "nextEntry": "219"
+            },
+            "failure": {
+              "nextEntry": "195"
+            }
+          }
+        },
+        "requirements": {
+          "language": "Arabic"
+        }
+      },
+      {
+        "text": "Explore Alexandria",
+        "nextEntry": "Alexandria"
+      }
+    ]
+  },
+  "222": {
+    "description": "A narrow tunnel joins two streets. You welcome the coolness. Suddenly, you hear someone behind you say, \"Kaieeee! In the name of Aten!\"  The voice screams as a curved blade misses your neck by a fraction of an inch.",
+    "choices": [
+      {
+        "text": "Fight",
+        "nextEntry": "222c",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Attacker",
+              "attackChance": "70%",
+              "damage": "1D6+1",
+              "dex": 50,
+              "health": 6,
+              "maxHealth": 6
+            },
+            "win": "241",
+            "lose": "end"
+          },
+          "advanceTime": 0
+        }
+      },
+      {
+        "text": "Try to evade",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": "241",
+            "failure": {
+              "nextEntry": "222b",
+              "damage": "1D6",
+              "message": "You fail to evade the attacker, and he swings his blade at you. You must now fight to survive!"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["240"]
+  },
   "223": {
     "description": "“May I be of assistance?” the man asks. “I too was once a stranger in this sacred land. My temporary employment allows me to stay here while I work on my book. Where can I take you?”\n\nHe is Richard Hawkes. He will take you wherever you want to go, all the while chatting amiably about the splendors of Greece. He hints that he knows something you wish to know, and tells you to meet him at 6pm at the Piostos Cafe.",
     "choices": [
@@ -5100,349 +5623,6 @@
       }
     ],
     "traceNumbers": ["58"]
-  },
-  "20": {
-    "title": "PIOSOTOS CAFE",
-    "description": "As you enter the cafe, the thick, acrid tobacco smoke chokes you. The place is filled with laughing, gesticulating dockworkers and sailors.\n\nIt is bustling, but you don't hear any English being spoken.",
-    "choices": [
-      {
-        "text": "Wait for your meeting with Richard Hawkes",
-        "nextEntry": "35",
-        "requirements": {
-          "scheduledMeeting": {
-            "entry": "20",
-            "meetingWith": "Richard Hawkes"
-          }
-        },
-        "effects": {
-          "meetingCompleted": {
-            "entry": "20",
-            "meetingWith": "Richard Hawkes"
-          }
-        }
-      },
-      {
-        "text": "Talk to the group in back playing cards",
-        "effects": {
-          "check": {
-            "skill": "Language (Greek)",
-            "success": {
-              "nextEntry": "107",
-              "message": "You successfully communicate with the group in back and join them."
-            },
-            "failure": {
-              "nextEntry": "20",
-              "message": "You fail to communicate with the group in back."
-            }
-          }
-        },
-        "requirements": {
-          "language": "Greek"
-        },
-        "nextEntry": "107"
-      },
-      {
-        "text": "Approach the card game in the back with Christos",
-        "requirements": {
-          "companion": "Christos"
-        },
-        "nextEntry": "107a"
-      },
-      {
-        "text": "Approach the burly sailors at the bar",
-        "effects": {
-          "check": {
-            "skill": "Language (Greek)",
-            "success": {
-              "nextEntry": "105",
-              "message": "You manage to communicate with the sailors and approach them."
-            },
-            "failure": {
-              "nextEntry": "20",
-              "message": "You fail to communicate with the sailors."
-            }
-          }
-        },
-        "requirements": {
-          "language": "Greek"
-        },
-        "nextEntry": "105"
-      },
-      {
-        "text": "Approach the burly sailors at the bar with Christos",
-        "requirements": {
-          "companion": "Christos"
-        },
-        "nextEntry": "105a"
-      },
-      {
-        "text": "Leave the cafe and return to any Athens Location",
-        "nextEntry": "Athens Location",
-        "requirements": {
-          "currentLocale": "Athens"
-        }
-      }
-    ],
-    "traceNumbers": ["35", "107", "105", "Athens Location"]
-  },
-  "105": {
-    "description": "The sailors talk about some kind of curse, which they say is leaving Greece. You also hear that the Kyonas, an ocean-going motorship, is for hire.",
-    "choices": [
-      {
-        "text": "Return to the café",
-        "nextEntry": "20"
-      }
-    ],
-    "traceNumbers": ["20"]
-  },
-  "105a": {
-    "description": "Christos leans in and whispers to you about what he overheard from the sailors. They were talking about some kind of curse, which they say is leaving Greece. Christos also mentions that the Kyonas, an ocean-going motorship, is for hire.",
-    "choices": [
-      {
-        "text": "Return to the café",
-        "nextEntry": "20"
-      }
-    ],
-    "traceNumbers": ["20"]
-  },
-  "107": {
-    "description": "You make out \"Gliere,\" and then a word like \"strangled.\" Then the men stop talking and look up at you.",
-    "choices": [
-      {
-        "text": "Gesture to ask to play",
-        "nextEntry": "581"
-      },
-      {
-        "text": "Leave the table",
-        "nextEntry": "20"
-      }
-    ],
-    "traceNumbers": ["20"]
-  },
-  "107a": {
-    "description": "Christos whispers to you, \"They say Gliere was strangled.\" Suddenly, the men stop talking and look up at you.",
-    "choices": [
-      {
-        "text": "Gesture to ask to play",
-        "nextEntry": "581"
-      },
-      {
-        "text": "Leave the table",
-        "nextEntry": "20"
-      }
-    ],
-    "traceNumbers": ["20"]
-  },
-  "581": {
-    "description": "They’re playing a form of whist. You hope to get information, but your winning streak quickly becomes phenomenal. Soon the fishermen grumble to themselves and stir unhappily. In 20 minutes you clean out the table. You win a total of $35, and stuff your pockets with small-denomination drachma notes.",
-    "choices": [
-      {
-        "text": "Return to the café",
-        "nextEntry": "20"
-      },
-      {
-        "text": "Go to any Athens Location",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["107", "20"]
-  },
-  "35": {
-    "description": "The man is Richard Hawkes. He greets you warmly. \"An ouzo and some talk,\" he suggests. \"Look, I know you’re investigating Gliere’s death. I’ve talked to him once or twice. His death caused quite a stir. Well, to make a long story short, I have some interesting information concerning his crazy theft. I don’t have it here, but if you’d like to come back to my apartment, I can show it to you.\"",
-    "choices": [
-      {
-        "text": "Agree to go to his apartment",
-        "nextEntry": "79"
-      },
-      {
-        "text": "Schedule a meeting at the Parthenon at sunset",
-        "nextEntry": "Athens Location"
-      },
-      {
-        "text": "Go to any Athens Location",
-        "nextEntry": "Athens Location"
-      }
-    ],
-    "traceNumbers": ["20"]
-  },
-  "79": {
-    "description": "His small apartment is cluttered with books and filled with rich aromas. It is the room of a scholar.\n\nYou will now attempt several rolls to uncover more about this situation.",
-    "choices": [
-      {
-        "text": "Attempt Know (EDU), Cthulhu Mythos, Occult, Spot Hidden, and Listen rolls.",
-        "effects": {
-          "multipleChecks": [
-            {
-              "skill": "EDU",
-              "resultKey": "eduSuccess"
-            },
-            {
-              "skill": "Cthulhu Mythos",
-              "resultKey": "cthulhuMythosSuccess"
-            },
-            {
-              "skill": "Occult",
-              "resultKey": "occultSuccess"
-            },
-            {
-              "skill": "Spot Hidden",
-              "resultKey": "spotHiddenSuccess"
-            },
-            {
-              "skill": "Listen",
-              "resultKey": "listenSuccess"
-            }
-          ],
-          "saveResults": {
-            "success": [
-              {
-                "skill": "Cthulhu Mythos",
-                "resultKey": "cthulhuMythosSuccess"
-              },
-              { "skill": "Occult", "resultKey": "occultSuccess" },
-              { "skill": "Spot Hidden", "resultKey": "spotHiddenSuccess" },
-              { "skill": "Listen", "resultKey": "listenSuccess" }
-            ]
-          }
-        },
-        "nextEntry": "112"
-      }
-    ]
-  },
-  "112": {
-    "description": "You have a bad feeling about this.",
-    "choices": [
-      {
-        "text": "You passed your Occult or Cthulhu Mythos check.",
-        "nextEntry": "112a",
-        "requirements": {
-          "anySuccess": ["cthulhuMythosSuccess", "occultSuccess"]
-        }
-      },
-      {
-        "text": "You passed your Spot Hidden check.",
-        "nextEntry": "112b",
-        "requirements": {
-          "hasSuccess": "spotHiddenSuccess"
-        }
-      },
-      {
-        "text": "You passed your Listen check.",
-        "nextEntry": "112c",
-        "requirements": {
-          "hasSuccess": "listenSuccess"
-        }
-      },
-      {
-        "text": "Make an INT roll",
-        "nextEntry": "112d",
-        "requirements": {
-          "failedAllChecks": [
-            "cthulhuMythosSuccess",
-            "occultSuccess",
-            "spotHiddenSuccess",
-            "listenSuccess"
-          ]
-        }
-      }
-    ]
-  },
-  "112a": {
-    "description": "You realize Hawkes’ library is stocked with a strange assortment of titles: \"Marvels of the Spirit World\", Crowley’s \"Incantations\", Weinburger’s \"Die Mond\".",
-    "choices": [
-      {
-        "text": "You shudder as you feel a chill run down your spine.",
-        "nextEntry": "112e"
-      }
-    ]
-  },
-  "112b": {
-    "description": "You see that the stout chair in the center of the room has odd, regular notches and grooves in its arms, legs, and back.",
-    "choices": [
-      {
-        "text": "You feel a chill run down your spine.",
-        "nextEntry": "112e"
-      }
-    ]
-  },
-  "112c": {
-    "description": "You hear some deep breathing behind a nearby curtain.",
-    "choices": [
-      {
-        "text": "Is someone hidden behind the curtain?",
-        "nextEntry": "112e"
-      }
-    ]
-  },
-  "112d": {
-    "description": "That terrible feeling of dread is growing.",
-    "choices": [
-      {
-        "text": "Make INT roll.",
-        "effects": {
-          "check": {
-            "skill": "INT",
-            "success": {
-              "nextEntry": "112f"
-            },
-            "failure": {
-              "nextEntry": "112g"
-            }
-          }
-        }
-      }
-    ]
-  },
-  "112e": {
-    "description": "That terrible feeling of dread is growing, but you are already aware of the danger.",
-    "choices": [
-      {
-        "text": "Make modified INT roll.",
-        "effects": {
-          "check": {
-            "skill": "INT",
-            "bonus": 10,
-            "success": {
-              "nextEntry": "112f"
-            },
-            "failure": {
-              "nextEntry": "112g"
-            }
-          }
-        }
-      }
-    ]
-  },
-  "112f": {
-    "description": "From behind the curtain, a hand suddenly reaches out for you. You must act quickly.",
-    "choices": [
-      {
-        "text": "Make a Dodge roll.",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": {
-              "nextEntry": "Athens",
-              "message": "You slip beneath the hand and make a break for the door."
-            },
-            "failure": {
-              "nextEntry": "112g"
-            }
-          }
-        }
-      }
-    ]
-  },
-  "112g": {
-    "description": "The heavy breather grabs you and shoves you into the chair, the one with the odd grooves and notches. You hear the sharp sound of releasing springs, and metal bands wrap around your arms and legs, holding you tight to the chair. There is nothing you can do!\n\nHow foolish you were to have trusted a strange man you’ve only just met.\n\nNow the heavy breather steps around so that you can see him clearly. You see dry, leathery skin, portions of which flake away as he moves. The eyes are hollow, inhuman. Hawkes sniggers, and introduces you to Achmed, who Hawkes says is nearly 3,000 years old, and who is very, very hungry. You are wild-eyed, and the sound of Hawkes’ maniacal laughter screams in your ears. Achmed’s mouth opens slowly, and he leans toward your helpless body. You see that his teeth are long, yellow, and very sharp. Your screams fill the room, but no one comes to save you. It is...\n\nTHE END.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ]
   },
   "226": {
     "description": "The corporal is friendly, but nervous. You can tell that he is unconvinced by the death report. Something scares him, but he only mutters that he is glad the Karpathos Device has left the country.",
@@ -5494,8 +5674,30 @@
         }
       }
     ],
-
     "traceNumbers": ["204", "131", "248"]
+  },
+  "227": {
+    "description": "A narrow tunnel joins two streets. You welcome the coolness. Suddenly, you hear someone behind you. You prepared yourself for action, but then two policemen enter the tunnel ahead of you. The footsteps stop, then retreat: when you turn, you see only the fringe of a white robe going around a corner. You return to the hotel, unmolested.",
+    "choices": [
+      {
+        "text": "Explore Alexandria in the morning",
+        "nextEntry": "Alexandria",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
+      },
+      {
+        "text": "Depart for Cairo in the morning",
+        "effects": {
+          "setHour": 7
+        },
+        "nextEntry": "Cairo"
+      }
+    ],
+    "traceNumbers": ["240"]
   },
   "229": {
     "description": "The Karpathos Device is secured within a thick glass enclosure with an alarm system. What do you do?",
@@ -5510,6 +5712,291 @@
       }
     ],
     "traceNumbers": ["211"]
+  },
+  "232": {
+    "description": "The burning desert sands have no end. Subtract another day’s water for this ordeal. Are you losing confidence? Do you want to change direction?",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "235",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "214",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "279",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "245",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["214", "220", "235", "246"]
+  },
+  "234": {
+    "description": "You’re a born navigator! You figure correctly that you’re west of Cairo. In one day you enter the Giza suburbs west of the city.",
+    "choices": [
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "operation": "clear"
+          }
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      }
+    ],
+    "traceNumbers": ["213", "257", "278"]
+  },
+  "235": {
+    "description": "If you could just get your bearings, you might know where you are.",
+    "choices": [
+      {
+        "text": "Attempt a Navigate roll",
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "message": "You know where you are.",
+              "nextEntry": "234"
+            },
+            "failure": {
+              "message": "You are still lost.",
+              "nextEntry": "256b"
+            }
+          }
+        }
+      },
+      {
+        "text": "Walk North",
+        "nextEntry": "257",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk East",
+        "nextEntry": "269",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk South",
+        "nextEntry": "232",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk West",
+        "nextEntry": "255",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["94", "232", "242", "255", "257", "269"]
+  },
+  "241": {
+    "description": "Your attacker falls heavily to the floor. You spend the night unmolested in the hotel. In the morning, you decide to head for Cairo.",
+    "choices": [
+      {
+        "text": "Head for Cairo",
+        "nextEntry": "Cairo"
+      }
+    ],
+    "traceNumbers": ["222"]
+  },
+  "242": {
+    "description": "In the arid wastes you come across a trail!",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "message": "There is a caravan is approaching! They’re going to Cairo, and you’re saved!",
+              "nextEntry": "256_cairo",
+              "effects": {
+                "advanceTime": 48
+              }
+            },
+            "failure": {
+              "message": "You see a caravan in the distance, but it is moving away from you! In your weakened condition, you can’t hope to catch it. You collapse beside the trail, weeping.",
+              "nextEntry": "235",
+              "effects": {
+                "modifyVariable": {
+                  "name": "waterSupply",
+                  "value": 1,
+                  "operation": "subtract"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["256"]
+  },
+  "245": {
+    "description": "The next day you see a city on the horizon. Desperately you stumble toward it. The domes and minarets suddenly begin to tremble and disappear—a mirage! You were foolish to have imagined a city in the desert. Drink another day’s water ration and choose a direction.",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "255",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "232",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "279",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "299",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["257", "268"]
+  },
+  "246": {
+    "description": "You draw up just in time. Another few steps and you would have fallen a hundred feet into that ravine! You must get a grip on yourself. Drink another day’s water ration and choose a direction. And be careful!",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "255",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "232",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "279",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "299",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["232", "257"]
   },
   "248": {
     "description": "\"Sir,\" says Ilionas, \"I have told you all I know. You must go. All that’s left are rumors, and they’re better obtained at the Piostos Cafe.\"\n\nYou skulk the hallways of the Bureau for a while, and find nothing.",
@@ -5531,6 +6018,163 @@
     ],
     "traceNumbers": ["226", "131"]
   },
+  "254": {
+    "description": "You come to a great body of water. It is the Mediterranean Sea! Soon you find a railway track and hitch a ride to Alexandria aboard a section gang handcar.",
+    "choices": [
+      {
+        "text": "Go to Alexandria",
+        "nextEntry": "195",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "operation": "clear"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["245", "268"]
+  },
+  "255": {
+    "description": "The towering yellow sand clouds sweep over you, and you seek shelter from the fury in a nearby gully. The storm lasts the rest of the day. When you emerge, you see nothing you can recognize. Disheartened, you drink another day’s water ration and decide to choose a direction of travel.",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "283",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "235",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "245",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "299",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["235", "246", "283", "299"]
+  },
+  "257": {
+    "description": "Maybe you can figure out how to orient yourself, otherwise you are going to need to keep walking.",
+    "choices": [
+      {
+        "text": "Attempt an Astronomy roll",
+        "effects": {
+          "check": {
+            "skill": "Astronomy",
+            "success": {
+              "message": "You succeed in your Astronomy roll.",
+              "nextEntry": "234"
+            },
+            "failure": {
+              "message": "You fail to navigate using the stars or knowledge.",
+              "nextEntry": "256b"
+            }
+          }
+        }
+      },
+      {
+        "text": "Attempt or Hard Know (half EDU) roll",
+        "effects": {
+          "check": {
+            "skill": "Know",
+            "difficulty": "hard",
+            "success": {
+              "message": "You succeed in your Hard Knowledge roll.",
+              "nextEntry": "234"
+            },
+            "failure": {
+              "message": "You fail to navigate using your knowledge.",
+              "nextEntry": "256b"
+            }
+          }
+        }
+      },
+      {
+        "text": "Walk North",
+        "nextEntry": "246",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk East",
+        "nextEntry": "213",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk South",
+        "nextEntry": "235",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Walk West",
+        "nextEntry": "283",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["94", "213", "235", "245", "283"]
+  },
   "263": {
     "description": "In the dim yellow night-lights of the museum, you can scarcely believe your eyes. The place has come alive with undead in many forms: from human mummies to megatheria in the natural history wing, all bizarrely returned to life! Everywhere you see the ominous, jerky shuffle of half-dead things. Instinctively you understand that these entities want to snuff out your life and baffle your purpose. You edge quietly along the halls, intent upon your escape from this hair-raising peril. To escape, you need to make successful Spot Hidden, Dodge, and INT rolls respectively, without missing any of the rolls.",
     "choices": [
@@ -5539,6 +6183,130 @@
         "nextEntry": "263a"
       }
     ]
+  },
+  "268": {
+    "description": "You stumble and fall as fractured rock gives way beneath you; you incur a sprained ankle and lose 2 hit points from bruises and cuts. Perhaps you should throw away your water and end the torment now. The situation seems hopeless. But you resolve to struggle until the very end. You choose a direction and drink a day’s water ration.",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "254",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "modifyHealth": {
+            "value": {
+              "diceRoll": "1D2"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "246",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "modifyHealth": {
+            "value": {
+              "diceRoll": "1D2"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "283",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "modifyHealth": {
+            "value": {
+              "diceRoll": "1D2"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "299",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "modifyHealth": {
+            "value": {
+              "diceRoll": "1D2"
+            },
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["245", "283"]
+  },
+  "269": {
+    "description": "In a cleft of a ravine you find a pale white flower, the only thing growing for miles. It seems the most beautiful plant you have ever seen. You salute it, and take courage from it.",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "213",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "210",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "214",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "235",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["213", "214", "235"]
   },
   "274": {
     "description": "Police cars come screeching up to the museum. You have several options, and should think about them all before choosing one:",
@@ -5589,6 +6357,97 @@
       }
     ],
     "traceNumbers": ["280"]
+  },
+  "277": {
+    "description": "You drink another day’s water ration, and stumble ahead. The rocks have sliced your fine leather shoes into ribbons. Your bleeding feet are unlikely to carry you much further. Then, suddenly, you see Alexandria in the distance! Salvation!",
+    "choices": [
+      {
+        "text": "Alexandria!",
+        "nextEntry": "195",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "operation": "clear"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["213", "245"]
+  },
+  "278": {
+    "description": "You make your way forward, despite the searing sun and your aching feet. Somehow you feel you are headed in the right direction.",
+    "choices": [
+      {
+        "text": "Keep walking",
+        "nextEntry": "234",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["213"]
+  },
+  "279": {
+    "description": "You no longer can doubt it. You have wandered far to the south, far into the desert. Death from thirst may follow unless you can retrace your steps. You stand on a hill. Farther yet to the south, you seem to see palm trees. Should you go there, or perhaps try to find your way north?",
+    "choices": [
+      {
+        "text": "Examine the vision of palm trees",
+        "nextEntry": "285",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Try to retrace your path West",
+        "nextEntry": "214",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Try to retrace your path North",
+        "nextEntry": "232",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Try to retrace your path East?",
+        "nextEntry": "246",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["214", "232", "246", "285"]
   },
   "280": {
     "description": "There is toughened glass around the Karpathos Device. Perhaps you have a tool or weapon, or something you can throw at it?",
@@ -5643,6 +6502,94 @@
     ],
     "traceNumbers": ["212"]
   },
+  "283": {
+    "description": "The winds have exposed skeletons of men, horses, and camels—perhaps victims of some ancient vendetta. A jeweled dagger catches your eye. You’ll be able to sell it in Cairo for $100—if you make it back! Drink another day’s water ration and choose a direction.",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "268",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "health": -2,
+          "addItem": {
+            "name": "Jeweled Dagger",
+            "description": "$100",
+            "type": "artifact"
+          }
+        }
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "257",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "addItem": {
+            "name": "Jeweled Dagger",
+            "description": "$100",
+            "type": "artifact"
+          }
+        }
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "255",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "addItem": {
+            "name": "Jeweled Dagger",
+            "description": "$100",
+            "type": "artifact"
+          }
+        }
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "299",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": 1,
+            "operation": "subtract"
+          },
+          "addItem": {
+            "name": "Jeweled Dagger",
+            "description": "$100",
+            "type": "artifact"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["255", "257", "268", "299"]
+  },
+  "285": {
+    "description": "You discover an oasis! Your gamble pays off. Exhausted, you fall into the sweet, fresh water and drink your fill. Later, the inhabitants tend to you and, two days later, a party of traders takes you on the 2 day journey to Cairo.",
+    "choices": [
+      {
+        "text": "Travel with the traders",
+        "nextEntry": "134",
+        "effects": {
+          "advanceTime": 96,
+          "modifyVariable": {
+            "name": "waterSupply",
+            "operation": "clear"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["279", "299"]
+  },
   "293": {
     "description": "You have evaded several of the guards and the Karpathos Device is in your possession, decide your next action carefully.",
     "choices": [
@@ -5652,6 +6599,44 @@
       }
     ],
     "traceNumbers": ["230", "301"]
+  },
+  "299": {
+    "description": "Your once-firm steps have weakened. You are very, very weary. Have you wandered too far west? Can you return?",
+    "choices": [
+      {
+        "text": "Attempt a Navigate roll",
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "message": "You find your way and continue.",
+              "nextEntry": "285"
+            },
+            "failure": {
+              "message": "You fail to navigate. Try a POW roll.",
+              "nextEntry": "299b"
+            }
+          }
+        }
+      },
+      {
+        "text": "Attempt a POW roll",
+        "effects": {
+          "check": {
+            "skill": "POW",
+            "success": {
+              "message": "Your inner strength guides you.",
+              "nextEntry": "285"
+            },
+            "failure": {
+              "message": "Your eyesight suddenly blurs. You must now rely on your survival skills.",
+              "nextEntry": "299_survival_check"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["246", "255", "268", "283"]
   },
   "301": {
     "description": "You've managed to escape with the Device. Now you must decide how to proceed.",
@@ -5676,6 +6661,102 @@
       }
     ],
     "traceNumbers": ["249a", "274", "301"]
+  },
+  "320": {
+    "description": "You can rent a car for a week. It is a rough drive upriver to Tell-el-Amarna; a massive late flood of the Nile has closed both the railway and the regular passenger ship that runs up and down the river. The trip takes exactly 48 hours each way.",
+    "choices": [
+      {
+        "text": "Drive to Tell-el-Amarna",
+        "nextEntry": "324",
+        "effects": {
+          "advanceTime": 48,
+          "hiredCairo": "Car"
+        }
+      },
+      {
+        "text": "Hire a translator guide to go with you",
+        "nextEntry": "108"
+      }
+    ],
+    "traceNumbers": ["384"]
+  },
+  "321": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Wake up the next morning",
+        "nextEntry": "321a",
+        "effects": {
+          "setHour": 6,
+          "hiredCairo": null
+        }
+      }
+    ],
+    "traceNumbers": ["108"]
+  },
+  "324": {
+    "title": "TELL-EL-AMARNA",
+    "description": "The village is quiet. A gust of wind picks up dust along the empty road. Here and there a face looks out from a doorway. You spot the pyramid, one much smaller and less imposing than the pyramids at Giza. A well-trod path leads to the pyramid entrance.",
+    "choices": [
+      {
+        "text": "Inspect the pyramid",
+        "nextEntry": "360"
+      },
+      {
+        "text": "Spend the night at the inn",
+        "nextEntry": "444"
+      },
+      {
+        "text": "Return to your car",
+        "effects": {
+          "hiredCairo": null
+        },
+        "nextEntry": "361"
+      }
+    ],
+    "traceNumbers": ["Egypt Location"]
+  },
+  "361": {
+    "description": "Your car (and driver) are gone! You have a few options to spend the night or try your luck at finding a way back:",
+    "choices": [
+      {
+        "text": "Spend the night at the village inn",
+        "nextEntry": "344"
+      },
+      {
+        "text": "Sleep in the desert",
+        "nextEntry": "319"
+      },
+      {
+        "text": "Make a Luck roll to find a caravan to Cairo",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "341"
+            },
+            "failure": {
+              "nextEntry": "319"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["324"]
+  },
+  "384": {
+    "description": "You can either rent a car to get to Tell-el-Amarna, or try to join a caravan to visit the Quattarra Depression.",
+    "choices": [
+      {
+        "text": "Rent a car to go to Tell-el-Amarna",
+        "nextEntry": "320"
+      },
+      {
+        "text": "Join a caravan to visit the Quattarra Depression",
+        "nextEntry": "341"
+      }
+    ],
+    "traceNumbers": ["134"]
   },
   "385": {
     "description": "You are invited by your dinner partners to play poker. You're on a roll and win $17.",
@@ -5715,6 +6796,32 @@
       }
     ],
     "traceNumbers": ["97"]
+  },
+  "444": {
+    "description": "The inn’s proprietors are fiercely aloof. To stay there anyway, you have several options:",
+    "choices": [
+      {
+        "text": "Stay at the inn",
+        "nextEntry": "447"
+      },
+      {
+        "text": "Eat at the inn",
+        "nextEntry": "584"
+      },
+      {
+        "text": "Rest in your car (if you still have it)",
+        "nextEntry": "448"
+      },
+      {
+        "text": "Sleep in the desert",
+        "nextEntry": "319"
+      },
+      {
+        "text": "Go to the pyramid",
+        "nextEntry": "360"
+      }
+    ],
+    "traceNumbers": ["324", "361", "584"]
   },
   "449": {
     "title": "BREMEN HARBOR",
@@ -5817,6 +6924,20 @@
       }
     ],
     "traceNumbers": ["148", "187"]
+  },
+  "581": {
+    "description": "They’re playing a form of whist. You hope to get information, but your winning streak quickly becomes phenomenal. Soon the fishermen grumble to themselves and stir unhappily. In 20 minutes you clean out the table. You win a total of $35, and stuff your pockets with small-denomination drachma notes.",
+    "choices": [
+      {
+        "text": "Return to the café",
+        "nextEntry": "20"
+      },
+      {
+        "text": "Go to any Athens Location",
+        "nextEntry": "Athens Location"
+      }
+    ],
+    "traceNumbers": ["107", "20"]
   },
   "583": {
     "title": "HOTEL",
@@ -5934,45 +7055,25 @@
     ],
     "traceNumbers": ["12"]
   },
-  "586a": {
-    "description": "Keep exploring.",
+  "588": {
+    "description": "The river is very strong, with much debris floating in it, and many crocodiles! You decide to go back to the village.",
     "choices": [
       {
-        "text": "Keep exploring",
-        "nextEntry": "New York",
-        "requirements": {
-          "currentLocale": "New York"
-        }
-      },
-      {
-        "text": "Keep exploring",
-        "nextEntry": "Athens",
-        "requirements": {
-          "currentLocale": "Athens"
-        }
-      },
-      {
-        "text": "Keep exploring",
-        "nextEntry": "Alexandria",
-        "requirements": {
-          "currentLocale": "Alexandria"
-        }
-      },
-      {
-        "text": "Keep exploring",
-        "nextEntry": "Cairo",
-        "requirements": {
-          "currentLocale": "Cairo"
-        }
-      },
-      {
-        "text": "Keep exploring",
-        "nextEntry": "Bremen",
-        "requirements": {
-          "currentLocale": "Bremen"
-        }
+        "text": "Go back to the village",
+        "nextEntry": "589"
       }
-    ]
+    ],
+    "traceNumbers": ["321"]
+  },
+  "589": {
+    "description": "You follow the tire tracks across the sands. A strong south wind begins to blow.",
+    "choices": [
+      {
+        "text": "Continue following the tracks",
+        "nextEntry": "94"
+      }
+    ],
+    "traceNumbers": ["588"]
   },
   "590": {
     "description": "The purser tells you that skeet shooting from the fantail will soon begin.",
@@ -6165,6 +7266,39 @@
     ],
     "traceNumbers": ["52"]
   },
+  "27a": {
+    "description": "A second thing grabs you. Their combined strength is overwhelming. Make an opposed roll against a combined STR of 140.",
+    "choices": [
+      {
+        "text": "Make an opposed STR roll against 140",
+        "effects": {
+          "check": {
+            "skill": "STR",
+            "opposedValue": 140,
+            "success": {
+              "nextEntry": "33",
+              "message": "You squirm free and escape."
+            },
+            "failure": {
+              "nextEntry": "27b",
+              "message": "A third figure grips you tightly, and you are unable to break free."
+            }
+          }
+        }
+      }
+    ]
+  },
+  "27b": {
+    "description": "A third one grips you, and all three begin tearing at your flesh. You scream as the figures overwhelm you.\n\nIt is ... THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ]
+  },
   "28a": {
     "description": "You've managed to enter the Harding House without causing too much disturbance. Now, you must navigate quietly.",
     "choices": [
@@ -6235,6 +7369,92 @@
         "effects": {
           "setHour": 23,
           "advanceTime": 6
+        }
+      }
+    ]
+  },
+  "94_survival_check": {
+    "description": "If you succeed with a Survival (Desert) roll, you will add 1D3 days to your water supply.",
+    "choices": [
+      {
+        "text": "Attempt a Survival (Desert) roll",
+        "effects": {
+          "check": {
+            "skill": "Survival (Desert)",
+            "success": {
+              "message": "You ration the water well and extend your supply.",
+              "modifyVariable": {
+                "name": "waterSupply",
+                "value": {
+                  "diceRoll": "1D3"
+                },
+                "operation": "add"
+              },
+              "nextEntry": "94_walk"
+            },
+            "failure": {
+              "message": "You struggle to ration your water.",
+              "nextEntry": "94_walk"
+            }
+          }
+        },
+        "nextEntry": "94_walk"
+      }
+    ]
+  },
+  "94_walk": {
+    "description": "The heat is incredible, but you must go on. Roll 1D10 to determine where you go next.",
+    "choices": [
+      {
+        "text": "Roll 1D10",
+        "effects": {
+          "diceRoll": "1D10",
+          "outcomes": {
+            "1": {
+              "description": "This looks familiar.",
+              "nextEntry": "213",
+              "effects": {
+                "modifyVariable": {
+                  "name": "waterSupply",
+                  "value": 1,
+                  "operation": "subtract"
+                }
+              }
+            },
+            "10": {
+              "nextEntry": "279",
+              "description": "This seems hopeless.",
+              "effects": {
+                "modifyVariable": {
+                  "name": "waterSupply",
+                  "value": 1,
+                  "operation": "subtract"
+                }
+              }
+            },
+            "2-4": {
+              "nextEntry": "235",
+              "description": "It's so hot out here.",
+              "effects": {
+                "modifyVariable": {
+                  "name": "waterSupply",
+                  "value": 1,
+                  "operation": "subtract"
+                }
+              }
+            },
+            "5-9": {
+              "nextEntry": "257",
+              "description": "Maybe there is some way you can orient yourself better.",
+              "effects": {
+                "modifyVariable": {
+                  "name": "waterSupply",
+                  "value": 1,
+                  "operation": "subtract"
+                }
+              }
+            }
+          }
         }
       }
     ]
@@ -6311,6 +7531,16 @@
       }
     ]
   },
+  "105a": {
+    "description": "Christos leans in and whispers to you about what he overheard from the sailors. They were talking about some kind of curse, which they say is leaving Greece. Christos also mentions that the Kyonas, an ocean-going motorship, is for hire.",
+    "choices": [
+      {
+        "text": "Return to the café",
+        "nextEntry": "20"
+      }
+    ],
+    "traceNumbers": ["20"]
+  },
   "106a": {
     "title": "Combat Continues",
     "description": "The battle rages on. Either party must fight until one can no longer continue.",
@@ -6346,6 +7576,117 @@
             "lose": "end"
           },
           "advanceTime": 0
+        }
+      }
+    ]
+  },
+  "107a": {
+    "description": "Christos whispers to you, \"They say Gliere was strangled.\" Suddenly, the men stop talking and look up at you.",
+    "choices": [
+      {
+        "text": "Gesture to ask to play",
+        "nextEntry": "581"
+      },
+      {
+        "text": "Leave the table",
+        "nextEntry": "20"
+      }
+    ],
+    "traceNumbers": ["20"]
+  },
+  "112a": {
+    "description": "You realize Hawkes’ library is stocked with a strange assortment of titles: \"Marvels of the Spirit World\", Crowley’s \"Incantations\", Weinburger’s \"Die Mond\".",
+    "choices": [
+      {
+        "text": "You shudder as you feel a chill run down your spine.",
+        "nextEntry": "112e"
+      }
+    ]
+  },
+  "112b": {
+    "description": "You see that the stout chair in the center of the room has odd, regular notches and grooves in its arms, legs, and back.",
+    "choices": [
+      {
+        "text": "You feel a chill run down your spine.",
+        "nextEntry": "112e"
+      }
+    ]
+  },
+  "112c": {
+    "description": "You hear some deep breathing behind a nearby curtain.",
+    "choices": [
+      {
+        "text": "Is someone hidden behind the curtain?",
+        "nextEntry": "112e"
+      }
+    ]
+  },
+  "112d": {
+    "description": "That terrible feeling of dread is growing.",
+    "choices": [
+      {
+        "text": "Make INT roll.",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "112f"
+            },
+            "failure": {
+              "nextEntry": "112g"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "112e": {
+    "description": "That terrible feeling of dread is growing, but you are already aware of the danger.",
+    "choices": [
+      {
+        "text": "Make modified INT roll.",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "bonus": 10,
+            "success": {
+              "nextEntry": "112f"
+            },
+            "failure": {
+              "nextEntry": "112g"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "112f": {
+    "description": "From behind the curtain, a hand suddenly reaches out for you. You must act quickly.",
+    "choices": [
+      {
+        "text": "Make a Dodge roll.",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "Athens",
+              "message": "You slip beneath the hand and make a break for the door."
+            },
+            "failure": {
+              "nextEntry": "112g"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "112g": {
+    "description": "The heavy breather grabs you and shoves you into the chair, the one with the odd grooves and notches. You hear the sharp sound of releasing springs, and metal bands wrap around your arms and legs, holding you tight to the chair. There is nothing you can do!\n\nHow foolish you were to have trusted a strange man you’ve only just met.\n\nNow the heavy breather steps around so that you can see him clearly. You see dry, leathery skin, portions of which flake away as he moves. The eyes are hollow, inhuman. Hawkes sniggers, and introduces you to Achmed, who Hawkes says is nearly 3,000 years old, and who is very, very hungry. You are wild-eyed, and the sound of Hawkes’ maniacal laughter screams in your ears. Achmed’s mouth opens slowly, and he leans toward your helpless body. You see that his teeth are long, yellow, and very sharp. Your screams fill the room, but no one comes to save you. It is...\n\nTHE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
         }
       }
     ]
@@ -6549,6 +7890,31 @@
       {
         "text": "Someone heard you!",
         "nextEntry": "51"
+      }
+    ]
+  },
+  "154a": {
+    "description": "You try to get some shut eye.",
+    "choices": [
+      {
+        "text": "Spend the night, then explore Cairo",
+        "nextEntry": "Cairo",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Cairo"
+        }
+      },
+      {
+        "text": "Spend the night, then explore Alexandria",
+        "nextEntry": "Alexandria",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "currentLocale": "Alexandria"
+        }
       }
     ]
   },
@@ -6944,6 +8310,118 @@
       }
     ]
   },
+  "198a": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Attempt a Language (Arabic) roll",
+        "requirements": {
+          "language": "Arabic"
+        },
+        "effects": {
+          "check": {
+            "skill": "Language (Arabic)",
+            "success": {
+              "nextEntry": "199"
+            },
+            "failure": {
+              "nextEntry": "175"
+            }
+          }
+        }
+      },
+      {
+        "text": "Maybe your phrasebook can help",
+        "nextEntry": "175",
+        "requirements": {
+          "inventory": "Harrison’s English/Arabic Phrase Book"
+        }
+      },
+      {
+        "text": "Get a good night’s rest and explore Cairo",
+        "requirements": {
+          "currentLocale": "Cairo"
+        },
+        "effects": {
+          "setHour": 7
+        },
+        "nextEntry": "Cairo"
+      },
+      {
+        "text": "Get a good night’s rest and explore Alexandria",
+        "requirements": {
+          "currentLocale": "Alexandria"
+        },
+        "effects": {
+          "setHour": 7
+        },
+        "nextEntry": "Alexandria"
+      }
+    ],
+    "traceNumbers": ["154", "169", "200"]
+  },
+  "222b": {
+    "description": "You fail to evade the attacker, and he swings his blade at you. You must now fight to survive!",
+    "choices": [
+      {
+        "text": "Fight",
+        "nextEntry": "222c",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Attacker",
+              "attackChance": "70%",
+              "damage": "1D6+1",
+              "dex": 50,
+              "health": 6,
+              "maxHealth": 6
+            },
+            "win": "241",
+            "lose": "end"
+          },
+          "advanceTime": 0
+        }
+      }
+    ]
+  },
+  "222c": {
+    "description": "You fight for your life!",
+    "choices": [
+      {
+        "text": "Fight",
+        "nextEntry": "222c",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Attacker",
+              "attackChance": "70%",
+              "damage": "1D6+1",
+              "dex": 50,
+              "health": 6,
+              "maxHealth": 6
+            },
+            "win": "241",
+            "lose": "end"
+          },
+          "advanceTime": 0
+        }
+      },
+      {
+        "text": "Try to evade",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": "241a",
+            "failure": {
+              "nextEntry": "222b",
+              "damage": "1D6",
+              "message": "You fail to evade the attacker, and he swings his blade at you. You must now fight to survive!"
+            }
+          }
+        }
+      }
+    ]
+  },
   "230_guard_1_action": {
     "description": "The first guard reacts. Roll 1D6 to determine the guard's action.",
     "choices": [
@@ -7165,6 +8643,15 @@
     ],
     "traceNumbers": ["230e", "230_guard_2_action"]
   },
+  "241a": {
+    "description": "Your cat-like grace means you have evaded him and run away. You spend the night unmolested in the hotel. In the morning, you decide to head for Cairo.",
+    "choices": [
+      {
+        "text": "Head for Cairo",
+        "nextEntry": "Cairo"
+      }
+    ]
+  },
   "249a": {
     "description": "The authorities are hot on your trail, your fate hangs in the balance.",
     "choices": [
@@ -7218,6 +8705,88 @@
       }
     ],
     "traceNumbers": ["249a"]
+  },
+  "256_alexandria": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Go to any Alexandria location",
+        "nextEntry": "Alexandria",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "operation": "clear"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["256b"]
+  },
+  "256_cairo": {
+    "description": "",
+    "choices": [
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "operation": "clear"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["256b"]
+  },
+  "256a": {
+    "description": "You find a tiny puddle of water; it does not make you sick when you drink it. You don’t need to consume your own water supply this day—you have an extra day of life.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "message": "You top a rise and see Alexandria in the distance. That evening you’re in its streets.",
+              "nextEntry": "Alexandria",
+              "effects": {
+                "modifyVariable": {
+                  "name": "waterSupply",
+                  "operation": "clear"
+                }
+              }
+            },
+            "failure": {
+              "message": "You failed the Luck roll.",
+              "nextEntry": "220"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["213"]
+  },
+  "256b": {
+    "description": "You find a tiny puddle of water; it does not make you sick when you drink it. You don’t need to consume your own water supply this day—you have an extra day of life.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "message": "You top a rise and see Alexandria in the distance. That evening you’re in its streets.",
+              "nextEntry": "256_alexandria"
+            },
+            "failure": {
+              "message": "You failed the Luck roll.",
+              "nextEntry": "242"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["213"]
   },
   "263a": {
     "description": "You focus intently, trying to spot a safe path through the menacing shadows.",
@@ -7279,6 +8848,96 @@
         }
       }
     ]
+  },
+  "299_end": {
+    "description": "You must hope that a wiser, better-skilled investigator takes up the chase. As for you, it is ... THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ]
+  },
+  "299_survival_check": {
+    "description": "Make a Survival (Desert) roll. If successful, you can choose a direction. If you fail, it's the end of your journey.",
+    "choices": [
+      {
+        "text": "Attempt a Survival (Desert) roll",
+        "effects": {
+          "check": {
+            "skill": "Survival (Desert)",
+            "success": {
+              "message": "You survive and must choose a direction.",
+              "nextEntry": "299_survival_direction"
+            },
+            "failure": {
+              "message": "You are doomed.",
+              "nextEntry": "299_end"
+            }
+          }
+        },
+        "requirements": {
+          "skill": {
+            "name": "Survival (Desert)"
+          }
+        }
+      }
+    ]
+  },
+  "299_survival_direction": {
+    "description": "You survive and must choose a direction.",
+    "choices": [
+      {
+        "text": "Go South",
+        "nextEntry": "255"
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "283"
+      },
+      {
+        "text": "You haven’t got a clue",
+        "nextEntry": "245"
+      }
+    ]
+  },
+  "299b": {
+    "description": "You can't give up now!",
+    "choices": [
+      {
+        "text": "Attempt a POW roll",
+        "effects": {
+          "check": {
+            "skill": "POW",
+            "success": {
+              "message": "Your inner strength guides you.",
+              "nextEntry": "285"
+            },
+            "failure": {
+              "message": "Your eyesight suddenly blurs. You must now rely on your survival skills.",
+              "nextEntry": "299_survival_check"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["246", "255", "268", "283"]
+  },
+  "321a": {
+    "description": "You wake up on the morning of the second day of the trip, and there’s no one in sight. You have been completely abandoned by your guide. You breathe a sigh of relief, though, as before he drove off in the car, he thoughtfully unloaded any gear belonging to you.\n\nTo reach safety you either can swim the Nile in high flood, or you can follow the car tracks back to that little village not too far away.",
+    "choices": [
+      {
+        "text": "Swim the Nile in high flood",
+        "nextEntry": "588"
+      },
+      {
+        "text": "Follow the car tracks to the village",
+        "nextEntry": "589"
+      }
+    ],
+    "traceNumbers": ["108"]
   },
   "585_exit": {
     "description": "You decide it's time to leave the hospital. Where to next?",
@@ -7386,1699 +9045,44 @@
       }
     ]
   },
-  "65": {
-    "title": "NEW YORK SUN (EUROPEAN EDITION)",
-    "description": "When you browse through the newspaper, you notice three items:\n\n\"Amet Keh, Director of the Cairo National Museum, eagerly awaits the arrival of the Karpathos Device, on loan from Athens.\"\n\n\"The casket bearing Professor Gliere, the academic thief from Miskatonic University, has been placed aboard the Urania for New York. A memorial service has been scheduled in Arkham, Mass., U.S.A.\"\n\n\"The Starkweather-Moore Expedition nears readiness as The Dark Sea heads for Bremen, Germany. Once there, final preparations include reinforcing the hull for the treacherous journey into the ice floes surrounding Antarctica.\"",
+  "586a": {
+    "description": "Keep exploring.",
     "choices": [
       {
-        "text": "Continue reading",
-        "nextEntry": "95"
-      },
-      {
-        "text": "Return to Athens Locations",
-        "nextEntry": "Athens Location",
-        "requirements": {
-          "currentLocale": "Athens"
-        }
-      },
-      {
-        "text": "Return to New York Locations",
-        "nextEntry": "New York Location",
+        "text": "Keep exploring",
+        "nextEntry": "New York",
         "requirements": {
           "currentLocale": "New York"
         }
-      }
-    ],
-    "traceNumbers": []
-  },
-  "194": {
-    "title": "THE PARTHENON",
-    "description": "The majestic temple columns glow golden-yellow in the setting sun, deepening to blue as you clamber across the rubble to reach the lonely inner court. The beauty of the scene somehow oppresses you, and gradually you sink into your own thoughts. As you ponder the suicide of Gliere, a scream abruptly brings you to the present. The cry seemed to come from nowhere.\n\nSuddenly you are aware of your isolation and vulnerability in the deepening gloom.",
-    "choices": [
-      {
-        "text": "Try to hide",
-        "nextEntry": "14"
       },
       {
-        "text": "Sneak away",
-        "nextEntry": "18"
-      },
-      {
-        "text": "Stroll away casually",
-        "nextEntry": "19"
-      },
-      {
-        "text": "Return to Athens Locations",
-        "nextEntry": "Athens Location",
+        "text": "Keep exploring",
+        "nextEntry": "Athens",
         "requirements": {
           "currentLocale": "Athens"
         }
-      }
-    ],
-    "traceNumbers": []
-  },
-  "14": {
-    "description": "You crouch in the gloomy shadows. Soon you hear slow, shuffling footsteps from many directions. Do you wish you’d run instead? Somehow you count yourself glad that you can’t make out the faces of the approaching figures—figures which move as though alive, and yet remind you of the dead! Now you’re sure they see you. You begin to panic.",
-    "choices": [
-      {
-        "text": "Run",
-        "nextEntry": "27"
       },
       {
-        "text": "Use Fast Talk to get out of this",
-        "nextEntry": "31"
-      },
-      {
-        "text": "Return to Athens Locations",
-        "nextEntry": "Athens Location",
-        "requirements": {
-          "currentLocale": "Athens"
-        }
-      }
-    ],
-    "traceNumbers": ["194"]
-  },
-  "27": {
-    "description": "Something grabs you. You must struggle to escape.",
-    "choices": [
-      {
-        "text": "Make a STR roll",
-        "effects": {
-          "check": {
-            "skill": "STR",
-            "success": {
-              "nextEntry": "33",
-              "message": "You tear yourself free from the grasp and escape."
-            },
-            "failure": {
-              "nextEntry": "27a",
-              "message": "Another thing grabs you, and you must fight against their combined strength."
-            }
-          }
-        }
-      },
-      {
-        "text": "Return to Athens Locations",
-        "nextEntry": "Athens Location",
-        "requirements": {
-          "currentLocale": "Athens"
-        }
-      }
-    ],
-    "traceNumbers": ["14", "18"]
-  },
-  "27a": {
-    "description": "A second thing grabs you. Their combined strength is overwhelming. Make an opposed roll against a combined STR of 140.",
-    "choices": [
-      {
-        "text": "Make an opposed STR roll against 140",
-        "effects": {
-          "check": {
-            "skill": "STR",
-            "opposedValue": 140,
-            "success": {
-              "nextEntry": "33",
-              "message": "You squirm free and escape."
-            },
-            "failure": {
-              "nextEntry": "27b",
-              "message": "A third figure grips you tightly, and you are unable to break free."
-            }
-          }
-        }
-      }
-    ]
-  },
-  "27b": {
-    "description": "A third one grips you, and all three begin tearing at your flesh. You scream as the figures overwhelm you.\n\nIt is ... THE END.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ]
-  },
-  "33": {
-    "description": "Trembling with fear, you reel down the road from the Parthenon. You spy a lone figure ahead, a white-haired old man who uses a walking cane. You babble a warning in English, supposing that the alarm alone in your voice will be enough to dissuade him from going closer to the horrors lurking in the Parthenon behind you.\n\nTo your surprise, he answers in English. His voice is slow, but it inspires your confidence. “Fear no more,” he says. “Tonight the stars themselves bind those things to the top of the sacred hill. We have nothing to fear here.”\n\nYour terror begins to lift like a veil. “Your friend was killed by one of those... creatures. You see them in museums, you know, looking like stuffed animals. Undead? Ghouls? Who knows their origin? Your friend Gliere saw them just before they killed him. That is as much as you and I need know.” He pauses. “Our lives we struggle in darkness. We are poor beings, who need the darkness in order to find the light.” As he says these words, the moon breaks through the clouds, and a calm beauty pervades the world. Your fears are quenched, your heart utterly at peace.\n\n“I have been on quests like yours. I have been a scholar of the unusual. I know the uncertainties and the terrors. There is nothing we mere mortals can do but strengthen our faith and struggle against the darkness.” The two of you walk slowly.\n\n“I do not know what Gliere had discovered. But I do know that while in prison he told someone that if the Karpathos Device was returned to its home, life as we know it will cease to exist.”\n\nHe turns to you, “I am at the end of my life. It is up to you to stop this evil, as your friend attempted so valiantly. Egypt is the answer. Go there, find the Karpathos Device, return it to the sea, or destroy it utterly.” He takes something from his hand. It is a ring, heavy with gold, curiously made, covered with signs, most prominently a five-pointed star with a core of flame. “I give you this. It has power, though perhaps not as much as you would want. Use it against dead things brought back to existence.”\n\nFor a moment a friendly hand has steadied you and restored your resolve. This warmth of feeling is what you fight for—and the numbing terror which chased you from the hill is what you despise.\n\nWhen you look up again, your new friend is gone. The road is empty. The encounter was like a dream. But the ring is still there. You slip it on a finger; it fits firmly and comfortably. Reaching the bottom of the hill, you find a cab and go to a hotel. You sleep peacefully.",
-    "choices": [
-      {
-        "text": "Go to any Athens Location",
-        "effects": {
-          "setHour": 6,
-          "addItem": {
-            "name": "Ring of Power",
-            "description": "A ring heavy with gold, covered with signs, most prominently a five-pointed star with a core of flame. It has power, particularly against dead things brought back to existence.",
-            "type": "artifact"
-          }
-        },
-        "nextEntry": "Athens"
-      }
-    ],
-    "traceNumbers": ["18", "19", "27"]
-  },
-  "31": {
-    "description": "Despite your best efforts, the dark figures continue to advance. You are surrounded and reaching hands grasp you, closing around different parts of your body, tighter and tighter. You whimper and then scream. The last thing you see is a nightmare of hollow eyes; the last thing you smell is the stench of fetid, hungry mouths. It is . . .\n\nTHE END.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["14", "19"]
-  },
-  "18": {
-    "description": "At first, you move silently, cunningly evading the ghastly, lifeless figures which shuffle across the court in search of you. Then you clumsily kick a loose stone that clatters across the court. All of the terrifying figures turn toward you.",
-    "choices": [
-      {
-        "text": "Make a Climb roll to escape",
-        "effects": {
-          "check": {
-            "skill": "Climb",
-            "success": {
-              "nextEntry": "33",
-              "message": "You manage to scale the fence and escape the encircling figures."
-            },
-            "failure": {
-              "nextEntry": "27",
-              "message": "You fail to climb the fence and the figures close in on you."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["33", "27", "194"]
-  },
-  "19": {
-    "description": "You whistle loudly to show that you’ve heard nothing and amble away. But in the gloom, you begin to see strangely cloaked figures shamble toward you from all sides. How foolish you were to have drawn attention to yourself!",
-    "choices": [
-      {
-        "text": "Make a Climb roll to escape",
-        "effects": {
-          "check": {
-            "skill": "Climb",
-            "success": {
-              "nextEntry": "33",
-              "message": "You manage to climb the fence and escape beyond the grasp of the creatures."
-            },
-            "failure": {
-              "nextEntry": "31",
-              "message": "You fail to climb the fence, and the creatures close in on you."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["33", "31", "194"]
-  },
-  "103": {
-    "title": "CAIRO TAXIS",
-    "description": "On the few main streets of Cairo, cabs of every variety, from sleek new Packards to old Fords running on makeshift parts, can be found.",
-    "choices": [
-      {
-        "text": "Hire a driver for the day",
-        "effects": {
-          "hiredCairo": "Taxi"
-        },
-        "nextEntry": "Cairo"
-      },
-      {
-        "text": "Go to any Cairo location",
-        "nextEntry": "Cairo",
-        "requirements": {
-          "currentLocale": "Cairo"
-        }
-      }
-    ]
-  },
-  "144": {
-    "title": "CAIRO POLICE",
-    "description": "Affable enough, they have no information concerning what you want to know. If it is after October 31, you may learn more.",
-    "choices": [
-      {
-        "text": "One of the officers seems interested in you.",
-        "nextEntry": "114",
-        "requirements": {
-          "dateAfter": "1931-10-31"
-        }
-      },
-      {
-        "text": "Go to any Cairo location",
-        "nextEntry": "Cairo",
-        "requirements": {
-          "currentLocale": "Cairo"
-        }
-      }
-    ]
-  },
-  "114": {
-    "description": "The officer says that the Karpathos Device is gone. As for who took it, there are only rumors and if you wish to seek such rumors out, you should head to the Fuzira Marketplace.",
-    "choices": [
-      {
-        "text": "Go to the Fuzira Marketplace",
-        "nextEntry": "134"
-      },
-      {
-        "text": "Go to any Cairo location",
-        "nextEntry": "Cairo",
-        "requirements": {
-          "currentLocale": "Cairo"
-        }
-      }
-    ],
-    "traceNumbers": ["144"]
-  },
-  "134": {
-    "title": "FUZIRA MARKETPLACE",
-    "description": "The market thrives from early morning to after sunset. There are hundreds of shops and stalls. Many signs are in English, and many British troops idly walk around. You can choose from among the following:",
-    "choices": [
-      {
-        "text": "Caravans and travel",
-        "nextEntry": "384"
-      },
-      {
-        "text": "Pottery and artifacts",
-        "nextEntry": "374"
-      },
-      {
-        "text": "Fortune telling",
-        "nextEntry": "318"
-      },
-      {
-        "text": "An outdoor cafe",
-        "nextEntry": "340"
-      },
-      {
-        "text": "Outfitters and suppliers",
-        "nextEntry": "383"
-      },
-      {
-        "text": "A dagger-throw game",
-        "nextEntry": "414"
-      },
-      {
-        "text": "Go to any Cairo location",
-        "nextEntry": "Cairo",
-        "requirements": {
-          "currentLocale": "Cairo"
-        }
-      }
-    ]
-  },
-  "384": {
-    "description": "You can either rent a car to get to Tell-el-Amarna, or try to join a caravan to visit the Quattarra Depression.",
-    "choices": [
-      {
-        "text": "Rent a car to go to Tell-el-Amarna",
-        "nextEntry": "320"
-      },
-      {
-        "text": "Join a caravan to visit the Quattarra Depression",
-        "nextEntry": "341"
-      }
-    ],
-    "traceNumbers": ["134"]
-  },
-  "320": {
-    "description": "You can rent a car for a week. It is a rough drive upriver to Tell-el-Amarna; a massive late flood of the Nile has closed both the railway and the regular passenger ship that runs up and down the river. The trip takes exactly 48 hours each way.",
-    "choices": [
-      {
-        "text": "Drive to Tell-el-Amarna",
-        "nextEntry": "324",
-        "effects": {
-          "advanceTime": 48,
-          "hiredCairo": "Car"
-        }
-      },
-      {
-        "text": "Hire a translator guide to go with you",
-        "nextEntry": "108"
-      }
-    ],
-    "traceNumbers": ["384"]
-  },
-  "324": {
-    "title": "TELL-EL-AMARNA",
-    "description": "The village is quiet. A gust of wind picks up dust along the empty road. Here and there a face looks out from a doorway. You spot the pyramid, one much smaller and less imposing than the pyramids at Giza. A well-trod path leads to the pyramid entrance.",
-    "choices": [
-      {
-        "text": "Inspect the pyramid",
-        "nextEntry": "360"
-      },
-      {
-        "text": "Spend the night at the inn",
-        "nextEntry": "444"
-      },
-      {
-        "text": "Return to your car",
-        "effects": {
-          "hiredCairo": null
-        },
-        "nextEntry": "361"
-      }
-    ],
-    "traceNumbers": ["Egypt Location"]
-  },
-  "108": {
-    "description": "You’re assigned a battered black Peugeot and a bright-eyed young Egyptian. He speaks some English but has no particular interest in your mission.",
-    "choices": [
-      {
-        "text": "Roll 1D10",
-        "effects": {
-          "diceRoll": "1D10",
-          "outcomes": {
-            "1-3": {
-              "description": "You sleep restlessly.",
-              "nextEntry": "321"
-            },
-            "4-10": {
-              "description": "You arrive safely a few days later.",
-              "nextEntry": "324",
-              "effects": {
-                "advanceTime": 48
-              }
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["320"]
-  },
-  "321": {
-    "description": "",
-    "choices": [
-      {
-        "text": "Wake up the next morning",
-        "nextEntry": "321a",
-        "effects": {
-          "setHour": 6,
-          "hiredCairo": null
-        }
-      }
-    ],
-    "traceNumbers": ["108"]
-  },
-  "321a": {
-    "description": "You wake up on the morning of the second day of the trip, and there’s no one in sight. You have been completely abandoned by your guide. You breathe a sigh of relief, though, as before he drove off in the car, he thoughtfully unloaded any gear belonging to you.\n\nTo reach safety you either can swim the Nile in high flood, or you can follow the car tracks back to that little village not too far away.",
-    "choices": [
-      {
-        "text": "Swim the Nile in high flood",
-        "nextEntry": "588"
-      },
-      {
-        "text": "Follow the car tracks to the village",
-        "nextEntry": "589"
-      }
-    ],
-    "traceNumbers": ["108"]
-  },
-  "588": {
-    "description": "The river is very strong, with much debris floating in it, and many crocodiles! You decide to go back to the village.",
-    "choices": [
-      {
-        "text": "Go back to the village",
-        "nextEntry": "589"
-      }
-    ],
-    "traceNumbers": ["321"]
-  },
-  "589": {
-    "description": "You follow the tire tracks across the sands. A strong south wind begins to blow.",
-    "choices": [
-      {
-        "text": "Continue following the tracks",
-        "nextEntry": "94"
-      }
-    ],
-    "traceNumbers": ["588"]
-  },
-  "444": {
-    "description": "The inn’s proprietors are fiercely aloof. To stay there anyway, you have several options:",
-    "choices": [
-      {
-        "text": "Stay at the inn",
-        "nextEntry": "447"
-      },
-      {
-        "text": "Eat at the inn",
-        "nextEntry": "584"
-      },
-      {
-        "text": "Rest in your car (if you still have it)",
-        "nextEntry": "448"
-      },
-      {
-        "text": "Sleep in the desert",
-        "nextEntry": "319"
-      },
-      {
-        "text": "Go to the pyramid",
-        "nextEntry": "360"
-      }
-    ],
-    "traceNumbers": ["324", "361", "584"]
-  },
-  "361": {
-    "description": "Your car (and driver) are gone! You have a few options to spend the night or try your luck at finding a way back:",
-    "choices": [
-      {
-        "text": "Spend the night at the village inn",
-        "nextEntry": "344"
-      },
-      {
-        "text": "Sleep in the desert",
-        "nextEntry": "319"
-      },
-      {
-        "text": "Make a Luck roll to find a caravan to Cairo",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "341"
-            },
-            "failure": {
-              "nextEntry": "319"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["324"]
-  },
-  "94": {
-    "description": "You are lost somewhere in the great desert of North Africa. Your water will last 1D10 days. If you succeed with a Survival (Desert) roll, add 1D3 days to that total (you know how to best ration the water). Write down the number of days your water will last. Each time you go to another entry, subtract a day from your water total. When you run out of water, subtract 6 hit points each time you go to another entry. Halt the calculation when you reach other humans, or when you die. You start walking. The heat is incredible, but you must go on!",
-    "choices": [
-      {
-        "text": "Roll for water supply",
-        "nextEntry": "94_survival_check",
-        "effects": {
-          "description": "Your initial water supply is set.",
-          "setVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D10"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["98", "341", "589"]
-  },
-
-  "94_survival_check": {
-    "description": "If you succeed with a Survival (Desert) roll, you will add 1D3 days to your water supply.",
-    "choices": [
-      {
-        "text": "Attempt a Survival (Desert) roll",
-        "effects": {
-          "check": {
-            "skill": "Survival (Desert)",
-            "success": {
-              "message": "You ration the water well and extend your supply.",
-              "modifyVariable": {
-                "name": "waterSupply",
-                "value": {
-                  "diceRoll": "1D3"
-                },
-                "operation": "add"
-              },
-              "nextEntry": "94_walk"
-            },
-            "failure": {
-              "message": "You struggle to ration your water.",
-              "nextEntry": "94_walk"
-            }
-          }
-        },
-        "nextEntry": "94_walk"
-      }
-    ]
-  },
-
-  "94_walk": {
-    "description": "The heat is incredible, but you must go on. Roll 1D10 to determine where you go next.",
-    "choices": [
-      {
-        "text": "Roll 1D10",
-        "effects": {
-          "diceRoll": "1D10",
-          "outcomes": {
-            "1": {
-              "description": "This looks familiar.",
-              "nextEntry": "213",
-              "effects": {
-                "modifyVariable": {
-                  "name": "waterSupply",
-                  "value": 1,
-                  "operation": "subtract"
-                }
-              }
-            },
-            "2-4": {
-              "nextEntry": "235",
-              "description": "It's so hot out here.",
-              "effects": {
-                "modifyVariable": {
-                  "name": "waterSupply",
-                  "value": 1,
-                  "operation": "subtract"
-                }
-              }
-            },
-            "5-9": {
-              "nextEntry": "257",
-              "description": "Maybe there is some way you can orient yourself better.",
-              "effects": {
-                "modifyVariable": {
-                  "name": "waterSupply",
-                  "value": 1,
-                  "operation": "subtract"
-                }
-              }
-            },
-            "10": {
-              "nextEntry": "279",
-              "description": "This seems hopeless.",
-              "effects": {
-                "modifyVariable": {
-                  "name": "waterSupply",
-                  "value": 1,
-                  "operation": "subtract"
-                }
-              }
-            }
-          }
-        }
-      }
-    ]
-  },
-
-  "213": {
-    "description": "With a successful Navigate roll, you know where you are. If you fail the roll, you can wait for someone to pass by or walk for a day in a chosen direction.",
-    "choices": [
-      {
-        "text": "Attempt a Navigate roll",
-        "effects": {
-          "check": {
-            "skill": "Navigate",
-            "success": {
-              "message": "You know where you are.",
-              "nextEntry": "234"
-            },
-            "failure": {
-              "message": "You are still lost.",
-              "nextEntry": "256b"
-            }
-          }
-        }
-      },
-      {
-        "text": "Walk East",
-        "nextEntry": "278",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Walk North",
-        "nextEntry": "277",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Walk South",
-        "nextEntry": "269",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Walk West",
-        "nextEntry": "257",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["94", "257", "269"]
-  },
-  "235": {
-    "description": "If you could just get your bearings, you might know where you are.",
-    "choices": [
-      {
-        "text": "Attempt a Navigate roll",
-        "effects": {
-          "check": {
-            "skill": "Navigate",
-            "success": {
-              "message": "You know where you are.",
-              "nextEntry": "234"
-            },
-            "failure": {
-              "message": "You are still lost.",
-              "nextEntry": "256b"
-            }
-          }
-        }
-      },
-      {
-        "text": "Walk North",
-        "nextEntry": "257",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Walk East",
-        "nextEntry": "269",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Walk South",
-        "nextEntry": "232",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Walk West",
-        "nextEntry": "255",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["94", "232", "242", "255", "257", "269"]
-  },
-  "257": {
-    "description": "Maybe you can figure out how to orient yourself, otherwise you are going to need to keep walking.",
-    "choices": [
-      {
-        "text": "Attempt an Astronomy roll",
-        "effects": {
-          "check": {
-            "skill": "Astronomy",
-            "success": {
-              "message": "You succeed in your Astronomy roll.",
-              "nextEntry": "234"
-            },
-            "failure": {
-              "message": "You fail to navigate using the stars or knowledge.",
-              "nextEntry": "256b"
-            }
-          }
-        }
-      },
-      {
-        "text": "Attempt or Hard Know (half EDU) roll",
-        "effects": {
-          "check": {
-            "skill": "Know",
-            "difficulty": "hard",
-            "success": {
-              "message": "You succeed in your Hard Knowledge roll.",
-              "nextEntry": "234"
-            },
-            "failure": {
-              "message": "You fail to navigate using your knowledge.",
-              "nextEntry": "256b"
-            }
-          }
-        }
-      },
-      {
-        "text": "Walk North",
-        "nextEntry": "246",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Walk East",
-        "nextEntry": "213",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Walk South",
-        "nextEntry": "235",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Walk West",
-        "nextEntry": "283",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["94", "213", "235", "245", "283"]
-  },
-  "279": {
-    "description": "You no longer can doubt it. You have wandered far to the south, far into the desert. Death from thirst may follow unless you can retrace your steps. You stand on a hill. Farther yet to the south, you seem to see palm trees. Should you go there, or perhaps try to find your way north?",
-    "choices": [
-      {
-        "text": "Examine the vision of palm trees",
-        "nextEntry": "285",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Try to retrace your path West",
-        "nextEntry": "214",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Try to retrace your path North",
-        "nextEntry": "232",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Try to retrace your path East?",
-        "nextEntry": "246",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["214", "232", "246", "285"]
-  },
-  "234": {
-    "description": "You’re a born navigator! You figure correctly that you’re west of Cairo. In one day you enter the Giza suburbs west of the city.",
-    "choices": [
-      {
-        "text": "Go to any Cairo location",
-        "nextEntry": "Cairo",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "operation": "clear"
-          }
-        },
-        "requirements": {
-          "currentLocale": "Cairo"
-        }
-      }
-    ],
-    "traceNumbers": ["213", "257", "278"]
-  },
-  "256a": {
-    "description": "You find a tiny puddle of water; it does not make you sick when you drink it. You don’t need to consume your own water supply this day—you have an extra day of life.",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "message": "You top a rise and see Alexandria in the distance. That evening you’re in its streets.",
-              "nextEntry": "Alexandria",
-              "effects": {
-                "modifyVariable": {
-                  "name": "waterSupply",
-                  "operation": "clear"
-                }
-              }
-            },
-            "failure": {
-              "message": "You failed the Luck roll.",
-              "nextEntry": "220"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["213"]
-  },
-  "256b": {
-    "description": "You find a tiny puddle of water; it does not make you sick when you drink it. You don’t need to consume your own water supply this day—you have an extra day of life.",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "message": "You top a rise and see Alexandria in the distance. That evening you’re in its streets.",
-              "nextEntry": "256_alexandria"
-            },
-            "failure": {
-              "message": "You failed the Luck roll.",
-              "nextEntry": "242"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["213"]
-  },
-  "256_alexandria": {
-    "description": "",
-    "choices": [
-      {
-        "text": "Go to any Alexandria location",
+        "text": "Keep exploring",
         "nextEntry": "Alexandria",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "operation": "clear"
-          }
+        "requirements": {
+          "currentLocale": "Alexandria"
         }
-      }
-    ],
-    "traceNumbers": ["256b"]
-  },
-  "256_cairo": {
-    "description": "",
-    "choices": [
+      },
       {
-        "text": "Go to any Cairo location",
+        "text": "Keep exploring",
         "nextEntry": "Cairo",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "operation": "clear"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["256b"]
-  },
-  "277": {
-    "description": "You drink another day’s water ration, and stumble ahead. The rocks have sliced your fine leather shoes into ribbons. Your bleeding feet are unlikely to carry you much further. Then, suddenly, you see Alexandria in the distance! Salvation!",
-    "choices": [
-      {
-        "text": "Alexandria!",
-        "nextEntry": "195",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "operation": "clear"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["213", "245"]
-  },
-  "269": {
-    "description": "In a cleft of a ravine you find a pale white flower, the only thing growing for miles. It seems the most beautiful plant you have ever seen. You salute it, and take courage from it.",
-    "choices": [
-      {
-        "text": "Go North",
-        "nextEntry": "213",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go East",
-        "nextEntry": "210",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go South",
-        "nextEntry": "214",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go West",
-        "nextEntry": "235",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["213", "214", "235"]
-  },
-  "278": {
-    "description": "You make your way forward, despite the searing sun and your aching feet. Somehow you feel you are headed in the right direction.",
-    "choices": [
-      {
-        "text": "Keep walking",
-        "nextEntry": "234",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["213"]
-  },
-  "210": {
-    "description": "You come to the Nile! After splashing in its refreshing waters, you follow the great river north. Catching rides with some engineers and then some archaeologists, you arrive in Cairo in 2 days.",
-    "choices": [
-      {
-        "text": "Go to any Cairo location",
-        "nextEntry": "Cairo",
-        "effects": {
-          "advanceTime": 48,
-          "modifyVariable": {
-            "name": "waterSupply",
-            "operation": "clear"
-          }
-        },
         "requirements": {
           "currentLocale": "Cairo"
         }
-      }
-    ],
-    "traceNumbers": ["214", "269"]
-  },
-  "214": {
-    "description": "These desert lands all begin to look the same. Have you been going in circles? Should you change directions? Drink one day’s water, then choose a direction.",
-    "choices": [
-      {
-        "text": "Go North",
-        "nextEntry": "269",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
       },
       {
-        "text": "Go East",
-        "nextEntry": "210",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go South",
-        "nextEntry": "279",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go West",
-        "nextEntry": "232",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["232", "269"]
-  },
-  "220": {
-    "description": "Is that something there crossing the desert?",
-    "choices": [
-      {
-        "text": "Try your Luck",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "message": "You meet a friendly caravan and travel to Cairo in 2 days.",
-              "nextEntry": "Cairo",
-              "effects": {
-                "advanceTime": 48,
-                "modifyVariable": {
-                  "name": "waterSupply",
-                  "operation": "clear"
-                }
-              }
-            },
-            "failure": {
-              "message": "It must have just been a mirage.",
-              "nextEntry": "232"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["256"]
-  },
-  "232": {
-    "description": "The burning desert sands have no end. Subtract another day’s water for this ordeal. Are you losing confidence? Do you want to change direction?",
-    "choices": [
-      {
-        "text": "Go North",
-        "nextEntry": "235",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go East",
-        "nextEntry": "214",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go South",
-        "nextEntry": "279",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go West",
-        "nextEntry": "245",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["214", "220", "235", "246"]
-  },
-  "242": {
-    "description": "In the arid wastes you come across a trail!",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "message": "There is a caravan is approaching! They’re going to Cairo, and you’re saved!",
-              "nextEntry": "256_cairo",
-              "effects": {
-                "advanceTime": 48
-              }
-            },
-            "failure": {
-              "message": "You see a caravan in the distance, but it is moving away from you! In your weakened condition, you can’t hope to catch it. You collapse beside the trail, weeping.",
-              "nextEntry": "235",
-              "effects": {
-                "modifyVariable": {
-                  "name": "waterSupply",
-                  "value": 1,
-                  "operation": "subtract"
-                }
-              }
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["256"]
-  },
-  "245": {
-    "description": "The next day you see a city on the horizon. Desperately you stumble toward it. The domes and minarets suddenly begin to tremble and disappear—a mirage! You were foolish to have imagined a city in the desert. Drink another day’s water ration and choose a direction.",
-    "choices": [
-      {
-        "text": "Go North",
-        "nextEntry": "255",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go East",
-        "nextEntry": "232",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go South",
-        "nextEntry": "279",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go West",
-        "nextEntry": "299",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["257", "268"]
-  },
-  "246": {
-    "description": "You draw up just in time. Another few steps and you would have fallen a hundred feet into that ravine! You must get a grip on yourself. Drink another day’s water ration and choose a direction. And be careful!",
-    "choices": [
-      {
-        "text": "Go North",
-        "nextEntry": "255",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go East",
-        "nextEntry": "232",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go South",
-        "nextEntry": "279",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go West",
-        "nextEntry": "299",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["232", "257"]
-  },
-  "255": {
-    "description": "The towering yellow sand clouds sweep over you, and you seek shelter from the fury in a nearby gully. The storm lasts the rest of the day. When you emerge, you see nothing you can recognize. Disheartened, you drink another day’s water ration and decide to choose a direction of travel.",
-    "choices": [
-      {
-        "text": "Go North",
-        "nextEntry": "283",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go East",
-        "nextEntry": "235",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go South",
-        "nextEntry": "245",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go West",
-        "nextEntry": "299",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["235", "246", "283", "299"]
-  },
-  "283": {
-    "description": "The winds have exposed skeletons of men, horses, and camels—perhaps victims of some ancient vendetta. A jeweled dagger catches your eye. You’ll be able to sell it in Cairo for $100—if you make it back! Drink another day’s water ration and choose a direction.",
-    "choices": [
-      {
-        "text": "Go North",
-        "nextEntry": "268",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          },
-          "health": -2,
-          "addItem": {
-            "name": "Jeweled Dagger",
-            "description": "$100",
-            "type": "artifact"
-          }
-        }
-      },
-      {
-        "text": "Go East",
-        "nextEntry": "257",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          },
-          "addItem": {
-            "name": "Jeweled Dagger",
-            "description": "$100",
-            "type": "artifact"
-          }
-        }
-      },
-      {
-        "text": "Go South",
-        "nextEntry": "255",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          },
-          "addItem": {
-            "name": "Jeweled Dagger",
-            "description": "$100",
-            "type": "artifact"
-          }
-        }
-      },
-      {
-        "text": "Go West",
-        "nextEntry": "299",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          },
-          "addItem": {
-            "name": "Jeweled Dagger",
-            "description": "$100",
-            "type": "artifact"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["255", "257", "268", "299"]
-  },
-  "285": {
-    "description": "You discover an oasis! Your gamble pays off. Exhausted, you fall into the sweet, fresh water and drink your fill. Later, the inhabitants tend to you and, two days later, a party of traders takes you on the 2 day journey to Cairo.",
-    "choices": [
-      {
-        "text": "Travel with the traders",
-        "nextEntry": "134",
-        "effects": {
-          "advanceTime": 96,
-          "modifyVariable": {
-            "name": "waterSupply",
-            "operation": "clear"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["279", "299"]
-  },
-  "299": {
-    "description": "Your once-firm steps have weakened. You are very, very weary. Have you wandered too far west? Can you return?",
-    "choices": [
-      {
-        "text": "Attempt a Navigate roll",
-        "effects": {
-          "check": {
-            "skill": "Navigate",
-            "success": {
-              "message": "You find your way and continue.",
-              "nextEntry": "285"
-            },
-            "failure": {
-              "message": "You fail to navigate. Try a POW roll.",
-              "nextEntry": "299b"
-            }
-          }
-        }
-      },
-      {
-        "text": "Attempt a POW roll",
-        "effects": {
-          "check": {
-            "skill": "POW",
-            "success": {
-              "message": "Your inner strength guides you.",
-              "nextEntry": "285"
-            },
-            "failure": {
-              "message": "Your eyesight suddenly blurs. You must now rely on your survival skills.",
-              "nextEntry": "299_survival_check"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["246", "255", "268", "283"]
-  },
-  "299b": {
-    "description": "You can't give up now!",
-    "choices": [
-      {
-        "text": "Attempt a POW roll",
-        "effects": {
-          "check": {
-            "skill": "POW",
-            "success": {
-              "message": "Your inner strength guides you.",
-              "nextEntry": "285"
-            },
-            "failure": {
-              "message": "Your eyesight suddenly blurs. You must now rely on your survival skills.",
-              "nextEntry": "299_survival_check"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["246", "255", "268", "283"]
-  },
-  "299_survival_check": {
-    "description": "Make a Survival (Desert) roll. If successful, you can choose a direction. If you fail, it's the end of your journey.",
-    "choices": [
-      {
-        "text": "Attempt a Survival (Desert) roll",
-        "effects": {
-          "check": {
-            "skill": "Survival (Desert)",
-            "success": {
-              "message": "You survive and must choose a direction.",
-              "nextEntry": "299_survival_direction"
-            },
-            "failure": {
-              "message": "You are doomed.",
-              "nextEntry": "299_end"
-            }
-          }
-        },
+        "text": "Keep exploring",
+        "nextEntry": "Bremen",
         "requirements": {
-          "skill": {
-            "name": "Survival (Desert)"
-          }
+          "currentLocale": "Bremen"
         }
       }
     ]
-  },
-  "299_end": {
-    "description": "You must hope that a wiser, better-skilled investigator takes up the chase. As for you, it is ... THE END.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ]
-  },
-  "299_survival_direction": {
-    "description": "You survive and must choose a direction.",
-    "choices": [
-      {
-        "text": "Go South",
-        "nextEntry": "255"
-      },
-      {
-        "text": "Go West",
-        "nextEntry": "283"
-      },
-      {
-        "text": "You haven’t got a clue",
-        "nextEntry": "245"
-      }
-    ]
-  },
-  "268": {
-    "description": "You stumble and fall as fractured rock gives way beneath you; you incur a sprained ankle and lose 2 hit points from bruises and cuts. Perhaps you should throw away your water and end the torment now. The situation seems hopeless. But you resolve to struggle until the very end. You choose a direction and drink a day’s water ration.",
-    "choices": [
-      {
-        "text": "Go North",
-        "nextEntry": "254",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          },
-          "modifyHealth": {
-            "value": {
-              "diceRoll": "1D2"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go East",
-        "nextEntry": "246",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          },
-          "modifyHealth": {
-            "value": {
-              "diceRoll": "1D2"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go South",
-        "nextEntry": "283",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          },
-          "modifyHealth": {
-            "value": {
-              "diceRoll": "1D2"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
-        "text": "Go West",
-        "nextEntry": "299",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": 1,
-            "operation": "subtract"
-          },
-          "modifyHealth": {
-            "value": {
-              "diceRoll": "1D2"
-            },
-            "operation": "subtract"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["245", "283"]
-  },
-  "254": {
-    "description": "You come to a great body of water. It is the Mediterranean Sea! Soon you find a railway track and hitch a ride to Alexandria aboard a section gang handcar.",
-    "choices": [
-      {
-        "text": "Go to Alexandria",
-        "nextEntry": "195",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "operation": "clear"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["245", "268"]
   }
 }
