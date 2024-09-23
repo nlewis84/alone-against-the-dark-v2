@@ -1,6 +1,8 @@
 Alexandria Locations
 
 Cairo Locations
+need to actually use atmosphere/242.png
+There are probably other photos I forgot in the desert scene.
 324 - outcomes
 
 The pyramid
