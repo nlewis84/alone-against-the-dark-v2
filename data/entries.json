@@ -1460,6 +1460,7 @@
   },
   "69": {
     "description": "Two foreigners stand on deck. The tall fellow wears a robe with a cowl. He is perhaps Arabic or Turkish. A shorter fellow, ferret-like, looks in your direction. Though they seem out of place on this ship, they make you feel uncomfortable.",
+    "image": "src/assets/images/atmosphere/69.png",
     "choices": [
       {
         "text": "Proceed to the next day",
@@ -1795,6 +1796,7 @@
   },
   "86": {
     "title": "NEW YORK SUN",
+    "image": "src/assets/images/atmosphere/86.png",
     "description": "“The oft-delayed Starkweather-Moore expedition to the Antarctic nears completion, with a late December departure now virtually certain. Bremerhaven, Germany, will be the expedition’s jumping-off point, and its last European port of call.”\n\n“An American professor, Dr. Tibor Gliere of Miskatonic University, has been arrested for the alleged theft of an antiquity. Miskatonic’s Dean Wilcox reports that a colleague, Professor Louis Grunewald, has gone to Athens to investigate the matter for the University.”",
     "choices": [
       {
@@ -3498,6 +3500,7 @@
   },
   "134": {
     "title": "FUZIRA MARKETPLACE",
+    "image": "src/assets/images/atmosphere/134.png",
     "description": "The market thrives from early morning to after sunset. There are hundreds of shops and stalls. Many signs are in English, and many British troops idly walk around. You can choose from among the following:",
     "choices": [
       {
@@ -5298,6 +5301,7 @@
   },
   "209": {
     "description": "The Karpathos Device is there, with interesting background information. Its appearance is remarkably modern, resembling aluminum but obviously of great strength. Its enclosure is electrically guarded to prevent theft. Need a refresher on the Karpathos Device?",
+    "image": "src/assets/images/atmosphere/209.png",
     "choices": [
       {
         "text": "Refresh your memory about the Device.",
@@ -8724,6 +8728,7 @@
   },
   "256_cairo": {
     "description": "",
+    "image": "src/assets/images/atmosphere/256_cairo.png",
     "choices": [
       {
         "text": "Go to any Cairo location",
