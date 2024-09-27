@@ -1,7 +1,7 @@
 {
   "Professor Grunewald": {
-    "health": 100,
-    "sanity": 100,
+    "health": 9,
+    "sanity": 55,
     "STR": 70,
     "CON": 50,
     "SIZ": 45,
@@ -79,8 +79,8 @@
     "inventory": []
   },
   "Lydia Lau": {
-    "health": 100,
-    "sanity": 100,
+    "health": 10,
+    "sanity": 60,
     "STR": 55,
     "CON": 60,
     "SIZ": 45,
@@ -155,8 +155,8 @@
     "inventory": []
   },
   "Devon Wilson": {
-    "health": 100,
-    "sanity": 100,
+    "health": 13,
+    "sanity": 80,
     "STR": 70,
     "CON": 60,
     "SIZ": 70,
@@ -232,8 +232,8 @@
     "inventory": []
   },
   "Ernest Holt": {
-    "health": 100,
-    "sanity": 100,
+    "health": 11,
+    "sanity": 50,
     "STR": 45,
     "CON": 35,
     "SIZ": 80,

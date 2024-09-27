@@ -38,6 +38,7 @@ export function makeSkillCheck(
   bonus = 0,
 ) {
   let skillValue = skills[skill] !== undefined ? skills[skill] : stats[skill]
+  if (skill === "Sanity") skillValue = stats["sanity"]
 
   skillValue += bonus
 

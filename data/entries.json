@@ -6827,6 +6827,128 @@
     ],
     "traceNumbers": ["324", "361", "584"]
   },
+  "447": {
+    "description": "You stay the night. You wake groggily, as if drugged. The air is cold, and you feel as though you’re falling. When you open your eyes, you see only darkness.",
+    "choices": [
+      {
+        "text": "Where are you?",
+        "nextEntry": "373"
+      }
+    ],
+    "traceNumbers": ["444"]
+  },
+  "373": {
+    "description": "You learn that you have landed in a bowl-shaped chamber. You think you can hear the sound of movement, but you see nothing until you strike a match. You stand knee-deep in a stack or pile of something, and the smell of blood is strong. Near you, something moves spasmodically. Your hackles rise.",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "sanity": 1,
+              "nextEntry": "373a"
+            },
+            "failure": {
+              "sanity": "1D3",
+              "nextEntry": "373b"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["351", "369", "447"]
+  },
+  "373a": {
+    "description": "You manage to keep your composure, but the situation is unnerving.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "373c"
+      }
+    ]
+  },
+  "373b": {
+    "description": "Your mind reels at the sight of the blood and movement around you. Lose 1D3 Sanity points.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "373c"
+      }
+    ]
+  },
+  "373c": {
+    "description": "If you climbed down here, your rope falls and lands beside you. You are trapped. If you were thrown here, you’re trapped.",
+    "choices": [
+      {
+        "text": "Do you have the amulet of Nodens?",
+        "nextEntry": "373_amulet_check"
+      }
+    ]
+  },
+  "373_amulet_check": {
+    "description": "If you have the amulet of Nodens, you may use it now to escape.",
+    "choices": [
+      {
+        "text": "Use the amulet to return to Tell-el-Amarna",
+        "nextEntry": "324",
+        "requirements": {
+          "inventory": "Amulet of Nodens"
+        }
+      },
+      {
+        "text": "Use the amulet to return to Cairo",
+        "nextEntry": "Cairo",
+        "requirements": {
+          "inventory": "Amulet of Nodens"
+        }
+      },
+      {
+        "text": "You don't have the amulet or are insane",
+        "nextEntry": "373d",
+        "requirements": {
+          "notInventory": "Amulet of Nodens"
+        }
+      }
+    ]
+  },
+  "373d": {
+    "description": "You hear another sound from above. In the gloom, you see a basket being lowered. A whispery, otherworldly voice croaks, 'Fill the basket!'",
+    "choices": [
+      {
+        "text": "Refuse the instruction",
+        "nextEntry": "373e",
+        "effects": {
+          "health": -2,
+          "sanity": -1
+        }
+      },
+      {
+        "text": "Fill the basket",
+        "nextEntry": "373_fill_basket"
+      }
+    ]
+  },
+  "373e": {
+    "description": "Acid rains down upon you, burning your skin. The voice calls again, 'Fill the basket!'",
+    "choices": [
+      {
+        "text": "Fill the basket",
+        "nextEntry": "373_fill_basket"
+      }
+    ]
+  },
+  "373_fill_basket": {
+    "description": "Yes, fill it, your mind shrieks. Fill it with bits and pieces from all the bodies down here, some of them still moving. You continue to fill the basket until you are driven insane. When you go insane, you become part of the grisly, half-dead pile. This is ... THE END.",
+    "choices": [
+      {
+        "text": "THE END",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ]
+  },
   "449": {
     "title": "BREMEN HARBOR",
     "description": "Bremerhaven, Bremen’s harbor area, appears quiet in the cold air of early morning. Dense, icy fog hangs over the port.",

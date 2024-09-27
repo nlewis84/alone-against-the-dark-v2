@@ -165,15 +165,10 @@ export function displayEntry(entryId) {
 function handleEntryEffects(effects) {
   if (effects.health) {
     if (effects.health.diceRoll) {
-      const diceResult = rollDice(effects.health.diceRoll) // Simulate dice roll, ensure you have a function that supports rolling strings like "1D100"
+      const diceResult = rollDice(effects.health.diceRoll)
       const threshold = effects.health.threshold
       let outcome = diceResult >= threshold
-      // ? rollDice(effects.health.success)
-      // : rollDice(effects.health.success)
-
-      // check to see if effects.health.success is an integer and outcome === true, pass it straight to updateHealth
-      // check to see if effects.health.failure is an integer and outcome === false, pass it straight to updateHealth
-      // in either case, based on the outcome, pass the effects.health.success or effects.health.failure to rollDice and then pass the result to updateHealth
+      
       if (typeof effects.health.success === 'number' && outcome) {
         updateHealth(effects.health.success)
       } else if (typeof effects.health.failure === 'number' && !outcome) {
@@ -186,6 +181,27 @@ function handleEntryEffects(effects) {
       }
     } else if (typeof effects.health === 'number') {
       updateHealth(effects.health)
+    }
+  }
+
+  if (effects.sanity) {
+    if (effects.sanity.diceRoll) {
+      const diceResult = rollDice(effects.sanity.diceRoll)
+      const threshold = effects.sanity.threshold || currentState.sanity
+      let outcome = diceResult >= threshold
+
+      if (typeof effects.sanity.success === 'number' && outcome) {
+        updateSanity(effects.sanity.success)
+      } else if (typeof effects.sanity.failure === 'number' && !outcome) {
+        updateSanity(effects.sanity.failure)
+      } else {
+        const success = rollDice(effects.sanity.success)
+        const failure = rollDice(effects.sanity.failure)
+
+        updateSanity(outcome ? -success : -failure)
+      }
+    } else if (typeof effects.sanity === 'number') {
+      updateSanity(effects.sanity)
     }
   }
 

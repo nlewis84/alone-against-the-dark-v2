@@ -189,7 +189,7 @@ describe('Game Logic', () => {
 
     test('should update sanity correctly', () => {
       updateSanity(-10)
-      expect(currentState.sanity).toBe(90)
+      expect(currentState.sanity).toBe(45)
     })
   })
 
@@ -315,8 +315,8 @@ describe('Game Logic', () => {
 
       // Verify that the state matches the expected values including date and time
       expect(currentState).toMatchObject({
-        health: 100,
-        sanity: 100,
+        health: 9,
+        sanity: 55,
         inventory: [expect.any(Object)],
         skills: expect.any(Object),
       })
@@ -334,21 +334,21 @@ describe('Game Logic', () => {
 
       // Verify that the current investigator is now Ernest Holt starting at entry 36
       expect(currentState.currentEntry).toBe('36')
-      expect(currentState.health).toBe(100) // Check other properties as necessary
+      expect(currentState.health).toBe(11) // Check other properties as necessary
 
       // Simulate the death of the second investigator
       handleInvestigatorDeath()
 
       // Verify that the current investigator is now Lydia Lau starting at entry 37
       expect(currentState.currentEntry).toBe('37')
-      expect(currentState.health).toBe(100) // Check other properties as necessary
+      expect(currentState.health).toBe(10) // Check other properties as necessary
 
       // Simulate the death of the third investigator
       handleInvestigatorDeath()
 
       // Verify that the current investigator is now Devon Wilson starting at entry 554
       expect(currentState.currentEntry).toBe('554')
-      expect(currentState.health).toBe(100) // Check other properties as necessary
+      expect(currentState.health).toBe(13) // Check other properties as necessary
 
       // Simulate the death of the fourth investigator
       handleInvestigatorDeath()
@@ -2616,4 +2616,31 @@ describe('Game Logic', () => {
       expect(currentState.waterSupply).toBeLessThan(14)
     })
   })
+
+  describe('Sanity Skill Check', () => {
+    beforeEach(() => {
+      // Set up a default sanity level before each test
+      currentState.stats = {
+        sanity: 60, // Set sanity to 60 for testing
+      };
+      jest.spyOn(global.Math, 'random').mockReturnValue(0.4); // Mock dice roll to return 40
+    });
+  
+    afterEach(() => {
+      jest.restoreAllMocks(); // Restore any mocks after each test
+    });
+  
+    test('should pass Sanity check when roll is less than or equal to sanity', () => {
+      const result = makeSkillCheck('Sanity', {}, currentState.stats);
+      expect(result).toBe(true); // Expected to pass because 40 <= 60
+    });
+  
+    test('should fail Sanity check when roll is greater than sanity', () => {
+      jest.spyOn(global.Math, 'random').mockReturnValue(0.7); // Mock dice roll to return 70
+      const result = makeSkillCheck('Sanity', {}, currentState.stats);
+      expect(result).toBe(false); // Expected to fail because 70 > 60
+    });
+  });
+  
+  
 })
