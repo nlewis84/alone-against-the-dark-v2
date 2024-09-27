@@ -1965,13 +1965,14 @@ describe('Game Logic', () => {
     beforeEach(() => {
       // Reset currentState and initialize game before each test
       initializeGame()
-      currentState.hiredAthens = false
+      currentState.hiredAthens = null
       currentState.skills = {}
       currentState.inventory = []
     })
 
     test('should show "Your interpreter can help translate" button when companion is with you', () => {
-      currentState.hiredAthens = true // Player has a companion (Christos)
+      currentState.hiredAthens = 'Christos' // Player has a companion (Christos)
+      currentState.currentLocale = 'Athens'
       displayEntry('87')
 
       const buttons = Array.from(document.querySelectorAll('button'))
@@ -1982,7 +1983,7 @@ describe('Game Logic', () => {
     })
 
     test('should not show "Your interpreter can help translate" button when companion is not with you', () => {
-      currentState.hiredAthens = false // Player does not have a companion
+      currentState.hiredAthens = null // Player does not have a companion
       displayEntry('87')
 
       const buttons = Array.from(document.querySelectorAll('button')).filter(
@@ -2556,9 +2557,6 @@ describe('Game Logic', () => {
       const choiceButton = findChoiceButton('Go to any Cairo location')
       choiceButton.click()
 
-      // Add a log to see the current state after the button click
-      console.log('Current waterSupply:', currentState.waterSupply)
-
       // Verify water supply was cleared
       expect(currentState.waterSupply).toBeUndefined()
     })
@@ -2587,12 +2585,6 @@ describe('Game Logic', () => {
       const choiceButton = findChoiceButton('Roll 1D10')
       choiceButton.click()
 
-      // Add a log to see the current water supply after the button click
-      console.log(
-        'Current waterSupply after subtract:',
-        currentState.waterSupply,
-      )
-
       // Verify waterSupply is now 13 (depending on the dice roll, adjust this if necessary)
       expect(currentState.waterSupply).toBe(9)
     })
@@ -2605,12 +2597,6 @@ describe('Game Logic', () => {
       const choiceButton = findChoiceButton('Attempt a Survival (Desert) roll')
       choiceButton.click()
 
-      // Add a log to see the current water supply after the button click
-      console.log(
-        'Current water supply after adding:',
-        currentState.waterSupply,
-      )
-
       // Verify water supply is now 10, 11, 12, or 13 (depending on the dice roll, adjust this if necessary)
       expect(currentState.waterSupply).toBeGreaterThan(9)
       expect(currentState.waterSupply).toBeLessThan(14)
@@ -2622,25 +2608,23 @@ describe('Game Logic', () => {
       // Set up a default sanity level before each test
       currentState.stats = {
         sanity: 60, // Set sanity to 60 for testing
-      };
-      jest.spyOn(global.Math, 'random').mockReturnValue(0.4); // Mock dice roll to return 40
-    });
-  
+      }
+      jest.spyOn(global.Math, 'random').mockReturnValue(0.4) // Mock dice roll to return 40
+    })
+
     afterEach(() => {
-      jest.restoreAllMocks(); // Restore any mocks after each test
-    });
-  
+      jest.restoreAllMocks() // Restore any mocks after each test
+    })
+
     test('should pass Sanity check when roll is less than or equal to sanity', () => {
-      const result = makeSkillCheck('Sanity', {}, currentState.stats);
-      expect(result).toBe(true); // Expected to pass because 40 <= 60
-    });
-  
+      const result = makeSkillCheck('Sanity', {}, currentState.stats)
+      expect(result).toBe(true) // Expected to pass because 40 <= 60
+    })
+
     test('should fail Sanity check when roll is greater than sanity', () => {
-      jest.spyOn(global.Math, 'random').mockReturnValue(0.7); // Mock dice roll to return 70
-      const result = makeSkillCheck('Sanity', {}, currentState.stats);
-      expect(result).toBe(false); // Expected to fail because 70 > 60
-    });
-  });
-  
-  
+      jest.spyOn(global.Math, 'random').mockReturnValue(0.7) // Mock dice roll to return 70
+      const result = makeSkillCheck('Sanity', {}, currentState.stats)
+      expect(result).toBe(false) // Expected to fail because 70 > 60
+    })
+  })
 })

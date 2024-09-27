@@ -1,8 +1,6 @@
 Alexandria Locations
 
 Cairo Locations
-324 - outcomes
-373 - SAN roll?...sub entries
 
 The pyramid
 360

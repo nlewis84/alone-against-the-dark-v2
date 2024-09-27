@@ -6715,6 +6715,9 @@
         "effects": {
           "hiredCairo": null
         },
+        "required": {
+          "companion": "Car"
+        },
         "nextEntry": "361"
       }
     ],
@@ -6729,7 +6732,10 @@
       },
       {
         "text": "Sleep in the desert",
-        "nextEntry": "319"
+        "nextEntry": "319",
+        "effects": {
+          "setHour": 7
+        }
       },
       {
         "text": "Make a Luck roll to find a caravan to Cairo",
@@ -6814,11 +6820,20 @@
       },
       {
         "text": "Rest in your car (if you still have it)",
-        "nextEntry": "448"
+        "nextEntry": "448",
+        "effects": {
+          "setHour": 7
+        },
+        "requirements": {
+          "companion": "Car"
+        }
       },
       {
         "text": "Sleep in the desert",
-        "nextEntry": "319"
+        "nextEntry": "319",
+        "effects": {
+          "setHour": 7
+        }
       },
       {
         "text": "Go to the pyramid",
@@ -9211,5 +9226,70 @@
         }
       }
     ]
+  },
+  "584": {
+    "description": "You are served an overpriced, skimpy, smelly, bad-tasting meal!",
+    "choices": [
+      {
+        "text": "Leave angrily",
+        "nextEntry": "444"
+      }
+    ],
+    "traceNumbers": ["444"]
+  },
+  "448": {
+    "description": "Your car is uncomfortable, but at least you’ll avoid the local folk, who seem none too friendly. When you awake, you are cold and stiff, but you feel ready for anything.\n\nTo explore the pyramid, or you can return to Cairo in 48 hours.",
+    "choices": [
+      {
+        "text": "Explore the pyramid",
+        "nextEntry": "360"
+      },
+      {
+        "text": "Return to Cairo",
+        "nextEntry": "Cairo Location",
+        "effects": {
+          "advanceTime": 48
+        }
+      }
+    ]
+  },
+  "319": {
+    "description": "The night is numbingly cold, but you survive. In the morning, you can go to the pyramid or to the village. You can also try to get a ride to Cairo with a caravan if you like: if you succeed with a Luck roll.",
+    "choices": [
+      {
+        "text": "Go to the pyramid",
+        "nextEntry": "360"
+      },
+      {
+        "text": "Go to the village",
+        "nextEntry": "324"
+      },
+      {
+        "text": "Try to get a ride to Cairo with a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "341"
+            },
+            "failure": {
+              "nextEntry": "319"
+            }
+          },
+          "time": 24
+        }
+      }
+    ],
+    "traceNumbers": ["361", "444"]
+  },
+  "341": {
+    "description": "Early in the morning, the nostrils of the camels steam in the chill desert air. You consume welcome cups of strong coffee and milk. As the caravan moves out, you are mostly ignored. Once in a while someone shouts something, which you imagine refers to you, but you never understand the words. That night, wrapped in your loneliness, you sleep a little apart from the others. In the morning you wake with a start. The caravan has—perhaps accidentally?—left you behind.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "94"
+      }
+    ],
+    "traceNumbers": ["319", "361", "384"]
   }
 }

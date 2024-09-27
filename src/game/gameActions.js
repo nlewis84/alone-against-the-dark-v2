@@ -168,7 +168,7 @@ function handleEntryEffects(effects) {
       const diceResult = rollDice(effects.health.diceRoll)
       const threshold = effects.health.threshold
       let outcome = diceResult >= threshold
-      
+
       if (typeof effects.health.success === 'number' && outcome) {
         updateHealth(effects.health.success)
       } else if (typeof effects.health.failure === 'number' && !outcome) {
@@ -1138,6 +1138,7 @@ export function saveGame() {
     onShip: currentState.onShip,
     shipJourneyStartDate: currentState.shipJourneyStartDate,
     hiredAthens: currentState.hiredAthens,
+    hiredCairo: currentState.hiredCairo,
     moderateHotelStays: currentState.moderateHotelStays,
     expensiveHotelStays: currentState.expensiveHotelStays,
     scheduledMeetings: currentState.scheduledMeetings,
@@ -1170,8 +1171,14 @@ export function loadGame() {
       )
     }
 
-    currentState.hiredAthens = savedState.hiredAthens
-    updateInterpreterDisplay(currentState.hiredAthens)
+    // if the player is in Athens/Cairo, set the interpreter display
+    if (currentState.currentLocale === 'Athens') {
+      currentState.hiredAthens = savedState.hiredAthens
+      updateInterpreterDisplay(currentState.hiredAthens)
+    } else if (currentState.currentLocale === 'Cairo') {
+      currentState.hiredCairo = savedState.hiredCairo
+      updateInterpreterDisplay(currentState.hiredCairo)
+    }
 
     currentState.moderateHotelStays = savedState.moderateHotelStays
     currentState.expensiveHotelStays = savedState.expensiveHotelStays
@@ -1354,8 +1361,16 @@ export function checkRequirements(requirements) {
     }
 
     if (requirements.companion) {
-      if (!currentState.hiredAthens) {
-        return false
+      console.log(currentState.currentLocale, currentState.hiredAthens)
+      // check to see if you are in Athens, or Cairo and check the hiredCity for a value
+      if (currentState.currentLocale === 'Athens') {
+        if (!currentState.hiredAthens) {
+          return false
+        }
+      } else if (currentState.currentLocale === 'Cairo') {
+        if (!currentState.hiredCairo) {
+          return false
+        }
       }
     }
 
@@ -1565,7 +1580,6 @@ export function handleOutcomeBasedEncounter(choice) {
           : matchedOutcome.effects.modifyVariable.value
 
         if (operation === 'subtract') {
-          console.log('subtracting ' + value + ' from water supply')
           currentState.waterSupply = Math.max(
             0,
             currentState.waterSupply - value,
