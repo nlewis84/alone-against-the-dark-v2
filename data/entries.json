@@ -9291,5 +9291,512 @@
       }
     ],
     "traceNumbers": ["319", "361", "384"]
+  },
+  "360": {
+    "description": "The pyramid is certainly old, but not very impressive. Do you want to walk around it? You can spend one hour examining one of its four faces: North, East, South, or West. It takes one hour to study a face.\n\nOr you can enter the pyramid by going to the tomb entrance on the western side, or return to the village of Tell-el-Amarna.",
+    "choices": [
+      {
+        "text": "Examine the North face",
+        "nextEntry": "317",
+        "effects": {
+          "advanceTime": 0
+        }
+      },
+      {
+        "text": "Examine the East face",
+        "nextEntry": "359",
+        "effects": {
+          "advanceTime": 0
+        }
+      },
+      {
+        "text": "Examine the South face",
+        "nextEntry": "337",
+        "effects": {
+          "advanceTime": 0
+        }
+      },
+      {
+        "text": "Examine the West face",
+        "nextEntry": "561",
+        "effects": {
+          "advanceTime": 0
+        }
+      },
+      {
+        "text": "Enter the tomb entrance",
+        "nextEntry": "390"
+      },
+      {
+        "text": "Return to the village of Tell-el-Amarna",
+        "nextEntry": "324"
+      }
+    ],
+    "traceNumbers": ["317", "337", "338", "344", "390", "444"]
+  },
+  "317": {
+    "description": "You carefully examine the northern face of the pyramid, studying its weathered surface and ancient inscriptions. With enough time and the right tools, you might uncover something significant.",
+    "choices": [
+      {
+        "text": "Make your observations",
+        "effects": {
+          "check": {
+            "skill": "CustomRoll",
+            "success": {
+              "nextEntry": "344"
+            },
+            "failure": {
+              "nextEntry": "360"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["360"]
+  },
+  "344": {
+    "description": "Despite your thorough search, you find nothing of interest. Disappointed, you consider your next move.",
+    "choices": [
+      {
+        "text": "Return to the pyramid",
+        "nextEntry": "360"
+      },
+      {
+        "text": "Go to the tomb",
+        "nextEntry": "376"
+      },
+      {
+        "text": "Head to the village of Tell-El-Amarna",
+        "nextEntry": "324"
+      }
+    ],
+    "traceNumbers": ["317", "337", "390"]
+  },
+  "561": {
+    "description": "You stand before the western face of the pyramid, where the weathered stone hints at secrets long buried beneath the desert sands. With time and perhaps a helpful map, you may uncover something hidden.",
+    "choices": [
+      {
+        "text": "Make your observations",
+        "effects": {
+          "check": {
+            "skill": "CustomRoll",
+            "success": {
+              "nextEntry": "344"
+            },
+            "failure": {
+              "nextEntry": "360"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["360"]
+  },
+  "337": {
+    "description": "You approach the southern face of the pyramid, where the scorching desert winds have eroded much of the stone. With careful study, you might reveal something of importance hidden in the weathered surface.",
+    "choices": [
+      {
+        "text": "Make your observations",
+        "effects": {
+          "check": {
+            "skill": "CustomRoll",
+            "success": {
+              "nextEntry": "344"
+            },
+            "failure": {
+              "nextEntry": "360"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["360"]
+  },
+  "359": {
+    "description": "The eastern face of the pyramid catches the early morning light, casting long shadows across the desert. The erosion here seems less severe, but the ancient stone may still hold secrets. With the right tools or insight, you could make a valuable discovery.",
+    "choices": [
+      {
+        "text": "Make your observations",
+        "effects": {
+          "check": {
+            "skill": "CustomRoll",
+            "success": {
+              "nextEntry": "397"
+            },
+            "failure": {
+              "nextEntry": "360"
+            }
+          }
+        }
+      },
+      {
+        "text": "Return to the pyramid",
+        "nextEntry": "360"
+      },
+      {
+        "text": "Go to the tomb entrance",
+        "nextEntry": "390"
+      },
+      {
+        "text": "Head to the village of Tell-El-Amarna",
+        "nextEntry": "324"
+      }
+    ],
+    "traceNumbers": ["360"]
+  },
+  "390": {
+    "description": "Located on the western side of the pyramid, the tomb’s entrance has been modified for tourists. You see the vast expanse of the pyramid towering above, and a small dusty entrance below where tourists enter. The tomb beckons, but the area around the pyramid might also hold clues.",
+    "choices": [
+      {
+        "text": "Enter the tomb",
+        "nextEntry": "376"
+      },
+      {
+        "text": "Look around the pyramid",
+        "nextEntry": "360"
+      },
+      {
+        "text": "Return to the village",
+        "nextEntry": "324"
+      }
+    ],
+    "traceNumbers": ["360"]
+  },
+  "376": {
+    "description": "A man charges a few piastres to enter the tomb, taking change from a cigar box. Above him, a sign in five languages reads: 'A Tomb of the Court of Amenhotep IV (Akhenaten).' The entrance fee is small, but the decision to explore the inside or outside of the pyramid looms before you.",
+    "choices": [
+      {
+        "text": "Enter the tomb",
+        "nextEntry": "338"
+      },
+      {
+        "text": "Explore the outside of the pyramid",
+        "nextEntry": "360"
+      },
+      {
+        "text": "Return to the village",
+        "nextEntry": "324"
+      }
+    ],
+    "traceNumbers": ["324", "339", "344", "390"]
+  },
+  "338": {
+    "description": "You enter the first chamber of the tomb. On a large placard, you see the plan of the tomb.\n\nA sign in many languages explains that this tomb is of minor importance, holding only lesser luminaries and slaves of Akhenaten’s court. The chamber in which you stand was a ceremonial room for the blessing of the dead.",
+    "image": "src/assets/images/clues/clue338.png",
+    "choices": [
+      {
+        "text": "Study the room (Occult roll)",
+        "effects": {
+          "check": {
+            "skill": "Occult",
+            "success": {
+              "nextEntry": "312"
+            },
+            "failure": {
+              "nextEntry": "338",
+              "message": "You find nothing of interest.\n\n"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Examine closely (Spot Hidden roll)",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "357"
+            },
+            "failure": {
+              "nextEntry": "338",
+              "message": "You find nothing of interest.\n\n"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Take the left passage",
+        "nextEntry": "335"
+      },
+      {
+        "text": "Take the right passage",
+        "nextEntry": "381"
+      },
+      {
+        "text": "Leave and go outside the pyramid",
+        "nextEntry": "360"
+      }
+    ],
+    "traceNumbers": ["312", "335", "357", "364", "376", "381"]
+  },
+  "312": {
+    "description": "Whatever aura exists in this place, it is not one of blessings.",
+    "choices": [
+      {
+        "text": "Return to the first chamber",
+        "nextEntry": "338"
+      },
+      {
+        "text": "Take the left passage",
+        "nextEntry": "335"
+      },
+      {
+        "text": "Take the right passage",
+        "nextEntry": "381"
+      }
+    ],
+    "traceNumbers": ["338"]
+  },
+  "335": {
+    "description": "The art here has an oddly naturalistic feel, quite unlike anything typically associated with Dynastic Egypt. There is something unusual about this chamber.",
+    "choices": [
+      {
+        "text": "Study the art (History roll)",
+        "effects": {
+          "check": {
+            "skill": "History",
+            "success": {
+              "nextEntry": "364"
+            },
+            "failure": {
+              "nextEntry": "335",
+              "message": "You find nothing of interest.\n\n"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Continue to the next chamber",
+        "nextEntry": "339"
+      },
+      {
+        "text": "Return to the first chamber",
+        "nextEntry": "338"
+      }
+    ],
+    "traceNumbers": ["338", "381"]
+  },
+  "364": {
+    "description": "It is, of course, typical of the strange turns which Akhenaten’s court art took—turns which led to the priestly classes seeking the Pharaoh’s downfall.",
+    "choices": [
+      {
+        "text": "Move forward to the next chamber",
+        "nextEntry": "339"
+      },
+      {
+        "text": "Return to the first chamber",
+        "nextEntry": "338"
+      }
+    ],
+    "traceNumbers": ["335"]
+  },
+  "357": {
+    "description": "Hmmm. Certain reliefs on the walls have sections chipped away, as if to remove a single repeated figure. Odd.",
+    "choices": [
+      {
+        "text": "Return to the first chamber",
+        "nextEntry": "338"
+      },
+      {
+        "text": "Take the left passage",
+        "nextEntry": "335"
+      },
+      {
+        "text": "Take the right passage",
+        "nextEntry": "381"
+      }
+    ],
+    "traceNumbers": ["338"]
+  },
+  "381": {
+    "description": "The room is filled with tools used during Akhenaten’s reign. There's also a report on early Egyptian agriculture, along with a map.",
+    "choices": [
+      {
+        "text": "Examine the map",
+        "nextEntry": "287b"
+      },
+      {
+        "text": "Study the tools (Anthropology roll)",
+        "effects": {
+          "check": {
+            "skill": "Anthropology",
+            "success": {
+              "nextEntry": "445"
+            },
+            "failure": {
+              "nextEntry": "381",
+              "message": "Nothing seems out of the ordinary.\n\n"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Return to the first chamber",
+        "nextEntry": "338"
+      }
+    ],
+    "traceNumbers": ["335", "364", "445"]
+  },
+  "287": {
+    "description": "The map is a flattened view of the pyramid at Tell-el-Amarna.",
+    "image": "src/assets/images/clues/clue287.png",
+    "choices": [
+      {
+        "text": "Keep exploring",
+        "nextEntry": "236"
+      }
+    ],
+    "traceNumbers": ["236", "381"]
+  },
+  "287b": {
+    "description": "The map is a flattened view of the pyramid at Tell-el-Amarna.",
+    "image": "src/assets/images/clues/clue287.png",
+    "choices": [
+      {
+        "text": "Keep exploring the pyramid",
+        "nextEntry": "381"
+      }
+    ],
+    "traceNumbers": ["236", "381"]
+  },
+  "445": {
+    "description": "Some of the implements resemble sacrificial items used in Druidic rituals.",
+    "choices": [
+      {
+        "text": "Return to the previous room",
+        "nextEntry": "381"
+      }
+    ],
+    "traceNumbers": ["381"]
+  },
+  "339": {
+    "description": "This was the slaves’ chamber. An empty sarcophagus stands in a corner. Multilingual placards summarize Akhenaten’s reign: they emphasize his break with tradition when he shifted worship to Aten, an early monotheism, which roused the wrath of the priestly orders. Akhenaten’s marriage to the beautiful Nefertiti was considered a marriage of opposites, since many thought Akhenaten’s elongated head a deformation. Storied excesses rumored about Akhenaten’s court are not confirmed nor denied. Some scholars suggest that Aten was not the god worshiped by Akhenaten, and that another god may have demanded the sacrifice of human slaves, as some carvings in this chamber imply.",
+    "choices": [
+      {
+        "text": "Try Spot Hidden",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "311"
+            },
+            "failure": {
+              "nextEntry": "339",
+              "message": "You find nothing of interest.\n\n"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Try History",
+        "effects": {
+          "check": {
+            "skill": "History",
+            "success": {
+              "nextEntry": "356"
+            },
+            "failure": {
+              "nextEntry": "339",
+              "message": "You find nothing of interest.\n\n"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Go to the previous chamber",
+        "nextEntry": "335"
+      },
+      {
+        "text": "Return to the first chamber",
+        "nextEntry": "338"
+      },
+      {
+        "text": "Go back and take the right passage",
+        "nextEntry": "381"
+      },
+      {
+        "text": "Go outside the pyramid",
+        "nextEntry": "360"
+      }
+    ],
+    "traceNumbers": ["311", "334", "356", "386"]
+  },
+  "311": {
+    "description": "The tomb, or whatever it was, simply couldn’t have consisted of these few rooms. It must be bigger.",
+    "choices": [
+      {
+        "text": "Return to the previous chamber",
+        "nextEntry": "339"
+      },
+      {
+        "text": "Try another Spot Hidden",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "334"
+            },
+            "failure": {
+              "nextEntry": "339",
+              "message": "You find nothing of interest.\n\n"
+            }
+          },
+          "dailyLimit": 1
+        }
+      }
+    ],
+    "traceNumbers": ["339"]
+  },
+  "334": {
+    "description": "You discover a faint outline in the wall that seems to indicate a hidden passage. Could there be more beyond?",
+    "choices": [
+      {
+        "text": "Return to the previous chamber",
+        "nextEntry": "339"
+      }
+    ],
+    "traceNumbers": ["339"]
+  },
+  "356": {
+    "description": "This information can’t be correct. Slaves generally were buried with their master. This 'tomb' must be something else.",
+    "choices": [
+      {
+        "text": "Return to the previous chamber",
+        "nextEntry": "339"
+      },
+      {
+        "text": "Try another History",
+        "effects": {
+          "check": {
+            "skill": "History",
+            "success": {
+              "nextEntry": "386"
+            },
+            "failure": {
+              "nextEntry": "339",
+              "message": "You find nothing of interest.\n\n"
+            }
+          },
+          "dailyLimit": 1
+        }
+      }
+    ],
+    "traceNumbers": ["339"]
+  },
+  "386": {
+    "description": "You make out the markings with great difficulty. They seem to be a warning to flee this tomb unless you want to meet 'something.' But who or what you would meet has been chiseled away.",
+    "choices": [
+      {
+        "text": "Return to the previous chamber",
+        "nextEntry": "339"
+      }
+    ],
+    "traceNumbers": ["339"]
   }
 }

@@ -3,7 +3,11 @@ Alexandria Locations
 Cairo Locations
 
 The pyramid
+381 - make it so images get added to clues in inventory
+
 360
+Need to track hours in the pyramid and also remember which tile the player has seen. Reveal tiles on the map they have seen.
+Also, need to code clues and maps to go to inventory
 
 The tell-el-amrna inn
 444

@@ -1,3 +1,5 @@
+import { currentState, getCurrentDate } from '../game/gameState.js'
+
 export function rollDice(input) {
   // Check if the input is a string, indicating a complex dice roll like "2D6"
   if (typeof input === 'string') {
@@ -28,6 +30,36 @@ export function rollDice(input) {
   return 0
 }
 
+export function performCustomRoll() {
+  const baseBonus = 20
+  let totalBonus = baseBonus
+
+  // Time logic: Calculate the hours remaining until 6 PM
+  const currentTime = getCurrentDate() // Get current in-game time
+  const sixPM = new Date(currentTime)
+  sixPM.setHours(18, 0, 0) // Set time to 6 PM
+
+  const hoursRemaining = Math.max(0, (sixPM - currentTime) / (1000 * 60 * 60)) // Calculate remaining hours
+  totalBonus += Math.floor(hoursRemaining) * 5 // Add 5 for each remaining hour
+  console.log(hoursRemaining)
+  // Inventory logic: Check if player has clue182, clue207, or map46
+  const clues = ['clue182', 'clue207', 'map46']
+  clues.forEach((clue) => {
+    if (currentState.inventory.includes(clue)) {
+      totalBonus += 20 // Add 20 if any of the clues are in the inventory
+    }
+  })
+
+  // Perform the roll
+  const rollResult = rollDice(100)
+  const success = rollResult <= totalBonus
+  const resultMessage = success ? 'Pass' : 'Fail'
+
+  updateMarker('skillCheckMarker', `${rollResult} ${resultMessage}`)
+
+  return success
+}
+
 export function makeSkillCheck(
   skill,
   skills,
@@ -38,7 +70,8 @@ export function makeSkillCheck(
   bonus = 0,
 ) {
   let skillValue = skills[skill] !== undefined ? skills[skill] : stats[skill]
-  if (skill === "Sanity") skillValue = stats["sanity"]
+  if (skill === 'Sanity') skillValue = stats['sanity']
+  if (skill === 'CustomRoll') return performCustomRoll()
 
   skillValue += bonus
 
