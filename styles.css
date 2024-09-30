@@ -485,3 +485,50 @@ select {
   font-size: 20px; /* Increase font size for better readability */
   font-family: inherit; /* Keep consistent font family */
 }
+
+/* Style for the modal */
+.clue-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 3000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.8); /* Black with opacity */
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+}
+
+/* Modal Content (the clue image) */
+.clue-modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  background: #b38e2e;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.close:hover,
+.close:focus {
+  background-color: #a07c27;
+}

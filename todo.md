@@ -3,7 +3,7 @@ Alexandria Locations
 Cairo Locations
 
 The pyramid
-381 - make it so images get added to clues in inventory
+338 - make it so images get added to clues in inventory
 
 360
 Need to track hours in the pyramid and also remember which tile the player has seen. Reveal tiles on the map they have seen.

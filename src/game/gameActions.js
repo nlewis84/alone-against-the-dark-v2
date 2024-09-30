@@ -129,6 +129,11 @@ export function displayEntry(entryId) {
     }
   }
 
+  if (entry.image) {
+    addImageToInventory(entry.image)
+    updateInventory()
+  }
+
   // Update currentEntry in the state
   currentState.currentEntry = entryId
 
@@ -1066,6 +1071,12 @@ export function updateSanity(amount) {
 export function addItem(item) {
   if (item.type === 'book') {
     currentState.inventory.push(item)
+  } else if (
+    !currentState.inventory.some(
+      (invItem) => invItem.name === item.name && invItem.image === item.image,
+    )
+  ) {
+    currentState.inventory.push(item)
   } else if (!currentState.inventory.includes(item)) {
     currentState.inventory.push(item)
   }
@@ -1093,6 +1104,7 @@ export function updateInventory() {
   const artifacts = currentState.inventory.filter(
     (item) => item.type === 'artifact',
   )
+  const clues = currentState.inventory.filter((item) => item.type === 'clue')
 
   // Prepare HTML for inventory display
   let inventoryHtml = ''
@@ -1124,8 +1136,25 @@ export function updateInventory() {
     inventoryHtml += `</ul>`
   }
 
+  // Add clues section if any
+  if (clues.length > 0) {
+    inventoryHtml += `<h3>Clues</h3><ul>`
+    clues.forEach((clue) => {
+      inventoryHtml += `<li class="clue-item" data-image="${clue.image}">${clue.name}</li>`
+    })
+    inventoryHtml += `</ul>`
+  }
+
   // Display the sorted inventory
   document.getElementById('inventory').innerHTML = inventoryHtml.trim()
+
+  // Add click event listeners to clue items
+  document.querySelectorAll('.clue-item').forEach((clueItem) => {
+    clueItem.addEventListener('click', () => {
+      const imagePath = clueItem.getAttribute('data-image')
+      openClueModal(imagePath)
+    })
+  })
 }
 
 // Save game state to localStorage
@@ -2081,4 +2110,42 @@ export function addVisitedEntry(entryId) {
   if (!currentState.visitedEntries.has(entryId)) {
     currentState.visitedEntries.add(entryId)
   }
+}
+
+function addImageToInventory(imagePath) {
+  const isClueOrMap = imagePath.includes('clues') || imagePath.includes('maps')
+
+  if (isClueOrMap) {
+    // Ensure the player has a "Clues" category in their inventory
+    const clueItem = {
+      type: 'clue',
+      name: imagePath.split('/').pop(), // Extract the file name as the clue name
+      image: imagePath,
+    }
+
+    // Check if the clue has already been added to the inventory
+    if (!currentState.inventory.some((item) => item.image === imagePath)) {
+      addItem(clueItem) // Use addItem to add this clue
+    }
+  }
+}
+
+function openClueModal(imagePath) {
+  const modal = document.getElementById('clueModal')
+  const clueImage = document.getElementById('clueImage')
+
+  clueImage.src = imagePath
+  modal.style.display = 'flex'
+}
+
+const closeModalButton = document.getElementById('closeModal')
+if (closeModalButton) {
+  closeModalButton.onclick = function () {
+    closeClueModal()
+  }
+}
+
+function closeClueModal() {
+  const modal = document.getElementById('clueModal')
+  modal.style.display = 'none'
 }
