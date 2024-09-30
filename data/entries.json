@@ -9482,7 +9482,7 @@
   },
   "338": {
     "description": "You enter the first chamber of the tomb. On a large placard, you see the plan of the tomb.\n\nA sign in many languages explains that this tomb is of minor importance, holding only lesser luminaries and slaves of Akhenaten’s court. The chamber in which you stand was a ceremonial room for the blessing of the dead.",
-    "image": "src/assets/images/clues/clue338.png",
+    "image": "src/assets/images/clues/the-pyramid's-temple-map.png",
     "choices": [
       {
         "text": "Study the room (Occult roll)",

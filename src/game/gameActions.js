@@ -2112,6 +2112,15 @@ export function addVisitedEntry(entryId) {
   }
 }
 
+function formatClueName(imagePath) {
+  const fileName = imagePath.split('/').pop().replace('.png', '') // Remove the .png extension
+  return fileName
+    .replace(/[-_]/g, ' ') // Replace both hyphens and underscores with spaces
+    .split(' ') // Split the words into an array
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
+    .join(' ') // Join them back with spaces
+}
+
 function addImageToInventory(imagePath) {
   const isClueOrMap = imagePath.includes('clues') || imagePath.includes('maps')
 
@@ -2119,7 +2128,7 @@ function addImageToInventory(imagePath) {
     // Ensure the player has a "Clues" category in their inventory
     const clueItem = {
       type: 'clue',
-      name: imagePath.split('/').pop(), // Extract the file name as the clue name
+      name: formatClueName(imagePath), // Extract and format the clue name
       image: imagePath,
     }
 
@@ -2135,7 +2144,10 @@ function openClueModal(imagePath) {
   const clueImage = document.getElementById('clueImage')
 
   clueImage.src = imagePath
-  modal.style.display = 'flex'
+  modal.style.display = 'flex' // Ensure it uses flexbox
+  setTimeout(() => {
+    modal.classList.add('show') // Add the class for the fade-in effect after a slight delay
+  }, 10) // Delay to allow the transition to apply
 }
 
 const closeModalButton = document.getElementById('closeModal')
@@ -2147,5 +2159,8 @@ if (closeModalButton) {
 
 function closeClueModal() {
   const modal = document.getElementById('clueModal')
-  modal.style.display = 'none'
+  modal.classList.remove('show') // Start the fade-out
+  setTimeout(() => {
+    modal.style.display = 'none' // Hide the modal after the transition completes
+  }, 300) // Match this timeout with the CSS transition duration
 }

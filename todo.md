@@ -1,10 +1,9 @@
-Alexandria Locations
+Need to rename clue and map files and their use for inventory
+Need to make sure that Map images get added to inventory, just like clue images
 
 Cairo Locations
 
 The pyramid
-338 - make it so images get added to clues in inventory
-
 360
 Need to track hours in the pyramid and also remember which tile the player has seen. Reveal tiles on the map they have seen.
 Also, need to code clues and maps to go to inventory
