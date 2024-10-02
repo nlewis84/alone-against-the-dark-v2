@@ -107,6 +107,8 @@ function displayError(entryId) {
 let lastDisplayedEntry = null
 
 export function displayEntry(entryId) {
+  updateMinimapProgress(entryId)
+
   if (lastDisplayedEntry === '187' && entryId === '10d') {
     console.log('Prevented display of 10d following 187')
     return // Prevent the specific unwanted transition
@@ -116,6 +118,7 @@ export function displayEntry(entryId) {
     entryId = getPreviousEntry() || currentState.currentEntry
   }
   const entry = gameData.entries[entryId]
+  console.log(entryId, entry)
 
   // Update state and display logic as usual
   lastDisplayedEntry = entryId // Update last displayed entry
@@ -460,6 +463,10 @@ export function handleEntryChoices(entryId, entry) {
                 addItem(choice.effects.addItem)
               }
 
+              if (choice.effects.removeItem) {
+                removeItem(choice.effects.removeItem)
+              }
+
               // Handle scheduling a meeting
               if (choice.effects.scheduleMeeting) {
                 console.log(choice.effects.scheduleMeeting)
@@ -637,7 +644,14 @@ export function handleComplexOutcome(checkResult) {
 }
 
 function handleSpecialEntry38(choicesContainer) {
-  const weaponCategories = ['Handguns', 'Rifles', 'SMGs', 'Shotguns', 'Melee']
+  const weaponCategories = [
+    'Handguns',
+    'Rifles',
+    'SMGs',
+    'Shotguns',
+    'Melee',
+    'Explosives',
+  ]
 
   // Filter the inventory to only include weapons
   const inventoryWeapons = currentState.inventory.filter((item) =>
@@ -968,6 +982,11 @@ export function makeChoice(nextEntry, effects) {
       addItem(effects.addItem)
     }
 
+    console.log(effects)
+    if (effects.removeItem) {
+      removeItem(effects.removeItem)
+    }
+
     if (effects.multipleChecks) {
       effects.multipleChecks.forEach((check) => {
         const success = makeSkillCheck(
@@ -1083,6 +1102,17 @@ export function addItem(item) {
   updateInventory()
 }
 
+function removeItem(item) {
+  const index = currentState.inventory.findIndex(
+    (invItem) => invItem.name === item.name && invItem.image === item.image,
+  )
+
+  if (index !== -1) {
+    currentState.inventory.splice(index, 1)
+  }
+  updateInventory()
+}
+
 export function updateWaterSupplyDisplay(waterSupply) {
   // Show the water supply container
   const waterSupplyContainer = document.getElementById('waterSupply-container')
@@ -1172,6 +1202,7 @@ export function saveGame() {
     expensiveHotelStays: currentState.expensiveHotelStays,
     scheduledMeetings: currentState.scheduledMeetings,
     waterSupply: currentState.waterSupply,
+    pyramidPieces: currentState.pyramidPieces,
   }
   saveState('gameState', saveData)
 }
@@ -1207,6 +1238,15 @@ export function loadGame() {
     } else if (currentState.currentLocale === 'Cairo') {
       currentState.hiredCairo = savedState.hiredCairo
       updateInterpreterDisplay(currentState.hiredCairo)
+
+      // Load pyramid pieces as an array and reveal all pieces that have been collected
+      currentState.pyramidPieces = savedState.pyramidPieces || []
+      currentState.pyramidPieces.forEach((piece) => {
+        revealTile(`piece-${piece.toLowerCase()}`) // Reveal all previously collected tiles
+      })
+
+      // Ensure the minimap is displayed if there are pieces collected
+      showMinimapIfPiecesExist()
     }
 
     currentState.moderateHotelStays = savedState.moderateHotelStays
@@ -1219,6 +1259,8 @@ export function loadGame() {
       updateWaterSupplyDisplay(currentState.waterSupply)
     }
 
+    currentState.pyramidPieces = savedState.pyramidPieces || []
+    console.log(savedState)
     displayEntry(currentState.currentEntry)
     updateHealth(0) // Refresh health display
     updateSanity(0) // Refresh sanity display
@@ -1419,6 +1461,16 @@ export function checkRequirements(requirements) {
       )
 
       if (!hasItem) {
+        return false
+      }
+    }
+
+    if (requirements.inventoryType) {
+      console.log(
+        hasInventoryItemType(requirements.inventoryType),
+        requirements.inventoryType,
+      )
+      if (!hasInventoryItemType(requirements.inventoryType)) {
         return false
       }
     }
@@ -2163,4 +2215,103 @@ function closeClueModal() {
   setTimeout(() => {
     modal.style.display = 'none' // Hide the modal after the transition completes
   }, 300) // Match this timeout with the CSS transition duration
+}
+
+/**
+ * Reveal a specific tile in the minimap
+ * @param {string} tileId - The ID of the tile to reveal
+ */
+export function revealTile(tileId) {
+  const tile = document.getElementById(tileId)
+  if (tile) {
+    tile.style.opacity = 1 // Make the tile visible
+  } else {
+    console.error(`Tile with ID ${tileId} not found.`)
+  }
+}
+
+/**
+ * Handle effects for placing a piece on the pyramid
+ * @param {string} piece - The ID of the piece to place
+ * @param {number} position - The position to place the piece on the pyramid outline
+ */
+export function placePieceOnPyramid(piece, position) {
+  addPyramidPiece(piece)
+
+  // Ensure the minimap is visible if it's not already
+  showMinimapIfPiecesExist()
+
+  // Reveal the tile visually by setting its opacity to 1
+  revealTile(`piece-${piece.toLowerCase()}`) // Assuming IDs like piece-k for piece "K"
+
+  console.log(
+    `Placed piece ${piece} at position ${position} on the Pyramid Outline.`,
+  )
+}
+
+/**
+ * Show or hide the minimap container based on the presence of pyramid pieces.
+ */
+export function showMinimapIfPiecesExist() {
+  const minimapContainer = document.getElementById('minimap-container')
+  if (currentState.pyramidPieces.length > 0) {
+    minimapContainer.style.display = 'block' // Show the minimap container
+  } else {
+    minimapContainer.style.display = 'none' // Hide the minimap container
+  }
+}
+
+// Example of integrating this logic in updateMinimapProgress or another relevant function
+export function updateMinimapProgress(entryId) {
+  switch (entryId) {
+    case '307':
+      placePieceOnPyramid('D', 8)
+      break
+    case '313':
+      placePieceOnPyramid('I', 3)
+      break
+    case '382':
+      placePieceOnPyramid('K', 4)
+      break
+    case '393':
+      placePieceOnPyramid('A', 1)
+      break
+    case '353':
+      placePieceOnPyramid('J', 2)
+      break
+    case '395':
+      placePieceOnPyramid('D', 8)
+      break
+    case '303':
+      placePieceOnPyramid('L', 9)
+      break
+    case '369':
+      placePieceOnPyramid('F', 15)
+      break
+    // Add other cases for other entries and pieces
+    default:
+      console.log('No action for this entry.')
+      break
+  }
+}
+
+// Function to add a piece to the pyramid state
+export function addPyramidPiece(piece) {
+  if (!currentState.pyramidPieces.includes(piece)) {
+    currentState.pyramidPieces.push(piece)
+  }
+}
+
+// Function to check if a piece has been collected
+export function hasPyramidPiece(piece) {
+  return currentState.pyramidPieces.includes(piece)
+}
+
+/**
+ * Check if the player has an item of a specific type in their inventory
+ * @param {string} itemType - The type of item to check for (e.g., "weapon")
+ * @returns {boolean} - True if an item of that type is found, otherwise false
+ */
+export function hasInventoryItemType(itemType) {
+  return currentState.inventory.some((item) => item.type === itemType)
 }

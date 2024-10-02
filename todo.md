@@ -1,11 +1,34 @@
-Need to make sure that Map images get added to inventory, just like clue images
-
 Cairo Locations
+134 is not done
+318
+340
 
 The pyramid
+Load the game to see pieces aren't saving correctly to state...fix that
+
+i think Piece J should reveal on 353?
+
+382 - finish this out
+377 - done
+332
+395
+303
+332
+349
+313
+371
+393
+308
+400
+353
+313
+345
+348
+369
+351
+307
+
 360
-Need to track hours in the pyramid and also remember which tile the player has seen. Reveal tiles on the map they have seen.
-Also, need to code clues and maps to go to inventory
 
 The tell-el-amrna inn
 444
@@ -26,7 +49,6 @@ Car with the guide
 383
 414
 
-134
 149
 
 196 - Fix the language on the choices
@@ -117,7 +139,6 @@ Bremen Location
 
 38 - done
 103
-134
 144
 149
 154

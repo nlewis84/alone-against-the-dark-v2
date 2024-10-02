@@ -1,5 +1,9 @@
 import { initializeGame } from './game/gameState.js'
-import { saveGame, loadGame } from './game/gameActions.js'
+import {
+  saveGame,
+  loadGame,
+  showMinimapIfPiecesExist,
+} from './game/gameActions.js'
 
 document.addEventListener('DOMContentLoaded', () => {
   initializeGame()
@@ -19,5 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('closeInventory').addEventListener('click', () => {
     document.getElementById('inventoryPanel').classList.remove('open')
+  })
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Call this to set initial visibility of the minimap
+    showMinimapIfPiecesExist()
   })
 })
