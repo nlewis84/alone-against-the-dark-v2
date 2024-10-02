@@ -42,8 +42,12 @@ export function performCustomRoll() {
   const hoursRemaining = Math.max(0, (sixPM - currentTime) / (1000 * 60 * 60)) // Calculate remaining hours
   totalBonus += Math.floor(hoursRemaining) * 5 // Add 5 for each remaining hour
   console.log(hoursRemaining)
-  // Inventory logic: Check if player has clue182, clue207, or map46
-  const clues = ['clue182', 'clue207', 'map46']
+  // Inventory logic: Check if player has the-symbol-of-the-cult-of-aten, clue207, or the-symbol
+  const clues = [
+    'the-symbol-of-the-cult-of-aten',
+    "akhenaten's-amulet",
+    'the-symbol',
+  ]
   clues.forEach((clue) => {
     if (currentState.inventory.includes(clue)) {
       totalBonus += 20 // Add 20 if any of the clues are in the inventory

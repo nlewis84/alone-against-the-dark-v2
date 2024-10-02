@@ -1,4 +1,3 @@
-Need to rename clue and map files and their use for inventory
 Need to make sure that Map images get added to inventory, just like clue images
 
 Cairo Locations
