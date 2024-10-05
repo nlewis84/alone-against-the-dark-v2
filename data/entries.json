@@ -2570,7 +2570,7 @@
                 }
               },
               "fullReadingEffect": {
-                "sanityLoss": "2D8",
+                "sanity": "2D8",
                 "skills": {
                   "Cthulhu Mythos": 9
                 },
@@ -9860,7 +9860,8 @@
               "nextEntry": "377"
             },
             "failure": {
-              "nextEntry": "382"
+              "nextEntry": "382",
+              "message": "You can't place the smell.\n\n"
             }
           },
           "dailyLimit": 1
@@ -9906,7 +9907,7 @@
         "nextEntry": "352"
       },
       {
-        "text": "Climb back to the opening and leave the pyramid",
+        "text": "Climb back to the opening to leave the pyramid",
         "nextEntry": "382"
       }
     ],
@@ -9988,11 +9989,11 @@
           "check": {
             "skill": "Sanity",
             "success": {
-              "sanityLoss": 0,
+              "sanity": 0,
               "nextEntry": "305b"
             },
             "failure": {
-              "sanityLoss": "1D3",
+              "sanity": "1D3",
               "nextEntry": "305b"
             }
           }
@@ -10013,7 +10014,8 @@
               "nextEntry": "349"
             },
             "failure": {
-              "nextEntry": "313"
+              "nextEntry": "313",
+              "message": "You find nothing of interest.\n\n"
             }
           }
         }
@@ -10057,7 +10059,7 @@
     "traceNumbers": ["305", "371", "393"]
   },
   "393": {
-    "description": "You’re in section-A. The stairs lead up to a corridor heading west.",
+    "description": "You’re in section-A. You are at the top of stairs that lead to a corridor heading west. There is a slant above you.",
     "choices": [
       {
         "text": "Take the corridor west",
@@ -10428,5 +10430,632 @@
       }
     ],
     "traceNumbers": ["355"]
+  },
+  "308": {
+    "description": "You’re in section-A. The corridor ends at a deep shaft. Notches can be seen in the side of the shaft.",
+    "choices": [
+      {
+        "text": "Climb down the shaft",
+        "nextEntry": "310"
+      },
+      {
+        "text": "Return to the previous section",
+        "nextEntry": "393"
+      }
+    ],
+    "traceNumbers": ["310", "323", "393"]
+  },
+  "310": {
+    "description": "You’re in section-I. Going down, you come to another staircase, sloping west. Going up, you climb back to the previous section.",
+    "choices": [
+      {
+        "text": "Go down the stairs to the west",
+        "nextEntry": "323"
+      },
+      {
+        "text": "Climb back to the previous section",
+        "nextEntry": "308"
+      }
+    ],
+    "traceNumbers": ["308", "323"]
+  },
+  "323": {
+    "description": "You’re in section-J. A shaft with notches leads up to the previous section. Or you can take the stairs leading down.",
+    "choices": [
+      {
+        "text": "Take the stairs down",
+        "nextEntry": "394"
+      },
+      {
+        "text": "Climb up the shaft",
+        "nextEntry": "308"
+      }
+    ],
+    "effects": {
+      "addPiece": "J",
+      "placeOnPyramid": {
+        "piece": "J",
+        "position": 2
+      }
+    },
+    "traceNumbers": ["310", "394"]
+  },
+  "394": {
+    "description": "The stairs lead down to another shaft, apparently deeper. A rope may get you down, or you can attempt to jump.",
+    "choices": [
+      {
+        "text": "Use a rope to descend",
+        "nextEntry": "325"
+      },
+      {
+        "text": "Attempt to jump down the shaft",
+        "nextEntry": "398"
+      },
+      {
+        "text": "Retreat to the previous section",
+        "nextEntry": "323"
+      }
+    ],
+    "traceNumbers": ["323", "325", "398"]
+  },
+  "325": {
+    "description": "As you lower yourself slowly down on the rope, you pass a mosaic of incredible brutality. Creatures covered with bubbling masses of boils are surrounding and devouring entities that look like headless stalks, which seem to scream for help.",
+    "choices": [
+      {
+        "text": "Panic and climb back up the rope",
+        "nextEntry": "394"
+      },
+      {
+        "text": "Try to get into the corridor",
+        "nextEntry": "388"
+      },
+      {
+        "text": "Continue down the rope to the bottom",
+        "nextEntry": "398"
+      }
+    ],
+    "traceNumbers": ["394", "388", "398"]
+  },
+  "388": {
+    "description": "The passage runs through section-I to section-K.",
+    "choices": [
+      {
+        "text": "Continue to the next section",
+        "nextEntry": "327"
+      }
+    ],
+    "traceNumbers": ["325", "398"]
+  },
+  "398": {
+    "description": "Something brushes past your face, startling you. You jump off the rope as a reaction.",
+    "choices": [
+      {
+        "text": "Jump off the rope",
+        "effects": {
+          "check": {
+            "skill": "Jump",
+            "success": {
+              "nextEntry": "398b"
+            },
+            "failure": {
+              "nextEntry": "398b",
+              "damage": "1D3"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["325", "394"]
+  },
+  "398b": {
+    "description": "You’re in section-N. Stairs lead down to another section, or you can try climbing back up to the corridor.",
+    "choices": [
+      {
+        "text": "Take the stairs down",
+        "nextEntry": "328"
+      },
+      {
+        "text": "Attempt to Climb back up the rope",
+        "nextEntry": "394"
+      }
+    ],
+    "effects": {
+      "addPiece": "N",
+      "placeOnPyramid": {
+        "piece": "N",
+        "position": 6
+      }
+    },
+    "traceNumbers": ["328", "394"]
+  },
+  "327": {
+    "description": "You’re in section-K. You see a shaft heading down with notches in the walls that seem able to support you. If you continue, you must make a Climb roll.",
+    "choices": [
+      {
+        "text": "Attempt a Climb roll",
+        "effects": {
+          "check": {
+            "skill": "Climb",
+            "success": {
+              "nextEntry": "329"
+            },
+            "failure": {
+              "nextEntry": "333",
+              "damage": "1D3"
+            }
+          }
+        }
+      },
+      {
+        "text": "Head to the West along the shaft",
+        "nextEntry": "323"
+      }
+    ],
+    "traceNumbers": ["329", "388"]
+  },
+  "328": {
+    "description": "You’re in section-N, at the bottom of the stairs. The shaft with handholds continuing to the East.",
+    "choices": [
+      {
+        "text": "Continue to the East",
+        "nextEntry": "358"
+      },
+      {
+        "text": "Ascend the stairs to the West",
+        "nextEntry": "398b"
+      }
+    ],
+    "traceNumbers": ["354", "358", "398"]
+  },
+  "333": {
+    "description": "You fall. You can barely keep from screaming. Landing with a thud, you suffer scrapes and bruises. This was a bad fall, but not your first. You get up and find any gear you were carrying.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "329"
+      }
+    ],
+    "traceNumbers": ["327"]
+  },
+  "329": {
+    "description": "You’re in section-E. You’re on a steep slope. You can go down carefully or attempt to climb back up.",
+    "choices": [
+      {
+        "text": "Go down carefully",
+        "nextEntry": "443"
+      },
+      {
+        "text": "Attempt a Climb roll to go back",
+        "effects": {
+          "check": {
+            "skill": "Climb",
+            "success": {
+              "nextEntry": "327"
+            },
+            "failure": {
+              "nextEntry": "443",
+              "message": "You slip and fall down the slope."
+            }
+          }
+        }
+      }
+    ],
+    "effects": {
+      "addPiece": "E",
+      "placeOnPyramid": {
+        "piece": "E",
+        "position": 7
+      }
+    },
+    "traceNumbers": ["327", "333"]
+  },
+  "443": {
+    "description": "You’re on a steep descent. To make it down, you must make a successful STR roll.",
+    "choices": [
+      {
+        "text": "Attempt a STR roll",
+        "effects": {
+          "check": {
+            "skill": "STR",
+            "success": {
+              "nextEntry": "443b",
+              "message": "You made it down safely."
+            },
+            "failure": {
+              "nextEntry": "406",
+              "message": "You slip and fall down to the bottom."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["329", "406"]
+  },
+  "443b": {
+    "description": "You made it down safely. On the way, you can attempt one of the following skill rolls:",
+    "choices": [
+      {
+        "text": "Attempt a Cthulhu Mythos roll",
+        "nextEntry": "434"
+      },
+      {
+        "text": "Attempt a History roll",
+        "nextEntry": "436"
+      },
+      {
+        "text": "Attempt a Spot Hidden roll",
+        "nextEntry": "413"
+      }
+    ],
+    "traceNumbers": ["434", "436", "413"]
+  },
+  "358": {
+    "description": "You’re in section-E, at the bottom of the shaft. You can climb up or head west.",
+    "choices": [
+      {
+        "text": "Climb up the shaft",
+        "nextEntry": "328"
+      },
+      {
+        "text": "Head west",
+        "nextEntry": "367"
+      }
+    ],
+    "effects": {
+      "addPiece": "E",
+      "placeOnPyramid": {
+        "piece": "E",
+        "position": 7
+      }
+    },
+    "traceNumbers": ["328", "367"]
+  },
+  "367": {
+    "description": "You’re in section-C. The long corridor ends in a shaft downward, or you can go back down the stairs.",
+    "choices": [
+      {
+        "text": "Climb down the shaft",
+        "nextEntry": "391"
+      },
+      {
+        "text": "Go back down the stairs",
+        "nextEntry": "358"
+      },
+      {
+        "text": "Attempt a Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "392"
+            },
+            "failure": {
+              "nextEntry": "367",
+              "message": "You can't hear anything unusual."
+            }
+          },
+          "dailyLimit": 1
+        }
+      }
+    ],
+    "traceNumbers": ["358", "391", "392"]
+  },
+  "392": {
+    "description": "You hear something moving down there.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "367"
+      }
+    ],
+    "traceNumbers": ["367"]
+  },
+  "391": {
+    "description": "You are at a set of stairs. The stairs lead down or up.",
+    "choices": [
+      {
+        "text": "Go down the stairs",
+        "nextEntry": "368"
+      },
+      {
+        "text": "Go up the stairs",
+        "nextEntry": "367"
+      }
+    ],
+    "effects": {
+      "addPiece": "P",
+      "placeOnPyramid": {
+        "piece": "P",
+        "position": 11
+      }
+    },
+    "traceNumbers": ["367", "368"]
+  },
+  "368": {
+    "description": "You have passed through section-P to reach section-H (where you are now). You can return to the stairs or continue down the ornate steps.",
+    "choices": [
+      {
+        "text": "Continue down the ornate steps",
+        "nextEntry": "446"
+      },
+      {
+        "text": "Climb up the stairs",
+        "nextEntry": "391"
+      }
+    ],
+    "traceNumbers": ["391", "446"]
+  },
+  "446": {
+    "description": "You can scarcely believe your eyes! Worm-like things are beginning to curl around your feet. These are just scouts for a mass of crawling flesh grasping for food. The worms are making natural attacks, and your ring (if you have one) has no power against them. You must act quickly to escape!",
+    "choices": [
+      {
+        "text": "Attempt a Dodge roll to escape",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "391",
+              "message": "You manage to dodge the worms and escape."
+            },
+            "failure": {
+              "nextEntry": "446-str1"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["368"]
+  },
+  "446-str1": {
+    "description": "You failed to dodge the worms. Now, you must make a STR roll to break free.",
+    "choices": [
+      {
+        "text": "Attempt a STR roll",
+        "effects": {
+          "check": {
+            "skill": "STR",
+            "success": {
+              "nextEntry": "391",
+              "message": "You break free from the worms and escape."
+            },
+            "failure": {
+              "nextEntry": "446-str2",
+              "message": "The mass of worms grows, and you are held fast."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["391"]
+  },
+  "446-str2": {
+    "description": "The growing mass of worms cover you almost completely. You must make another STR roll, but this time with a penalty die. If you fail again, the situation worsens.",
+    "choices": [
+      {
+        "text": "Attempt a STR roll with one penalty die",
+        "effects": {
+          "check": {
+            "skill": "STR",
+            "penaltyDice": 1,
+            "success": {
+              "nextEntry": "391",
+              "message": "You manage to break free from the worms and escape."
+            },
+            "failure": {
+              "nextEntry": "446-str3",
+              "message": "The worms tighten their hold on you even more."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["391"]
+  },
+  "446-str3": {
+    "description": "You are now almost completely consumed by the mass of worms. You must make one final STR roll, but with two penalty dice. Failure here means your doom.",
+    "choices": [
+      {
+        "text": "Attempt a final STR roll with two penalty dice",
+        "effects": {
+          "check": {
+            "skill": "STR",
+            "penaltyDice": 2,
+            "success": {
+              "nextEntry": "391",
+              "message": "You break free at the last moment and escape the worms."
+            },
+            "failure": {
+              "nextEntry": "END",
+              "message": "The worms overwhelm you, and you are consumed. It is... THE END."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["391"]
+  },
+  "413": {
+    "description": "You see handrails for a creature of immense size.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "441"
+      }
+    ],
+    "traceNumbers": ["443b"]
+  },
+  "436": {
+    "description": "The writing says, 'Welcome to the servants of Ghatanothoa.'",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "441"
+      }
+    ],
+    "traceNumbers": ["443b"]
+  },
+  "434": {
+    "description": "As you slide down, you see the image of a shapeless yet undeniably alive 'congerie of protoplasmic bubbles' carved into the floor. Dangling from various openings on the monster are many human body parts, all very much alive.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "441"
+      }
+    ],
+    "traceNumbers": ["443b"]
+  },
+  "441": {
+    "description": "You’re in section-M. A successful Jump roll gets you either east or west. Failure results in a fall.",
+    "choices": [
+      {
+        "text": "Attempt a Jump roll",
+        "effects": {
+          "check": {
+            "skill": "Jump",
+            "success": {
+              "nextEntry": "441b",
+              "message": "You succeed in the Jump roll. Now choose your direction."
+            },
+            "failure": {
+              "nextEntry": "406",
+              "message": "You fail the Jump roll and fall."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["417", "442", "406"]
+  },
+  "441b": {
+    "description": "You successfully made the jump. Now you can choose your direction.",
+    "choices": [
+      {
+        "text": "Go east",
+        "nextEntry": "417"
+      },
+      {
+        "text": "Go west",
+        "nextEntry": "442"
+      }
+    ],
+    "traceNumbers": ["417", "442"]
+  },
+  "417": {
+    "description": "You’re in section-F. As you walk west or east, you feel liquid dripping down upon you. Touching your head, you pull back your hand to reveal a thick, red liquid. It’s blood.",
+    "choices": [
+      {
+        "text": "Go east",
+        "nextEntry": "416"
+      },
+      {
+        "text": "Go west",
+        "nextEntry": "441"
+      }
+    ],
+    "effects": {
+      "addPiece": "F",
+      "placeOnPyramid": {
+        "piece": "F",
+        "position": 15
+      }
+    },
+    "traceNumbers": ["416", "441"]
+  },
+  "416": {
+    "description": "You’re in section-G. The corridor goes straight, then leads down or goes west.",
+    "choices": [
+      {
+        "text": "Go down the stairs",
+        "nextEntry": "438"
+      },
+      {
+        "text": "Go west",
+        "nextEntry": "417"
+      }
+    ],
+    "effects": {
+      "addPiece": "G",
+      "placeOnPyramid": {
+        "piece": "G",
+        "position": 16
+      }
+    },
+    "traceNumbers": ["417", "438"]
+  },
+  "438": {
+    "description": "You’re in section-F. The passage narrows, and if heading west, it emerges into a corridor that ends at a wall.",
+    "choices": [
+      {
+        "text": "Return to section-G",
+        "nextEntry": "416"
+      },
+      {
+        "text": "Attempt an INT roll to find something",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "403",
+              "message": "You successfully notice something."
+            },
+            "failure": {
+              "nextEntry": "438",
+              "message": "You find nothing of interest."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["403", "416"]
+  },
+  "403": {
+    "description": "You wonder if the wall is false. You can attempt to push through.",
+    "choices": [
+      {
+        "text": "Attempt a STR roll",
+        "effects": {
+          "check": {
+            "skill": "STR",
+            "success": {
+              "nextEntry": "435",
+              "message": "You manage to push through the false wall."
+            },
+            "failure": {
+              "nextEntry": "403b",
+              "message": "You fail to move the wall. You can try again in half an hour."
+            }
+          }
+        }
+      },
+      {
+        "text": "Return to 438",
+        "nextEntry": "438"
+      }
+    ],
+    "traceNumbers": ["435", "438"]
+  },
+  "403b": {
+    "description": "You failed to move the wall. You can either wait to try again or return to 438.",
+    "choices": [
+      {
+        "text": "Attempt the STR roll again",
+        "nextEntry": "403"
+      },
+      {
+        "text": "Return to 438",
+        "nextEntry": "438"
+      }
+    ],
+    "traceNumbers": ["438"]
+  },
+  "435": {
+    "description": "It is indeed false. You’ve broken through the wall and entered section-M.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "440"
+      }
+    ],
+    "traceNumbers": ["403", "440"]
   }
 }

@@ -118,7 +118,6 @@ export function displayEntry(entryId) {
     entryId = getPreviousEntry() || currentState.currentEntry
   }
   const entry = gameData.entries[entryId]
-  console.log(entryId, entry)
 
   // Update state and display logic as usual
   lastDisplayedEntry = entryId // Update last displayed entry
@@ -385,7 +384,9 @@ export function handleEntryChoices(entryId, entry) {
               choice.effects.check?.tries || null,
               choice.effects.check?.opposedValue || null,
               choice.effects.check?.bonus || 0,
+              choice.effects.check?.penaltyDice || 0,
             )
+
             const checkResult = success
               ? choice.effects.check.success
               : choice.effects.check.failure
@@ -959,6 +960,7 @@ export function makeChoice(nextEntry, effects) {
         effects.check?.tries || null,
         effects.check?.opposedValue || null,
         effects.check?.bonus || 0,
+        effects.check?.penaltyDice || 0,
       )
       const checkResult = success
         ? effects.check.success
@@ -982,7 +984,6 @@ export function makeChoice(nextEntry, effects) {
       addItem(effects.addItem)
     }
 
-    console.log(effects)
     if (effects.removeItem) {
       removeItem(effects.removeItem)
     }
@@ -993,6 +994,11 @@ export function makeChoice(nextEntry, effects) {
           check.skill,
           currentState.skills,
           currentState,
+          effects.check.difficulty,
+          effects.check?.tries || null,
+          effects.check?.opposedValue || null,
+          effects.check?.bonus || 0,
+          effects.check?.penaltyDice || 0,
         )
 
         // Save the result for later use (e.g., in entry 112)
@@ -1260,7 +1266,7 @@ export function loadGame() {
     }
 
     currentState.pyramidPieces = savedState.pyramidPieces || []
-    console.log(savedState)
+
     displayEntry(currentState.currentEntry)
     updateHealth(0) // Refresh health display
     updateSanity(0) // Refresh sanity display
@@ -1432,7 +1438,6 @@ export function checkRequirements(requirements) {
     }
 
     if (requirements.companion) {
-      console.log(currentState.currentLocale, currentState.hiredAthens)
       // check to see if you are in Athens, or Cairo and check the hiredCity for a value
       if (currentState.currentLocale === 'Athens') {
         if (!currentState.hiredAthens) {
@@ -1742,7 +1747,14 @@ export function parseAndComputeDamage(damageInput, diceRoller = rollDice) {
 }
 
 function findWeaponByName(name) {
-  const categories = ['Handguns', 'Rifles', 'SMGs', 'Shotguns', 'Melee']
+  const categories = [
+    'Handguns',
+    'Rifles',
+    'SMGs',
+    'Shotguns',
+    'Melee',
+    'Explosives',
+  ]
   for (const category of categories) {
     const weapon = gameData[category].find((weapon) => weapon.name === name)
     if (weapon) return weapon
@@ -2264,20 +2276,34 @@ export function showMinimapIfPiecesExist() {
 // Example of integrating this logic in updateMinimapProgress or another relevant function
 export function updateMinimapProgress(entryId) {
   switch (entryId) {
-    case '307':
-      placePieceOnPyramid('D', 8)
-      break
-    case '313':
-      placePieceOnPyramid('I', 3)
-      break
-    case '382':
-      placePieceOnPyramid('K', 4)
-      break
     case '393':
       placePieceOnPyramid('A', 1)
       break
     case '353':
+    case '394':
+    case '323':
       placePieceOnPyramid('J', 2)
+      break
+    case '313':
+      placePieceOnPyramid('I', 3)
+      break
+    case '327':
+    case '382':
+      placePieceOnPyramid('K', 4)
+      break
+    case '367':
+      placePieceOnPyramid('C', 5)
+      break
+    case '328':
+    case '398b':
+      placePieceOnPyramid('N', 6)
+      break
+    case '358':
+    case '329':
+      placePieceOnPyramid('E', 7)
+      break
+    case '307':
+      placePieceOnPyramid('D', 8)
       break
     case '395':
       placePieceOnPyramid('D', 8)
@@ -2285,12 +2311,25 @@ export function updateMinimapProgress(entryId) {
     case '303':
       placePieceOnPyramid('L', 9)
       break
+    case '368':
+      placePieceOnPyramid('H', 10)
+      break
+    case '391':
+      placePieceOnPyramid('P', 11)
+      break
+    case '441':
+      placePieceOnPyramid('M', 14)
+      break
+    case '417':
     case '369':
       placePieceOnPyramid('F', 15)
       break
+    case '416':
+      placePieceOnPyramid('G', 16)
+      break
+
     // Add other cases for other entries and pieces
     default:
-      console.log('No action for this entry.')
       break
   }
 }
