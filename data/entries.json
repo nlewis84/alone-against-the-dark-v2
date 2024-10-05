@@ -10041,7 +10041,7 @@
     "traceNumbers": ["305"]
   },
   "313": {
-    "description": "You’re in section-I, at a junction. A corridor goes straight and then seems to slope down. Above, you see stairs heading up.",
+    "description": "You’re in section-I, at a junction. A corridor goes west and then seems to slope down. Above, you see stairs heading up.",
     "choices": [
       {
         "text": "Take the corridor west",
@@ -10513,7 +10513,7 @@
         "nextEntry": "394"
       },
       {
-        "text": "Try to get into the corridor",
+        "text": "Try to get into the corridor that goes to the East",
         "nextEntry": "388"
       },
       {
@@ -10694,6 +10694,13 @@
         "nextEntry": "413"
       }
     ],
+    "effects": {
+      "addPiece": "M",
+      "placeOnPyramid": {
+        "piece": "M",
+        "position": 14
+      }
+    },
     "traceNumbers": ["434", "436", "413"]
   },
   "358": {
@@ -11104,6 +11111,13 @@
         "nextEntry": "428"
       }
     ],
+    "effects": {
+      "addPiece": "M",
+      "placeOnPyramid": {
+        "piece": "M",
+        "position": 14
+      }
+    },
     "traceNumbers": ["439", "420"]
   },
   "439": {
@@ -11514,7 +11528,7 @@
         }
       },
       {
-        "text": "Return to section-O",
+        "text": "Head West down the corridor",
         "nextEntry": "419"
       }
     ],

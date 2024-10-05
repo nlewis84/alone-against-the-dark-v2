@@ -2367,6 +2367,8 @@ export function updateMinimapProgress(entryId) {
     case '419':
       placePieceOnPyramid('O', 13)
       break
+    case '406':
+    case '443b':
     case '440':
     case '441':
       placePieceOnPyramid('M', 14)
