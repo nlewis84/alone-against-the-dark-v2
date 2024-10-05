@@ -1,3 +1,8 @@
+When a message from a check is prepended, it adds an extra space to the description as the start.
+Upgrade Player attack in handleCombatRound to use any type of weapon, as well as damage
+Handle player death in combat
+Make the Pyramid map have a set width that matches the choices container
+
 Cairo Locations
 134 is not done
 318
@@ -8,7 +13,9 @@ Load the game to see pieces aren't saving correctly to state...fix that
 
 i think Piece J should reveal on 353?
 
+224
 303 - done
+304 - done
 305 - done
 307 - done
 308 - done
@@ -24,6 +31,7 @@ i think Piece J should reveal on 353?
 332 - done
 333 - done
 345 - done
+347 - done
 348 - done
 348b - done
 349 - done
@@ -52,18 +60,33 @@ i think Piece J should reveal on 353?
 398b - done
 399 - done
 400 - done
-403
-403b
+401 - done
+403 - done
+403b - done
+404 - done
+405
+406 - done
+411 - done
 413 - done
-416
-417
+415
+416 - done
+417 - done
+418
+419
+420 - done
+428 - done
+429
+430 - done
 434 - done
-435
+435 - done
 436 - done
-438
-440
-441
-442
+437 - done
+438 - done
+439 - done
+439b - should probably check to see if the user has a knife and remove it if they break it...may need to change routing from
+440 - done
+441 - done
+442 - done
 443 - done
 443b - done
 446 - done

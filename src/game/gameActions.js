@@ -1771,6 +1771,7 @@ function startCombat(entryId, combatDetails) {
     isActive: true,
     opponent: {
       name: combatDetails.opponent.name,
+      image: combatDetails.opponent.image,
       attackChance: combatDetails.opponent.attackChance,
       damage: combatDetails.opponent.damage,
       dex: combatDetails.opponent.dex,
@@ -1804,8 +1805,20 @@ function handleCombatRound(actionType) {
       parseInt(currentState.skills['Firearms (Handgun)'] || 50, 10)
 
     if (playerAttackSuccess) {
-      const damageToOpponent = parseAndComputeDamage(opponent.damage)
-      opponent.health -= damageToOpponent
+      // If the player doesn't have any weapons, they deal an unarmed strike which is 1D3+db.
+      // DB is on currentState. it is either "None" or "+1D4"
+      // Combine that text appropriately and pass to parseAndComputeDamage
+      const unarmedStrike =
+        currentState.DB !== 'None' ? `1D3${currentState.DB}` : `1D3`
+
+      const damageToOpponent = parseAndComputeDamage(unarmedStrike)
+
+      if (opponent.health > 0 - damageToOpponent < 0) {
+        opponent.health = 0
+      } else {
+        opponent.health -= damageToOpponent
+      }
+
       console.log(
         `Player attacked successfully, new opponent health: ${opponent.health}`,
       )
@@ -1827,7 +1840,12 @@ function handleCombatRound(actionType) {
 
     if (opponentAttackSuccess) {
       const damageToPlayer = parseAndComputeDamage(opponent.damage)
-      currentState.health -= damageToPlayer
+
+      if (currentState.health - damageToPlayer < 0) {
+        currentState.health = 0
+      } else {
+        currentState.health -= damageToPlayer
+      }
       updateHealthDisplay()
       console.log(
         `Opponent attacked successfully, new player health: ${currentState.health}`,
@@ -1900,11 +1918,25 @@ function updateCombatStatus() {
   const combatStatusContainer = document.getElementById('combatStatus')
 
   if (currentState.combat && currentState.combat.isActive) {
-    combatStatusContainer.innerHTML = `
+    let combatHtml = `
+    <p style="margin-top: 0px">
       <strong>Opponent: ${currentState.combat.opponent.name}</strong>
       <br>Health: ${currentState.combat.opponent.health}/${currentState.combat.opponent.maxHealth}
+      </p>
     `
-    combatStatusContainer.style.display = 'block'
+    console.log(currentState.combat.opponent.image)
+    // Check if an image is provided for the opponent
+    if (currentState.combat.opponent.image) {
+      combatHtml += `
+        <div class="combat-opponent-image">
+          <img src="${currentState.combat.opponent.image}" alt="${currentState.combat.opponent.name}" />
+        </div>
+      `
+    }
+
+    // Inject the generated HTML into the container
+    combatStatusContainer.innerHTML = combatHtml
+    combatStatusContainer.style.display = 'flex'
   } else {
     combatStatusContainer.style.display = 'none'
     combatStatusContainer.innerHTML = ''
@@ -2317,10 +2349,19 @@ export function updateMinimapProgress(entryId) {
     case '391':
       placePieceOnPyramid('P', 11)
       break
+    case '418':
+      placePieceOnPyramid('B', 12)
+      break
+    case '442':
+    case '419':
+      placePieceOnPyramid('O', 13)
+      break
+    case '440':
     case '441':
       placePieceOnPyramid('M', 14)
       break
     case '417':
+    case '438':
     case '369':
       placePieceOnPyramid('F', 15)
       break

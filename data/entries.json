@@ -6957,7 +6957,7 @@
     "description": "Yes, fill it, your mind shrieks. Fill it with bits and pieces from all the bodies down here, some of them still moving. You continue to fill the basket until you are driven insane. When you go insane, you become part of the grisly, half-dead pile. This is ... THE END.",
     "choices": [
       {
-        "text": "THE END",
+        "text": "GAME OVER",
         "effects": {
           "endGame": true
         }
@@ -10865,14 +10865,26 @@
               "message": "You break free at the last moment and escape the worms."
             },
             "failure": {
-              "nextEntry": "END",
-              "message": "The worms overwhelm you, and you are consumed. It is... THE END."
+              "nextEntry": "446-end",
+              "message": "The worms overwhelm you, and you are consumed.\n\n"
             }
           }
         }
       }
     ],
     "traceNumbers": ["391"]
+  },
+  "446-end": {
+    "description": "It is... THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["446-str3"]
   },
   "413": {
     "description": "You see handrails for a creature of immense size.",
@@ -10918,7 +10930,7 @@
             },
             "failure": {
               "nextEntry": "406",
-              "message": "You fail the Jump roll and fall."
+              "message": "You don't quite make the jump."
             }
           }
         }
@@ -10930,12 +10942,12 @@
     "description": "You successfully made the jump. Now you can choose your direction.",
     "choices": [
       {
-        "text": "Go east",
-        "nextEntry": "417"
-      },
-      {
         "text": "Go west",
         "nextEntry": "442"
+      },
+      {
+        "text": "Go east",
+        "nextEntry": "417"
       }
     ],
     "traceNumbers": ["417", "442"]
@@ -10986,10 +10998,6 @@
     "description": "You’re in section-F. The passage narrows, and if heading west, it emerges into a corridor that ends at a wall.",
     "choices": [
       {
-        "text": "Return to section-G",
-        "nextEntry": "416"
-      },
-      {
         "text": "Attempt an INT roll to find something",
         "effects": {
           "check": {
@@ -11004,6 +11012,10 @@
             }
           }
         }
+      },
+      {
+        "text": "Return to section-G",
+        "nextEntry": "416"
       }
     ],
     "traceNumbers": ["403", "416"]
@@ -11028,7 +11040,7 @@
         }
       },
       {
-        "text": "Return to 438",
+        "text": "Go back the way you came",
         "nextEntry": "438"
       }
     ],
@@ -11042,20 +11054,498 @@
         "nextEntry": "403"
       },
       {
-        "text": "Return to 438",
+        "text": "Go back the way you came",
         "nextEntry": "438"
       }
     ],
     "traceNumbers": ["438"]
   },
   "435": {
-    "description": "It is indeed false. You’ve broken through the wall and entered section-M.",
+    "description": "You’ve broken through the wall and entered section-M.",
     "choices": [
       {
         "text": "Continue",
-        "nextEntry": "440"
+        "nextEntry": "440",
+        "effects": {
+          "advanceTime": 0
+        }
       }
     ],
     "traceNumbers": ["403", "440"]
+  },
+  "406": {
+    "description": "You slide down to section-M, landing at the west end of a corridor. There seems to be no way back up.",
+    "choices": [
+      {
+        "text": "Attempt an INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "439",
+              "message": "You notice something that might help."
+            },
+            "failure": {
+              "nextEntry": "420",
+              "message": "You fail to find anything useful."
+            }
+          }
+        }
+      },
+      {
+        "text": "Continue east",
+        "nextEntry": "428"
+      }
+    ],
+    "traceNumbers": ["439", "420"]
+  },
+  "439": {
+    "description": "The limestone is soft here. With a knife, you can dig handholds and climb up.",
+    "choices": [
+      {
+        "text": "Attempt a STR roll",
+        "effects": {
+          "check": {
+            "skill": "STR",
+            "success": {
+              "nextEntry": "441",
+              "message": "You manage to climb up successfully.\n\n"
+            },
+            "failure": {
+              "nextEntry": "439b",
+              "message": "Your hands are worn out and can't hold on any longer."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["406", "441"]
+  },
+  "439b": {
+    "description": "As you are sliding, you get an idea. You quickly pull out a knife and plunge it into the limestone.",
+    "choices": [
+      {
+        "text": "Attempt a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "439",
+              "message": "You avoided breaking your knife."
+            },
+            "failure": {
+              "nextEntry": "406",
+              "message": "Your knife breaks. You must continue east unless you have another knife."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["406", "439"]
+  },
+  "420": {
+    "description": "You have no choice but to walk east.",
+    "choices": [
+      {
+        "text": "Continue east",
+        "nextEntry": "428"
+      }
+    ],
+    "traceNumbers": ["406", "439"]
+  },
+  "428": {
+    "description": "You see a small shaft. Peering down, you can discern the bottom.",
+    "choices": [
+      {
+        "text": "Attempt an INT roll to inspect the shaft",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "347",
+              "message": "You successfully notice something about the shaft."
+            },
+            "failure": {
+              "nextEntry": "428",
+              "message": "You fail to find anything useful."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Drop down into the short shaft",
+        "nextEntry": "437"
+      },
+      {
+        "text": "Stand and observe the shaft for a while",
+        "nextEntry": "430"
+      }
+    ],
+    "traceNumbers": ["347", "437", "430", "420"]
+  },
+  "347": {
+    "description": "Maybe there is a secret door, you hope. Or are you being foolish?",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "428"
+      }
+    ],
+    "traceNumbers": ["428"]
+  },
+  "437": {
+    "description": "You are in the shaft and you can see twelve fine grooves in the wall. Nervousness sets in, and you think it's best to get out.",
+    "choices": [
+      {
+        "text": "Try to Jump back to safety",
+        "effects": {
+          "check": {
+            "skill": "Jump",
+            "success": {
+              "nextEntry": "428",
+              "message": "You manage to escape the shaft."
+            },
+            "failure": {
+              "nextEntry": "437-end",
+              "message": "Your pathetic hopping is no good. A panel slides across the top, sealing you in. Blades emerge from the grooves...\n\n"
+            }
+          }
+        }
+      },
+      {
+        "text": "Climb out of the pit",
+        "effects": {
+          "check": {
+            "skill": "Climb",
+            "success": {
+              "nextEntry": "428",
+              "message": "You manage to escape the shaft."
+            },
+            "failure": {
+              "nextEntry": "437-end",
+              "message": "Before you can reach the top, a panel slides across the opening, sealing you in. Blades emerge from the grooves...\n\n"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["428", "430"]
+  },
+  "437-end": {
+    "description": "It is... THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["437"]
+  },
+  "430": {
+    "description": "A creature appears before you! Its hideously distorted face and red eyes stare at you hungrily. Prepare for combat.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "304"
+      }
+    ],
+    "traceNumbers": ["428", "437", "442", "304"]
+  },
+  "430b": {
+    "description": "You must fend off the ghast.",
+    "choices": [
+      {
+        "text": "Fight back",
+        "nextEntry": "430-combat-round",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Ghast",
+              "image": "/src/assets/images/atmosphere/ghast.png",
+              "attackChance": "45%",
+              "damage": "3D6",
+              "dex": 65,
+              "health": 5,
+              "maxHealth": 5
+            },
+            "win": "430-ghast-defeated",
+            "lose": "430-investigator-defeated"
+          },
+          "advanceTime": 0
+        }
+      }
+    ]
+  },
+  "430-combat-round": {
+    "description": "You must keep attacking or attempt to dodge the ghast's attacks.",
+    "choices": [
+      {
+        "text": "Attack",
+        "nextEntry": "430-combat-round",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Ghast",
+              "image": "/src/assets/images/atmosphere/ghast.png",
+              "attackChance": "45%",
+              "damage": "3D6",
+              "dex": 65,
+              "health": 5,
+              "maxHealth": 5
+            },
+            "win": "430-ghast-defeated",
+            "lose": "430-investigator-defeated"
+          },
+          "advanceTime": 0
+        }
+      },
+      {
+        "text": "Dodge",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "430b",
+              "message": "You successfully dodge the ghast's attack and are ready for the next round."
+            },
+            "failure": {
+              "nextEntry": "430-investigator-defeated",
+              "damage": "3D6",
+              "message": "You fail to dodge, and the ghast strikes you hard. You are thrown down the shaft!"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["437"]
+  },
+  "430-ghast-defeated": {
+    "description": "You have inflicted enough damage to defeat the ghast. It flees into the shadows, leaving you victorious. You scramble back up the limestone wall, finding yourself at the bottom of some stairs.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "442"
+      }
+    ],
+    "traceNumbers": ["442"]
+  },
+  "430-investigator-defeated": {
+    "description": "The ghast pushes you into the shaft.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "437"
+      }
+    ],
+    "effects": {
+      "health": 1
+    },
+    "traceNumbers": ["437"]
+  },
+  "304": {
+    "description": "You have encountered a repulsive ghast. These creatures leap on long hind legs, with hideously distorted faces appearing as twisted mockeries of humanity. Their coughing, guttural wheezes and red, hungry eyes stare at you. Their claws and teeth are sharp, and they hunger for you.",
+    "image": "/src/assets/images/atmosphere/ghast.png",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "nextEntry": "430b",
+              "message": "You manage to keep your composure and are ready to fight."
+            },
+            "failure": {
+              "nextEntry": "430b",
+              "sanity": "1D6",
+              "message": "Your mind reels, but you remain ready to fight."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["348", "354", "402", "430"]
+  },
+  "442": {
+    "description": "You’re in section-O. There are steps and a downward-leading shaft.",
+    "choices": [
+      {
+        "text": "Climb down the shaft",
+        "nextEntry": "419"
+      },
+      {
+        "text": "Jump over the shaft and continue west",
+        "nextEntry": "224"
+      },
+      {
+        "text": "Go east",
+        "nextEntry": "441"
+      }
+    ],
+    "effects": {
+      "addPiece": "O",
+      "placeOnPyramid": {
+        "piece": "O",
+        "position": 13
+      }
+    },
+    "traceNumbers": ["224", "430", "441"]
+  },
+  "419": {
+    "description": "You’re in section-O. You are standing at the bottom of a shaft.",
+    "choices": [
+      {
+        "text": "Investigate the walls",
+        "nextEntry": "411"
+      },
+      {
+        "text": "Try climbing up the nearby shaft",
+        "nextEntry": "404"
+      },
+      {
+        "text": "Go to the large chamber to the west",
+        "nextEntry": "418"
+      },
+      {
+        "text": "Go east along the corridor",
+        "nextEntry": "440"
+      }
+    ],
+    "effects": {
+      "addPiece": "O",
+      "placeOnPyramid": {
+        "piece": "O",
+        "position": 13
+      }
+    },
+    "traceNumbers": ["404", "411", "440", "442"]
+  },
+  "224": {
+    "description": "The darkness is terrifying. You stand undecided for a while.",
+    "choices": [
+      {
+        "text": "Go west",
+        "nextEntry": "415"
+      },
+      {
+        "text": "Go east",
+        "nextEntry": "442"
+      },
+      {
+        "text": "Go down the shaft",
+        "nextEntry": "419"
+      }
+    ],
+    "traceNumbers": ["404", "415", "442"]
+  },
+  "440": {
+    "description": "You’re in section-M. There’s a wall at the east end. You can, if you wish, try to break through by making a STR roll.",
+    "choices": [
+      {
+        "text": "Attempt to break through the wall",
+        "effects": {
+          "check": {
+            "skill": "STR",
+            "success": {
+              "nextEntry": "401",
+              "message": "You succeed in breaking through the wall."
+            },
+            "failure": {
+              "nextEntry": "440",
+              "message": "You fail to break through the wall. You can try again after some time.\n\n"
+            }
+          }
+        }
+      },
+      {
+        "text": "Return to section-O",
+        "nextEntry": "419"
+      }
+    ],
+    "traceNumbers": ["419", "435"]
+  },
+  "401": {
+    "description": "You can see the passageway continues east.",
+    "choices": [
+      {
+        "text": "Continue east",
+        "nextEntry": "416",
+        "effects": {
+          "advanceTime": 0
+        }
+      },
+      {
+        "text": "Return to section-O",
+        "nextEntry": "419"
+      }
+    ],
+    "traceNumbers": ["440"]
+  },
+  "411": {
+    "description": "The walls tell a bizarre story: strange ceremonies are presided over by a tall man with glowing eyes. In the background, there are distorted, kangaroo-like creatures bending forward as they gaze into open sarcophagi. The next section shows mummies rising from the dead and taking their place beside the odd animals.",
+    "choices": [
+      {
+        "text": "Keep investigating",
+        "nextEntry": "419"
+      }
+    ],
+    "traceNumbers": ["419"]
+  },
+  "404": {
+    "description": "You stand at the base of the shaft. The walls are rough, and you think you can climb up with some effort.",
+    "choices": [
+      {
+        "text": "Attempt to climb the shaft",
+        "effects": {
+          "check": {
+            "skill": "Climb",
+            "success": {
+              "nextEntry": "224",
+              "message": "You successfully climb up the shaft."
+            },
+            "failure": {
+              "nextEntry": "404",
+              "damage": "1D3",
+              "message": "You lose your grip and fall, injuring yourself. You remain at the bottom of the shaft.\n\n"
+            }
+          }
+        }
+      },
+      {
+        "text": "Go back the way you came",
+        "nextEntry": "419"
+      }
+    ],
+    "traceNumbers": ["419"]
+  },
+  "418": {
+    "description": "You are in section-B. You enter a large, dimly lit circular chamber. Embedded in the wall is the Karpathos Device, glowing faintly with an eerie light.",
+    "choices": [
+      {
+        "text": "If it is after November 20",
+        "nextEntry": "429",
+        "requirements": {
+          "dateAfter": "November 20"
+        }
+      },
+      {
+        "text": "If it is on or before November 20",
+        "nextEntry": "405",
+        "requirements": {
+          "dateOnOrBefore": "November 20"
+        }
+      }
+    ],
+    "effects": {
+      "addPiece": "B",
+      "placeOnPyramid": {
+        "piece": "B",
+        "position": 12
+      }
+    },
+    "traceNumbers": ["419"]
   }
 }

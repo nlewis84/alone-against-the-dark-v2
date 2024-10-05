@@ -244,6 +244,9 @@ img {
 }
 
 #combatStatus {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   max-width: 500px;
   margin: auto;
   margin-top: 2rem;
@@ -258,6 +261,24 @@ img {
   margin-bottom: 1rem;
   text-align: left;
   display: none;
+}
+
+.combat-status-text {
+  flex: 1;
+}
+
+.combat-opponent-image {
+  margin-left: 1rem; /* Add some space between text and the image */
+  width: 80px;
+  height: auto;
+  max-width: 80px; /* Ensure the image is not too large */
+}
+
+.combat-opponent-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #combatStatus strong {
