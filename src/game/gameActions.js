@@ -568,6 +568,11 @@ export function handleComplexOutcome(checkResult) {
     updateHealth(parseInt(checkResult.modifyHealth)) // Ensure you parse the modifyHealth result if it's a string like "2D3"
   }
 
+  if (checkResult.dexterity) {
+    console.log(currentState)
+    currentState.DEX -= parseInt(checkResult.dexterity)
+  }
+
   if (
     checkResult.modifyVariable &&
     checkResult.modifyVariable.name === 'waterSupply'
@@ -2320,7 +2325,9 @@ export function updateMinimapProgress(entryId) {
       placePieceOnPyramid('I', 3)
       break
     case '327':
+    case '353b':
     case '382':
+    case '399':
       placePieceOnPyramid('K', 4)
       break
     case '367':
@@ -2343,15 +2350,19 @@ export function updateMinimapProgress(entryId) {
     case '303':
       placePieceOnPyramid('L', 9)
       break
+    case '426':
     case '368':
       placePieceOnPyramid('H', 10)
       break
+    case '423':
     case '391':
       placePieceOnPyramid('P', 11)
       break
+    case '415':
     case '418':
       placePieceOnPyramid('B', 12)
       break
+    case '224':
     case '442':
     case '419':
       placePieceOnPyramid('O', 13)

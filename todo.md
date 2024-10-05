@@ -9,87 +9,8 @@ Cairo Locations
 340
 
 The pyramid
-Load the game to see pieces aren't saving correctly to state...fix that
-
-i think Piece J should reveal on 353?
-
-224
-303 - done
-304 - done
-305 - done
-307 - done
-308 - done
-309 - done
-310 - done
-313 - done
-323 - done
-324 - done
-325 - done
-327 - done
-328 - done
-329 - done
-332 - done
-333 - done
-345 - done
-347 - done
-348 - done
-348b - done
-349 - done
-351 - done
-352 - done
-353 - done
-353b - done
-355 - done
-358 - done
-366 - done
-367 - done
-368 - done
-369 - done
-371 - done
-371b - done
-373 - done
-377 - done
-382 - done
-388 - done
-391 - done
-392 - done
-393 - done
-394 - done
-395 - done
-398 - done
-398b - done
-399 - done
-400 - done
-401 - done
-403 - done
-403b - done
-404 - done
-405
-406 - done
-411 - done
-413 - done
-415
-416 - done
-417 - done
-418
-419
-420 - done
-428 - done
-429
-430 - done
-434 - done
-435 - done
-436 - done
-437 - done
-438 - done
-439 - done
+Almost done!
 439b - should probably check to see if the user has a knife and remove it if they break it...may need to change routing from
-440 - done
-441 - done
-442 - done
-443 - done
-443b - done
-446 - done
 
 360
 
