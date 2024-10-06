@@ -564,7 +564,7 @@ select {
 /* Minimap container */
 #minimap-container {
   position: relative;
-  width: 90%;
+  width: 60%;
   max-width: 1300px;
   margin: 1.5rem auto;
 }

@@ -127,7 +127,7 @@ export function displayEntry(entryId) {
   const entry = gameData.entries[entryId]
 
   // Check if the entry has a `highlightOnMap` property
-  if (entry.highlightOnMap) {
+  if (entry && entry.highlightOnMap) {
     highlightCurrentLocationOnMap(entryId)
   }
 
@@ -1428,7 +1428,14 @@ export function loadGame() {
       updateWaterSupplyDisplay(currentState.waterSupply)
     }
 
+    // Hide all pieces before revealing collected ones
+    hideAllTiles()
+    console.log(savedState.pyramidPieces)
+
     currentState.pyramidPieces = savedState.pyramidPieces || []
+    currentState.pyramidPieces.forEach((piece) => {
+      revealTile(`piece-${piece.toLowerCase()}`) // Reveal all previously collected tiles
+    })
 
     displayEntry(currentState.currentEntry)
     updateHealth(0) // Refresh health display
@@ -1438,6 +1445,16 @@ export function loadGame() {
   } else {
     console.log('No saved state found in localStorage.')
   }
+}
+
+/**
+ * Hide all tiles in the pyramid minimap
+ */
+function hideAllTiles() {
+  const minimapTiles = document.querySelectorAll('[id^="piece-"]')
+  minimapTiles.forEach((tile) => {
+    tile.style.opacity = 0 // Hide the tile
+  })
 }
 
 export function checkRequirements(requirements) {
