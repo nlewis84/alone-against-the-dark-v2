@@ -85,7 +85,8 @@ export async function initializeGame() {
     updateTime(0, 20) // Initialize date display
     startGame()
     // 324 is the pyramid
-    displayEntry('329') // Ensure the first entry is displayed ... should be 13
+    // go back to 423
+    displayEntry('426') // Ensure the first entry is displayed ... should be 13
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error)
   }

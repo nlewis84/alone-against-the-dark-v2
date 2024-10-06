@@ -664,3 +664,30 @@ select {
   top: 82%;
   left: 33%;
 }
+
+.pulsing-location {
+  position: absolute;
+  width: 15px; /* Smaller size */
+  height: 15px;
+  background-color: #d4af37; /* Gold color to match your theme */
+  border: 2px solid #b38e2e; /* Darker gold border for contrast */
+  border-radius: 50%; /* Make it a circle */
+  transform: translate(-50%, -50%) scale(1);
+  animation: pulse-in-out 1.5s infinite ease-in-out;
+  z-index: 10000; /* Keep it above other content */
+}
+
+@keyframes pulse-in-out {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3); /* Slight growth for subtle effect */
+    opacity: 0.95; /* Slight fade */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}

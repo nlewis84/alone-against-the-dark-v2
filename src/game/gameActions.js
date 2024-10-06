@@ -119,6 +119,11 @@ export function displayEntry(entryId) {
   }
   const entry = gameData.entries[entryId]
 
+  // Check if the entry has a `highlightOnMap` property
+  if (entry.highlightOnMap) {
+    highlightCurrentLocationOnMap(entryId)
+  }
+
   // Update state and display logic as usual
   lastDisplayedEntry = entryId // Update last displayed entry
   if (!entry) {
@@ -166,6 +171,138 @@ export function displayEntry(entryId) {
   if (entry.end) {
     document.getElementById('description').innerHTML +=
       '<br><strong>THE END</strong>'
+  }
+}
+
+const locationCoordinates = {
+  382: { xPercent: 0.67, yPercent: 0.425 },
+  399: { xPercent: 0.65, yPercent: 0.44 },
+  352: { xPercent: 0.633, yPercent: 0.49 },
+  307: { xPercent: 0.63, yPercent: 0.52 },
+  395: { xPercent: 0.59, yPercent: 0.55 },
+  303: { xPercent: 0.69, yPercent: 0.6 },
+  369: { xPercent: 0.71, yPercent: 0.78 },
+  373: { xPercent: 0.71, yPercent: 0.78 },
+  348: { xPercent: 0.725, yPercent: 0.595 },
+  305: { xPercent: 0.625, yPercent: 0.44 },
+  '305b': { xPercent: 0.61, yPercent: 0.415 },
+  313: { xPercent: 0.58, yPercent: 0.37 },
+  371: { xPercent: 0.475, yPercent: 0.38 },
+  353: { xPercent: 0.47, yPercent: 0.44 },
+  '353b': { xPercent: 0.57, yPercent: 0.45 },
+  393: { xPercent: 0.527, yPercent: 0.27 },
+  309: { xPercent: 0.505, yPercent: 0.2 },
+  308: { xPercent: 0.475, yPercent: 0.274 },
+  310: { xPercent: 0.46, yPercent: 0.345 },
+  323: { xPercent: 0.46, yPercent: 0.345 },
+  394: { xPercent: 0.42, yPercent: 0.39 },
+  325: { xPercent: 0.41, yPercent: 0.47 },
+  '398b': { xPercent: 0.405, yPercent: 0.535 },
+  328: { xPercent: 0.44, yPercent: 0.58 },
+  358: { xPercent: 0.535, yPercent: 0.68 },
+  367: { xPercent: 0.31, yPercent: 0.636 },
+  391: { xPercent: 0.279, yPercent: 0.745 },
+  368: { xPercent: 0.24, yPercent: 0.79 },
+  446: { xPercent: 0.195, yPercent: 0.85 },
+  '446-str2': { xPercent: 0.205, yPercent: 0.885 },
+  '446-str3': { xPercent: 0.205, yPercent: 0.9 },
+  327: { xPercent: 0.55, yPercent: 0.472 },
+  329: { xPercent: 0.565, yPercent: 0.672 },
+  333: { xPercent: 0.565, yPercent: 0.672 },
+  406: { xPercent: 0.61, yPercent: 0.85 },
+  '443b': { xPercent: 0.63, yPercent: 0.815 },
+  441: { xPercent: 0.63, yPercent: 0.815 },
+  '441_west': { xPercent: 0.595, yPercent: 0.812 },
+  417: { xPercent: 0.707, yPercent: 0.812 },
+  416: { xPercent: 0.767, yPercent: 0.812 },
+  438: { xPercent: 0.712, yPercent: 0.891 },
+  435: { xPercent: 0.675, yPercent: 0.891 },
+  419: { xPercent: 0.505, yPercent: 0.86 },
+  418: { xPercent: 0.433, yPercent: 0.9 },
+  224: { xPercent: 0.515, yPercent: 0.785 },
+  442: { xPercent: 0.535, yPercent: 0.795 },
+  428: { xPercent: 0.69, yPercent: 0.835 },
+  437: { xPercent: 0.707, yPercent: 0.85 },
+  '430-investigator-defeated': { xPercent: 0.707, yPercent: 0.85 },
+  415: { xPercent: 0.425, yPercent: 0.775 },
+  423: { xPercent: 0.365, yPercent: 0.774 },
+  425: { xPercent: 0.33, yPercent: 0.778 },
+  426: { xPercent: 0.27, yPercent: 0.905 },
+
+  // Add more mappings for other entries
+}
+
+let currentPulseDot = null // Store the current pulsing dot for later updates
+let currentEntryId = null // Store the current entry id to use for repositioning
+
+function highlightCurrentLocationOnMap(entryId) {
+  const mapContainer = document.getElementById('minimap-container')
+
+  if (mapContainer) {
+    // Store the current entry ID
+    currentEntryId = entryId
+
+    // Remove existing pulse dots if any
+    if (currentPulseDot) {
+      currentPulseDot.remove()
+    }
+
+    // Retrieve the coordinates from the mapping
+    const coords = locationCoordinates[entryId]
+    if (!coords) {
+      console.warn(`No coordinates found for entry ${entryId}`)
+      return
+    }
+
+    // Get the bounding box of the map to calculate the dot's position
+    const mapRect = mapContainer.getBoundingClientRect()
+
+    // Create a new pulsing dot
+    const pulseDot = document.createElement('div')
+    pulseDot.classList.add('pulsing-location')
+
+    // Calculate the dot's position based on the percentage coordinates relative to the entire map
+    const top = coords.yPercent * mapRect.height
+    const left = coords.xPercent * mapRect.width
+
+    // Apply the calculated positions
+    pulseDot.style.top = `${top}px`
+    pulseDot.style.left = `${left}px`
+
+    // Store the current pulse dot for resizing purposes
+    currentPulseDot = pulseDot
+
+    // Append the pulsing dot to the map container
+    mapContainer.appendChild(pulseDot)
+
+    // Add an event listener for resizing
+    window.addEventListener('resize', updateDotPositionOnResize)
+  } else {
+    console.error('Map container not found.')
+  }
+}
+
+// Function to update the pulsing dot position on screen resize
+function updateDotPositionOnResize() {
+  const mapContainer = document.getElementById('minimap-container')
+
+  if (mapContainer && currentPulseDot && currentEntryId) {
+    // Retrieve the coordinates from the mapping
+    const coords = locationCoordinates[currentEntryId]
+    if (!coords) {
+      return
+    }
+
+    // Get the updated bounding box of the map
+    const mapRect = mapContainer.getBoundingClientRect()
+
+    // Recalculate the position of the dot based on the new dimensions
+    const top = coords.yPercent * mapRect.height
+    const left = coords.xPercent * mapRect.width
+
+    // Apply the updated positions
+    currentPulseDot.style.top = `${top}px`
+    currentPulseDot.style.left = `${left}px`
   }
 }
 
@@ -2314,19 +2451,26 @@ export function showMinimapIfPiecesExist() {
 export function updateMinimapProgress(entryId) {
   switch (entryId) {
     case '393':
+    case '309':
+    case '308':
       placePieceOnPyramid('A', 1)
       break
     case '353':
     case '394':
     case '323':
+    case '325':
       placePieceOnPyramid('J', 2)
       break
     case '313':
+    case '371':
+    case '310':
       placePieceOnPyramid('I', 3)
       break
     case '327':
     case '353b':
     case '382':
+    case '305':
+    case '352':
     case '399':
       placePieceOnPyramid('K', 4)
       break
@@ -2339,6 +2483,7 @@ export function updateMinimapProgress(entryId) {
       break
     case '358':
     case '329':
+    case '333':
       placePieceOnPyramid('E', 7)
       break
     case '307':
@@ -2348,13 +2493,18 @@ export function updateMinimapProgress(entryId) {
       placePieceOnPyramid('D', 8)
       break
     case '303':
+    case '348':
       placePieceOnPyramid('L', 9)
       break
     case '426':
     case '368':
+    case '446':
+    case '446-str2':
+    case '446-str3':
       placePieceOnPyramid('H', 10)
       break
     case '423':
+    case '425':
     case '391':
       placePieceOnPyramid('P', 11)
       break
@@ -2369,13 +2519,18 @@ export function updateMinimapProgress(entryId) {
       break
     case '406':
     case '443b':
+    case '435':
     case '440':
     case '441':
+    case '441_west':
       placePieceOnPyramid('M', 14)
       break
     case '417':
     case '438':
+    case '373':
     case '369':
+    case '428':
+    case '437':
       placePieceOnPyramid('F', 15)
       break
     case '416':

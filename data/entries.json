@@ -6854,6 +6854,7 @@
   },
   "373": {
     "description": "You have landed in a bowl-shaped chamber. You think you can hear the sound of movement, but you see nothing until you strike a match. You stand knee-deep in a stack or pile of something, and the smell of blood is strong. Near you, something moves spasmodically. Your hackles rise.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Make a Sanity roll",
@@ -9850,6 +9851,7 @@
   },
   "382": {
     "description": "From the entrance, you gaze into a narrow corridor, which slants steeply down. A strange odor greets you.\n\nAs you explore the interior, you take a moment to make a map of the pyramid.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Identify the strange odor (History roll)",
@@ -9896,7 +9898,8 @@
     "traceNumbers": ["397"]
   },
   "399": {
-    "description": "You’re in section-K. At the end of the slope, you see a shaft down and, across the shaft, stairs leading up. You see what look like hand holds in the wall of the shaft.",
+    "description": "You’re in section-K.\n\nAt the end of the slope, you see a shaft down and, across the shaft, stairs leading up. You see what look like hand holds in the wall of the shaft.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Take the stairs",
@@ -9922,6 +9925,7 @@
   },
   "352": {
     "description": "After you’ve climbed down partway, you see that you’ll have to jump the rest of the way.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Climb back up",
@@ -9935,7 +9939,8 @@
     "traceNumbers": ["399"]
   },
   "307": {
-    "description": "You’re in section-D. There's no way you can jump up and grab the ladder now.",
+    "description": "You’re in section-D.\n\nThere's no way you can jump up and grab the ladder now.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Take the corridor leading west",
@@ -9988,7 +9993,8 @@
     "traceNumbers": ["399"]
   },
   "305": {
-    "description": "You’re in section-K. The stairs go up; large steps designed for large beings. Obscene drawings of foul creatures decorate the walls: entities with slimy open pustules for eye sockets, and covered in gaping mouths everywhere. In the drawings, they use captive humans for lewd pleasures, and perhaps for something more substantial: your shock requires a Sanity roll.",
+    "description": "You’re in section-K.\n\nThe stairs go up; large steps designed for large beings. Obscene drawings of foul creatures decorate the walls: entities with slimy open pustules for eye sockets, and covered in gaping mouths everywhere. In the drawings, they use captive humans for lewd pleasures, and perhaps for something more substantial: your shock requires a Sanity roll.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Make a Sanity roll",
@@ -10011,6 +10017,7 @@
   },
   "305b": {
     "description": "If you successfully make a Spot Hidden check, you may discover something important.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Make a Spot Hidden roll",
@@ -10034,14 +10041,15 @@
     "description": "The sand is disturbed, as though someone or something has been this way before.",
     "choices": [
       {
-        "text": "Return to the previous section",
-        "nextEntry": "305"
+        "text": "Continue up the stairs",
+        "nextEntry": "313"
       }
     ],
     "traceNumbers": ["305"]
   },
   "313": {
-    "description": "You’re in section-I, at a junction. A corridor goes west and then seems to slope down. Above, you see stairs heading up.",
+    "description": "You’re in section-I, at a junction.\n\nA corridor goes west and then seems to slope down. Above, you see stairs heading up.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Take the corridor west",
@@ -10066,7 +10074,8 @@
     "traceNumbers": ["305", "371", "393"]
   },
   "393": {
-    "description": "You’re in section-A. You are at the top of stairs that lead to a corridor heading west. There is a slant above you.",
+    "description": "You’re in section-A.\n\nYou are at the top of stairs that lead to a corridor heading west. There is a slant above you.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Take the corridor west",
@@ -10077,7 +10086,7 @@
         "nextEntry": "400"
       },
       {
-        "text": "Return to the previous section",
+        "text": "Go down the stairs",
         "nextEntry": "313"
       }
     ],
@@ -10113,7 +10122,8 @@
     "traceNumbers": ["393"]
   },
   "309": {
-    "description": "You’re in section-A. It’s a dead end, and the stone is solid and unmovable. You should give up and slide back down.",
+    "description": "You’re in section-A.\n\nIt’s a dead end, and the stone is solid and unmovable. You should give up and slide back down.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Slide back down",
@@ -10124,6 +10134,7 @@
   },
   "371": {
     "description": "The corridor is slanted downward, and it is slippery.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Make a DEX roll",
@@ -10168,6 +10179,7 @@
   },
   "353": {
     "description": "Your fall stops on a stone floor. You find yourself in a new section. You can't get back where you came from; there is just the long hallway in front of you. There are hieroglyphics along the wall here.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Check for knowledge of Language (Hieroglyphics)",
@@ -10193,7 +10205,8 @@
     "traceNumbers": ["345", "366", "371"]
   },
   "353b": {
-    "description": "In section-K, a shaft leads down, with handholds carved into the wall. You can attempt to navigate it with an INT roll.",
+    "description": "In section-K, a shaft leads down, with handholds carved into the wall.\n\nYou can attempt to navigate it with an INT roll.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Attempt an INT roll",
@@ -10231,8 +10244,8 @@
           "check": {
             "skill": "Throw",
             "success": {
-              "nextEntry": "353",
-              "message": "You manage to grapple into the stone wall and safely descend."
+              "nextEntry": "395",
+              "message": "You manage to grapple into the stone wall and safely descend, but you knife and rope come lose and the last second, falling at your feet."
             },
             "failure": {
               "nextEntry": "395",
@@ -10245,7 +10258,8 @@
     "traceNumbers": ["353"]
   },
   "395": {
-    "description": "You’re in section-D. You’re at the bottom of a shaft, and the floor slopes to the east. There seems no way to climb back up the shaft you came from.",
+    "description": "You’re in section-D.\n\nYou’re at the bottom of a shaft, and the floor slopes to the east. There seems no way to climb back up the shaft you came from.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Go east, passing another shaft and taking the stairs",
@@ -10262,7 +10276,8 @@
     "traceNumbers": ["307", "353", "366"]
   },
   "303": {
-    "description": "You are in section-L. You go down the stairs until you come to a deep shaft. You dimly perceive that the passage continues on the other side of the shaft.",
+    "description": "You're in section-L.\n\nYou go down the stairs until you come to a deep shaft. You dimly perceive that the passage continues on the other side of the shaft.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Attempt to leap across (Jump roll)",
@@ -10316,9 +10331,10 @@
   },
   "348": {
     "description": "You successfully jump the shaft, only to discover that the corridor beyond is a dead end. Behind you, on the other side of the shaft, a creature emerges into the glow of a patch of moss. You have encountered one or more of these repulsive creatures, which leap on long hind legs. Their hideously distorted faces appear like twisted mockeries of humanity. They emit coughing, guttural wheezes. Their red eyes are hungry looking, and their claws and teeth sharp.",
+    "highlightOnMap": true,
     "choices": [
       {
-        "text": "Make a Sanity roll (lose 0/1D6 Sanity points)",
+        "text": "Make a Sanity roll",
         "effects": {
           "check": {
             "skill": "Sanity",
@@ -10374,7 +10390,8 @@
     "traceNumbers": ["348"]
   },
   "369": {
-    "description": "You’re in section-F. It is very dark.",
+    "description": "You’re in section-F.\n\nIt is very dark.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Proceed further",
@@ -10439,35 +10456,45 @@
     "traceNumbers": ["355"]
   },
   "308": {
-    "description": "You’re in section-A. The corridor ends at a deep shaft. Notches can be seen in the side of the shaft.",
+    "description": "You’re in section-A.\n\nThe corridor ends at a deep shaft. Notches can be seen in the side of the shaft.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Climb down the shaft",
         "nextEntry": "310"
       },
       {
-        "text": "Return to the previous section",
+        "text": "Head east towards the stairs",
         "nextEntry": "393"
       }
     ],
     "traceNumbers": ["310", "323", "393"]
   },
   "310": {
-    "description": "You’re in section-I. Going down, you come to another staircase, sloping west. Going up, you climb back to the previous section.",
+    "description": "You’re in section-I.\n\nGoing down, you come to another staircase, sloping west. Going up, you climb back to the previous section.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Go down the stairs to the west",
         "nextEntry": "323"
       },
       {
-        "text": "Climb back to the previous section",
+        "text": "Climb back to section-A",
         "nextEntry": "308"
       }
     ],
+    "effects": {
+      "addPiece": "I",
+      "placeOnPyramid": {
+        "piece": "I",
+        "position": 3
+      }
+    },
     "traceNumbers": ["308", "323"]
   },
   "323": {
-    "description": "You’re in section-J. A shaft with notches leads up to the previous section. Or you can take the stairs leading down.",
+    "description": "You’re in section-J.\n\nA shaft with notches leads up to the previous section. Or you can take the stairs leading down.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Take the stairs down",
@@ -10489,6 +10516,7 @@
   },
   "394": {
     "description": "The stairs lead down to another shaft, apparently deeper. A rope may get you down, or you can attempt to jump.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Use a rope to descend",
@@ -10496,7 +10524,7 @@
       },
       {
         "text": "Attempt to jump down the shaft",
-        "nextEntry": "398"
+        "nextEntry": "398b"
       },
       {
         "text": "Retreat to the previous section",
@@ -10507,6 +10535,7 @@
   },
   "325": {
     "description": "As you lower yourself slowly down on the rope, you pass a mosaic of incredible brutality. Creatures covered with bubbling masses of boils are surrounding and devouring entities that look like headless stalks, which seem to scream for help.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Panic and climb back up the rope",
@@ -10555,7 +10584,8 @@
     "traceNumbers": ["325", "394"]
   },
   "398b": {
-    "description": "You’re in section-N. Stairs lead down to another section, or you can try climbing back up to the corridor.",
+    "description": "You’re in section-N, by some miracle.\n\nStairs lead down to another section, or you can try climbing back up to the corridor.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Take the stairs down",
@@ -10576,7 +10606,8 @@
     "traceNumbers": ["328", "394"]
   },
   "327": {
-    "description": "You’re in section-K. You see a shaft heading down with notches in the walls that seem able to support you. If you continue, you must make a Climb roll.",
+    "description": "You’re in section-K.\n\nYou see a shaft heading down with notches in the walls that seem able to support you. If you continue, you must make a Climb roll.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Attempt a Climb roll",
@@ -10601,7 +10632,8 @@
     "traceNumbers": ["329", "388"]
   },
   "328": {
-    "description": "You’re in section-N, at the bottom of the stairs. The shaft with handholds continuing to the East.",
+    "description": "You’re in section-N, at the bottom of the stairs.\n\nThe shaft with handholds continues to the East.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Continue to the East",
@@ -10616,16 +10648,25 @@
   },
   "333": {
     "description": "You fall. You can barely keep from screaming. Landing with a thud, you suffer scrapes and bruises. This was a bad fall, but not your first. You get up and find any gear you were carrying.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Continue",
         "nextEntry": "329"
       }
     ],
+    "effects": {
+      "addPiece": "E",
+      "placeOnPyramid": {
+        "piece": "E",
+        "position": 7
+      }
+    },
     "traceNumbers": ["327"]
   },
   "329": {
-    "description": "You’re in section-E. You’re on a steep slope. You can go down carefully or attempt to climb back up.",
+    "description": "You’re in section-E.\n\nYou’re on a steep slope. You can go down carefully or attempt to climb back up.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Go down carefully",
@@ -10680,6 +10721,7 @@
   },
   "443b": {
     "description": "You made it down safely. On the way, you can attempt one of the following skill rolls:",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Attempt a Cthulhu Mythos roll",
@@ -10704,7 +10746,8 @@
     "traceNumbers": ["434", "436", "413"]
   },
   "358": {
-    "description": "You’re in section-E, at the bottom of the shaft. You can climb up or head west.",
+    "description": "You’re in section-E, at the bottom of the shaft.\n\nYou can climb up or head west.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Climb up the shaft",
@@ -10725,14 +10768,15 @@
     "traceNumbers": ["328", "367"]
   },
   "367": {
-    "description": "You’re in section-C. The long corridor ends in a shaft downward, or you can go back down the stairs.",
+    "description": "You’re in section-C.\n\nThe long corridor ends in a shaft downward, or you can go back down the stairs.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Climb down the shaft",
         "nextEntry": "391"
       },
       {
-        "text": "Go back down the stairs",
+        "text": "Go back East and down the stairs",
         "nextEntry": "358"
       },
       {
@@ -10766,6 +10810,7 @@
   },
   "391": {
     "description": "You are at a set of stairs. The stairs lead down or up.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Go down the stairs",
@@ -10786,7 +10831,8 @@
     "traceNumbers": ["367", "368"]
   },
   "368": {
-    "description": "You have passed through section-P to reach section-H (where you are now). You can return to the stairs or continue down the ornate steps.",
+    "description": "You're in section-H.\n\nThe steps become more ornate here. You can continue down the ornate steps or ascend back up the worn down steps.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Continue down the ornate steps",
@@ -10801,6 +10847,7 @@
   },
   "446": {
     "description": "You can scarcely believe your eyes! Worm-like things are beginning to curl around your feet. These are just scouts for a mass of crawling flesh grasping for food. The worms are making natural attacks, and your ring (if you have one) has no power against them. You must act quickly to escape!",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Attempt a Dodge roll to escape",
@@ -10844,6 +10891,7 @@
   },
   "446-str2": {
     "description": "The growing mass of worms cover you almost completely. You must make another STR roll, but this time with a penalty die. If you fail again, the situation worsens.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Attempt a STR roll with one penalty die",
@@ -10867,6 +10915,7 @@
   },
   "446-str3": {
     "description": "You are now almost completely consumed by the mass of worms. You must make one final STR roll, but with two penalty dice. Failure here means your doom.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Attempt a final STR roll with two penalty dice",
@@ -10931,7 +10980,8 @@
     "traceNumbers": ["443b"]
   },
   "441": {
-    "description": "You’re in section-M. A successful Jump roll gets you either east or west. Failure results in a fall.",
+    "description": "You’re in section-M.\n\nThere is a corridor leading East, or you can try to jump of the shaft and head West.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Attempt a Jump roll",
@@ -10939,8 +10989,8 @@
           "check": {
             "skill": "Jump",
             "success": {
-              "nextEntry": "441b",
-              "message": "You succeed in the Jump roll. Now choose your direction."
+              "nextEntry": "442",
+              "message": "You succeed in the Jump roll."
             },
             "failure": {
               "nextEntry": "406",
@@ -10948,34 +10998,66 @@
             }
           }
         }
-      }
-    ],
-    "traceNumbers": ["417", "442", "406"]
-  },
-  "441b": {
-    "description": "You successfully made the jump. Now you can choose your direction.",
-    "choices": [
-      {
-        "text": "Go west",
-        "nextEntry": "442"
       },
       {
-        "text": "Go east",
+        "text": "Go East",
         "nextEntry": "417"
       }
     ],
-    "traceNumbers": ["417", "442"]
+    "effects": {
+      "addPiece": "M",
+      "placeOnPyramid": {
+        "piece": "M",
+        "position": 14
+      }
+    },
+    "traceNumbers": ["417", "442", "406"]
   },
-  "417": {
-    "description": "You’re in section-F. As you walk west or east, you feel liquid dripping down upon you. Touching your head, you pull back your hand to reveal a thick, red liquid. It’s blood.",
+  "441_west": {
+    "description": "You’re in section-M.\n\nYou can head West up the stairs, or try to jump over the shaft.",
+    "highlightOnMap": true,
     "choices": [
       {
-        "text": "Go east",
-        "nextEntry": "416"
+        "text": "Attempt a Jump roll",
+        "effects": {
+          "check": {
+            "skill": "Jump",
+            "success": {
+              "nextEntry": "417",
+              "message": "You succeed in the Jump roll."
+            },
+            "failure": {
+              "nextEntry": "406",
+              "message": "You don't quite make the jump."
+            }
+          }
+        }
       },
+      {
+        "text": "Go West",
+        "nextEntry": "442"
+      }
+    ],
+    "effects": {
+      "addPiece": "M",
+      "placeOnPyramid": {
+        "piece": "M",
+        "position": 14
+      }
+    },
+    "traceNumbers": ["417", "442", "406"]
+  },
+  "417": {
+    "description": "You’re in section-F.\n\nAs you walk west or east, you feel liquid dripping down upon you. Touching your head, you pull back your hand to reveal a thick, red liquid. It’s blood.",
+    "highlightOnMap": true,
+    "choices": [
       {
         "text": "Go west",
         "nextEntry": "441"
+      },
+      {
+        "text": "Go east",
+        "nextEntry": "416"
       }
     ],
     "effects": {
@@ -10988,7 +11070,8 @@
     "traceNumbers": ["416", "441"]
   },
   "416": {
-    "description": "You’re in section-G. You are at the top of a staircase. The stairs lead down and west, or you can go west from the top of the stairs.",
+    "description": "You’re in section-G.\n\nYou are at the top of a staircase. The stairs lead down and west, or you can go west from the top of the stairs.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Go down the stairs and west",
@@ -11009,7 +11092,8 @@
     "traceNumbers": ["417", "438"]
   },
   "438": {
-    "description": "You’re in section-F. The passage narrows, and if heading west, it emerges into a corridor that ends at a wall.",
+    "description": "You’re in section-F.\n\nThe passage narrows, and if heading west, it emerges into a corridor that ends at a wall.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Attempt an INT roll to find something",
@@ -11076,6 +11160,7 @@
   },
   "435": {
     "description": "You’ve broken through the wall and entered section-M.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Continue",
@@ -11085,10 +11170,18 @@
         }
       }
     ],
+    "effects": {
+      "addPiece": "M",
+      "placeOnPyramid": {
+        "piece": "M",
+        "position": 14
+      }
+    },
     "traceNumbers": ["403", "440"]
   },
   "406": {
-    "description": "You slide down to section-M, landing at the west end of a corridor. There seems to be no way back up.",
+    "description": "You slide down to section-M, landing at the west end of a corridor.\n\nThere seems to be no way back up.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Attempt an INT roll",
@@ -11129,7 +11222,7 @@
           "check": {
             "skill": "STR",
             "success": {
-              "nextEntry": "441",
+              "nextEntry": "441_west",
               "message": "You manage to climb up successfully.\n\n"
             },
             "failure": {
@@ -11176,7 +11269,12 @@
   },
   "428": {
     "description": "You see a small shaft. Peering down, you can discern the bottom.",
+    "highlightOnMap": true,
     "choices": [
+      {
+        "text": "Walk back to the West",
+        "nextEntry": "406"
+      },
       {
         "text": "Attempt an INT roll to inspect the shaft",
         "effects": {
@@ -11203,6 +11301,13 @@
         "nextEntry": "430"
       }
     ],
+    "effects": {
+      "addPiece": "F",
+      "placeOnPyramid": {
+        "piece": "F",
+        "position": 15
+      }
+    },
     "traceNumbers": ["347", "437", "430", "420"]
   },
   "347": {
@@ -11217,6 +11322,7 @@
   },
   "437": {
     "description": "You are in the shaft and you can see twelve fine grooves in the wall. Nervousness sets in, and you think it's best to get out.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Try to Jump back to safety",
@@ -11251,6 +11357,13 @@
         }
       }
     ],
+    "effects": {
+      "addPiece": "F",
+      "placeOnPyramid": {
+        "piece": "F",
+        "position": 15
+      }
+    },
     "traceNumbers": ["428", "430"]
   },
   "437-end": {
@@ -11355,6 +11468,7 @@
   },
   "430-investigator-defeated": {
     "description": "The ghast pushes you into the shaft.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Continue",
@@ -11434,7 +11548,8 @@
     "traceNumbers": ["348", "354", "402", "430"]
   },
   "442": {
-    "description": "You’re in section-O. There are steps and a downward-leading shaft.",
+    "description": "You’re in section-O.\n\nThere are steps and a downward-leading shaft.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Climb down the shaft",
@@ -11445,8 +11560,8 @@
         "nextEntry": "224"
       },
       {
-        "text": "Go east",
-        "nextEntry": "441"
+        "text": "Go east down the stairs",
+        "nextEntry": "441_west"
       }
     ],
     "effects": {
@@ -11459,7 +11574,8 @@
     "traceNumbers": ["224", "430", "441"]
   },
   "419": {
-    "description": "You’re in section-O. You are standing at the bottom of a shaft.",
+    "description": "You’re in section-O.\n\nYou are standing at the bottom of a shaft.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Investigate the walls",
@@ -11492,6 +11608,7 @@
   },
   "224": {
     "description": "The darkness is terrifying. You stand undecided for a while.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Go west",
@@ -11509,7 +11626,7 @@
     "traceNumbers": ["404", "415", "442"]
   },
   "440": {
-    "description": "You’re in section-M. There’s a wall at the east end. You can, if you wish, try to break through by making a STR roll.",
+    "description": "You’re in section-M.\n\nThere’s a wall at the east end. You can, if you wish, try to break through by making a STR roll.",
     "choices": [
       {
         "text": "Attempt to break through the wall",
@@ -11589,7 +11706,8 @@
     "traceNumbers": ["419"]
   },
   "418": {
-    "description": "You are in section-B. You enter a large, dimly lit circular chamber. Embedded in the wall is the Karpathos Device, glowing faintly with an eerie light.",
+    "description": "You are in section-B.\n\nYou enter a large, dimly lit circular chamber. Embedded in the wall is the Karpathos Device, glowing faintly with an eerie light.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "If it is after November 20",
@@ -12002,7 +12120,8 @@
     "traceNumbers": ["431"]
   },
   "415": {
-    "description": "You are in section-B. The dark and narrow passage leads in two directions, West and East.",
+    "description": "You are in section-B.\n\nThe dark and narrow passage leads in two directions, West and East.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Go west",
@@ -12035,7 +12154,8 @@
     "traceNumbers": ["431"]
   },
   "423": {
-    "description": "You are in section-P. A shaft leads down to another section, while across the shaft, you notice a glinting object catching your eye. You can leap across the shaft without risk to investigate the object. The corridor also leads back east toward the previous section.",
+    "description": "You are in section-P.\n\nA shaft leads down to another section, while across the shaft, you notice a glinting object catching your eye. You can leap across the shaft without risk to investigate the object. The corridor also leads back east toward the previous section.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Descend the shaft",
@@ -12061,6 +12181,7 @@
   },
   "425": {
     "description": "A small silver mirror rests face down in the dust. You pick it up. As you look into it, an image forms. You see myriad tentacles, maws, and bizarre organs—the purpose of which you can only guess. You feel utter dread chill you to the bone. ",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Make a Sanity roll",
@@ -12166,7 +12287,8 @@
     ]
   },
   "426": {
-    "description": "You find yourself in section-H, a crypt with small alcoves meant to hold sarcophagi. An image of Earth is cut into the stone wall, seemingly spinning. You feel an eerie presence surrounding the place.",
+    "description": "You find yourself in section-H, a crypt with small alcoves meant to hold sarcophagi.\n\nAn image of Earth is cut into the stone wall, seemingly spinning. You feel an eerie presence surrounding the place.",
+    "highlightOnMap": true,
     "choices": [
       {
         "text": "Make a Science (Geology) roll",
