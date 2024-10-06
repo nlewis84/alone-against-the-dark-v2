@@ -107,6 +107,7 @@ describe('Game Logic', () => {
       <div class="stat-container" id="waterSupply-container">
       <div class="stat-label">Water Supply</div>
       <div class="water-supply" id="waterSupply">10</div>
+      <div id="minimap-container"></div>
       </div>
     `
 
@@ -723,6 +724,7 @@ describe('Game Logic', () => {
             malfunction: null,
           },
         ],
+        Explosives: [],
       })
       setCurrentLocale('Cairo') // Set initial locale for testing
     })
@@ -838,34 +840,96 @@ describe('Game Logic', () => {
     }
     const stats = {}
 
-    const runSkillCheckMultipleTimes = (skill, level, trials = 5) => {
+    const runSkillCheckMultipleTimes = (
+      skill,
+      level,
+      trials = 100,
+      penaltyDice = 0,
+    ) => {
       let successes = 0
       for (let i = 0; i < trials; i++) {
-        const result = makeSkillCheck(skill, skills, stats, level)
+        const result = makeSkillCheck(
+          skill,
+          skills,
+          stats,
+          level,
+          null,
+          null,
+          0,
+          penaltyDice,
+        )
         if (result) successes++
       }
       return successes
     }
 
     test('normal difficulty checks are statistically consistent', () => {
-      const successes = runSkillCheckMultipleTimes('Locksmith', 'normal')
-      // Expect roughly half the trials to succeed, give or take
-      expect(successes).toBeGreaterThanOrEqual(1)
-      expect(successes).toBeLessThanOrEqual(4)
+      const successes = runSkillCheckMultipleTimes('Locksmith', 'normal', 100)
+      // Expect roughly half the trials to succeed, around 50 successes
+      expect(successes).toBeGreaterThanOrEqual(40)
+      expect(successes).toBeLessThanOrEqual(60)
     })
 
     test('hard difficulty checks are statistically consistent', () => {
-      const successes = runSkillCheckMultipleTimes('MechanicalRepair', 'hard')
-      // Expect roughly a quarter of the trials to succeed, give or take
-      expect(successes).toBeGreaterThanOrEqual(0)
-      expect(successes).toBeLessThanOrEqual(3)
+      const successes = runSkillCheckMultipleTimes(
+        'MechanicalRepair',
+        'hard',
+        100,
+      )
+      // Expect roughly a quarter of the trials to succeed, around 25 successes
+      expect(successes).toBeGreaterThanOrEqual(15)
+      expect(successes).toBeLessThanOrEqual(35)
     })
 
     test('extreme difficulty checks are statistically consistent', () => {
-      const successes = runSkillCheckMultipleTimes('STR', 'extreme')
-      // Expect roughly one-fifth of the trials to succeed, give or take
+      const successes = runSkillCheckMultipleTimes('STR', 'extreme', 100)
+      // Expect roughly one-fifth of the trials to succeed, around 10-20 successes
+      expect(successes).toBeGreaterThanOrEqual(8)
+      expect(successes).toBeLessThanOrEqual(20)
+    })
+
+    // Adding tests for penalty dice
+    test('normal difficulty checks with one penalty die', () => {
+      const successes = runSkillCheckMultipleTimes(
+        'Locksmith',
+        'normal',
+        100,
+        1,
+      )
+      // With one penalty die, success rate drops to roughly 20-30%
+      expect(successes).toBeGreaterThanOrEqual(15)
+      expect(successes).toBeLessThanOrEqual(35)
+    })
+
+    test('normal difficulty checks with two penalty dice', () => {
+      const successes = runSkillCheckMultipleTimes(
+        'Locksmith',
+        'normal',
+        100,
+        2,
+      )
+      // With two penalty dice, the success rate should be roughly 10-20%
+      expect(successes).toBeGreaterThanOrEqual(5)
+      expect(successes).toBeLessThanOrEqual(20)
+    })
+
+    test('hard difficulty checks with one penalty die', () => {
+      const successes = runSkillCheckMultipleTimes(
+        'MechanicalRepair',
+        'hard',
+        100,
+        1,
+      )
+      // With one penalty die on hard difficulty, expect roughly 10-20% success
+      expect(successes).toBeGreaterThanOrEqual(1)
+      expect(successes).toBeLessThanOrEqual(20)
+    })
+
+    test('extreme difficulty checks with one penalty die', () => {
+      const successes = runSkillCheckMultipleTimes('STR', 'extreme', 100, 1)
+      // Expect very few successes, roughly 5-10% with extreme difficulty and one penalty die
       expect(successes).toBeGreaterThanOrEqual(0)
-      expect(successes).toBeLessThanOrEqual(2)
+      expect(successes).toBeLessThanOrEqual(10)
     })
   })
 

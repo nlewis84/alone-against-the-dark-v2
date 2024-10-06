@@ -72,6 +72,7 @@ export function makeSkillCheck(
   tries = null,
   opposedValue = null,
   bonus = 0,
+  penaltyDice = 0,
 ) {
   let skillValue = skills[skill] !== undefined ? skills[skill] : stats[skill]
   if (skill === 'Sanity') skillValue = stats['sanity']
@@ -91,12 +92,21 @@ export function makeSkillCheck(
     )
   }
 
+  // Calculate the best roll based on penalty dice
+  const rollWithPenaltyDice = () => {
+    const rolls = [rollDice(100)]
+    for (let i = 0; i < penaltyDice; i++) {
+      rolls.push(rollDice(100))
+    }
+    return Math.max(...rolls) // Take the highest (worst) roll
+  }
+
   // Handle tries if provided
   if (tries !== null) {
     const parsedTries = rollDice(tries)
     let remainingTries = parsedTries
     while (remainingTries > 0) {
-      const diceRoll = rollDice(100)
+      const diceRoll = penaltyDice > 0 ? rollWithPenaltyDice() : rollDice(100)
       const success = opposedValue
         ? isOpposedSuccess(diceRoll, opposedValue)
         : diceRoll <= skillValue * difficultyModifier
@@ -119,7 +129,7 @@ export function makeSkillCheck(
     return false // Return false if all tries fail
   } else {
     // Standard single roll case
-    const diceRoll = rollDice(100)
+    const diceRoll = penaltyDice > 0 ? rollWithPenaltyDice() : rollDice(100)
     const success = opposedValue
       ? isOpposedSuccess(diceRoll, opposedValue)
       : diceRoll <= skillValue * difficultyModifier

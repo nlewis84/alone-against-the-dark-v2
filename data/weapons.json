@@ -233,5 +233,14 @@
       "type": "weapon"
     }
   ],
+  "Explosives": [
+    {
+      "name": "Dynamite",
+      "skill": "Throw",
+      "damage": "4D10",
+      "malfunction": 99,
+      "type": "weapon"
+    }
+  ],
   "type": "weapon"
 }

@@ -107,6 +107,15 @@ function displayError(entryId) {
 let lastDisplayedEntry = null
 
 export function displayEntry(entryId) {
+  // Hide or show the minimap based on the entryId
+  if (entryId === '324') {
+    hideMinimap() // Hide the minimap for entry 324
+  } else if (entryId === '382') {
+    showMinimap() // Show the minimap for entry 382
+  }
+
+  updateMinimapProgress(entryId)
+
   if (lastDisplayedEntry === '187' && entryId === '10d') {
     console.log('Prevented display of 10d following 187')
     return // Prevent the specific unwanted transition
@@ -116,6 +125,11 @@ export function displayEntry(entryId) {
     entryId = getPreviousEntry() || currentState.currentEntry
   }
   const entry = gameData.entries[entryId]
+
+  // Check if the entry has a `highlightOnMap` property
+  if (entry && entry.highlightOnMap) {
+    highlightCurrentLocationOnMap(entryId)
+  }
 
   // Update state and display logic as usual
   lastDisplayedEntry = entryId // Update last displayed entry
@@ -164,6 +178,152 @@ export function displayEntry(entryId) {
   if (entry.end) {
     document.getElementById('description').innerHTML +=
       '<br><strong>THE END</strong>'
+  }
+}
+
+// Function to hide the minimap
+function hideMinimap() {
+  const minimapContainer = document.getElementById('minimap-container')
+  if (minimapContainer) {
+    minimapContainer.style.display = 'none' // Hide the minimap container
+  }
+}
+
+// Function to show the minimap
+function showMinimap() {
+  const minimapContainer = document.getElementById('minimap-container')
+  if (minimapContainer) {
+    minimapContainer.style.display = 'block' // Show the minimap container
+  }
+}
+
+const locationCoordinates = {
+  382: { xPercent: 0.67, yPercent: 0.425 },
+  399: { xPercent: 0.65, yPercent: 0.44 },
+  352: { xPercent: 0.633, yPercent: 0.49 },
+  307: { xPercent: 0.63, yPercent: 0.52 },
+  395: { xPercent: 0.59, yPercent: 0.55 },
+  303: { xPercent: 0.69, yPercent: 0.6 },
+  369: { xPercent: 0.71, yPercent: 0.78 },
+  373: { xPercent: 0.71, yPercent: 0.78 },
+  348: { xPercent: 0.725, yPercent: 0.595 },
+  305: { xPercent: 0.625, yPercent: 0.44 },
+  '305b': { xPercent: 0.61, yPercent: 0.415 },
+  313: { xPercent: 0.58, yPercent: 0.37 },
+  371: { xPercent: 0.475, yPercent: 0.38 },
+  353: { xPercent: 0.47, yPercent: 0.44 },
+  '353b': { xPercent: 0.57, yPercent: 0.45 },
+  393: { xPercent: 0.527, yPercent: 0.27 },
+  309: { xPercent: 0.505, yPercent: 0.2 },
+  308: { xPercent: 0.475, yPercent: 0.274 },
+  310: { xPercent: 0.46, yPercent: 0.345 },
+  323: { xPercent: 0.46, yPercent: 0.345 },
+  394: { xPercent: 0.42, yPercent: 0.39 },
+  325: { xPercent: 0.41, yPercent: 0.47 },
+  '398b': { xPercent: 0.405, yPercent: 0.535 },
+  328: { xPercent: 0.44, yPercent: 0.58 },
+  358: { xPercent: 0.535, yPercent: 0.68 },
+  367: { xPercent: 0.31, yPercent: 0.636 },
+  391: { xPercent: 0.279, yPercent: 0.745 },
+  368: { xPercent: 0.24, yPercent: 0.79 },
+  446: { xPercent: 0.195, yPercent: 0.85 },
+  '446-str2': { xPercent: 0.205, yPercent: 0.885 },
+  '446-str3': { xPercent: 0.205, yPercent: 0.9 },
+  327: { xPercent: 0.55, yPercent: 0.472 },
+  329: { xPercent: 0.565, yPercent: 0.672 },
+  333: { xPercent: 0.565, yPercent: 0.672 },
+  406: { xPercent: 0.61, yPercent: 0.85 },
+  '443b': { xPercent: 0.63, yPercent: 0.815 },
+  441: { xPercent: 0.63, yPercent: 0.815 },
+  '441_west': { xPercent: 0.595, yPercent: 0.812 },
+  417: { xPercent: 0.707, yPercent: 0.812 },
+  416: { xPercent: 0.767, yPercent: 0.812 },
+  438: { xPercent: 0.712, yPercent: 0.891 },
+  435: { xPercent: 0.675, yPercent: 0.891 },
+  419: { xPercent: 0.505, yPercent: 0.86 },
+  418: { xPercent: 0.433, yPercent: 0.9 },
+  224: { xPercent: 0.515, yPercent: 0.785 },
+  442: { xPercent: 0.535, yPercent: 0.795 },
+  428: { xPercent: 0.69, yPercent: 0.835 },
+  437: { xPercent: 0.707, yPercent: 0.85 },
+  '430-investigator-defeated': { xPercent: 0.707, yPercent: 0.85 },
+  415: { xPercent: 0.425, yPercent: 0.775 },
+  423: { xPercent: 0.365, yPercent: 0.774 },
+  425: { xPercent: 0.33, yPercent: 0.778 },
+  426: { xPercent: 0.27, yPercent: 0.905 },
+}
+
+let currentPulseDot = null // Store the current pulsing dot for later updates
+let currentEntryId = null // Store the current entry id to use for repositioning
+
+function highlightCurrentLocationOnMap(entryId) {
+  const mapContainer = document.getElementById('minimap-container')
+
+  if (mapContainer) {
+    // Store the current entry ID
+    currentEntryId = entryId
+
+    // Remove existing pulse dots if any
+    if (currentPulseDot) {
+      currentPulseDot.remove()
+    }
+
+    // Retrieve the coordinates from the mapping
+    const coords = locationCoordinates[entryId]
+    if (!coords) {
+      console.warn(`No coordinates found for entry ${entryId}`)
+      return
+    }
+
+    // Get the bounding box of the map to calculate the dot's position
+    const mapRect = mapContainer.getBoundingClientRect()
+
+    // Create a new pulsing dot
+    const pulseDot = document.createElement('div')
+    pulseDot.classList.add('pulsing-location')
+
+    // Calculate the dot's position based on the percentage coordinates relative to the entire map
+    const top = coords.yPercent * mapRect.height
+    const left = coords.xPercent * mapRect.width
+
+    // Apply the calculated positions
+    pulseDot.style.top = `${top}px`
+    pulseDot.style.left = `${left}px`
+
+    // Store the current pulse dot for resizing purposes
+    currentPulseDot = pulseDot
+
+    // Append the pulsing dot to the map container
+    mapContainer.appendChild(pulseDot)
+
+    // Add an event listener for resizing
+    window.addEventListener('resize', updateDotPositionOnResize)
+  } else {
+    console.error('Map container not found.')
+  }
+}
+
+// Function to update the pulsing dot position on screen resize
+function updateDotPositionOnResize() {
+  const mapContainer = document.getElementById('minimap-container')
+
+  if (mapContainer && currentPulseDot && currentEntryId) {
+    // Retrieve the coordinates from the mapping
+    const coords = locationCoordinates[currentEntryId]
+    if (!coords) {
+      return
+    }
+
+    // Get the updated bounding box of the map
+    const mapRect = mapContainer.getBoundingClientRect()
+
+    // Recalculate the position of the dot based on the new dimensions
+    const top = coords.yPercent * mapRect.height
+    const left = coords.xPercent * mapRect.width
+
+    // Apply the updated positions
+    currentPulseDot.style.top = `${top}px`
+    currentPulseDot.style.left = `${left}px`
   }
 }
 
@@ -382,7 +542,9 @@ export function handleEntryChoices(entryId, entry) {
               choice.effects.check?.tries || null,
               choice.effects.check?.opposedValue || null,
               choice.effects.check?.bonus || 0,
+              choice.effects.check?.penaltyDice || 0,
             )
+
             const checkResult = success
               ? choice.effects.check.success
               : choice.effects.check.failure
@@ -458,6 +620,10 @@ export function handleEntryChoices(entryId, entry) {
 
               if (choice.effects.addItem) {
                 addItem(choice.effects.addItem)
+              }
+
+              if (choice.effects.removeItem) {
+                removeItem(choice.effects.removeItem)
               }
 
               // Handle scheduling a meeting
@@ -560,6 +726,11 @@ export function handleComplexOutcome(checkResult) {
     updateHealth(parseInt(checkResult.modifyHealth)) // Ensure you parse the modifyHealth result if it's a string like "2D3"
   }
 
+  if (checkResult.dexterity) {
+    console.log(currentState)
+    currentState.DEX -= parseInt(checkResult.dexterity)
+  }
+
   if (
     checkResult.modifyVariable &&
     checkResult.modifyVariable.name === 'waterSupply'
@@ -637,7 +808,14 @@ export function handleComplexOutcome(checkResult) {
 }
 
 function handleSpecialEntry38(choicesContainer) {
-  const weaponCategories = ['Handguns', 'Rifles', 'SMGs', 'Shotguns', 'Melee']
+  const weaponCategories = [
+    'Handguns',
+    'Rifles',
+    'SMGs',
+    'Shotguns',
+    'Melee',
+    'Explosives',
+  ]
 
   // Filter the inventory to only include weapons
   const inventoryWeapons = currentState.inventory.filter((item) =>
@@ -945,6 +1123,7 @@ export function makeChoice(nextEntry, effects) {
         effects.check?.tries || null,
         effects.check?.opposedValue || null,
         effects.check?.bonus || 0,
+        effects.check?.penaltyDice || 0,
       )
       const checkResult = success
         ? effects.check.success
@@ -968,12 +1147,21 @@ export function makeChoice(nextEntry, effects) {
       addItem(effects.addItem)
     }
 
+    if (effects.removeItem) {
+      removeItem(effects.removeItem)
+    }
+
     if (effects.multipleChecks) {
       effects.multipleChecks.forEach((check) => {
         const success = makeSkillCheck(
           check.skill,
           currentState.skills,
           currentState,
+          effects.check.difficulty,
+          effects.check?.tries || null,
+          effects.check?.opposedValue || null,
+          effects.check?.bonus || 0,
+          effects.check?.penaltyDice || 0,
         )
 
         // Save the result for later use (e.g., in entry 112)
@@ -1083,6 +1271,17 @@ export function addItem(item) {
   updateInventory()
 }
 
+function removeItem(item) {
+  const index = currentState.inventory.findIndex(
+    (invItem) => invItem.name === item.name && invItem.image === item.image,
+  )
+
+  if (index !== -1) {
+    currentState.inventory.splice(index, 1)
+  }
+  updateInventory()
+}
+
 export function updateWaterSupplyDisplay(waterSupply) {
   // Show the water supply container
   const waterSupplyContainer = document.getElementById('waterSupply-container')
@@ -1172,6 +1371,7 @@ export function saveGame() {
     expensiveHotelStays: currentState.expensiveHotelStays,
     scheduledMeetings: currentState.scheduledMeetings,
     waterSupply: currentState.waterSupply,
+    pyramidPieces: currentState.pyramidPieces,
   }
   saveState('gameState', saveData)
 }
@@ -1207,6 +1407,15 @@ export function loadGame() {
     } else if (currentState.currentLocale === 'Cairo') {
       currentState.hiredCairo = savedState.hiredCairo
       updateInterpreterDisplay(currentState.hiredCairo)
+
+      // Load pyramid pieces as an array and reveal all pieces that have been collected
+      currentState.pyramidPieces = savedState.pyramidPieces || []
+      currentState.pyramidPieces.forEach((piece) => {
+        revealTile(`piece-${piece.toLowerCase()}`) // Reveal all previously collected tiles
+      })
+
+      // Ensure the minimap is displayed if there are pieces collected
+      showMinimapIfPiecesExist()
     }
 
     currentState.moderateHotelStays = savedState.moderateHotelStays
@@ -1219,6 +1428,15 @@ export function loadGame() {
       updateWaterSupplyDisplay(currentState.waterSupply)
     }
 
+    // Hide all pieces before revealing collected ones
+    hideAllTiles()
+    console.log(savedState.pyramidPieces)
+
+    currentState.pyramidPieces = savedState.pyramidPieces || []
+    currentState.pyramidPieces.forEach((piece) => {
+      revealTile(`piece-${piece.toLowerCase()}`) // Reveal all previously collected tiles
+    })
+
     displayEntry(currentState.currentEntry)
     updateHealth(0) // Refresh health display
     updateSanity(0) // Refresh sanity display
@@ -1227,6 +1445,16 @@ export function loadGame() {
   } else {
     console.log('No saved state found in localStorage.')
   }
+}
+
+/**
+ * Hide all tiles in the pyramid minimap
+ */
+function hideAllTiles() {
+  const minimapTiles = document.querySelectorAll('[id^="piece-"]')
+  minimapTiles.forEach((tile) => {
+    tile.style.opacity = 0 // Hide the tile
+  })
 }
 
 export function checkRequirements(requirements) {
@@ -1390,7 +1618,6 @@ export function checkRequirements(requirements) {
     }
 
     if (requirements.companion) {
-      console.log(currentState.currentLocale, currentState.hiredAthens)
       // check to see if you are in Athens, or Cairo and check the hiredCity for a value
       if (currentState.currentLocale === 'Athens') {
         if (!currentState.hiredAthens) {
@@ -1419,6 +1646,16 @@ export function checkRequirements(requirements) {
       )
 
       if (!hasItem) {
+        return false
+      }
+    }
+
+    if (requirements.inventoryType) {
+      console.log(
+        hasInventoryItemType(requirements.inventoryType),
+        requirements.inventoryType,
+      )
+      if (!hasInventoryItemType(requirements.inventoryType)) {
         return false
       }
     }
@@ -1690,7 +1927,14 @@ export function parseAndComputeDamage(damageInput, diceRoller = rollDice) {
 }
 
 function findWeaponByName(name) {
-  const categories = ['Handguns', 'Rifles', 'SMGs', 'Shotguns', 'Melee']
+  const categories = [
+    'Handguns',
+    'Rifles',
+    'SMGs',
+    'Shotguns',
+    'Melee',
+    'Explosives',
+  ]
   for (const category of categories) {
     const weapon = gameData[category].find((weapon) => weapon.name === name)
     if (weapon) return weapon
@@ -1707,6 +1951,7 @@ function startCombat(entryId, combatDetails) {
     isActive: true,
     opponent: {
       name: combatDetails.opponent.name,
+      image: combatDetails.opponent.image,
       attackChance: combatDetails.opponent.attackChance,
       damage: combatDetails.opponent.damage,
       dex: combatDetails.opponent.dex,
@@ -1740,8 +1985,20 @@ function handleCombatRound(actionType) {
       parseInt(currentState.skills['Firearms (Handgun)'] || 50, 10)
 
     if (playerAttackSuccess) {
-      const damageToOpponent = parseAndComputeDamage(opponent.damage)
-      opponent.health -= damageToOpponent
+      // If the player doesn't have any weapons, they deal an unarmed strike which is 1D3+db.
+      // DB is on currentState. it is either "None" or "+1D4"
+      // Combine that text appropriately and pass to parseAndComputeDamage
+      const unarmedStrike =
+        currentState.DB !== 'None' ? `1D3${currentState.DB}` : `1D3`
+
+      const damageToOpponent = parseAndComputeDamage(unarmedStrike)
+
+      if (opponent.health > 0 - damageToOpponent < 0) {
+        opponent.health = 0
+      } else {
+        opponent.health -= damageToOpponent
+      }
+
       console.log(
         `Player attacked successfully, new opponent health: ${opponent.health}`,
       )
@@ -1763,7 +2020,12 @@ function handleCombatRound(actionType) {
 
     if (opponentAttackSuccess) {
       const damageToPlayer = parseAndComputeDamage(opponent.damage)
-      currentState.health -= damageToPlayer
+
+      if (currentState.health - damageToPlayer < 0) {
+        currentState.health = 0
+      } else {
+        currentState.health -= damageToPlayer
+      }
       updateHealthDisplay()
       console.log(
         `Opponent attacked successfully, new player health: ${currentState.health}`,
@@ -1836,11 +2098,25 @@ function updateCombatStatus() {
   const combatStatusContainer = document.getElementById('combatStatus')
 
   if (currentState.combat && currentState.combat.isActive) {
-    combatStatusContainer.innerHTML = `
+    let combatHtml = `
+    <p style="margin-top: 0px">
       <strong>Opponent: ${currentState.combat.opponent.name}</strong>
       <br>Health: ${currentState.combat.opponent.health}/${currentState.combat.opponent.maxHealth}
+      </p>
     `
-    combatStatusContainer.style.display = 'block'
+    console.log(currentState.combat.opponent.image)
+    // Check if an image is provided for the opponent
+    if (currentState.combat.opponent.image) {
+      combatHtml += `
+        <div class="combat-opponent-image">
+          <img src="${currentState.combat.opponent.image}" alt="${currentState.combat.opponent.name}" />
+        </div>
+      `
+    }
+
+    // Inject the generated HTML into the container
+    combatStatusContainer.innerHTML = combatHtml
+    combatStatusContainer.style.display = 'flex'
   } else {
     combatStatusContainer.style.display = 'none'
     combatStatusContainer.innerHTML = ''
@@ -2163,4 +2439,165 @@ function closeClueModal() {
   setTimeout(() => {
     modal.style.display = 'none' // Hide the modal after the transition completes
   }, 300) // Match this timeout with the CSS transition duration
+}
+
+/**
+ * Reveal a specific tile in the minimap
+ * @param {string} tileId - The ID of the tile to reveal
+ */
+export function revealTile(tileId) {
+  const tile = document.getElementById(tileId)
+  if (tile) {
+    tile.style.opacity = 1 // Make the tile visible
+  } else {
+    console.error(`Tile with ID ${tileId} not found.`)
+  }
+}
+
+/**
+ * Handle effects for placing a piece on the pyramid
+ * @param {string} piece - The ID of the piece to place
+ * @param {number} position - The position to place the piece on the pyramid outline
+ */
+export function placePieceOnPyramid(piece, position) {
+  addPyramidPiece(piece)
+
+  // Ensure the minimap is visible if it's not already
+  showMinimapIfPiecesExist()
+
+  // Reveal the tile visually by setting its opacity to 1
+  revealTile(`piece-${piece.toLowerCase()}`) // Assuming IDs like piece-k for piece "K"
+
+  console.log(
+    `Placed piece ${piece} at position ${position} on the Pyramid Outline.`,
+  )
+}
+
+/**
+ * Show or hide the minimap container based on the presence of pyramid pieces.
+ */
+export function showMinimapIfPiecesExist() {
+  const minimapContainer = document.getElementById('minimap-container')
+  if (currentState.pyramidPieces.length > 0) {
+    minimapContainer.style.display = 'block' // Show the minimap container
+  } else {
+    minimapContainer.style.display = 'none' // Hide the minimap container
+  }
+}
+
+// Example of integrating this logic in updateMinimapProgress or another relevant function
+export function updateMinimapProgress(entryId) {
+  switch (entryId) {
+    case '393':
+    case '309':
+    case '308':
+      placePieceOnPyramid('A', 1)
+      break
+    case '353':
+    case '394':
+    case '323':
+    case '325':
+      placePieceOnPyramid('J', 2)
+      break
+    case '313':
+    case '371':
+    case '310':
+      placePieceOnPyramid('I', 3)
+      break
+    case '327':
+    case '353b':
+    case '382':
+    case '305':
+    case '352':
+    case '399':
+      placePieceOnPyramid('K', 4)
+      break
+    case '367':
+      placePieceOnPyramid('C', 5)
+      break
+    case '328':
+    case '398b':
+      placePieceOnPyramid('N', 6)
+      break
+    case '358':
+    case '329':
+    case '333':
+      placePieceOnPyramid('E', 7)
+      break
+    case '307':
+      placePieceOnPyramid('D', 8)
+      break
+    case '395':
+      placePieceOnPyramid('D', 8)
+      break
+    case '303':
+    case '348':
+      placePieceOnPyramid('L', 9)
+      break
+    case '426':
+    case '368':
+    case '446':
+    case '446-str2':
+    case '446-str3':
+      placePieceOnPyramid('H', 10)
+      break
+    case '423':
+    case '425':
+    case '391':
+      placePieceOnPyramid('P', 11)
+      break
+    case '415':
+    case '418':
+      placePieceOnPyramid('B', 12)
+      break
+    case '224':
+    case '442':
+    case '419':
+      placePieceOnPyramid('O', 13)
+      break
+    case '406':
+    case '443b':
+    case '435':
+    case '440':
+    case '441':
+    case '441_west':
+      placePieceOnPyramid('M', 14)
+      break
+    case '417':
+    case '438':
+    case '373':
+    case '369':
+    case '428':
+    case '437':
+      placePieceOnPyramid('F', 15)
+      break
+    case '416':
+      placePieceOnPyramid('G', 16)
+      break
+
+    // Add other cases for other entries and pieces
+    default:
+      break
+  }
+}
+
+// Function to add a piece to the pyramid state
+export function addPyramidPiece(piece) {
+  if (!currentState.pyramidPieces.includes(piece)) {
+    currentState.pyramidPieces.push(piece)
+  }
+}
+
+// Function to check if a piece has been collected
+export function hasPyramidPiece(piece) {
+  return currentState.pyramidPieces.includes(piece)
+}
+
+/**
+ * Check if the player has an item of a specific type in their inventory
+ * @param {string} itemType - The type of item to check for (e.g., "weapon")
+ * @returns {boolean} - True if an item of that type is found, otherwise false
+ */
+export function hasInventoryItemType(itemType) {
+  return currentState.inventory.some((item) => item.type === itemType)
 }
