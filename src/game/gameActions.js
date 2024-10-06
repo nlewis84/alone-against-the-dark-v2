@@ -107,6 +107,13 @@ function displayError(entryId) {
 let lastDisplayedEntry = null
 
 export function displayEntry(entryId) {
+  // Hide or show the minimap based on the entryId
+  if (entryId === '324') {
+    hideMinimap() // Hide the minimap for entry 324
+  } else if (entryId === '382') {
+    showMinimap() // Show the minimap for entry 382
+  }
+
   updateMinimapProgress(entryId)
 
   if (lastDisplayedEntry === '187' && entryId === '10d') {
@@ -174,6 +181,22 @@ export function displayEntry(entryId) {
   }
 }
 
+// Function to hide the minimap
+function hideMinimap() {
+  const minimapContainer = document.getElementById('minimap-container')
+  if (minimapContainer) {
+    minimapContainer.style.display = 'none' // Hide the minimap container
+  }
+}
+
+// Function to show the minimap
+function showMinimap() {
+  const minimapContainer = document.getElementById('minimap-container')
+  if (minimapContainer) {
+    minimapContainer.style.display = 'block' // Show the minimap container
+  }
+}
+
 const locationCoordinates = {
   382: { xPercent: 0.67, yPercent: 0.425 },
   399: { xPercent: 0.65, yPercent: 0.44 },
@@ -228,8 +251,6 @@ const locationCoordinates = {
   423: { xPercent: 0.365, yPercent: 0.774 },
   425: { xPercent: 0.33, yPercent: 0.778 },
   426: { xPercent: 0.27, yPercent: 0.905 },
-
-  // Add more mappings for other entries
 }
 
 let currentPulseDot = null // Store the current pulsing dot for later updates
