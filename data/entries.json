@@ -8199,11 +8199,11 @@
             "skill": "Psychology",
             "success": {
               "nextEntry": "17",
-              "message": "You detect something is off about his answer regarding Gliere.\n\n"
+              "message": "You detect something is off about his answer regarding Gliere."
             },
             "failure": {
               "nextEntry": "177",
-              "message": "You can't tell if he's lying.\n\n"
+              "message": "You can't tell if he's lying."
             }
           },
           "dailyLimit": 1
@@ -8225,11 +8225,11 @@
             "skill": "Psychology",
             "success": {
               "nextEntry": "1",
-              "message": "You sense he's hiding something about the loan.\n\n"
+              "message": "You sense he's hiding something about the loan."
             },
             "failure": {
               "nextEntry": "177",
-              "message": "You believe what he says about the loan.\n\n"
+              "message": "You believe what he says about the loan."
             }
           },
           "dailyLimit": 1
@@ -8251,11 +8251,11 @@
             "skill": "Psychology",
             "success": {
               "nextEntry": "4",
-              "message": "You can tell he's being untruthful about the device being a clock.\n\n"
+              "message": "You can tell he's being untruthful about the device being a clock."
             },
             "failure": {
               "nextEntry": "177",
-              "message": "You believe the Karpathos Device is just a clock.\n\n"
+              "message": "You believe the Karpathos Device is just a clock."
             }
           },
           "dailyLimit": 1
@@ -9495,7 +9495,7 @@
             },
             "failure": {
               "nextEntry": "338",
-              "message": "You find nothing of interest.\n\n"
+              "message": "You find nothing of interest."
             }
           },
           "dailyLimit": 1
@@ -9511,7 +9511,7 @@
             },
             "failure": {
               "nextEntry": "338",
-              "message": "You find nothing of interest.\n\n"
+              "message": "You find nothing of interest."
             }
           },
           "dailyLimit": 1
@@ -9563,7 +9563,7 @@
             },
             "failure": {
               "nextEntry": "335",
-              "message": "You find nothing of interest.\n\n"
+              "message": "You find nothing of interest."
             }
           },
           "dailyLimit": 1
@@ -9629,7 +9629,7 @@
             },
             "failure": {
               "nextEntry": "381",
-              "message": "Nothing seems out of the ordinary.\n\n"
+              "message": "Nothing seems out of the ordinary."
             }
           },
           "dailyLimit": 1
@@ -9687,7 +9687,7 @@
             },
             "failure": {
               "nextEntry": "339",
-              "message": "You find nothing of interest.\n\n"
+              "message": "You find nothing of interest."
             }
           },
           "dailyLimit": 1
@@ -9703,7 +9703,7 @@
             },
             "failure": {
               "nextEntry": "339",
-              "message": "You find nothing of interest.\n\n"
+              "message": "You find nothing of interest."
             }
           },
           "dailyLimit": 1
@@ -9745,7 +9745,7 @@
             },
             "failure": {
               "nextEntry": "339",
-              "message": "You find nothing of interest.\n\n"
+              "message": "You find nothing of interest."
             }
           },
           "dailyLimit": 1
@@ -9781,7 +9781,7 @@
             },
             "failure": {
               "nextEntry": "339",
-              "message": "You find nothing of interest.\n\n"
+              "message": "You find nothing of interest."
             }
           },
           "dailyLimit": 1
@@ -9863,7 +9863,7 @@
             },
             "failure": {
               "nextEntry": "382",
-              "message": "You can't place the smell.\n\n"
+              "message": "You can't place the smell."
             }
           },
           "dailyLimit": 1
@@ -10029,7 +10029,7 @@
             },
             "failure": {
               "nextEntry": "313",
-              "message": "You find nothing of interest.\n\n"
+              "message": "You find nothing of interest."
             }
           }
         }
@@ -10929,7 +10929,7 @@
             },
             "failure": {
               "nextEntry": "446-end",
-              "message": "The worms overwhelm you, and you are consumed.\n\n"
+              "message": "The worms overwhelm you, and you are consumed."
             }
           }
         }
@@ -11223,7 +11223,7 @@
             "skill": "STR",
             "success": {
               "nextEntry": "441_west",
-              "message": "You manage to climb up successfully.\n\n"
+              "message": "You manage to climb up successfully."
             },
             "failure": {
               "nextEntry": "439b",
@@ -11351,7 +11351,7 @@
             },
             "failure": {
               "nextEntry": "437-end",
-              "message": "Before you can reach the top, a panel slides across the opening, sealing you in. Blades emerge from the grooves...\n\n"
+              "message": "Before you can reach the top, a panel slides across the opening, sealing you in. Blades emerge from the grooves..."
             }
           }
         }
@@ -11639,7 +11639,7 @@
             },
             "failure": {
               "nextEntry": "440",
-              "message": "You fail to break through the wall. You can try again after some time.\n\n"
+              "message": "You fail to break through the wall. You can try again after some time."
             }
           }
         }
@@ -11693,7 +11693,7 @@
             "failure": {
               "nextEntry": "404",
               "damage": "1D3",
-              "message": "You lose your grip and fall, injuring yourself. You remain at the bottom of the shaft.\n\n"
+              "message": "You lose your grip and fall, injuring yourself. You remain at the bottom of the shaft."
             }
           }
         }
@@ -12090,7 +12090,7 @@
             },
             "failure": {
               "nextEntry": "422-end",
-              "message": "You fail to climb in time. The mummies grab at you, pulling your skin, and you hear the sound of your flesh tearing. It is ... THE END."
+              "message": "You fail to climb in time."
             }
           }
         }
@@ -12228,11 +12228,11 @@
             "skill": "POW",
             "success": {
               "nextEntry": "425-discard-mirror",
-              "message": "You manage to resist the mirror's influence, for now.\n\n"
+              "message": "You manage to resist the mirror's influence, for now."
             },
             "failure": {
               "nextEntry": "425-pow-fail",
-              "message": "You feel your body slow down as you lose 10 DEX points.\n\n",
+              "message": "You feel your body slow down as you lose 10 DEX points.",
               "dexterity": 10
             }
           }
@@ -12250,11 +12250,11 @@
             "skill": "EDU",
             "success": {
               "nextEntry": "423",
-              "message": "Yes! There was definitely a book you remember reading about an artifact like this. You close your eyes and gently place the mirror down on the ground. You manage to discard the mirror safely and escape the horror.\n\n"
+              "message": "Yes! There was definitely a book you remember reading about an artifact like this. You close your eyes and gently place the mirror down on the ground. You manage to discard the mirror safely and escape the horror."
             },
             "failure": {
               "nextEntry": "425-pow-check",
-              "message": "You fail to discard the mirror, and must continue holding it.\n\n"
+              "message": "You fail to discard the mirror, and must continue holding it."
             }
           }
         }
@@ -12266,11 +12266,11 @@
             "skill": "Cthulhu Mythos",
             "success": {
               "nextEntry": "423",
-              "message": "Yes! There was definitely a book you remember reading about an artifact like this. You close your eyes and gently place the mirror down on the ground. You manage to discard the mirror safely and escape the horror.\n\n"
+              "message": "Yes! There was definitely a book you remember reading about an artifact like this. You close your eyes and gently place the mirror down on the ground. You manage to discard the mirror safely and escape the horror."
             },
             "failure": {
               "nextEntry": "425-pow-check",
-              "message": "You fail to discard the mirror, and must continue holding it.\n\n"
+              "message": "You fail to discard the mirror, and must continue holding it."
             }
           }
         }

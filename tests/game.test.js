@@ -447,7 +447,7 @@ describe('Game Logic', () => {
       setTempDescription('Temporary effect occurred.')
       displayEntry('13')
       expect(document.getElementById('description').innerHTML).toContain(
-        'Temporary effect occurred. For you, Professor Louis Grunewald',
+        'Temporary effect occurred.',
       )
       setTempDescription('') // Clear after use
       displayEntry('13')

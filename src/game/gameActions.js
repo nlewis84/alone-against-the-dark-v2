@@ -152,7 +152,7 @@ export function displayEntry(entryId) {
   currentState.currentEntry = entryId
 
   let descriptionWithTemp =
-    (getTempDescription() ? `\n${getTempDescription()} ` : '') +
+    (getTempDescription() ? `${getTempDescription()}\n\n` : '') +
     entry.description
   setTempDescription('') // Clear the temporary description after using it
 

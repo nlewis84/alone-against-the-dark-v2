@@ -1,4 +1,3 @@
-When a message from a check is prepended, it adds an extra space to the description as the start.
 Roughly every 6 entries in the pyramid should advance the time 1 hour
 Upgrade Player attack in handleCombatRound to use any type of weapon, as well as damage
 Handle player death in combat
