@@ -1430,7 +1430,6 @@ export function loadGame() {
 
     // Hide all pieces before revealing collected ones
     hideAllTiles()
-    console.log(savedState.pyramidPieces)
 
     currentState.pyramidPieces = savedState.pyramidPieces || []
     currentState.pyramidPieces.forEach((piece) => {

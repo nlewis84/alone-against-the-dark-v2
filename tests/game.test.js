@@ -318,7 +318,7 @@ describe('Game Logic', () => {
       expect(currentState).toMatchObject({
         health: 9,
         sanity: 55,
-        inventory: [expect.any(Object)],
+        inventory: [expect.any(Object), expect.any(Object)],
         skills: expect.any(Object),
       })
       expect(getCurrentDate()).toEqual(new Date(1931, 8, 1, 12, 0)) // Check if the date and time are correctly loaded
@@ -415,7 +415,7 @@ describe('Game Logic', () => {
       currentState.character = 'Professor Grunewald'
       displayEntry('102')
       const choices = document.getElementById('choices').children
-      expect(choices.length).toBe(1)
+      expect(choices.length).toBe(2)
 
       setCurrentDate(new Date(1931, 8, 9, 10, 0))
       currentState.character = 'Zaphod Beeblebrox'
@@ -2103,12 +2103,14 @@ describe('Game Logic', () => {
       expect(buttons.length).toBe(2) // Only the always-visible buttons should render
     })
 
-    test('should always show "Look for someone who speaks English" button', () => {
+    test('should always show "Spend some time looking for someone who speaks English" button', () => {
       displayEntry('87')
 
       const buttons = Array.from(document.querySelectorAll('button'))
       const choiceButton = buttons.find((button) =>
-        button.innerText.includes('Look for someone who speaks English'),
+        button.innerText.includes(
+          'Spend some time looking for someone who speaks English',
+        ),
       )
       expect(choiceButton).not.toBeNull() // This button should always render
     })
