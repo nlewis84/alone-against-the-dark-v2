@@ -1,11 +1,11 @@
 Roughly every 6 entries in the pyramid should advance the time 1 hour
 
-Items in inventory, like clues and maps, that can be clicked should have the correct pointer
-
 Companions are not properly clearing out when entering a new location (saving/loading works fine)
 
 Upgrade Player attack in handleCombatRound to use any type of weapon, as well as damage
 Handle player death in combat
+99
+
 120
 143
 147

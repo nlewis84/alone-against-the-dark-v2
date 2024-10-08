@@ -425,7 +425,13 @@ export function handleEntryChoices(entryId, entry) {
             if (choice.effects.hiredAthens) {
               currentState.hiredAthens = choice.effects.hiredAthens
 
-              updateInterpreterDisplay(choice.effects.hiredAthens)
+              if (choice.effects.hiredAthens === null) {
+                currentState.hiredAthens = null
+                updateInterpreterDisplay(null)
+              } else {
+                currentState.hiredAthens = choice.effects.hiredAthens
+                updateInterpreterDisplay(choice.effects.hiredAthens)
+              }
             }
 
             if (

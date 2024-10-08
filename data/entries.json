@@ -1576,7 +1576,8 @@
       {
         "text": "Make connections to Cairo",
         "effects": {
-          "advanceTime": 71
+          "advanceTime": 71,
+          "setLocale": "Cairo"
         },
         "nextEntry": "205"
       }
@@ -4971,7 +4972,8 @@
         "text": "Catch the 10am train to Cairo (arrives in 1 hour)",
         "effects": {
           "setHour": 10,
-          "advanceTime": 1
+          "advanceTime": 1,
+          "setLocale": "Cairo"
         },
         "nextEntry": "205"
       },
@@ -4980,7 +4982,8 @@
         "effects": {
           "time": 0,
           "setHour": 13,
-          "advanceTime": 1
+          "advanceTime": 1,
+          "setLocale": "Cairo"
         },
         "nextEntry": "205"
       },
@@ -4988,7 +4991,8 @@
         "text": "Catch the 6pm train to Cairo (arrives in 1 hour)",
         "effects": {
           "setHour": 18,
-          "advanceTime": 1
+          "advanceTime": 1,
+          "setLocale": "Cairo"
         },
         "nextEntry": "205"
       },
