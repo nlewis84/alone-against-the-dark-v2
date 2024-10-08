@@ -1608,6 +1608,7 @@
     "choices": [
       {
         "text": "Attempt Know (EDU), Cthulhu Mythos, Occult, Spot Hidden, and Listen rolls.",
+        "nextEntry": "112",
         "effects": {
           "multipleChecks": [
             {
@@ -1634,6 +1635,10 @@
           "saveResults": {
             "success": [
               {
+                "skill": "EDU",
+                "resultKey": "eduSuccess"
+              },
+              {
                 "skill": "Cthulhu Mythos",
                 "resultKey": "cthulhuMythosSuccess"
               },
@@ -1651,8 +1656,7 @@
               }
             ]
           }
-        },
-        "nextEntry": "112"
+        }
       }
     ]
   },
