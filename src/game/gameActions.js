@@ -186,7 +186,7 @@ function hideMinimap() {
   const minimapContainer = document.getElementById('minimap-container')
   const gameDiv = document.getElementById('game')
 
-  if (minimapContainer) {
+  if (minimapContainer && gameDiv) {
     minimapContainer.style.display = 'none' // Hide the minimap container
     gameDiv.style.marginTop = '6rem' // Reset margin when minimap is hidden
   }
@@ -197,7 +197,7 @@ function showMinimap() {
   const minimapContainer = document.getElementById('minimap-container')
   const gameDiv = document.getElementById('game')
 
-  if (minimapContainer) {
+  if (minimapContainer && gameDiv) {
     minimapContainer.style.display = 'block' // Show the minimap container
     gameDiv.style.marginTop = '2rem' // Adjust margin when minimap is visible
   }

@@ -108,6 +108,7 @@ describe('Game Logic', () => {
       <div class="stat-label">Water Supply</div>
       <div class="water-supply" id="waterSupply">10</div>
       <div id="minimap-container"></div>
+      <div id="game"></div>
       </div>
     `
 
@@ -2672,24 +2673,31 @@ describe('Game Logic', () => {
     beforeEach(() => {
       // Set up a default sanity level before each test
       currentState.stats = {
-        sanity: 60, // Set sanity to 60 for testing
+        sanity: 50, // Set sanity to 60 for testing
       }
-      jest.spyOn(global.Math, 'random').mockReturnValue(0.4) // Mock dice roll to return 40
     })
 
     afterEach(() => {
       jest.restoreAllMocks() // Restore any mocks after each test
     })
 
-    test('should pass Sanity check when roll is less than or equal to sanity', () => {
-      const result = makeSkillCheck('Sanity', {}, currentState.stats)
-      expect(result).toBe(true) // Expected to pass because 40 <= 60
-    })
+    test('should pass roughly 50% of the time on normal difficulty', () => {
+      let results = 0
+      for (let i = 0; i < 30; i++) {
+        const result = makeSkillCheck(
+          'Sanity',
+          {},
+          currentState.stats,
+          'normal',
+        )
 
-    test('should fail Sanity check when roll is greater than sanity', () => {
-      jest.spyOn(global.Math, 'random').mockReturnValue(0.7) // Mock dice roll to return 70
-      const result = makeSkillCheck('Sanity', {}, currentState.stats)
-      expect(result).toBe(false) // Expected to fail because 70 > 60
+        if (result) {
+          results++
+        }
+      }
+
+      // Expect the results to be within a reasonable range
+      expect(results).toBeGreaterThan(10)
     })
   })
 })

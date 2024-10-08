@@ -74,12 +74,11 @@ export function makeSkillCheck(
   bonus = 0,
   penaltyDice = 0,
 ) {
-  let skillValue
+  let skillValue = skills[skill] !== undefined ? skills[skill] : stats[skill]
+
   if (skill === 'EDU') skillValue = stats['edu']
   if (skill === 'Sanity') skillValue = stats['sanity']
   if (skill === 'CustomRoll') return performCustomRoll()
-
-  skillValue = skills[skill] !== undefined ? skills[skill] : stats[skill]
 
   skillValue += bonus
 
