@@ -184,16 +184,22 @@ export function displayEntry(entryId) {
 // Function to hide the minimap
 function hideMinimap() {
   const minimapContainer = document.getElementById('minimap-container')
+  const gameDiv = document.getElementById('game')
+
   if (minimapContainer) {
     minimapContainer.style.display = 'none' // Hide the minimap container
+    gameDiv.style.marginTop = '6rem' // Reset margin when minimap is hidden
   }
 }
 
 // Function to show the minimap
 function showMinimap() {
   const minimapContainer = document.getElementById('minimap-container')
+  const gameDiv = document.getElementById('game')
+
   if (minimapContainer) {
     minimapContainer.style.display = 'block' // Show the minimap container
+    gameDiv.style.marginTop = '2rem' // Adjust margin when minimap is visible
   }
 }
 
@@ -256,11 +262,11 @@ const locationCoordinates = {
 let currentPulseDot = null // Store the current pulsing dot for later updates
 let currentEntryId = null // Store the current entry id to use for repositioning
 
-function highlightCurrentLocationOnMap(entryId) {
+export function highlightCurrentLocationOnMap(entryId) {
   const mapContainer = document.getElementById('minimap-container')
 
   if (mapContainer) {
-    // Store the current entry ID
+    // Store the current entry ID globally
     currentEntryId = entryId
 
     // Remove existing pulse dots if any
@@ -275,56 +281,36 @@ function highlightCurrentLocationOnMap(entryId) {
       return
     }
 
-    // Get the bounding box of the map to calculate the dot's position
-    const mapRect = mapContainer.getBoundingClientRect()
-
     // Create a new pulsing dot
     const pulseDot = document.createElement('div')
     pulseDot.classList.add('pulsing-location')
 
-    // Calculate the dot's position based on the percentage coordinates relative to the entire map
-    const top = coords.yPercent * mapRect.height
-    const left = coords.xPercent * mapRect.width
+    // Set the dot's position using percentage values directly
+    pulseDot.style.top = `${coords.yPercent * 100}%`
+    pulseDot.style.left = `${coords.xPercent * 100}%`
 
-    // Apply the calculated positions
-    pulseDot.style.top = `${top}px`
-    pulseDot.style.left = `${left}px`
-
-    // Store the current pulse dot for resizing purposes
+    // Store the current pulse dot for future reference
     currentPulseDot = pulseDot
 
     // Append the pulsing dot to the map container
     mapContainer.appendChild(pulseDot)
-
-    // Add an event listener for resizing
-    window.addEventListener('resize', updateDotPositionOnResize)
   } else {
     console.error('Map container not found.')
   }
 }
 
 // Function to update the pulsing dot position on screen resize
-function updateDotPositionOnResize() {
+function updateDotPosition(pulseDot, coords) {
   const mapContainer = document.getElementById('minimap-container')
+  const mapRect = mapContainer.getBoundingClientRect()
 
-  if (mapContainer && currentPulseDot && currentEntryId) {
-    // Retrieve the coordinates from the mapping
-    const coords = locationCoordinates[currentEntryId]
-    if (!coords) {
-      return
-    }
+  // Calculate the dot's position based on the percentage coordinates relative to the current map size
+  const top = coords.yPercent * mapRect.height
+  const left = coords.xPercent * mapRect.width
 
-    // Get the updated bounding box of the map
-    const mapRect = mapContainer.getBoundingClientRect()
-
-    // Recalculate the position of the dot based on the new dimensions
-    const top = coords.yPercent * mapRect.height
-    const left = coords.xPercent * mapRect.width
-
-    // Apply the updated positions
-    currentPulseDot.style.top = `${top}px`
-    currentPulseDot.style.left = `${left}px`
-  }
+  // Apply the calculated positions
+  pulseDot.style.top = `${top}px`
+  pulseDot.style.left = `${left}px`
 }
 
 function handleEntryEffects(effects) {
@@ -2477,10 +2463,14 @@ export function placePieceOnPyramid(piece, position) {
  */
 export function showMinimapIfPiecesExist() {
   const minimapContainer = document.getElementById('minimap-container')
+  const gameDiv = document.getElementById('game')
+
   if (currentState.pyramidPieces.length > 0) {
     minimapContainer.style.display = 'block' // Show the minimap container
+    gameDiv.style.marginTop = '2rem' // Adjust margin when minimap is visible
   } else {
     minimapContainer.style.display = 'none' // Hide the minimap container
+    gameDiv.style.marginTop = '6rem' // Reset margin when minimap is hidden
   }
 }
 

@@ -9894,7 +9894,7 @@
     "traceNumbers": ["331", "359", "397"]
   },
   "382": {
-    "description": "From the entrance, you gaze into a narrow corridor, which slants steeply down. A strange odor greets you.\n\nAs you explore the interior, you take a moment to make a map of the pyramid.",
+    "description": "From the entrance, you gaze into a narrow corridor, which slants steeply down. A strange odor greets you.\n\nAs you explore the interior, you take a moment to make a map of the pyramid. You decide to painstakingly mark your current location on the map so you don't get lost. (You can click on the map to enlarge it.)",
     "highlightOnMap": true,
     "choices": [
       {

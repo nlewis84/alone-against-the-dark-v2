@@ -561,16 +561,25 @@ select {
   opacity: 1;
 }
 
-/* Minimap container */
+/* Minimap container starts with a smaller width */
 #minimap-container {
   position: relative;
-  width: 60%;
-  max-width: 1300px;
+  width: 30%; /* Small initial size */
+  max-width: 1300px; /* Set a reasonable max size */
   margin: 1.5rem auto;
+  transition: width 0.5s ease; /* Smooth transition on size change */
+  cursor: zoom-in; /* Indicate the user can click to expand */
 }
 
+/* When clicked, expand to full width */
+#minimap-container.expanded {
+  width: 100%; /* Expand to full width */
+  cursor: zoom-out; /* Change cursor to indicate it can shrink back */
+}
+
+/* Puzzle frame remains untouched */
 #puzzle-frame {
-  width: 100%;
+  width: 100%; /* Keep frame size consistent */
   height: auto;
   display: block;
 }

@@ -3,6 +3,7 @@ import {
   saveGame,
   loadGame,
   showMinimapIfPiecesExist,
+  highlightCurrentLocationOnMap,
 } from './game/gameActions.js'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,6 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('saveButton').onclick = saveGame
   document.getElementById('loadButton').onclick = loadGame
+  document
+    .getElementById('minimap-container')
+    .addEventListener('click', function () {
+      this.classList.toggle('expanded')
+
+      highlightCurrentLocationOnMap(currentEntryId)
+    })
 
   // Add event listeners for opening and closing the inventory panel
   document.getElementById('inventoryButton').addEventListener('click', () => {
