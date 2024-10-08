@@ -565,15 +565,33 @@ select {
 #minimap-container {
   position: relative;
   width: 30%; /* Small initial size */
-  max-width: 1300px; /* Set a reasonable max size */
+  max-width: 850px;
   margin: 1.5rem auto;
-  transition: width 0.5s ease; /* Smooth transition on size change */
+  transition:
+    width 0.5s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   cursor: zoom-in; /* Indicate the user can click to expand */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Ensure minimap stays responsive for all sizes */
+@media (max-width: 900px) {
+  #minimap-container {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Hover effect on minimap */
+#minimap-container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
 
 /* When clicked, expand to full width */
 #minimap-container.expanded {
-  width: 100%; /* Expand to full width */
+  width: 80%; /* Expand to full width */
+
   cursor: zoom-out; /* Change cursor to indicate it can shrink back */
 }
 
