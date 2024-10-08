@@ -2562,8 +2562,7 @@ describe('Game Logic', () => {
         setCurrentDate(new Date(1931, 8, 1, 6)) // September 1st, 1931, 6:00 AM
         // Find the choice button for the dice roll
         const choiceButton = findChoiceButton('Roll 1D10')
-
-        // Simulate clicking the button
+        expect(choiceButton).not.toBeNull() // Ensure the button is found before clicking
         choiceButton.click()
 
         if (currentState.currentEntry === '324') {

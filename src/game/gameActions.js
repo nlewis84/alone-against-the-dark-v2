@@ -721,7 +721,6 @@ export function handleComplexOutcome(checkResult) {
     checkResult.modifyVariable &&
     checkResult.modifyVariable.name === 'waterSupply'
   ) {
-    console.log('modifying in skill check')
     const operation = checkResult.modifyVariable.operation || 'subtract' // Default operation
 
     if (operation === 'clear') {
@@ -1138,22 +1137,21 @@ export function makeChoice(nextEntry, effects) {
     }
 
     if (effects.multipleChecks) {
-      effects.multipleChecks.forEach((check) => {
+      for (const check of effects.multipleChecks) {
         const success = makeSkillCheck(
           check.skill,
           currentState.skills,
           currentState,
-          effects.check.difficulty,
+          effects.check?.difficulty || 'normal',
           effects.check?.tries || null,
           effects.check?.opposedValue || null,
           effects.check?.bonus || 0,
           effects.check?.penaltyDice || 0,
         )
 
-        // Save the result for later use (e.g., in entry 112)
         currentState.results = currentState.results || {} // Initialize if not present
         currentState.results[check.resultKey] = success
-      })
+      }
     }
 
     // Handle scheduling a meeting
@@ -2465,7 +2463,7 @@ export function showMinimapIfPiecesExist() {
   const minimapContainer = document.getElementById('minimap-container')
   const gameDiv = document.getElementById('game')
 
-  if (currentState.pyramidPieces.length > 0) {
+  if (currentState.pyramidPieces.length > 0 && gameDiv) {
     minimapContainer.style.display = 'block' // Show the minimap container
     gameDiv.style.marginTop = '2rem' // Adjust margin when minimap is visible
   } else {
