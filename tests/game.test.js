@@ -203,8 +203,12 @@ describe('Game Logic', () => {
     })
 
     test('should make a stat check', () => {
-      currentState.skills = { DEX: 60 }
-      const result = makeSkillCheck('DEX', currentState.skills)
+      currentState.stats = { DEX: 60 }
+      const result = makeSkillCheck(
+        'DEX',
+        currentState.skills,
+        currentState.stats,
+      )
       expect([true, false]).toContain(result)
     })
 
@@ -837,9 +841,10 @@ describe('Game Logic', () => {
     const skills = {
       Locksmith: 50, // 50% chance for a normal roll
       MechanicalRepair: 50, // For hard checks, this would be 25%
+    }
+    const stats = {
       STR: 80, // For extreme checks, this would be 16%
     }
-    const stats = {}
 
     const runSkillCheckMultipleTimes = (
       skill,

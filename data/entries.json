@@ -1608,7 +1608,7 @@
     "description": "His small apartment is cluttered with books and filled with rich aromas. It is the room of a scholar.\n\nYou will now attempt several rolls to uncover more about this situation.",
     "choices": [
       {
-        "text": "Attempt Know (EDU), Cthulhu Mythos, Occult, Spot Hidden, and Listen rolls.",
+        "text": "Attempt Knowledge, Cthulhu Mythos, Occult, Spot Hidden, and Listen rolls.",
         "nextEntry": "112",
         "effects": {
           "multipleChecks": [
@@ -1738,6 +1738,264 @@
     "description": "The MU library is open 9am to 9pm, Mon-Sat.",
     "title": "MISKATONIC UNIVERSITY",
     "traceNumbers": ["Arkham Location"]
+  },
+  "374": {
+    "description": "The shopkeeper, a short man, is somehow familiar. He has a huge collection of phony artifacts and cheap pottery. In fact, there is a suspect air about this place. You can browse for an hour.\n\nIf you succeed with a Spot Hidden roll, you discover something important; if you fail, you return to the market.",
+    "choices": [
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "191"
+            },
+            "failure": {
+              "nextEntry": "134",
+              "message": "You find nothing of interest."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["134", "191"]
+  },
+  "191": {
+    "description": "An ornate mirror catches your eye. What appears to be mere filigree around the border proves to be a frieze of snarling animals of some kind.",
+    "choices": [
+      {
+        "text": "Make an INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "375"
+            },
+            "failure": {
+              "nextEntry": "191b",
+              "message": "You can't help but to look into the mirror."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["375", "191b"]
+  },
+  "191b": {
+    "description": "Looking into the mirror, you see a horrible creature staring back at you. You jump back, but you can’t move fast enough before a terrifying, hound-like creature manifests from the corner of the room.",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "sanity": "1D3",
+              "nextEntry": "191d"
+            },
+            "failure": {
+              "sanity": "1D20",
+              "nextEntry": "191d"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["Egypt Location"]
+  },
+  "191d": {
+    "description": "Its eyes burn with an alien intensity, and its pulsating blue-tinged skin emits a dread chill. You may not know what this creature is, but its razor-sharp teeth and claws, and the way it materialized through the angles of time, tell you all you need to know: it is a Hound of Tindalos.",
+    "image": "/src/assets/images/atmosphere/hound_of_tindalos.png",
+    "choices": [
+      {
+        "text": "Engage in combat with the Hound of Tindalos",
+        "nextEntry": "191e",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Hound of Tindalos",
+              "image": "/src/assets/images/atmosphere/hound_of_tindalos.png",
+              "attackChance": "90%",
+              "damage": "4D6",
+              "dex": 50,
+              "health": 23,
+              "maxHealth": 23
+            },
+            "win": "Cairo",
+            "lose": "191c"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["Egypt Location"]
+  },
+  "191e": {
+    "description": "The hound is upon you now, and there is no escape.",
+    "choices": [
+      {
+        "text": "Attack with your fists",
+        "nextEntry": "191e",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Hound of Tindalos",
+              "image": "/src/assets/images/atmosphere/hound_of_tindalos.png",
+              "attackChance": "90%",
+              "damage": "4D6",
+              "dex": 50,
+              "health": 23,
+              "maxHealth": 23
+            },
+            "win": "Cairo",
+            "lose": "191c"
+          }
+        }
+      },
+      {
+        "text": "Attack with your weapon",
+        "nextEntry": "191e",
+        "effects": {
+          "combat": {
+            "type": "handgun",
+            "opponent": {
+              "name": "Hound of Tindalos",
+              "image": "/src/assets/images/atmosphere/hound_of_tindalos.png",
+              "attackChance": "90%",
+              "damage": "4D6",
+              "dex": 50,
+              "health": 23,
+              "maxHealth": 23
+            },
+            "win": "Cairo",
+            "lose": "191c"
+          }
+        },
+        "requirements": {
+          "inventoryType": "weapon"
+        }
+      }
+    ],
+    "traceNumbers": ["Egypt Location"]
+  },
+  "191c": {
+    "description": "The Hound of Tindalos overwhelms you with its brutal strength and relentless attacks. Its savage bite tears into your flesh, smearing your body with the foul bluish ichor that pulses through its otherworldly form. The ichor, alive and insidious, begins to consume you, burning and gnawing at your skin with searing agony.\n\nAs you struggle in vain to wipe it away, the hound's long, lashing tongue strikes next, puncturing your body, leaving a deep penetrating hole. Though bloodless and painless, the wound drains your very essence, robbing you of your soul’s power. You fall to the ground, defeated by the alien terror from beyond time, as the ichor devours you and your spirit fades.",
+    "choices": [
+      {
+        "text": "Game Over",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ]
+  },
+  "306": {
+    "description": "The terrifying hound-like creature has found you! It is a Hound of Tindalos. These creatures are nearly impossible to fend off, as they move through the angles of time and space. You are likely facing your doom.\n\nMake a Sanity roll and lose 1D3/1D20 Sanity points. If you go insane, logical action, such as using magic or using a magical item, is impossible. If you have the ring, it protects only the hand upon which it is worn!\n\nIf the hound is driven away, carry on with your activities and add +1D10 Sanity points as a reward for your success. But defeating a Hound of Tindalos is a rare and unlikely feat. If you fail, it is very probably ... THE END.",
+    "choices": [
+      {
+        "text": "If you survive, continue your activities.",
+        "nextEntry": "134"
+      }
+    ],
+    "traceNumbers": ["134"]
+  },
+  "375": {
+    "description": "Leering at you in an unseemly fashion, the shopkeeper steps between you and the door and draws a knife. “Kaieeee!” he screams, “Aten!” You can draw your own weapon to fight, or you can try to evade him.",
+    "choices": [
+      {
+        "text": "Engage in combat with the shopkeeper",
+        "nextEntry": "375b",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Shopkeeper",
+              "attackChance": "25%",
+              "damage": "1D6",
+              "dex": 50,
+              "health": 6,
+              "maxHealth": 6,
+              "roundsUntilRetaliation": 1
+            },
+            "win": "Cairo",
+            "lose": "375c"
+          }
+        }
+      },
+      {
+        "text": "Attempt to evade (Dodge roll)",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "Cairo"
+            },
+            "failure": {
+              "nextEntry": "375b"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["Cairo", "191"]
+  },
+  "375b": {
+    "title": "Combat Continues",
+    "description": "The shopkeeper lunges at you with his knife, screaming in an almost feral manner. You must defend yourself or try to escape!",
+    "choices": [
+      {
+        "text": "Fight back with your fists",
+        "nextEntry": "375b",
+        "effects": {
+          "combat": {
+            "type": "brawl",
+            "opponent": {
+              "name": "Shopkeeper",
+              "attackChance": "25%",
+              "damage": "1D6",
+              "dex": 50,
+              "health": 6,
+              "maxHealth": 6,
+              "roundsUntilRetaliation": 1
+            },
+            "win": "Cairo",
+            "lose": "375c"
+          }
+        }
+      },
+      {
+        "text": "Use a weapon to fight back",
+        "nextEntry": "375b",
+        "effects": {
+          "combat": {
+            "type": "handgun",
+            "opponent": {
+              "name": "Shopkeeper",
+              "attackChance": "25%",
+              "damage": "1D6",
+              "dex": 50,
+              "health": 6,
+              "maxHealth": 6,
+              "roundsUntilRetaliation": 1
+            },
+            "win": "Cairo",
+            "lose": "375c"
+          }
+        },
+        "requirements": {
+          "inventoryType": "weapon"
+        }
+      }
+    ]
+  },
+  "375c": {
+    "description": "The shopkeeper's attack overwhelms you. His knife strikes deep, and you collapse to the floor, bleeding. The marketplace fades from view as darkness takes you.",
+    "choices": [
+      {
+        "text": "Game Over",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ]
   },
   "197": {
     "description": "He has had no word. First Gliere, now this. He shakes his head.",
@@ -3871,6 +4129,1043 @@
     ],
     "traceNumbers": ["135", "187", "193", "579"]
   },
+  "289": {
+    "description": "The book gives many tales of strange creatures crawling through the shadows, and tells of tomb-robbers throwing down their picks and running away. It also asks: on what could such subterranean horrors feed?",
+    "choices": [
+      {
+        "text": "Return to your research",
+        "nextEntry": "275"
+      }
+    ],
+    "traceNumbers": ["275"]
+  },
+  "265": {
+    "description": "\"The cult is very old, with origins attributed to Akhenaten himself. Cult practices led to perversions and oddities, partially prompting the Pharaoh’s downfall. I suggest placing extra guards at key locations, and ignoring their so-called holy place at Tell-el-Amarna, an unimportant tomb. The murder cases will remain open, though I doubt we’ll find the culprit who left behind such a strange calling card.\"",
+    "choices": [
+      {
+        "text": "Return to your research",
+        "nextEntry": "275"
+      }
+    ],
+    "traceNumbers": ["275"]
+  },
+  "243": {
+    "description": "\"Brought back as undead, these mummies return to earthly service devoid of human feeling or compassion. Dark evil grips their souls. Reportedly, only fire or removing their tana leaf life-essence can destroy them.\"",
+    "choices": [
+      {
+        "text": "Return to your research",
+        "nextEntry": "275"
+      }
+    ],
+    "traceNumbers": ["275"]
+  },
+  "264": {
+    "description": "A once popular novel, one eerie sequence tells of deadly creatures pursuing the hero down strangely-twisting corridors. He protects himself against the creatures, which are not of this Earth, by touching a magic amulet and receiving help from a god called only the 'Ancient Master.'",
+    "choices": [
+      {
+        "text": "Return to your research",
+        "nextEntry": "275"
+      }
+    ],
+    "traceNumbers": ["275"]
+  },
+  "251": {
+    "description": "\"From the book of  \"What Is In The Netherworld\" we can see engraved on the tombs of the 19th and 20th Dynasty kings, the grotesque creations of the perverted priestly imagination, which finally gained credence in the highest circles.\"",
+    "choices": [
+      {
+        "text": "Return to your research",
+        "nextEntry": "275"
+      }
+    ],
+    "traceNumbers": ["275"]
+  },
+  "149": {
+    "description": "The museum closes at 9:00 PM.\n\nMuch open-minded learning and studying occurs in this incredible Cairo institution. Lately, the presence of British troops makes many Egyptians reluctant to talk with foreigners.\n\nYou can visit the library or one of the departments within the mosque-like main building. Each visit costs one hour, though additional time may be demanded in certain departments.",
+    "title": "UNIVERSITY OF AL-AZHAR",
+    "choices": [
+      {
+        "text": "Visit the Library",
+        "nextEntry": "215",
+        "effects": {
+          "time": 1
+        },
+        "requirements": {
+          "isNotNight": true
+        }
+      },
+      {
+        "text": "Visit the Islamic Culture department",
+        "nextEntry": "216",
+        "effects": {
+          "time": 1
+        },
+        "requirements": {
+          "isNotNight": true
+        }
+      },
+      {
+        "text": "Visit the Ancient History department",
+        "nextEntry": "217",
+        "effects": {
+          "time": 1
+        },
+        "requirements": {
+          "isNotNight": true
+        }
+      },
+      {
+        "text": "Visit the Modern History department",
+        "nextEntry": "238",
+        "effects": {
+          "time": 1
+        },
+        "requirements": {
+          "isNotNight": true
+        }
+      },
+      {
+        "text": "Visit the Languages department",
+        "nextEntry": "239",
+        "effects": {
+          "time": 1
+        },
+        "requirements": {
+          "isNotNight": true
+        }
+      },
+      {
+        "text": "Visit the Science department",
+        "nextEntry": "260",
+        "effects": {
+          "time": 1
+        },
+        "requirements": {
+          "isNotNight": true
+        }
+      },
+      {
+        "text": "Visit the Literature department",
+        "nextEntry": "261",
+        "effects": {
+          "time": 1
+        },
+        "requirements": {
+          "isNotNight": true
+        }
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": [
+      "215",
+      "216",
+      "217",
+      "238",
+      "239",
+      "260",
+      "261",
+      "Cairo Location"
+    ]
+  },
+  "215": {
+    "description": "The museum closes at 9:00 PM.\n\nYou are dazzled by the flowing robes of the scholars and the dramatic stairs twisting to upper floors. To use the treasures of information here, spend one hour per Library Use roll, for as many hours as you wish. With one successful roll, you discover something valuable; with two successful rolls, you gain even deeper insights. You must stop when the library closes, but you can return tomorrow.",
+    "choices": [
+      {
+        "text": "Attempt a Library Use roll (1 hour)",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "Library Use",
+            "success": {
+              "nextEntry": "253"
+            },
+            "failure": {
+              "nextEntry": "215",
+              "message": "You find nothing of interest, but you can try again."
+            }
+          }
+        },
+        "requirements": {
+          "isNotNight": true
+        }
+      },
+      {
+        "text": "Return to the university main entry",
+        "nextEntry": "149",
+        "requirements": {
+          "isNotNight": true
+        }
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": ["149", "253", "275", "Cairo Location"]
+  },
+  "215b": {
+    "description": "The museum closes at 9:00 PM.\n\nThere is more to be found here in the library! Spend another hour to attempt another Library Use roll.",
+    "choices": [
+      {
+        "text": "Attempt another Library Use roll (for deeper insights)",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "Library Use",
+            "success": {
+              "nextEntry": "275"
+            },
+            "failure": {
+              "nextEntry": "215b",
+              "message": "You find nothing additional, but you can try again."
+            }
+          }
+        },
+        "requirements": {
+          "isNotNight": true
+        }
+      },
+      {
+        "text": "Return to the university main entry",
+        "nextEntry": "149",
+        "requirements": {
+          "isNotNight": true
+        }
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ]
+  },
+  "218": {
+    "description": "\"O my heart, rise not up against me as witness.\" Beside this sentence, a scholar long ago annotated, \"This reveals the undead’s fear of discovery. That is partly the reason for suppressing sections of the book, this guide to reviving and controlling the mummy in its new earthly existence. There is no solution, however, for the grayish deathly pallor to the skin, nor for the drying skin flakes which peel away so easily.\"",
+    "choices": [
+      {
+        "text": "Return to your research",
+        "nextEntry": "253"
+      }
+    ],
+    "traceNumbers": ["253"]
+  },
+  "253": {
+    "description": "You locate a couple of books, which look interesting. If you can make a successful Language roll, or have an English/Arabic dictionary and make a Knowledge roll, you can examine the following books. Each attempt advances time by 1 hour.\n\n• A version of \"The Book of the Dead\" (Arabic)\n• \"Alhazred and the Curse of Egypt\" (Arabic)\n• The \"Mysterium\" (Latin)\n• \"The Lost Pyramid\" (English)\n\nIf you know these languages, you could just read them, or if you have picked up a dictionary, you can use that. If you failed to read the books, you may return and try again on another day.",
+    "choices": [
+      {
+        "text": "Make a Language (Arabic) roll to study\n\n*The Book of the Dead*",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "Language (Arabic)",
+            "success": {
+              "nextEntry": "218"
+            },
+            "failure": {
+              "nextEntry": "253",
+              "message": "You struggle with the text and may try again another day."
+            }
+          }
+        },
+        "requirements": {
+          "isNotNight": true,
+          "hasNotVisited": "218"
+        }
+      },
+      {
+        "text": "Use your phrase book to read\n\n*The Book of the Dead*",
+        "requirements": {
+          "isNotNight": true,
+          "inventory": "Harrison’s English/Arabic Phrase Book",
+          "hasNotVisited": "218"
+        },
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "EDU",
+            "success": {
+              "nextEntry": "218"
+            },
+            "failure": {
+              "nextEntry": "253",
+              "message": "You cannot fully comprehend the text."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Language (Arabic) roll to study\n\n*Alhazred and the Curse of Egypt*",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "Language (Arabic)",
+            "success": {
+              "nextEntry": "267"
+            },
+            "failure": {
+              "nextEntry": "253",
+              "message": "The book's meaning eludes you for now."
+            }
+          }
+        },
+        "requirements": {
+          "isNotNight": true,
+          "hasNotVisited": "267"
+        }
+      },
+      {
+        "text": "Use your phrase book to read\n\n*Alhazred and the Curse of Egypt*",
+        "requirements": {
+          "isNotNight": true,
+          "inventory": "Harrison’s English/Arabic Phrase Book",
+          "hasNotVisited": "267"
+        },
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "EDU",
+            "success": {
+              "nextEntry": "267"
+            },
+            "failure": {
+              "nextEntry": "253",
+              "message": "You cannot fully comprehend the text."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Language (Latin) roll to study\n\n*The Mysterium*",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "Language (Latin)",
+            "success": {
+              "nextEntry": "262"
+            },
+            "failure": {
+              "nextEntry": "253",
+              "message": "You fail to decipher the Latin text."
+            }
+          }
+        },
+        "requirements": {
+          "isNotNight": true,
+          "hasNotVisited": "262"
+        }
+      },
+      {
+        "text": "Read\n\n*The Lost Pyramid* (English)",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "Language (English)",
+            "success": {
+              "nextEntry": "284"
+            },
+            "failure": {
+              "nextEntry": "253",
+              "message": "You cannot fully understand the text and may try again later."
+            }
+          }
+        },
+        "requirements": {
+          "isNotNight": true,
+          "hasNotVisited": "284"
+        }
+      },
+      {
+        "text": "Return to the University library",
+        "nextEntry": "215b"
+      },
+      {
+        "text": "Return to the University of Al-Azhar main entry",
+        "nextEntry": "149"
+      }
+    ],
+    "traceNumbers": ["149", "215", "218", "262", "267", "284"]
+  },
+  "267": {
+    "description": "\"This is the demented scholar who led the rebirth of the cult, though the seed had slept there down through the millennia, waiting for a foul spurt of evil to give it rise. Now the cult performs its evil rituals throughout the land, worshiping not Aten but the evil ones who pose as his priests.\"",
+    "choices": [
+      {
+        "text": "Return to your research",
+        "nextEntry": "253"
+      }
+    ],
+    "traceNumbers": ["253"]
+  },
+  "262": {
+    "description": "\"Our fathers tell us that the disasters were great across the civilized lands, and into the barbarous reaches beyond. Snow fell where none had been, and grass grew where ice once gleamed. Many who survived perforce must have learned new ways. Awful prayers were said, and horrible gods took power. Who could tell the good man from the bad? All learning and respect for tradition ceased.\"",
+    "choices": [
+      {
+        "text": "Return to your research",
+        "nextEntry": "253"
+      }
+    ],
+    "traceNumbers": ["253"]
+  },
+  "284": {
+    "description": "\"Contrary to speculation and rumor, the so-called Lost Pyramid of Akhenaten is hidden at Tell-el-Amarna, the new capital founded by that Pharaoh. It is disguised as a small burial pyramid for friends, courtiers, and their slaves. Somewhere within is held the secret of Akhenaten’s madness, but no secret entrances or chambers have ever been found.\"\n\nYou find a sketch of the tomb as known.",
+    "choices": [
+      {
+        "text": "Return to your research",
+        "nextEntry": "253"
+      }
+    ],
+    "traceNumbers": ["253"]
+  },
+  "275": {
+    "description": "The musuem closes at 9:00 PM.\n\nThis is an excellent library! In little time, you locate five \"more\" pertinent books. To use each, you must succeed with the correct language roll, or employ a translator. One hour is required for each book:\n\n• The \"Pnakotic Manuscript\" (Latin)\n• Col. F. Dupont's \"Le Culte d'Aten\" (French)\n• \"Die Goules\" (German)\n• \"The Pharaoh's Curse, A Novel\" (English)\n• Breasted's \"History of Egypt\" (English)\n\nIf you fail to read a book, you may return and try again on another day.",
+    "choices": [
+      {
+        "text": "Make a Language (Latin) roll to study\n\n*The Pnakotic Manuscript*",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "Language (Latin)",
+            "success": {
+              "nextEntry": "289"
+            },
+            "failure": {
+              "nextEntry": "275",
+              "message": "You fail to understand the Latin text."
+            }
+          }
+        },
+        "requirements": {
+          "isNotNight": true,
+          "hasNotVisited": "289"
+        }
+      },
+      {
+        "text": "Make a Language (French) roll to read\n\n*Le Culte d’Aten*",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "Language (French)",
+            "success": {
+              "nextEntry": "265"
+            },
+            "failure": {
+              "nextEntry": "275",
+              "message": "The French text remains unclear."
+            }
+          }
+        },
+        "requirements": {
+          "isNotNight": true,
+          "hasNotVisited": "265"
+        }
+      },
+      {
+        "text": "Make a Language (German) roll to read\n\n*Die Goules*",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "Language (German)",
+            "success": {
+              "nextEntry": "243"
+            },
+            "failure": {
+              "nextEntry": "275",
+              "message": "You struggle with the German text."
+            }
+          }
+        },
+        "requirements": {
+          "isNotNight": true,
+          "hasNotVisited": "243"
+        }
+      },
+      {
+        "text": "Use your phrase book to attempt to read\n\n*Die Goules*",
+        "requirements": {
+          "isNotNight": true,
+          "inventory": "Basel’s English/German Phrase Book",
+          "hasNotVisited": "243"
+        },
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "EDU",
+            "success": {
+              "nextEntry": "243"
+            },
+            "failure": {
+              "nextEntry": "275",
+              "message": "You fail to comprehend the German text."
+            }
+          }
+        }
+      },
+      {
+        "text": "Spend an hour reading\n\n*The Pharaoh’s Curse, A Novel*",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "Language (English)",
+            "success": {
+              "nextEntry": "264"
+            },
+            "failure": {
+              "nextEntry": "275",
+              "message": "You fail to grasp the full meaning of the text."
+            }
+          }
+        },
+        "requirements": {
+          "isNotNight": true,
+          "hasNotVisited": "264"
+        }
+      },
+      {
+        "text": "Spend an hour reading\n\n*Breasted’s History of Egypt*",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "Language (English)",
+            "success": {
+              "nextEntry": "251"
+            },
+            "failure": {
+              "nextEntry": "275",
+              "message": "You fail to fully comprehend the text."
+            }
+          }
+        },
+        "requirements": {
+          "isNotNight": true,
+          "hasNotVisited": "251"
+        }
+      },
+      {
+        "text": "Return to the University library",
+        "nextEntry": "215"
+      }
+    ],
+    "traceNumbers": ["215", "243", "251", "264", "265", "289"]
+  },
+  "216": {
+    "description": "Professor Jahark will need to be convinced that he is not wasting time with you. You can try one roll daily:",
+    "choices": [
+      {
+        "text": "Attempt a Persuade roll",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "nextEntry": "272"
+            },
+            "failure": {
+              "nextEntry": "149",
+              "message": "You fail to persuade him, but you can try again tomorrow."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a Fast Talk roll",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "nextEntry": "250"
+            },
+            "failure": {
+              "nextEntry": "149",
+              "message": "Your fast talk fails, but you can try again tomorrow."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Return to the university main entry",
+        "nextEntry": "149"
+      }
+    ],
+    "traceNumbers": ["149", "250", "272"]
+  },
+  "250": {
+    "description": "Your quick thinking and talking has the desired effect.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "228"
+      }
+    ],
+    "traceNumbers": ["216", "228"]
+  },
+  "233": {
+    "description": "\"Few now truly believe that creatures travel between our plane and the Netherworld.\"",
+    "choices": [
+      {
+        "text": "Return to your conversation",
+        "nextEntry": "272"
+      }
+    ],
+    "traceNumbers": ["272"]
+  },
+  "258": {
+    "description": "At the Fuzira Marketplace you can join a caravan, hire help, and hear rumors of every sort.",
+    "choices": [
+      {
+        "text": "Return to your conversation",
+        "nextEntry": "272"
+      }
+    ],
+    "traceNumbers": ["272"]
+  },
+  "272": {
+    "description": "He speaks passable English. To ask him about:",
+    "choices": [
+      {
+        "text": "Ask about the cult of Aten",
+        "nextEntry": "228"
+      },
+      {
+        "text": "Ask about customs regarding travel, hiring help, etc.",
+        "nextEntry": "258"
+      },
+      {
+        "text": "Ask about Islamic superstitions",
+        "nextEntry": "233"
+      },
+      {
+        "text": "Return to the university main entry",
+        "nextEntry": "149"
+      }
+    ],
+    "traceNumbers": ["216", "233", "149", "228", "258"]
+  },
+  "228": {
+    "description": "He turns to the door and locks it.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "270"
+      }
+    ],
+    "traceNumbers": ["250", "272", "270"]
+  },
+  "270": {
+    "description": "He laughs bitterly. \"No cult, my friend. ‘Cult’ makes it sound understandable. And they do not belong to Aten. What can I say of them? They are murderers perhaps, ghouls more likely, but the merest pebbles under the feet of their master.\"",
+    "choices": [
+      {
+        "text": "Ask for more information",
+        "nextEntry": "237"
+      },
+      {
+        "text": "Finished? Return to the university main entry",
+        "nextEntry": "149"
+      }
+    ],
+    "traceNumbers": ["228", "237", "149"]
+  },
+  "237": {
+    "description": "In his book-lined office, you can ask Professor Jahark about all of these topics:",
+    "choices": [
+      {
+        "text": "Ask about the cult of Aten",
+        "nextEntry": "270",
+        "requirements": {
+          "hasNotVisited": "270"
+        }
+      },
+      {
+        "text": "Ask about the Lost Pyramid of Akhenaten",
+        "nextEntry": "292",
+        "requirements": {
+          "hasNotVisited": "292"
+        }
+      },
+      {
+        "text": "Ask about the Book of the Dead",
+        "nextEntry": "291",
+        "requirements": {
+          "hasNotVisited": "291"
+        }
+      },
+      {
+        "text": "Ask about the Karpathos Device",
+        "nextEntry": "297b",
+        "requirements": {
+          "hasNotVisited": "297b"
+        }
+      },
+      {
+        "text": "Make a Spot Hidden roll (Professor Jahark's 50% skill)",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "bonus": 25,
+            "success": {
+              "nextEntry": "286"
+            },
+            "failure": {
+              "nextEntry": "237",
+              "message": "You notice nothing out of the ordinary."
+            }
+          },
+          "dailyLimit": 1
+        },
+        "requirements": {
+          "hasNotVisited": "296"
+        }
+      },
+      {
+        "text": "Finished? Return to the university main entry",
+        "nextEntry": "149"
+      }
+    ],
+    "traceNumbers": ["217", "270", "291", "297", "286", "149"]
+  },
+  "292": {
+    "description": "\"No, the pyramid is not lost. It is, in fact, at Tell-el-Amarna. A small structure, but one with secrets yet unlocked.\"",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "294"
+      }
+    ],
+    "traceNumbers": ["237", "294"]
+  },
+  "294": {
+    "description": "He drums his fingers, \"I have something for you. Should you go to the pyramid, search where the mark is.\" He hands you a map. \"Search on the east side. An opening must be there.\"",
+    "image": "src/assets/images/maps/the-symbol.png",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "237"
+      }
+    ],
+    "traceNumbers": ["46", "292", "297"]
+  },
+  "297": {
+    "description": "\"I’m sure that this passage refers to it, ‘A cursed key for a cursed box! The Top of Terror, it unlocks.’\"",
+    "choices": [
+      {
+        "text": "Return to the professor's office",
+        "nextEntry": "261"
+      }
+    ],
+    "traceNumbers": ["237", "261", "294"]
+  },
+  "297b": {
+    "description": "\"I’m sure that this passage refers to it, ‘A cursed key for a cursed box! The Top of Terror, it unlocks.’\"",
+    "choices": [
+      {
+        "text": "Return to the professor's office",
+        "nextEntry": "237"
+      }
+    ],
+    "traceNumbers": ["237", "261", "294"]
+  },
+  "286": {
+    "description": "Did you receive a ring as a gift in Athens?",
+    "choices": [
+      {
+        "text": "Show him the Ring of Power",
+        "nextEntry": "286b",
+        "requirements": {
+          "inventory": "Ring of Power"
+        }
+      },
+      {
+        "text": "Tell him you don't have the ring",
+        "nextEntry": "296"
+      }
+    ],
+    "traceNumbers": ["237", "286b", "296"]
+  },
+  "286b": {
+    "description": "Jahark says softly, \"That ring is powerful. Whether it can help, I do not know.\" The ring is heavy with gold, covered with signs, most prominently a five-pointed star with a core of flame. It has power, particularly against dead things brought back to existence.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "296"
+      }
+    ],
+    "traceNumbers": ["296"]
+  },
+  "296": {
+    "description": "Jahark offers to provide you with critical insights and knowledge to help you during your journey in Egypt. His advice proves invaluable in understanding the region’s history and culture, particularly when exploring ancient sites and libraries. While he will not accompany you, his guidance provides permanent bonuses to your skills.",
+    "choices": [
+      {
+        "text": "Accept Jahark’s advice\n\n+10% to History, Archaeology, and Library Use for the rest of the game",
+        "nextEntry": "149",
+        "effects": {
+          "skills": {
+            "History": 10,
+            "Archaeology": 10,
+            "Library Use": 10
+          }
+        }
+      },
+      {
+        "text": "Decline and continue your journey",
+        "nextEntry": "149"
+      }
+    ],
+    "traceNumbers": ["149"]
+  },
+  "291": {
+    "description": "\"Ah, yes, well, that book is actually called the *Book of the Undead*! These mummies are real, my friend. They must be burned like so much offal or manure to be destroyed. Surely you’ve smelled that odor around the city, and have seen the troops racing about. That is one secret of Cairo which no one—not even the British—dares speak of.\"\n\nWhy be alarmed? You’re safe enough, for the moment.",
+    "choices": [
+      {
+        "text": "Keep asking the Professor questions",
+        "nextEntry": "237"
+      },
+      {
+        "text": "Return to the university main entry",
+        "nextEntry": "149"
+      }
+    ],
+    "traceNumbers": ["237", "149"]
+  },
+  "217": {
+    "description": "Professor Jahark sees you if you can make a successful Persuade or History roll. Choose either one (make one try daily); if you succeed, you may proceed. If you fail, you'll need to try again another day.",
+    "choices": [
+      {
+        "text": "Attempt a Persuade roll",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "nextEntry": "237"
+            },
+            "failure": {
+              "nextEntry": "149",
+              "message": "You fail to persuade him, but you can try again tomorrow."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a History roll",
+        "effects": {
+          "check": {
+            "skill": "History",
+            "success": {
+              "nextEntry": "237"
+            },
+            "failure": {
+              "nextEntry": "149",
+              "message": "You fail to convince him with your knowledge of history, but you can try again tomorrow."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Return to the university main entry",
+        "nextEntry": "149"
+      }
+    ],
+    "traceNumbers": ["149", "237"]
+  },
+  "238": {
+    "description": "If you make a successful Luck or Know (EDU) roll, you say something that catches Professor Emu’s attention.",
+    "choices": [
+      {
+        "text": "Attempt a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "225"
+            },
+            "failure": {
+              "nextEntry": "149",
+              "message": "You fail to catch his attention, but you can try again tomorrow."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a Knowledge roll",
+        "effects": {
+          "check": {
+            "skill": "EDU",
+            "success": {
+              "nextEntry": "225"
+            },
+            "failure": {
+              "nextEntry": "149",
+              "message": "Your knowledge doesn't seem to impress, but you can try again tomorrow."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Return to the university main entry",
+        "nextEntry": "149"
+      }
+    ],
+    "traceNumbers": ["149", "225"]
+  },
+  "225": {
+    "description": "You can ask about the cult of Aten or the Searchers for the Lost Pyramid.",
+    "choices": [
+      {
+        "text": "Ask about the cult of Aten",
+        "nextEntry": "273",
+        "requirements": {
+          "hasNotVisited": "273"
+        }
+      },
+      {
+        "text": "Ask about the Searchers for the Lost Pyramid",
+        "nextEntry": "295",
+        "requirements": {
+          "hasNotVisited": "295"
+        }
+      },
+      {
+        "text": "Return to the university main entry",
+        "nextEntry": "149"
+      }
+    ],
+    "traceNumbers": ["238", "273", "295", "149"]
+  },
+  "273": {
+    "description": "\"Yes, they have grown more active. The authorities hush it up, but in the past few years tremendous numbers of inhabitants have disappeared.\"",
+    "choices": [
+      {
+        "text": "Return to your conversation",
+        "nextEntry": "225"
+      }
+    ],
+    "traceNumbers": ["225"]
+  },
+  "295": {
+    "description": "\"Many have looked for another entrance. All have failed. One party, however, vanished without a trace!\"",
+    "choices": [
+      {
+        "text": "Return to your conversation",
+        "nextEntry": "225"
+      }
+    ],
+    "traceNumbers": ["225"]
+  },
+  "239": {
+    "description": "Professor Khargeh, an expert in ancient and modern languages, offers you insight into the linguistic history of Egypt. He shares details about several dead languages that are only partially deciphered, along with modern dialects that have evolved from ancient roots. He explains that many ancient texts, especially those from the time of Akhenaten, contain layers of meaning lost to time. He warns that certain symbols and phrases, when spoken aloud, are said to have unsettling effects on those who understand them.",
+    "choices": [
+      {
+        "text": "Thank him and leave",
+        "nextEntry": "149"
+      },
+      {
+        "text": "Press for more details about these 'unsettling effects'",
+        "nextEntry": "239b",
+        "effects": {
+          "sanityLoss": 1
+        }
+      }
+    ],
+    "traceNumbers": ["149", "239b"]
+  },
+  "239b": {
+    "description": "Professor Khargeh leans in, lowering his voice. \"Some texts are not meant for human understanding,\" he says. \"Certain ancient symbols, when read aloud, can affect the mind. One passage from a tablet we found near Thebes caused a researcher to lose sleep for weeks. The script seemed to twist before his eyes as if it were alive. Even I have seen things I cannot explain after reading certain words.\" He gives a nervous smile. \"But of course, that’s just superstition.\"\n\nYou feel a shiver, and a slight unease settles in your mind.",
+    "choices": [
+      {
+        "text": "Return to the university main entry",
+        "nextEntry": "149"
+      }
+    ],
+    "traceNumbers": ["149"]
+  },
+  "260": {
+    "description": "You can ask Professor Ben 'Ozen about the Karpathos Device, or return to the university main entry.",
+    "choices": [
+      {
+        "text": "Ask about the Karpathos Device",
+        "nextEntry": "271"
+      },
+      {
+        "text": "Return to the university main entry",
+        "nextEntry": "149"
+      }
+    ],
+    "traceNumbers": ["149", "271"]
+  },
+  "271": {
+    "description": "\"It might be an astronomical clock, or some kind of lock, or it could work as some kind of coordinating mechanism for a greater device—about which we know nothing.\"",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "266"
+      }
+    ],
+    "traceNumbers": ["260", "266"]
+  },
+  "266": {
+    "description": "He shakes his head. \"I really don’t know what it could be for, nor I hazard does anyone else.\"",
+    "choices": [
+      {
+        "text": "Return to the university main entry",
+        "nextEntry": "149"
+      }
+    ],
+    "traceNumbers": ["271", "149"]
+  },
+  "261": {
+    "description": "The literature professor is quite willing to talk of many things:",
+    "choices": [
+      {
+        "text": "Ask about the cult of Aten",
+        "nextEntry": "231",
+        "requirements": {
+          "hasNotVisited": "231"
+        }
+      },
+      {
+        "text": "Ask about The Lost Pyramid",
+        "nextEntry": "288",
+        "requirements": {
+          "hasNotVisited": "288"
+        }
+      },
+      {
+        "text": "Ask about the Karpathos Device",
+        "nextEntry": "297",
+        "requirements": {
+          "hasNotVisited": "297"
+        }
+      },
+      {
+        "text": "Return to the university main entry",
+        "nextEntry": "149"
+      }
+    ],
+    "traceNumbers": ["149", "231", "288", "297"]
+  },
+  "231": {
+    "description": "\"Not Aten, sir. It goes by many names in the old books: Lord of Mu, Master of the Deep … But here,\" and he pulls down an old book, \"here it is called Ghatanothoa. Even this rough sketch is horrid. That thing they worship. And it is said to seek a new kingdom.\" He smiles. \"Of course, it is all rubbish, you understand.\"",
+    "choices": [
+      {
+        "text": "Return to your conversation",
+        "nextEntry": "261"
+      }
+    ],
+    "traceNumbers": ["261"]
+  },
+  "288": {
+    "description": "\"Yes. I have one reference, a cryptic one.\" He takes a scrap of parchment from a drawer. \"It says, 'Only one passage helps. Where evil waits, the gate opens where you go up to go down.'\"",
+    "choices": [
+      {
+        "text": "Return to your conversation",
+        "nextEntry": "261"
+      }
+    ],
+    "traceNumbers": ["261"]
+  },
   "150": {
     "title": "Professorial Study",
     "description": "You enter and cautiously turn on a light to see a room in proper professorial confusion. Scattered about are books of myths and fables, and there are bundles of clippings from various foreign newspapers. For each hour you spend here, you can attempt one roll for one of the following skills. Each skill may be tried once daily.",
@@ -4737,6 +6032,256 @@
       }
     ],
     "traceNumbers": ["99", "57", "43", "Athens Location"]
+  },
+  "99": {
+    "description": "As you enter the passenger compartment, a steward in a blue uniform offers you a piece of chewing gum and some cotton.\n\nHe gestures that the cotton is for your ears. You take one of the wicker seats in the plane. As you look out toward the terminal building, you see two brutal-looking men intently watching the plane. As your face comes into their view, you see them point and smile. If you think you shouldn’t be on this flight, you can return to the airport entry.\n\nIf you stay aboard, you see other passengers file in: a number of Arabs, an Englishman energetically chewing his gum, a Greek tycoon, and a colonel in the Greek military. The thud of the corrugated aluminum door is met with the screeching whine of the engines springing to life. A fitful roar fills the cabin. The attendant stands in back as the plane sails smoothly into the sky.\n\nAs you head south, the cabin is much colder than you imagined it would be, even though you’re quite near the heating ducts.\n\n“Chew your gum!” the Englishman shouts above the din. “The gum! It will help your ears!” You smile and signal OK.\n\nAfter a while, one of the Arabs gets up and moves to the front of the cabin. He is a tall fellow, moving slowly. The steward moves forward, perhaps to direct him to take his seat. The toilet, if that is his goal, is in the opposite direction. The Arab opens the cockpit door.",
+    "choices": [
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "76"
+            },
+            "failure": {
+              "nextEntry": "50"
+            }
+          }
+        }
+      },
+      {
+        "text": "Return to the airport entry",
+        "nextEntry": "181"
+      }
+    ],
+    "traceNumbers": ["50", "76", "181"]
+  },
+  "76": {
+    "description": "The Arab’s hand has an eerie, grayish pallor. Claw-like, it grabs the door latch to the pilots’ compartment.",
+    "choices": [
+      {
+        "text": "Attempt a POW roll",
+        "effects": {
+          "check": {
+            "skill": "POW",
+            "success": {
+              "nextEntry": "59"
+            },
+            "failure": {
+              "nextEntry": "50"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["59", "50", "99"]
+  },
+  "50": {
+    "description": "Something is going on.",
+    "choices": [
+      {
+        "text": "Make a Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "55"
+            },
+            "failure": {
+              "nextEntry": "39"
+            }
+          }
+        }
+      },
+      {
+        "text": "If successful and you also have a gun, go to the pilots’ cabin",
+        "nextEntry": "44",
+        "requirements": {
+          "inventoryType": "weapon"
+        }
+      }
+    ],
+    "traceNumbers": ["55", "59", "76", "99"]
+  },
+  "59": {
+    "description": "Something’s not right. You can, if you are carrying a weapon, get it ready.",
+    "choices": [
+      {
+        "text": "Proceed",
+        "nextEntry": "50"
+      }
+    ],
+    "traceNumbers": ["76"]
+  },
+  "55": {
+    "description": "You hear a scream.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "44"
+      }
+    ],
+    "traceNumbers": ["50"]
+  },
+  "71": {
+    "description": "Astonishingly, the skin has the unmistakable look of the preserved flesh of an Egyptian mummy.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "44b"
+      }
+    ],
+    "traceNumbers": ["44"]
+  },
+  "44": {
+    "description": "The cockpit door is slightly ajar. You push it open. Beyond the cockpit door sprawls the limp, lifeless body of the pilot. You see the futile kicks of the co-pilot. The plane flies on, tentatively. The Arab turns his head. You gasp at the sunken, ghostly eyes. His skin has a grayish pallor. He looks like an animated corpse.",
+    "choices": [
+      {
+        "text": "Engage in combat with the Arab",
+        "nextEntry": "44b",
+        "effects": {
+          "combat": {
+            "opponent": {
+              "name": "Undead Arab",
+              "attackChance": "45%",
+              "damage": "1D4+1",
+              "dex": 40,
+              "health": 15,
+              "maxHealth": 15,
+              "roundsUntilRetaliation": 7
+            },
+            "win": "44c",
+            "lose": "44d"
+          }
+        }
+      }
+    ]
+  },
+  "44b": {
+    "title": "Combat Continues",
+    "description": "The battle with the undead Arab begins! He is attacking the co-pilot, but he will only be distracted for so long before he starts attacking you. You must stop him before he kills the pilot!",
+    "choices": [
+      {
+        "text": "Attack with your fists",
+        "nextEntry": "44b",
+        "effects": {
+          "combat": {
+            "type": "brawl",
+            "opponent": {
+              "name": "Undead Arab",
+              "attackChance": "45%",
+              "damage": "1D4",
+              "dex": 40,
+              "health": 15,
+              "maxHealth": 15,
+              "roundsUntilRetaliation": 7
+            },
+            "win": "44c",
+            "lose": "44d"
+          }
+        }
+      },
+      {
+        "text": "Fight back with your weapon",
+        "nextEntry": "44b",
+        "effects": {
+          "combat": {
+            "type": "handgun",
+            "opponent": {
+              "name": "Undead Arab",
+              "attackChance": "45%",
+              "damage": "1D4",
+              "dex": 40,
+              "health": 15,
+              "maxHealth": 15,
+              "roundsUntilRetaliation": 7
+            },
+            "win": "44c",
+            "lose": "44d"
+          }
+        },
+        "requirements": {
+          "inventoryType": "weapon"
+        }
+      }
+    ]
+  },
+  "44c": {
+    "description": "You successfully defeated the Arab. The co-pilot is safe for now. You need to take control of the plane or find help.",
+    "choices": [
+      {
+        "text": "Try to fly the plane yourself",
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "181"
+            },
+            "failure": {
+              "nextEntry": "44f"
+            }
+          }
+        }
+      },
+      {
+        "text": "Try to help the co-pilot with First Aid",
+        "effects": {
+          "check": {
+            "skill": "First Aid",
+            "success": {
+              "nextEntry": "181"
+            },
+            "failure": {
+              "nextEntry": "44e"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "44d": {
+    "description": "The Arab kills the co-pilot, and overpowers you. The plane crashes, and all aboard are killed.",
+    "choices": [
+      {
+        "text": "Game Over",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ]
+  },
+  "44e": {
+    "description": "The co-pilot's injuries are too grave for you to save him. You look up just in time to see the ground approaching quickly. The plane crashes and everyone aboard dies.",
+    "choices": [
+      {
+        "text": "Game Over",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ]
+  },
+  "44f": {
+    "description": "You failed to take control of the plane in time. It crashes and everyone aboard dies.",
+    "choices": [
+      {
+        "text": "Game Over",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ]
+  },
+  "39": {
+    "description": "You hear a scream. The plane lurches, then tilts slightly to the right. You notice that the previously smoothly flying craft has begun to wobble.",
+    "choices": [
+      {
+        "text": "Proceed",
+        "nextEntry": "44"
+      }
+    ],
+    "traceNumbers": ["50"]
   },
   "182": {
     "description": "You find the symbol of the cult of Aten (see image below), the so-called Egyptian death cult. You think that you may have seen that shape before.",
@@ -7999,7 +9544,7 @@
     "description": "You notice a small Egyptian fellow lurking ahead of you. You may have seen him before. He holds something in his hand shiny in his hand. You are down a side passage now and have quickened your pace. Now you hear his footsteps scurry after you. Is it only your imagination, or are the corridor lights dimming?",
     "choices": [
       {
-        "text": "Make a Know (EDU) roll",
+        "text": "Make a Knowledge roll",
         "effects": {
           "check": {
             "skill": "EDU",

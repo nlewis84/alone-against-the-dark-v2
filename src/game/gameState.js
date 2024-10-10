@@ -84,8 +84,8 @@ export async function initializeGame() {
     setGameData('books', books)
     updateTime(0, 20) // Initialize date display
     startGame()
-    // 324 is the pyramid
-    displayEntry('324') // Ensure the first entry is displayed ... should be 13
+    // 134 is the fuzira marketplace
+    displayEntry('13') // Ensure the first entry is displayed ... should be 13
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error)
   }

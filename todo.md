@@ -1,22 +1,16 @@
-Roughly every 6 entries in the pyramid should advance the time 1 hour
+Roughly every 6 entries in the pyramid should advance the time 1 hour (382)
 
-Companions are not properly clearing out when entering a new location (saving/loading works fine)
-
-Upgrade Player attack in handleCombatRound to use any type of weapon, as well as damage
+Upgrade Player attack in handleCombatRound to use any type of weapon, as well as damage (update all combats?)
 Handle player death in combat
-99
 
 120
-143
 147
-197
 
 Cairo Locations
 134
-149
+
 318
 340
-374
 414
 
 439b - should probably check to see if the user has a knife and remove it if they break it...may need to change routing from previous

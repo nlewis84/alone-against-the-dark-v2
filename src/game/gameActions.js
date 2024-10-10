@@ -1100,7 +1100,7 @@ export function makeChoice(nextEntry, effects) {
       if (!currentState.combat || !currentState.combat.isActive) {
         startCombat(nextEntry, effects.combat)
       } else {
-        handleCombatRound('fight')
+        handleCombatRound(effects.combat.type || 'fight')
       }
     }
 
@@ -1511,6 +1511,7 @@ export function checkRequirements(requirements) {
         return false
       }
     }
+
     if (requirements.isNight && !isNightTime(currentDate)) {
       return false // It must be night, but it's not
     }
@@ -1640,10 +1641,6 @@ export function checkRequirements(requirements) {
     }
 
     if (requirements.inventoryType) {
-      console.log(
-        hasInventoryItemType(requirements.inventoryType),
-        requirements.inventoryType,
-      )
       if (!hasInventoryItemType(requirements.inventoryType)) {
         return false
       }
@@ -1946,6 +1943,7 @@ function startCombat(entryId, combatDetails) {
       dex: combatDetails.opponent.dex,
       health: combatDetails.opponent.health,
       maxHealth: combatDetails.opponent.maxHealth,
+      roundsUntilRetaliation: combatDetails.opponent.roundsUntilRetaliation,
     },
     outcome: {
       win: combatDetails.win,
@@ -1967,69 +1965,132 @@ function handleCombatRound(actionType) {
 
   clearHitMarkers()
 
+  let playerAttackSuccess
   // Player attack
-  if (actionType === 'fight') {
-    let playerAttackSuccess =
-      rollDice(100) <=
-      parseInt(currentState.skills['Firearms (Handgun)'] || 50, 10)
+  if (
+    actionType === 'fight' ||
+    actionType === 'brawl' ||
+    actionType === 'handgun'
+  ) {
+    switch (actionType) {
+      case 'fight':
+      case 'brawl':
+        playerAttackSuccess =
+          rollDice(100) <=
+          parseInt(currentState.skills['Fighting (Brawl)'] || 50, 10)
 
-    if (playerAttackSuccess) {
-      // If the player doesn't have any weapons, they deal an unarmed strike which is 1D3+db.
-      // DB is on currentState. it is either "None" or "+1D4"
-      // Combine that text appropriately and pass to parseAndComputeDamage
-      const unarmedStrike =
-        currentState.DB !== 'None' ? `1D3${currentState.DB}` : `1D3`
+        if (playerAttackSuccess) {
+          // If the player doesn't have any weapons, they deal an unarmed strike which is 1D3+db.
+          // DB is on currentState. it is either "None" or "+1D4"
+          // Combine that text appropriately and pass to parseAndComputeDamage
+          const unarmedStrike =
+            currentState.DB !== 'None' ? `1D3${currentState.DB}` : `1D3`
 
-      const damageToOpponent = parseAndComputeDamage(unarmedStrike)
+          const damageToOpponent = parseAndComputeDamage(unarmedStrike)
 
-      if (opponent.health > 0 - damageToOpponent < 0) {
-        opponent.health = 0
-      } else {
-        opponent.health -= damageToOpponent
-      }
+          if (opponent.health > 0 - damageToOpponent < 0) {
+            opponent.health = 0
+          } else {
+            opponent.health -= damageToOpponent
+          }
 
-      console.log(
-        `Player attacked successfully, new opponent health: ${opponent.health}`,
-      )
+          console.log(
+            `Player attacked successfully, new opponent health: ${opponent.health}`,
+          )
 
-      updateHitMarker(
-        document.getElementById('playerHitMarker'),
-        `You hit opponent for ${damageToOpponent} damage!`,
-      )
-    } else {
-      console.log('Player attack failed.')
-      updateHitMarker(document.getElementById('playerHitMarker'), 'You missed!')
+          updateHitMarker(
+            document.getElementById('playerHitMarker'),
+            `You hit opponent for ${damageToOpponent} damage!`,
+          )
+        } else {
+          console.log('Player attack failed.')
+          updateHitMarker(
+            document.getElementById('playerHitMarker'),
+            'You missed!',
+          )
+        }
+        break
+      case 'handgun':
+        playerAttackSuccess =
+          rollDice(100) <=
+          parseInt(currentState.skills['Firearms (Handgun)'] || 50, 10)
+
+        if (playerAttackSuccess) {
+          // Unarmed strike as a fallback if the player doesn't have a weapon
+          const unarmedStrike =
+            currentState.DB !== 'None' ? `1D3${currentState.DB}` : `1D3`
+
+          // Check currentState.inventory for a weapon with a skill of Firearms (Handgun), and grab the .damage
+          const weapon = currentState.inventory.find(
+            (item) => item.skill === 'Firearms (Handgun)',
+          )
+          const weaponDamage = weapon ? weapon.damage : unarmedStrike
+
+          const damageToOpponent = parseAndComputeDamage(weaponDamage)
+
+          if (opponent.health > 0 - damageToOpponent < 0) {
+            opponent.health = 0
+          } else {
+            opponent.health -= damageToOpponent
+          }
+
+          console.log(
+            `Player attacked successfully, new opponent health: ${opponent.health}`,
+          )
+
+          updateHitMarker(
+            document.getElementById('playerHitMarker'),
+            `You hit opponent for ${damageToOpponent} damage!`,
+          )
+        } else {
+          console.log('Player attack failed.')
+          updateHitMarker(
+            document.getElementById('playerHitMarker'),
+            'You missed!',
+          )
+        }
+        break
+
+      default:
+        console.error('Invalid combat action type: ' + actionType)
     }
   }
 
-  // Opponent attack (if it's not the start of the combat)
-  if (actionType !== 'start') {
-    let opponentAttackSuccess =
-      rollDice(100) <= parseInt(opponent.attackChance, 10)
+  const roundsUntilRetaliation = opponent.roundsUntilRetaliation || 0
 
-    if (opponentAttackSuccess) {
-      const damageToPlayer = parseAndComputeDamage(opponent.damage)
+  if (roundsUntilRetaliation && roundsUntilRetaliation > 0) {
+    opponent.roundsUntilRetaliation--
+  } else {
+    // Opponent attack (if it's not the start of the combat)
+    // Also, check to see if turns until retaliation has reached 0
+    if (actionType !== 'start') {
+      let opponentAttackSuccess =
+        rollDice(100) <= parseInt(opponent.attackChance, 10)
 
-      if (currentState.health - damageToPlayer < 0) {
-        currentState.health = 0
+      if (opponentAttackSuccess) {
+        const damageToPlayer = parseAndComputeDamage(opponent.damage)
+
+        if (currentState.health - damageToPlayer < 0) {
+          currentState.health = 0
+        } else {
+          currentState.health -= damageToPlayer
+        }
+        updateHealthDisplay()
+        console.log(
+          `Opponent attacked successfully, new player health: ${currentState.health}`,
+        )
+
+        updateHitMarker(
+          document.getElementById('opponentHitMarker'),
+          `Opponent hit you for ${damageToPlayer} damage!`,
+        )
       } else {
-        currentState.health -= damageToPlayer
+        console.log('Opponent attack failed.')
+        updateHitMarker(
+          document.getElementById('opponentHitMarker'),
+          'Opponent missed!',
+        )
       }
-      updateHealthDisplay()
-      console.log(
-        `Opponent attacked successfully, new player health: ${currentState.health}`,
-      )
-
-      updateHitMarker(
-        document.getElementById('opponentHitMarker'),
-        `Opponent hit you for ${damageToPlayer} damage!`,
-      )
-    } else {
-      console.log('Opponent attack failed.')
-      updateHitMarker(
-        document.getElementById('opponentHitMarker'),
-        'Opponent missed!',
-      )
     }
   }
 

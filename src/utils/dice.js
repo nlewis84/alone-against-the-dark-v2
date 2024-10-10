@@ -76,7 +76,14 @@ export function makeSkillCheck(
 ) {
   let skillValue = skills[skill] !== undefined ? skills[skill] : stats[skill]
 
-  if (skill === 'EDU') skillValue = stats['edu']
+  if (skill === 'EDU') skillValue = stats['EDU']
+  if (skill === 'INT') skillValue = stats['INT']
+  if (skill === 'POW') skillValue = stats['POW']
+  if (skill === 'DEX') skillValue = stats['DEX']
+  if (skill === 'STR') skillValue = stats['STR']
+  if (skill === 'CON') skillValue = stats['CON']
+  if (skill === 'APP') skillValue = stats['APP']
+  if (skill === 'Luck') skillValue = stats['Luck']
   if (skill === 'Sanity') skillValue = stats['sanity']
   if (skill === 'CustomRoll') return performCustomRoll()
 
