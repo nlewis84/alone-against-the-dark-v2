@@ -11,9 +11,6 @@ Handle player death in combat
 147
 
 Cairo Locations
-206
-236
-211 hide button should advance to night time 9PM and make sure next night buttons are correct
 439b - should probably check to see if the user has a knife and remove it if they break it...may need to change routing from previous
 
 Bremen Locations

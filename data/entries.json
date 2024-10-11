@@ -5682,15 +5682,19 @@
     "description": "Having come so far and seen much danger, you believe the fate of the world might depend on your actions. How could you not attempt to secure the Karpathos Device?",
     "choices": [
       {
-        "text": "Attempt the theft now.",
+        "text": "Attempt the theft now",
         "nextEntry": "229"
       },
       {
-        "text": "Hide until the museum closes and then attempt the theft.",
-        "nextEntry": "281"
+        "text": "Hide until the museum closes and then attempt the theft",
+        "nextEntry": "281",
+        "effects": {
+          "dayAdvance": true,
+          "defaultHour": 1
+        }
       },
       {
-        "text": "Reconsider your actions.",
+        "text": "Reconsider your actions",
         "nextEntry": "206"
       }
     ],
@@ -7572,7 +7576,7 @@
     "traceNumbers": ["214", "232", "246", "285"]
   },
   "280": {
-    "description": "There is toughened glass around the Karpathos Device. Perhaps you have a tool or weapon, or something you can throw at it?",
+    "description": "There is toughened glass around the Karpathos Device.",
     "choices": [
       {
         "text": "Break the glass (not at night)",
@@ -12685,7 +12689,7 @@
     ]
   },
   "230_guard_1_action": {
-    "description": "The first guard reacts. Roll 1D6 to determine the guard's action.",
+    "description": "The first guard reacts.",
     "choices": [
       {
         "text": "Roll for first guard's action",
@@ -12697,7 +12701,7 @@
               "nextEntry": "230_guard_1_combat"
             },
             "1-5": {
-              "description": "The first guard shoots at you, causing 1D8 damage.",
+              "description": "The first guard shoots at you, causing damage.",
               "damage": "1D8",
               "nextEntry": "230_guard_2_action"
             }
@@ -12734,7 +12738,7 @@
     "traceNumbers": ["230_guard_1_action"]
   },
   "230_guard_2_action": {
-    "description": "Now, you face the second guard. Roll 1D6 to see his reaction.",
+    "description": "Now, you face the second guard.",
     "choices": [
       {
         "text": "Roll for second guard's action",
@@ -12746,7 +12750,7 @@
               "nextEntry": "230_guard_2_combat"
             },
             "1-5": {
-              "description": "The second guard shoots at you, causing 1D8 damage.",
+              "description": "The second guard shoots at you, causing damage.",
               "damage": "1D8",
               "nextEntry": "230_guard_3_action"
             }
@@ -12783,7 +12787,7 @@
     "traceNumbers": ["230_guard_2_action"]
   },
   "230_guard_3_action": {
-    "description": "You now confront the third and final guard. Roll 1D6 to determine his actions.",
+    "description": "You now confront the third and final guard.",
     "choices": [
       {
         "text": "Roll for third guard's action",
@@ -12795,7 +12799,7 @@
               "nextEntry": "230_guard_3_combat"
             },
             "1-5": {
-              "description": "The third guard shoots, causing 1D8 damage, but you escape his pursuit!",
+              "description": "The third guard shoots, causing damage, but you escape his pursuit!",
               "damage": "1D8",
               "nextEntry": "293"
             }
@@ -12858,7 +12862,7 @@
     "traceNumbers": ["230a"]
   },
   "230c": {
-    "description": "The guard fires his revolver. Take 1D8 damage if he hits. If you survive, you must still try to escape through the museum.",
+    "description": "The guard fires his revolver. If you survive, you must still try to escape through the museum.",
     "effects": {
       "health": {
         "diceRoll": "1D100",
@@ -12876,7 +12880,7 @@
     "traceNumbers": ["230a"]
   },
   "230d": {
-    "description": "You are now facing the first guard. Roll 1D6 to determine the guard's action.",
+    "description": "You are now facing the first guard. Roll to determine the guard's action.",
     "choices": [
       {
         "text": "Face the first guard",
@@ -14505,7 +14509,7 @@
         "nextEntry": "206"
       }
     ],
-    "traceNumbers": ["206", "207", "298", "300"]
+    "traceNumbers": ["206", "207", "298", "206"]
   },
   "207": {
     "description": "You notice a picture bearing the label, “Akhenaten’s Amulet.” You make a sketch for your notes.",
@@ -14602,5 +14606,422 @@
       }
     ],
     "traceNumbers": ["236"]
+  },
+  "247": {
+    "description": "Your jaw drops. The Karpathos Device, a placard informs you, has been stolen.",
+    "choices": [
+      {
+        "text": "Return to the exhibit",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["206"]
+  },
+  "314": {
+    "description": "You enter the office and see three men. They are worried and confused: one mutters that Amet Keh is unavailable.",
+    "choices": [
+      {
+        "text": "Make a Charm roll",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "nextEntry": "380"
+            },
+            "failure": {
+              "nextEntry": "314",
+              "message": "You fail to gather any useful information."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Make a Fast Talk roll",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "nextEntry": "380"
+            },
+            "failure": {
+              "nextEntry": "314",
+              "message": "You fail to gather any useful information."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Make an Intimidate roll",
+        "effects": {
+          "check": {
+            "skill": "Intimidate",
+            "success": {
+              "nextEntry": "380"
+            },
+            "failure": {
+              "nextEntry": "314",
+              "message": "You fail to gather any useful information."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Make a Persuade roll",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "nextEntry": "380"
+            },
+            "failure": {
+              "nextEntry": "314",
+              "message": "You fail to gather any useful information."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["206", "362", "380"]
+  },
+  "380": {
+    "description": "\"Keh is dead—that’s all we can say. And the Karpathos Device has been stolen. We don’t know who or why.\"",
+    "choices": [
+      {
+        "text": "Make a Fast Talk roll",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "nextEntry": "372"
+            },
+            "failure": {
+              "nextEntry": "206"
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "362"
+            },
+            "failure": {
+              "nextEntry": "206"
+            }
+          }
+        }
+      },
+      {
+        "text": "If you're finished, return to the museum entrance",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["314", "206", "372", "362"]
+  },
+  "372": {
+    "description": "One man blurts out, “We don’t know who took it. Some say the cult of Aten.” A second man snorts. “More likely some wealthy art collector paid to have it stolen.”",
+    "choices": [
+      {
+        "text": "Return to 380",
+        "nextEntry": "380"
+      }
+    ],
+    "traceNumbers": ["380"]
+  },
+  "362": {
+    "description": "They seem oddly protective of the door behind them.",
+    "choices": [
+      {
+        "text": "Ask about the door",
+        "nextEntry": "408"
+      },
+      {
+        "text": "Dash in (DEX roll)",
+        "effects": {
+          "check": {
+            "skill": "DEX",
+            "success": {
+              "nextEntry": "322"
+            },
+            "failure": {
+              "nextEntry": "206",
+              "message": "You fail to dash past them and are sent away."
+            }
+          }
+        }
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["380", "206", "408", "322"]
+  },
+  "408": {
+    "description": "\"Curator Keh’s material must not be disturbed. You must go.\"",
+    "choices": [
+      {
+        "text": "Make a Dodge roll to get past them",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "322"
+            },
+            "failure": {
+              "nextEntry": "206"
+            }
+          }
+        }
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["206", "322"]
+  },
+  "322": {
+    "description": "What’s behind the door makes you gasp. Amet Keh, the Curator, stands there completely immobile. His skin appears glazed, his eyes and face fixed in an expression of terror. The word, “Petrified!” escapes from your mouth, and something tells you that his mind still lives inside his paralyzed body. “How horrible!” you add.\n\n“Yes,” one of the men says. “Something somehow did that to him. Who or whatever it was, also took the Karpathos Device.”\n\nThere is nothing to do. Go to any Cairo location on the Cairo Location Table.",
+    "choices": [
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": ["362", "408"]
+  },
+  "302": {
+    "description": "Amet Keh is in and will gladly see foreign visitors. “So honored to have you call,” he murmurs.\n\nWhat do you wish to do? Examine the Karpathos Device? Ask that the Device be returned to Athens? Ask about Gliere? Or do something else?",
+    "choices": [
+      {
+        "text": "Continue talking with Amet Keh",
+        "nextEntry": "330"
+      }
+    ],
+    "traceNumbers": ["206", "330"]
+  },
+  "330": {
+    "description": "\"Examine it? Return it? Impossible,\" he laughs, leaning back in his chair. \"The Karpathos Device is far too valuable, and its power is beyond your comprehension. It stays here.\"\n\nYou press further, but his demeanor changes. \"As for Gliere,\" he says dismissively, \"I have never heard of this person!\" His eyes narrow slightly, and he gestures toward the door. \"Now, if that will be all, I must ask you to leave.\"\n\nHe stands, escorting you toward the exit with a forced smile.",
+    "choices": [
+      {
+        "text": "Make a Fast Talk roll",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "nextEntry": "350"
+            },
+            "failure": {
+              "nextEntry": "206",
+              "message": "You fail to convince him to reveal more."
+            }
+          }
+        },
+        "requirements": {
+          "hasNotVisited": "350"
+        }
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": ["302", "350", "206"]
+  },
+  "350": {
+    "description": "Something about him teases your suspicions. What is it? You can try only one of the following rolls once:",
+    "choices": [
+      {
+        "text": "Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "316"
+            },
+            "failure": {
+              "nextEntry": "206"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "326"
+            },
+            "failure": {
+              "nextEntry": "206"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "336"
+            },
+            "failure": {
+              "nextEntry": "206"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": ["316", "326", "336", "206"]
+  },
+  "316": {
+    "description": "Amet Keh’s eyes narrow, \"What do you really want? I have told you all I know.\"",
+    "choices": [
+      {
+        "text": "Make an INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "17"
+            },
+            "failure": {
+              "nextEntry": "350"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["350"]
+  },
+  "326": {
+    "description": "You notice two things: Amet Keh is breathing more heavily than normal, and you hear someone in the room behind him.",
+    "choices": [
+      {
+        "text": "Question Keh further",
+        "nextEntry": "346"
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": ["350", "346", "206"]
+  },
+  "336": {
+    "description": "Scattered among the books on Keh’s shelves are some ominously ancient tomes bound in suspect hides. He also seems to be doing his best to stand in front of the internal door in his office.",
+    "choices": [
+      {
+        "text": "Ask Keh about the door",
+        "nextEntry": "346"
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": ["350", "346", "206"]
+  },
+  "346": {
+    "description": "You ask what’s behind the door and Keh replies, \"Nothing!\" Somehow, you don’t believe him.",
+    "choices": [
+      {
+        "text": "Threaten Keh",
+        "nextEntry": "370"
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": ["326", "336", "206", "370"]
+  },
+  "370": {
+    "description": "Keh moves aside, letting you open the door.\n\nAs you open it, you see a man smile wryly at you, and then his face seems to melt, changing into a bubbling mess, with a myriad of alien eyes staring hungrily from each bubble!",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "sanity": "1D6",
+              "nextEntry": "206",
+              "message": "Despite the odds, you hold onto your sanity."
+            },
+            "failure": {
+              "sanity": "1D20",
+              "nextEntry": "259"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["346", "206", "259"]
+  },
+  "259": {
+    "description": "It makes no difference where you are, or how you came to be here. You're sleeping, tossing and turning, twisting the sheets into taut ropes around your body. You dream of creatures oozing putrid liquids from holes scattered across their amorphous bodies. You see the holes open and close, and then you silently scream as you see a morose, hungry eye resting within each hole, and hundreds of mouths filled with serrated teeth. Shuddering, you wake up. In the brief moment of sanity left to you, you see that you were not dreaming and not asleep in bed! It’s all really happening! You are being eaten! It is undoubtedly … THE END.",
+    "choices": [
+      {
+        "text": "Game Over",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["370"]
+  },
+  "587": {
+    "description": "It has you! The bubbling thing envelops you and rips you into shreds—as if you were nothing more than tissue paper. You have been consumed! It is ... THE END.",
+    "choices": [
+      {
+        "text": "Game Over",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["370"]
   }
 }
