@@ -1801,7 +1801,7 @@
         }
       }
     ],
-    "traceNumbers": ["Egypt Location"]
+    "traceNumbers": ["Cairo Location"]
   },
   "191d": {
     "description": "Its eyes burn with an alien intensity, and its pulsating blue-tinged skin emits a dread chill. You may not know what this creature is, but its razor-sharp teeth and claws, and the way it materialized through the angles of time, tell you all you need to know: it is a Hound of Tindalos.",
@@ -1827,7 +1827,7 @@
         }
       }
     ],
-    "traceNumbers": ["Egypt Location"]
+    "traceNumbers": ["Cairo Location"]
   },
   "191e": {
     "description": "The hound is upon you now, and there is no escape.",
@@ -1875,7 +1875,7 @@
         }
       }
     ],
-    "traceNumbers": ["Egypt Location"]
+    "traceNumbers": ["Cairo Location"]
   },
   "191c": {
     "description": "The Hound of Tindalos overwhelms you with its brutal strength and relentless attacks. Its savage bite tears into your flesh, smearing your body with the foul bluish ichor that pulses through its otherworldly form. The ichor, alive and insidious, begins to consume you, burning and gnawing at your skin with searing agony.\n\nAs you struggle in vain to wipe it away, the hound's long, lashing tongue strikes next, puncturing your body, leaving a deep penetrating hole. Though bloodless and painless, the wound drains your very essence, robbing you of your soul’s power. You fall to the ground, defeated by the alien terror from beyond time, as the ichor devours you and your spirit fades.",
@@ -1958,6 +1958,29 @@
             },
             "win": "Cairo",
             "lose": "375c"
+          }
+        }
+      },
+      {
+        "text": "Attack with your handgun",
+        "nextEntry": "375b",
+        "effects": {
+          "combat": {
+            "type": "handgun",
+            "opponent": {
+              "name": "Shopkeeper",
+              "attackChance": "25%",
+              "damage": "1D6",
+              "dex": 50,
+              "health": 6,
+              "maxHealth": 6,
+              "roundsUntilRetaliation": 1
+            },
+            "win": "Cairo",
+            "lose": "375c"
+          },
+          "requirements": {
+            "inventoryType": "weapon"
           }
         }
       },
@@ -3830,7 +3853,10 @@
       },
       {
         "text": "A dagger-throw game",
-        "nextEntry": "414"
+        "nextEntry": "414",
+        "requirements": {
+          "hasNotVisited": "414"
+        }
       },
       {
         "text": "Go to any Cairo location",
@@ -6583,7 +6609,7 @@
         "nextEntry": "103"
       },
       {
-        "text": "Get information on flights to Athens (departs at 3pm)",
+        "text": "Take the 3pm flight to Athens (arrives at 6pm)",
         "nextEntry": "181",
         "effects": {
           "setHour": 15,
@@ -6592,7 +6618,7 @@
         }
       },
       {
-        "text": "Get information on flights to Bremen (departs at 9am)",
+        "text": "take the 9am flight to Bremen (arrives at 5pm)",
         "nextEntry": "450",
         "effects": {
           "setHour": 9,
@@ -8315,7 +8341,7 @@
         "nextEntry": "361"
       }
     ],
-    "traceNumbers": ["Egypt Location"]
+    "traceNumbers": ["Cairo Location"]
   },
   "361": {
     "description": "Your car (and driver) are gone! You have a few options to spend the night or try your luck at finding a way back:",
@@ -9285,21 +9311,7 @@
     "description": "The battle rages on. Either party must fight until one can no longer continue.",
     "choices": [
       {
-        "text": "Attempt to Dodge",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": "47b",
-            "failure": {
-              "nextEntry": "106a",
-              "damage": "1D6",
-              "message": "The stranger lets loose a shot as you fail to dodge."
-            }
-          }
-        }
-      },
-      {
-        "text": "Fight",
+        "text": "Fight back with your fists",
         "nextEntry": "10d",
         "effects": {
           "combat": {
@@ -9315,6 +9327,43 @@
             "lose": "end"
           },
           "advanceTime": 0
+        }
+      },
+      {
+        "text": "Attack with your handgun",
+        "nextEntry": "10d",
+        "effects": {
+          "combat": {
+            "type": "handgun",
+            "opponent": {
+              "name": "Mysterious Stranger",
+              "attackChance": "50%",
+              "damage": "1D6",
+              "dex": 60,
+              "health": 10,
+              "maxHealth": 10
+            },
+            "win": "47b",
+            "lose": "end"
+          },
+          "advanceTime": 0
+        },
+        "requirements": {
+          "inventoryType": "weapon"
+        }
+      },
+      {
+        "text": "Attempt to Dodge",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": "47b",
+            "failure": {
+              "nextEntry": "106a",
+              "damage": "1D6",
+              "message": "The stranger lets loose a shot as you fail to dodge."
+            }
+          }
         }
       }
     ]
@@ -9908,7 +9957,7 @@
     "description": "You must act quickly to defend yourself.",
     "choices": [
       {
-        "text": "Fight back",
+        "text": "Fight back with your fists",
         "nextEntry": "185b",
         "effects": {
           "combat": {
@@ -9922,6 +9971,27 @@
             "win": "185c",
             "lose": "185d"
           }
+        }
+      },
+      {
+        "text": "Fight back with your gun",
+        "nextEntry": "185b",
+        "effects": {
+          "combat": {
+            "type": "handgun",
+            "opponent": {
+              "name": "Short Man",
+              "attackChance": "50%",
+              "damage": "1D6",
+              "health": 8,
+              "maxHealth": 8
+            },
+            "win": "185c",
+            "lose": "185d"
+          }
+        },
+        "requirements": {
+          "inventoryType": "weapon"
         }
       },
       {
@@ -10127,7 +10197,7 @@
     "description": "You fight for your life!",
     "choices": [
       {
-        "text": "Fight",
+        "text": "Fight back with your fists",
         "nextEntry": "222c",
         "effects": {
           "combat": {
@@ -10143,6 +10213,29 @@
             "lose": "end"
           },
           "advanceTime": 0
+        }
+      },
+      {
+        "text": "Fight back with your gun",
+        "nextEntry": "222c",
+        "effects": {
+          "combat": {
+            "type": "handgun",
+            "opponent": {
+              "name": "Attacker",
+              "attackChance": "70%",
+              "damage": "1D6+1",
+              "dex": 50,
+              "health": 6,
+              "maxHealth": 6
+            },
+            "win": "241",
+            "lose": "end"
+          },
+          "advanceTime": 0
+        },
+        "requirements": {
+          "inventoryType": "weapon"
         }
       },
       {
@@ -10616,11 +10709,6 @@
               "message": "You are doomed.",
               "nextEntry": "299_end"
             }
-          }
-        },
-        "requirements": {
-          "skill": {
-            "name": "Survival (Desert)"
           }
         }
       }
@@ -12989,7 +13077,7 @@
     "description": "You must fend off the ghast.",
     "choices": [
       {
-        "text": "Fight back",
+        "text": "Engage in combat with the ghast",
         "nextEntry": "430-combat-round",
         "effects": {
           "combat": {
@@ -13014,7 +13102,7 @@
     "description": "You must keep attacking or attempt to dodge the ghast's attacks.",
     "choices": [
       {
-        "text": "Attack",
+        "text": "Attack with your fists",
         "nextEntry": "430-combat-round",
         "effects": {
           "combat": {
@@ -13031,6 +13119,30 @@
             "lose": "430-investigator-defeated"
           },
           "advanceTime": 0
+        }
+      },
+      {
+        "text": "Attack wth your gun",
+        "nextEntry": "430-combat-round",
+        "effects": {
+          "combat": {
+            "type": "handgun",
+            "opponent": {
+              "name": "Ghast",
+              "image": "/src/assets/images/atmosphere/ghast.png",
+              "attackChance": "45%",
+              "damage": "3D6",
+              "dex": 65,
+              "health": 5,
+              "maxHealth": 5
+            },
+            "win": "430-ghast-defeated",
+            "lose": "430-investigator-defeated"
+          },
+          "advanceTime": 0
+        },
+        "requirements": {
+          "inventoryType": "weapon"
         }
       },
       {
@@ -13999,7 +14111,7 @@
     "description": "The creature stands before you, ready to attack. You must fight for your life!",
     "choices": [
       {
-        "text": "Attack",
+        "text": "Engage in combat with the ghast",
         "nextEntry": "402-combat-round",
         "effects": {
           "combat": {
@@ -14041,6 +14153,28 @@
         }
       },
       {
+        "text": "Attack",
+        "nextEntry": "402-combat-round",
+        "effects": {
+          "combat": {
+            "type": "handgun",
+            "opponent": {
+              "name": "Ghast",
+              "attackChance": "45%",
+              "damage": "3D6",
+              "dex": 65,
+              "health": 10,
+              "maxHealth": 10
+            },
+            "win": "423",
+            "lose": "402-player-defeated"
+          }
+        },
+        "requirements": {
+          "inventoryType": "weapon"
+        }
+      },
+      {
         "text": "Dodge",
         "effects": {
           "check": {
@@ -14069,5 +14203,259 @@
         }
       }
     ]
+  },
+  "318": {
+    "description": "You enter through a curtain. An old woman looks up, her eyes wild. You offer a coin you find in your pocket and she tells you your future.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "389"
+      }
+    ],
+    "traceNumbers": ["134", "389"]
+  },
+  "389": {
+    "description": "\"Mmmm … I see darkness, darkness. Oh! A foul creature lurks, holding a basket. A door opens ... something shiny glows. I see your face trembling in the darkness, and below ... I see… \" She stops abruptly. \"I can see no more.\" She falls silent.",
+    "choices": [
+      {
+        "text": "Press her for more visions",
+        "nextEntry": "378"
+      },
+      {
+        "text": "Return to Fuzira Marketplace",
+        "nextEntry": "134"
+      }
+    ],
+    "traceNumbers": ["318", "378", "134"]
+  },
+  "378": {
+    "description": "Make a Persuade roll: if successful, you may learn more. Otherwise, she will say no more.",
+    "choices": [
+      {
+        "text": "Attempt a Persuade roll",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "nextEntry": "396"
+            },
+            "failure": {
+              "nextEntry": "134",
+              "message": "She says no more and returns to her silence."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["389", "396", "134"]
+  },
+  "396": {
+    "description": "\"As you wish. I see darkness, and you alone. There is blood, blood. Now I see ice, as though the whole world has frozen. Now ... Oh! How horrible! No! No! I must stop!\" She stares at you as though you are a monster and, gasping, ushers you out.",
+    "choices": [
+      {
+        "text": "Return to the market",
+        "nextEntry": "134"
+      }
+    ],
+    "traceNumbers": ["378", "134"]
+  },
+  "340": {
+    "description": "The café is a good place to hear rumors. You’ll hear snatches of conversation for every hour you spend here, but what you hear depends on how well you understand what was said.\n\nYou can get a bonus if you know Arabic.",
+    "choices": [
+      {
+        "text": "Listen to rumors (you know some Arabic)",
+        "requirements": {
+          "skill": {
+            "name": "Language (Arabic)",
+            "minValue": 5
+          }
+        },
+        "effects": {
+          "diceRoll": "1D10",
+          "outcomes": {
+            "1-2": {
+              "description": "You hear rumors of local trouble, but nothing concrete.",
+              "nextEntry": "343"
+            },
+            "3-4": {
+              "description": "You hear about strange goings-on in the city, but it’s unclear how reliable the information is.",
+              "nextEntry": "365"
+            },
+            "5-6": {
+              "description": "You pick up some useful information about Cairo’s underworld.",
+              "nextEntry": "387"
+            },
+            "7-10": {
+              "description": "You learn of a secret meeting happening soon at a remote location.",
+              "nextEntry": "363"
+            }
+          }
+        }
+      },
+      {
+        "text": "Listen to rumors (you don't know Arabic)",
+        "requirements": {
+          "skill": {
+            "name": "Language (Arabic)",
+            "minValue": 1
+          }
+        },
+        "effects": {
+          "diceRoll": "1D10",
+          "outcomes": {
+            "1-2": {
+              "description": "You overhear idle chatter, nothing useful.",
+              "nextEntry": "342"
+            },
+            "3-4": {
+              "description": "You hear rumors of local trouble, but nothing concrete.",
+              "nextEntry": "343"
+            },
+            "5-6": {
+              "description": "You hear about strange goings-on in the city, but it’s unclear how reliable the information is.",
+              "nextEntry": "365"
+            },
+            "7-8": {
+              "description": "You pick up some useful information about Cairo’s underworld.",
+              "nextEntry": "387"
+            },
+            "9-10": {
+              "description": "You learn of a secret meeting happening soon at a remote location.",
+              "nextEntry": "363"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["134", "342", "343", "365", "387", "363"]
+  },
+  "342": {
+    "description": "You overhear the following:\n\n\"The thieves have fled toward the Quattara Depression.\"\n\"The device is part of a mechanical idol of Aten, to be found in the desert.\"\n\"Akhenaten’s city is the future home of the device.\"",
+    "choices": [
+      {
+        "text": "Return to the café",
+        "nextEntry": "340"
+      },
+      {
+        "text": "Return to the Fuzira Marketplace",
+        "nextEntry": "134"
+      }
+    ],
+    "traceNumbers": ["340", "134"]
+  },
+  "343": {
+    "description": "You overhear the following:\n\n\"The device is really part of an ancient lock.\"\n\"It has been stolen by the cult of Aten to unloose some evil.\"\n\"Tell-el-Amarna is the site of the Lost Pyramid.\"\n\"Strange bands of nomads roam near the Quattara Depression.\"",
+    "choices": [
+      {
+        "text": "Return to the café",
+        "nextEntry": "340"
+      },
+      {
+        "text": "Return to the Fuzira Marketplace",
+        "nextEntry": "134"
+      }
+    ],
+    "traceNumbers": ["340", "134"]
+  },
+  "365": {
+    "description": "You overhear the following:\n\n\"The cult of Aten are deluded fools. They serve semi-human monsters.\"\n\"Bodies have been seen carried to the eastern side of the pyramid at Tell-el-Amarna.\"\n\"Amet Keh served the cult, but they may dispose of him.\"",
+    "choices": [
+      {
+        "text": "Return to the café",
+        "nextEntry": "340"
+      },
+      {
+        "text": "Return to the Fuzira Marketplace",
+        "nextEntry": "134"
+      }
+    ],
+    "traceNumbers": ["340", "134"]
+  },
+  "387": {
+    "description": "You overhear the following:\n\n\"Keh is dead. He had served his purpose.\"\n\"The device is merely the key to the door.\"\n\"A new upheaval comes on the first day of the vernal equinox.\"\n\"The Lost Tomb is not empty.\"",
+    "choices": [
+      {
+        "text": "Return to the café",
+        "nextEntry": "340"
+      },
+      {
+        "text": "Return to the Fuzira Marketplace",
+        "nextEntry": "134"
+      }
+    ],
+    "traceNumbers": ["340", "134"]
+  },
+  "363": {
+    "description": "You overhear the following:\n\n\"Creatures inhabit the tombs. Feeding on human sacrifices brought to the tomb, these creatures guard the lower levels against interlopers.\"\n\"They cannot stand sunlight.\"\n\"They have the device which opens the door.\"",
+    "choices": [
+      {
+        "text": "Return to the café",
+        "nextEntry": "340"
+      },
+      {
+        "text": "Return to the Fuzira Marketplace",
+        "nextEntry": "134"
+      }
+    ],
+    "traceNumbers": ["340", "134"]
+  },
+  "414": {
+    "description": "The daggers are finely balanced, and you find yourself tempted to play. If you play for an hour, you have a chance to win or lose the game. The crowd cheers you on as you attempt your throws.",
+    "choices": [
+      {
+        "text": "Play the dagger game",
+        "effects": {
+          "diceRoll": "1D6",
+          "outcomes": {
+            "1-3": {
+              "description": "You win the game, earning applause and a handful of piastres!",
+              "nextEntry": "414a"
+            },
+            "4-6": {
+              "description": "You lose the game. The daggers slip from your grasp, and you walk away with empty pockets.",
+              "nextEntry": "414b"
+            }
+          },
+          "time": 60
+        }
+      },
+      {
+        "text": "Return to the market",
+        "nextEntry": "134"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": ["134", "Cairo Location"]
+  },
+  "414a": {
+    "description": "You leave feeling accomplished.",
+    "choices": [
+      {
+        "text": "Return to the market",
+        "nextEntry": "134"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo"
+      }
+    ],
+    "traceNumbers": ["134", "Cairo"]
+  },
+  "414b": {
+    "description": "The crowd groans. You walk away with nothing, slightly embarrassed by your loss.",
+    "choices": [
+      {
+        "text": "Return to the market",
+        "nextEntry": "134"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo"
+      }
+    ],
+    "traceNumbers": ["134", "Cairo"]
   }
 }

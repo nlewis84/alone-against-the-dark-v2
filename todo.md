@@ -1,21 +1,15 @@
+Go to the desert and run out of water....you will have no health but won't die and trigger end of game
+
 Roughly every 6 entries in the pyramid should advance the time 1 hour (382)
 
-Upgrade Player attack in handleCombatRound to use any type of weapon, as well as damage (update all combats?)
+Upgrade Player attack in handleCombatRound to use any type of weapon, as well as damage (update all combats?)....I updated most of them with handgun....need to support other types of weapons
 Handle player death in combat
 
 120
 147
 
 Cairo Locations
-134
-
-318
-340
-414
-
 439b - should probably check to see if the user has a knife and remove it if they break it...may need to change routing from previous
-
-196 - Fix the language on the choices
 
 Bremen Locations
 450 - code 449

@@ -1649,7 +1649,7 @@ export function checkRequirements(requirements) {
     // Check if the player has the required skill and the minimum value for that skill
     if (requirements.skill) {
       const { name, minValue } = requirements.skill
-
+      console.log(minValue, currentState.skills[name], requirements.skill)
       if (!currentState.skills[name] || currentState.skills[name] < minValue) {
         return false
       }
@@ -1775,7 +1775,7 @@ export function canUseSkill(entryId, skill) {
 }
 
 export function handleOutcomeBasedEncounter(choice) {
-  const roll = rollDice(6) // Simulate a 1D6 roll
+  const roll = rollDice(choice.effects.diceRoll) // Simulate a 1D6 roll
   const outcomes = choice.effects.outcomes
   let matchedOutcome = findOutcomeForRoll(roll, outcomes) // Adjust this to handle range keys like "1-5"
 
