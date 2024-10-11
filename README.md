@@ -42,5 +42,21 @@ The project includes a script to sort `entries.json`, maintaining the structured
 - **To Run the Sorting Script:**
 
   ```bash
-  node scripts/sortJson.js
+  yarn sort
+  ```
+
+### 🔎 Generate Missing Entries
+
+This command will:
+
+- **Generate `nextEntries.json`**: Extracts all `nextEntry` references from `entries.json`.
+- **Generate `topLevelKeys.json`**: Extracts all top-level entry keys from `entries.json`.
+- **Generate `missingEntries.json`**: Compares the two lists and identifies any `nextEntry` references that don't have a corresponding top-level entry key.
+
+Additionally, once the `missingEntries.json` file is generated, it will automatically open in **VSCode** for review.
+
+- **Command to run:**
+
+  ```bash
+  yarn missing
   ```
