@@ -85,7 +85,7 @@ export async function initializeGame() {
     updateTime(0, 20) // Initialize date display
     startGame()
     // 134 is the fuzira marketplace
-    displayEntry('449') // Ensure the first entry is displayed ... should be 13
+    displayEntry('461') // Ensure the first entry is displayed ... should be 13
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error)
   }

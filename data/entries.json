@@ -15023,5 +15023,647 @@
       }
     ],
     "traceNumbers": ["370"]
+  },
+  "451": {
+    "description": "You see a freighter at anchor in the harbor, apart from the others. Your eyes note the reinforced hull, and the silver wingtips coming from bulky tarpaulins on the deck—probably Dorniers stored in sections. You can’t read the banner hanging limply in the damp air, but it almost surely says \"Starkweather-Moore.\" The twin stacks of the ship disappear in the low-hanging fog.",
+    "choices": [
+      {
+        "text": "Go aboard the ship",
+        "nextEntry": "486"
+      },
+      {
+        "text": "Visit a nearby inn, 'Der Freischütz'",
+        "nextEntry": "461"
+      }
+    ],
+    "traceNumbers": ["449", "486", "461"]
+  },
+  "486": {
+    "title": "THE STEAMSHIP: THE DARK SEA",
+    "description": "The gangplank is down. If you wait here and try to talk to the sailors, you might get more information. You can also decide to see the Captain or the expedition leader. Alternatively, you can attempt an INT roll once daily to uncover something significant.",
+    "choices": [
+      {
+        "text": "Wait and try to talk to the sailors",
+        "nextEntry": "494"
+      },
+      {
+        "text": "Go to see the Captain",
+        "nextEntry": "487"
+      },
+      {
+        "text": "Go to see the expedition leader",
+        "nextEntry": "497"
+      },
+      {
+        "text": "Attempt an INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "453"
+            },
+            "failure": {
+              "nextEntry": "486",
+              "message": "You learn nothing useful today, but you can try again tomorrow."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Go to any Bremen location",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["494", "487", "497", "453", "Bremen Location"]
+  },
+  "494": {
+    "description": "The sailors are uneasy about the weather and the polar trip. They say that the Captain ('Old Haddock') is hiring only crewmen with particular skills. If you decide to try to fake the skills needed for a journey into a dangerous environment, you can attempt a Know (EDU) roll instead of the specific skill roll required.",
+    "choices": [
+      {
+        "text": "Go to see the Captain",
+        "nextEntry": "487"
+      }
+    ],
+    "traceNumbers": ["463", "486", "496", "487"]
+  },
+  "487": {
+    "title": "Captain's Hiring Process",
+    "description": "The captain is hiring people who have 25% or better in the following skills: Electrical Repair, Mechanical Repair, Navigate, Operate Heavy Machinery, Pilot (Aircraft), and Survival. Qualify in one skill area, and you're hired for the trip.",
+    "choices": [
+      {
+        "text": "Qualify with Electrical Repair (25% or better)",
+        "nextEntry": "501",
+        "requirements": {
+          "skill": {
+            "name": "Electrical Repair",
+            "minValue": 25
+          }
+        }
+      },
+      {
+        "text": "Qualify with Mechanical Repair (25% or better)",
+        "nextEntry": "501",
+        "requirements": {
+          "skill": {
+            "name": "Mechanical Repair",
+            "minValue": 25
+          }
+        }
+      },
+      {
+        "text": "Qualify with Navigate (25% or better)",
+        "nextEntry": "501",
+        "requirements": {
+          "skill": {
+            "name": "Navigate",
+            "minValue": 25
+          }
+        }
+      },
+      {
+        "text": "Qualify with Operate Heavy Machinery (25% or better)",
+        "nextEntry": "501",
+        "requirements": {
+          "skill": {
+            "name": "Operate Heavy Machinery",
+            "minValue": 25
+          }
+        }
+      },
+      {
+        "text": "Qualify with Pilot (Aircraft) (25% or better)",
+        "nextEntry": "501",
+        "requirements": {
+          "skill": {
+            "name": "Pilot (Aircraft)",
+            "minValue": 25
+          }
+        }
+      },
+      {
+        "text": "Qualify with Survival (25% or better)",
+        "nextEntry": "501",
+        "requirements": {
+          "skill": {
+            "name": "Survival",
+            "minValue": 25
+          }
+        }
+      },
+      {
+        "text": "Try to fake your skills (Know (EDU) roll)",
+        "effects": {
+          "check": {
+            "skill": "EDU",
+            "success": {
+              "nextEntry": "501",
+              "message": "You successfully fake your skillfulness and are hired for the trip."
+            },
+            "failure": {
+              "nextEntry": "488",
+              "message": "The Captain sees through your attempt."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["463", "486", "494", "496", "501", "488"]
+  },
+  "497": {
+    "description": "Professor Eustace Blake is very busy coordinating the expedition. \"Who are you? What do you want?\" he asks.",
+    "choices": [
+      {
+        "text": "If you are Professor Grunewald",
+        "nextEntry": "497a",
+        "requirements": {
+          "character": "Professor Grunewald"
+        }
+      },
+      {
+        "text": "If you are not Professor Grunewald",
+        "nextEntry": "497b",
+        "requirements": {
+          "characterNot": "Professor Grunewald"
+        }
+      }
+    ],
+    "traceNumbers": ["497a", "497b"]
+  },
+  "497a": {
+    "description": "Blake is happy to see you. He welcomes you warmly and shares some details about the expedition.\n\nThe trip is to retrace the ill-fated journey of the Lake expedition. He attributes stories of lost cities to “Dementia Antarctica.”",
+    "choices": [
+      {
+        "text": "Continue discussing the expedition",
+        "nextEntry": "463"
+      },
+      {
+        "text": "Leave",
+        "nextEntry": "Bremen Location"
+      }
+    ],
+    "traceNumbers": ["463", "Bremen Location"]
+  },
+  "497b": {
+    "description": "Blake talks with some reluctance. He explains that the trip is to retrace the ill-fated journey of the Lake expedition. He dismisses stories of lost cities as 'Dementia Antarctica.'",
+    "choices": [
+      {
+        "text": "Try to join the expedition",
+        "nextEntry": "463"
+      },
+      {
+        "text": "Leave",
+        "nextEntry": "Bremen Location"
+      }
+    ],
+    "traceNumbers": ["463", "Bremen Location"]
+  },
+  "463": {
+    "description": "You decide to cut your hair and pose as a sailor.",
+    "choices": [
+      {
+        "text": "Talk to the other sailors",
+        "nextEntry": "494"
+      },
+      {
+        "text": "Talk to the Captain",
+        "nextEntry": "487"
+      }
+    ],
+    "traceNumbers": ["494", "487", "497", "498"]
+  },
+  "453": {
+    "description": "You decide to stow away. You can stash food and water, and find shelter, in any one of the following hiding places: Lifeboat, Cargo Hold, Lower Deck (Storage), Engine Room (Rear).",
+    "choices": [
+      {
+        "text": "Hide in the Lifeboat",
+        "nextEntry": "456a"
+      },
+      {
+        "text": "Hide in the Cargo Hold",
+        "nextEntry": "456b"
+      },
+      {
+        "text": "Hide in the Lower Deck",
+        "nextEntry": "456c"
+      },
+      {
+        "text": "Hide in the Engine Room (Rear)",
+        "nextEntry": "456d"
+      },
+      {
+        "text": "Decide this is a bad idea",
+        "nextEntry": "486"
+      }
+    ],
+    "traceNumbers": ["456a", "456b", "456c", "456d", "486"]
+  },
+  "456a": {
+    "description": "You hid in the Lifeboat. The lifeboat is checked once during the voyage. Roll your Stealth to avoid being discovered.",
+    "choices": [
+      {
+        "text": "Roll Stealth",
+        "effects": {
+          "check": {
+            "skill": "Stealth",
+            "success": {
+              "nextEntry": "510"
+            },
+            "failure": {
+              "nextEntry": "459"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["510", "459"]
+  },
+  "456b": {
+    "description": "You hid in the Cargo Hold. Roll your Stealth to avoid being discovered.",
+    "choices": [
+      {
+        "text": "Roll Stealth",
+        "effects": {
+          "check": {
+            "skill": "Stealth",
+            "success": {
+              "nextEntry": "510"
+            },
+            "failure": {
+              "nextEntry": "459"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["510", "459"]
+  },
+  "456c": {
+    "description": "You hid in the Lower Deck. You must convince the crew not to betray you to the Captain. Choose either Charm or Fast Talk to attempt.",
+    "choices": [
+      {
+        "text": "Roll Charm",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "nextEntry": "510"
+            },
+            "failure": {
+              "nextEntry": "459"
+            }
+          }
+        }
+      },
+      {
+        "text": "Roll Fast Talk",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "nextEntry": "510"
+            },
+            "failure": {
+              "nextEntry": "459"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["510", "459"]
+  },
+  "456d": {
+    "description": "You hid in the Engine Room (Rear). You must make friends with the two wipers who tend the second engine. Choose either Charm or Psychology to attempt.",
+    "choices": [
+      {
+        "text": "Roll Charm",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "nextEntry": "510"
+            },
+            "failure": {
+              "nextEntry": "459"
+            }
+          }
+        }
+      },
+      {
+        "text": "Roll Psychology",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "510"
+            },
+            "failure": {
+              "nextEntry": "459"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["510", "459"]
+  },
+  "459": {
+    "description": "Found, you are brought before Captain Crawford. He is not interested in your motives or what you say. You are locked in a windowless room on the lower deck for many days. Food is brought to you. Just as you are giving up hope, the ship arrives in Antarctica.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "511"
+      }
+    ],
+    "traceNumbers": ["456", "460", "511"]
+  },
+  "488": {
+    "description": "The captain eyes you suspiciously.",
+    "choices": [
+      {
+        "text": "Introduce yourself",
+        "nextEntry": "488a",
+        "requirements": {
+          "character": "Professor Grunewald"
+        }
+      },
+      {
+        "text": "If you’re Lau",
+        "nextEntry": "488b",
+        "requirements": {
+          "character": "Lydia Lau"
+        }
+      },
+      {
+        "text": "If you’re Wilson",
+        "nextEntry": "454",
+        "requirements": {
+          "character": "Devon Wilson"
+        }
+      },
+      {
+        "text": "If you’re Holt - Try Persuade",
+        "nextEntry": "483",
+        "requirements": {
+          "character": "Ernest Holt"
+        },
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "nextEntry": "483"
+            },
+            "failure": {
+              "nextEntry": "488",
+              "message": "You fail to persuade today."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "If you’re Holt - Try Charm",
+        "nextEntry": "489",
+        "requirements": {
+          "character": "Ernest Holt"
+        },
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "nextEntry": "489"
+            },
+            "failure": {
+              "nextEntry": "488",
+              "message": "You fail to charm today."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "If you’re Holt - Try Fast Talk",
+        "nextEntry": "495",
+        "requirements": {
+          "character": "Ernest Holt"
+        },
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "nextEntry": "495"
+            },
+            "failure": {
+              "nextEntry": "488",
+              "message": "You fail to fast talk today."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "If you’re Holt - Try Intimidate",
+        "nextEntry": "471",
+        "requirements": {
+          "character": "Ernest Holt"
+        },
+        "effects": {
+          "check": {
+            "skill": "Intimidate",
+            "success": {
+              "nextEntry": "471"
+            },
+            "failure": {
+              "nextEntry": "488",
+              "message": "You fail to intimidate today."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Come back another day",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": [
+      "471",
+      "483",
+      "487",
+      "497",
+      "500",
+      "498",
+      "454",
+      "489",
+      "495"
+    ]
+  },
+  "488a": {
+    "description": "\"Right ... just what we need ... another professor. If Blake vouches for you, welcome aboard.\"",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "500"
+      }
+    ]
+  },
+  "488b": {
+    "description": "He says \"Sorry, no reporters, especially ladies,\" he mutters.",
+    "choices": [
+      {
+        "text": "Are you going to take that?",
+        "nextEntry": "498"
+      }
+    ]
+  },
+  "454": {
+    "description": "Decide whether you are in uniform, or not.",
+    "choices": [
+      {
+        "text": "I am in uniform",
+        "nextEntry": "499"
+      },
+      {
+        "text": "I am not in uniform",
+        "nextEntry": "464"
+      }
+    ],
+    "traceNumbers": ["499", "464"]
+  },
+  "498": {
+    "description": "Once per day, you may attempt an INT roll. When you succeed, you can proceed further.",
+    "choices": [
+      {
+        "text": "Attempt an INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "463"
+            },
+            "failure": {
+              "nextEntry": "498",
+              "message": "You fail the roll, but you can try again tomorrow."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Return to any Bremen location",
+        "nextEntry": "Bremen Location"
+      }
+    ],
+    "traceNumbers": ["463", "Bremen Location"]
+  },
+  "483": {
+    "description": "The Captain says, \"Our sponsors are Mr. Starkweather and Mr. Moore. You must ask them if this expedition is for sale,\" he says. 'Good day.'",
+    "choices": [
+      {
+        "text": "Try to convince the Captain again",
+        "nextEntry": "488"
+      },
+      {
+        "text": "Continue",
+        "nextEntry": "490"
+      }
+    ],
+    "traceNumbers": ["488", "490"]
+  },
+  "489": {
+    "description": "With your successful Charm, you delight them by offering to publish the expedition’s work and to finance later research. The leaders leap at the chance. Of course, you can go to Antarctica! The Dark Sea sails Dec. 20.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "500"
+      }
+    ],
+    "traceNumbers": ["500", "488"]
+  },
+  "495": {
+    "description": "He looks at you somewhat surprised. \"Sorry, I don’t really follow. I don’t have time to argue, sir. Excuse me.\"",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "490"
+      }
+    ],
+    "traceNumbers": ["490", "488"]
+  },
+  "471": {
+    "description": "He stares at you. \"Sir, that tone of voice may serve you well in the boardrooms of New York, but this is my expedition. Good day!\"",
+    "choices": [
+      {
+        "text": "Try to convince the Captain again",
+        "nextEntry": "488"
+      },
+      {
+        "text": "Wait a day and try something else",
+        "nextEntry": "490",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ],
+    "traceNumbers": ["488", "490"]
+  },
+  "499": {
+    "description": "\"But you’re on active duty, from your dress. Do you have orders requesting appointment to this expedition?\" Of course you don’t.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "490"
+      }
+    ],
+    "traceNumbers": ["490", "454"]
+  },
+  "464": {
+    "description": "The Captain assesses your skills, but it's clear that you don't meet the expedition's requirements.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "490"
+      }
+    ],
+    "traceNumbers": ["490", "454"]
+  },
+  "490": {
+    "description": "You can attempt one INT roll per day. When you succeed, you may proceed further.",
+    "choices": [
+      {
+        "text": "Attempt an INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "496"
+            },
+            "failure": {
+              "nextEntry": "490",
+              "message": "You fail the roll, but you can try again tomorrow."
+            }
+          }
+        }
+      },
+      {
+        "text": "Ask to see the captain",
+        "nextEntry": "487"
+      }
+    ],
+    "traceNumbers": ["464", "483", "495", "499", "487", "496"]
+  },
+  "496": {
+    "description": "If you shed your uniform, get a false beard, and pose as a sailor, you can try to blend in.",
+    "choices": [
+      {
+        "text": "Pose as a sailor and go to the sailors",
+        "nextEntry": "494"
+      },
+      {
+        "text": "Ask to see the Captain",
+        "nextEntry": "487"
+      }
+    ],
+    "traceNumbers": ["490", "494", "487"]
   }
 }

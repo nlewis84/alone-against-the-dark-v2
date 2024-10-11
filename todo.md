@@ -1,27 +1,7 @@
 Bremen Locations
-451 - from 449
-486
-494
-487
-497
-463
-453
-456
-488
 501
 500
-498
-454
-483
-489
-495
-471
-463
-499
-464
-490
-488
-496
+456
 
 452 - from 449
 461
@@ -35,7 +15,6 @@ Bremen Locations
 473
 485
 482
-461
 478
 481
 484
@@ -43,6 +22,8 @@ Bremen Locations
 470
 472
 582
+
+check 488 with all the characters
 
 300 should go to 206 instead
 
