@@ -43,7 +43,7 @@
         "text": "Finish at bank"
       }
     ],
-    "description": "Deposits and withdrawals are possible between 9-3. M-F. If you’re Prof. Grunewald, your account is here, and you can withdraw up to the Cash amount noted on the investigator sheet.",
+    "description": "The Arkham First National Bank operates from 9 AM to 3 PM, Monday through Friday. If you're Professor Grunewald, the bank manager greets you personally, acknowledging your well-established account.\n\nYou may withdraw funds as needed, without any hassle. The atmosphere inside the bank is calm, with clerks attending to clients and the reassuring clink of coins echoing softly.",
     "title": "ARKHAM FIRST NATIONAL BANK",
     "traceNumbers": ["Arkham Location"]
   },
@@ -1719,7 +1719,7 @@
     "description": "His small apartment is cluttered with books and filled with rich aromas. It is the room of a scholar.\n\nYou will now attempt several rolls to uncover more about this situation.",
     "choices": [
       {
-        "text": "Attempt Knowledge, Cthulhu Mythos, Occult, Spot Hidden, and Listen rolls.",
+        "text": "Attempt Knowledge, Cthulhu Mythos, Occult, Spot Hidden, and Listen rolls",
         "nextEntry": "112",
         "effects": {
           "multipleChecks": [
@@ -2024,7 +2024,7 @@
     "description": "Something glistens beneath his open jacket, troubling you.",
     "choices": [
       {
-        "text": "Attempt a Dodge roll.",
+        "text": "Attempt a Dodge roll",
         "effects": {
           "check": {
             "skill": "Dodge",
@@ -2108,7 +2108,7 @@
     "traceNumbers": ["42"]
   },
   "94": {
-    "description": "You are lost somewhere in the great desert of North Africa. Your water will last 1D10 days. If you succeed with a Survival (Desert) roll, add 1D3 days to that total (you know how to best ration the water). Write down the number of days your water will last. Each time you go to another entry, subtract a day from your water total. When you run out of water, subtract 6 hit points each time you go to another entry. Halt the calculation when you reach other humans, or when you die. You start walking. The heat is incredible, but you must go on!",
+    "description": "You are lost somewhere in the great desert of North Africa. Your water will last for a little while. Your water supply will be tracked above. Each time you go to another entry, your water total will decrease. When you run out of water, you will lose 6 hit points each time you go to another entry. You will be safer when you reach other humans. You start walking. The heat is incredible, but you must go on!",
     "choices": [
       {
         "text": "Roll for water supply",
@@ -2541,21 +2541,21 @@
     "description": "You have a bad feeling about this.",
     "choices": [
       {
-        "text": "You passed your Occult or Cthulhu Mythos check.",
+        "text": "You passed your Occult or Cthulhu Mythos check",
         "nextEntry": "112a",
         "requirements": {
           "anySuccess": ["cthulhuMythosSuccess", "occultSuccess"]
         }
       },
       {
-        "text": "You passed your Spot Hidden check.",
+        "text": "You passed your Spot Hidden check",
         "nextEntry": "112b",
         "requirements": {
           "hasSuccess": "spotHiddenSuccess"
         }
       },
       {
-        "text": "You passed your Listen check.",
+        "text": "You passed your Listen check",
         "nextEntry": "112c",
         "requirements": {
           "hasSuccess": "listenSuccess"
@@ -5602,10 +5602,10 @@
         }
       },
       {
-        "text": "For the Karpathos Device (TODO: after)",
+        "text": "For the Karpathos Device",
         "nextEntry": "247",
         "requirements": {
-          "dateBefore": "1931-10-31"
+          "dateAfter": "1931-10-31"
         }
       },
       {
@@ -5616,10 +5616,10 @@
         }
       },
       {
-        "text": "Interview the curator, Amet Keh (TODO: after)",
+        "text": "Interview the curator, Amet Keh",
         "nextEntry": "314",
         "requirements": {
-          "dateBefore": "1931-10-31"
+          "dateAfter": "1931-10-31"
         }
       },
       {
@@ -7534,19 +7534,6 @@
         }
       },
       {
-        "text": "Try to retrace your path West",
-        "nextEntry": "214",
-        "effects": {
-          "modifyVariable": {
-            "name": "waterSupply",
-            "value": {
-              "diceRoll": "1D3"
-            },
-            "operation": "subtract"
-          }
-        }
-      },
-      {
         "text": "Try to retrace your path North",
         "nextEntry": "232",
         "effects": {
@@ -7562,6 +7549,19 @@
       {
         "text": "Try to retrace your path East?",
         "nextEntry": "246",
+        "effects": {
+          "modifyVariable": {
+            "name": "waterSupply",
+            "value": {
+              "diceRoll": "1D3"
+            },
+            "operation": "subtract"
+          }
+        }
+      },
+      {
+        "text": "Try to retrace your path West",
+        "nextEntry": "214",
         "effects": {
           "modifyVariable": {
             "name": "waterSupply",
@@ -11431,7 +11431,7 @@
     ]
   },
   "94_survival_check": {
-    "description": "If you succeed with a Survival (Desert) roll, you will add 1D3 days to your water supply.",
+    "description": "If you succeed with a Survival (Desert) roll, you can ration your water supply.",
     "choices": [
       {
         "text": "Attempt a Survival (Desert) roll",
@@ -11460,7 +11460,7 @@
     ]
   },
   "94_walk": {
-    "description": "The heat is incredible, but you must go on. Roll 1D10 to determine where you go next.",
+    "description": "The heat is incredible, but you must go on. Roll to determine where you go next.",
     "choices": [
       {
         "text": "Roll 1D10",
@@ -11678,7 +11678,7 @@
     "description": "You realize Hawkes’ library is stocked with a strange assortment of titles: \"Marvels of the Spirit World\", Crowley’s \"Incantations\", Weinburger’s \"Die Mond\".",
     "choices": [
       {
-        "text": "You shudder as you feel a chill run down your spine.",
+        "text": "You shudder as you feel a chill run down your spine",
         "nextEntry": "112e"
       }
     ]
@@ -11687,7 +11687,7 @@
     "description": "You see that the stout chair in the center of the room has odd, regular notches and grooves in its arms, legs, and back.",
     "choices": [
       {
-        "text": "You feel a chill run down your spine.",
+        "text": "You feel a chill run down your spine",
         "nextEntry": "112e"
       }
     ]
@@ -11705,7 +11705,7 @@
     "description": "That terrible feeling of dread is growing.",
     "choices": [
       {
-        "text": "Make INT roll.",
+        "text": "Make INT roll",
         "effects": {
           "check": {
             "skill": "INT",
@@ -11724,7 +11724,7 @@
     "description": "That terrible feeling of dread is growing, but you are already aware of the danger.",
     "choices": [
       {
-        "text": "Make modified INT roll.",
+        "text": "Make modified INT roll",
         "effects": {
           "check": {
             "skill": "INT",
@@ -11744,7 +11744,7 @@
     "description": "From behind the curtain, a hand suddenly reaches out for you. You must act quickly.",
     "choices": [
       {
-        "text": "Make a Dodge roll.",
+        "text": "Make a Dodge roll",
         "effects": {
           "check": {
             "skill": "Dodge",
@@ -12839,7 +12839,7 @@
     "description": "The glass shatters loudly as you grab the Karpathos Device. It is surprisingly heavy. Unfortunately, the noise attracts immediate attention. Make a DEX check to see if you can escape before the guard unstraps his revolver and takes a shot at you.",
     "choices": [
       {
-        "text": "Attempt to escape with the Device, make a DEX check.",
+        "text": "Attempt to escape with the Device, make a DEX check",
         "effects": {
           "check": {
             "skill": "DEX",
