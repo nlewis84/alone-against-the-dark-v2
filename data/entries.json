@@ -389,7 +389,7 @@
         "text": "Return to talking to Amet Keh in Cairo",
         "nextEntry": "350",
         "requirements": {
-          "previousEntry": "350"
+          "previousEntry": "316"
         }
       }
     ],
@@ -5584,7 +5584,7 @@
   },
   "206": {
     "title": "CAIRO MUSEUM",
-    "description": "The museum is open 9am to noon, and from 3pm-6pm daily. Three exhibits in this great museum might interest you:",
+    "description": "The museum is open 9am to 6pm daily. Three exhibits in this great museum might interest you:",
     "choices": [
       {
         "text": "For Treasures from the Pyramids",
@@ -5596,11 +5596,31 @@
       },
       {
         "text": "For the Karpathos Device",
-        "nextEntry": "209"
+        "nextEntry": "209",
+        "requirements": {
+          "dateBefore": "1931-10-31"
+        }
+      },
+      {
+        "text": "For the Karpathos Device (TODO: after)",
+        "nextEntry": "247",
+        "requirements": {
+          "dateBefore": "1931-10-31"
+        }
       },
       {
         "text": "Interview the curator, Amet Keh",
-        "nextEntry": "302"
+        "nextEntry": "302",
+        "requirements": {
+          "dateBefore": "1931-10-31"
+        }
+      },
+      {
+        "text": "Interview the curator, Amet Keh (TODO: after)",
+        "nextEntry": "314",
+        "requirements": {
+          "dateBefore": "1931-10-31"
+        }
       },
       {
         "text": "Go to a Cairo location",
@@ -14457,5 +14477,130 @@
         }
       }
     ]
+  },
+  "290": {
+    "description": "You see household paraphernalia, combs, and tools, all of gold and silver. An empty sarcophagus contains a placard explaining that when the lord died, his slaves were killed in order that they might continue to serve him in the Afterlife.",
+    "choices": [
+      {
+        "text": "Want to see Akhenaten’s amulet?",
+        "nextEntry": "207"
+      },
+      {
+        "text": "Want to decipher the Egyptian hieroglyphs?",
+        "effects": {
+          "check": {
+            "skill": "Language (Hieroglyphics)",
+            "success": {
+              "nextEntry": "298"
+            },
+            "failure": {
+              "nextEntry": "206",
+              "message": "You fail to decipher the hieroglyphs and move on."
+            }
+          }
+        }
+      },
+      {
+        "text": "Move on",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["206", "207", "298", "300"]
+  },
+  "207": {
+    "description": "You notice a picture bearing the label, “Akhenaten’s Amulet.” You make a sketch for your notes.",
+    "image": "/src/assets/images/clues/akhenaten's-amulet.png",
+    "choices": [
+      {
+        "text": "Return to the exhibit",
+        "nextEntry": "290"
+      }
+    ],
+    "traceNumbers": ["290"]
+  },
+  "298": {
+    "description": "Looking at the information provided, you read about references to a “top,” and to a “door opening.”",
+    "choices": [
+      {
+        "text": "Return to the exhibit",
+        "nextEntry": "290"
+      }
+    ],
+    "traceNumbers": ["290"]
+  },
+  "236": {
+    "description": "A cut-away model of the Pyramid of Akhenaten is on display.",
+    "choices": [
+      {
+        "text": "Make a successful INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "252"
+            },
+            "failure": {
+              "nextEntry": "236",
+              "message": "You fail to discern anything."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a successful Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "287"
+            },
+            "failure": {
+              "nextEntry": "236",
+              "message": "Your luck does not reveal anything."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a successful Cthulhu Mythos roll",
+        "effects": {
+          "check": {
+            "skill": "Cthulhu Mythos",
+            "success": {
+              "nextEntry": "244"
+            },
+            "failure": {
+              "nextEntry": "236",
+              "message": "You fail to recall anything useful."
+            }
+          }
+        }
+      },
+      {
+        "text": "Move on",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["206", "244", "252", "287"]
+  },
+  "244": {
+    "description": "In a series of friezes, you notice that a strange, mucous-looking creature has been partly chiseled away. The creature seems to resemble the ancient slave race of the “Old Ones” you’ve read about in dubious tomes of lore. You think you remember the name given to them: shoggoths.",
+    "choices": [
+      {
+        "text": "Return to the exhibit",
+        "nextEntry": "236"
+      }
+    ],
+    "traceNumbers": ["236"]
+  },
+  "252": {
+    "description": "The exposed interior of the pyramid is much too small. There must be something else in there.",
+    "choices": [
+      {
+        "text": "Return to the exhibit",
+        "nextEntry": "236"
+      }
+    ],
+    "traceNumbers": ["236"]
   }
 }

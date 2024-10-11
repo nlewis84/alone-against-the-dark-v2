@@ -1,3 +1,5 @@
+Combine 206 and 300 into a single entry...update the locationTable for Cairo Museum...keep 206, ditch 300....all refs to 300 go to 206
+
 Go to the desert and run out of water....you will have no health but won't die and trigger end of game
 
 Roughly every 6 entries in the pyramid should advance the time 1 hour (382)
@@ -9,6 +11,9 @@ Handle player death in combat
 147
 
 Cairo Locations
+206
+236
+211 hide button should advance to night time 9PM and make sure next night buttons are correct
 439b - should probably check to see if the user has a knife and remove it if they break it...may need to change routing from previous
 
 Bremen Locations

@@ -344,17 +344,18 @@
         "alwaysOpen": true
       }
     },
-    "Cairo Museum - Before October 30th": {
+    "Cairo Museum": {
       "entry": "206",
       "availability": {
-        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "hours": [9, 18]
-      }
-    },
-    "Cairo Museum - After October 30th": {
-      "entry": "300",
-      "availability": {
-        "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "daysOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
         "hours": [9, 18]
       }
     },

@@ -1,55 +1,67 @@
 const fs = require('fs')
 
-// Load the missingEntries.json file
-const missingEntriesPath = './output/missingEntries.json' // Replace with your actual file path
-const outputFilePath = './output/missingEntries.json' // Output file for the cleaned list
+// Load the topLevelKeys.json and nextEntries.json files
+const topLevelKeysPath = './output/topLevelKeys.json' // Replace with your actual file path
+const nextEntriesPath = './output/nextEntries.json' // Replace with your actual file path
+const outputFilePath = './output/missingEntries.json' // Output file for missing entries
 
-// City names and "Location" combinations to be removed
-const citiesToRemove = [
-  'New York',
-  'Athens',
-  'Alexandria',
-  'Cairo',
-  'Bremen',
-  'Arkham Location',
-  'Athens Location',
-  'Alexandria Location',
-  'Cairo Location',
-  'Bremen Location',
-  'New York Location',
-]
-
-// Read the missingEntries.json file
-fs.readFile(missingEntriesPath, 'utf8', (err, data) => {
+// Read the top-level keys and next entries files
+fs.readFile(topLevelKeysPath, 'utf8', (err, topLevelKeysData) => {
   if (err) {
-    console.error('Error reading the file:', err)
+    console.error('Error reading topLevelKeys file:', err)
     return
   }
 
-  // Parse the JSON data
-  let missingEntries = JSON.parse(data)
+  fs.readFile(nextEntriesPath, 'utf8', (err, nextEntriesData) => {
+    if (err) {
+      console.error('Error reading nextEntries file:', err)
+      return
+    }
 
-  // Remove city names and "Location" combinations
-  missingEntries = missingEntries.filter(
-    (entry) => !citiesToRemove.includes(entry),
-  )
+    // Parse the JSON data
+    const topLevelKeys = JSON.parse(topLevelKeysData)
+    const nextEntries = JSON.parse(nextEntriesData)
 
-  // Sort the remaining entries
-  missingEntries.sort()
+    // Find nextEntries that are not in topLevelKeys
+    const missingEntries = nextEntries.filter(
+      (entry) => !topLevelKeys.includes(entry),
+    )
 
-  // Write the cleaned and sorted entries to a new file
-  fs.writeFile(
-    outputFilePath,
-    JSON.stringify(missingEntries, null, 2),
-    'utf8',
-    (err) => {
-      if (err) {
-        console.error('Error writing the file:', err)
-        return
-      }
-      console.log(
-        `Cleaned and sorted missing entries saved to ${outputFilePath}`,
-      )
-    },
-  )
+    // City names and "Location" combinations to be removed
+    const citiesToRemove = [
+      'New York',
+      'Athens',
+      'Alexandria',
+      'Cairo',
+      'Bremen',
+      'Arkham Location',
+      'Athens Location',
+      'Alexandria Location',
+      'Cairo Location',
+      'Bremen Location',
+      'New York Location',
+    ]
+
+    // Remove the cities and "Location" combinations from the missing entries
+    const filteredEntries = missingEntries.filter(
+      (entry) => !citiesToRemove.includes(entry),
+    )
+
+    // Sort the remaining entries
+    const sortedEntries = filteredEntries.sort()
+
+    // Write the missing entries to a JSON file
+    fs.writeFile(
+      outputFilePath,
+      JSON.stringify(sortedEntries, null, 2),
+      'utf8',
+      (err) => {
+        if (err) {
+          console.error('Error writing the file:', err)
+          return
+        }
+        console.log(`Missing entries saved to ${outputFilePath}`)
+      },
+    )
+  })
 })
