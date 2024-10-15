@@ -5629,6 +5629,17 @@
     ],
     "traceNumbers": ["Cairo Location"]
   },
+  "207": {
+    "description": "You notice a picture bearing the label, “Akhenaten’s Amulet.” You make a sketch for your notes.",
+    "image": "/src/assets/images/clues/akhenaten's-amulet.png",
+    "choices": [
+      {
+        "text": "Return to the exhibit",
+        "nextEntry": "290"
+      }
+    ],
+    "traceNumbers": ["290"]
+  },
   "208": {
     "description": "The symbol displays a strange mucous-like creature, covered in eyes and mouths—it looks like a shoggoth! A hideous monster capable of transforming its great mass into all manner of tools and shapes.",
     "choices": [
@@ -6407,6 +6418,61 @@
     ],
     "traceNumbers": ["94", "232", "242", "255", "257", "269"]
   },
+  "236": {
+    "description": "A cut-away model of the Pyramid of Akhenaten is on display.",
+    "choices": [
+      {
+        "text": "Make a successful INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "252"
+            },
+            "failure": {
+              "nextEntry": "236",
+              "message": "You fail to discern anything."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a successful Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "287"
+            },
+            "failure": {
+              "nextEntry": "236",
+              "message": "Your luck does not reveal anything."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a successful Cthulhu Mythos roll",
+        "effects": {
+          "check": {
+            "skill": "Cthulhu Mythos",
+            "success": {
+              "nextEntry": "244"
+            },
+            "failure": {
+              "nextEntry": "236",
+              "message": "You fail to recall anything useful."
+            }
+          }
+        }
+      },
+      {
+        "text": "Move on",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["206", "244", "252", "287"]
+  },
   "237": {
     "description": "In his book-lined office, you can ask Professor Jahark about all of these topics:",
     "choices": [
@@ -6576,6 +6642,16 @@
     ],
     "traceNumbers": ["275"]
   },
+  "244": {
+    "description": "In a series of friezes, you notice that a strange, mucous-looking creature has been partly chiseled away. The creature seems to resemble the ancient slave race of the “Old Ones” you’ve read about in dubious tomes of lore. You think you remember the name given to them: shoggoths.",
+    "choices": [
+      {
+        "text": "Return to the exhibit",
+        "nextEntry": "236"
+      }
+    ],
+    "traceNumbers": ["236"]
+  },
   "245": {
     "description": "The next day you see a city on the horizon. Desperately you stumble toward it. The domes and minarets suddenly begin to tremble and disappear—a mirage! You were foolish to have imagined a city in the desert. Drink another day’s water ration and choose a direction.",
     "choices": [
@@ -6676,6 +6752,16 @@
     ],
     "traceNumbers": ["232", "257"]
   },
+  "247": {
+    "description": "Your jaw drops. The Karpathos Device, a placard informs you, has been stolen.",
+    "choices": [
+      {
+        "text": "Return to the exhibit",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["206"]
+  },
   "248": {
     "description": "\"Sir,\" says Ilionas, \"I have told you all I know. You must go. All that’s left are rumors, and they’re better obtained at the Piostos Cafe.\"\n\nYou skulk the hallways of the Bureau for a while, and find nothing.",
     "choices": [
@@ -6715,6 +6801,16 @@
       }
     ],
     "traceNumbers": ["275"]
+  },
+  "252": {
+    "description": "The exposed interior of the pyramid is much too small. There must be something else in there.",
+    "choices": [
+      {
+        "text": "Return to the exhibit",
+        "nextEntry": "236"
+      }
+    ],
+    "traceNumbers": ["236"]
   },
   "253": {
     "description": "You locate a couple of books, which look interesting. If you can make a successful Language roll, or have an English/Arabic dictionary and make a Knowledge roll, you can examine the following books. Each attempt advances time by 1 hour.\n\n• A version of \"The Book of the Dead\" (Arabic)\n• \"Alhazred and the Curse of Egypt\" (Arabic)\n• The \"Mysterium\" (Latin)\n• \"The Lost Pyramid\" (English)\n\nIf you know these languages, you could just read them, or if you have picked up a dictionary, you can use that. If you failed to read the books, you may return and try again on another day.",
@@ -7018,6 +7114,18 @@
       }
     ],
     "traceNumbers": ["272"]
+  },
+  "259": {
+    "description": "It makes no difference where you are, or how you came to be here. You're sleeping, tossing and turning, twisting the sheets into taut ropes around your body. You dream of creatures oozing putrid liquids from holes scattered across their amorphous bodies. You see the holes open and close, and then you silently scream as you see a morose, hungry eye resting within each hole, and hundreds of mouths filled with serrated teeth. Shuddering, you wake up. In the brief moment of sanity left to you, you see that you were not dreaming and not asleep in bed! It’s all really happening! You are being eaten! It is undoubtedly … THE END.",
+    "choices": [
+      {
+        "text": "Game Over",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["370"]
   },
   "260": {
     "description": "You can ask Professor Ben 'Ozen about the Karpathos Device, or return to the university main entry.",
@@ -7774,6 +7882,35 @@
     ],
     "traceNumbers": ["275"]
   },
+  "290": {
+    "description": "You see household paraphernalia, combs, and tools, all of gold and silver. An empty sarcophagus contains a placard explaining that when the lord died, his slaves were killed in order that they might continue to serve him in the Afterlife.",
+    "choices": [
+      {
+        "text": "Want to see Akhenaten’s amulet?",
+        "nextEntry": "207"
+      },
+      {
+        "text": "Want to decipher the Egyptian hieroglyphs?",
+        "effects": {
+          "check": {
+            "skill": "Language (Hieroglyphics)",
+            "success": {
+              "nextEntry": "298"
+            },
+            "failure": {
+              "nextEntry": "206",
+              "message": "You fail to decipher the hieroglyphs and move on."
+            }
+          }
+        }
+      },
+      {
+        "text": "Move on",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["206", "207", "298", "206"]
+  },
   "291": {
     "description": "\"Ah, yes, well, that book is actually called the *Book of the Undead*! These mummies are real, my friend. They must be burned like so much offal or manure to be destroyed. Surely you’ve smelled that odor around the city, and have seen the troops racing about. That is one secret of Cairo which no one—not even the British—dares speak of.\"\n\nWhy be alarmed? You’re safe enough, for the moment.",
     "choices": [
@@ -7860,6 +7997,16 @@
     ],
     "traceNumbers": ["237", "261", "294"]
   },
+  "298": {
+    "description": "Looking at the information provided, you read about references to a “top,” and to a “door opening.”",
+    "choices": [
+      {
+        "text": "Return to the exhibit",
+        "nextEntry": "290"
+      }
+    ],
+    "traceNumbers": ["290"]
+  },
   "299": {
     "description": "Your once-firm steps have weakened. You are very, very weary. Have you wandered too far west? Can you return?",
     "choices": [
@@ -7911,6 +8058,16 @@
       }
     ],
     "traceNumbers": ["274"]
+  },
+  "302": {
+    "description": "Amet Keh is in and will gladly see foreign visitors. “So honored to have you call,” he murmurs.\n\nWhat do you wish to do? Examine the Karpathos Device? Ask that the Device be returned to Athens? Ask about Gliere? Or do something else?",
+    "choices": [
+      {
+        "text": "Continue talking with Amet Keh",
+        "nextEntry": "330"
+      }
+    ],
+    "traceNumbers": ["206", "330"]
   },
   "303": {
     "description": "You're in section-L.\n\nYou go down the stairs until you come to a deep shaft. You dimly perceive that the passage continues on the other side of the shaft.",
@@ -8206,6 +8363,80 @@
     },
     "traceNumbers": ["305", "371", "393"]
   },
+  "314": {
+    "description": "You enter the office and see three men. They are worried and confused: one mutters that Amet Keh is unavailable.",
+    "choices": [
+      {
+        "text": "Make a Charm roll",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "nextEntry": "380"
+            },
+            "failure": {
+              "nextEntry": "314",
+              "message": "You fail to gather any useful information."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Make a Fast Talk roll",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "nextEntry": "380"
+            },
+            "failure": {
+              "nextEntry": "314",
+              "message": "You fail to gather any useful information."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Make an Intimidate roll",
+        "effects": {
+          "check": {
+            "skill": "Intimidate",
+            "success": {
+              "nextEntry": "380"
+            },
+            "failure": {
+              "nextEntry": "314",
+              "message": "You fail to gather any useful information."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Make a Persuade roll",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "nextEntry": "380"
+            },
+            "failure": {
+              "nextEntry": "314",
+              "message": "You fail to gather any useful information."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["206", "362", "380"]
+  },
   "315": {
     "description": "You come forward, turn yourself into the police and confess everything. The Karpathos Device is taken from you and you rot in a hellish sanatorium for a long time. Eventually you are released.",
     "choices": [
@@ -8215,6 +8446,26 @@
       }
     ],
     "traceNumbers": ["249a", "274", "301"]
+  },
+  "316": {
+    "description": "Amet Keh’s eyes narrow, \"What do you really want? I have told you all I know.\"",
+    "choices": [
+      {
+        "text": "Make an INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "17"
+            },
+            "failure": {
+              "nextEntry": "350"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["350"]
   },
   "317": {
     "description": "You carefully examine the northern face of the pyramid, studying its weathered surface and ancient inscriptions. With enough time and the right tools, you might uncover something significant.",
@@ -8307,6 +8558,16 @@
     ],
     "traceNumbers": ["108"]
   },
+  "322": {
+    "description": "What’s behind the door makes you gasp. Amet Keh, the Curator, stands there completely immobile. His skin appears glazed, his eyes and face fixed in an expression of terror. The word, “Petrified!” escapes from your mouth, and something tells you that his mind still lives inside his paralyzed body. “How horrible!” you add.\n\n“Yes,” one of the men says. “Something somehow did that to him. Who or whatever it was, also took the Karpathos Device.”\n\nThere is nothing to do. Go to any Cairo location on the Cairo Location Table.",
+    "choices": [
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": ["362", "408"]
+  },
   "323": {
     "description": "You’re in section-J.\n\nA shaft with notches leads up to the previous section. Or you can take the stairs leading down.",
     "highlightOnMap": true,
@@ -8372,6 +8633,24 @@
       }
     ],
     "traceNumbers": ["394", "388", "398"]
+  },
+  "326": {
+    "description": "You notice two things: Amet Keh is breathing more heavily than normal, and you hear someone in the room behind him.",
+    "choices": [
+      {
+        "text": "Question Keh further",
+        "nextEntry": "346"
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": ["350", "346", "206"]
   },
   "327": {
     "description": "You’re in section-K.\n\nYou see a shaft heading down with notches in the walls that seem able to support you. If you continue, you must make a Climb roll.",
@@ -8446,6 +8725,38 @@
       }
     },
     "traceNumbers": ["327", "333"]
+  },
+  "330": {
+    "description": "\"Examine it? Return it? Impossible,\" he laughs, leaning back in his chair. \"The Karpathos Device is far too valuable, and its power is beyond your comprehension. It stays here.\"\n\nYou press further, but his demeanor changes. \"As for Gliere,\" he says dismissively, \"I have never heard of this person!\" His eyes narrow slightly, and he gestures toward the door. \"Now, if that will be all, I must ask you to leave.\"\n\nHe stands, escorting you toward the exit with a forced smile.",
+    "choices": [
+      {
+        "text": "Make a Fast Talk roll",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "nextEntry": "350"
+            },
+            "failure": {
+              "nextEntry": "206",
+              "message": "You fail to convince him to reveal more."
+            }
+          }
+        },
+        "requirements": {
+          "hasNotVisited": "350"
+        }
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": ["302", "350", "206"]
   },
   "331": {
     "description": "It’s loud, but it works! An opening appears. If you have any accomplices, they suspect you have gone mad, and desert you. Let them go. You have always been alone in this struggle; you will not be deterred now.",
@@ -8536,6 +8847,24 @@
       }
     ],
     "traceNumbers": ["338", "381"]
+  },
+  "336": {
+    "description": "Scattered among the books on Keh’s shelves are some ominously ancient tomes bound in suspect hides. He also seems to be doing his best to stand in front of the internal door in his office.",
+    "choices": [
+      {
+        "text": "Ask Keh about the door",
+        "nextEntry": "346"
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": ["350", "346", "206"]
   },
   "337": {
     "description": "You approach the southern face of the pyramid, where the scorching desert winds have eroded much of the stone. With careful study, you might reveal something of importance hidden in the weathered surface.",
@@ -8798,6 +9127,24 @@
     ],
     "traceNumbers": ["353"]
   },
+  "346": {
+    "description": "You ask what’s behind the door and Keh replies, \"Nothing!\" Somehow, you don’t believe him.",
+    "choices": [
+      {
+        "text": "Threaten Keh",
+        "nextEntry": "370"
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": ["326", "336", "206", "370"]
+  },
   "347": {
     "description": "Maybe there is a secret door, you hope. Or are you being foolish?",
     "choices": [
@@ -8840,6 +9187,65 @@
       }
     ],
     "traceNumbers": ["305"]
+  },
+  "350": {
+    "description": "Something about him teases your suspicions. What is it? You can try only one of the following rolls once:",
+    "choices": [
+      {
+        "text": "Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "316"
+            },
+            "failure": {
+              "nextEntry": "206"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "326"
+            },
+            "failure": {
+              "nextEntry": "206"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "336"
+            },
+            "failure": {
+              "nextEntry": "206"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      },
+      {
+        "text": "Go to any Cairo location",
+        "nextEntry": "Cairo Location"
+      }
+    ],
+    "traceNumbers": ["316", "326", "336", "206"]
   },
   "351": {
     "description": "Your rope snags and starts jerking out of your hands.",
@@ -9096,6 +9502,35 @@
     ],
     "traceNumbers": ["324"]
   },
+  "362": {
+    "description": "They seem oddly protective of the door behind them.",
+    "choices": [
+      {
+        "text": "Ask about the door",
+        "nextEntry": "408"
+      },
+      {
+        "text": "Dash in (DEX roll)",
+        "effects": {
+          "check": {
+            "skill": "DEX",
+            "success": {
+              "nextEntry": "322"
+            },
+            "failure": {
+              "nextEntry": "206",
+              "message": "You fail to dash past them and are sent away."
+            }
+          }
+        }
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["380", "206", "408", "322"]
+  },
   "363": {
     "description": "You overhear the following:\n\n\"Creatures inhabit the tombs. Feeding on human sacrifices brought to the tomb, these creatures guard the lower levels against interlopers.\"\n\"They cannot stand sunlight.\"\n\"They have the device which opens the door.\"",
     "choices": [
@@ -9228,6 +9663,29 @@
     },
     "traceNumbers": ["158", "303", "348", "355"]
   },
+  "370": {
+    "description": "Keh moves aside, letting you open the door.\n\nAs you open it, you see a man smile wryly at you, and then his face seems to melt, changing into a bubbling mess, with a myriad of alien eyes staring hungrily from each bubble!",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "sanity": "1D6",
+              "nextEntry": "206",
+              "message": "Despite the odds, you hold onto your sanity."
+            },
+            "failure": {
+              "sanity": "1D20",
+              "nextEntry": "259"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["346", "206", "259"]
+  },
   "371": {
     "description": "The corridor is slanted downward, and it is slippery.",
     "highlightOnMap": true,
@@ -9250,6 +9708,16 @@
       }
     ],
     "traceNumbers": ["313"]
+  },
+  "372": {
+    "description": "One man blurts out, “We don’t know who took it. Some say the cult of Aten.” A second man snorts. “More likely some wealthy art collector paid to have it stolen.”",
+    "choices": [
+      {
+        "text": "Return to 380",
+        "nextEntry": "380"
+      }
+    ],
+    "traceNumbers": ["380"]
   },
   "373": {
     "description": "You have landed in a bowl-shaped chamber. You think you can hear the sound of movement, but you see nothing until you strike a match. You stand knee-deep in a stack or pile of something, and the smell of blood is strong. Near you, something moves spasmodically. Your hackles rise.",
@@ -9399,6 +9867,44 @@
       }
     ],
     "traceNumbers": ["331", "359", "397"]
+  },
+  "380": {
+    "description": "\"Keh is dead—that’s all we can say. And the Karpathos Device has been stolen. We don’t know who or why.\"",
+    "choices": [
+      {
+        "text": "Make a Fast Talk roll",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "nextEntry": "372"
+            },
+            "failure": {
+              "nextEntry": "206"
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "362"
+            },
+            "failure": {
+              "nextEntry": "206"
+            }
+          }
+        }
+      },
+      {
+        "text": "If you're finished, return to the museum entrance",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["314", "206", "372", "362"]
   },
   "381": {
     "description": "The room is filled with tools used during Akhenaten’s reign. There's also a report on early Egyptian agriculture, along with a map.",
@@ -9924,6 +10430,30 @@
       }
     ],
     "traceNumbers": ["431"]
+  },
+  "408": {
+    "description": "\"Curator Keh’s material must not be disturbed. You must go.\"",
+    "choices": [
+      {
+        "text": "Make a Dodge roll to get past them",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "322"
+            },
+            "failure": {
+              "nextEntry": "206"
+            }
+          }
+        }
+      },
+      {
+        "text": "Return to the museum entrance",
+        "nextEntry": "206"
+      }
+    ],
+    "traceNumbers": ["206", "322"]
   },
   "409": {
     "description": "You see a terrifying vision where the world tilts violently. Tidal waves crash against every coast, obliterating cities and towns. The polar ice caps melt, and a permanent freeze grips what were once the middle latitudes. Floods, snow, panic, and death follow swiftly. For most of mankind, it is the end. But for other creatures, it is only the beginning.",
@@ -10774,6 +11304,869 @@
     ],
     "traceNumbers": ["449"]
   },
+  "451": {
+    "description": "You see a freighter at anchor in the harbor, apart from the others. Your eyes note the reinforced hull, and the silver wingtips coming from bulky tarpaulins on the deck—probably Dorniers stored in sections. You can’t read the banner hanging limply in the damp air, but it almost surely says \"Starkweather-Moore.\" The twin stacks of the ship disappear in the low-hanging fog.",
+    "choices": [
+      {
+        "text": "Go aboard the ship",
+        "nextEntry": "486"
+      },
+      {
+        "text": "Visit a nearby inn, 'Der Freischütz'",
+        "nextEntry": "461"
+      }
+    ],
+    "traceNumbers": ["449", "486", "461"]
+  },
+  "453": {
+    "description": "You decide to stow away. You can stash food and water, and find shelter, in any one of the following hiding places: Lifeboat, Cargo Hold, Lower Deck (Storage), Engine Room (Rear).",
+    "choices": [
+      {
+        "text": "Hide in the Lifeboat",
+        "nextEntry": "456a"
+      },
+      {
+        "text": "Hide in the Cargo Hold",
+        "nextEntry": "456b"
+      },
+      {
+        "text": "Hide in the Lower Deck",
+        "nextEntry": "456c"
+      },
+      {
+        "text": "Hide in the Engine Room (Rear)",
+        "nextEntry": "456d"
+      },
+      {
+        "text": "Decide this is a bad idea",
+        "nextEntry": "486"
+      }
+    ],
+    "traceNumbers": ["456a", "456b", "456c", "456d", "486"]
+  },
+  "454": {
+    "description": "Decide whether you are in uniform, or not.",
+    "choices": [
+      {
+        "text": "I am in uniform",
+        "nextEntry": "499"
+      },
+      {
+        "text": "I am not in uniform",
+        "nextEntry": "464"
+      }
+    ],
+    "traceNumbers": ["499", "464"]
+  },
+  "457": {
+    "description": "A raucous group of Brown Shirts are laughing about something. You make out the words \"Fuhrer,\" \"Triumph,\" and \"Amulet.\"",
+    "choices": [
+      {
+        "text": "Return to the inn",
+        "nextEntry": "491"
+      }
+    ],
+    "traceNumbers": ["491"]
+  },
+  "458": {
+    "description": "There’s fear in this room, but of what? The Brown Shirts? You feel something strange is happening.",
+    "choices": [
+      {
+        "text": "Attempt a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "479"
+            },
+            "failure": {
+              "nextEntry": "491",
+              "message": "You fail to notice anything unusual."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["479", "491"]
+  },
+  "459": {
+    "description": "Found, you are brought before Captain Crawford. He is not interested in your motives or what you say. You are locked in a windowless room on the lower deck for many days. Food is brought to you. Just as you are giving up hope, the ship arrives in Antarctica.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "511"
+      }
+    ],
+    "traceNumbers": ["456", "460", "511"]
+  },
+  "461": {
+    "title": "DER FREISCHÜTZ INN",
+    "description": "You enter the smoke-filled public room. You’re greeted with boisterous talk, steins loaded with foamy beer, and a crowd of Brown Shirts; their red and black swastika armbands clearly visible in the smoky haze.\n\nRooms are available for the night. If you wish to do more here than sleep, you can try some actions. When you are done, you can leave the inn.",
+    "choices": [
+      {
+        "text": "Explore the inn",
+        "nextEntry": "491",
+        "requirements": {
+          "hasNotVisited": "478"
+        }
+      },
+      {
+        "text": "It's not safe to stay here",
+        "nextEntry": "461b",
+        "requirements": {
+          "hasVisited": "478"
+        }
+      },
+      {
+        "text": "Leave for another Bremen location",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["Bremen Location", "491"]
+  },
+  "463": {
+    "description": "You decide to cut your hair and pose as a sailor.",
+    "choices": [
+      {
+        "text": "Talk to the other sailors",
+        "nextEntry": "494"
+      },
+      {
+        "text": "Talk to the Captain",
+        "nextEntry": "487"
+      }
+    ],
+    "traceNumbers": ["494", "487", "497", "498"]
+  },
+  "464": {
+    "description": "The Captain assesses your skills, but it's clear that you don't meet the expedition's requirements.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "490"
+      }
+    ],
+    "traceNumbers": ["490", "454"]
+  },
+  "467": {
+    "description": "Hereafter, that inn will be dangerous for you. You find a mission house where you may sleep while you are in Bremen.",
+    "choices": [
+      {
+        "text": "Go to any Bremen Location",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["Bremen Location"]
+  },
+  "469": {
+    "description": "If you succeed with a Language (German) roll, you might overhear something important.",
+    "choices": [
+      {
+        "text": "Attempt a Language (German) roll",
+        "effects": {
+          "check": {
+            "skill": "Language (German)",
+            "success": {
+              "nextEntry": "457"
+            },
+            "failure": {
+              "nextEntry": "491",
+              "message": "You can't make out the conversation."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["457", "491"]
+  },
+  "470": {
+    "description": "It is a black amulet of strange design. Notes in German accompany it.",
+    "choices": [
+      {
+        "text": "Make a Language (German) roll",
+        "effects": {
+          "check": {
+            "skill": "Language (German)",
+            "success": {
+              "nextEntry": "582",
+              "message": "You successfully decipher the notes."
+            },
+            "failure": {
+              "nextEntry": "Bremen",
+              "message": "You fail to fully understand the notes, but you can find someone to translate them later."
+            }
+          }
+        }
+      },
+      {
+        "text": "Go to any Bremen Location",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["582", "Bremen Location"]
+  },
+  "471": {
+    "description": "He stares at you. \"Sir, that tone of voice may serve you well in the boardrooms of New York, but this is my expedition. Good day!\"",
+    "choices": [
+      {
+        "text": "Try to convince the Captain again",
+        "nextEntry": "488"
+      },
+      {
+        "text": "Wait a day and try something else",
+        "nextEntry": "490",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 6
+        }
+      }
+    ],
+    "traceNumbers": ["488", "490"]
+  },
+  "472": {
+    "description": "You're at point-blank range.",
+    "choices": [
+      {
+        "text": "Make a Firearms (Handgun) roll",
+        "effects": {
+          "check": {
+            "skill": "Firearms (Handgun)",
+            "bonus": 40,
+            "success": {
+              "nextEntry": "470",
+              "message": "You hit the man and incapacitate him."
+            },
+            "failure": {
+              "nextEntry": "484b",
+              "message": "You miss, and the man lunges at you with his knife."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["470", "484b"]
+  },
+  "473": {
+    "description": "\"What are you doing?\" he asks.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "485"
+      }
+    ],
+    "traceNumbers": ["485", "474"]
+  },
+  "474": {
+    "description": "They rise uneasily, wary at your approach. A man steps forward, saying, \"Sprechen Sie Deutsche?\"",
+    "choices": [
+      {
+        "text": "Respond if you have skill in Language (German)",
+        "nextEntry": "473",
+        "requirements": {
+          "skill": {
+            "name": "Language (German)",
+            "minValue": 1
+          }
+        }
+      },
+      {
+        "text": "If you don't know German, back off",
+        "nextEntry": "485"
+      }
+    ],
+    "traceNumbers": ["473", "485", "479"]
+  },
+  "477": {
+    "description": "A group of Brown Shirts are gathered around a box on their table. You notice the box resembles the case to the Sacred Black Amulet of Klaath. It’s incredible, but it could help you.",
+    "choices": [
+      {
+        "text": "Try to get a closer look at the box",
+        "nextEntry": "479"
+      },
+      {
+        "text": "Return to the inn",
+        "nextEntry": "491"
+      }
+    ],
+    "traceNumbers": ["479", "491"]
+  },
+  "478": {
+    "description": "He studies you for a moment and then swiftly draws a knife. You have a split second to react.",
+    "choices": [
+      {
+        "text": "Try to quickly pull out your gun",
+        "nextEntry": "481a",
+        "requirements": {
+          "skill": {
+            "name": "Firearms (Handgun)",
+            "minValue": 1
+          },
+          "inventoryType": "weapon"
+        }
+      },
+      {
+        "text": "Try to dodge the attack",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "467"
+            },
+            "failure": {
+              "nextEntry": "481b",
+              "message": "You fail to dodge the attack. They grab you and pummel you with a vengeance.",
+              "modifyHealth": -3
+            }
+          }
+        },
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["481a", "481b", "485"]
+  },
+  "479": {
+    "description": "A group of Brown Shirts cluster about a curiously shaped box.",
+    "choices": [
+      {
+        "text": "Get a closer look at the box",
+        "nextEntry": "474"
+      },
+      {
+        "text": "Return to the inn",
+        "nextEntry": "491"
+      }
+    ],
+    "traceNumbers": ["458", "474", "477", "491"]
+  },
+  "482": {
+    "description": "\"Be off with you,\" he snarls. Feeling foolish, you meekly leave.",
+    "choices": [
+      {
+        "text": "Return to the inn",
+        "nextEntry": "461"
+      }
+    ],
+    "traceNumbers": ["461", "485"]
+  },
+  "483": {
+    "description": "The Captain says, \"Our sponsors are Mr. Starkweather and Mr. Moore. You must ask them if this expedition is for sale,\" he says. 'Good day.'",
+    "choices": [
+      {
+        "text": "Try to convince the Captain again",
+        "nextEntry": "488"
+      },
+      {
+        "text": "Continue",
+        "nextEntry": "490"
+      }
+    ],
+    "traceNumbers": ["488", "490"]
+  },
+  "484": {
+    "description": "The man's associates back away and you grab the box and an attaché case. The man, knife in hand, struggles drunkenly to his feet. One of his friends is fumbling frantically for something he carries in a leather jacket.",
+    "choices": [
+      {
+        "text": "Shoot the knife-wielding man",
+        "nextEntry": "472",
+        "requirements": {
+          "skill": {
+            "name": "Firearms (Handgun)",
+            "minValue": 1
+          },
+          "inventoryType": "weapon"
+        }
+      },
+      {
+        "text": "Attempt to exit with a Dodge roll",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "470",
+              "message": "You make a lightning-like and decisive escape."
+            },
+            "failure": {
+              "nextEntry": "484b",
+              "message": "You fail to escape, and they grab you, beginning to pummel you.",
+              "modifyHealth": -2
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["470", "472"]
+  },
+  "485": {
+    "description": "\"What do you want?\" His hostility is evident.",
+    "choices": [
+      {
+        "text": "Feign idle interest",
+        "nextEntry": "482"
+      },
+      {
+        "text": "Ask about the box",
+        "nextEntry": "478"
+      }
+    ],
+    "traceNumbers": ["473", "474", "482", "478"]
+  },
+  "486": {
+    "title": "THE STEAMSHIP: THE DARK SEA",
+    "description": "The gangplank is down. If you wait here and try to talk to the sailors, you might get more information. You can also decide to see the Captain or the expedition leader. Alternatively, you can attempt an INT roll once daily to uncover something significant.",
+    "choices": [
+      {
+        "text": "Wait and try to talk to the sailors",
+        "nextEntry": "494"
+      },
+      {
+        "text": "Go to see the Captain",
+        "nextEntry": "487"
+      },
+      {
+        "text": "Go to see the expedition leader",
+        "nextEntry": "497"
+      },
+      {
+        "text": "Attempt an INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "453"
+            },
+            "failure": {
+              "nextEntry": "486",
+              "message": "You learn nothing useful today, but you can try again tomorrow."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Go to any Bremen location",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["494", "487", "497", "453", "Bremen Location"]
+  },
+  "487": {
+    "title": "Captain's Hiring Process",
+    "description": "The captain is hiring people who have 25% or better in the following skills: Electrical Repair, Mechanical Repair, Navigate, Operate Heavy Machinery, Pilot (Aircraft), and Survival. Qualify in one skill area, and you're hired for the trip.",
+    "choices": [
+      {
+        "text": "Qualify with Electrical Repair (25% or better)",
+        "nextEntry": "501",
+        "requirements": {
+          "skill": {
+            "name": "Electrical Repair",
+            "minValue": 25
+          }
+        }
+      },
+      {
+        "text": "Qualify with Mechanical Repair (25% or better)",
+        "nextEntry": "501",
+        "requirements": {
+          "skill": {
+            "name": "Mechanical Repair",
+            "minValue": 25
+          }
+        }
+      },
+      {
+        "text": "Qualify with Navigate (25% or better)",
+        "nextEntry": "501",
+        "requirements": {
+          "skill": {
+            "name": "Navigate",
+            "minValue": 25
+          }
+        }
+      },
+      {
+        "text": "Qualify with Operate Heavy Machinery (25% or better)",
+        "nextEntry": "501",
+        "requirements": {
+          "skill": {
+            "name": "Operate Heavy Machinery",
+            "minValue": 25
+          }
+        }
+      },
+      {
+        "text": "Qualify with Pilot (Aircraft) (25% or better)",
+        "nextEntry": "501",
+        "requirements": {
+          "skill": {
+            "name": "Pilot (Aircraft)",
+            "minValue": 25
+          }
+        }
+      },
+      {
+        "text": "Qualify with Survival (25% or better)",
+        "nextEntry": "501",
+        "requirements": {
+          "skill": {
+            "name": "Survival",
+            "minValue": 25
+          }
+        }
+      },
+      {
+        "text": "Try to fake your skills (Know (EDU) roll)",
+        "effects": {
+          "check": {
+            "skill": "EDU",
+            "success": {
+              "nextEntry": "501",
+              "message": "You successfully fake your skillfulness and are hired for the trip."
+            },
+            "failure": {
+              "nextEntry": "488",
+              "message": "The Captain sees through your attempt."
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "494"
+        }
+      },
+      {
+        "text": "You don't have the skills he is looking for",
+        "nextEntry": "488"
+      }
+    ],
+    "traceNumbers": ["463", "486", "494", "496", "501", "488"]
+  },
+  "488": {
+    "description": "The captain eyes you suspiciously.",
+    "choices": [
+      {
+        "text": "Introduce yourself",
+        "nextEntry": "488a",
+        "requirements": {
+          "character": "Professor Grunewald"
+        }
+      },
+      {
+        "text": "If you’re Lau",
+        "nextEntry": "488b",
+        "requirements": {
+          "character": "Lydia Lau"
+        }
+      },
+      {
+        "text": "If you’re Wilson",
+        "nextEntry": "454",
+        "requirements": {
+          "character": "Devon Wilson"
+        }
+      },
+      {
+        "text": "If you’re Holt - Try Persuade",
+        "nextEntry": "483",
+        "requirements": {
+          "character": "Ernest Holt"
+        },
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "nextEntry": "483"
+            },
+            "failure": {
+              "nextEntry": "488",
+              "message": "You fail to persuade today."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "If you’re Holt - Try Charm",
+        "nextEntry": "489",
+        "requirements": {
+          "character": "Ernest Holt"
+        },
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "nextEntry": "489"
+            },
+            "failure": {
+              "nextEntry": "488",
+              "message": "You fail to charm today."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "If you’re Holt - Try Fast Talk",
+        "nextEntry": "495",
+        "requirements": {
+          "character": "Ernest Holt"
+        },
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "nextEntry": "495"
+            },
+            "failure": {
+              "nextEntry": "488",
+              "message": "You fail to fast talk today."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "If you’re Holt - Try Intimidate",
+        "nextEntry": "471",
+        "requirements": {
+          "character": "Ernest Holt"
+        },
+        "effects": {
+          "check": {
+            "skill": "Intimidate",
+            "success": {
+              "nextEntry": "471"
+            },
+            "failure": {
+              "nextEntry": "488",
+              "message": "You fail to intimidate today."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Come back another day",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": [
+      "471",
+      "483",
+      "487",
+      "497",
+      "500",
+      "498",
+      "454",
+      "489",
+      "495"
+    ]
+  },
+  "489": {
+    "description": "With your successful Charm, you delight them by offering to publish the expedition’s work and to finance later research. The leaders leap at the chance. Of course, you can go to Antarctica! The Dark Sea sails Dec. 20.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "500"
+      }
+    ],
+    "traceNumbers": ["500", "488"]
+  },
+  "490": {
+    "description": "You can attempt one INT roll per day. When you succeed, you may proceed further.",
+    "choices": [
+      {
+        "text": "Attempt an INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "496"
+            },
+            "failure": {
+              "nextEntry": "490",
+              "message": "You fail the roll, but you can try again tomorrow."
+            }
+          }
+        }
+      },
+      {
+        "text": "Ask to see the captain",
+        "nextEntry": "487"
+      }
+    ],
+    "traceNumbers": ["464", "483", "495", "499", "487", "496"]
+  },
+  "491": {
+    "description": "You can try one of the following rolls once per day until you succeed, or relax for a while.",
+    "choices": [
+      {
+        "text": "Attempt a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "479"
+            },
+            "failure": {
+              "nextEntry": "491",
+              "message": "You don't find anything this time."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "469"
+            },
+            "failure": {
+              "nextEntry": "491",
+              "message": "You don’t hear anything useful."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "458"
+            },
+            "failure": {
+              "nextEntry": "491",
+              "message": "You can’t get a good read on the people around."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a Cthulhu Mythos roll",
+        "effects": {
+          "check": {
+            "skill": "Cthulhu Mythos",
+            "success": {
+              "nextEntry": "477"
+            },
+            "failure": {
+              "nextEntry": "491",
+              "message": "The Mythos reveals nothing new to you."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Leave for another Bremen location",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": [
+      "457",
+      "458",
+      "461",
+      "469",
+      "477",
+      "479",
+      "Bremen Location"
+    ]
+  },
+  "494": {
+    "description": "The sailors are uneasy about the weather and the polar trip. They say that the Captain ('Old Haddock') is hiring only crewmen with particular skills. If you decide to try to fake the skills needed for a journey into a dangerous environment, you can attempt a Know (EDU) roll instead of the specific skill roll required.",
+    "choices": [
+      {
+        "text": "Go to see the Captain",
+        "nextEntry": "487"
+      }
+    ],
+    "traceNumbers": ["463", "486", "496", "487"]
+  },
+  "495": {
+    "description": "He looks at you somewhat surprised. \"Sorry, I don’t really follow. I don’t have time to argue, sir. Excuse me.\"",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "490"
+      }
+    ],
+    "traceNumbers": ["490", "488"]
+  },
+  "496": {
+    "description": "If you shed your uniform, get a false beard, and pose as a sailor, you can try to blend in.",
+    "choices": [
+      {
+        "text": "Pose as a sailor and go to the sailors",
+        "nextEntry": "494"
+      },
+      {
+        "text": "Ask to see the Captain",
+        "nextEntry": "487"
+      }
+    ],
+    "traceNumbers": ["490", "494", "487"]
+  },
+  "497": {
+    "description": "Professor Eustace Blake is very busy coordinating the expedition. \"Who are you? What do you want?\" he asks.",
+    "choices": [
+      {
+        "text": "If you are Professor Grunewald",
+        "nextEntry": "497a",
+        "requirements": {
+          "character": "Professor Grunewald"
+        }
+      },
+      {
+        "text": "If you are not Professor Grunewald",
+        "nextEntry": "497b",
+        "requirements": {
+          "characterNot": "Professor Grunewald"
+        }
+      }
+    ],
+    "traceNumbers": ["497a", "497b"]
+  },
+  "498": {
+    "description": "Once per day, you may attempt an INT roll. When you succeed, you can proceed further.",
+    "choices": [
+      {
+        "text": "Attempt an INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "463"
+            },
+            "failure": {
+              "nextEntry": "498",
+              "message": "You fail the roll, but you can try again tomorrow."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Return to any Bremen location",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["463", "Bremen Location"]
+  },
+  "499": {
+    "description": "\"But you’re on active duty, from your dress. Do you have orders requesting appointment to this expedition?\" Of course you don’t.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "490"
+      }
+    ],
+    "traceNumbers": ["490", "454"]
+  },
   "539": {
     "description": "As you turn to leave, the sergeant seems to remember something then hands over a piece of paper. Unfolding it, you recognize Gliere’s tiny, precise script. There is no date and no signature:\n\nDr. Louis Grunewald\nMiskatonic University\nArkham, Mass., U.S.A.\n\nDear Louis\n\nI fear it is too late for me. Though with the best of motives, the authorities foolishly apprehended me before I could accomplish destruction of the Karpathos Device, and thereby they have re-endangered the world. If, to prevent my further interference, the cult of Aten tries to murder me while I am trapped in this cell, I do not see how they can fail their purpose.\n\nThis letter, therefore, must convince you of the truth I tell and relate to you what must be done about it. You must do it or see that it is done, else our world is doomed.\n\nThough our discussions have acquainted you with some of what I now write, you have never accepted my arcane conclusions. I beg you now to do so, at least for the length of this letter. What follows is the situation, as I understand it.\n\nAn Alexandrian-era sorcerer, one Ephegon of Karpathos, was reputed to have constructed a mechanism perfectly replicating the movement of the spheres. According to certain fragmentary evidences, this device was to be sent to Egypt, to agents of the notorious cult of Aten. The record is dim. Perhaps it was designed in Egypt and built in Kerpathos, but I digress.\n\nOnce installed in Egypt, the mechanism could be used in a great ceremony presaging the end of the world. It would somehow align the forces of nature with the metaphysical powers of an unnamed, exceedingly evil god. The product of the ceremony would be another device, this one very simple: a crystal octahedron, which could be spun like a child’s top. It is the Top of Aten, a thing of as great magical power as the device which produced it was a wonder of natural science.\n\nBy bringing the Top of Aten “farthest south” to the “last city of the oldest beings,” and then summoning their god, the cult intended to use their cosmic gyro to alter the rotational axis of the Earth, thereby bringing a strange land (surely Antarctica) once more to life. In the process, the annoying “lands of the stick folk”—literally, the lands of men—would be destroyed.\n\nBut the ship carrying the device to Egypt was lost in a great storm, and then Ephegon died. The ceremony was never begun.\n\nYou’ll recall the mysteries surrounding the Miskatonic expedition to Antarctica, and its tragic outcome; and you know that the Starkweather-Moore expedition leaves Bremen this winter to return to Antarctica and reopen the terrible questions which Lake first raised. But have you heard of the Karpathos Device—the strange instrument recovered near the island of Karpathos? After examining it, I knew that this was Ephegon’s device!\n\nLouis, it is my firm conviction that this tale is true, that a great scheme to change the world has been reactivated by the cult of Aten. Perhaps they employed great magic to manipulate destiny, or perhaps they are exceedingly cunning and evaluate every event for what they may gain of it, but their hour has come round again.\n\nOthers also believe this. An erudite and cruel man named Stanford has lent me subtle aid, but says that for arcane reasons he may do no more: he is not a friend, but says that in this thing he serves his god! A kinder, gentler Greek gentleman has also helped. Both seem to represent greater powers than man, perhaps beyond our ken.\n\nBut the cult of Aten is strong. At least one among them is no man at all, but a …\n\nHere the letter ends. There is no second sheet. There is nothing on the reverse of the sheet.\n\nAs you struggle to digest and evaluate the letter, the guard casually informs you that nothing else of Gliere’s is now at the prison.",
     "choices": [
@@ -10877,6 +12270,23 @@
       }
     ],
     "traceNumbers": ["107", "20"]
+  },
+  "582": {
+    "description": "The amulet is a magic item that summons Nodens, an Elder God, who will carry you anywhere you wish once. After one use, the amulet disappears. You feel a deep connection to this otherworldly force, but also a heavy responsibility as you wield this power.",
+    "choices": [
+      {
+        "text": "Go to any Bremen Location",
+        "nextEntry": "Bremen",
+        "effects": {
+          "addItem": {
+            "name": "Black Amulet of Klaath",
+            "description": "A strange black amulet, rumored to summon Nodens, an Elder God, who can teleport you once to any location of your choosing.",
+            "type": "artifact"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["Bremen Location"]
   },
   "583": {
     "title": "HOTEL",
@@ -11003,6 +12413,18 @@
       }
     ],
     "traceNumbers": ["12"]
+  },
+  "587": {
+    "description": "It has you! The bubbling thing envelops you and rips you into shreds—as if you were nothing more than tissue paper. You have been consumed! It is ... THE END.",
+    "choices": [
+      {
+        "text": "Game Over",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["370"]
   },
   "588": {
     "description": "The river is very strong, with much debris floating in it, and many crocodiles! You decide to go back to the village.",
@@ -14343,6 +15765,268 @@
     ],
     "traceNumbers": ["391"]
   },
+  "456a": {
+    "description": "You hid in the Lifeboat. The lifeboat is checked once during the voyage. Roll your Stealth to avoid being discovered.",
+    "choices": [
+      {
+        "text": "Roll Stealth",
+        "effects": {
+          "check": {
+            "skill": "Stealth",
+            "success": {
+              "nextEntry": "510"
+            },
+            "failure": {
+              "nextEntry": "459"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["510", "459"]
+  },
+  "456b": {
+    "description": "You hid in the Cargo Hold. Roll your Stealth to avoid being discovered.",
+    "choices": [
+      {
+        "text": "Roll Stealth",
+        "effects": {
+          "check": {
+            "skill": "Stealth",
+            "success": {
+              "nextEntry": "510"
+            },
+            "failure": {
+              "nextEntry": "459"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["510", "459"]
+  },
+  "456c": {
+    "description": "You hid in the Lower Deck. You must convince the crew not to betray you to the Captain. Choose either Charm or Fast Talk to attempt.",
+    "choices": [
+      {
+        "text": "Roll Charm",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "nextEntry": "510"
+            },
+            "failure": {
+              "nextEntry": "459"
+            }
+          }
+        }
+      },
+      {
+        "text": "Roll Fast Talk",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "nextEntry": "510"
+            },
+            "failure": {
+              "nextEntry": "459"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["510", "459"]
+  },
+  "456d": {
+    "description": "You hid in the Engine Room (Rear). You must make friends with the two wipers who tend the second engine. Choose either Charm or Psychology to attempt.",
+    "choices": [
+      {
+        "text": "Roll Charm",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "nextEntry": "510"
+            },
+            "failure": {
+              "nextEntry": "459"
+            }
+          }
+        }
+      },
+      {
+        "text": "Roll Psychology",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "510"
+            },
+            "failure": {
+              "nextEntry": "459"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["510", "459"]
+  },
+  "461b": {
+    "title": "BREMEN MISSION HOUSE",
+    "description": "You find a room at the Bremen Mission House. The night is quiet, and you sleep well. In the morning, you are refreshed and ready to face the day.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "Bremen",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 8
+        }
+      }
+    ]
+  },
+  "481a": {
+    "description": "Your gun is handy. You take a shot at point-blank range.",
+    "choices": [
+      {
+        "text": "Make a Firearms (Handgun) roll",
+        "effects": {
+          "check": {
+            "skill": "Firearms (Handgun)",
+            "bonus": 30,
+            "success": {
+              "nextEntry": "484"
+            },
+            "failure": {
+              "nextEntry": "467",
+              "message": "You miss the shot and must try to escape."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["484", "467"]
+  },
+  "481b": {
+    "description": "Fortunately, the police arrive and break up the fight. You are arrested and remain in jail for 10 days before bail from abroad arrives to free you.",
+    "choices": [
+      {
+        "text": "Go to any Bremen location",
+        "effects": {
+          "advanceTime": 10
+        },
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["467", "Bremen Location"]
+  },
+  "484b": {
+    "description": "They grab you and begin to pummel you. Fortunately, they decide not to use their knife and eventually the police arrive, arresting everyone. You are jailed for 10 days before bail arrives to free you.",
+    "choices": [
+      {
+        "text": "Go to any Bremen Location",
+        "effects": {
+          "advanceTime": 240
+        },
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["Bremen Location"]
+  },
+  "488a": {
+    "description": "\"Right ... just what we need ... another professor. If Blake vouches for you, welcome aboard.\"",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "500"
+      }
+    ]
+  },
+  "488b": {
+    "description": "He says \"Sorry, no reporters, especially ladies,\" he mutters.",
+    "choices": [
+      {
+        "text": "Are you going to take that?",
+        "nextEntry": "498"
+      }
+    ]
+  },
+  "497a": {
+    "description": "Blake is happy to see you. He welcomes you warmly and shares some details about the expedition.\n\nThe trip is to retrace the ill-fated journey of the Lake expedition. He attributes stories of lost cities to “Dementia Antarctica.”",
+    "choices": [
+      {
+        "text": "Continue discussing the expedition",
+        "nextEntry": "463"
+      },
+      {
+        "text": "Leave",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["463", "Bremen Location"]
+  },
+  "497b": {
+    "description": "Blake talks with some reluctance. He explains that the trip is to retrace the ill-fated journey of the Lake expedition. He dismisses stories of lost cities as 'Dementia Antarctica.'",
+    "choices": [
+      {
+        "text": "Try to join the expedition",
+        "nextEntry": "463"
+      },
+      {
+        "text": "Leave",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["463", "Bremen Location"]
+  },
+  "582b": {
+    "description": "You can use the amulet to teleport to any one of the following locations:",
+    "choices": [
+      {
+        "text": "Teleport to Tel-el-Amarna entrance",
+        "nextEntry": "324"
+      },
+      {
+        "text": "Teleport to Cairo",
+        "nextEntry": "Cairo Location"
+      },
+      {
+        "text": "Teleport to Alexandria",
+        "nextEntry": "Alexandria Location"
+      },
+      {
+        "text": "Teleport to Bremen",
+        "nextEntry": "Bremen Location"
+      },
+      {
+        "text": "Teleport to New York",
+        "nextEntry": "New York Location"
+      },
+      {
+        "text": "Teleport to Athens",
+        "nextEntry": "Athens Location"
+      },
+      {
+        "text": "Teleport to Arkham",
+        "nextEntry": "Arkham Location"
+      },
+      {
+        "text": "Teleport to Boston",
+        "nextEntry": "Boston Location"
+      }
+    ],
+    "traceNumbers": [
+      "Cairo Location",
+      "Alexandria Location",
+      "Bremen Location",
+      "New York Location",
+      "Athens Location",
+      "Arkham Location",
+      "Boston Location"
+    ]
+  },
   "585_exit": {
     "description": "You decide it's time to leave the hospital. Where to next?",
     "choices": [
@@ -14490,1690 +16174,6 @@
           "currentLocale": "Bremen"
         }
       }
-    ]
-  },
-  "290": {
-    "description": "You see household paraphernalia, combs, and tools, all of gold and silver. An empty sarcophagus contains a placard explaining that when the lord died, his slaves were killed in order that they might continue to serve him in the Afterlife.",
-    "choices": [
-      {
-        "text": "Want to see Akhenaten’s amulet?",
-        "nextEntry": "207"
-      },
-      {
-        "text": "Want to decipher the Egyptian hieroglyphs?",
-        "effects": {
-          "check": {
-            "skill": "Language (Hieroglyphics)",
-            "success": {
-              "nextEntry": "298"
-            },
-            "failure": {
-              "nextEntry": "206",
-              "message": "You fail to decipher the hieroglyphs and move on."
-            }
-          }
-        }
-      },
-      {
-        "text": "Move on",
-        "nextEntry": "206"
-      }
-    ],
-    "traceNumbers": ["206", "207", "298", "206"]
-  },
-  "207": {
-    "description": "You notice a picture bearing the label, “Akhenaten’s Amulet.” You make a sketch for your notes.",
-    "image": "/src/assets/images/clues/akhenaten's-amulet.png",
-    "choices": [
-      {
-        "text": "Return to the exhibit",
-        "nextEntry": "290"
-      }
-    ],
-    "traceNumbers": ["290"]
-  },
-  "298": {
-    "description": "Looking at the information provided, you read about references to a “top,” and to a “door opening.”",
-    "choices": [
-      {
-        "text": "Return to the exhibit",
-        "nextEntry": "290"
-      }
-    ],
-    "traceNumbers": ["290"]
-  },
-  "236": {
-    "description": "A cut-away model of the Pyramid of Akhenaten is on display.",
-    "choices": [
-      {
-        "text": "Make a successful INT roll",
-        "effects": {
-          "check": {
-            "skill": "INT",
-            "success": {
-              "nextEntry": "252"
-            },
-            "failure": {
-              "nextEntry": "236",
-              "message": "You fail to discern anything."
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a successful Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "287"
-            },
-            "failure": {
-              "nextEntry": "236",
-              "message": "Your luck does not reveal anything."
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a successful Cthulhu Mythos roll",
-        "effects": {
-          "check": {
-            "skill": "Cthulhu Mythos",
-            "success": {
-              "nextEntry": "244"
-            },
-            "failure": {
-              "nextEntry": "236",
-              "message": "You fail to recall anything useful."
-            }
-          }
-        }
-      },
-      {
-        "text": "Move on",
-        "nextEntry": "206"
-      }
-    ],
-    "traceNumbers": ["206", "244", "252", "287"]
-  },
-  "244": {
-    "description": "In a series of friezes, you notice that a strange, mucous-looking creature has been partly chiseled away. The creature seems to resemble the ancient slave race of the “Old Ones” you’ve read about in dubious tomes of lore. You think you remember the name given to them: shoggoths.",
-    "choices": [
-      {
-        "text": "Return to the exhibit",
-        "nextEntry": "236"
-      }
-    ],
-    "traceNumbers": ["236"]
-  },
-  "252": {
-    "description": "The exposed interior of the pyramid is much too small. There must be something else in there.",
-    "choices": [
-      {
-        "text": "Return to the exhibit",
-        "nextEntry": "236"
-      }
-    ],
-    "traceNumbers": ["236"]
-  },
-  "247": {
-    "description": "Your jaw drops. The Karpathos Device, a placard informs you, has been stolen.",
-    "choices": [
-      {
-        "text": "Return to the exhibit",
-        "nextEntry": "206"
-      }
-    ],
-    "traceNumbers": ["206"]
-  },
-  "314": {
-    "description": "You enter the office and see three men. They are worried and confused: one mutters that Amet Keh is unavailable.",
-    "choices": [
-      {
-        "text": "Make a Charm roll",
-        "effects": {
-          "check": {
-            "skill": "Charm",
-            "success": {
-              "nextEntry": "380"
-            },
-            "failure": {
-              "nextEntry": "314",
-              "message": "You fail to gather any useful information."
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Make a Fast Talk roll",
-        "effects": {
-          "check": {
-            "skill": "Fast Talk",
-            "success": {
-              "nextEntry": "380"
-            },
-            "failure": {
-              "nextEntry": "314",
-              "message": "You fail to gather any useful information."
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Make an Intimidate roll",
-        "effects": {
-          "check": {
-            "skill": "Intimidate",
-            "success": {
-              "nextEntry": "380"
-            },
-            "failure": {
-              "nextEntry": "314",
-              "message": "You fail to gather any useful information."
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Make a Persuade roll",
-        "effects": {
-          "check": {
-            "skill": "Persuade",
-            "success": {
-              "nextEntry": "380"
-            },
-            "failure": {
-              "nextEntry": "314",
-              "message": "You fail to gather any useful information."
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Return to the museum entrance",
-        "nextEntry": "206"
-      }
-    ],
-    "traceNumbers": ["206", "362", "380"]
-  },
-  "380": {
-    "description": "\"Keh is dead—that’s all we can say. And the Karpathos Device has been stolen. We don’t know who or why.\"",
-    "choices": [
-      {
-        "text": "Make a Fast Talk roll",
-        "effects": {
-          "check": {
-            "skill": "Fast Talk",
-            "success": {
-              "nextEntry": "372"
-            },
-            "failure": {
-              "nextEntry": "206"
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Psychology roll",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "362"
-            },
-            "failure": {
-              "nextEntry": "206"
-            }
-          }
-        }
-      },
-      {
-        "text": "If you're finished, return to the museum entrance",
-        "nextEntry": "206"
-      }
-    ],
-    "traceNumbers": ["314", "206", "372", "362"]
-  },
-  "372": {
-    "description": "One man blurts out, “We don’t know who took it. Some say the cult of Aten.” A second man snorts. “More likely some wealthy art collector paid to have it stolen.”",
-    "choices": [
-      {
-        "text": "Return to 380",
-        "nextEntry": "380"
-      }
-    ],
-    "traceNumbers": ["380"]
-  },
-  "362": {
-    "description": "They seem oddly protective of the door behind them.",
-    "choices": [
-      {
-        "text": "Ask about the door",
-        "nextEntry": "408"
-      },
-      {
-        "text": "Dash in (DEX roll)",
-        "effects": {
-          "check": {
-            "skill": "DEX",
-            "success": {
-              "nextEntry": "322"
-            },
-            "failure": {
-              "nextEntry": "206",
-              "message": "You fail to dash past them and are sent away."
-            }
-          }
-        }
-      },
-      {
-        "text": "Return to the museum entrance",
-        "nextEntry": "206"
-      }
-    ],
-    "traceNumbers": ["380", "206", "408", "322"]
-  },
-  "408": {
-    "description": "\"Curator Keh’s material must not be disturbed. You must go.\"",
-    "choices": [
-      {
-        "text": "Make a Dodge roll to get past them",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": {
-              "nextEntry": "322"
-            },
-            "failure": {
-              "nextEntry": "206"
-            }
-          }
-        }
-      },
-      {
-        "text": "Return to the museum entrance",
-        "nextEntry": "206"
-      }
-    ],
-    "traceNumbers": ["206", "322"]
-  },
-  "322": {
-    "description": "What’s behind the door makes you gasp. Amet Keh, the Curator, stands there completely immobile. His skin appears glazed, his eyes and face fixed in an expression of terror. The word, “Petrified!” escapes from your mouth, and something tells you that his mind still lives inside his paralyzed body. “How horrible!” you add.\n\n“Yes,” one of the men says. “Something somehow did that to him. Who or whatever it was, also took the Karpathos Device.”\n\nThere is nothing to do. Go to any Cairo location on the Cairo Location Table.",
-    "choices": [
-      {
-        "text": "Go to any Cairo location",
-        "nextEntry": "Cairo Location"
-      }
-    ],
-    "traceNumbers": ["362", "408"]
-  },
-  "302": {
-    "description": "Amet Keh is in and will gladly see foreign visitors. “So honored to have you call,” he murmurs.\n\nWhat do you wish to do? Examine the Karpathos Device? Ask that the Device be returned to Athens? Ask about Gliere? Or do something else?",
-    "choices": [
-      {
-        "text": "Continue talking with Amet Keh",
-        "nextEntry": "330"
-      }
-    ],
-    "traceNumbers": ["206", "330"]
-  },
-  "330": {
-    "description": "\"Examine it? Return it? Impossible,\" he laughs, leaning back in his chair. \"The Karpathos Device is far too valuable, and its power is beyond your comprehension. It stays here.\"\n\nYou press further, but his demeanor changes. \"As for Gliere,\" he says dismissively, \"I have never heard of this person!\" His eyes narrow slightly, and he gestures toward the door. \"Now, if that will be all, I must ask you to leave.\"\n\nHe stands, escorting you toward the exit with a forced smile.",
-    "choices": [
-      {
-        "text": "Make a Fast Talk roll",
-        "effects": {
-          "check": {
-            "skill": "Fast Talk",
-            "success": {
-              "nextEntry": "350"
-            },
-            "failure": {
-              "nextEntry": "206",
-              "message": "You fail to convince him to reveal more."
-            }
-          }
-        },
-        "requirements": {
-          "hasNotVisited": "350"
-        }
-      },
-      {
-        "text": "Return to the museum entrance",
-        "nextEntry": "206"
-      },
-      {
-        "text": "Go to any Cairo location",
-        "nextEntry": "Cairo Location"
-      }
-    ],
-    "traceNumbers": ["302", "350", "206"]
-  },
-  "350": {
-    "description": "Something about him teases your suspicions. What is it? You can try only one of the following rolls once:",
-    "choices": [
-      {
-        "text": "Psychology roll",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "316"
-            },
-            "failure": {
-              "nextEntry": "206"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Listen roll",
-        "effects": {
-          "check": {
-            "skill": "Listen",
-            "success": {
-              "nextEntry": "326"
-            },
-            "failure": {
-              "nextEntry": "206"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Spot Hidden roll",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "336"
-            },
-            "failure": {
-              "nextEntry": "206"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Return to the museum entrance",
-        "nextEntry": "206"
-      },
-      {
-        "text": "Go to any Cairo location",
-        "nextEntry": "Cairo Location"
-      }
-    ],
-    "traceNumbers": ["316", "326", "336", "206"]
-  },
-  "316": {
-    "description": "Amet Keh’s eyes narrow, \"What do you really want? I have told you all I know.\"",
-    "choices": [
-      {
-        "text": "Make an INT roll",
-        "effects": {
-          "check": {
-            "skill": "INT",
-            "success": {
-              "nextEntry": "17"
-            },
-            "failure": {
-              "nextEntry": "350"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["350"]
-  },
-  "326": {
-    "description": "You notice two things: Amet Keh is breathing more heavily than normal, and you hear someone in the room behind him.",
-    "choices": [
-      {
-        "text": "Question Keh further",
-        "nextEntry": "346"
-      },
-      {
-        "text": "Return to the museum entrance",
-        "nextEntry": "206"
-      },
-      {
-        "text": "Go to any Cairo location",
-        "nextEntry": "Cairo Location"
-      }
-    ],
-    "traceNumbers": ["350", "346", "206"]
-  },
-  "336": {
-    "description": "Scattered among the books on Keh’s shelves are some ominously ancient tomes bound in suspect hides. He also seems to be doing his best to stand in front of the internal door in his office.",
-    "choices": [
-      {
-        "text": "Ask Keh about the door",
-        "nextEntry": "346"
-      },
-      {
-        "text": "Return to the museum entrance",
-        "nextEntry": "206"
-      },
-      {
-        "text": "Go to any Cairo location",
-        "nextEntry": "Cairo Location"
-      }
-    ],
-    "traceNumbers": ["350", "346", "206"]
-  },
-  "346": {
-    "description": "You ask what’s behind the door and Keh replies, \"Nothing!\" Somehow, you don’t believe him.",
-    "choices": [
-      {
-        "text": "Threaten Keh",
-        "nextEntry": "370"
-      },
-      {
-        "text": "Return to the museum entrance",
-        "nextEntry": "206"
-      },
-      {
-        "text": "Go to any Cairo location",
-        "nextEntry": "Cairo Location"
-      }
-    ],
-    "traceNumbers": ["326", "336", "206", "370"]
-  },
-  "370": {
-    "description": "Keh moves aside, letting you open the door.\n\nAs you open it, you see a man smile wryly at you, and then his face seems to melt, changing into a bubbling mess, with a myriad of alien eyes staring hungrily from each bubble!",
-    "choices": [
-      {
-        "text": "Make a Sanity roll",
-        "effects": {
-          "check": {
-            "skill": "Sanity",
-            "success": {
-              "sanity": "1D6",
-              "nextEntry": "206",
-              "message": "Despite the odds, you hold onto your sanity."
-            },
-            "failure": {
-              "sanity": "1D20",
-              "nextEntry": "259"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["346", "206", "259"]
-  },
-  "259": {
-    "description": "It makes no difference where you are, or how you came to be here. You're sleeping, tossing and turning, twisting the sheets into taut ropes around your body. You dream of creatures oozing putrid liquids from holes scattered across their amorphous bodies. You see the holes open and close, and then you silently scream as you see a morose, hungry eye resting within each hole, and hundreds of mouths filled with serrated teeth. Shuddering, you wake up. In the brief moment of sanity left to you, you see that you were not dreaming and not asleep in bed! It’s all really happening! You are being eaten! It is undoubtedly … THE END.",
-    "choices": [
-      {
-        "text": "Game Over",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["370"]
-  },
-  "587": {
-    "description": "It has you! The bubbling thing envelops you and rips you into shreds—as if you were nothing more than tissue paper. You have been consumed! It is ... THE END.",
-    "choices": [
-      {
-        "text": "Game Over",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["370"]
-  },
-  "451": {
-    "description": "You see a freighter at anchor in the harbor, apart from the others. Your eyes note the reinforced hull, and the silver wingtips coming from bulky tarpaulins on the deck—probably Dorniers stored in sections. You can’t read the banner hanging limply in the damp air, but it almost surely says \"Starkweather-Moore.\" The twin stacks of the ship disappear in the low-hanging fog.",
-    "choices": [
-      {
-        "text": "Go aboard the ship",
-        "nextEntry": "486"
-      },
-      {
-        "text": "Visit a nearby inn, 'Der Freischütz'",
-        "nextEntry": "461"
-      }
-    ],
-    "traceNumbers": ["449", "486", "461"]
-  },
-  "486": {
-    "title": "THE STEAMSHIP: THE DARK SEA",
-    "description": "The gangplank is down. If you wait here and try to talk to the sailors, you might get more information. You can also decide to see the Captain or the expedition leader. Alternatively, you can attempt an INT roll once daily to uncover something significant.",
-    "choices": [
-      {
-        "text": "Wait and try to talk to the sailors",
-        "nextEntry": "494"
-      },
-      {
-        "text": "Go to see the Captain",
-        "nextEntry": "487"
-      },
-      {
-        "text": "Go to see the expedition leader",
-        "nextEntry": "497"
-      },
-      {
-        "text": "Attempt an INT roll",
-        "effects": {
-          "check": {
-            "skill": "INT",
-            "success": {
-              "nextEntry": "453"
-            },
-            "failure": {
-              "nextEntry": "486",
-              "message": "You learn nothing useful today, but you can try again tomorrow."
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Go to any Bremen location",
-        "nextEntry": "Bremen"
-      }
-    ],
-    "traceNumbers": ["494", "487", "497", "453", "Bremen Location"]
-  },
-  "494": {
-    "description": "The sailors are uneasy about the weather and the polar trip. They say that the Captain ('Old Haddock') is hiring only crewmen with particular skills. If you decide to try to fake the skills needed for a journey into a dangerous environment, you can attempt a Know (EDU) roll instead of the specific skill roll required.",
-    "choices": [
-      {
-        "text": "Go to see the Captain",
-        "nextEntry": "487"
-      }
-    ],
-    "traceNumbers": ["463", "486", "496", "487"]
-  },
-  "487": {
-    "title": "Captain's Hiring Process",
-    "description": "The captain is hiring people who have 25% or better in the following skills: Electrical Repair, Mechanical Repair, Navigate, Operate Heavy Machinery, Pilot (Aircraft), and Survival. Qualify in one skill area, and you're hired for the trip.",
-    "choices": [
-      {
-        "text": "Qualify with Electrical Repair (25% or better)",
-        "nextEntry": "501",
-        "requirements": {
-          "skill": {
-            "name": "Electrical Repair",
-            "minValue": 25
-          }
-        }
-      },
-      {
-        "text": "Qualify with Mechanical Repair (25% or better)",
-        "nextEntry": "501",
-        "requirements": {
-          "skill": {
-            "name": "Mechanical Repair",
-            "minValue": 25
-          }
-        }
-      },
-      {
-        "text": "Qualify with Navigate (25% or better)",
-        "nextEntry": "501",
-        "requirements": {
-          "skill": {
-            "name": "Navigate",
-            "minValue": 25
-          }
-        }
-      },
-      {
-        "text": "Qualify with Operate Heavy Machinery (25% or better)",
-        "nextEntry": "501",
-        "requirements": {
-          "skill": {
-            "name": "Operate Heavy Machinery",
-            "minValue": 25
-          }
-        }
-      },
-      {
-        "text": "Qualify with Pilot (Aircraft) (25% or better)",
-        "nextEntry": "501",
-        "requirements": {
-          "skill": {
-            "name": "Pilot (Aircraft)",
-            "minValue": 25
-          }
-        }
-      },
-      {
-        "text": "Qualify with Survival (25% or better)",
-        "nextEntry": "501",
-        "requirements": {
-          "skill": {
-            "name": "Survival",
-            "minValue": 25
-          }
-        }
-      },
-      {
-        "text": "Try to fake your skills (Know (EDU) roll)",
-        "effects": {
-          "check": {
-            "skill": "EDU",
-            "success": {
-              "nextEntry": "501",
-              "message": "You successfully fake your skillfulness and are hired for the trip."
-            },
-            "failure": {
-              "nextEntry": "488",
-              "message": "The Captain sees through your attempt."
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "494"
-        }
-      },
-      {
-        "text": "You don't have the skills he is looking for",
-        "nextEntry": "488"
-      }
-    ],
-    "traceNumbers": ["463", "486", "494", "496", "501", "488"]
-  },
-  "497": {
-    "description": "Professor Eustace Blake is very busy coordinating the expedition. \"Who are you? What do you want?\" he asks.",
-    "choices": [
-      {
-        "text": "If you are Professor Grunewald",
-        "nextEntry": "497a",
-        "requirements": {
-          "character": "Professor Grunewald"
-        }
-      },
-      {
-        "text": "If you are not Professor Grunewald",
-        "nextEntry": "497b",
-        "requirements": {
-          "characterNot": "Professor Grunewald"
-        }
-      }
-    ],
-    "traceNumbers": ["497a", "497b"]
-  },
-  "497a": {
-    "description": "Blake is happy to see you. He welcomes you warmly and shares some details about the expedition.\n\nThe trip is to retrace the ill-fated journey of the Lake expedition. He attributes stories of lost cities to “Dementia Antarctica.”",
-    "choices": [
-      {
-        "text": "Continue discussing the expedition",
-        "nextEntry": "463"
-      },
-      {
-        "text": "Leave",
-        "nextEntry": "Bremen"
-      }
-    ],
-    "traceNumbers": ["463", "Bremen Location"]
-  },
-  "497b": {
-    "description": "Blake talks with some reluctance. He explains that the trip is to retrace the ill-fated journey of the Lake expedition. He dismisses stories of lost cities as 'Dementia Antarctica.'",
-    "choices": [
-      {
-        "text": "Try to join the expedition",
-        "nextEntry": "463"
-      },
-      {
-        "text": "Leave",
-        "nextEntry": "Bremen"
-      }
-    ],
-    "traceNumbers": ["463", "Bremen Location"]
-  },
-  "463": {
-    "description": "You decide to cut your hair and pose as a sailor.",
-    "choices": [
-      {
-        "text": "Talk to the other sailors",
-        "nextEntry": "494"
-      },
-      {
-        "text": "Talk to the Captain",
-        "nextEntry": "487"
-      }
-    ],
-    "traceNumbers": ["494", "487", "497", "498"]
-  },
-  "453": {
-    "description": "You decide to stow away. You can stash food and water, and find shelter, in any one of the following hiding places: Lifeboat, Cargo Hold, Lower Deck (Storage), Engine Room (Rear).",
-    "choices": [
-      {
-        "text": "Hide in the Lifeboat",
-        "nextEntry": "456a"
-      },
-      {
-        "text": "Hide in the Cargo Hold",
-        "nextEntry": "456b"
-      },
-      {
-        "text": "Hide in the Lower Deck",
-        "nextEntry": "456c"
-      },
-      {
-        "text": "Hide in the Engine Room (Rear)",
-        "nextEntry": "456d"
-      },
-      {
-        "text": "Decide this is a bad idea",
-        "nextEntry": "486"
-      }
-    ],
-    "traceNumbers": ["456a", "456b", "456c", "456d", "486"]
-  },
-  "456a": {
-    "description": "You hid in the Lifeboat. The lifeboat is checked once during the voyage. Roll your Stealth to avoid being discovered.",
-    "choices": [
-      {
-        "text": "Roll Stealth",
-        "effects": {
-          "check": {
-            "skill": "Stealth",
-            "success": {
-              "nextEntry": "510"
-            },
-            "failure": {
-              "nextEntry": "459"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["510", "459"]
-  },
-  "456b": {
-    "description": "You hid in the Cargo Hold. Roll your Stealth to avoid being discovered.",
-    "choices": [
-      {
-        "text": "Roll Stealth",
-        "effects": {
-          "check": {
-            "skill": "Stealth",
-            "success": {
-              "nextEntry": "510"
-            },
-            "failure": {
-              "nextEntry": "459"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["510", "459"]
-  },
-  "456c": {
-    "description": "You hid in the Lower Deck. You must convince the crew not to betray you to the Captain. Choose either Charm or Fast Talk to attempt.",
-    "choices": [
-      {
-        "text": "Roll Charm",
-        "effects": {
-          "check": {
-            "skill": "Charm",
-            "success": {
-              "nextEntry": "510"
-            },
-            "failure": {
-              "nextEntry": "459"
-            }
-          }
-        }
-      },
-      {
-        "text": "Roll Fast Talk",
-        "effects": {
-          "check": {
-            "skill": "Fast Talk",
-            "success": {
-              "nextEntry": "510"
-            },
-            "failure": {
-              "nextEntry": "459"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["510", "459"]
-  },
-  "456d": {
-    "description": "You hid in the Engine Room (Rear). You must make friends with the two wipers who tend the second engine. Choose either Charm or Psychology to attempt.",
-    "choices": [
-      {
-        "text": "Roll Charm",
-        "effects": {
-          "check": {
-            "skill": "Charm",
-            "success": {
-              "nextEntry": "510"
-            },
-            "failure": {
-              "nextEntry": "459"
-            }
-          }
-        }
-      },
-      {
-        "text": "Roll Psychology",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "510"
-            },
-            "failure": {
-              "nextEntry": "459"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["510", "459"]
-  },
-  "459": {
-    "description": "Found, you are brought before Captain Crawford. He is not interested in your motives or what you say. You are locked in a windowless room on the lower deck for many days. Food is brought to you. Just as you are giving up hope, the ship arrives in Antarctica.",
-    "choices": [
-      {
-        "text": "Continue",
-        "nextEntry": "511"
-      }
-    ],
-    "traceNumbers": ["456", "460", "511"]
-  },
-  "488": {
-    "description": "The captain eyes you suspiciously.",
-    "choices": [
-      {
-        "text": "Introduce yourself",
-        "nextEntry": "488a",
-        "requirements": {
-          "character": "Professor Grunewald"
-        }
-      },
-      {
-        "text": "If you’re Lau",
-        "nextEntry": "488b",
-        "requirements": {
-          "character": "Lydia Lau"
-        }
-      },
-      {
-        "text": "If you’re Wilson",
-        "nextEntry": "454",
-        "requirements": {
-          "character": "Devon Wilson"
-        }
-      },
-      {
-        "text": "If you’re Holt - Try Persuade",
-        "nextEntry": "483",
-        "requirements": {
-          "character": "Ernest Holt"
-        },
-        "effects": {
-          "check": {
-            "skill": "Persuade",
-            "success": {
-              "nextEntry": "483"
-            },
-            "failure": {
-              "nextEntry": "488",
-              "message": "You fail to persuade today."
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "If you’re Holt - Try Charm",
-        "nextEntry": "489",
-        "requirements": {
-          "character": "Ernest Holt"
-        },
-        "effects": {
-          "check": {
-            "skill": "Charm",
-            "success": {
-              "nextEntry": "489"
-            },
-            "failure": {
-              "nextEntry": "488",
-              "message": "You fail to charm today."
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "If you’re Holt - Try Fast Talk",
-        "nextEntry": "495",
-        "requirements": {
-          "character": "Ernest Holt"
-        },
-        "effects": {
-          "check": {
-            "skill": "Fast Talk",
-            "success": {
-              "nextEntry": "495"
-            },
-            "failure": {
-              "nextEntry": "488",
-              "message": "You fail to fast talk today."
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "If you’re Holt - Try Intimidate",
-        "nextEntry": "471",
-        "requirements": {
-          "character": "Ernest Holt"
-        },
-        "effects": {
-          "check": {
-            "skill": "Intimidate",
-            "success": {
-              "nextEntry": "471"
-            },
-            "failure": {
-              "nextEntry": "488",
-              "message": "You fail to intimidate today."
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Come back another day",
-        "nextEntry": "Bremen"
-      }
-    ],
-    "traceNumbers": [
-      "471",
-      "483",
-      "487",
-      "497",
-      "500",
-      "498",
-      "454",
-      "489",
-      "495"
-    ]
-  },
-  "488a": {
-    "description": "\"Right ... just what we need ... another professor. If Blake vouches for you, welcome aboard.\"",
-    "choices": [
-      {
-        "text": "Continue",
-        "nextEntry": "500"
-      }
-    ]
-  },
-  "488b": {
-    "description": "He says \"Sorry, no reporters, especially ladies,\" he mutters.",
-    "choices": [
-      {
-        "text": "Are you going to take that?",
-        "nextEntry": "498"
-      }
-    ]
-  },
-  "454": {
-    "description": "Decide whether you are in uniform, or not.",
-    "choices": [
-      {
-        "text": "I am in uniform",
-        "nextEntry": "499"
-      },
-      {
-        "text": "I am not in uniform",
-        "nextEntry": "464"
-      }
-    ],
-    "traceNumbers": ["499", "464"]
-  },
-  "498": {
-    "description": "Once per day, you may attempt an INT roll. When you succeed, you can proceed further.",
-    "choices": [
-      {
-        "text": "Attempt an INT roll",
-        "effects": {
-          "check": {
-            "skill": "INT",
-            "success": {
-              "nextEntry": "463"
-            },
-            "failure": {
-              "nextEntry": "498",
-              "message": "You fail the roll, but you can try again tomorrow."
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Return to any Bremen location",
-        "nextEntry": "Bremen"
-      }
-    ],
-    "traceNumbers": ["463", "Bremen Location"]
-  },
-  "483": {
-    "description": "The Captain says, \"Our sponsors are Mr. Starkweather and Mr. Moore. You must ask them if this expedition is for sale,\" he says. 'Good day.'",
-    "choices": [
-      {
-        "text": "Try to convince the Captain again",
-        "nextEntry": "488"
-      },
-      {
-        "text": "Continue",
-        "nextEntry": "490"
-      }
-    ],
-    "traceNumbers": ["488", "490"]
-  },
-  "489": {
-    "description": "With your successful Charm, you delight them by offering to publish the expedition’s work and to finance later research. The leaders leap at the chance. Of course, you can go to Antarctica! The Dark Sea sails Dec. 20.",
-    "choices": [
-      {
-        "text": "Continue",
-        "nextEntry": "500"
-      }
-    ],
-    "traceNumbers": ["500", "488"]
-  },
-  "495": {
-    "description": "He looks at you somewhat surprised. \"Sorry, I don’t really follow. I don’t have time to argue, sir. Excuse me.\"",
-    "choices": [
-      {
-        "text": "Continue",
-        "nextEntry": "490"
-      }
-    ],
-    "traceNumbers": ["490", "488"]
-  },
-  "471": {
-    "description": "He stares at you. \"Sir, that tone of voice may serve you well in the boardrooms of New York, but this is my expedition. Good day!\"",
-    "choices": [
-      {
-        "text": "Try to convince the Captain again",
-        "nextEntry": "488"
-      },
-      {
-        "text": "Wait a day and try something else",
-        "nextEntry": "490",
-        "effects": {
-          "setHour": 23,
-          "advanceTime": 6
-        }
-      }
-    ],
-    "traceNumbers": ["488", "490"]
-  },
-  "499": {
-    "description": "\"But you’re on active duty, from your dress. Do you have orders requesting appointment to this expedition?\" Of course you don’t.",
-    "choices": [
-      {
-        "text": "Continue",
-        "nextEntry": "490"
-      }
-    ],
-    "traceNumbers": ["490", "454"]
-  },
-  "464": {
-    "description": "The Captain assesses your skills, but it's clear that you don't meet the expedition's requirements.",
-    "choices": [
-      {
-        "text": "Continue",
-        "nextEntry": "490"
-      }
-    ],
-    "traceNumbers": ["490", "454"]
-  },
-  "490": {
-    "description": "You can attempt one INT roll per day. When you succeed, you may proceed further.",
-    "choices": [
-      {
-        "text": "Attempt an INT roll",
-        "effects": {
-          "check": {
-            "skill": "INT",
-            "success": {
-              "nextEntry": "496"
-            },
-            "failure": {
-              "nextEntry": "490",
-              "message": "You fail the roll, but you can try again tomorrow."
-            }
-          }
-        }
-      },
-      {
-        "text": "Ask to see the captain",
-        "nextEntry": "487"
-      }
-    ],
-    "traceNumbers": ["464", "483", "495", "499", "487", "496"]
-  },
-  "496": {
-    "description": "If you shed your uniform, get a false beard, and pose as a sailor, you can try to blend in.",
-    "choices": [
-      {
-        "text": "Pose as a sailor and go to the sailors",
-        "nextEntry": "494"
-      },
-      {
-        "text": "Ask to see the Captain",
-        "nextEntry": "487"
-      }
-    ],
-    "traceNumbers": ["490", "494", "487"]
-  },
-  "461": {
-    "title": "DER FREISCHÜTZ INN",
-    "description": "You enter the smoke-filled public room. You’re greeted with boisterous talk, steins loaded with foamy beer, and a crowd of Brown Shirts; their red and black swastika armbands clearly visible in the smoky haze.\n\nRooms are available for the night. If you wish to do more here than sleep, you can try some actions. When you are done, you can leave the inn.",
-    "choices": [
-      {
-        "text": "Explore the inn",
-        "nextEntry": "491",
-        "requirements": {
-          "hasNotVisited": "478"
-        }
-      },
-      {
-        "text": "It's not safe to stay here",
-        "nextEntry": "461b",
-        "requirements": {
-          "hasVisited": "478"
-        }
-      },
-      {
-        "text": "Leave for another Bremen location",
-        "nextEntry": "Bremen"
-      }
-    ],
-    "traceNumbers": ["Bremen Location", "491"]
-  },
-  "461b": {
-    "title": "BREMEN MISSION HOUSE",
-    "description": "You find a room at the Bremen Mission House. The night is quiet, and you sleep well. In the morning, you are refreshed and ready to face the day.",
-    "choices": [
-      {
-        "text": "Continue",
-        "nextEntry": "Bremen",
-        "effects": {
-          "setHour": 23,
-          "advanceTime": 8
-        }
-      }
-    ]
-  },
-  "491": {
-    "description": "You can try one of the following rolls once per day until you succeed, or relax for a while.",
-    "choices": [
-      {
-        "text": "Attempt a Spot Hidden roll",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "479"
-            },
-            "failure": {
-              "nextEntry": "491",
-              "message": "You don't find anything this time."
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Attempt a Listen roll",
-        "effects": {
-          "check": {
-            "skill": "Listen",
-            "success": {
-              "nextEntry": "469"
-            },
-            "failure": {
-              "nextEntry": "491",
-              "message": "You don’t hear anything useful."
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Attempt a Psychology roll",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "458"
-            },
-            "failure": {
-              "nextEntry": "491",
-              "message": "You can’t get a good read on the people around."
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Attempt a Cthulhu Mythos roll",
-        "effects": {
-          "check": {
-            "skill": "Cthulhu Mythos",
-            "success": {
-              "nextEntry": "477"
-            },
-            "failure": {
-              "nextEntry": "491",
-              "message": "The Mythos reveals nothing new to you."
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Leave for another Bremen location",
-        "nextEntry": "Bremen"
-      }
-    ],
-    "traceNumbers": [
-      "457",
-      "458",
-      "461",
-      "469",
-      "477",
-      "479",
-      "Bremen Location"
-    ]
-  },
-  "457": {
-    "description": "A raucous group of Brown Shirts are laughing about something. You make out the words \"Fuhrer,\" \"Triumph,\" and \"Amulet.\"",
-    "choices": [
-      {
-        "text": "Return to the inn",
-        "nextEntry": "491"
-      }
-    ],
-    "traceNumbers": ["491"]
-  },
-  "474": {
-    "description": "They rise uneasily, wary at your approach. A man steps forward, saying, \"Sprechen Sie Deutsche?\"",
-    "choices": [
-      {
-        "text": "Respond if you have skill in Language (German)",
-        "nextEntry": "473",
-        "requirements": {
-          "skill": {
-            "name": "Language (German)",
-            "minValue": 1
-          }
-        }
-      },
-      {
-        "text": "If you don't know German, back off",
-        "nextEntry": "485"
-      }
-    ],
-    "traceNumbers": ["473", "485", "479"]
-  },
-  "473": {
-    "description": "\"What are you doing?\" he asks.",
-    "choices": [
-      {
-        "text": "Continue",
-        "nextEntry": "485"
-      }
-    ],
-    "traceNumbers": ["485", "474"]
-  },
-  "485": {
-    "description": "\"What do you want?\" His hostility is evident.",
-    "choices": [
-      {
-        "text": "Feign idle interest",
-        "nextEntry": "482"
-      },
-      {
-        "text": "Ask about the box",
-        "nextEntry": "478"
-      }
-    ],
-    "traceNumbers": ["473", "474", "482", "478"]
-  },
-  "458": {
-    "description": "There’s fear in this room, but of what? The Brown Shirts? You feel something strange is happening.",
-    "choices": [
-      {
-        "text": "Attempt a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "479"
-            },
-            "failure": {
-              "nextEntry": "491",
-              "message": "You fail to notice anything unusual."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["479", "491"]
-  },
-  "469": {
-    "description": "If you succeed with a Language (German) roll, you might overhear something important.",
-    "choices": [
-      {
-        "text": "Attempt a Language (German) roll",
-        "effects": {
-          "check": {
-            "skill": "Language (German)",
-            "success": {
-              "nextEntry": "457"
-            },
-            "failure": {
-              "nextEntry": "491",
-              "message": "You can't make out the conversation."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["457", "491"]
-  },
-  "477": {
-    "description": "A group of Brown Shirts are gathered around a box on their table. You notice the box resembles the case to the Sacred Black Amulet of Klaath. It’s incredible, but it could help you.",
-    "choices": [
-      {
-        "text": "Try to get a closer look at the box",
-        "nextEntry": "479"
-      },
-      {
-        "text": "Return to the inn",
-        "nextEntry": "491"
-      }
-    ],
-    "traceNumbers": ["479", "491"]
-  },
-  "479": {
-    "description": "A group of Brown Shirts cluster about a curiously shaped box.",
-    "choices": [
-      {
-        "text": "Get a closer look at the box",
-        "nextEntry": "474"
-      },
-      {
-        "text": "Return to the inn",
-        "nextEntry": "491"
-      }
-    ],
-    "traceNumbers": ["458", "474", "477", "491"]
-  },
-  "482": {
-    "description": "\"Be off with you,\" he snarls. Feeling foolish, you meekly leave.",
-    "choices": [
-      {
-        "text": "Return to the inn",
-        "nextEntry": "461"
-      }
-    ],
-    "traceNumbers": ["461", "485"]
-  },
-  "478": {
-    "description": "He studies you for a moment and then swiftly draws a knife. You have a split second to react.",
-    "choices": [
-      {
-        "text": "Try to quickly pull out your gun",
-        "nextEntry": "481a",
-        "requirements": {
-          "skill": {
-            "name": "Firearms (Handgun)",
-            "minValue": 1
-          },
-          "inventoryType": "weapon"
-        }
-      },
-      {
-        "text": "Try to dodge the attack",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": {
-              "nextEntry": "467"
-            },
-            "failure": {
-              "nextEntry": "481b",
-              "message": "You fail to dodge the attack. They grab you and pummel you with a vengeance.",
-              "modifyHealth": -3
-            }
-          }
-        },
-        "nextEntry": "Bremen"
-      }
-    ],
-    "traceNumbers": ["481a", "481b", "485"]
-  },
-  "481a": {
-    "description": "Your gun is handy. You take a shot at point-blank range.",
-    "choices": [
-      {
-        "text": "Make a Firearms (Handgun) roll",
-        "effects": {
-          "check": {
-            "skill": "Firearms (Handgun)",
-            "bonus": 30,
-            "success": {
-              "nextEntry": "484"
-            },
-            "failure": {
-              "nextEntry": "467",
-              "message": "You miss the shot and must try to escape."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["484", "467"]
-  },
-  "481b": {
-    "description": "Fortunately, the police arrive and break up the fight. You are arrested and remain in jail for 10 days before bail from abroad arrives to free you.",
-    "choices": [
-      {
-        "text": "Go to any Bremen location",
-        "effects": {
-          "advanceTime": 10
-        },
-        "nextEntry": "Bremen"
-      }
-    ],
-    "traceNumbers": ["467", "Bremen Location"]
-  },
-  "484": {
-    "description": "The man's associates back away and you grab the box and an attaché case. The man, knife in hand, struggles drunkenly to his feet. One of his friends is fumbling frantically for something he carries in a leather jacket.",
-    "choices": [
-      {
-        "text": "Shoot the knife-wielding man",
-        "nextEntry": "472",
-        "requirements": {
-          "skill": {
-            "name": "Firearms (Handgun)",
-            "minValue": 1
-          },
-          "inventoryType": "weapon"
-        }
-      },
-      {
-        "text": "Attempt to exit with a Dodge roll",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": {
-              "nextEntry": "470",
-              "message": "You make a lightning-like and decisive escape."
-            },
-            "failure": {
-              "nextEntry": "484b",
-              "message": "You fail to escape, and they grab you, beginning to pummel you.",
-              "modifyHealth": -2
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["470", "472"]
-  },
-  "467": {
-    "description": "Hereafter, that inn will be dangerous for you. You find a mission house where you may sleep while you are in Bremen.",
-    "choices": [
-      {
-        "text": "Go to any Bremen Location",
-        "nextEntry": "Bremen"
-      }
-    ],
-    "traceNumbers": ["Bremen Location"]
-  },
-  "470": {
-    "description": "It is a black amulet of strange design. Notes in German accompany it.",
-    "choices": [
-      {
-        "text": "Make a Language (German) roll",
-        "effects": {
-          "check": {
-            "skill": "Language (German)",
-            "success": {
-              "nextEntry": "582",
-              "message": "You successfully decipher the notes."
-            },
-            "failure": {
-              "nextEntry": "Bremen",
-              "message": "You fail to fully understand the notes, but you can find someone to translate them later."
-            }
-          }
-        }
-      },
-      {
-        "text": "Go to any Bremen Location",
-        "nextEntry": "Bremen"
-      }
-    ],
-    "traceNumbers": ["582", "Bremen Location"]
-  },
-  "472": {
-    "description": "You're at point-blank range.",
-    "choices": [
-      {
-        "text": "Make a Firearms (Handgun) roll",
-        "effects": {
-          "check": {
-            "skill": "Firearms (Handgun)",
-            "bonus": 40,
-            "success": {
-              "nextEntry": "470",
-              "message": "You hit the man and incapacitate him."
-            },
-            "failure": {
-              "nextEntry": "484b",
-              "message": "You miss, and the man lunges at you with his knife."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["470", "484b"]
-  },
-  "484b": {
-    "description": "They grab you and begin to pummel you. Fortunately, they decide not to use their knife and eventually the police arrive, arresting everyone. You are jailed for 10 days before bail arrives to free you.",
-    "choices": [
-      {
-        "text": "Go to any Bremen Location",
-        "effects": {
-          "advanceTime": 240
-        },
-        "nextEntry": "Bremen"
-      }
-    ],
-    "traceNumbers": ["Bremen Location"]
-  },
-  "582": {
-    "description": "The amulet is a magic item that summons Nodens, an Elder God, who will carry you anywhere you wish once. After one use, the amulet disappears. You feel a deep connection to this otherworldly force, but also a heavy responsibility as you wield this power.",
-    "choices": [
-      {
-        "text": "Go to any Bremen Location",
-        "nextEntry": "Bremen",
-        "effects": {
-          "addItem": {
-            "name": "Black Amulet of Klaath",
-            "description": "A strange black amulet, rumored to summon Nodens, an Elder God, who can teleport you once to any location of your choosing.",
-            "type": "artifact"
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["Bremen Location"]
-  },
-  "582b": {
-    "description": "You can use the amulet to teleport to any one of the following locations:",
-    "choices": [
-      {
-        "text": "Teleport to Tel-el-Amarna entrance",
-        "nextEntry": "324"
-      },
-      {
-        "text": "Teleport to Cairo",
-        "nextEntry": "Cairo Location"
-      },
-      {
-        "text": "Teleport to Alexandria",
-        "nextEntry": "Alexandria Location"
-      },
-      {
-        "text": "Teleport to Bremen",
-        "nextEntry": "Bremen Location"
-      },
-      {
-        "text": "Teleport to New York",
-        "nextEntry": "New York Location"
-      },
-      {
-        "text": "Teleport to Athens",
-        "nextEntry": "Athens Location"
-      },
-      {
-        "text": "Teleport to Arkham",
-        "nextEntry": "Arkham Location"
-      },
-      {
-        "text": "Teleport to Boston",
-        "nextEntry": "Boston Location"
-      }
-    ],
-    "traceNumbers": [
-      "Cairo Location",
-      "Alexandria Location",
-      "Bremen Location",
-      "New York Location",
-      "Athens Location",
-      "Arkham Location",
-      "Boston Location"
     ]
   }
 }
