@@ -15175,7 +15175,14 @@
               "message": "The Captain sees through your attempt."
             }
           }
+        },
+        "requirements": {
+          "hasVisited": "494"
         }
+      },
+      {
+        "text": "You don't have the skills he is looking for",
+        "nextEntry": "488"
       }
     ],
     "traceNumbers": ["463", "486", "494", "496", "501", "488"]
@@ -15710,7 +15717,7 @@
         "nextEntry": "Bremen",
         "effects": {
           "setHour": 23,
-          "advanceTime": 7
+          "advanceTime": 8
         }
       }
     ]
