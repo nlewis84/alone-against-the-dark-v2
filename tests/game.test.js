@@ -121,36 +121,29 @@ describe('Game Logic', () => {
 
   describe('Basic Gameplay Features', () => {
     test('should update health correctly', () => {
-      // Set initial health to a value below 100
-      currentState.health = 90
+      // Set initial health to a value below max
+      currentState.health = 8
 
-      // Update health by 10
+      // Update health by 3
+      updateHealth(3)
+
+      // Check that health is capped at 9
+      expect(currentState.health).toBe(9)
+      expect(document.getElementById('health').innerText).toBe('Health: 9')
+
+      // Update health by 10 again, but since it's already at max, it should not change
       updateHealth(10)
 
-      // Check that health is capped at 100
-      expect(currentState.health).toBe(100)
-      expect(document.getElementById('health').innerText).toBe('Health: 100')
-
-      // Update health by 10 again, but since it's already 100, it should not change
-      updateHealth(10)
-
-      // Health should still be 100
-      expect(currentState.health).toBe(100)
-      expect(document.getElementById('health').innerText).toBe('Health: 100')
-
-      // Set initial health to a value below 100 but ensure we don't exceed 100 with the addition
-      currentState.health = 95
-      updateHealth(10) // Try to add 10, but it should cap at 100
-
-      expect(currentState.health).toBe(100)
-      expect(document.getElementById('health').innerText).toBe('Health: 100')
+      // Health should still be 9
+      expect(currentState.health).toBe(9)
+      expect(document.getElementById('health').innerText).toBe('Health: 9')
 
       // Set initial health to a value above 100 (should not be possible, but for thoroughness)
       currentState.health = 105
-      updateHealth(10) // Adding more health should still cap it at 100
+      updateHealth(10) // Adding more health should still cap it at 9
 
-      expect(currentState.health).toBe(100)
-      expect(document.getElementById('health').innerText).toBe('Health: 100')
+      expect(currentState.health).toBe(9)
+      expect(document.getElementById('health').innerText).toBe('Health: 9')
     })
 
     test('should add item to inventory', () => {
@@ -184,8 +177,8 @@ describe('Game Logic', () => {
     // })
 
     test('should make choice and apply effects', () => {
-      makeChoice('9', { health: 100, inventory: ['Magical Artifact'] })
-      expect(currentState.health).toBe(100)
+      makeChoice('9', { health: 9, inventory: ['Magical Artifact'] })
+      expect(currentState.health).toBe(9)
       expect(currentState.inventory).toContain('Magical Artifact')
     })
 
@@ -537,7 +530,7 @@ describe('Game Logic', () => {
   describe('Health Requirement Checks', () => {
     beforeEach(() => {
       // Setting up a consistent initial health state for testing.
-      currentState.health = 50
+      currentState.health = 8
     })
 
     test('should fail the fullHealth requirement if health is not max', () => {
@@ -565,7 +558,7 @@ describe('Game Logic', () => {
 
   describe('Health Recovery Tests', () => {
     test('Health increases correctly based on Luck roll outcomes', () => {
-      currentState.health = 90 // Example initial health
+      currentState.health = 2 // Example initial health
       displayEntry('585')
       const choiceButton = findChoiceButton('Make a Luck roll for recovery')
       choiceButton.click() // Simulate clicking the choice
@@ -573,12 +566,12 @@ describe('Game Logic', () => {
       // Assuming the game logic updates the current entry after the choice
       if (currentState.currentEntry === '585a') {
         // For '585a', health should increase by 2 to 6 points
-        expect(currentState.health).toBeGreaterThanOrEqual(92)
-        expect(currentState.health).toBeLessThanOrEqual(96)
+        expect(currentState.health).toBeGreaterThanOrEqual(4)
+        expect(currentState.health).toBeLessThanOrEqual(8)
       } else if (currentState.currentEntry === '585b') {
         // For '585b', health should increase by 1 to 3 points
-        expect(currentState.health).toBeGreaterThanOrEqual(91)
-        expect(currentState.health).toBeLessThanOrEqual(93)
+        expect(currentState.health).toBeGreaterThanOrEqual(3)
+        expect(currentState.health).toBeLessThanOrEqual(5)
       }
       // Optionally, verify that the description and other elements are updated
       expect(document.getElementById('description').textContent).toContain(
@@ -600,7 +593,7 @@ describe('Game Logic', () => {
     })
 
     test('Stay another day if health is not full', () => {
-      currentState.health = 95
+      currentState.health = 6
 
       displayEntry('585a') // Assuming 585a allows staying another day
       expect(checkRequirements({ notFullHealth: true })).toBe(true)
@@ -610,14 +603,14 @@ describe('Game Logic', () => {
     })
 
     test('Expect 585 to not have Make a Luck roll button if health is full', () => {
-      currentState.health = 100
+      currentState.health = 9
 
       displayEntry('585')
 
       let choices = Array.from(document.getElementById('choices').children)
       expect(choices.length === 1)
 
-      currentState.health = 98
+      currentState.health = 6
 
       displayEntry('585')
 
@@ -1757,7 +1750,7 @@ describe('Game Logic', () => {
     test('should allow choice when player is not in the restricted locale', () => {
       // Set the current locale to something other than Cunard Ship
       setCurrentLocale('New York')
-      currentState.health = 90
+      currentState.health = 6
 
       const requirements = {
         notFullHealth: true,
@@ -2611,7 +2604,7 @@ describe('Game Logic', () => {
 
       // Reset game state before each test
       currentState.waterSupply = 10
-      currentState.health = 100
+      currentState.health = 9
     })
 
     test('should subtract water supply for 94_walk when button is clicked', () => {
@@ -2627,6 +2620,8 @@ describe('Game Logic', () => {
     })
 
     test('should clear water supply for 210 when button is clicked', () => {
+      currentState.currentLocale = 'Cairo'
+
       // Simulate displaying the 210 entry
       displayEntry('210')
 
@@ -2651,7 +2646,7 @@ describe('Game Logic', () => {
 
       // Verify waterSupply is now 0 and health is reduced by 6
       expect(currentState.waterSupply).toBe(0)
-      expect(currentState.health).toBe(94) // Health should be reduced by 6 due to water depletion
+      expect(currentState.health).toBe(3) // Health should be reduced by 6 due to water depletion
     })
 
     test('should add water supply correctly in 94_walk', () => {

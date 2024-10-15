@@ -1215,8 +1215,9 @@ export function updateHealth(amount) {
       currentState.health = 0 // Prevent health from going negative
     }
   } else if (amount > 0) {
-    // Handle healing but cap it at 100
-    currentState.health = Math.min(currentState.health + amount, 100)
+    // Handle healing but cap it at the current character's max initial health
+    const initialHealth = gameData.investigators[currentState.character].health
+    currentState.health = Math.min(currentState.health + amount, initialHealth)
   }
   document.getElementById('health').innerText = `Health: ${currentState.health}`
 
@@ -1507,7 +1508,12 @@ export function checkRequirements(requirements) {
       }
     }
     if (requirements.notFullHealth) {
-      if (currentState.health === 100) {
+      // We need to find the current investigator's initial health in the investigators.json file and see if they are at full health in currentState.health
+      // gameData.investigators is an object and the key should equal currentState.character
+      const initialHealth =
+        gameData.investigators[currentState.character].health
+
+      if (currentState.health >= initialHealth) {
         return false
       }
     }
@@ -1649,7 +1655,6 @@ export function checkRequirements(requirements) {
     // Check if the player has the required skill and the minimum value for that skill
     if (requirements.skill) {
       const { name, minValue } = requirements.skill
-      console.log(minValue, currentState.skills[name], requirements.skill)
       if (!currentState.skills[name] || currentState.skills[name] < minValue) {
         return false
       }
@@ -2499,8 +2504,6 @@ export function revealTile(tileId) {
   const tile = document.getElementById(tileId)
   if (tile) {
     tile.style.opacity = 1 // Make the tile visible
-  } else {
-    console.error(`Tile with ID ${tileId} not found.`)
   }
 }
 
@@ -2517,10 +2520,6 @@ export function placePieceOnPyramid(piece, position) {
 
   // Reveal the tile visually by setting its opacity to 1
   revealTile(`piece-${piece.toLowerCase()}`) // Assuming IDs like piece-k for piece "K"
-
-  console.log(
-    `Placed piece ${piece} at position ${position} on the Pyramid Outline.`,
-  )
 }
 
 /**

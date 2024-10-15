@@ -10921,12 +10921,12 @@
             "success": {
               "nextEntry": "585a",
               "modifyHealth": "2D3",
-              "message": "Your recovery is swift and effective. You gain 2D3 hit points for the first day."
+              "message": "Your recovery is swift and effective. You gain several hit points for the first day."
             },
             "failure": {
               "nextEntry": "585b",
               "modifyHealth": "1D3",
-              "message": "Recovery is slow, but you still gain 1D3 hit points for the first day."
+              "message": "Recovery is slow, but you still gain a few hit points for the first day."
             }
           }
         }
@@ -14423,6 +14423,9 @@
         "requirements": {
           "notFullHealth": true,
           "notCurrentLocale": "Cunard Ship"
+        },
+        "effects": {
+          "health": 1
         },
         "nextEntry": "585a"
       },
