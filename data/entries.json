@@ -3948,6 +3948,11 @@
     ],
     "traceNumbers": ["64", "New York Location"]
   },
+  "147": {
+    "description": "Grunewald’s room looks as though someone departed hastily.",
+    "choices": [{ "text": "Go to any Arkham Location", "nextEntry": "Arkham" }],
+    "traceNumbers": ["102"]
+  },
   "148": {
     "description": "You are enjoying another gorgeous day on the ship.",
     "choices": [
@@ -11317,6 +11322,16 @@
       }
     ],
     "traceNumbers": ["449", "486", "461"]
+  },
+  "452": {
+    "description": "The harbor is silent, almost empty. You feel overpoweringly that you have missed or lost something. Disconsolate without completely knowing why, you walk past docks and warehouses, and then you hear merry songs from a nearby inn.",
+    "choices": [
+      {
+        "text": "Go to the inn",
+        "nextEntry": "461"
+      }
+    ],
+    "traceNumbers": ["449", "461"]
   },
   "453": {
     "description": "You decide to stow away. You can stash food and water, and find shelter, in any one of the following hiding places: Lifeboat, Cargo Hold, Lower Deck (Storage), Engine Room (Rear).",

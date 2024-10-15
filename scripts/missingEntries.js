@@ -50,10 +50,13 @@ fs.readFile(topLevelKeysPath, 'utf8', (err, topLevelKeysData) => {
     // Sort the remaining entries
     const sortedEntries = filteredEntries.sort()
 
+    // Remove duplicates
+    const uniqueEntries = [...new Set(sortedEntries)]
+
     // Write the missing entries to a JSON file
     fs.writeFile(
       outputFilePath,
-      JSON.stringify(sortedEntries, null, 2),
+      JSON.stringify(uniqueEntries, null, 2),
       'utf8',
       (err) => {
         if (err) {
