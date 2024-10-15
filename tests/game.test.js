@@ -2036,8 +2036,10 @@ describe('Game Logic', () => {
       // Reset currentState and initialize game before each test
       initializeGame()
       currentState.hiredAthens = null
+      currentState.hiredCairo = null
       currentState.skills = {}
       currentState.inventory = []
+      currentState.currentLocale = 'Athens'
     })
 
     test('should show "Your interpreter can help translate" button when companion is with you', () => {
@@ -2054,6 +2056,7 @@ describe('Game Logic', () => {
 
     test('should not show "Your interpreter can help translate" button when companion is not with you', () => {
       currentState.hiredAthens = null // Player does not have a companion
+      currentState.currentLocale = 'Athens'
       displayEntry('87')
 
       const buttons = Array.from(document.querySelectorAll('button')).filter(
@@ -2076,6 +2079,7 @@ describe('Game Logic', () => {
 
     test('should not show "Good thing you speak Greek" button when player does not speak Greek', () => {
       currentState.skills = { 'Language (Greek)': 0 } // Player does not know Greek
+      currentState.currentLocale = 'Athens'
       displayEntry('87')
 
       const buttons = Array.from(document.querySelectorAll('button')).filter(
@@ -2088,6 +2092,7 @@ describe('Game Logic', () => {
       currentState.inventory = [
         { name: 'Harrison’s English/Greek Phrase Book', type: 'book' },
       ] // Player has the phrasebook
+      currentState.currentLocale = 'Athens'
       displayEntry('87')
 
       const buttons = Array.from(document.querySelectorAll('button'))
@@ -2101,6 +2106,7 @@ describe('Game Logic', () => {
       currentState.inventory = [
         { name: 'Harrison’s English/Arabic Phrase Book', type: 'book' },
       ] // Player does not have the English/Greek Phrase Book
+      currentState.currentLocale = 'Athens'
       displayEntry('87')
 
       const buttons = Array.from(document.querySelectorAll('button')).filter(
@@ -2703,6 +2709,27 @@ describe('Game Logic', () => {
 
       // Expect the results to be within a reasonable range
       expect(results).toBeGreaterThan(10)
+    })
+  })
+
+  describe('Entry 373 - Black Amulet of Klaath Check', () => {
+    it('should show the option to use the Black Amulet of Klaath if the player has it', () => {
+      // Add the Black Amulet of Klaath to the player's inventory
+      addItem({
+        name: 'Black Amulet of Klaath',
+        type: 'artifact',
+        description:
+          'A black amulet with a strange symbol etched into its surface.',
+      })
+
+      // Display entry 373
+      displayEntry('373')
+
+      let choicesContainer = document.getElementById('choices')
+      const buttons = choicesContainer.querySelectorAll('button')
+
+      // expect buttons.length to be 2
+      expect(buttons.length).toBe(2)
     })
   })
 })

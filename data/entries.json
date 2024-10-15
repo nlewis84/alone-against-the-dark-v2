@@ -873,7 +873,7 @@
         "requirements": {
           "currentLocale": "Bremen"
         },
-        "nextEntry": "Bremen Location"
+        "nextEntry": "Bremen"
       }
     ],
     "description": "This retailer accepts currency from any country.",
@@ -9270,6 +9270,13 @@
             }
           }
         }
+      },
+      {
+        "text": "Use the Black Amulet of Klaath to teleport",
+        "nextEntry": "582b",
+        "requirements": {
+          "inventory": "Black Amulet of Klaath"
+        }
       }
     ],
     "traceNumbers": ["351", "369", "447"]
@@ -10791,7 +10798,7 @@
         "text": "Go to any Alexandria Location"
       },
       {
-        "nextEntry": "Bremen Location",
+        "nextEntry": "Bremen",
         "text": "Go to any Bremen Location"
       }
     ],
@@ -14390,7 +14397,7 @@
         "requirements": {
           "currentLocale": "Bremen"
         },
-        "nextEntry": "Bremen Location"
+        "nextEntry": "Bremen"
       },
       {
         "text": "Back to The Dark Sea",
@@ -15199,7 +15206,7 @@
       },
       {
         "text": "Leave",
-        "nextEntry": "Bremen Location"
+        "nextEntry": "Bremen"
       }
     ],
     "traceNumbers": ["463", "Bremen Location"]
@@ -15213,7 +15220,7 @@
       },
       {
         "text": "Leave",
-        "nextEntry": "Bremen Location"
+        "nextEntry": "Bremen"
       }
     ],
     "traceNumbers": ["463", "Bremen Location"]
@@ -15550,7 +15557,7 @@
       },
       {
         "text": "Return to any Bremen location",
-        "nextEntry": "Bremen Location"
+        "nextEntry": "Bremen"
       }
     ],
     "traceNumbers": ["463", "Bremen Location"]
@@ -15665,5 +15672,498 @@
       }
     ],
     "traceNumbers": ["490", "494", "487"]
+  },
+  "461": {
+    "title": "DER FREISCHÜTZ INN",
+    "description": "You enter the smoke-filled public room. You’re greeted with boisterous talk, steins loaded with foamy beer, and a crowd of Brown Shirts; their red and black swastika armbands clearly visible in the smoky haze.\n\nRooms are available for the night. If you wish to do more here than sleep, you can try some actions. When you are done, you can leave the inn.",
+    "choices": [
+      {
+        "text": "Explore the inn",
+        "nextEntry": "491",
+        "requirements": {
+          "hasNotVisited": "478"
+        }
+      },
+      {
+        "text": "It's not safe to stay here",
+        "nextEntry": "461b",
+        "requirements": {
+          "hasVisited": "478"
+        }
+      },
+      {
+        "text": "Leave for another Bremen location",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["Bremen Location", "491"]
+  },
+  "461b": {
+    "title": "BREMEN MISSION HOUSE",
+    "description": "You find a room at the Bremen Mission House. The night is quiet, and you sleep well. In the morning, you are refreshed and ready to face the day.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "Bremen",
+        "effects": {
+          "setHour": 23,
+          "advanceTime": 7
+        }
+      }
+    ]
+  },
+  "491": {
+    "description": "You can try one of the following rolls once per day until you succeed, or relax for a while.",
+    "choices": [
+      {
+        "text": "Attempt a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "479"
+            },
+            "failure": {
+              "nextEntry": "491",
+              "message": "You don't find anything this time."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a Listen roll",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "469"
+            },
+            "failure": {
+              "nextEntry": "491",
+              "message": "You don’t hear anything useful."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "458"
+            },
+            "failure": {
+              "nextEntry": "491",
+              "message": "You can’t get a good read on the people around."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Attempt a Cthulhu Mythos roll",
+        "effects": {
+          "check": {
+            "skill": "Cthulhu Mythos",
+            "success": {
+              "nextEntry": "477"
+            },
+            "failure": {
+              "nextEntry": "491",
+              "message": "The Mythos reveals nothing new to you."
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Leave for another Bremen location",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": [
+      "457",
+      "458",
+      "461",
+      "469",
+      "477",
+      "479",
+      "Bremen Location"
+    ]
+  },
+  "457": {
+    "description": "A raucous group of Brown Shirts are laughing about something. You make out the words \"Fuhrer,\" \"Triumph,\" and \"Amulet.\"",
+    "choices": [
+      {
+        "text": "Return to the inn",
+        "nextEntry": "491"
+      }
+    ],
+    "traceNumbers": ["491"]
+  },
+  "474": {
+    "description": "They rise uneasily, wary at your approach. A man steps forward, saying, \"Sprechen Sie Deutsche?\"",
+    "choices": [
+      {
+        "text": "Respond if you have skill in Language (German)",
+        "nextEntry": "473",
+        "requirements": {
+          "skill": {
+            "name": "Language (German)",
+            "minValue": 1
+          }
+        }
+      },
+      {
+        "text": "If you don't know German, back off",
+        "nextEntry": "485"
+      }
+    ],
+    "traceNumbers": ["473", "485", "479"]
+  },
+  "473": {
+    "description": "\"What are you doing?\" he asks.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "485"
+      }
+    ],
+    "traceNumbers": ["485", "474"]
+  },
+  "485": {
+    "description": "\"What do you want?\" His hostility is evident.",
+    "choices": [
+      {
+        "text": "Feign idle interest",
+        "nextEntry": "482"
+      },
+      {
+        "text": "Ask about the box",
+        "nextEntry": "478"
+      }
+    ],
+    "traceNumbers": ["473", "474", "482", "478"]
+  },
+  "458": {
+    "description": "There’s fear in this room, but of what? The Brown Shirts? You feel something strange is happening.",
+    "choices": [
+      {
+        "text": "Attempt a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "479"
+            },
+            "failure": {
+              "nextEntry": "491",
+              "message": "You fail to notice anything unusual."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["479", "491"]
+  },
+  "469": {
+    "description": "If you succeed with a Language (German) roll, you might overhear something important.",
+    "choices": [
+      {
+        "text": "Attempt a Language (German) roll",
+        "effects": {
+          "check": {
+            "skill": "Language (German)",
+            "success": {
+              "nextEntry": "457"
+            },
+            "failure": {
+              "nextEntry": "491",
+              "message": "You can't make out the conversation."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["457", "491"]
+  },
+  "477": {
+    "description": "A group of Brown Shirts are gathered around a box on their table. You notice the box resembles the case to the Sacred Black Amulet of Klaath. It’s incredible, but it could help you.",
+    "choices": [
+      {
+        "text": "Try to get a closer look at the box",
+        "nextEntry": "479"
+      },
+      {
+        "text": "Return to the inn",
+        "nextEntry": "491"
+      }
+    ],
+    "traceNumbers": ["479", "491"]
+  },
+  "479": {
+    "description": "A group of Brown Shirts cluster about a curiously shaped box.",
+    "choices": [
+      {
+        "text": "Get a closer look at the box",
+        "nextEntry": "474"
+      },
+      {
+        "text": "Return to the inn",
+        "nextEntry": "491"
+      }
+    ],
+    "traceNumbers": ["458", "474", "477", "491"]
+  },
+  "482": {
+    "description": "\"Be off with you,\" he snarls. Feeling foolish, you meekly leave.",
+    "choices": [
+      {
+        "text": "Return to the inn",
+        "nextEntry": "461"
+      }
+    ],
+    "traceNumbers": ["461", "485"]
+  },
+  "478": {
+    "description": "He studies you for a moment and then swiftly draws a knife. You have a split second to react.",
+    "choices": [
+      {
+        "text": "Try to quickly pull out your gun",
+        "nextEntry": "481a",
+        "requirements": {
+          "skill": {
+            "name": "Firearms (Handgun)",
+            "minValue": 1
+          },
+          "inventoryType": "weapon"
+        }
+      },
+      {
+        "text": "Try to dodge the attack",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "467"
+            },
+            "failure": {
+              "nextEntry": "481b",
+              "message": "You fail to dodge the attack. They grab you and pummel you with a vengeance.",
+              "modifyHealth": -3
+            }
+          }
+        },
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["481a", "481b", "485"]
+  },
+  "481a": {
+    "description": "Your gun is handy. You take a shot at point-blank range.",
+    "choices": [
+      {
+        "text": "Make a Firearms (Handgun) roll",
+        "effects": {
+          "check": {
+            "skill": "Firearms (Handgun)",
+            "bonus": 30,
+            "success": {
+              "nextEntry": "484"
+            },
+            "failure": {
+              "nextEntry": "467",
+              "message": "You miss the shot and must try to escape."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["484", "467"]
+  },
+  "481b": {
+    "description": "Fortunately, the police arrive and break up the fight. You are arrested and remain in jail for 10 days before bail from abroad arrives to free you.",
+    "choices": [
+      {
+        "text": "Go to any Bremen location",
+        "effects": {
+          "advanceTime": 10
+        },
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["467", "Bremen Location"]
+  },
+  "484": {
+    "description": "The man's associates back away and you grab the box and an attaché case. The man, knife in hand, struggles drunkenly to his feet. One of his friends is fumbling frantically for something he carries in a leather jacket.",
+    "choices": [
+      {
+        "text": "Shoot the knife-wielding man",
+        "nextEntry": "472",
+        "requirements": {
+          "skill": {
+            "name": "Firearms (Handgun)",
+            "minValue": 1
+          },
+          "inventoryType": "weapon"
+        }
+      },
+      {
+        "text": "Attempt to exit with a Dodge roll",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "470",
+              "message": "You make a lightning-like and decisive escape."
+            },
+            "failure": {
+              "nextEntry": "484b",
+              "message": "You fail to escape, and they grab you, beginning to pummel you.",
+              "modifyHealth": -2
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["470", "472"]
+  },
+  "467": {
+    "description": "Hereafter, that inn will be dangerous for you. You find a mission house where you may sleep while you are in Bremen.",
+    "choices": [
+      {
+        "text": "Go to any Bremen Location",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["Bremen Location"]
+  },
+  "470": {
+    "description": "It is a black amulet of strange design. Notes in German accompany it.",
+    "choices": [
+      {
+        "text": "Make a Language (German) roll",
+        "effects": {
+          "check": {
+            "skill": "Language (German)",
+            "success": {
+              "nextEntry": "582",
+              "message": "You successfully decipher the notes."
+            },
+            "failure": {
+              "nextEntry": "Bremen",
+              "message": "You fail to fully understand the notes, but you can find someone to translate them later."
+            }
+          }
+        }
+      },
+      {
+        "text": "Go to any Bremen Location",
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["582", "Bremen Location"]
+  },
+  "472": {
+    "description": "You're at point-blank range.",
+    "choices": [
+      {
+        "text": "Make a Firearms (Handgun) roll",
+        "effects": {
+          "check": {
+            "skill": "Firearms (Handgun)",
+            "bonus": 40,
+            "success": {
+              "nextEntry": "470",
+              "message": "You hit the man and incapacitate him."
+            },
+            "failure": {
+              "nextEntry": "484b",
+              "message": "You miss, and the man lunges at you with his knife."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["470", "484b"]
+  },
+  "484b": {
+    "description": "They grab you and begin to pummel you. Fortunately, they decide not to use their knife and eventually the police arrive, arresting everyone. You are jailed for 10 days before bail arrives to free you.",
+    "choices": [
+      {
+        "text": "Go to any Bremen Location",
+        "effects": {
+          "advanceTime": 240
+        },
+        "nextEntry": "Bremen"
+      }
+    ],
+    "traceNumbers": ["Bremen Location"]
+  },
+  "582": {
+    "description": "The amulet is a magic item that summons Nodens, an Elder God, who will carry you anywhere you wish once. After one use, the amulet disappears. You feel a deep connection to this otherworldly force, but also a heavy responsibility as you wield this power.",
+    "choices": [
+      {
+        "text": "Go to any Bremen Location",
+        "nextEntry": "Bremen",
+        "effects": {
+          "addItem": {
+            "name": "Black Amulet of Klaath",
+            "description": "A strange black amulet, rumored to summon Nodens, an Elder God, who can teleport you once to any location of your choosing.",
+            "type": "artifact"
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["Bremen Location"]
+  },
+  "582b": {
+    "description": "You can use the amulet to teleport to any one of the following locations:",
+    "choices": [
+      {
+        "text": "Teleport to Tel-el-Amarna entrance",
+        "nextEntry": "324"
+      },
+      {
+        "text": "Teleport to Cairo",
+        "nextEntry": "Cairo Location"
+      },
+      {
+        "text": "Teleport to Alexandria",
+        "nextEntry": "Alexandria Location"
+      },
+      {
+        "text": "Teleport to Bremen",
+        "nextEntry": "Bremen Location"
+      },
+      {
+        "text": "Teleport to New York",
+        "nextEntry": "New York Location"
+      },
+      {
+        "text": "Teleport to Athens",
+        "nextEntry": "Athens Location"
+      },
+      {
+        "text": "Teleport to Arkham",
+        "nextEntry": "Arkham Location"
+      },
+      {
+        "text": "Teleport to Boston",
+        "nextEntry": "Boston Location"
+      }
+    ],
+    "traceNumbers": [
+      "Cairo Location",
+      "Alexandria Location",
+      "Bremen Location",
+      "New York Location",
+      "Athens Location",
+      "Arkham Location",
+      "Boston Location"
+    ]
   }
 }

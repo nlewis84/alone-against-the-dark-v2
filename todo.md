@@ -1,22 +1,12 @@
+Check health 268
+check bonusDie on 397
+
 Bremen Locations
 501
 500
 456
 
 452 - from 449
-461
-491
-458
-469
-457
-477
-479
-474
-473
-485
-482
-478
-481
 484
 467
 470
