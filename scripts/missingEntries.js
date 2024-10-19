@@ -29,17 +29,20 @@ fs.readFile(topLevelKeysPath, 'utf8', (err, topLevelKeysData) => {
 
     // City names and "Location" combinations to be removed
     const citiesToRemove = [
+      'Arkham',
+      'Boston',
       'New York',
       'Athens',
       'Alexandria',
       'Cairo',
       'Bremen',
       'Arkham Location',
+      'Boston Location',
+      'New York Location',
       'Athens Location',
       'Alexandria Location',
       'Cairo Location',
       'Bremen Location',
-      'New York Location',
     ]
 
     // Remove the cities and "Location" combinations from the missing entries

@@ -382,6 +382,8 @@ export function handleEntryChoices(entryId, entry) {
   } else if (entryId === '187') {
     setCurrentLocale('Cunard Ship')
     handleSpecialEntry187(choicesContainer)
+  } else if (entryId === '524') {
+    handleSpecialEntry524(choicesContainer)
   }
 
   entry.choices.forEach((choice) => {
@@ -833,6 +835,72 @@ function handleSpecialEntry38(choicesContainer) {
 
             // Re-display the current locale
             displayEntry(getCurrentLocale())
+          },
+        )
+        choicesContainer.appendChild(weaponButton)
+      }
+    })
+  })
+}
+
+function handleSpecialEntry524(choicesContainer) {
+  const weaponCategories = ['Handguns', 'Rifles', 'Shotguns', 'Explosives']
+
+  const selectedWeapons = {
+    Handguns: false,
+    Rifles: false,
+    Shotguns: false,
+    Explosives: false,
+  }
+
+  // Filter out weapons based on player inventory skills
+  const playerInventorySkills = currentState.inventory.map((item) => item.skill)
+
+  const skillToCategoryMap = {
+    'Firearms (Shotgun)': 'Shotguns',
+    'Firearms (Rifle)': 'Rifles',
+    'Firearms (Handgun)': 'Handguns',
+    Throw: 'Explosives',
+  }
+
+  // Remove weapon categories if the player already has a weapon for the skill
+  Object.keys(skillToCategoryMap).forEach((skill) => {
+    if (playerInventorySkills.includes(skill)) {
+      selectedWeapons[skillToCategoryMap[skill]] = true
+    }
+  })
+
+  // Filter the inventory to only include weapons
+  const inventoryWeapons = currentState.inventory.filter((item) =>
+    weaponCategories.some((category) =>
+      gameData.weapons[category].some((weapon) => weapon.name === item.name),
+    ),
+  )
+
+  // Helper function to add a weapon and update the player's inventory
+  const addWeapon = (weapon, category) => {
+    addItem(weapon) // Add the selected weapon
+    selectedWeapons[category] = true // Mark this category as selected
+    // Re-display the current entry to filter out items with the same skill
+    displayEntry('524')
+  }
+
+  // Loop over weapon categories and create buttons for available weapons
+  weaponCategories.forEach((category) => {
+    // For other categories (Handguns, Rifles, Shotguns)
+    gameData.weapons[category].forEach((weapon) => {
+      // Only display the weapon if the player has the required skill,
+      // doesn't already own it, and hasn't selected a weapon of that type yet
+      if (
+        hasSkill(weapon.skill) &&
+        !selectedWeapons[category] &&
+        !inventoryWeapons.some((invWeapon) => invWeapon.name === weapon.name)
+      ) {
+        const weaponButton = createButton(
+          `Take ${weapon.name}`,
+          'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
+          () => {
+            addWeapon(weapon, category)
           },
         )
         choicesContainer.appendChild(weaponButton)

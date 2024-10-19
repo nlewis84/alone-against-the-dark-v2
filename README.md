@@ -27,11 +27,18 @@ To start playing _Alone Against the Dark v2_, follow these steps:
    - Locate the `index.html` file in the project directory.
    - Open `index.html` in your web browser to start the game.
 
-2. **Optional - Live Server**:
+2. **Optional - Live Server:**
+
    - For a better development experience:
      - Install the "Live Server" extension in your code editor (**recommended for VS Code**).
      - Right-click on `index.html` and select "Open with Live Server".
      - This allows hot refresh, automatically reloading the game when changes are detected.
+
+3. **Start the game at the beginning:**
+
+   - Sometimes I forget to put things back where they were
+   - Make sure that `displayEntry('13')` is in the `initializeGame` function in `gameState.js`
+   - Make sure that `currentLocale` in `startGame` in `gameState.js` is set to `Arkham`
 
 ### 🔧 Utility Scripts
 

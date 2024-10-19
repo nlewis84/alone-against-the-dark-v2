@@ -1,17 +1,15 @@
+We should make sure that the Dark Sea trip starts in 500 and 501 (maybe others?)
+Make sure that anything that goes to 500 also can go to 501 (do this LAST)
+search for `skills` in entries.json and make sure it isn't supposed to be `skill`
+
 Check health 268
 check bonusDie on 397
 
 Bremen Locations
 501
-500
-456
-
-452 - from 449
-484
-467
-470
-472
-582
+510
+520
+530
 
 check 488 with all the characters
 
