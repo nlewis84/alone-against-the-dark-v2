@@ -6,10 +6,11 @@ Check health 268
 check bonusDie on 397
 
 Bremen Locations
-510
-519
 520 - prisoner??
-530
+525
+527
+528
+541
 
 add this below
 in all the right places

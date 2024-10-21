@@ -17401,6 +17401,367 @@
     ],
     "traceNumbers": ["512"]
   },
+  "510": {
+    "description": "You’ve made it. But now what? Now you have no choice but to come out of hiding or unmask your disguise. What shall you do?",
+    "choices": [
+      {
+        "text": "Turn yourself in",
+        "nextEntry": "511"
+      },
+      {
+        "text": "Try to enlist someone’s aid",
+        "nextEntry": "530"
+      },
+      {
+        "text": "Try to sneak around",
+        "nextEntry": "532"
+      }
+    ],
+    "traceNumbers": ["456", "532"]
+  },
+  "530": {
+    "description": "Select a leader to approach: Rambeau, Blake, Crawford, or Jones. Select one of the following skills: Credit Rating, Persuade, Fast Talk, Intimidate, or Charm. Succeed at a roll, and go to the appropriate entry. If you fail the roll, you will still be sent to confinement aboard the brig.",
+    "choices": [
+      {
+        "text": "Approach Rambeau with Credit Rating",
+        "effects": {
+          "check": {
+            "skill": "Credit Rating",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Blake with Credit Rating",
+        "effects": {
+          "check": {
+            "skill": "Credit Rating",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Crawford with Credit Rating",
+        "effects": {
+          "check": {
+            "skill": "Credit Rating",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Jones with Credit Rating",
+        "effects": {
+          "check": {
+            "skill": "Credit Rating",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Rambeau with Persuade",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Blake with Persuade",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Crawford with Persuade",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Jones with Persuade",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Rambeau with Fast Talk",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Blake with Fast Talk",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Crawford with Fast Talk",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Jones with Fast Talk",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Rambeau with Intimidate",
+        "effects": {
+          "check": {
+            "skill": "Intimidate",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Blake with Intimidate",
+        "effects": {
+          "check": {
+            "skill": "Intimidate",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Crawford with Intimidate",
+        "effects": {
+          "check": {
+            "skill": "Intimidate",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Jones with Intimidate",
+        "effects": {
+          "check": {
+            "skill": "Intimidate",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Rambeau with Charm",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Blake with Charm",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Crawford with Charm",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Jones with Charm",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["510", "511"]
+  },
+  "532": {
+    "description": "Sneaking around through the lifeless waste is easy to do, but the winds and cold cut through like knives. There is nowhere warm to hide. You decide to return and either hand yourself in or try to gain the team’s confidence.",
+    "choices": [
+      {
+        "text": "Return to hand yourself in",
+        "nextEntry": "511"
+      },
+      {
+        "text": "Try to gain the team's confidence",
+        "nextEntry": "530",
+        "effects": {
+          "departAtAntarctica": true
+        }
+      }
+    ],
+    "traceNumbers": ["510"]
+  },
   "511": {
     "description": "You have been caught and are under arrest. You are held for the remaining days until you arrive in Antarctica, where they use you to help set up the base camp. You need a friend; perhaps someone can get you assigned to one of the exploration parties?",
     "choices": [
@@ -17654,7 +18015,7 @@
   },
   "520": {
     "title": "ANTARCTICA BASE CAMP",
-    "description": "The expedition camps at point ‘D.’ The weather holds; it is summer. Three trips are planned, departing simultaneously and each lasting 2 to 3 weeks.\n\nTrip A will explore unknown portions of the mountains toward the pole. Trip B heads north, to establish a base area for further camps. Trip C crosses the mountains and heads toward the mysterious area reported by Lake.\n\nEach party will use one of the Dornier planes. If you’re Holt or Grunewald and not a prisoner, you can choose one of the parties and join it at the listed entry. If you’re not, choose a party and then choose one of these skills: Navigate, Pilot (Aircraft), or Survival. If you can succeed with that skill roll, you’re allowed to go. Fail the roll and you don’t talk your way in.",
+    "description": "The expedition camps at point ‘D.’ The weather holds; it is summer. Three trips are planned, departing simultaneously and each lasting 2 to 3 weeks.\n\nTrip A will explore unknown portions of the mountains toward the pole. Trip B heads north, to establish a base area for further camps. Trip C crosses the mountains and heads toward the mysterious area reported by Lake.\n\nEach party will use one of the Dornier planes. If you’re Holt or Grunewald, you can choose one of the parties and join it at the listed entry. If you’re not, choose a party and then choose one of these skills: Navigate, Pilot (Aircraft), or Survival. If you can succeed with that skill roll, you’re allowed to go. Fail the roll and you don’t talk your way in.",
     "image": "/src/assets/images/maps/a-portion-of-antarctica-map.png",
     "choices": [
       {
