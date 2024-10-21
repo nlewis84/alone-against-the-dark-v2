@@ -3950,7 +3950,12 @@
   },
   "147": {
     "description": "Grunewald’s room looks as though someone departed hastily.",
-    "choices": [{ "text": "Go to any Arkham Location", "nextEntry": "Arkham" }],
+    "choices": [
+      {
+        "text": "Go to any Arkham Location",
+        "nextEntry": "Arkham"
+      }
+    ],
     "traceNumbers": ["102"]
   },
   "148": {
@@ -10937,6 +10942,18 @@
     ],
     "traceNumbers": ["429"]
   },
+  "433": {
+    "description": "The crystal gleams in the sun. It is very beautiful and you regret profoundly having to throw it away. But you do. It sails far over the side, strikes a wave obliquely and bounces once, then sinks beneath the surface forever. A terrible scream erupts behind you as Jeffries appears, half man and half monster, wavering in shape from the strain of failing his mission when victory was so near. He brushes you aside like a fly and leaps into the sea, in the vain hope of recovering the crystal. You reel from the blow, but do not mind: you saw, when the crystal first hit the sea, that the salt water had affected it strangely—the thing was corroding, darkening, and shrinking. You know in your heart that the crystal has disintegrated, and that the thing that was Jeffries can search the seafloor forever and never find it.\n\nYou’ve saved the world! All in a day’s work for an investigator of your caliber, but congratulations all the same! THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["576"]
+  },
   "434": {
     "description": "As you slide down, you see the image of a shapeless yet undeniably alive 'congerie of protoplasmic bubbles' carved into the floor. Dangling from various openings on the monster are many human body parts, all very much alive.",
     "choices": [
@@ -11373,6 +11390,26 @@
     ],
     "traceNumbers": ["499", "464"]
   },
+  "455": {
+    "description": "You learn a little: Thompson is a secretive man who reads a lot of 'odd stuff.' Olav Fram was with the Lake Expedition and suffered 'Dementia Antarctica.' Pilot Eddy Smith recently signed onto the expedition, and Jason Rambeau replaces the first geologist, who became ill.",
+    "choices": [
+      {
+        "text": "Make an INT roll",
+        "effects": {
+          "check": {
+            "skill": "INT",
+            "success": {
+              "nextEntry": "465"
+            },
+            "failure": {
+              "nextEntry": "492"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["476", "493"]
+  },
   "457": {
     "description": "A raucous group of Brown Shirts are laughing about something. You make out the words \"Fuhrer,\" \"Triumph,\" and \"Amulet.\"",
     "choices": [
@@ -11414,6 +11451,64 @@
     ],
     "traceNumbers": ["456", "460", "511"]
   },
+  "460": {
+    "description": "To search the expedition member rooms on ‘B’ deck of The Dark Sea, choose a room and make a Luck roll. If successful, the door is unlocked and you go to the entry number.",
+    "checkAntarcticaArrivalDate": true,
+    "choices": [
+      {
+        "text": "Cabin A",
+        "nextEntry": "514_luck",
+        "effects": {
+          "skills": {
+            "Navigate": 5
+          },
+          "time": 0
+        }
+      },
+      {
+        "text": "Cabin B",
+        "nextEntry": "535_luck"
+      },
+      {
+        "text": "Cabin C",
+        "nextEntry": "521_luck"
+      },
+      {
+        "text": "Cabin D",
+        "nextEntry": "540_luck"
+      },
+      {
+        "text": "Cabin E",
+        "nextEntry": "526_luck"
+      },
+      {
+        "text": "Cabin F",
+        "nextEntry": "536_luck"
+      },
+      {
+        "text": "Cabin G",
+        "nextEntry": "535_luck"
+      },
+      {
+        "text": "Cabin H",
+        "nextEntry": "522_luck",
+        "effects": {
+          "skills": {
+            "Navigate": 10
+          }
+        }
+      },
+      {
+        "text": "Search sailors' bunks on 'C'-deck",
+        "nextEntry": "475"
+      },
+      {
+        "text": "Conduct other investigations",
+        "nextEntry": "480"
+      }
+    ],
+    "traceNumbers": ["500", "501", "538", "540"]
+  },
   "461": {
     "title": "DER FREISCHÜTZ INN",
     "description": "You enter the smoke-filled public room. You’re greeted with boisterous talk, steins loaded with foamy beer, and a crowd of Brown Shirts; their red and black swastika armbands clearly visible in the smoky haze.\n\nRooms are available for the night. If you wish to do more here than sleep, you can try some actions. When you are done, you can leave the inn.",
@@ -11439,6 +11534,33 @@
     ],
     "traceNumbers": ["Bremen Location", "491"]
   },
+  "462": {
+    "description": "Go directly to Antaractica, or keep investigating the ship.",
+    "choices": [
+      {
+        "text": "Go directly to Antarctica",
+        "nextEntry": "520",
+        "requirements": {
+          "hasNotVisited": "324"
+        },
+        "effects": {
+          "departAtAntarctica": true
+        }
+      },
+      {
+        "text": "Keep investigating the ship",
+        "nextEntry": "500"
+      },
+      {
+        "text": "Go directly to Antarctica",
+        "nextEntry": "466",
+        "requirements": {
+          "hasVisited": "324"
+        }
+      }
+    ],
+    "traceNumbers": ["500"]
+  },
   "463": {
     "description": "You decide to cut your hair and pose as a sailor.",
     "choices": [
@@ -11463,6 +11585,38 @@
     ],
     "traceNumbers": ["490", "454"]
   },
+  "465": {
+    "description": "The sailors recall that some of them only recently joined the expedition: Jackson, Jeffries, and Kiug.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "492"
+      }
+    ],
+    "traceNumbers": ["455"]
+  },
+  "466": {
+    "description": "On the deck, before your eyes a shadowy man changes into a mass of bubbling iridescent flesh, eyes, and mouths—a shoggoth!",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "sanity": "1D6",
+              "nextEntry": "466a"
+            },
+            "failure": {
+              "sanity": "1D20",
+              "nextEntry": "466a"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["462"]
+  },
   "467": {
     "description": "Hereafter, that inn will be dangerous for you. You find a mission house where you may sleep while you are in Bremen.",
     "choices": [
@@ -11472,6 +11626,40 @@
       }
     ],
     "traceNumbers": ["Bremen Location"]
+  },
+  "468": {
+    "description": "If it is Jackson’s or Jeffries’ locker, go to 537. Otherwise, return to 460.",
+    "choices": [
+      {
+        "text": "Jackson's Locker",
+        "nextEntry": "537"
+      },
+      {
+        "text": "Jeffries' Locker",
+        "nextEntry": "537"
+      },
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "500",
+        "requirements": {
+          "hasVisited": "500"
+        },
+        "effects": {
+          "advanceTime": 23
+        }
+      },
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "501",
+        "requirements": {
+          "hasVisited": "501"
+        },
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["460"]
   },
   "469": {
     "description": "If you succeed with a Language (German) roll, you might overhear something important.",
@@ -11591,6 +11779,80 @@
     ],
     "traceNumbers": ["473", "485", "479"]
   },
+  "475": {
+    "description": "You wouldn't know where to start, unless you have found some clue.",
+    "choices": [
+      {
+        "text": "Search Jackson's Locker",
+        "requirements": {
+          "hasVisited": "465"
+        },
+        "nextEntry": "511"
+      },
+      {
+        "text": "Search Jeffries' Locker",
+        "requirements": {
+          "hasVisited": "465"
+        },
+        "nextEntry": "576"
+      },
+      {
+        "text": "Search Kiug's Locker",
+        "requirements": {
+          "hasVisited": "465"
+        },
+        "nextEntry": "460"
+      },
+      {
+        "text": "You don't hae a clue, yet",
+        "requirements": {
+          "hasNotVisited": "465"
+        },
+        "nextEntry": "460"
+      }
+    ],
+    "traceNumbers": ["460"]
+  },
+  "476": {
+    "description": "Now's your chance.",
+    "choices": [
+      {
+        "text": "Make a Charm roll",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "nextEntry": "455"
+            },
+            "failure": {
+              "nextEntry": "492"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Make a Persuade roll",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "nextEntry": "455"
+            },
+            "failure": {
+              "nextEntry": "492"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep exploring the ship",
+        "nextEntry": "500"
+      }
+    ],
+    "traceNumbers": ["492"]
+  },
   "477": {
     "description": "A group of Brown Shirts are gathered around a box on their table. You notice the box resembles the case to the Sacred Black Amulet of Klaath. It’s incredible, but it could help you.",
     "choices": [
@@ -11652,6 +11914,595 @@
       }
     ],
     "traceNumbers": ["458", "474", "477", "491"]
+  },
+  "480": {
+    "description": "Each day, you may choose one skill and one deck to investigate. Make a skill roll for your selected skill, and if successful, go to the corresponding entry for the deck you are investigating.\n\n(See the table below for reference.)",
+    "image": "/src/assets/images/maps/investigation-table-for-480.png",
+    "checkAntarcticaArrivalDate": true,
+    "choices": [
+      {
+        "text": "Attempt an Anthropology roll for A-deck",
+        "effects": {
+          "check": {
+            "skill": "Anthropology",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt an Anthropology roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Anthropology",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt an Anthropology roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Anthropology",
+            "success": {
+              "nextEntry": "506"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt an Anthropology roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Anthropology",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt an Anthropology roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Anthropology",
+            "success": {
+              "nextEntry": "506"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt an Anthropology roll for D-deck",
+        "effects": {
+          "check": {
+            "skill": "Anthropology",
+            "success": {
+              "nextEntry": "505"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Listen roll for A-deck",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "513"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Listen roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "515"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt a Listen roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt a Listen roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "515"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Listen roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Listen roll for D-deck",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Psychology roll for A-deck",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "518"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Psychology roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt a Psychology roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "516"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt a Psychology roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Psychology roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "516"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Psychology roll for D-deck",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Spot Hidden roll for A-deck",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Spot Hidden roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt a Spot Hidden roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "509"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt a Spot Hidden roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Spot Hidden roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "509"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Spot Hidden roll for D-deck",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "503"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Track roll for A-deck",
+        "effects": {
+          "check": {
+            "skill": "Track",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Track roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Track",
+            "success": {
+              "nextEntry": "517"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt a Track roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Track",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt a Track roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Track",
+            "success": {
+              "nextEntry": "517"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Track roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Track",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Track roll for D-deck",
+        "effects": {
+          "check": {
+            "skill": "Track",
+            "success": {
+              "nextEntry": "517"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
+        }
+      },
+      {
+        "text": "Search the expedition member rooms on 'B' deck",
+        "nextEntry": "460"
+      },
+      {
+        "text": "Skip ahead to arrival in Antarctica",
+        "nextEntry": "520",
+        "effects": {
+          "departAtAntarctica": true
+        }
+      }
+    ],
+    "traceNumbers": ["500", "501", "460", "520"]
   },
   "482": {
     "description": "\"Be off with you,\" he snarls. Feeling foolish, you meekly leave.",
@@ -12093,6 +12944,64 @@
       "Bremen Location"
     ]
   },
+  "492": {
+    "description": "You learn about the expedition members: Captain Crawford, Prof. Eustace Blake (expedition leader), Dr. Jerome Thompson (team physician), Olav Fram (in charge of equipment, including the three Dornier aircraft), Peter MacPherson (pilot), Eddy Smith (pilot), Wallace Bering (pilot), Dr. Jason Rambeau (geologist), and first mate Paddy Jones (who doubles as radio officer). There are eighteen able seamen who assist the expedition in various ways. If you want gossip about any of the personnel, try the Captain or the Professor.",
+    "choices": [
+      {
+        "text": "Gossip with the Captain",
+        "nextEntry": "476"
+      },
+      {
+        "text": "Gossip with the Professor",
+        "nextEntry": "493"
+      },
+      {
+        "text": "Keep exploring the ship",
+        "nextEntry": "500"
+      }
+    ],
+    "traceNumbers": ["455", "465", "476", "493", "500"]
+  },
+  "493": {
+    "description": "Now's your chance.",
+    "choices": [
+      {
+        "text": "Make a Charm roll",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "nextEntry": "455"
+            },
+            "failure": {
+              "nextEntry": "492"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Make a Persuade roll",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "nextEntry": "455"
+            },
+            "failure": {
+              "nextEntry": "492"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep exploring the ship",
+        "nextEntry": "500"
+      }
+    ],
+    "traceNumbers": ["492"]
+  },
   "494": {
     "description": "The sailors are uneasy about the weather and the polar trip. They say that the Captain ('Old Haddock') is hiring only crewmen with particular skills. If you decide to try to fake the skills needed for a journey into a dangerous environment, you can attempt a Know (EDU) roll instead of the specific skill roll required.",
     "choices": [
@@ -12183,6 +13092,1427 @@
     ],
     "traceNumbers": ["490", "454"]
   },
+  "500": {
+    "description": "You’re on board. Good work!\n\nYou have won the race to reach \"The Dark Sea\" before she sails. You probably know your quarry is aboard. Now you have only to find him and destroy the Top:",
+    "setAntarcticaArrivalDate": true,
+    "checkAntarcticaArrivalDate": true,
+    "choices": [
+      {
+        "text": "Seek information about members",
+        "nextEntry": "492"
+      },
+      {
+        "text": "Search member rooms",
+        "nextEntry": "460"
+      },
+      {
+        "text": "Try skill rolls",
+        "nextEntry": "480"
+      },
+      {
+        "text": "Lay low until Antarctica",
+        "nextEntry": "462"
+      }
+    ],
+    "traceNumbers": ["462", "464", "466", "488", "489", "531"]
+  },
+  "501": {
+    "description": "You’re on board, successfully posing as an able seaman, despite some close calls. Congratulations!\n\nYou have won the race to reach \"The Dark Sea\" before she sails. You probably know your quarry is aboard. Now you have only to find him and destroy the Top. You can try one activity daily.",
+    "setAntarcticaArrivalDate": true,
+    "checkAntarcticaArrivalDate": true,
+    "choices": [
+      {
+        "text": "Search the ship",
+        "nextEntry": "460"
+      },
+      {
+        "text": "Try skill rolls on ‘B’-deck and ‘C’-deck only",
+        "nextEntry": "480"
+      },
+      {
+        "text": "Lay low until Antarctica",
+        "nextEntry": "519"
+      }
+    ],
+    "traceNumbers": ["487", "519", "520", "460", "480"]
+  },
+  "502": {
+    "description": "Find the skill you selected and the area of the ship in which it is to be used and consult the appropriate entry.",
+    "choices": [
+      {
+        "text": "Listen on A-deck",
+        "nextEntry": "513"
+      },
+      {
+        "text": "Listen on C-deck",
+        "nextEntry": "507"
+      },
+      {
+        "text": "Psychology on B-deck",
+        "nextEntry": "507"
+      },
+      {
+        "text": "Psychology on C-deck",
+        "nextEntry": "516"
+      },
+      {
+        "text": "Spot Hidden on A-deck",
+        "nextEntry": "507"
+      },
+      {
+        "text": "Spot Hidden on D-deck",
+        "nextEntry": "503"
+      },
+      {
+        "text": "Track on C-deck",
+        "nextEntry": "507"
+      },
+      {
+        "text": "Track on D-deck",
+        "nextEntry": "517"
+      },
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "480",
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["480"]
+  },
+  "503": {
+    "description": "You discover a cache of food, skis, and assorted useful gear. But there is nothing here directly related to the Top of Aten, or the City of the Old Ones.",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "480",
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["502"]
+  },
+  "504": {
+    "description": "Find the skill you selected and the area of the ship it is to be used, then consult the appropriate listed entry.",
+    "choices": [
+      {
+        "text": "Listen on B-deck",
+        "nextEntry": "515"
+      },
+      {
+        "text": "Listen on D-deck",
+        "nextEntry": "512"
+      },
+      {
+        "text": "Spot Hidden on B-deck",
+        "nextEntry": "512"
+      },
+      {
+        "text": "Spot Hidden on C-deck",
+        "nextEntry": "512"
+      },
+      {
+        "text": "Track on A-deck",
+        "nextEntry": "507"
+      },
+      {
+        "text": "Track on B-deck",
+        "nextEntry": "507"
+      },
+      {
+        "text": "Anthropology on B-deck",
+        "nextEntry": "512"
+      },
+      {
+        "text": "Anthropology on D-deck",
+        "nextEntry": "505"
+      },
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "480",
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["480"]
+  },
+  "505": {
+    "description": "You learn nothing of value.",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "480",
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["480"]
+  },
+  "506": {
+    "description": "Something worries the Captain.",
+    "choices": [
+      {
+        "text": "Make a Fast Talk roll",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "nextEntry": "518"
+            },
+            "failure": {
+              "nextEntry": "480",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 24
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "518"
+            },
+            "failure": {
+              "nextEntry": "480",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 24
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["480"]
+  },
+  "507": {
+    "description": "If you successfully rolled a Track on ‘B’-deck, go to 517. Otherwise, you learn nothing.",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "480",
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["502", "505", "512"]
+  },
+  "508": {
+    "description": "You learn nothing.",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "480",
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["480"]
+  },
+  "509": {
+    "description": "One of the crew has his footlocker protected with a lock of unusual appearance, strength, and design. The name on the locker reads 'Jeffries.'",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "480",
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["512"]
+  },
+  "510": {
+    "description": "You’ve made it. But now what? Now you have no choice but to come out of hiding or unmask your disguise. What shall you do?",
+    "choices": [
+      {
+        "text": "Turn yourself in",
+        "nextEntry": "511"
+      },
+      {
+        "text": "Try to enlist someone’s aid",
+        "nextEntry": "530"
+      },
+      {
+        "text": "Try to sneak around",
+        "nextEntry": "532"
+      }
+    ],
+    "traceNumbers": ["456", "532"]
+  },
+  "511": {
+    "description": "You have been caught and are under arrest. You are held for the remaining days until you arrive in Antarctica, where they use you to help set up the base camp. You need a friend; perhaps someone can get you assigned to one of the exploration parties?",
+    "choices": [
+      {
+        "text": "Depart at Antarctica",
+        "nextEntry": "530",
+        "effects": {
+          "departAtAntarctica": true
+        }
+      }
+    ],
+    "traceNumbers": ["459", "510", "524", "528"]
+  },
+  "512": {
+    "description": "If you successfully rolled a Spot Hidden on ‘C’-deck, go to 509. For a success with Psychology on ‘A’-deck, go to 518. For a success with Anthropology on ‘A’-deck, go to 507.",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "480",
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["480", "504"]
+  },
+  "513": {
+    "description": "'Unusually calm sea.' 'Ship is handling very well.' 'Crew seems edgy, though.'",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "480",
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["502"]
+  },
+  "514": {
+    "description": "You see a map showing your current location and projected course. You feel more confident in your Navigate skill.",
+    "choices": [
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "524"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "advanceTime": 24
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "524"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "advanceTime": 24
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      }
+    ],
+    "traceNumbers": ["460"]
+  },
+  "515": {
+    "description": "You hear scuttlebutt about the reclusive physician, Dr. Thompson. Apparently, he has been acting oddly of late.",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "480",
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["504"]
+  },
+  "516": {
+    "description": "The crew is upset about something.",
+    "choices": [
+      {
+        "text": "Make a Charm roll",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "nextEntry": "533"
+            },
+            "failure": {
+              "nextEntry": "480",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 24
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Fast Talk roll",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "nextEntry": "533"
+            },
+            "failure": {
+              "nextEntry": "480",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 24
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Persuade roll",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "nextEntry": "533"
+            },
+            "failure": {
+              "nextEntry": "480",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 24
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Psychology roll",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "533"
+            },
+            "failure": {
+              "nextEntry": "480",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 24
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["502"]
+  },
+  "517": {
+    "description": "A slimy trail leads to the crew’s quarters on ‘C’-deck.",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "480",
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["502", "507"]
+  },
+  "518": {
+    "description": "He feels that a greater hand than his is guiding his ship, forcing it to Antarctica. It’s just one of those seamen’s superstitions.",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "480",
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["506", "512"]
+  },
+  "519": {
+    "description": "You can lay low, doing your job. The trip lasts 29 days.",
+    "choices": [
+      {
+        "text": "Proceed to Antarctica",
+        "nextEntry": "520",
+        "effects": {
+          "departAtAntarctica": true
+        }
+      }
+    ],
+    "traceNumbers": ["501", "520"]
+  },
+  "520": {
+    "title": "ANTARCTICA BASE CAMP",
+    "description": "The expedition camps at point ‘D.’ The weather holds; it is summer. Three trips are planned, departing simultaneously and each lasting 2 to 3 weeks.\n\nTrip A will explore unknown portions of the mountains toward the pole. Trip B heads north, to establish a base area for further camps. Trip C crosses the mountains and heads toward the mysterious area reported by Lake.\n\nEach party will use one of the Dornier planes. If you’re Holt or Grunewald, you can choose one of the parties and join it at the listed entry. If you’re not, choose a party and then choose one of these skills: Navigate, Pilot (Aircraft), or Survival. If you can succeed with that skill roll, you’re allowed to go. Fail the roll and you don’t talk your way in.",
+    "image": "/src/assets/images/maps/a-portion-of-antarctica-map.png",
+    "choices": [
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
+        "requirements": {
+          "character": "Ernest Holt"
+        },
+        "nextEntry": "525"
+      },
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
+        "requirements": {
+          "character": "Professor Grunewald"
+        },
+        "nextEntry": "525"
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug)",
+        "requirements": {
+          "character": "Ernest Holt"
+        },
+        "nextEntry": "541"
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug)",
+        "requirements": {
+          "character": "Professor Grunewald"
+        },
+        "nextEntry": "541"
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries)",
+        "requirements": {
+          "character": "Ernest Holt"
+        },
+        "nextEntry": "527"
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries)",
+        "requirements": {
+          "character": "Professor Grunewald"
+        },
+        "nextEntry": "527"
+      },
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "nextEntry": "525"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "nextEntry": "525"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson) with Pilot (Aircraft)",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "525"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson) with Pilot (Aircraft)",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "525"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson) with Survival",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Survival",
+            "success": {
+              "nextEntry": "525"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson) with Survival",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Survival",
+            "success": {
+              "nextEntry": "525"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Navigate",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "nextEntry": "541"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Navigate",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "nextEntry": "541"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Pilot (Aircraft)",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "541"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Pilot (Aircraft)",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "541"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Survival",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Survival",
+            "success": {
+              "nextEntry": "541"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Survival",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Survival",
+            "success": {
+              "nextEntry": "541"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Navigate",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "nextEntry": "527"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Navigate",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "nextEntry": "527"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Pilot (Aircraft)",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "527"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Pilot (Aircraft)",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "527"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Survival",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Survival",
+            "success": {
+              "nextEntry": "527"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Survival",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Survival",
+            "success": {
+              "nextEntry": "527"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["462", "500", "501", "519", "529", "531"]
+  },
+  "521": {
+    "description": "You see a sketch of a stump-like horrible being, and another that looks like a bubbling biological mass gone mad. There’s a report on the Lake expedition, with penciled comments discounting the rumored city, yet expressing astonishment at the odd footprints found and then brought back to Miskatonic university.",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "500",
+        "requirements": {
+          "hasVisited": "500"
+        },
+        "effects": {
+          "advanceTime": 23
+        }
+      },
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "501",
+        "requirements": {
+          "hasVisited": "501"
+        },
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["460"]
+  },
+  "522": {
+    "description": "You see a map of the Antarctic, with three planned exploration routes. The central route leads to the mountains and city supposedly discovered by Lake. You feel much more confident in your Navigate skill.",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "500",
+        "requirements": {
+          "hasVisited": "500"
+        },
+        "effects": {
+          "advanceTime": 23
+        }
+      },
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "501",
+        "requirements": {
+          "hasVisited": "501"
+        },
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["460"]
+  },
+  "523": {
+    "description": "His notes indicate that he believes the report about the city and the caverns. He too has seen odd things, especially the horrible frog-like creatures who live in grotesque cities under the sea and worship unspeakable gods.",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "500",
+        "requirements": {
+          "hasVisited": "500"
+        },
+        "effects": {
+          "advanceTime": 23
+        }
+      },
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "501",
+        "requirements": {
+          "hasVisited": "501"
+        },
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["526"]
+  },
+  "524": {
+    "description": "You find the key to the armory, which is located in the cargo hold. Dynamite, rifles, shotguns, and handguns are available there. Select your weapons from the Call of Cthulhu Rulebook (page 401–405), but do not take more than one of each type.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "460",
+              "message": "You slip back into the cabin area, unnoticed."
+            },
+            "failure": {
+              "nextEntry": "511",
+              "message": "As you step out of the armory, you are caught by the first mate."
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["514"]
+  },
+  "526": {
+    "description": "You notice many books about the Antarctic.",
+    "choices": [
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "523"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "advanceTime": 24
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "523"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "advanceTime": 24
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      }
+    ],
+    "traceNumbers": ["460"]
+  },
+  "530": {
+    "description": "Select a leader to approach: Rambeau, Blake, Crawford, or Jones. Select one of the following skills: Credit Rating, Persuade, Fast Talk, Intimidate, or Charm. Succeed at a roll, and go to the appropriate entry. If you fail the roll, you will still be sent to confinement aboard the brig.",
+    "choices": [
+      {
+        "text": "Approach Rambeau with Credit Rating",
+        "effects": {
+          "check": {
+            "skill": "Credit Rating",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Blake with Credit Rating",
+        "effects": {
+          "check": {
+            "skill": "Credit Rating",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Crawford with Credit Rating",
+        "effects": {
+          "check": {
+            "skill": "Credit Rating",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Jones with Credit Rating",
+        "effects": {
+          "check": {
+            "skill": "Credit Rating",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Rambeau with Persuade",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Blake with Persuade",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Crawford with Persuade",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Jones with Persuade",
+        "effects": {
+          "check": {
+            "skill": "Persuade",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Rambeau with Fast Talk",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Blake with Fast Talk",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Crawford with Fast Talk",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Jones with Fast Talk",
+        "effects": {
+          "check": {
+            "skill": "Fast Talk",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Rambeau with Intimidate",
+        "effects": {
+          "check": {
+            "skill": "Intimidate",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Blake with Intimidate",
+        "effects": {
+          "check": {
+            "skill": "Intimidate",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Crawford with Intimidate",
+        "effects": {
+          "check": {
+            "skill": "Intimidate",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Jones with Intimidate",
+        "effects": {
+          "check": {
+            "skill": "Intimidate",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Rambeau with Charm",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Blake with Charm",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
+              "nextEntry": "520"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Crawford with Charm",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Approach Jones with Charm",
+        "effects": {
+          "check": {
+            "skill": "Charm",
+            "success": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            },
+            "failure": {
+              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
+              "nextEntry": "574"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["510", "511"]
+  },
+  "531": {
+    "description": "You convince your chosen expedition leader that your mission is important. He helps you for the rest of the trip. You may add a bonus die when asked to Know (EDU) rolls for the duration of the adventure. Note this, then go to 500, or lay low and go to 520.",
+    "choices": [
+      {
+        "text": "Go to 500",
+        "nextEntry": "500"
+      },
+      {
+        "text": "Lay low and go to Antarctica",
+        "nextEntry": "520",
+        "effects": {
+          "departAtAntarctica": true
+        }
+      }
+    ],
+    "traceNumbers": ["510", "511"]
+  },
+  "532": {
+    "description": "Sneaking around through the lifeless waste is easy to do, but the winds and cold cut through like knives. There is nowhere warm to hide. You decide to return and either hand yourself in or try to gain the team’s confidence.",
+    "choices": [
+      {
+        "text": "Return to hand yourself in",
+        "nextEntry": "511"
+      },
+      {
+        "text": "Try to gain the team's confidence",
+        "nextEntry": "530",
+        "effects": {
+          "departAtAntarctica": true
+        }
+      }
+    ],
+    "traceNumbers": ["510"]
+  },
+  "533": {
+    "description": "\"That new fellow, Jeffries. The way he looks at you ... it gives you the creeps.\"",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "480",
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["516"]
+  },
+  "535": {
+    "description": "There’s nothing of interest.",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "500",
+        "requirements": {
+          "hasVisited": "500"
+        },
+        "effects": {
+          "advanceTime": 23
+        }
+      },
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "501",
+        "requirements": {
+          "hasVisited": "501"
+        },
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["460"]
+  },
+  "536": {
+    "description": "A radio, manuals, signal logs, spare parts, dime novels, and cigarette butts.",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "500",
+        "requirements": {
+          "hasVisited": "500"
+        },
+        "effects": {
+          "advanceTime": 23
+        }
+      },
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "501",
+        "requirements": {
+          "hasVisited": "501"
+        },
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["460"]
+  },
+  "537": {
+    "description": "If you choose Jackson, go to 511. If you choose Jeffries, go to 576.",
+    "choices": [
+      {
+        "text": "Search Jackson's locker",
+        "nextEntry": "511"
+      },
+      {
+        "text": "Search Jeffries' locker",
+        "nextEntry": "576"
+      }
+    ],
+    "traceNumbers": ["468"]
+  },
+  "538": {
+    "description": "You see a collection of strange carvings: some kind of headless creature, and a worm with the most penetrating eyes.",
+    "choices": [
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "500",
+        "requirements": {
+          "hasVisited": "500"
+        },
+        "effects": {
+          "advanceTime": 23
+        }
+      },
+      {
+        "text": "Rest and continue tomorrow",
+        "nextEntry": "501",
+        "requirements": {
+          "hasVisited": "501"
+        },
+        "effects": {
+          "advanceTime": 23
+        }
+      }
+    ],
+    "traceNumbers": ["540"]
+  },
   "539": {
     "description": "As you turn to leave, the sergeant seems to remember something then hands over a piece of paper. Unfolding it, you recognize Gliere’s tiny, precise script. There is no date and no signature:\n\nDr. Louis Grunewald\nMiskatonic University\nArkham, Mass., U.S.A.\n\nDear Louis\n\nI fear it is too late for me. Though with the best of motives, the authorities foolishly apprehended me before I could accomplish destruction of the Karpathos Device, and thereby they have re-endangered the world. If, to prevent my further interference, the cult of Aten tries to murder me while I am trapped in this cell, I do not see how they can fail their purpose.\n\nThis letter, therefore, must convince you of the truth I tell and relate to you what must be done about it. You must do it or see that it is done, else our world is doomed.\n\nThough our discussions have acquainted you with some of what I now write, you have never accepted my arcane conclusions. I beg you now to do so, at least for the length of this letter. What follows is the situation, as I understand it.\n\nAn Alexandrian-era sorcerer, one Ephegon of Karpathos, was reputed to have constructed a mechanism perfectly replicating the movement of the spheres. According to certain fragmentary evidences, this device was to be sent to Egypt, to agents of the notorious cult of Aten. The record is dim. Perhaps it was designed in Egypt and built in Kerpathos, but I digress.\n\nOnce installed in Egypt, the mechanism could be used in a great ceremony presaging the end of the world. It would somehow align the forces of nature with the metaphysical powers of an unnamed, exceedingly evil god. The product of the ceremony would be another device, this one very simple: a crystal octahedron, which could be spun like a child’s top. It is the Top of Aten, a thing of as great magical power as the device which produced it was a wonder of natural science.\n\nBy bringing the Top of Aten “farthest south” to the “last city of the oldest beings,” and then summoning their god, the cult intended to use their cosmic gyro to alter the rotational axis of the Earth, thereby bringing a strange land (surely Antarctica) once more to life. In the process, the annoying “lands of the stick folk”—literally, the lands of men—would be destroyed.\n\nBut the ship carrying the device to Egypt was lost in a great storm, and then Ephegon died. The ceremony was never begun.\n\nYou’ll recall the mysteries surrounding the Miskatonic expedition to Antarctica, and its tragic outcome; and you know that the Starkweather-Moore expedition leaves Bremen this winter to return to Antarctica and reopen the terrible questions which Lake first raised. But have you heard of the Karpathos Device—the strange instrument recovered near the island of Karpathos? After examining it, I knew that this was Ephegon’s device!\n\nLouis, it is my firm conviction that this tale is true, that a great scheme to change the world has been reactivated by the cult of Aten. Perhaps they employed great magic to manipulate destiny, or perhaps they are exceedingly cunning and evaluate every event for what they may gain of it, but their hour has come round again.\n\nOthers also believe this. An erudite and cruel man named Stanford has lent me subtle aid, but says that for arcane reasons he may do no more: he is not a friend, but says that in this thing he serves his god! A kinder, gentler Greek gentleman has also helped. Both seem to represent greater powers than man, perhaps beyond our ken.\n\nBut the cult of Aten is strong. At least one among them is no man at all, but a …\n\nHere the letter ends. There is no second sheet. There is nothing on the reverse of the sheet.\n\nAs you struggle to digest and evaluate the letter, the guard casually informs you that nothing else of Gliere’s is now at the prison.",
     "choices": [
@@ -12191,6 +14521,60 @@
         "nextEntry": "Athens Location"
       }
     ]
+  },
+  "540": {
+    "description": "You find some bottles of whiskey carefully hidden. Maybe a drinking problem or maybe the occupant merely fears thieves.",
+    "choices": [
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "538"
+            },
+            "failure": {
+              "nextEntry": "500",
+              "advanceTime": 24
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Make a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "538"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "advanceTime": 24
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      }
+    ],
+    "traceNumbers": ["460"]
+  },
+  "544": {
+    "description": "Good heavens! The top, which you had so carefully hidden, has disappeared. Wild-eyed, you rush through the hatchway and into the foggy gloom beyond. But, lurking on the other side, a hidden assailant sends a powerful blow to your head, and you sprawl to the deck. Barely conscious, you feel yourself picked up, swung unresistingly, and then hurled far over the side into the icy darkness of the sea. Somehow you cannot move your arms and legs; you sink deeper and deeper in the numbing depths. How foolish you were not to have destroyed the Top. You understand that you betrayed not only yourself, but everyone and everything you have ever loved. It is … THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["576"]
   },
   "554": {
     "choices": [
@@ -12257,6 +14641,48 @@
       "566",
       "567"
     ]
+  },
+  "576": {
+    "description": "The Top of Aten is in Jeffries’ footlocker! How it gleams! It is somehow purer than pure crystal. You instinctively feel it is both very beautiful and very powerful.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "576b"
+            },
+            "failure": {
+              "nextEntry": "578"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["537"]
+  },
+  "578": {
+    "description": "You race up the ladder to ‘B’-deck, Jeffries is behind you, transformed into a hideous creature comprised of glistening and ever growing bubbles, like some blobby mass.",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "sanity": "1D6",
+              "nextEntry": "578a"
+            },
+            "failure": {
+              "sanity": "1D20",
+              "nextEntry": "578a"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["576", "591"]
   },
   "579": {
     "description": "A chance flirtation leads you to the ship’s casino. You find yourself at the baccarat table, and luck is on your side. You win $87!",
@@ -12479,6 +14905,16 @@
       }
     ],
     "traceNumbers": ["192"]
+  },
+  "591": {
+    "description": "You swing mightily, but instead of breaking, the crystal octahedron rings loudly, like a mournful bell—and Jeffries hears it!",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "578"
+      }
+    ],
+    "traceNumbers": ["576"]
   },
   "593": {
     "choices": [
@@ -15903,6 +18339,58 @@
       }
     ]
   },
+  "466a": {
+    "description": "Attempt a Dodge roll to escape the shoggoth!",
+    "choices": [
+      {
+        "text": "Dodge and return to entry 500",
+        "requirements": {
+          "hasVisited": "500"
+        },
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "500"
+            },
+            "failure": {
+              "nextEntry": "466b"
+            }
+          }
+        }
+      },
+      {
+        "text": "Dodge and return to entry 501",
+        "requirements": {
+          "hasVisited": "501"
+        },
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "501"
+            },
+            "failure": {
+              "nextEntry": "466b"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["500", "501"]
+  },
+  "466b": {
+    "description": "You fail to escape and are engulfed by the shoggoth and devoured entirely.\n\nIt is ... THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": []
+  },
   "481a": {
     "description": "Your gun is handy. You take a shot at point-blank range.",
     "choices": [
@@ -15996,6 +18484,519 @@
       }
     ],
     "traceNumbers": ["463", "Bremen Location"]
+  },
+  "514_locked": {
+    "description": "The door is locked.",
+    "choices": [
+      {
+        "text": "Make a Mechanical Repair roll",
+        "effects": {
+          "check": {
+            "skill": "Mechanical Repair",
+            "success": {
+              "nextEntry": "514",
+              "message": "You unlock the door."
+            },
+            "failure": {
+              "nextEntry": "460",
+              "message": "You fail to unlock the door and must try again another day."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Locksmith roll",
+        "effects": {
+          "check": {
+            "skill": "Locksmith",
+            "success": {
+              "nextEntry": "514",
+              "message": "You unlock the door."
+            },
+            "failure": {
+              "nextEntry": "460",
+              "message": "You fail to unlock the door and must try again another day."
+            }
+          }
+        }
+      }
+    ]
+  },
+  "514_luck": {
+    "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "514"
+            },
+            "failure": {
+              "nextEntry": "514_locked"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep searching the cabins",
+        "nextEntry": "460"
+      }
+    ]
+  },
+  "521_locked": {
+    "description": "The door is locked.",
+    "choices": [
+      {
+        "text": "Make a Mechanical Repair roll",
+        "effects": {
+          "check": {
+            "skill": "Mechanical Repair",
+            "success": {
+              "nextEntry": "521",
+              "message": "You unlock the door."
+            },
+            "failure": {
+              "nextEntry": "460",
+              "message": "You fail to unlock the door and must try again another day."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Locksmith roll",
+        "effects": {
+          "check": {
+            "skill": "Locksmith",
+            "success": {
+              "nextEntry": "521",
+              "message": "You unlock the door."
+            },
+            "failure": {
+              "nextEntry": "460",
+              "message": "You fail to unlock the door and must try again another day."
+            }
+          }
+        }
+      }
+    ]
+  },
+  "521_luck": {
+    "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "521"
+            },
+            "failure": {
+              "nextEntry": "521_locked"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep searching the cabins",
+        "nextEntry": "460"
+      }
+    ]
+  },
+  "522_locked": {
+    "description": "The door is locked.",
+    "choices": [
+      {
+        "text": "Make a Mechanical Repair roll",
+        "effects": {
+          "check": {
+            "skill": "Mechanical Repair",
+            "success": {
+              "nextEntry": "522",
+              "message": "You unlock the door."
+            },
+            "failure": {
+              "nextEntry": "460",
+              "message": "You fail to unlock the door and must try again another day."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Locksmith roll",
+        "effects": {
+          "check": {
+            "skill": "Locksmith",
+            "success": {
+              "nextEntry": "522",
+              "message": "You unlock the door."
+            },
+            "failure": {
+              "nextEntry": "460",
+              "message": "You fail to unlock the door and must try again another day."
+            }
+          }
+        }
+      }
+    ]
+  },
+  "522_luck": {
+    "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "522"
+            },
+            "failure": {
+              "nextEntry": "522_locked"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep searching the cabins",
+        "nextEntry": "460"
+      }
+    ]
+  },
+  "526_locked": {
+    "description": "The door is locked.",
+    "choices": [
+      {
+        "text": "Make a Mechanical Repair roll",
+        "effects": {
+          "check": {
+            "skill": "Mechanical Repair",
+            "success": {
+              "nextEntry": "526",
+              "message": "You unlock the door."
+            },
+            "failure": {
+              "nextEntry": "460",
+              "message": "You fail to unlock the door and must try again another day."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Locksmith roll",
+        "effects": {
+          "check": {
+            "skill": "Locksmith",
+            "success": {
+              "nextEntry": "526",
+              "message": "You unlock the door."
+            },
+            "failure": {
+              "nextEntry": "460",
+              "message": "You fail to unlock the door and must try again another day."
+            }
+          }
+        }
+      }
+    ]
+  },
+  "526_luck": {
+    "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "526"
+            },
+            "failure": {
+              "nextEntry": "526_locked"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep searching the cabins",
+        "nextEntry": "460"
+      }
+    ]
+  },
+  "535_locked": {
+    "description": "The door is locked.",
+    "choices": [
+      {
+        "text": "Make a Mechanical Repair roll",
+        "effects": {
+          "check": {
+            "skill": "Mechanical Repair",
+            "success": {
+              "nextEntry": "535",
+              "message": "You unlock the door."
+            },
+            "failure": {
+              "nextEntry": "460",
+              "message": "You fail to unlock the door and must try again another day."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Locksmith roll",
+        "effects": {
+          "check": {
+            "skill": "Locksmith",
+            "success": {
+              "nextEntry": "535",
+              "message": "You unlock the door."
+            },
+            "failure": {
+              "nextEntry": "460",
+              "message": "You fail to unlock the door and must try again another day."
+            }
+          }
+        }
+      }
+    ]
+  },
+  "535_luck": {
+    "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "535"
+            },
+            "failure": {
+              "nextEntry": "535_locked"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep searching the cabins",
+        "nextEntry": "460"
+      }
+    ]
+  },
+  "536_locked": {
+    "description": "The door is locked.",
+    "choices": [
+      {
+        "text": "Make a Mechanical Repair roll",
+        "effects": {
+          "check": {
+            "skill": "Mechanical Repair",
+            "success": {
+              "nextEntry": "536",
+              "message": "You unlock the door."
+            },
+            "failure": {
+              "nextEntry": "460",
+              "message": "You fail to unlock the door and must try again another day."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Locksmith roll",
+        "effects": {
+          "check": {
+            "skill": "Locksmith",
+            "success": {
+              "nextEntry": "536",
+              "message": "You unlock the door."
+            },
+            "failure": {
+              "nextEntry": "460",
+              "message": "You fail to unlock the door and must try again another day."
+            }
+          }
+        }
+      }
+    ]
+  },
+  "536_luck": {
+    "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "536"
+            },
+            "failure": {
+              "nextEntry": "536_locked"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep searching the cabins",
+        "nextEntry": "460"
+      }
+    ]
+  },
+  "540_locked": {
+    "description": "The door is locked.",
+    "choices": [
+      {
+        "text": "Make a Mechanical Repair roll",
+        "effects": {
+          "check": {
+            "skill": "Mechanical Repair",
+            "success": {
+              "nextEntry": "540",
+              "message": "You unlock the door."
+            },
+            "failure": {
+              "nextEntry": "460",
+              "message": "You fail to unlock the door and must try again another day."
+            }
+          }
+        }
+      },
+      {
+        "text": "Make a Locksmith roll",
+        "effects": {
+          "check": {
+            "skill": "Locksmith",
+            "success": {
+              "nextEntry": "540",
+              "message": "You unlock the door."
+            },
+            "failure": {
+              "nextEntry": "460",
+              "message": "You fail to unlock the door and must try again another day."
+            }
+          }
+        }
+      }
+    ]
+  },
+  "540_luck": {
+    "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "540"
+            },
+            "failure": {
+              "nextEntry": "540_locked"
+            }
+          },
+          "dailyLimit": 1
+        }
+      },
+      {
+        "text": "Keep searching the cabins",
+        "nextEntry": "460"
+      }
+    ]
+  },
+  "576b": {
+    "description": "You have time to choose the Top's fate. It is both beautiful and powerful, but the choice is yours to make.",
+    "choices": [
+      {
+        "text": "Keep the Top and try to sell it",
+        "nextEntry": "544"
+      },
+      {
+        "text": "Smash the Top",
+        "nextEntry": "591"
+      },
+      {
+        "text": "Throw the Top into the sea",
+        "nextEntry": "433"
+      }
+    ],
+    "traceNumbers": ["576"]
+  },
+  "578_fail": {
+    "description": "It is ... THE END",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["576", "591"]
+  },
+  "578_success": {
+    "description": "You hold your chin up high, knowing you did well and succeeded in your adventure, even though you are horrifically gobbled up by the Jeffries-thing. It is ... THE END",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["576", "591"]
+  },
+  "578a": {
+    "description": "You have every reason to run! Can you close the hatch at the top of the ladder to keep creature away?",
+    "choices": [
+      {
+        "text": "Make a DEX roll",
+        "effects": {
+          "check": {
+            "skill": "DEX",
+            "success": {
+              "message": "You manage to close the hatch at the top of the ladder before the horrible monster gets there.",
+              "nextEntry": "433"
+            },
+            "failure": {
+              "message": "The Jeffries-thing smashes back the hatch, knocking you across the room.",
+              "nextEntry": "578b"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["576", "591"]
+  },
+  "578b": {
+    "description": "Are you doomed? Your last hope is to throw the Top through the open porthole.",
+    "choices": [
+      {
+        "text": "Make a Throw roll",
+        "effects": {
+          "check": {
+            "skill": "Throw",
+            "success": {
+              "message": "You throw the Top through the open porthole and into the sea before the thing can grab you.",
+              "nextEntry": "578_success"
+            },
+            "failure": {
+              "message": "The Top catches the edge of the porthole and bounces back inside the ship. The Jeffries-thing encases you in its bubbly mass and you are consumed.",
+              "nextEntry": "578_fail"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["576", "591"]
   },
   "582b": {
     "description": "You can use the amulet to teleport to any one of the following locations:",
@@ -16194,3001 +19195,5 @@
         }
       }
     ]
-  },
-  "500": {
-    "description": "You’re on board. Good work!\n\nYou have won the race to reach \"The Dark Sea\" before she sails. You probably know your quarry is aboard. Now you have only to find him and destroy the Top:",
-    "setAntarcticaArrivalDate": true,
-    "checkAntarcticaArrivalDate": true,
-    "choices": [
-      {
-        "text": "Seek information about members",
-        "nextEntry": "492"
-      },
-      {
-        "text": "Search member rooms",
-        "nextEntry": "460"
-      },
-      {
-        "text": "Try skill rolls",
-        "nextEntry": "480"
-      },
-      {
-        "text": "Lay low until Antarctica",
-        "nextEntry": "462"
-      }
-    ],
-    "traceNumbers": ["462", "464", "466", "488", "489", "531"]
-  },
-  "501": {
-    "description": "You’re on board, successfully posing as an able seaman, despite some close calls. Congratulations!\n\nYou have won the race to reach \"The Dark Sea\" before she sails. You probably know your quarry is aboard. Now you have only to find him and destroy the Top. You can try one activity daily.",
-    "setAntarcticaArrivalDate": true,
-    "checkAntarcticaArrivalDate": true,
-    "choices": [
-      {
-        "text": "Search the ship",
-        "nextEntry": "460"
-      },
-      {
-        "text": "Try skill rolls on ‘B’-deck and ‘C’-deck only",
-        "nextEntry": "480"
-      },
-      {
-        "text": "Lay low until Antarctica",
-        "nextEntry": "519"
-      }
-    ],
-    "traceNumbers": ["487", "519", "520", "460", "480"]
-  },
-  "519": {
-    "description": "You can lay low, doing your job. The trip lasts 29 days.",
-    "choices": [
-      {
-        "text": "Proceed to Antarctica",
-        "nextEntry": "520",
-        "effects": {
-          "departAtAntarctica": true
-        }
-      }
-    ],
-    "traceNumbers": ["501", "520"]
-  },
-  "480": {
-    "description": "Each day, you may choose one skill and one deck to investigate. Make a skill roll for your selected skill, and if successful, go to the corresponding entry for the deck you are investigating.\n\n(See the table below for reference.)",
-    "image": "/src/assets/images/maps/investigation-table-for-480.png",
-    "checkAntarcticaArrivalDate": true,
-    "choices": [
-      {
-        "text": "Attempt an Anthropology roll for A-deck",
-        "effects": {
-          "check": {
-            "skill": "Anthropology",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasNotVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt an Anthropology roll for B-deck",
-        "effects": {
-          "check": {
-            "skill": "Anthropology",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "500"
-        }
-      },
-      {
-        "text": "Attempt an Anthropology roll for C-deck",
-        "effects": {
-          "check": {
-            "skill": "Anthropology",
-            "success": {
-              "nextEntry": "506"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "500"
-        }
-      },
-      {
-        "text": "Attempt an Anthropology roll for B-deck",
-        "effects": {
-          "check": {
-            "skill": "Anthropology",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "501",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt an Anthropology roll for C-deck",
-        "effects": {
-          "check": {
-            "skill": "Anthropology",
-            "success": {
-              "nextEntry": "506"
-            },
-            "failure": {
-              "nextEntry": "501",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt an Anthropology roll for D-deck",
-        "effects": {
-          "check": {
-            "skill": "Anthropology",
-            "success": {
-              "nextEntry": "505"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasNotVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Listen roll for A-deck",
-        "effects": {
-          "check": {
-            "skill": "Listen",
-            "success": {
-              "nextEntry": "513"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasNotVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Listen roll for B-deck",
-        "effects": {
-          "check": {
-            "skill": "Listen",
-            "success": {
-              "nextEntry": "515"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "500"
-        }
-      },
-      {
-        "text": "Attempt a Listen roll for C-deck",
-        "effects": {
-          "check": {
-            "skill": "Listen",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "500"
-        }
-      },
-      {
-        "text": "Attempt a Listen roll for B-deck",
-        "effects": {
-          "check": {
-            "skill": "Listen",
-            "success": {
-              "nextEntry": "515"
-            },
-            "failure": {
-              "nextEntry": "501",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Listen roll for C-deck",
-        "effects": {
-          "check": {
-            "skill": "Listen",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "501",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Listen roll for D-deck",
-        "effects": {
-          "check": {
-            "skill": "Listen",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasNotVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Psychology roll for A-deck",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "518"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasNotVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Psychology roll for B-deck",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "500"
-        }
-      },
-      {
-        "text": "Attempt a Psychology roll for C-deck",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "516"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "500"
-        }
-      },
-      {
-        "text": "Attempt a Psychology roll for B-deck",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "501",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Psychology roll for C-deck",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "516"
-            },
-            "failure": {
-              "nextEntry": "501",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Psychology roll for D-deck",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasNotVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Spot Hidden roll for A-deck",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasNotVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Spot Hidden roll for B-deck",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "500"
-        }
-      },
-      {
-        "text": "Attempt a Spot Hidden roll for C-deck",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "509"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "500"
-        }
-      },
-      {
-        "text": "Attempt a Spot Hidden roll for B-deck",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "501",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Spot Hidden roll for C-deck",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "509"
-            },
-            "failure": {
-              "nextEntry": "501",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Spot Hidden roll for D-deck",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "503"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasNotVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Track roll for A-deck",
-        "effects": {
-          "check": {
-            "skill": "Track",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasNotVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Track roll for B-deck",
-        "effects": {
-          "check": {
-            "skill": "Track",
-            "success": {
-              "nextEntry": "517"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "500"
-        }
-      },
-      {
-        "text": "Attempt a Track roll for C-deck",
-        "effects": {
-          "check": {
-            "skill": "Track",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "500"
-        }
-      },
-      {
-        "text": "Attempt a Track roll for B-deck",
-        "effects": {
-          "check": {
-            "skill": "Track",
-            "success": {
-              "nextEntry": "517"
-            },
-            "failure": {
-              "nextEntry": "501",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Track roll for C-deck",
-        "effects": {
-          "check": {
-            "skill": "Track",
-            "success": {
-              "nextEntry": "508"
-            },
-            "failure": {
-              "nextEntry": "501",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "501"
-        }
-      },
-      {
-        "text": "Attempt a Track roll for D-deck",
-        "effects": {
-          "check": {
-            "skill": "Track",
-            "success": {
-              "nextEntry": "517"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 23
-            }
-          }
-        },
-        "requirements": {
-          "hasNotVisited": "501"
-        }
-      },
-      {
-        "text": "Search the expedition member rooms on 'B' deck",
-        "nextEntry": "460"
-      },
-      {
-        "text": "Skip ahead to arrival in Antarctica",
-        "nextEntry": "520",
-        "effects": {
-          "departAtAntarctica": true
-        }
-      }
-    ],
-    "traceNumbers": ["500", "501", "460", "520"]
-  },
-  "433": {
-    "description": "The crystal gleams in the sun. It is very beautiful and you regret profoundly having to throw it away. But you do. It sails far over the side, strikes a wave obliquely and bounces once, then sinks beneath the surface forever. A terrible scream erupts behind you as Jeffries appears, half man and half monster, wavering in shape from the strain of failing his mission when victory was so near. He brushes you aside like a fly and leaps into the sea, in the vain hope of recovering the crystal. You reel from the blow, but do not mind: you saw, when the crystal first hit the sea, that the salt water had affected it strangely—the thing was corroding, darkening, and shrinking. You know in your heart that the crystal has disintegrated, and that the thing that was Jeffries can search the seafloor forever and never find it.\n\nYou’ve saved the world! All in a day’s work for an investigator of your caliber, but congratulations all the same! THE END.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["576"]
-  },
-  "455": {
-    "description": "You learn a little: Thompson is a secretive man who reads a lot of 'odd stuff.' Olav Fram was with the Lake Expedition and suffered 'Dementia Antarctica.' Pilot Eddy Smith recently signed onto the expedition, and Jason Rambeau replaces the first geologist, who became ill.",
-    "choices": [
-      {
-        "text": "Make an INT roll",
-        "effects": {
-          "check": {
-            "skill": "INT",
-            "success": {
-              "nextEntry": "465"
-            },
-            "failure": {
-              "nextEntry": "492"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["476", "493"]
-  },
-  "460": {
-    "description": "To search the expedition member rooms on ‘B’ deck of The Dark Sea, choose a room and make a Luck roll. If successful, the door is unlocked and you go to the entry number.",
-    "checkAntarcticaArrivalDate": true,
-    "choices": [
-      {
-        "text": "Cabin A",
-        "nextEntry": "514_luck",
-        "effects": {
-          "skills": {
-            "Navigate": 5
-          },
-          "time": 0
-        }
-      },
-      {
-        "text": "Cabin B",
-        "nextEntry": "535_luck"
-      },
-      {
-        "text": "Cabin C",
-        "nextEntry": "521_luck"
-      },
-      {
-        "text": "Cabin D",
-        "nextEntry": "540_luck"
-      },
-      {
-        "text": "Cabin E",
-        "nextEntry": "526_luck"
-      },
-      {
-        "text": "Cabin F",
-        "nextEntry": "536_luck"
-      },
-      {
-        "text": "Cabin G",
-        "nextEntry": "535_luck"
-      },
-      {
-        "text": "Cabin H",
-        "nextEntry": "522_luck",
-        "effects": {
-          "skills": {
-            "Navigate": 10
-          }
-        }
-      },
-      {
-        "text": "Search sailors' bunks on 'C'-deck",
-        "nextEntry": "475"
-      },
-      {
-        "text": "Conduct other investigations",
-        "nextEntry": "480"
-      }
-    ],
-    "traceNumbers": ["500", "501", "538", "540"]
-  },
-  "462": {
-    "description": "Go directly to Antaractica, or keep investigating the ship.",
-    "choices": [
-      {
-        "text": "Go directly to Antarctica",
-        "nextEntry": "520",
-        "requirements": {
-          "hasNotVisited": "324"
-        },
-        "effects": {
-          "departAtAntarctica": true
-        }
-      },
-      {
-        "text": "Keep investigating the ship",
-        "nextEntry": "500"
-      },
-      {
-        "text": "Go directly to Antarctica",
-        "nextEntry": "466",
-        "requirements": {
-          "hasVisited": "324"
-        }
-      }
-    ],
-    "traceNumbers": ["500"]
-  },
-  "465": {
-    "description": "The sailors recall that some of them only recently joined the expedition: Jackson, Jeffries, and Kiug.",
-    "choices": [
-      {
-        "text": "Continue",
-        "nextEntry": "492"
-      }
-    ],
-    "traceNumbers": ["455"]
-  },
-  "466": {
-    "description": "On the deck, before your eyes a shadowy man changes into a mass of bubbling iridescent flesh, eyes, and mouths—a shoggoth!",
-    "choices": [
-      {
-        "text": "Make a Sanity roll",
-        "effects": {
-          "check": {
-            "skill": "Sanity",
-            "success": {
-              "sanity": "1D6",
-              "nextEntry": "466a"
-            },
-            "failure": {
-              "sanity": "1D20",
-              "nextEntry": "466a"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["462"]
-  },
-  "466a": {
-    "description": "Attempt a Dodge roll to escape the shoggoth!",
-    "choices": [
-      {
-        "text": "Dodge and return to entry 500",
-        "requirements": {
-          "hasVisited": "500"
-        },
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": {
-              "nextEntry": "500"
-            },
-            "failure": {
-              "nextEntry": "466b"
-            }
-          }
-        }
-      },
-      {
-        "text": "Dodge and return to entry 501",
-        "requirements": {
-          "hasVisited": "501"
-        },
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": {
-              "nextEntry": "501"
-            },
-            "failure": {
-              "nextEntry": "466b"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["500", "501"]
-  },
-  "466b": {
-    "description": "You fail to escape and are engulfed by the shoggoth and devoured entirely.\n\nIt is ... THE END.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": []
-  },
-  "468": {
-    "description": "If it is Jackson’s or Jeffries’ locker, go to 537. Otherwise, return to 460.",
-    "choices": [
-      {
-        "text": "Jackson's Locker",
-        "nextEntry": "537"
-      },
-      {
-        "text": "Jeffries' Locker",
-        "nextEntry": "537"
-      },
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "500",
-        "requirements": {
-          "hasVisited": "500"
-        },
-        "effects": {
-          "advanceTime": 23
-        }
-      },
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "501",
-        "requirements": {
-          "hasVisited": "501"
-        },
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["460"]
-  },
-  "475": {
-    "description": "You wouldn't know where to start, unless you have found some clue.",
-    "choices": [
-      {
-        "text": "Search Jackson's Locker",
-        "requirements": {
-          "hasVisited": "465"
-        },
-        "nextEntry": "511"
-      },
-      {
-        "text": "Search Jeffries' Locker",
-        "requirements": {
-          "hasVisited": "465"
-        },
-        "nextEntry": "576"
-      },
-      {
-        "text": "Search Kiug's Locker",
-        "requirements": {
-          "hasVisited": "465"
-        },
-        "nextEntry": "460"
-      },
-      {
-        "text": "You don't hae a clue, yet",
-        "requirements": {
-          "hasNotVisited": "465"
-        },
-        "nextEntry": "460"
-      }
-    ],
-    "traceNumbers": ["460"]
-  },
-  "476": {
-    "description": "Now's your chance.",
-    "choices": [
-      {
-        "text": "Make a Charm roll",
-        "effects": {
-          "check": {
-            "skill": "Charm",
-            "success": {
-              "nextEntry": "455"
-            },
-            "failure": {
-              "nextEntry": "492"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Make a Persuade roll",
-        "effects": {
-          "check": {
-            "skill": "Persuade",
-            "success": {
-              "nextEntry": "455"
-            },
-            "failure": {
-              "nextEntry": "492"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Keep exploring the ship",
-        "nextEntry": "500"
-      }
-    ],
-    "traceNumbers": ["492"]
-  },
-  "493": {
-    "description": "Now's your chance.",
-    "choices": [
-      {
-        "text": "Make a Charm roll",
-        "effects": {
-          "check": {
-            "skill": "Charm",
-            "success": {
-              "nextEntry": "455"
-            },
-            "failure": {
-              "nextEntry": "492"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Make a Persuade roll",
-        "effects": {
-          "check": {
-            "skill": "Persuade",
-            "success": {
-              "nextEntry": "455"
-            },
-            "failure": {
-              "nextEntry": "492"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Keep exploring the ship",
-        "nextEntry": "500"
-      }
-    ],
-    "traceNumbers": ["492"]
-  },
-  "492": {
-    "description": "You learn about the expedition members: Captain Crawford, Prof. Eustace Blake (expedition leader), Dr. Jerome Thompson (team physician), Olav Fram (in charge of equipment, including the three Dornier aircraft), Peter MacPherson (pilot), Eddy Smith (pilot), Wallace Bering (pilot), Dr. Jason Rambeau (geologist), and first mate Paddy Jones (who doubles as radio officer). There are eighteen able seamen who assist the expedition in various ways. If you want gossip about any of the personnel, try the Captain or the Professor.",
-    "choices": [
-      {
-        "text": "Gossip with the Captain",
-        "nextEntry": "476"
-      },
-      {
-        "text": "Gossip with the Professor",
-        "nextEntry": "493"
-      },
-      {
-        "text": "Keep exploring the ship",
-        "nextEntry": "500"
-      }
-    ],
-    "traceNumbers": ["455", "465", "476", "493", "500"]
-  },
-  "502": {
-    "description": "Find the skill you selected and the area of the ship in which it is to be used and consult the appropriate entry.",
-    "choices": [
-      {
-        "text": "Listen on A-deck",
-        "nextEntry": "513"
-      },
-      {
-        "text": "Listen on C-deck",
-        "nextEntry": "507"
-      },
-      {
-        "text": "Psychology on B-deck",
-        "nextEntry": "507"
-      },
-      {
-        "text": "Psychology on C-deck",
-        "nextEntry": "516"
-      },
-      {
-        "text": "Spot Hidden on A-deck",
-        "nextEntry": "507"
-      },
-      {
-        "text": "Spot Hidden on D-deck",
-        "nextEntry": "503"
-      },
-      {
-        "text": "Track on C-deck",
-        "nextEntry": "507"
-      },
-      {
-        "text": "Track on D-deck",
-        "nextEntry": "517"
-      },
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "480",
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["480"]
-  },
-  "503": {
-    "description": "You discover a cache of food, skis, and assorted useful gear. But there is nothing here directly related to the Top of Aten, or the City of the Old Ones.",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "480",
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["502"]
-  },
-  "504": {
-    "description": "Find the skill you selected and the area of the ship it is to be used, then consult the appropriate listed entry.",
-    "choices": [
-      {
-        "text": "Listen on B-deck",
-        "nextEntry": "515"
-      },
-      {
-        "text": "Listen on D-deck",
-        "nextEntry": "512"
-      },
-      {
-        "text": "Spot Hidden on B-deck",
-        "nextEntry": "512"
-      },
-      {
-        "text": "Spot Hidden on C-deck",
-        "nextEntry": "512"
-      },
-      {
-        "text": "Track on A-deck",
-        "nextEntry": "507"
-      },
-      {
-        "text": "Track on B-deck",
-        "nextEntry": "507"
-      },
-      {
-        "text": "Anthropology on B-deck",
-        "nextEntry": "512"
-      },
-      {
-        "text": "Anthropology on D-deck",
-        "nextEntry": "505"
-      },
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "480",
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["480"]
-  },
-  "505": {
-    "description": "You learn nothing of value.",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "480",
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["480"]
-  },
-  "506": {
-    "description": "Something worries the Captain.",
-    "choices": [
-      {
-        "text": "Make a Fast Talk roll",
-        "effects": {
-          "check": {
-            "skill": "Fast Talk",
-            "success": {
-              "nextEntry": "518"
-            },
-            "failure": {
-              "nextEntry": "480",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 24
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Psychology roll",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "518"
-            },
-            "failure": {
-              "nextEntry": "480",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 24
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["480"]
-  },
-  "507": {
-    "description": "If you successfully rolled a Track on ‘B’-deck, go to 517. Otherwise, you learn nothing.",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "480",
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["502", "505", "512"]
-  },
-  "508": {
-    "description": "You learn nothing.",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "480",
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["480"]
-  },
-  "509": {
-    "description": "One of the crew has his footlocker protected with a lock of unusual appearance, strength, and design. The name on the locker reads 'Jeffries.'",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "480",
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["512"]
-  },
-  "510": {
-    "description": "You’ve made it. But now what? Now you have no choice but to come out of hiding or unmask your disguise. What shall you do?",
-    "choices": [
-      {
-        "text": "Turn yourself in",
-        "nextEntry": "511"
-      },
-      {
-        "text": "Try to enlist someone’s aid",
-        "nextEntry": "530"
-      },
-      {
-        "text": "Try to sneak around",
-        "nextEntry": "532"
-      }
-    ],
-    "traceNumbers": ["456", "532"]
-  },
-  "530": {
-    "description": "Select a leader to approach: Rambeau, Blake, Crawford, or Jones. Select one of the following skills: Credit Rating, Persuade, Fast Talk, Intimidate, or Charm. Succeed at a roll, and go to the appropriate entry. If you fail the roll, you will still be sent to confinement aboard the brig.",
-    "choices": [
-      {
-        "text": "Approach Rambeau with Credit Rating",
-        "effects": {
-          "check": {
-            "skill": "Credit Rating",
-            "success": {
-              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
-              "nextEntry": "520"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Blake with Credit Rating",
-        "effects": {
-          "check": {
-            "skill": "Credit Rating",
-            "success": {
-              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
-              "nextEntry": "520"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Crawford with Credit Rating",
-        "effects": {
-          "check": {
-            "skill": "Credit Rating",
-            "success": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Jones with Credit Rating",
-        "effects": {
-          "check": {
-            "skill": "Credit Rating",
-            "success": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Rambeau with Persuade",
-        "effects": {
-          "check": {
-            "skill": "Persuade",
-            "success": {
-              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
-              "nextEntry": "520"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Blake with Persuade",
-        "effects": {
-          "check": {
-            "skill": "Persuade",
-            "success": {
-              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
-              "nextEntry": "520"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Crawford with Persuade",
-        "effects": {
-          "check": {
-            "skill": "Persuade",
-            "success": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Jones with Persuade",
-        "effects": {
-          "check": {
-            "skill": "Persuade",
-            "success": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Rambeau with Fast Talk",
-        "effects": {
-          "check": {
-            "skill": "Fast Talk",
-            "success": {
-              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
-              "nextEntry": "520"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Blake with Fast Talk",
-        "effects": {
-          "check": {
-            "skill": "Fast Talk",
-            "success": {
-              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
-              "nextEntry": "520"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Crawford with Fast Talk",
-        "effects": {
-          "check": {
-            "skill": "Fast Talk",
-            "success": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Jones with Fast Talk",
-        "effects": {
-          "check": {
-            "skill": "Fast Talk",
-            "success": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Rambeau with Intimidate",
-        "effects": {
-          "check": {
-            "skill": "Intimidate",
-            "success": {
-              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
-              "nextEntry": "520"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Blake with Intimidate",
-        "effects": {
-          "check": {
-            "skill": "Intimidate",
-            "success": {
-              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
-              "nextEntry": "520"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Crawford with Intimidate",
-        "effects": {
-          "check": {
-            "skill": "Intimidate",
-            "success": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Jones with Intimidate",
-        "effects": {
-          "check": {
-            "skill": "Intimidate",
-            "success": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Rambeau with Charm",
-        "effects": {
-          "check": {
-            "skill": "Charm",
-            "success": {
-              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
-              "nextEntry": "520"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Blake with Charm",
-        "effects": {
-          "check": {
-            "skill": "Charm",
-            "success": {
-              "message": "They are aware of a threat to the world. They use their influence to allow you to accompany a party.",
-              "nextEntry": "520"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Crawford with Charm",
-        "effects": {
-          "check": {
-            "skill": "Charm",
-            "success": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Approach Jones with Charm",
-        "effects": {
-          "check": {
-            "skill": "Charm",
-            "success": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            },
-            "failure": {
-              "message": "You are sent back to confinement aboard 'The Dark Sea.' After the parties all leave, you are left to die alone aboard the brig. The parties never return.",
-              "nextEntry": "574"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["510", "511"]
-  },
-  "532": {
-    "description": "Sneaking around through the lifeless waste is easy to do, but the winds and cold cut through like knives. There is nowhere warm to hide. You decide to return and either hand yourself in or try to gain the team’s confidence.",
-    "choices": [
-      {
-        "text": "Return to hand yourself in",
-        "nextEntry": "511"
-      },
-      {
-        "text": "Try to gain the team's confidence",
-        "nextEntry": "530",
-        "effects": {
-          "departAtAntarctica": true
-        }
-      }
-    ],
-    "traceNumbers": ["510"]
-  },
-  "511": {
-    "description": "You have been caught and are under arrest. You are held for the remaining days until you arrive in Antarctica, where they use you to help set up the base camp. You need a friend; perhaps someone can get you assigned to one of the exploration parties?",
-    "choices": [
-      {
-        "text": "Depart at Antarctica",
-        "nextEntry": "530",
-        "effects": {
-          "departAtAntarctica": true
-        }
-      }
-    ],
-    "traceNumbers": ["459", "510", "524", "528"]
-  },
-  "512": {
-    "description": "If you successfully rolled a Spot Hidden on ‘C’-deck, go to 509. For a success with Psychology on ‘A’-deck, go to 518. For a success with Anthropology on ‘A’-deck, go to 507.",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "480",
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["480", "504"]
-  },
-  "513": {
-    "description": "'Unusually calm sea.' 'Ship is handling very well.' 'Crew seems edgy, though.'",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "480",
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["502"]
-  },
-  "514_luck": {
-    "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "514"
-            },
-            "failure": {
-              "nextEntry": "514_locked"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Keep searching the cabins",
-        "nextEntry": "460"
-      }
-    ]
-  },
-  "514_locked": {
-    "description": "The door is locked.",
-    "choices": [
-      {
-        "text": "Make a Mechanical Repair roll",
-        "effects": {
-          "check": {
-            "skill": "Mechanical Repair",
-            "success": {
-              "nextEntry": "514",
-              "message": "You unlock the door."
-            },
-            "failure": {
-              "nextEntry": "460",
-              "message": "You fail to unlock the door and must try again another day."
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Locksmith roll",
-        "effects": {
-          "check": {
-            "skill": "Locksmith",
-            "success": {
-              "nextEntry": "514",
-              "message": "You unlock the door."
-            },
-            "failure": {
-              "nextEntry": "460",
-              "message": "You fail to unlock the door and must try again another day."
-            }
-          }
-        }
-      }
-    ]
-  },
-  "514": {
-    "description": "You see a map showing your current location and projected course. You feel more confident in your Navigate skill.",
-    "choices": [
-      {
-        "text": "Make a Spot Hidden roll",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "524"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "advanceTime": 24
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "500"
-        }
-      },
-      {
-        "text": "Make a Spot Hidden roll",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "524"
-            },
-            "failure": {
-              "nextEntry": "501",
-              "advanceTime": 24
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "501"
-        }
-      }
-    ],
-    "traceNumbers": ["460"]
-  },
-  "515": {
-    "description": "You hear scuttlebutt about the reclusive physician, Dr. Thompson. Apparently, he has been acting oddly of late.",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "480",
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["504"]
-  },
-  "516": {
-    "description": "The crew is upset about something.",
-    "choices": [
-      {
-        "text": "Make a Charm roll",
-        "effects": {
-          "check": {
-            "skill": "Charm",
-            "success": {
-              "nextEntry": "533"
-            },
-            "failure": {
-              "nextEntry": "480",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 24
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Fast Talk roll",
-        "effects": {
-          "check": {
-            "skill": "Fast Talk",
-            "success": {
-              "nextEntry": "533"
-            },
-            "failure": {
-              "nextEntry": "480",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 24
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Persuade roll",
-        "effects": {
-          "check": {
-            "skill": "Persuade",
-            "success": {
-              "nextEntry": "533"
-            },
-            "failure": {
-              "nextEntry": "480",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 24
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Psychology roll",
-        "effects": {
-          "check": {
-            "skill": "Psychology",
-            "success": {
-              "nextEntry": "533"
-            },
-            "failure": {
-              "nextEntry": "480",
-              "message": "You fail and must try again another day.",
-              "advanceTime": 24
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["502"]
-  },
-  "517": {
-    "description": "A slimy trail leads to the crew’s quarters on ‘C’-deck.",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "480",
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["502", "507"]
-  },
-  "518": {
-    "description": "He feels that a greater hand than his is guiding his ship, forcing it to Antarctica. It’s just one of those seamen’s superstitions.",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "480",
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["506", "512"]
-  },
-  "520": {
-    "title": "ANTARCTICA BASE CAMP",
-    "description": "The expedition camps at point ‘D.’ The weather holds; it is summer. Three trips are planned, departing simultaneously and each lasting 2 to 3 weeks.\n\nTrip A will explore unknown portions of the mountains toward the pole. Trip B heads north, to establish a base area for further camps. Trip C crosses the mountains and heads toward the mysterious area reported by Lake.\n\nEach party will use one of the Dornier planes. If you’re Holt or Grunewald, you can choose one of the parties and join it at the listed entry. If you’re not, choose a party and then choose one of these skills: Navigate, Pilot (Aircraft), or Survival. If you can succeed with that skill roll, you’re allowed to go. Fail the roll and you don’t talk your way in.",
-    "image": "/src/assets/images/maps/a-portion-of-antarctica-map.png",
-    "choices": [
-      {
-        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
-        "requirements": {
-          "character": "Ernest Holt"
-        },
-        "nextEntry": "525"
-      },
-      {
-        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
-        "requirements": {
-          "character": "Professor Grunewald"
-        },
-        "nextEntry": "525"
-      },
-      {
-        "text": "Join Trip B (Crawford, Thompson, Smith, Klug)",
-        "requirements": {
-          "character": "Ernest Holt"
-        },
-        "nextEntry": "541"
-      },
-      {
-        "text": "Join Trip B (Crawford, Thompson, Smith, Klug)",
-        "requirements": {
-          "character": "Professor Grunewald"
-        },
-        "nextEntry": "541"
-      },
-      {
-        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries)",
-        "requirements": {
-          "character": "Ernest Holt"
-        },
-        "nextEntry": "527"
-      },
-      {
-        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries)",
-        "requirements": {
-          "character": "Professor Grunewald"
-        },
-        "nextEntry": "527"
-      },
-      {
-        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
-        "requirements": {
-          "character": "Lydia Lau"
-        },
-        "effects": {
-          "check": {
-            "skill": "Navigate",
-            "success": {
-              "nextEntry": "525"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
-        "requirements": {
-          "character": "Devon Wilson"
-        },
-        "effects": {
-          "check": {
-            "skill": "Navigate",
-            "success": {
-              "nextEntry": "525"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson) with Pilot (Aircraft)",
-        "requirements": {
-          "character": "Lydia Lau"
-        },
-        "effects": {
-          "check": {
-            "skill": "Pilot (Aircraft)",
-            "success": {
-              "nextEntry": "525"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson) with Pilot (Aircraft)",
-        "requirements": {
-          "character": "Devon Wilson"
-        },
-        "effects": {
-          "check": {
-            "skill": "Pilot (Aircraft)",
-            "success": {
-              "nextEntry": "525"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson) with Survival",
-        "requirements": {
-          "character": "Lydia Lau"
-        },
-        "effects": {
-          "check": {
-            "skill": "Survival",
-            "success": {
-              "nextEntry": "525"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson) with Survival",
-        "requirements": {
-          "character": "Devon Wilson"
-        },
-        "effects": {
-          "check": {
-            "skill": "Survival",
-            "success": {
-              "nextEntry": "525"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Navigate",
-        "requirements": {
-          "character": "Lydia Lau"
-        },
-        "effects": {
-          "check": {
-            "skill": "Navigate",
-            "success": {
-              "nextEntry": "541"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Navigate",
-        "requirements": {
-          "character": "Devon Wilson"
-        },
-        "effects": {
-          "check": {
-            "skill": "Navigate",
-            "success": {
-              "nextEntry": "541"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Pilot (Aircraft)",
-        "requirements": {
-          "character": "Lydia Lau"
-        },
-        "effects": {
-          "check": {
-            "skill": "Pilot (Aircraft)",
-            "success": {
-              "nextEntry": "541"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Pilot (Aircraft)",
-        "requirements": {
-          "character": "Devon Wilson"
-        },
-        "effects": {
-          "check": {
-            "skill": "Pilot (Aircraft)",
-            "success": {
-              "nextEntry": "541"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Survival",
-        "requirements": {
-          "character": "Lydia Lau"
-        },
-        "effects": {
-          "check": {
-            "skill": "Survival",
-            "success": {
-              "nextEntry": "541"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Survival",
-        "requirements": {
-          "character": "Devon Wilson"
-        },
-        "effects": {
-          "check": {
-            "skill": "Survival",
-            "success": {
-              "nextEntry": "541"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Navigate",
-        "requirements": {
-          "character": "Lydia Lau"
-        },
-        "effects": {
-          "check": {
-            "skill": "Navigate",
-            "success": {
-              "nextEntry": "527"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Navigate",
-        "requirements": {
-          "character": "Devon Wilson"
-        },
-        "effects": {
-          "check": {
-            "skill": "Navigate",
-            "success": {
-              "nextEntry": "527"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Pilot (Aircraft)",
-        "requirements": {
-          "character": "Lydia Lau"
-        },
-        "effects": {
-          "check": {
-            "skill": "Pilot (Aircraft)",
-            "success": {
-              "nextEntry": "527"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Pilot (Aircraft)",
-        "requirements": {
-          "character": "Devon Wilson"
-        },
-        "effects": {
-          "check": {
-            "skill": "Pilot (Aircraft)",
-            "success": {
-              "nextEntry": "527"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Survival",
-        "requirements": {
-          "character": "Lydia Lau"
-        },
-        "effects": {
-          "check": {
-            "skill": "Survival",
-            "success": {
-              "nextEntry": "527"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      },
-      {
-        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Survival",
-        "requirements": {
-          "character": "Devon Wilson"
-        },
-        "effects": {
-          "check": {
-            "skill": "Survival",
-            "success": {
-              "nextEntry": "527"
-            },
-            "failure": {
-              "nextEntry": "528"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["462", "500", "501", "519", "529", "531"]
-  },
-  "521_luck": {
-    "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "521"
-            },
-            "failure": {
-              "nextEntry": "521_locked"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Keep searching the cabins",
-        "nextEntry": "460"
-      }
-    ]
-  },
-  "521_locked": {
-    "description": "The door is locked.",
-    "choices": [
-      {
-        "text": "Make a Mechanical Repair roll",
-        "effects": {
-          "check": {
-            "skill": "Mechanical Repair",
-            "success": {
-              "nextEntry": "521",
-              "message": "You unlock the door."
-            },
-            "failure": {
-              "nextEntry": "460",
-              "message": "You fail to unlock the door and must try again another day."
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Locksmith roll",
-        "effects": {
-          "check": {
-            "skill": "Locksmith",
-            "success": {
-              "nextEntry": "521",
-              "message": "You unlock the door."
-            },
-            "failure": {
-              "nextEntry": "460",
-              "message": "You fail to unlock the door and must try again another day."
-            }
-          }
-        }
-      }
-    ]
-  },
-  "521": {
-    "description": "You see a sketch of a stump-like horrible being, and another that looks like a bubbling biological mass gone mad. There’s a report on the Lake expedition, with penciled comments discounting the rumored city, yet expressing astonishment at the odd footprints found and then brought back to Miskatonic university.",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "500",
-        "requirements": {
-          "hasVisited": "500"
-        },
-        "effects": {
-          "advanceTime": 23
-        }
-      },
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "501",
-        "requirements": {
-          "hasVisited": "501"
-        },
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["460"]
-  },
-  "522_luck": {
-    "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "522"
-            },
-            "failure": {
-              "nextEntry": "522_locked"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Keep searching the cabins",
-        "nextEntry": "460"
-      }
-    ]
-  },
-  "522_locked": {
-    "description": "The door is locked.",
-    "choices": [
-      {
-        "text": "Make a Mechanical Repair roll",
-        "effects": {
-          "check": {
-            "skill": "Mechanical Repair",
-            "success": {
-              "nextEntry": "522",
-              "message": "You unlock the door."
-            },
-            "failure": {
-              "nextEntry": "460",
-              "message": "You fail to unlock the door and must try again another day."
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Locksmith roll",
-        "effects": {
-          "check": {
-            "skill": "Locksmith",
-            "success": {
-              "nextEntry": "522",
-              "message": "You unlock the door."
-            },
-            "failure": {
-              "nextEntry": "460",
-              "message": "You fail to unlock the door and must try again another day."
-            }
-          }
-        }
-      }
-    ]
-  },
-  "522": {
-    "description": "You see a map of the Antarctic, with three planned exploration routes. The central route leads to the mountains and city supposedly discovered by Lake. You feel much more confident in your Navigate skill.",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "500",
-        "requirements": {
-          "hasVisited": "500"
-        },
-        "effects": {
-          "advanceTime": 23
-        }
-      },
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "501",
-        "requirements": {
-          "hasVisited": "501"
-        },
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["460"]
-  },
-  "523": {
-    "description": "His notes indicate that he believes the report about the city and the caverns. He too has seen odd things, especially the horrible frog-like creatures who live in grotesque cities under the sea and worship unspeakable gods.",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "500",
-        "requirements": {
-          "hasVisited": "500"
-        },
-        "effects": {
-          "advanceTime": 23
-        }
-      },
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "501",
-        "requirements": {
-          "hasVisited": "501"
-        },
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["526"]
-  },
-  "524": {
-    "description": "You find the key to the armory, which is located in the cargo hold. Dynamite, rifles, shotguns, and handguns are available there. Select your weapons from the Call of Cthulhu Rulebook (page 401–405), but do not take more than one of each type.",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "460",
-              "message": "You slip back into the cabin area, unnoticed."
-            },
-            "failure": {
-              "nextEntry": "511",
-              "message": "As you step out of the armory, you are caught by the first mate."
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["514"]
-  },
-  "526_luck": {
-    "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "526"
-            },
-            "failure": {
-              "nextEntry": "526_locked"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Keep searching the cabins",
-        "nextEntry": "460"
-      }
-    ]
-  },
-  "526_locked": {
-    "description": "The door is locked.",
-    "choices": [
-      {
-        "text": "Make a Mechanical Repair roll",
-        "effects": {
-          "check": {
-            "skill": "Mechanical Repair",
-            "success": {
-              "nextEntry": "526",
-              "message": "You unlock the door."
-            },
-            "failure": {
-              "nextEntry": "460",
-              "message": "You fail to unlock the door and must try again another day."
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Locksmith roll",
-        "effects": {
-          "check": {
-            "skill": "Locksmith",
-            "success": {
-              "nextEntry": "526",
-              "message": "You unlock the door."
-            },
-            "failure": {
-              "nextEntry": "460",
-              "message": "You fail to unlock the door and must try again another day."
-            }
-          }
-        }
-      }
-    ]
-  },
-  "526": {
-    "description": "You notice many books about the Antarctic.",
-    "choices": [
-      {
-        "text": "Make a Spot Hidden roll",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "523"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "advanceTime": 24
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "500"
-        }
-      },
-      {
-        "text": "Make a Spot Hidden roll",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "523"
-            },
-            "failure": {
-              "nextEntry": "501",
-              "advanceTime": 24
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "501"
-        }
-      }
-    ],
-    "traceNumbers": ["460"]
-  },
-  "531": {
-    "description": "You convince your chosen expedition leader that your mission is important. He helps you for the rest of the trip. You may add a bonus die when asked to Know (EDU) rolls for the duration of the adventure. Note this, then go to 500, or lay low and go to 520.",
-    "choices": [
-      {
-        "text": "Go to 500",
-        "nextEntry": "500"
-      },
-      {
-        "text": "Lay low and go to Antarctica",
-        "nextEntry": "520",
-        "effects": {
-          "departAtAntarctica": true
-        }
-      }
-    ],
-    "traceNumbers": ["510", "511"]
-  },
-  "533": {
-    "description": "\"That new fellow, Jeffries. The way he looks at you ... it gives you the creeps.\"",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "480",
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["516"]
-  },
-  "535_luck": {
-    "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "535"
-            },
-            "failure": {
-              "nextEntry": "535_locked"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Keep searching the cabins",
-        "nextEntry": "460"
-      }
-    ]
-  },
-  "535_locked": {
-    "description": "The door is locked.",
-    "choices": [
-      {
-        "text": "Make a Mechanical Repair roll",
-        "effects": {
-          "check": {
-            "skill": "Mechanical Repair",
-            "success": {
-              "nextEntry": "535",
-              "message": "You unlock the door."
-            },
-            "failure": {
-              "nextEntry": "460",
-              "message": "You fail to unlock the door and must try again another day."
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Locksmith roll",
-        "effects": {
-          "check": {
-            "skill": "Locksmith",
-            "success": {
-              "nextEntry": "535",
-              "message": "You unlock the door."
-            },
-            "failure": {
-              "nextEntry": "460",
-              "message": "You fail to unlock the door and must try again another day."
-            }
-          }
-        }
-      }
-    ]
-  },
-  "535": {
-    "description": "There’s nothing of interest.",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "500",
-        "requirements": {
-          "hasVisited": "500"
-        },
-        "effects": {
-          "advanceTime": 23
-        }
-      },
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "501",
-        "requirements": {
-          "hasVisited": "501"
-        },
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["460"]
-  },
-  "536_luck": {
-    "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "536"
-            },
-            "failure": {
-              "nextEntry": "536_locked"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Keep searching the cabins",
-        "nextEntry": "460"
-      }
-    ]
-  },
-  "536_locked": {
-    "description": "The door is locked.",
-    "choices": [
-      {
-        "text": "Make a Mechanical Repair roll",
-        "effects": {
-          "check": {
-            "skill": "Mechanical Repair",
-            "success": {
-              "nextEntry": "536",
-              "message": "You unlock the door."
-            },
-            "failure": {
-              "nextEntry": "460",
-              "message": "You fail to unlock the door and must try again another day."
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Locksmith roll",
-        "effects": {
-          "check": {
-            "skill": "Locksmith",
-            "success": {
-              "nextEntry": "536",
-              "message": "You unlock the door."
-            },
-            "failure": {
-              "nextEntry": "460",
-              "message": "You fail to unlock the door and must try again another day."
-            }
-          }
-        }
-      }
-    ]
-  },
-  "536": {
-    "description": "A radio, manuals, signal logs, spare parts, dime novels, and cigarette butts.",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "500",
-        "requirements": {
-          "hasVisited": "500"
-        },
-        "effects": {
-          "advanceTime": 23
-        }
-      },
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "501",
-        "requirements": {
-          "hasVisited": "501"
-        },
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["460"]
-  },
-  "537": {
-    "description": "If you choose Jackson, go to 511. If you choose Jeffries, go to 576.",
-    "choices": [
-      {
-        "text": "Search Jackson's locker",
-        "nextEntry": "511"
-      },
-      {
-        "text": "Search Jeffries' locker",
-        "nextEntry": "576"
-      }
-    ],
-    "traceNumbers": ["468"]
-  },
-  "538": {
-    "description": "You see a collection of strange carvings: some kind of headless creature, and a worm with the most penetrating eyes.",
-    "choices": [
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "500",
-        "requirements": {
-          "hasVisited": "500"
-        },
-        "effects": {
-          "advanceTime": 23
-        }
-      },
-      {
-        "text": "Rest and continue tomorrow",
-        "nextEntry": "501",
-        "requirements": {
-          "hasVisited": "501"
-        },
-        "effects": {
-          "advanceTime": 23
-        }
-      }
-    ],
-    "traceNumbers": ["540"]
-  },
-  "540_luck": {
-    "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "540"
-            },
-            "failure": {
-              "nextEntry": "540_locked"
-            }
-          },
-          "dailyLimit": 1
-        }
-      },
-      {
-        "text": "Keep searching the cabins",
-        "nextEntry": "460"
-      }
-    ]
-  },
-  "540_locked": {
-    "description": "The door is locked.",
-    "choices": [
-      {
-        "text": "Make a Mechanical Repair roll",
-        "effects": {
-          "check": {
-            "skill": "Mechanical Repair",
-            "success": {
-              "nextEntry": "540",
-              "message": "You unlock the door."
-            },
-            "failure": {
-              "nextEntry": "460",
-              "message": "You fail to unlock the door and must try again another day."
-            }
-          }
-        }
-      },
-      {
-        "text": "Make a Locksmith roll",
-        "effects": {
-          "check": {
-            "skill": "Locksmith",
-            "success": {
-              "nextEntry": "540",
-              "message": "You unlock the door."
-            },
-            "failure": {
-              "nextEntry": "460",
-              "message": "You fail to unlock the door and must try again another day."
-            }
-          }
-        }
-      }
-    ]
-  },
-  "540": {
-    "description": "You find some bottles of whiskey carefully hidden. Maybe a drinking problem or maybe the occupant merely fears thieves.",
-    "choices": [
-      {
-        "text": "Make a Spot Hidden roll",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "538"
-            },
-            "failure": {
-              "nextEntry": "500",
-              "advanceTime": 24
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "500"
-        }
-      },
-      {
-        "text": "Make a Spot Hidden roll",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "538"
-            },
-            "failure": {
-              "nextEntry": "501",
-              "advanceTime": 24
-            }
-          }
-        },
-        "requirements": {
-          "hasVisited": "501"
-        }
-      }
-    ],
-    "traceNumbers": ["460"]
-  },
-  "544": {
-    "description": "Good heavens! The top, which you had so carefully hidden, has disappeared. Wild-eyed, you rush through the hatchway and into the foggy gloom beyond. But, lurking on the other side, a hidden assailant sends a powerful blow to your head, and you sprawl to the deck. Barely conscious, you feel yourself picked up, swung unresistingly, and then hurled far over the side into the icy darkness of the sea. Somehow you cannot move your arms and legs; you sink deeper and deeper in the numbing depths. How foolish you were not to have destroyed the Top. You understand that you betrayed not only yourself, but everyone and everything you have ever loved. It is … THE END.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["576"]
-  },
-  "578": {
-    "description": "You race up the ladder to ‘B’-deck, Jeffries is behind you, transformed into a hideous creature comprised of glistening and ever growing bubbles, like some blobby mass.",
-    "choices": [
-      {
-        "text": "Make a Sanity roll",
-        "effects": {
-          "check": {
-            "skill": "Sanity",
-            "success": {
-              "sanity": "1D6",
-              "nextEntry": "578a"
-            },
-            "failure": {
-              "sanity": "1D20",
-              "nextEntry": "578a"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["576", "591"]
-  },
-  "578a": {
-    "description": "You have every reason to run! Can you close the hatch at the top of the ladder to keep creature away?",
-    "choices": [
-      {
-        "text": "Make a DEX roll",
-        "effects": {
-          "check": {
-            "skill": "DEX",
-            "success": {
-              "message": "You manage to close the hatch at the top of the ladder before the horrible monster gets there.",
-              "nextEntry": "433"
-            },
-            "failure": {
-              "message": "The Jeffries-thing smashes back the hatch, knocking you across the room.",
-              "nextEntry": "578b"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["576", "591"]
-  },
-  "578b": {
-    "description": "Are you doomed? Your last hope is to throw the Top through the open porthole.",
-    "choices": [
-      {
-        "text": "Make a Throw roll",
-        "effects": {
-          "check": {
-            "skill": "Throw",
-            "success": {
-              "message": "You throw the Top through the open porthole and into the sea before the thing can grab you.",
-              "nextEntry": "578_success"
-            },
-            "failure": {
-              "message": "The Top catches the edge of the porthole and bounces back inside the ship. The Jeffries-thing encases you in its bubbly mass and you are consumed.",
-              "nextEntry": "578_fail"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["576", "591"]
-  },
-  "578_success": {
-    "description": "You hold your chin up high, knowing you did well and succeeded in your adventure, even though you are horrifically gobbled up by the Jeffries-thing. It is ... THE END",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["576", "591"]
-  },
-  "578_fail": {
-    "description": "It is ... THE END",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["576", "591"]
-  },
-  "591": {
-    "description": "You swing mightily, but instead of breaking, the crystal octahedron rings loudly, like a mournful bell—and Jeffries hears it!",
-    "choices": [
-      {
-        "text": "Continue",
-        "nextEntry": "578"
-      }
-    ],
-    "traceNumbers": ["576"]
-  },
-  "576": {
-    "description": "The Top of Aten is in Jeffries’ footlocker! How it gleams! It is somehow purer than pure crystal. You instinctively feel it is both very beautiful and very powerful.",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "576b"
-            },
-            "failure": {
-              "nextEntry": "578"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["537"]
-  },
-  "576b": {
-    "description": "You have time to choose the Top's fate. It is both beautiful and powerful, but the choice is yours to make.",
-    "choices": [
-      {
-        "text": "Keep the Top and try to sell it",
-        "nextEntry": "544"
-      },
-      {
-        "text": "Smash the Top",
-        "nextEntry": "591"
-      },
-      {
-        "text": "Throw the Top into the sea",
-        "nextEntry": "433"
-      }
-    ],
-    "traceNumbers": ["576"]
   }
 }
