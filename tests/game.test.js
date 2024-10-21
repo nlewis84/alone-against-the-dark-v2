@@ -2767,4 +2767,66 @@ describe('Game Logic', () => {
       expect(currentState.antarcticaArrivalDate).toEqual(originalArrivalDate)
     })
   })
+
+  describe('Entry 520 Choice Buttons Test', () => {
+    test('should display correct number of choices for Ernest Holt', () => {
+      // Set character to Ernest Holt
+      currentState.character = 'Ernest Holt'
+
+      // Display entry 520
+      displayEntry('520')
+
+      // Get all the choice buttons
+      let choicesContainer = document.getElementById('choices')
+      const buttons = choicesContainer.querySelectorAll('button')
+
+      // Ernest Holt should have 3 choices (3 trips, no skill checks)
+      expect(buttons.length).toBe(3)
+    })
+
+    test('should display correct number of choices for Professor Grunewald', () => {
+      // Set character to Professor Grunewald
+      currentState.character = 'Professor Grunewald'
+
+      // Display entry 520
+      displayEntry('520')
+
+      // Get all the choice buttons
+      let choicesContainer = document.getElementById('choices')
+      const buttons = choicesContainer.querySelectorAll('button')
+
+      // Professor Grunewald should have 3 choices (3 trips, no skill checks)
+      expect(buttons.length).toBe(3)
+    })
+
+    test('should display correct number of choices for Lydia Lau', () => {
+      // Set character to Lydia Lau
+      currentState.character = 'Lydia Lau'
+
+      // Display entry 520
+      displayEntry('520')
+
+      // Get all the choice buttons
+      let choicesContainer = document.getElementById('choices')
+      const buttons = choicesContainer.querySelectorAll('button')
+
+      // Lydia Lau should have 9 choices (each trip has skill-based options)
+      expect(buttons.length).toBe(9)
+    })
+
+    test('should display correct number of choices for Devon Wilson', () => {
+      // Set character to Devon Wilson
+      currentState.character = 'Devon Wilson'
+
+      // Display entry 520
+      displayEntry('520')
+
+      // Get all the choice buttons
+      let choicesContainer = document.getElementById('choices')
+      const buttons = choicesContainer.querySelectorAll('button')
+
+      // Devon Wilson should have 9 choices (each trip has skill-based options)
+      expect(buttons.length).toBe(9)
+    })
+  })
 })

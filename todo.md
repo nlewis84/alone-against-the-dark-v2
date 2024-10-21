@@ -8,7 +8,7 @@ check bonusDie on 397
 Bremen Locations
 510
 519
-520 - not done
+520 - prisoner??
 530
 
 add this below

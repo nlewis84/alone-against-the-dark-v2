@@ -17654,13 +17654,359 @@
   },
   "520": {
     "title": "ANTARCTICA BASE CAMP",
-    "description": "You have arrived at the base camp in Antarctica. The expedition members are busy setting up the camp and preparing for the exploration of the mountains and the city supposedly discovered by Lake. You are assigned to one of the exploration parties. You have a few days to prepare before the expedition sets out.",
+    "description": "The expedition camps at point ‘D.’ The weather holds; it is summer. Three trips are planned, departing simultaneously and each lasting 2 to 3 weeks.\n\nTrip A will explore unknown portions of the mountains toward the pole. Trip B heads north, to establish a base area for further camps. Trip C crosses the mountains and heads toward the mysterious area reported by Lake.\n\nEach party will use one of the Dornier planes. If you’re Holt or Grunewald and not a prisoner, you can choose one of the parties and join it at the listed entry. If you’re not, choose a party and then choose one of these skills: Navigate, Pilot (Aircraft), or Survival. If you can succeed with that skill roll, you’re allowed to go. Fail the roll and you don’t talk your way in.",
+    "image": "/src/assets/images/maps/a-portion-of-antarctica-map.png",
     "choices": [
       {
-        "text": "Prepare for the expedition",
-        "nextEntry": "530"
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
+        "requirements": {
+          "character": "Ernest Holt"
+        },
+        "nextEntry": "525"
+      },
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
+        "requirements": {
+          "character": "Professor Grunewald"
+        },
+        "nextEntry": "525"
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug)",
+        "requirements": {
+          "character": "Ernest Holt"
+        },
+        "nextEntry": "541"
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug)",
+        "requirements": {
+          "character": "Professor Grunewald"
+        },
+        "nextEntry": "541"
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries)",
+        "requirements": {
+          "character": "Ernest Holt"
+        },
+        "nextEntry": "527"
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries)",
+        "requirements": {
+          "character": "Professor Grunewald"
+        },
+        "nextEntry": "527"
+      },
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "nextEntry": "525"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "nextEntry": "525"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson) with Pilot (Aircraft)",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "525"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson) with Pilot (Aircraft)",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "525"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson) with Survival",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Survival",
+            "success": {
+              "nextEntry": "525"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson) with Survival",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Survival",
+            "success": {
+              "nextEntry": "525"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Navigate",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "nextEntry": "541"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Navigate",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "nextEntry": "541"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Pilot (Aircraft)",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "541"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Pilot (Aircraft)",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "541"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Survival",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Survival",
+            "success": {
+              "nextEntry": "541"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug) with Survival",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Survival",
+            "success": {
+              "nextEntry": "541"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Navigate",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "nextEntry": "527"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Navigate",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Navigate",
+            "success": {
+              "nextEntry": "527"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Pilot (Aircraft)",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "527"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Pilot (Aircraft)",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Pilot (Aircraft)",
+            "success": {
+              "nextEntry": "527"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Survival",
+        "requirements": {
+          "character": "Lydia Lau"
+        },
+        "effects": {
+          "check": {
+            "skill": "Survival",
+            "success": {
+              "nextEntry": "527"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries) with Survival",
+        "requirements": {
+          "character": "Devon Wilson"
+        },
+        "effects": {
+          "check": {
+            "skill": "Survival",
+            "success": {
+              "nextEntry": "527"
+            },
+            "failure": {
+              "nextEntry": "528"
+            }
+          }
+        }
       }
-    ]
+    ],
+    "traceNumbers": ["462", "500", "501", "519", "529", "531"]
   },
   "521_luck": {
     "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
