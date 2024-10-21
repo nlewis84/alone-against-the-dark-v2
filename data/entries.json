@@ -16111,7 +16111,10 @@
         "requirements": {
           "currentLocale": "Antarctic Base Camp"
         },
-        "nextEntry": "520"
+        "nextEntry": "520",
+        "effects": {
+          "departAtAntarctica": true
+        }
       }
     ]
   },
@@ -16194,6 +16197,8 @@
   },
   "500": {
     "description": "You’re on board. Good work!\n\nYou have won the race to reach \"The Dark Sea\" before she sails. You probably know your quarry is aboard. Now you have only to find him and destroy the Top:",
+    "setAntarcticaArrivalDate": true,
+    "checkAntarcticaArrivalDate": true,
     "choices": [
       {
         "text": "Seek information about members",
@@ -16214,9 +16219,43 @@
     ],
     "traceNumbers": ["462", "464", "466", "488", "489", "531"]
   },
+  "501": {
+    "description": "You’re on board, successfully posing as an able seaman, despite some close calls. Congratulations!\n\nYou have won the race to reach \"The Dark Sea\" before she sails. You probably know your quarry is aboard. Now you have only to find him and destroy the Top. You can try one activity daily.",
+    "setAntarcticaArrivalDate": true,
+    "checkAntarcticaArrivalDate": true,
+    "choices": [
+      {
+        "text": "Search the ship",
+        "nextEntry": "460"
+      },
+      {
+        "text": "Try skill rolls on ‘B’-deck and ‘C’-deck only",
+        "nextEntry": "480"
+      },
+      {
+        "text": "Lay low until Antarctica",
+        "nextEntry": "519"
+      }
+    ],
+    "traceNumbers": ["487", "519", "520", "460", "480"]
+  },
+  "519": {
+    "description": "You can lay low, doing your job. The trip lasts 29 days.",
+    "choices": [
+      {
+        "text": "Proceed to Antarctica",
+        "nextEntry": "520",
+        "effects": {
+          "departAtAntarctica": true
+        }
+      }
+    ],
+    "traceNumbers": ["501", "520"]
+  },
   "480": {
     "description": "Each day, you may choose one skill and one deck to investigate. Make a skill roll for your selected skill, and if successful, go to the corresponding entry for the deck you are investigating.\n\n(See the table below for reference.)",
     "image": "/src/assets/images/maps/investigation-table-for-480.png",
+    "checkAntarcticaArrivalDate": true,
     "choices": [
       {
         "text": "Attempt an Anthropology roll for A-deck",
@@ -16232,6 +16271,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
         }
       },
       {
@@ -16248,6 +16290,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasVisited": "500"
         }
       },
       {
@@ -16264,6 +16309,47 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt an Anthropology roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Anthropology",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt an Anthropology roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Anthropology",
+            "success": {
+              "nextEntry": "506"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
         }
       },
       {
@@ -16280,6 +16366,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
         }
       },
       {
@@ -16296,6 +16385,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
         }
       },
       {
@@ -16312,6 +16404,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasVisited": "500"
         }
       },
       {
@@ -16328,6 +16423,47 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt a Listen roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "515"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Listen roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Listen",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
         }
       },
       {
@@ -16344,6 +16480,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
         }
       },
       {
@@ -16360,6 +16499,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
         }
       },
       {
@@ -16376,6 +16518,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasVisited": "500"
         }
       },
       {
@@ -16392,6 +16537,47 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt a Psychology roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Psychology roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Psychology",
+            "success": {
+              "nextEntry": "516"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
         }
       },
       {
@@ -16408,6 +16594,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
         }
       },
       {
@@ -16424,6 +16613,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
         }
       },
       {
@@ -16440,6 +16632,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasVisited": "500"
         }
       },
       {
@@ -16456,6 +16651,47 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt a Spot Hidden roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Spot Hidden roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "509"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
         }
       },
       {
@@ -16472,6 +16708,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
         }
       },
       {
@@ -16488,6 +16727,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
         }
       },
       {
@@ -16504,6 +16746,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasVisited": "500"
         }
       },
       {
@@ -16520,6 +16765,47 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasVisited": "500"
+        }
+      },
+      {
+        "text": "Attempt a Track roll for B-deck",
+        "effects": {
+          "check": {
+            "skill": "Track",
+            "success": {
+              "nextEntry": "517"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
+        }
+      },
+      {
+        "text": "Attempt a Track roll for C-deck",
+        "effects": {
+          "check": {
+            "skill": "Track",
+            "success": {
+              "nextEntry": "508"
+            },
+            "failure": {
+              "nextEntry": "501",
+              "message": "You fail and must try again another day.",
+              "advanceTime": 23
+            }
+          }
+        },
+        "requirements": {
+          "hasVisited": "501"
         }
       },
       {
@@ -16536,6 +16822,9 @@
               "advanceTime": 23
             }
           }
+        },
+        "requirements": {
+          "hasNotVisited": "501"
         }
       },
       {
@@ -16544,7 +16833,10 @@
       },
       {
         "text": "Skip ahead to arrival in Antarctica",
-        "nextEntry": "520"
+        "nextEntry": "520",
+        "effects": {
+          "departAtAntarctica": true
+        }
       }
     ],
     "traceNumbers": ["500", "501", "460", "520"]
@@ -16583,6 +16875,7 @@
   },
   "460": {
     "description": "To search the expedition member rooms on ‘B’ deck of The Dark Sea, choose a room and make a Luck roll. If successful, the door is unlocked and you go to the entry number.",
+    "checkAntarcticaArrivalDate": true,
     "choices": [
       {
         "text": "Cabin A",
@@ -16646,6 +16939,9 @@
         "nextEntry": "520",
         "requirements": {
           "hasNotVisited": "324"
+        },
+        "effects": {
+          "departAtAntarctica": true
         }
       },
       {
@@ -17110,7 +17406,10 @@
     "choices": [
       {
         "text": "Depart at Antarctica",
-        "nextEntry": "530"
+        "nextEntry": "530",
+        "effects": {
+          "departAtAntarctica": true
+        }
       }
     ],
     "traceNumbers": ["459", "510", "524", "528"]
@@ -17352,6 +17651,16 @@
       }
     ],
     "traceNumbers": ["506", "512"]
+  },
+  "520": {
+    "title": "ANTARCTICA BASE CAMP",
+    "description": "You have arrived at the base camp in Antarctica. The expedition members are busy setting up the camp and preparing for the exploration of the mountains and the city supposedly discovered by Lake. You are assigned to one of the exploration parties. You have a few days to prepare before the expedition sets out.",
+    "choices": [
+      {
+        "text": "Prepare for the expedition",
+        "nextEntry": "530"
+      }
+    ]
   },
   "521_luck": {
     "description": "Check to see if the door is unlocked. If you have already checked this door today, you will need to come back tomorrow.",
@@ -17687,7 +17996,10 @@
       },
       {
         "text": "Lay low and go to Antarctica",
-        "nextEntry": "520"
+        "nextEntry": "520",
+        "effects": {
+          "departAtAntarctica": true
+        }
       }
     ],
     "traceNumbers": ["510", "511"]

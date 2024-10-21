@@ -6,10 +6,16 @@ Check health 268
 check bonusDie on 397
 
 Bremen Locations
-501
 510
-520
+519
+520 - not done
 530
+
+add this below
+in all the right places
+"effects": {
+"departAntarctica": true
+}
 
 check 488 with all the characters
 

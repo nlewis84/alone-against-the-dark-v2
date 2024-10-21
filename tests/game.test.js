@@ -2727,4 +2727,44 @@ describe('Game Logic', () => {
       expect(buttons.length).toBe(2)
     })
   })
+  const setAntarcticaDate = (days) => {
+    const arrivalDate = new Date(getCurrentDate())
+    arrivalDate.setDate(arrivalDate.getDate() + days)
+    currentState.antarcticaArrivalDate = arrivalDate
+  }
+
+  describe('Antarctica Arrival Date Handling', () => {
+    beforeEach(async () => {
+      // Ensure the game state is initialized
+      await initializeGame()
+    })
+
+    afterEach(() => {
+      jest.restoreAllMocks() // Reset mocks after each test
+    })
+
+    test('should set Antarctica arrival date correctly when visiting entry 501', () => {
+      // Simulate entry 501 which sets the arrival date
+      displayEntry('501')
+
+      // Check if Antarctica arrival date is set 29 days from the current date
+      const currentDate = getCurrentDate()
+      const expectedArrivalDate = new Date(currentDate)
+      expectedArrivalDate.setDate(expectedArrivalDate.getDate() + 29)
+
+      expect(currentState.antarcticaArrivalDate).toEqual(expectedArrivalDate)
+    })
+
+    test('should not change Antarctica arrival date if already set', () => {
+      // Manually set an initial arrival date
+      setAntarcticaDate(20)
+
+      // Simulate visiting entry 501 again
+      displayEntry('501')
+
+      // Check if the original Antarctica arrival date remains unchanged
+      const originalArrivalDate = currentState.antarcticaArrivalDate
+      expect(currentState.antarcticaArrivalDate).toEqual(originalArrivalDate)
+    })
+  })
 })

@@ -106,6 +106,18 @@ function displayError(entryId) {
 
 let lastDisplayedEntry = null
 
+function checkAntarcticaArrival() {
+  // pull currentState.antarcticaArrivalDate if it exists
+  if (currentState.antarcticaArrivalDate) {
+    const currentDate = new Date(getCurrentDate())
+    const arrivalDate = new Date(currentState.antarcticaArrivalDate)
+
+    if (currentDate >= arrivalDate) {
+      setTimeout(() => displayEntry('520'), 100)
+    }
+  }
+}
+
 export function displayEntry(entryId) {
   // Hide or show the minimap based on the entryId
   if (entryId === '324') {
@@ -126,9 +138,24 @@ export function displayEntry(entryId) {
   }
   const entry = gameData.entries[entryId]
 
+  if (entry && entry.checkAntarcticaArrivalDate) {
+    checkAntarcticaArrival()
+  }
+
   // Check if the entry has a `highlightOnMap` property
   if (entry && entry.highlightOnMap) {
     highlightCurrentLocationOnMap(entryId)
+  }
+
+  if (entry && entry.setAntarcticaArrivalDate) {
+    // only set the arrivalDate if it isn't set yet:
+    if (!currentState.antarcticaArrivalDate) {
+      // arrivalDate should be 29 days after the current date
+      const arrivalDate = new Date(getCurrentDate())
+      arrivalDate.setDate(arrivalDate.getDate() + 29)
+
+      currentState.antarcticaArrivalDate = arrivalDate
+    }
   }
 
   // Update state and display logic as usual
@@ -423,6 +450,12 @@ export function handleEntryChoices(entryId, entry) {
 
           if (choice.effects) {
             const currentDate = getCurrentDate()
+
+            if (choice.effects.departAtAntarctica) {
+              // set currentDate to currentState.antarcticaArrivalDate
+              const arrivalDate = new Date(currentState.antarcticaArrivalDate)
+              setCurrentDate(arrivalDate)
+            }
 
             if (choice.effects.hiredAthens) {
               currentState.hiredAthens = choice.effects.hiredAthens
@@ -1431,6 +1464,7 @@ export function saveGame() {
     scheduledMeetings: currentState.scheduledMeetings,
     waterSupply: currentState.waterSupply,
     pyramidPieces: currentState.pyramidPieces,
+    antarcticaArrivalDate: currentState.antarcticaArrivalDate,
   }
   saveState('gameState', saveData)
 }
@@ -1495,6 +1529,8 @@ export function loadGame() {
       revealTile(`piece-${piece.toLowerCase()}`) // Reveal all previously collected tiles
     })
 
+    currentState.antarcticaArrivalDate =
+      savedState.antarcticaArrivalDate || null
     displayEntry(currentState.currentEntry)
     updateHealth(0) // Refresh health display
     updateSanity(0) // Refresh sanity display
