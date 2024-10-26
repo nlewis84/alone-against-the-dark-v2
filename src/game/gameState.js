@@ -85,7 +85,7 @@ export async function initializeGame() {
     updateTime(0, 20) // Initialize date display
     startGame()
     // 500/501 is the Dark Sea ship
-    displayEntry('120') // Ensure the first entry is displayed ... should be 13
+    displayEntry('13') // Ensure the first entry is displayed ... should be 13
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error)
   }
@@ -96,7 +96,7 @@ export function startGame() {
     currentEntry: '13',
     previousEntry: 'START',
     character: 'Professor Grunewald',
-    currentLocale: 'Bremen', // Default starting locale ... should be Arkham
+    currentLocale: 'Arkham', // Default starting locale ... should be Arkham
     dailySkillUsage: {},
     combat: {
       isActive: false,
