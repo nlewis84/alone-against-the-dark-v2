@@ -10475,6 +10475,29 @@
     ],
     "traceNumbers": ["426"]
   },
+  "410": {
+    "description": "The amulet summons a bizarre barrel-shaped creature, with what looks like a mutated starfish for a head! Make a Sanity roll and lose 0/1D6 Sanity points.\n\nThis is an Old One.",
+    "image": "/src/assets/images/atmosphere/elder-thing.png",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "sanity": 0,
+              "nextEntry": "410a"
+            },
+            "failure": {
+              "sanity": "1D6",
+              "nextEntry": "410a"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["568"]
+  },
   "411": {
     "description": "The walls tell a bizarre story: strange ceremonies are presided over by a tall man with glowing eyes. In the background, there are distorted, kangaroo-like creatures bending forward as they gaze into open sarcophagi. The next section shows mummies rising from the dead and taking their place beside the odd animals.",
     "choices": [
@@ -10941,6 +10964,16 @@
       }
     ],
     "traceNumbers": ["429"]
+  },
+  "432": {
+    "description": "You do all that you can to explain that the Karpathos Device has been taken and that the Earth once again will be turned, bringing disaster to everyone. The Old One seems to ponder your ramblings and, to your surprise, offers its help in some way. You feel a strange sense of relief, as if you now have a powerful, silent ally watching over you.\n\nWith a sense of strange hope, you continue your journey.",
+    "choices": [
+      {
+        "text": "Continue on",
+        "nextEntry": "549"
+      }
+    ],
+    "traceNumbers": ["410", "549"]
   },
   "433": {
     "description": "The crystal gleams in the sun. It is very beautiful and you regret profoundly having to throw it away. But you do. It sails far over the side, strikes a wave obliquely and bounces once, then sinks beneath the surface forever. A terrible scream erupts behind you as Jeffries appears, half man and half monster, wavering in shape from the strain of failing his mission when victory was so near. He brushes you aside like a fly and leaps into the sea, in the vain hope of recovering the crystal. You reel from the blow, but do not mind: you saw, when the crystal first hit the sea, that the salt water had affected it strangely—the thing was corroding, darkening, and shrinking. You know in your heart that the crystal has disintegrated, and that the thing that was Jeffries can search the seafloor forever and never find it.\n\nYou’ve saved the world! All in a day’s work for an investigator of your caliber, but congratulations all the same! THE END.",
@@ -13932,999 +13965,6 @@
     ],
     "traceNumbers": ["460"]
   },
-  "541": {
-    "title": "TRIP B (from your Antarctic journal)",
-    "description": "FEB. 1 — Captain Crawford seems in a happier frame of mind now that we’re finally moving.\n\nFEB. 3 — Have left the mountains to fly over Scott’s route. If time allows, on the way home we’ll try to find the ill-fated 10-ton depot.\n\nFEB 8 —Have reached the arrow point of the Ross Ice Shelf. We’ll camp on the ice. Big storm arrives at night (odd to see with the sun so bright to the north).\n\nFEB 9 — Storm subsides in the afternoon, but we still don’t travel. Base camp radios that we should return immediately. Rambeau’s group is feared lost.\n\nFEB. 12 — Returning to base camp, we await Blake.",
-    "choices": [
-      {
-        "text": "Continue",
-        "nextEntry": "574"
-      }
-    ],
-    "traceNumbers": ["520"]
-  },
-  "525": {
-    "title": "TRIP A (from your Antarctica journal)",
-    "description": "FEB. 1 — Small mountains surround this desolation. Even with the extended days, an air of gloom hangs over this range.\n\nFEB. 6 — Blake appears disoriented, confused in his scientific activity. He radios to base camp for news of the other parties.\n\nFEB. 7 — Incredible news! Rambeau’s group reports finding signs of buildings and civilization. Blake appears morose and edgy at the news. He orders Rambeau to return to base.\n\nFEB. 8 — Can’t fly due to a whiteout. The storm is incredibly intense. Everyone is cold and miserable. Macpherson complains a great deal.\n\nFEB. 10 — Able to fly at last!\n\nFEB. 13 — Back at base camp. All communication from Rambeau’s group has been lost. Blake has decided to go in pursuit.",
-    "choices": [
-      {
-        "text": "Continue",
-        "nextEntry": "574"
-      }
-    ],
-    "traceNumbers": ["520"]
-  },
-  "528": {
-    "description": "As a last ditch attempt, you could try to tell the leader of the party you select why you should be allowed to join an expedition team:",
-    "choices": [
-      {
-        "text": "Appeal to Blake",
-        "message": "Blake is aware of a threat to the world. They use their influence to allow you to join a team of your choice.",
-        "nextEntry": "529"
-      },
-      {
-        "text": "Appeal to Rambeau",
-        "message": "Rambeau is aware of a threat to the world. They use their influence to allow you to join a team of your choice.",
-        "nextEntry": "529"
-      },
-      {
-        "text": "Appeal to Crawford",
-        "message": "Crawford doesn't trust you and he has you thrown back in confinement aboard The Dark Sea. After several days of silence outside of your locked room, you start to worry they have forgotten you. You slowly realize that you have been abandoned, and the weight of isolation grows heavier each day.",
-        "nextEntry": "574"
-      }
-    ],
-    "traceNumbers": ["520", "525", "541", "575"]
-  },
-  "534": {
-    "description": "You realize that the “city” you have so far seen is only a suburb of a much greater city beyond. In the distance are caverns and towers greater than can be imagined.",
-    "choices": [
-      {
-        "text": "Continue exploring the greater city",
-        "nextEntry": "542"
-      }
-    ],
-    "traceNumbers": ["527", "542"]
-  },
-  "542": {
-    "description": "While Jones is occupied with altimeter readings, Jeffries turns quickly, grins (seemingly straight at you) and to your horror smashes in Rambeau’s head with a huge claw hammer. Stunned, you still notice an odd bulge protruding from Jeffries’ jacket as the murderer strides toward the caves.",
-    "choices": [
-      {
-        "text": "Apprehend the villain, while Bering radios base and Jones tends Rambeau’s body",
-        "nextEntry": "577"
-      },
-      {
-        "text": "Skulk about, waiting for help",
-        "nextEntry": "574"
-      }
-    ],
-    "traceNumbers": ["534", "577", "574"]
-  },
-  "577": {
-    "description": "You intently pursue Jeffries, but the man has incredible endurance; he pulls further and further ahead. You find yourself stepping into holes in the snow, like the strangely shaped footprints of a bizarre creature—these must be the result of some odd Antarctic phenomenon—you reassure yourself. The towers of the city are close by now. Jeffries enters a street to your left. You follow.",
-    "choices": [
-      {
-        "text": "Follow Jeffries",
-        "nextEntry": "550"
-      }
-    ],
-    "traceNumbers": ["542", "550"]
-  },
-  "550": {
-    "description": "At the entrance to the city, Jones catches up with you. You enter the city together.",
-    "choices": [
-      {
-        "text": "Continue into the city",
-        "nextEntry": "543"
-      }
-    ],
-    "traceNumbers": ["577", "543"]
-  },
-  "543": {
-    "description": "Congratulations! You have reached the City of the Old Ones. You think that you see Jeffries heading west. You step into one of those odd footprints, and a chill runs down your spine. As you move through the frigid air, you see a mosaic portraying those strange, stump-like creatures—part octopus, part monstrous anemone. The scene depicted is of civilized discourse. You notice small ones apparently playing under the watch of larger ones. Children and parents?",
-    "image": "/src/assets/images/maps/a-portion-of-the-city-of-the-old-ones-map.png",
-    "choices": [
-      {
-        "text": "Look at the streets",
-        "nextEntry": "547"
-      },
-      {
-        "text": "Head north",
-        "nextEntry": "551"
-      },
-      {
-        "text": "Look at the buildings",
-        "nextEntry": "575"
-      }
-    ],
-    "traceNumbers": ["550", "547", "551", "575"]
-  },
-  "547": {
-    "description": "The ice on the streets seems disturbed. You brush against a mosaic of stump-like creatures leading around some of those ugly masses. Slaves or cattle, it appears.",
-    "choices": [
-      {
-        "text": "Carry on",
-        "nextEntry": "546"
-      },
-      {
-        "text": "Succeed with a Spot Hidden roll",
-        "effects": {
-          "check": {
-            "skill": "Spot Hidden",
-            "success": {
-              "nextEntry": "560"
-            },
-            "failure": {
-              "nextEntry": "546"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["543", "546", "548", "552"]
-  },
-  "551": {
-    "description": "Should you head north? Amidst the eons-old streets and cyclopean buildings you see a mosaic. It depicts the stump-like horrors fleeing something, their tentacles flailing as they enter the sea. You imagine you hear their eldritch screams.",
-    "choices": [
-      {
-        "text": "Wander the streets",
-        "nextEntry": "548"
-      },
-      {
-        "text": "Head west",
-        "nextEntry": "549"
-      }
-    ],
-    "traceNumbers": ["543", "548", "549"]
-  },
-  "552": {
-    "description": "In the swirling snow you momentarily see a moving figure, though it didn’t remind you of Jeffries. The figure ran into the alley beside that strange domed building. It was heading south.",
-    "choices": [
-      {
-        "text": "Go south",
-        "nextEntry": "560"
-      },
-      {
-        "text": "Head east",
-        "nextEntry": "549"
-      }
-    ],
-    "traceNumbers": ["547", "549", "560"]
-  },
-  "560": {
-    "description": "Someone (something!) runs south, turns a corner, and disappears. He seems to have been intending to go to the northeast. Do you follow? As you decide, you notice an enormous frieze depicting a war between two kinds of beings, beings never before seen by man, and waging wars of incredible cruelty and horror.",
-    "choices": [
-      {
-        "text": "Follow the figure",
-        "nextEntry": "570"
-      },
-      {
-        "text": "Do not follow",
-        "nextEntry": "552"
-      }
-    ],
-    "traceNumbers": ["547", "552", "561", "570"]
-  },
-  "548": {
-    "description": "A hunch tells you to go west, then head north. You see an enormous mosaic as you turn the corner. It shows a number of small specks appearing to fall from the stars. As they get closer, they become thick, barrel-like creatures with hundreds of dangling tentacles at either end. They seem to build this city!",
-    "choices": [
-      {
-        "text": "Look for more mosaics",
-        "nextEntry": "547"
-      },
-      {
-        "text": "Wander the streets",
-        "nextEntry": "546"
-      },
-      {
-        "text": "Head north",
-        "nextEntry": "551"
-      }
-    ],
-    "traceNumbers": ["546", "547", "551"]
-  },
-  "546": {
-    "description": "A pit looms before you. You could climb down the steep sides.",
-    "choices": [
-      {
-        "text": "Climb down the steep sides",
-        "nextEntry": "555"
-      },
-      {
-        "text": "Return to the streets",
-        "nextEntry": "547"
-      },
-      {
-        "text": "Head west",
-        "nextEntry": "548"
-      }
-    ],
-    "traceNumbers": ["547", "548", "555"]
-  },
-  "555": {
-    "description": "You’re at the bottom of a pit, perhaps 100 feet below the surface. There is a faint, otherworldly light here. The air, though cold, is distinctly warmer than the surface, and you are glad of it. But a clammy, foetid smell hangs here. You think it the smell of death. You are in an intersection. Eight corridors lead out of it, corresponding to compass points.",
-    "choices": [
-      {
-        "text": "Go North",
-        "nextEntry": "556"
-      },
-      {
-        "text": "Go Northeast",
-        "nextEntry": "557"
-      },
-      {
-        "text": "Go East",
-        "nextEntry": "558"
-      },
-      {
-        "text": "Go Southeast",
-        "nextEntry": "559"
-      },
-      {
-        "text": "Go South",
-        "nextEntry": "559"
-      },
-      {
-        "text": "Go Southwest",
-        "nextEntry": "564"
-      },
-      {
-        "text": "Go West",
-        "nextEntry": "562"
-      },
-      {
-        "text": "Go Northwest",
-        "nextEntry": "563"
-      }
-    ],
-    "traceNumbers": ["546", "557"]
-  },
-  "556": {
-    "description": "You stand at the edge of another pit, this one huge.",
-    "choices": [
-      {
-        "text": "Proceed",
-        "nextEntry": "570"
-      }
-    ],
-    "traceNumbers": ["555"]
-  },
-  "565": {
-    "description": "The pit opens into a great maw of a cavern, a stellated dome with odd chinks of light glowing from the points. You see Jeffries approach a simple pedestal. “Ghatanothoa!” he shouts, and as he does, his flesh shrivels from his body, rippling in waves, as he becomes one of those slave-things you’ve seen in the mosaics—first one eye, then two, then hundreds! You are filled with dread as you witness the horror.",
-    "choices": [
-      {
-        "text": "Make a Sanity roll",
-        "effects": {
-          "check": {
-            "skill": "Sanity",
-            "success": {
-              "sanity": "1D6",
-              "nextEntry": "565a"
-            },
-            "failure": {
-              "sanity": "1D20",
-              "nextEntry": "565a"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["580"]
-  },
-  "565a": {
-    "description": "If you manage to stay sane, you quickly duck behind a pillar. But the vision appearing above the pedestal—a crazed myriad of tentacles, maws, and bizarre organs—tells you it is no mere vision. It is Ghatanothoa in the flesh! You must make a second Sanity roll.",
-    "choices": [
-      {
-        "text": "Make a second Sanity roll",
-        "effects": {
-          "check": {
-            "skill": "Sanity",
-            "success": {
-              "sanity": "1D10",
-              "nextEntry": "565b"
-            },
-            "failure": {
-              "sanity": "1D100",
-              "nextEntry": "565b"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["565"]
-  },
-  "565b": {
-    "description": "If you have stayed sane, you can try to hide from Ghatanothoa. Make a Luck roll.",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "565c"
-            },
-            "failure": {
-              "nextEntry": "565d"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["565"]
-  },
-  "565c": {
-    "description": "You manage to duck behind the pillar, but the horror still looms. Now, you must act quickly to destroy this place of terror.",
-    "choices": [
-      {
-        "text": "Throw a stick of dynamite at Jeffries",
-        "nextEntry": "569",
-        "requirements": {
-          "inventory": "Dynamite"
-        }
-      },
-      {
-        "text": "Use a magic amulet",
-        "requirements": {
-          "inventory": "Amulet of Nodens"
-        },
-        "nextEntry": "571"
-      },
-      {
-        "text": "Try something else",
-        "nextEntry": "573"
-      }
-    ],
-    "traceNumbers": ["569", "571", "573"]
-  },
-  "565d": {
-    "description": "Your muscles begin to stiffen as the creeping paralysis sets in. Make a CON roll to see if you can resist it.",
-    "choices": [
-      {
-        "text": "Make a CON roll",
-        "effects": {
-          "check": {
-            "skill": "CON",
-            "success": {
-              "nextEntry": "565e"
-            },
-            "failure": {
-              "message": "The paralysis spreads rapidly.",
-              "nextEntry": "565f"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["573"]
-  },
-  "565e": {
-    "description": "You resist the paralysis, but the danger is still imminent. Make another Luck roll to hide behind the pillar, or risk the full power of Ghatanothoa.",
-    "choices": [
-      {
-        "text": "Make another Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "565c"
-            },
-            "failure": {
-              "nextEntry": "565d"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["569", "571", "573"]
-  },
-  "565f": {
-    "description": "The paralysis spreads completely, and you are unable to move. You are petrified like stone before the hideous alien god Ghatanothoa. This is… THE END.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["580"]
-  },
-  "580": {
-    "description": "You find yourself in a dark and oppressive area. The air feels thick, and you know any sound could alert those who might be nearby. You need to climb down quietly.",
-    "choices": [
-      {
-        "text": "Attempt to climb down quietly",
-        "effects": {
-          "check": {
-            "skill": "Climb",
-            "success": {
-              "nextEntry": "580a"
-            },
-            "failure": {
-              "nextEntry": "573"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["573"]
-  },
-  "580a": {
-    "description": "You make it part of the way down, but there’s still a small jump to get through this area without alerting anyone. You steel yourself to make the jump as silently as possible.",
-    "choices": [
-      {
-        "text": "Attempt to jump down quietly",
-        "effects": {
-          "check": {
-            "skill": "Jump",
-            "success": {
-              "nextEntry": "580b"
-            },
-            "failure": {
-              "nextEntry": "573"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["573"]
-  },
-  "580b": {
-    "description": "You’ve successfully made it down without too much noise, but this isn’t over yet. Make a Luck roll to see if you can stay out of danger.",
-    "choices": [
-      {
-        "text": "Make a Luck roll",
-        "effects": {
-          "check": {
-            "skill": "Luck",
-            "success": {
-              "nextEntry": "580c"
-            },
-            "failure": {
-              "nextEntry": "580d"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["565", "566", "567"]
-  },
-  "580c": {
-    "description": "You feel fortunate so far, but now it's time to rely on your knowledge. Make a Know (EDU) roll to see if you can use your experience to your advantage.",
-    "choices": [
-      {
-        "text": "Make a Know (EDU) roll",
-        "effects": {
-          "check": {
-            "skill": "EDU",
-            "success": {
-              "nextEntry": "565"
-            },
-            "failure": {
-              "nextEntry": "566"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["565", "566"]
-  },
-  "580d": {
-    "description": "Your luck may have faltered, but perhaps you can still rely on your knowledge. Make a Know (EDU) roll.",
-    "choices": [
-      {
-        "text": "Make a Know (EDU) roll",
-        "effects": {
-          "check": {
-            "skill": "EDU",
-            "success": {
-              "nextEntry": "566"
-            },
-            "failure": {
-              "nextEntry": "567"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["566", "567"]
-  },
-  "558": {
-    "description": "You see barrel-shaped creatures, stump-like, like the ones in the mosaics. They lie silent and still under thick ice; frozen and timeless.",
-    "choices": [
-      {
-        "text": "Make a Sanity roll",
-        "effects": {
-          "check": {
-            "skill": "Sanity",
-            "success": {
-              "sanity": 0,
-              "nextEntry": "558a"
-            },
-            "failure": {
-              "sanity": "1D6",
-              "nextEntry": "558a"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["555"]
-  },
-  "558a": {
-    "description": "Moving forward you seem to be going in circles! You eventually find yourself back at the intersection.",
-    "choices": [
-      {
-        "text": "Return to the intersection",
-        "nextEntry": "555"
-      }
-    ],
-    "traceNumbers": ["555"]
-  },
-  "562": {
-    "description": "Shining your flashlight down a partly-collapsed corridor, you see a treasure trove of alien scientific devices beyond. The balance of the ceiling is precarious, but it has held for millions of years.\n\nWhat do you choose to do?",
-    "choices": [
-      {
-        "text": "Investigate the devices",
-        "nextEntry": "562a"
-      },
-      {
-        "text": "Avoid the corridor and go on",
-        "nextEntry": "559"
-      }
-    ],
-    "traceNumbers": ["555", "564"]
-  },
-  "562a": {
-    "description": "You crawl down the narrow passage, nervously beginning to pull out the alien devices. But as you do, you see glinting eyes and hear a cruel chuckle at the other end. You frantically back into the room of scientific devices. The corridor collapses, pulled down by Jeffries’ treachery. You pound and tug at the stone, but the only way is sealed.\n\nBefore you freeze to death, you hear great upheavals in the earth. You never know their cause. For you, and everyone, it is... THE END.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["555", "564"]
-  },
-  "563": {
-    "description": "Under thick sheets of ice, your flashlight gives tantalizing glimpses of strange alien devices, but you cannot fathom their use or purpose. If only you had more time and more equipment you could plunder these ancient marvels! For now, you quickly make a note about their location, and then find your way back.",
-    "choices": [
-      {
-        "text": "Return to the intersection",
-        "nextEntry": "555"
-      }
-    ],
-    "traceNumbers": ["555"]
-  },
-  "564": {
-    "description": "You think you hear a noise ahead. Your curiosity takes hold and you gingerly venture forward. After a while, the passageway joins with another.",
-    "choices": [
-      {
-        "text": "Proceed forward",
-        "nextEntry": "562"
-      }
-    ],
-    "traceNumbers": ["555", "562"]
-  },
-  "557": {
-    "description": "You see frozen creatures, like the stump-like things in the mosaics, but these former citizens are frozen solid.",
-    "choices": [
-      {
-        "text": "Make a Sanity roll",
-        "effects": {
-          "check": {
-            "skill": "Sanity",
-            "success": {
-              "sanity": 0,
-              "nextEntry": "557a"
-            },
-            "failure": {
-              "sanity": "1D6",
-              "nextEntry": "557a"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["555", "558", "559", "561"]
-  },
-  "557a": {
-    "description": "You keep walking, and find you’ve been led back to the underground intersection.",
-    "choices": [
-      {
-        "text": "Continue walking",
-        "nextEntry": "555"
-      }
-    ],
-    "traceNumbers": ["555"]
-  },
-  "559": {
-    "description": "An ancient rock fall, long since frozen in place by inches of thick ice, blocks your way.",
-    "choices": [
-      {
-        "text": "Return to the underground intersection",
-        "nextEntry": "555"
-      }
-    ],
-    "traceNumbers": ["555", "562", "563"]
-  },
-  "570": {
-    "description": "A huge slab has been opened before you. The pictures around you show the barrel creatures fleeing great turmoil: enormous slabs of ice seem to be flying from the sky. Some of the barrel creatures seem to have frozen where they stand. Intuitively you believe the answer is here.",
-    "choices": [
-      {
-        "text": "Proceed further",
-        "nextEntry": "580"
-      }
-    ],
-    "traceNumbers": ["556"]
-  },
-  "573": {
-    "description": "A sudden unspeakable dread consumes you. Before you, within the pit, a blasphemy of tentacles, claws, and utter horror resides. It has a name… Ghatanothoa! The festering mass turns toward you, waving its hundred tentacles in the air as if in some mocking welcome. As you choke out a scream, you feel your flesh begin to tighten and go rigid as an unnatural paralysis takes hold.",
-    "choices": [
-      {
-        "text": "Make a Sanity roll",
-        "effects": {
-          "check": {
-            "skill": "Sanity",
-            "success": {
-              "sanity": "1D10",
-              "nextEntry": "573a"
-            },
-            "failure": {
-              "sanity": "1D100",
-              "nextEntry": "573a"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["565", "580"]
-  },
-  "573a": {
-    "description": "The gigantic bubble-mass creatures come, bloated things covered in eyes and yawning maws—you remember them from the mosaics. You feel your flesh begin to tighten and go rigid as paralysis sets in.",
-    "choices": [
-      {
-        "text": "Use the rose-colored amulet",
-        "requirements": {
-          "inventory": "Amulet of Nodens"
-        },
-        "nextEntry": "592"
-      },
-      {
-        "text": "Use the ring",
-        "requirements": {
-          "inventory": "Ring of Power"
-        },
-        "nextEntry": "573b"
-      },
-      {
-        "text": "Do nothing",
-        "nextEntry": "573c"
-      }
-    ],
-    "traceNumbers": ["592", "573b", "573c"]
-  },
-  "573b": {
-    "description": "You clutch the Ring of Power, hoping it will save you. The bubble-creatures seem to respect its power and leave it untouched, but the same is not true for you! You are enveloped and torn apart! It is ... THE END.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["573a"]
-  },
-  "573c": {
-    "description": "You can do nothing as your body freezes. The paralysis takes hold fully, turning you to stone as you face the horrific Ghatanothoa. It is … THE END.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["573a"]
-  },
-  "592": {
-    "description": "The summoned creature appears, and then another, and then another. The gigantic bubble-mass horrors pour into attack from corridors and caverns. The battle is desperate and all seems lost, yet in the chaos, the Top is destroyed. Congratulations! Though your actions save the world, you are still doomed. The battle causes the cavern to collapse on top of you. In your final seconds, you bravely count your death as of little importance. You have saved the world, even though for you it is ... THE END.",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["576"]
-  },
-  "569": {
-    "description": "Your daring throw was right on target! In exposing yourself to the horror that is Ghatanothoa, you feel your muscles tighten to unbearable knots, but the Top is blown to splinters and the roof of the cavern has begun to collapse.\n\nDazed and semi-paralyzed, you stumble away, into the numbing Antarctic cold. Somehow you reach the Dornier and safety. Jones may be there to fly you back, or Crawford may dispatch a rescue flight\n\nYour diagnosis is Dementia Antarctica. Ultimately you realize, after your release from a New England sanatorium, that it is best to say nothing about your trip. It is …THE END, but you triumphed where many failed. Congratulations!",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["565", "566"]
-  },
-  "572": {
-    "description": "The amulet burns in your hand as it summons forth a strange entity, and then another, and then another. A shrill piping sound echoes around you as gigantic bubble-mass horrors tumble forward from corridors and caverns, clashing with the entities you have brought here. The battle between them is desperate.",
-    "choices": [
-      {
-        "text": "Watch the battle unfold",
-        "nextEntry": "571"
-      }
-    ],
-    "traceNumbers": ["567", "571"]
-  },
-  "571": {
-    "description": "The summoned creatures are powerful indeed. Though many fall before the might of the shoggoths, others manage to destroy the Top before it can be set in motion. But a battle between alien horrors is no place for a human to be. You edge away from the horrifying struggle.\n\nDazed, you stumble back into the numbing Antarctic cold. Somehow you reach the Dornier and safety. Jones may be there to fly you back, or Crawford may dispatch a rescue flight.\n\nYou are diagnosed as having Dementia Antarctica. Ultimately you realize, after your release from a New England sanatorium that it is best to say nothing about your trip. It is ... THE END, but you triumphed where many failed. Congratulations!",
-    "choices": [
-      {
-        "text": "GAME OVER",
-        "effects": {
-          "endGame": true
-        }
-      }
-    ],
-    "traceNumbers": ["565", "566", "572"]
-  },
-  "575": {
-    "description": "You see a mosaic of the scientific achievements of the stumpy rulers, and of the help given them by their bizarre slaves.",
-    "choices": [
-      {
-        "text": "Look at the other mosaics",
-        "nextEntry": "549"
-      },
-      {
-        "text": "Follow a path you have found",
-        "nextEntry": "568"
-      },
-      {
-        "text": "Search around the buildings",
-        "nextEntry": "553"
-      }
-    ],
-    "traceNumbers": ["543", "549", "553", "568"]
-  },
-  "553": {
-    "description": "A long path leads to a strange temple-like building.",
-    "choices": [
-      {
-        "text": "Look inside the temple",
-        "nextEntry": "545"
-      },
-      {
-        "text": "Move ahead",
-        "nextEntry": "575"
-      }
-    ],
-    "traceNumbers": ["545", "575"]
-  },
-  "545": {
-    "description": "Those horrible creatures have already become like humans to you. The scene is terrible. The mosaic shows them falling as their formerly docile servants turn on them. You also seem to see some of the defeated creatures floating upward, up to the stars.",
-    "choices": [
-      {
-        "text": "Return to the path",
-        "nextEntry": "553"
-      }
-    ],
-    "traceNumbers": ["553"]
-  },
-  "568": {
-    "description": "A rose-colored amulet rests within a small sanctuary.",
-    "choices": [
-      {
-        "text": "Touch the amulet",
-        "nextEntry": "410"
-      },
-      {
-        "text": "Go west",
-        "nextEntry": "549"
-      },
-      {
-        "text": "Go back",
-        "nextEntry": "575"
-      }
-    ],
-    "traceNumbers": ["432", "549", "575"]
-  },
-  "432": {
-    "description": "You do all that you can to explain that the Karpathos Device has been taken and that the Earth once again will be turned, bringing disaster to everyone. The Old One seems to ponder your ramblings and, to your surprise, offers its help in some way. You feel a strange sense of relief, as if you now have a powerful, silent ally watching over you.\n\nWith a sense of strange hope, you continue your journey.",
-    "choices": [
-      {
-        "text": "Continue on",
-        "nextEntry": "549"
-      }
-    ],
-    "traceNumbers": ["410", "549"]
-  },
-  "549": {
-    "description": "You think you see movement to the west. You barely notice the mosaic you pass. It shows the slave things, in appearance more horrible than before, rebel against the master creatures. Great battles are depicted.",
-    "choices": [
-      {
-        "text": "Head west",
-        "nextEntry": "552"
-      },
-      {
-        "text": "Head south",
-        "nextEntry": "551"
-      }
-    ],
-    "traceNumbers": ["551", "552", "568", "575"]
-  },
-  "410": {
-    "description": "The amulet summons a bizarre barrel-shaped creature, with what looks like a mutated starfish for a head! Make a Sanity roll and lose 0/1D6 Sanity points.\n\nThis is an Old One.",
-    "image": "/src/assets/images/atmosphere/elder-thing.png",
-    "choices": [
-      {
-        "text": "Make a Sanity roll",
-        "effects": {
-          "check": {
-            "skill": "Sanity",
-            "success": {
-              "sanity": 0,
-              "nextEntry": "410a"
-            },
-            "failure": {
-              "sanity": "1D6",
-              "nextEntry": "410a"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["568"]
-  },
-  "410a": {
-    "description": "Now make a Dodge roll to escape the Old One.",
-    "choices": [
-      {
-        "text": "Make a Dodge roll",
-        "effects": {
-          "check": {
-            "skill": "Dodge",
-            "success": {
-              "nextEntry": "568"
-            },
-            "failure": {
-              "nextEntry": "432"
-            }
-          }
-        }
-      }
-    ]
-  },
-  "529": {
-    "title": "ANTARCTICA BASE CAMP",
-    "description": "The expedition camps at point ‘D.’ The weather holds; it is summer. Three trips are planned, departing simultaneously and each lasting 2 to 3 weeks. The crew spend several days preparing for the journeys. The weather should clear up around Feburuary 1st.\n\nTrip A will explore unknown portions of the mountains toward the pole. Trip B heads north, to establish a base area for further camps. Trip C crosses the mountains and heads toward the mysterious area reported by Lake.\n\nEach party will use one of the Dornier planes. If you’re Holt or Grunewald, you can choose one of the parties and join it at the listed entry. If you’re not, choose a party and then choose one of these skills: Navigate, Pilot (Aircraft), or Survival. If you can succeed with that skill roll, you’re allowed to go. Fail the roll and you don’t talk your way in.",
-    "image": "/src/assets/images/maps/a-portion-of-antarctica-map.png",
-    "choices": [
-      {
-        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
-        "nextEntry": "525"
-      },
-      {
-        "text": "Join Trip B (Crawford, Thompson, Smith, Klug)",
-        "nextEntry": "541"
-      },
-      {
-        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries)",
-        "nextEntry": "527"
-      }
-    ]
-  },
-  "527": {
-    "title": "TRIP C (from your Antarctic journal)",
-    "description": "FEB. 1 — Once over the mountains, Victoria Land seems a single massive plateau. From our flying altitude, we can barely make out the crevasses and the wind-blown sastrugi that proved so treacherous to sled travel.\n\nFEB. 4 — The party seems at ease. Perhaps I selected the wrong party. Rambeau is very quiet, as is Paddy Jones. Jeffries works hard setting up camp.\n\nFEB. 5 — Twice now I have felt an eerie sensation of being watched by something, yet have been unable to detect any watcher.\n\nFEB. 6 — We saw something strange near 120 E. longitude, a mountain range with an odd purplish glow beyond. Rambeau has decided to push the Dornier to the limit to reach it.\n\nFEB. 7 — Great news! We see the remains of a strange city, unfathomably old, with eerie towers and enormous roads. Jones thought he saw someone, frozen of course, down on the road. He radioed base to let Blake and Crawford know while we circled the site. We’ve set down outside the city. Tomorrow we’ll inspect this amazing place.",
-    "choices": [
-      {
-        "text": "Continue to explore the strange city",
-        "nextEntry": "534"
-      }
-    ],
-    "traceNumbers": ["520", "534"]
-  },
-  "566": {
-    "description": "The pit opens into a great maw of a cavern, a stellated dome with odd chinks of light glowing from the points. One of the bubble-mass creatures is at a pedestal, fingering something, which looks like a crystal top. With a slimy appendage, it thoughtfully fingers the Top.",
-    "choices": [
-      {
-        "text": "Make a Sanity roll",
-        "effects": {
-          "check": {
-            "skill": "Sanity",
-            "success": {
-              "sanity": "1D6",
-              "nextEntry": "566a"
-            },
-            "failure": {
-              "sanity": "1D20",
-              "nextEntry": "566a"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["580"]
-  },
-  "566a": {
-    "description": "Depending on your resources, you may have options. Otherwise, you must face the horrors alone.",
-    "choices": [
-      {
-        "text": "Throw dynamite",
-        "requirements": {
-          "inventory": "Dynamite"
-        },
-        "effects": {
-          "check": {
-            "skill": "Throw",
-            "success": {
-              "nextEntry": "569"
-            },
-            "failure": {
-              "nextEntry": "574"
-            }
-          }
-        }
-      },
-      {
-        "text": "Use the amulet",
-        "requirements": {
-          "inventory": "Amulet of Nodens"
-        },
-        "nextEntry": "571"
-      },
-      {
-        "text": "You aren't sure what to do",
-        "nextEntry": "574"
-      }
-    ],
-    "traceNumbers": ["569", "571", "574"]
-  },
-  "567": {
-    "description": "The pit opens into a great maw of a cavern, a stellated dome with odd chinks of light glowing from the points. One of the bubble-mass creatures is at a pedestal, fingering something, which looks like a crystal top. With a slimy appendage, it thoughtfully places the Top into something and you hear a clicking sound. The creature emits a cacophony of high-pitched whistles—you think it is laughing.",
-    "choices": [
-      {
-        "text": "Make a Sanity roll",
-        "effects": {
-          "check": {
-            "skill": "Sanity",
-            "success": {
-              "sanity": "1D6",
-              "nextEntry": "567a"
-            },
-            "failure": {
-              "sanity": "1D20",
-              "nextEntry": "567a"
-            }
-          }
-        }
-      }
-    ],
-    "traceNumbers": ["580"]
-  },
-  "567a": {
-    "description": "It's too late for dynamite now. If you have the rose-colored amulet, it may be your only chance. Otherwise, there's nothing you can do.",
-    "choices": [
-      {
-        "text": "Use the amulet",
-        "requirements": {
-          "inventory": "Amulet of Nodens"
-        },
-        "nextEntry": "572"
-      },
-      {
-        "text": "You don't know what to do",
-        "nextEntry": "574"
-      }
-    ]
-  },
   "522": {
     "description": "You see a map of the Antarctic, with three planned exploration routes. The central route leads to the mountains and city supposedly discovered by Lake. You feel much more confident in your Navigate skill.",
     "choices": [
@@ -14999,6 +14039,17 @@
     ],
     "traceNumbers": ["514"]
   },
+  "525": {
+    "title": "TRIP A (from your Antarctica journal)",
+    "description": "FEB. 1 — Small mountains surround this desolation. Even with the extended days, an air of gloom hangs over this range.\n\nFEB. 6 — Blake appears disoriented, confused in his scientific activity. He radios to base camp for news of the other parties.\n\nFEB. 7 — Incredible news! Rambeau’s group reports finding signs of buildings and civilization. Blake appears morose and edgy at the news. He orders Rambeau to return to base.\n\nFEB. 8 — Can’t fly due to a whiteout. The storm is incredibly intense. Everyone is cold and miserable. Macpherson complains a great deal.\n\nFEB. 10 — Able to fly at last!\n\nFEB. 13 — Back at base camp. All communication from Rambeau’s group has been lost. Blake has decided to go in pursuit.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "574"
+      }
+    ],
+    "traceNumbers": ["520"]
+  },
   "526": {
     "description": "You notice many books about the Antarctic.",
     "choices": [
@@ -15040,6 +14091,57 @@
       }
     ],
     "traceNumbers": ["460"]
+  },
+  "527": {
+    "title": "TRIP C (from your Antarctic journal)",
+    "description": "FEB. 1 — Once over the mountains, Victoria Land seems a single massive plateau. From our flying altitude, we can barely make out the crevasses and the wind-blown sastrugi that proved so treacherous to sled travel.\n\nFEB. 4 — The party seems at ease. Perhaps I selected the wrong party. Rambeau is very quiet, as is Paddy Jones. Jeffries works hard setting up camp.\n\nFEB. 5 — Twice now I have felt an eerie sensation of being watched by something, yet have been unable to detect any watcher.\n\nFEB. 6 — We saw something strange near 120 E. longitude, a mountain range with an odd purplish glow beyond. Rambeau has decided to push the Dornier to the limit to reach it.\n\nFEB. 7 — Great news! We see the remains of a strange city, unfathomably old, with eerie towers and enormous roads. Jones thought he saw someone, frozen of course, down on the road. He radioed base to let Blake and Crawford know while we circled the site. We’ve set down outside the city. Tomorrow we’ll inspect this amazing place.",
+    "choices": [
+      {
+        "text": "Continue to explore the strange city",
+        "nextEntry": "534"
+      }
+    ],
+    "traceNumbers": ["520", "534"]
+  },
+  "528": {
+    "description": "As a last ditch attempt, you could try to tell the leader of the party you select why you should be allowed to join an expedition team:",
+    "choices": [
+      {
+        "text": "Appeal to Blake",
+        "message": "Blake is aware of a threat to the world. They use their influence to allow you to join a team of your choice.",
+        "nextEntry": "529"
+      },
+      {
+        "text": "Appeal to Rambeau",
+        "message": "Rambeau is aware of a threat to the world. They use their influence to allow you to join a team of your choice.",
+        "nextEntry": "529"
+      },
+      {
+        "text": "Appeal to Crawford",
+        "message": "Crawford doesn't trust you and he has you thrown back in confinement aboard The Dark Sea. After several days of silence outside of your locked room, you start to worry they have forgotten you. You slowly realize that you have been abandoned, and the weight of isolation grows heavier each day.",
+        "nextEntry": "574"
+      }
+    ],
+    "traceNumbers": ["520", "525", "541", "575"]
+  },
+  "529": {
+    "title": "ANTARCTICA BASE CAMP",
+    "description": "The expedition camps at point ‘D.’ The weather holds; it is summer. Three trips are planned, departing simultaneously and each lasting 2 to 3 weeks. The crew spend several days preparing for the journeys. The weather should clear up around Feburuary 1st.\n\nTrip A will explore unknown portions of the mountains toward the pole. Trip B heads north, to establish a base area for further camps. Trip C crosses the mountains and heads toward the mysterious area reported by Lake.\n\nEach party will use one of the Dornier planes. If you’re Holt or Grunewald, you can choose one of the parties and join it at the listed entry. If you’re not, choose a party and then choose one of these skills: Navigate, Pilot (Aircraft), or Survival. If you can succeed with that skill roll, you’re allowed to go. Fail the roll and you don’t talk your way in.",
+    "image": "/src/assets/images/maps/a-portion-of-antarctica-map.png",
+    "choices": [
+      {
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
+        "nextEntry": "525"
+      },
+      {
+        "text": "Join Trip B (Crawford, Thompson, Smith, Klug)",
+        "nextEntry": "541"
+      },
+      {
+        "text": "Join Trip C (Rambeau, Bering, Jones, Jeffries)",
+        "nextEntry": "527"
+      }
+    ]
   },
   "530": {
     "description": "Select a leader to approach: Rambeau, Blake, Crawford, or Jones. Select one of the following skills: Credit Rating, Persuade, Fast Talk, Intimidate, or Charm. Succeed at a roll, and go to the appropriate entry. If you fail the roll, you will still be sent to confinement aboard the brig.",
@@ -15414,6 +14516,16 @@
     ],
     "traceNumbers": ["516"]
   },
+  "534": {
+    "description": "You realize that the “city” you have so far seen is only a suburb of a much greater city beyond. In the distance are caverns and towers greater than can be imagined.",
+    "choices": [
+      {
+        "text": "Continue exploring the greater city",
+        "nextEntry": "542"
+      }
+    ],
+    "traceNumbers": ["527", "542"]
+  },
   "535": {
     "description": "There’s nothing of interest.",
     "choices": [
@@ -15557,6 +14669,50 @@
     ],
     "traceNumbers": ["460"]
   },
+  "541": {
+    "title": "TRIP B (from your Antarctic journal)",
+    "description": "FEB. 1 — Captain Crawford seems in a happier frame of mind now that we’re finally moving.\n\nFEB. 3 — Have left the mountains to fly over Scott’s route. If time allows, on the way home we’ll try to find the ill-fated 10-ton depot.\n\nFEB 8 —Have reached the arrow point of the Ross Ice Shelf. We’ll camp on the ice. Big storm arrives at night (odd to see with the sun so bright to the north).\n\nFEB 9 — Storm subsides in the afternoon, but we still don’t travel. Base camp radios that we should return immediately. Rambeau’s group is feared lost.\n\nFEB. 12 — Returning to base camp, we await Blake.",
+    "choices": [
+      {
+        "text": "Continue",
+        "nextEntry": "574"
+      }
+    ],
+    "traceNumbers": ["520"]
+  },
+  "542": {
+    "description": "While Jones is occupied with altimeter readings, Jeffries turns quickly, grins (seemingly straight at you) and to your horror smashes in Rambeau’s head with a huge claw hammer. Stunned, you still notice an odd bulge protruding from Jeffries’ jacket as the murderer strides toward the caves.",
+    "choices": [
+      {
+        "text": "Apprehend the villain, while Bering radios base and Jones tends Rambeau’s body",
+        "nextEntry": "577"
+      },
+      {
+        "text": "Skulk about, waiting for help",
+        "nextEntry": "574"
+      }
+    ],
+    "traceNumbers": ["534", "577", "574"]
+  },
+  "543": {
+    "description": "Congratulations! You have reached the City of the Old Ones. You think that you see Jeffries heading west. You step into one of those odd footprints, and a chill runs down your spine. As you move through the frigid air, you see a mosaic portraying those strange, stump-like creatures—part octopus, part monstrous anemone. The scene depicted is of civilized discourse. You notice small ones apparently playing under the watch of larger ones. Children and parents?",
+    "image": "/src/assets/images/maps/a-portion-of-the-city-of-the-old-ones-map.png",
+    "choices": [
+      {
+        "text": "Look at the streets",
+        "nextEntry": "547"
+      },
+      {
+        "text": "Head north",
+        "nextEntry": "551"
+      },
+      {
+        "text": "Look at the buildings",
+        "nextEntry": "575"
+      }
+    ],
+    "traceNumbers": ["550", "547", "551", "575"]
+  },
   "544": {
     "description": "Good heavens! The top, which you had so carefully hidden, has disappeared. Wild-eyed, you rush through the hatchway and into the foggy gloom beyond. But, lurking on the other side, a hidden assailant sends a powerful blow to your head, and you sprawl to the deck. Barely conscious, you feel yourself picked up, swung unresistingly, and then hurled far over the side into the icy darkness of the sea. Somehow you cannot move your arms and legs; you sink deeper and deeper in the numbing depths. How foolish you were not to have destroyed the Top. You understand that you betrayed not only yourself, but everyone and everything you have ever loved. It is … THE END.",
     "choices": [
@@ -15568,6 +14724,142 @@
       }
     ],
     "traceNumbers": ["576"]
+  },
+  "545": {
+    "description": "Those horrible creatures have already become like humans to you. The scene is terrible. The mosaic shows them falling as their formerly docile servants turn on them. You also seem to see some of the defeated creatures floating upward, up to the stars.",
+    "choices": [
+      {
+        "text": "Return to the path",
+        "nextEntry": "553"
+      }
+    ],
+    "traceNumbers": ["553"]
+  },
+  "546": {
+    "description": "A pit looms before you. You could climb down the steep sides.",
+    "choices": [
+      {
+        "text": "Climb down the steep sides",
+        "nextEntry": "555"
+      },
+      {
+        "text": "Return to the streets",
+        "nextEntry": "547"
+      },
+      {
+        "text": "Head west",
+        "nextEntry": "548"
+      }
+    ],
+    "traceNumbers": ["547", "548", "555"]
+  },
+  "547": {
+    "description": "The ice on the streets seems disturbed. You brush against a mosaic of stump-like creatures leading around some of those ugly masses. Slaves or cattle, it appears.",
+    "choices": [
+      {
+        "text": "Carry on",
+        "nextEntry": "546"
+      },
+      {
+        "text": "Succeed with a Spot Hidden roll",
+        "effects": {
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "560"
+            },
+            "failure": {
+              "nextEntry": "546"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["543", "546", "548", "552"]
+  },
+  "548": {
+    "description": "A hunch tells you to go west, then head north. You see an enormous mosaic as you turn the corner. It shows a number of small specks appearing to fall from the stars. As they get closer, they become thick, barrel-like creatures with hundreds of dangling tentacles at either end. They seem to build this city!",
+    "choices": [
+      {
+        "text": "Look for more mosaics",
+        "nextEntry": "547"
+      },
+      {
+        "text": "Wander the streets",
+        "nextEntry": "546"
+      },
+      {
+        "text": "Head north",
+        "nextEntry": "551"
+      }
+    ],
+    "traceNumbers": ["546", "547", "551"]
+  },
+  "549": {
+    "description": "You think you see movement to the west. You barely notice the mosaic you pass. It shows the slave things, in appearance more horrible than before, rebel against the master creatures. Great battles are depicted.",
+    "choices": [
+      {
+        "text": "Head west",
+        "nextEntry": "552"
+      },
+      {
+        "text": "Head south",
+        "nextEntry": "551"
+      }
+    ],
+    "traceNumbers": ["551", "552", "568", "575"]
+  },
+  "550": {
+    "description": "At the entrance to the city, Jones catches up with you. You enter the city together.",
+    "choices": [
+      {
+        "text": "Continue into the city",
+        "nextEntry": "543"
+      }
+    ],
+    "traceNumbers": ["577", "543"]
+  },
+  "551": {
+    "description": "Should you head north? Amidst the eons-old streets and cyclopean buildings you see a mosaic. It depicts the stump-like horrors fleeing something, their tentacles flailing as they enter the sea. You imagine you hear their eldritch screams.",
+    "choices": [
+      {
+        "text": "Wander the streets",
+        "nextEntry": "548"
+      },
+      {
+        "text": "Head west",
+        "nextEntry": "549"
+      }
+    ],
+    "traceNumbers": ["543", "548", "549"]
+  },
+  "552": {
+    "description": "In the swirling snow you momentarily see a moving figure, though it didn’t remind you of Jeffries. The figure ran into the alley beside that strange domed building. It was heading south.",
+    "choices": [
+      {
+        "text": "Go south",
+        "nextEntry": "560"
+      },
+      {
+        "text": "Head east",
+        "nextEntry": "549"
+      }
+    ],
+    "traceNumbers": ["547", "549", "560"]
+  },
+  "553": {
+    "description": "A long path leads to a strange temple-like building.",
+    "choices": [
+      {
+        "text": "Look inside the temple",
+        "nextEntry": "545"
+      },
+      {
+        "text": "Move ahead",
+        "nextEntry": "575"
+      }
+    ],
+    "traceNumbers": ["545", "575"]
   },
   "554": {
     "choices": [
@@ -15592,6 +14884,122 @@
     "title": "USS Rochester",
     "traceNumbers": ["START"]
   },
+  "555": {
+    "description": "You’re at the bottom of a pit, perhaps 100 feet below the surface. There is a faint, otherworldly light here. The air, though cold, is distinctly warmer than the surface, and you are glad of it. But a clammy, foetid smell hangs here. You think it the smell of death. You are in an intersection. Eight corridors lead out of it, corresponding to compass points.",
+    "choices": [
+      {
+        "text": "Go North",
+        "nextEntry": "556"
+      },
+      {
+        "text": "Go Northeast",
+        "nextEntry": "557"
+      },
+      {
+        "text": "Go East",
+        "nextEntry": "558"
+      },
+      {
+        "text": "Go Southeast",
+        "nextEntry": "559"
+      },
+      {
+        "text": "Go South",
+        "nextEntry": "559"
+      },
+      {
+        "text": "Go Southwest",
+        "nextEntry": "564"
+      },
+      {
+        "text": "Go West",
+        "nextEntry": "562"
+      },
+      {
+        "text": "Go Northwest",
+        "nextEntry": "563"
+      }
+    ],
+    "traceNumbers": ["546", "557"]
+  },
+  "556": {
+    "description": "You stand at the edge of another pit, this one huge.",
+    "choices": [
+      {
+        "text": "Proceed",
+        "nextEntry": "570"
+      }
+    ],
+    "traceNumbers": ["555"]
+  },
+  "557": {
+    "description": "You see frozen creatures, like the stump-like things in the mosaics, but these former citizens are frozen solid.",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "sanity": 0,
+              "nextEntry": "557a"
+            },
+            "failure": {
+              "sanity": "1D6",
+              "nextEntry": "557a"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["555", "558", "559", "561"]
+  },
+  "558": {
+    "description": "You see barrel-shaped creatures, stump-like, like the ones in the mosaics. They lie silent and still under thick ice; frozen and timeless.",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "sanity": 0,
+              "nextEntry": "558a"
+            },
+            "failure": {
+              "sanity": "1D6",
+              "nextEntry": "558a"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["555"]
+  },
+  "559": {
+    "description": "An ancient rock fall, long since frozen in place by inches of thick ice, blocks your way.",
+    "choices": [
+      {
+        "text": "Return to the underground intersection",
+        "nextEntry": "555"
+      }
+    ],
+    "traceNumbers": ["555", "562", "563"]
+  },
+  "560": {
+    "description": "Someone (something!) runs south, turns a corner, and disappears. He seems to have been intending to go to the northeast. Do you follow? As you decide, you notice an enormous frieze depicting a war between two kinds of beings, beings never before seen by man, and waging wars of incredible cruelty and horror.",
+    "choices": [
+      {
+        "text": "Follow the figure",
+        "nextEntry": "570"
+      },
+      {
+        "text": "Do not follow",
+        "nextEntry": "552"
+      }
+    ],
+    "traceNumbers": ["547", "552", "561", "570"]
+  },
   "561": {
     "description": "You stand before the western face of the pyramid, where the weathered stone hints at secrets long buried beneath the desert sands. With time and perhaps a helpful map, you may uncover something hidden.",
     "choices": [
@@ -15611,6 +15019,190 @@
       }
     ],
     "traceNumbers": ["360"]
+  },
+  "562": {
+    "description": "Shining your flashlight down a partly-collapsed corridor, you see a treasure trove of alien scientific devices beyond. The balance of the ceiling is precarious, but it has held for millions of years.\n\nWhat do you choose to do?",
+    "choices": [
+      {
+        "text": "Investigate the devices",
+        "nextEntry": "562a"
+      },
+      {
+        "text": "Avoid the corridor and go on",
+        "nextEntry": "559"
+      }
+    ],
+    "traceNumbers": ["555", "564"]
+  },
+  "563": {
+    "description": "Under thick sheets of ice, your flashlight gives tantalizing glimpses of strange alien devices, but you cannot fathom their use or purpose. If only you had more time and more equipment you could plunder these ancient marvels! For now, you quickly make a note about their location, and then find your way back.",
+    "choices": [
+      {
+        "text": "Return to the intersection",
+        "nextEntry": "555"
+      }
+    ],
+    "traceNumbers": ["555"]
+  },
+  "564": {
+    "description": "You think you hear a noise ahead. Your curiosity takes hold and you gingerly venture forward. After a while, the passageway joins with another.",
+    "choices": [
+      {
+        "text": "Proceed forward",
+        "nextEntry": "562"
+      }
+    ],
+    "traceNumbers": ["555", "562"]
+  },
+  "565": {
+    "description": "The pit opens into a great maw of a cavern, a stellated dome with odd chinks of light glowing from the points. You see Jeffries approach a simple pedestal. “Ghatanothoa!” he shouts, and as he does, his flesh shrivels from his body, rippling in waves, as he becomes one of those slave-things you’ve seen in the mosaics—first one eye, then two, then hundreds! You are filled with dread as you witness the horror.",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "sanity": "1D6",
+              "nextEntry": "565a"
+            },
+            "failure": {
+              "sanity": "1D20",
+              "nextEntry": "565a"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["580"]
+  },
+  "566": {
+    "description": "The pit opens into a great maw of a cavern, a stellated dome with odd chinks of light glowing from the points. One of the bubble-mass creatures is at a pedestal, fingering something, which looks like a crystal top. With a slimy appendage, it thoughtfully fingers the Top.",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "sanity": "1D6",
+              "nextEntry": "566a"
+            },
+            "failure": {
+              "sanity": "1D20",
+              "nextEntry": "566a"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["580"]
+  },
+  "567": {
+    "description": "The pit opens into a great maw of a cavern, a stellated dome with odd chinks of light glowing from the points. One of the bubble-mass creatures is at a pedestal, fingering something, which looks like a crystal top. With a slimy appendage, it thoughtfully places the Top into something and you hear a clicking sound. The creature emits a cacophony of high-pitched whistles—you think it is laughing.",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "sanity": "1D6",
+              "nextEntry": "567a"
+            },
+            "failure": {
+              "sanity": "1D20",
+              "nextEntry": "567a"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["580"]
+  },
+  "568": {
+    "description": "A rose-colored amulet rests within a small sanctuary.",
+    "choices": [
+      {
+        "text": "Touch the amulet",
+        "nextEntry": "410"
+      },
+      {
+        "text": "Go west",
+        "nextEntry": "549"
+      },
+      {
+        "text": "Go back",
+        "nextEntry": "575"
+      }
+    ],
+    "traceNumbers": ["432", "549", "575"]
+  },
+  "569": {
+    "description": "Your daring throw was right on target! In exposing yourself to the horror that is Ghatanothoa, you feel your muscles tighten to unbearable knots, but the Top is blown to splinters and the roof of the cavern has begun to collapse.\n\nDazed and semi-paralyzed, you stumble away, into the numbing Antarctic cold. Somehow you reach the Dornier and safety. Jones may be there to fly you back, or Crawford may dispatch a rescue flight\n\nYour diagnosis is Dementia Antarctica. Ultimately you realize, after your release from a New England sanatorium, that it is best to say nothing about your trip. It is …THE END, but you triumphed where many failed. Congratulations!",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["565", "566"]
+  },
+  "570": {
+    "description": "A huge slab has been opened before you. The pictures around you show the barrel creatures fleeing great turmoil: enormous slabs of ice seem to be flying from the sky. Some of the barrel creatures seem to have frozen where they stand. Intuitively you believe the answer is here.",
+    "choices": [
+      {
+        "text": "Proceed further",
+        "nextEntry": "580"
+      }
+    ],
+    "traceNumbers": ["556"]
+  },
+  "571": {
+    "description": "The summoned creatures are powerful indeed. Though many fall before the might of the shoggoths, others manage to destroy the Top before it can be set in motion. But a battle between alien horrors is no place for a human to be. You edge away from the horrifying struggle.\n\nDazed, you stumble back into the numbing Antarctic cold. Somehow you reach the Dornier and safety. Jones may be there to fly you back, or Crawford may dispatch a rescue flight.\n\nYou are diagnosed as having Dementia Antarctica. Ultimately you realize, after your release from a New England sanatorium that it is best to say nothing about your trip. It is ... THE END, but you triumphed where many failed. Congratulations!",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["565", "566", "572"]
+  },
+  "572": {
+    "description": "The amulet burns in your hand as it summons forth a strange entity, and then another, and then another. A shrill piping sound echoes around you as gigantic bubble-mass horrors tumble forward from corridors and caverns, clashing with the entities you have brought here. The battle between them is desperate.",
+    "choices": [
+      {
+        "text": "Watch the battle unfold",
+        "nextEntry": "571"
+      }
+    ],
+    "traceNumbers": ["567", "571"]
+  },
+  "573": {
+    "description": "A sudden unspeakable dread consumes you. Before you, within the pit, a blasphemy of tentacles, claws, and utter horror resides. It has a name… Ghatanothoa! The festering mass turns toward you, waving its hundred tentacles in the air as if in some mocking welcome. As you choke out a scream, you feel your flesh begin to tighten and go rigid as an unnatural paralysis takes hold.",
+    "choices": [
+      {
+        "text": "Make a Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "sanity": "1D10",
+              "nextEntry": "573a"
+            },
+            "failure": {
+              "sanity": "1D100",
+              "nextEntry": "573a"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["565", "580"]
   },
   "574": {
     "description": "You have failed! Depending where you are, your experiences vary. Coastline lines suffer dramatic flooding and panic ensues. Scientists claim the Earth has somehow shifted on its axis and that terrible consequences will follow. Indeed, they do. Storms of primeval force sweep the continents. Melting polar ice fuels the flooding, while terrifying ice storms strike at the heart of civilization. Once it begins, much of the world of humankind is destroyed within days. The City of the Old Ones has a new master, and the whole world pays for your failure. Your revolver has a bullet in the chamber. Whether you choose to use it or not, it is ...\n\nTHE END.",
@@ -15635,6 +15227,24 @@
       "567"
     ]
   },
+  "575": {
+    "description": "You see a mosaic of the scientific achievements of the stumpy rulers, and of the help given them by their bizarre slaves.",
+    "choices": [
+      {
+        "text": "Look at the other mosaics",
+        "nextEntry": "549"
+      },
+      {
+        "text": "Follow a path you have found",
+        "nextEntry": "568"
+      },
+      {
+        "text": "Search around the buildings",
+        "nextEntry": "553"
+      }
+    ],
+    "traceNumbers": ["543", "549", "553", "568"]
+  },
   "576": {
     "description": "The Top of Aten is in Jeffries’ footlocker! How it gleams! It is somehow purer than pure crystal. You instinctively feel it is both very beautiful and very powerful.",
     "choices": [
@@ -15654,6 +15264,16 @@
       }
     ],
     "traceNumbers": ["537"]
+  },
+  "577": {
+    "description": "You intently pursue Jeffries, but the man has incredible endurance; he pulls further and further ahead. You find yourself stepping into holes in the snow, like the strangely shaped footprints of a bizarre creature—these must be the result of some odd Antarctic phenomenon—you reassure yourself. The towers of the city are close by now. Jeffries enters a street to your left. You follow.",
+    "choices": [
+      {
+        "text": "Follow Jeffries",
+        "nextEntry": "550"
+      }
+    ],
+    "traceNumbers": ["542", "550"]
   },
   "578": {
     "description": "You race up the ladder to ‘B’-deck, Jeffries is behind you, transformed into a hideous creature comprised of glistening and ever growing bubbles, like some blobby mass.",
@@ -15691,6 +15311,26 @@
       }
     ],
     "traceNumbers": ["148", "187"]
+  },
+  "580": {
+    "description": "You find yourself in a dark and oppressive area. The air feels thick, and you know any sound could alert those who might be nearby. You need to climb down quietly.",
+    "choices": [
+      {
+        "text": "Attempt to climb down quietly",
+        "effects": {
+          "check": {
+            "skill": "Climb",
+            "success": {
+              "nextEntry": "580a"
+            },
+            "failure": {
+              "nextEntry": "573"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["573"]
   },
   "581": {
     "description": "They’re playing a form of whist. You hope to get information, but your winning streak quickly becomes phenomenal. Soon the fishermen grumble to themselves and stir unhappily. In 20 minutes you clean out the table. You win a total of $35, and stuff your pockets with small-denomination drachma notes.",
@@ -15905,6 +15545,18 @@
       {
         "text": "Continue",
         "nextEntry": "578"
+      }
+    ],
+    "traceNumbers": ["576"]
+  },
+  "592": {
+    "description": "The summoned creature appears, and then another, and then another. The gigantic bubble-mass horrors pour into attack from corridors and caverns. The battle is desperate and all seems lost, yet in the chaos, the Top is destroyed. Congratulations! Though your actions save the world, you are still doomed. The battle causes the cavern to collapse on top of you. In your final seconds, you bravely count your death as of little importance. You have saved the world, even though for you it is ... THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
       }
     ],
     "traceNumbers": ["576"]
@@ -18650,6 +18302,25 @@
       }
     ]
   },
+  "410a": {
+    "description": "Now make a Dodge roll to escape the Old One.",
+    "choices": [
+      {
+        "text": "Make a Dodge roll",
+        "effects": {
+          "check": {
+            "skill": "Dodge",
+            "success": {
+              "nextEntry": "568"
+            },
+            "failure": {
+              "nextEntry": "432"
+            }
+          }
+        }
+      }
+    ]
+  },
   "412-end": {
     "description": "You’re held firm by their moldering hands. The mummies begin pulling you apart! Yes, it is ... THE END.",
     "choices": [
@@ -19905,6 +19576,255 @@
       }
     ]
   },
+  "557a": {
+    "description": "You keep walking, and find you’ve been led back to the underground intersection.",
+    "choices": [
+      {
+        "text": "Continue walking",
+        "nextEntry": "555"
+      }
+    ],
+    "traceNumbers": ["555"]
+  },
+  "558a": {
+    "description": "Moving forward you seem to be going in circles! You eventually find yourself back at the intersection.",
+    "choices": [
+      {
+        "text": "Return to the intersection",
+        "nextEntry": "555"
+      }
+    ],
+    "traceNumbers": ["555"]
+  },
+  "562a": {
+    "description": "You crawl down the narrow passage, nervously beginning to pull out the alien devices. But as you do, you see glinting eyes and hear a cruel chuckle at the other end. You frantically back into the room of scientific devices. The corridor collapses, pulled down by Jeffries’ treachery. You pound and tug at the stone, but the only way is sealed.\n\nBefore you freeze to death, you hear great upheavals in the earth. You never know their cause. For you, and everyone, it is... THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["555", "564"]
+  },
+  "565a": {
+    "description": "If you manage to stay sane, you quickly duck behind a pillar. But the vision appearing above the pedestal—a crazed myriad of tentacles, maws, and bizarre organs—tells you it is no mere vision. It is Ghatanothoa in the flesh! You must make a second Sanity roll.",
+    "choices": [
+      {
+        "text": "Make a second Sanity roll",
+        "effects": {
+          "check": {
+            "skill": "Sanity",
+            "success": {
+              "sanity": "1D10",
+              "nextEntry": "565b"
+            },
+            "failure": {
+              "sanity": "1D100",
+              "nextEntry": "565b"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["565"]
+  },
+  "565b": {
+    "description": "If you have stayed sane, you can try to hide from Ghatanothoa. Make a Luck roll.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "565c"
+            },
+            "failure": {
+              "nextEntry": "565d"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["565"]
+  },
+  "565c": {
+    "description": "You manage to duck behind the pillar, but the horror still looms. Now, you must act quickly to destroy this place of terror.",
+    "choices": [
+      {
+        "text": "Throw a stick of dynamite at Jeffries",
+        "nextEntry": "569",
+        "requirements": {
+          "inventory": "Dynamite"
+        }
+      },
+      {
+        "text": "Use a magic amulet",
+        "requirements": {
+          "inventory": "Amulet of Nodens"
+        },
+        "nextEntry": "571"
+      },
+      {
+        "text": "Try something else",
+        "nextEntry": "573"
+      }
+    ],
+    "traceNumbers": ["569", "571", "573"]
+  },
+  "565d": {
+    "description": "Your muscles begin to stiffen as the creeping paralysis sets in. Make a CON roll to see if you can resist it.",
+    "choices": [
+      {
+        "text": "Make a CON roll",
+        "effects": {
+          "check": {
+            "skill": "CON",
+            "success": {
+              "nextEntry": "565e"
+            },
+            "failure": {
+              "message": "The paralysis spreads rapidly.",
+              "nextEntry": "565f"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["573"]
+  },
+  "565e": {
+    "description": "You resist the paralysis, but the danger is still imminent. Make another Luck roll to hide behind the pillar, or risk the full power of Ghatanothoa.",
+    "choices": [
+      {
+        "text": "Make another Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "565c"
+            },
+            "failure": {
+              "nextEntry": "565d"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["569", "571", "573"]
+  },
+  "565f": {
+    "description": "The paralysis spreads completely, and you are unable to move. You are petrified like stone before the hideous alien god Ghatanothoa. This is… THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["580"]
+  },
+  "566a": {
+    "description": "Depending on your resources, you may have options. Otherwise, you must face the horrors alone.",
+    "choices": [
+      {
+        "text": "Throw dynamite",
+        "requirements": {
+          "inventory": "Dynamite"
+        },
+        "effects": {
+          "check": {
+            "skill": "Throw",
+            "success": {
+              "nextEntry": "569"
+            },
+            "failure": {
+              "nextEntry": "574"
+            }
+          }
+        }
+      },
+      {
+        "text": "Use the amulet",
+        "requirements": {
+          "inventory": "Amulet of Nodens"
+        },
+        "nextEntry": "571"
+      },
+      {
+        "text": "You aren't sure what to do",
+        "nextEntry": "574"
+      }
+    ],
+    "traceNumbers": ["569", "571", "574"]
+  },
+  "567a": {
+    "description": "It's too late for dynamite now. If you have the rose-colored amulet, it may be your only chance. Otherwise, there's nothing you can do.",
+    "choices": [
+      {
+        "text": "Use the amulet",
+        "requirements": {
+          "inventory": "Amulet of Nodens"
+        },
+        "nextEntry": "572"
+      },
+      {
+        "text": "You don't know what to do",
+        "nextEntry": "574"
+      }
+    ]
+  },
+  "573a": {
+    "description": "The gigantic bubble-mass creatures come, bloated things covered in eyes and yawning maws—you remember them from the mosaics. You feel your flesh begin to tighten and go rigid as paralysis sets in.",
+    "choices": [
+      {
+        "text": "Use the rose-colored amulet",
+        "requirements": {
+          "inventory": "Amulet of Nodens"
+        },
+        "nextEntry": "592"
+      },
+      {
+        "text": "Use the ring",
+        "requirements": {
+          "inventory": "Ring of Power"
+        },
+        "nextEntry": "573b"
+      },
+      {
+        "text": "Do nothing",
+        "nextEntry": "573c"
+      }
+    ],
+    "traceNumbers": ["592", "573b", "573c"]
+  },
+  "573b": {
+    "description": "You clutch the Ring of Power, hoping it will save you. The bubble-creatures seem to respect its power and leave it untouched, but the same is not true for you! You are enveloped and torn apart! It is ... THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["573a"]
+  },
+  "573c": {
+    "description": "You can do nothing as your body freezes. The paralysis takes hold fully, turning you to stone as you face the horrific Ghatanothoa. It is … THE END.",
+    "choices": [
+      {
+        "text": "GAME OVER",
+        "effects": {
+          "endGame": true
+        }
+      }
+    ],
+    "traceNumbers": ["573a"]
+  },
   "576b": {
     "description": "You have time to choose the Top's fate. It is both beautiful and powerful, but the choice is yours to make.",
     "choices": [
@@ -19990,6 +19910,86 @@
       }
     ],
     "traceNumbers": ["576", "591"]
+  },
+  "580a": {
+    "description": "You make it part of the way down, but there’s still a small jump to get through this area without alerting anyone. You steel yourself to make the jump as silently as possible.",
+    "choices": [
+      {
+        "text": "Attempt to jump down quietly",
+        "effects": {
+          "check": {
+            "skill": "Jump",
+            "success": {
+              "nextEntry": "580b"
+            },
+            "failure": {
+              "nextEntry": "573"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["573"]
+  },
+  "580b": {
+    "description": "You’ve successfully made it down without too much noise, but this isn’t over yet. Make a Luck roll to see if you can stay out of danger.",
+    "choices": [
+      {
+        "text": "Make a Luck roll",
+        "effects": {
+          "check": {
+            "skill": "Luck",
+            "success": {
+              "nextEntry": "580c"
+            },
+            "failure": {
+              "nextEntry": "580d"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["565", "566", "567"]
+  },
+  "580c": {
+    "description": "You feel fortunate so far, but now it's time to rely on your knowledge. Make a Know (EDU) roll to see if you can use your experience to your advantage.",
+    "choices": [
+      {
+        "text": "Make a Know (EDU) roll",
+        "effects": {
+          "check": {
+            "skill": "EDU",
+            "success": {
+              "nextEntry": "565"
+            },
+            "failure": {
+              "nextEntry": "566"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["565", "566"]
+  },
+  "580d": {
+    "description": "Your luck may have faltered, but perhaps you can still rely on your knowledge. Make a Know (EDU) roll.",
+    "choices": [
+      {
+        "text": "Make a Know (EDU) roll",
+        "effects": {
+          "check": {
+            "skill": "EDU",
+            "success": {
+              "nextEntry": "566"
+            },
+            "failure": {
+              "nextEntry": "567"
+            }
+          }
+        }
+      }
+    ],
+    "traceNumbers": ["566", "567"]
   },
   "582b": {
     "description": "You can use the amulet to teleport to any one of the following locations:",
