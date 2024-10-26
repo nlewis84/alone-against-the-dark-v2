@@ -85,7 +85,7 @@ export async function initializeGame() {
     updateTime(0, 20) // Initialize date display
     startGame()
     // 500/501 is the Dark Sea ship
-    displayEntry('566') // Ensure the first entry is displayed ... should be 13
+    displayEntry('120') // Ensure the first entry is displayed ... should be 13
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error)
   }

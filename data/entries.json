@@ -74,6 +74,16 @@
     ],
     "traceNumbers": ["160", "166", "177c", "76"]
   },
+  "5": {
+    "description": "You noticed flecks or flakes of dry, transparent material. It looks like skin. Whoever was here was peeling like a water-soaked ceiling! Baffled, you find no answer to this puzzle. No more evidence can be found here.",
+    "choices": [
+      {
+        "text": "Go to any Arkham Location",
+        "nextEntry": "Arkham"
+      }
+    ],
+    "traceNumbers": ["165"]
+  },
   "6": {
     "description": "There is a big difference between using a phrase book and speaking a language. You have real trouble in being understood or understanding what is being said to you.\n\nYou are going to need an interpreter—they speak English at the Athens Bureau of Investigation, perhaps you could find something there?",
     "choices": [
@@ -2703,6 +2713,23 @@
     ],
     "traceNumbers": ["138"]
   },
+  "120": {
+    "description": "The back door is ajar. You enter the small house and a strange, repellent odor assaults your nostrils. Then you hear a car pull away from in front of the house. You look out, but see only a long black sedan disappear around the corner.\n\nEverything looks okay until you enter Grunewald’s office. It has been totally ransacked. Books and papers are everywhere.\n\nYou can go to any Arkham Location, or you can make a search through all this mess.",
+    "choices": [
+      {
+        "text": "Search the house",
+        "nextEntry": "165",
+        "effects": {
+          "time": 1
+        }
+      },
+      {
+        "text": "Go to any Arkham Location",
+        "nextEntry": "Arkham"
+      }
+    ],
+    "traceNumbers": ["102", "165"]
+  },
   "121": {
     "description": "You see the book Nameless Cults, in the Golden Goblin Press edition. You thumb through it—vile stuff, you decide. Something about this book alarms and fascinates you and you spend an hour reading it over. Gain +3 Cthulhu Mythos skill points for your initial reading. You take the book with you.",
     "choices": [
@@ -4548,6 +4575,32 @@
       }
     ],
     "traceNumbers": ["123", "101", "127", "154"]
+  },
+  "165": {
+    "description": "Except for detritus normal to an academic life, you find nothing.\n\nYou can keep searching for another hour, if you wish.",
+    "choices": [
+      {
+        "text": "Search again (Spot Hidden roll)",
+        "effects": {
+          "time": 1,
+          "check": {
+            "skill": "Spot Hidden",
+            "success": {
+              "nextEntry": "5"
+            },
+            "failure": {
+              "nextEntry": "Arkham",
+              "message": "You found nothing of value."
+            }
+          }
+        }
+      },
+      {
+        "text": "Go to any Arkham Location",
+        "nextEntry": "Arkham"
+      }
+    ],
+    "traceNumbers": ["120", "5"]
   },
   "166": {
     "description": "You see Pisistratos, the Museum Director, showing the museum to an English dignitary. You rush up to him and quickly ask your questions. He briefly speaks but seems to want to dismiss you, saying he doesn't know why Gliere stole the antiquity. He also says that it's normal for loans, such as that of the Karpathos Device, to be made. Finally, he states that the Karpathos Device is a type of clock.",
