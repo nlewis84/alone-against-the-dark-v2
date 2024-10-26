@@ -6,11 +6,12 @@ Check health 268
 check bonusDie on 397
 
 Bremen Locations
-520 - prisoner??
-525
-527
-528
-541
+520 - prisoner?? says it is summer?? Time advance to February??
+541 - advance to feb 13
+525 - advance to feb 13
+527 - clicking choice here advances time to feb 8 morning
+
+120
 
 add this below
 in all the right places
