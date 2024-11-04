@@ -1,12 +1,8 @@
-We should make sure that the Dark Sea trip starts in 500 and 501 (maybe others?)
-Make sure that anything that goes to 500 also can go to 501 (do this LAST)
-
-Bremen Locations
-120
+36
+37
+554
 
 check 488 with all the characters
-
-300 should go to 206 instead
 
 Go to the desert and run out of water....you will have no health but won't die and trigger end of game
 

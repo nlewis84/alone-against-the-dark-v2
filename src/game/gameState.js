@@ -6,6 +6,7 @@ import {
   updateInventory,
   updateTime,
   updateInterpreterDisplay,
+  showMinimapIfPiecesExist,
 } from './gameActions.js'
 
 export let gameData = {
@@ -85,7 +86,7 @@ export async function initializeGame() {
     updateTime(0, 20) // Initialize date display
     startGame()
     // 500/501 is the Dark Sea ship
-    displayEntry('530') // Ensure the first entry is displayed ... should be 13
+    displayEntry('13') // Ensure the first entry is displayed ... should be 13
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error)
   }
@@ -117,7 +118,22 @@ export function startGame() {
 
 export function handleInvestigatorDeath() {
   console.log(`${currentState.character} has died.`)
-  switchToNextInvestigator()
+
+  // Check if the current investigator is the last one (Devon Wilson)
+  if (currentState.character === 'Devon Wilson') {
+    console.log('All investigators have died. Restarting the game.')
+    restartGame() // Function to fully reset the game
+    // Refresh the page
+    location.reload()
+  } else {
+    switchToNextInvestigator() // Proceed to the next investigator if not the last
+    showMinimapIfPiecesExist()
+  }
+}
+
+function restartGame() {
+  currentInvestigatorIndex = 0 // Reset to the first investigator in the order
+  initializeGame() // Reinitialize the game, which will reset all states and display the first entry
 }
 
 function switchToNextInvestigator() {
@@ -136,6 +152,8 @@ function switchToNextInvestigator() {
       onShip: false,
       shipJourneyStartDate: null,
       hiredAthens: null,
+      scheduledMeetings: [],
+      pyramidPieces: [],
       ...gameData.investigators[nextInvestigator.name],
     }
     displayEntry(currentState.currentEntry)

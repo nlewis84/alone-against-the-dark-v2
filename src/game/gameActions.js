@@ -9,6 +9,7 @@ import {
   getPreviousEntry,
   setCurrentLocale,
   getCurrentLocale,
+  handleInvestigatorDeath,
 } from './gameState.js'
 import { saveState, loadState } from '../utils/storage.js'
 import { rollDice, makeSkillCheck, updateMarker } from '../utils/dice.js'
@@ -428,6 +429,8 @@ export function handleEntryChoices(entryId, entry) {
   }
 
   entry.choices.forEach((choice) => {
+    console.log(choice)
+
     const hasSkillCheck = choice.effects?.check?.skill
 
     // Additional check for research topic limit
@@ -463,6 +466,11 @@ export function handleEntryChoices(entryId, entry) {
           }
 
           if (choice.effects) {
+            if (choice.effects?.endGame) {
+              handleInvestigatorDeath()
+              return
+            }
+
             const currentDate = getCurrentDate()
 
             if (choice.effects.departAtAntarctica) {

@@ -122,12 +122,6 @@
         "hours": [9, 18]
       }
     },
-    "Holt’s Apartment": {
-      "entry": "36",
-      "availability": {
-        "character": "Lydia Lau"
-      }
-    },
     "Hospital": {
       "entry": "585",
       "availability": {

@@ -826,7 +826,7 @@
         "text": "Go to any New York Location"
       }
     ],
-    "description": "Something is wrong. You learned long ago to trust your hunches. Grunewald’s telegrams stopped without explanation 72 hours ago; your inquiries have gone unanswered. Should you alert your agents scattered across the globe? Judiciously sipping superb brandy, at last you decide against the employment of proxies. Grunewald hinted of mysteries beyond the capacities of mere assistants. You trust his judgment and decide to go yourself. You scrawl instructions to subordinates and dictate phone messages to a secretary whom you have callously woken from a sound sleep. Your holdings will tend themselves for a few weeks. Your passport is in order. You’ll pull strings to get an assortment of visas overnight: mere governments cannot keep Ernest Holt from aiding a friend. A liner sails soon. Jenkins can have you packed and ready to go in an hour. You have plenty of time. It’s a pity your experimental trans-Atlantic passenger plane isn’t quite ready, though that would be fun! You find yourself eagerly anticipating action in the field. You feel ready for anything. You call Lydia Lau at The New York Sun. A despicable rag of a newspaper, but a crackerjack young lady with lots of talent. Miss Lau has heard nothing from Grunewald. You notice her professional interest grow as you talk, and you ask her to write nothing for a few days. “I’m sure there’s a proper explanation,” you say grandly, but somehow you know that neither of you believes that statement. Now you sleep. You’ll attend to details tomorrow. When you wake, go to any New York Location.",
+    "description": "Something is wrong. You learned long ago to trust your hunches. Grunewald’s telegrams stopped without explanation 72 hours ago; your inquiries have gone unanswered. Should you alert your agents scattered across the globe?\n\nJudiciously sipping superb brandy, at last you decide against the employment of proxies. Grunewald hinted of mysteries beyond the capacities of mere assistants. You trust his judgment and decide to go yourself. You scrawl instructions to subordinates and dictate phone messages to a secretary whom you have callously woken from a sound sleep.\n\nYour holdings will tend themselves for a few weeks. Your passport is in order. You’ll pull strings to get an assortment of visas overnight: mere governments cannot keep Ernest Holt from aiding a friend.\n\nA liner sails soon. Jenkins can have you packed and ready to go in an hour. You have plenty of time. It’s a pity your experimental trans-Atlantic passenger plane isn’t quite ready, though that would be fun! You find yourself eagerly anticipating action in the field. You feel ready for anything.\n\nYou call Lydia Lau at The New York Sun. A despicable rag of a newspaper, but a crackerjack young lady with lots of talent. Miss Lau has heard nothing from Grunewald. You notice her professional interest grow as you talk, and you ask her to write nothing for a few days. “I’m sure there’s a proper explanation,” you say grandly, but somehow you know that neither of you believes that statement.\n\nNow you sleep. You’ll attend to details tomorrow. When you wake, go to any New York Location.",
     "title": "ERNEST HOLT’S APARTMENT",
     "traceNumbers": ["START"]
   },
@@ -837,7 +837,7 @@
         "text": "Go to any New York Location"
       }
     ],
-    "description": "You flirted with the City Editor, and then polished up the National Editor. As usual, your skills and your baby-blues got you what you wanted, and you don’t mind giving an old goat a lift now and then. Besides, this could be the biggest story of your young life, or so you hope. Headlines sail through your imagination: “MISKATONIC MYSTERY!” “GAL GUMSHOE TRACKS DOWN MISSING PROFESSOR!” “FINANCIER FOUND ALIVE!” And your by-line is under every one. With Gliere dead, and Holt and Grunewald missing, you’re pretty sure that the story behind this one will be a real jaw-dropper— and probably dangerous. Holt’s been missing for 72 hours. You thoughtfully pack the gigantic revolver given to you by Bruno the vice-squad cop. A girl can’t be too careful, you decide. You can leave soon on one of the regular liners, and in the meantime do some shopping and research—maybe even make a trip to Arkham. You send a telegram to your beau, Devon Wilson, aboard the USS Rochester, telling him your plans and that you’ll keep in touch. The Sun’s circulation boost from this story should blow that pipsqueak Daily News right out of the water, you dreamily calculate. As for you, it’ll be goodbye New York—hello Pulitzer Prize! In the morning, go to any New York Location.",
+    "description": "You flirted with the “City Editor”, and then polished up the “National Editor”. As usual, your skills and your baby-blues got you what you wanted, and you don’t mind giving an old goat a lift now and then. Besides, this could be the biggest story of your young life, or so you hope. Headlines sail through your imagination: \n\n“MISKATONIC MYSTERY!” \n\n“GAL GUMSHOE TRACKS DOWN MISSING PROFESSOR!” \n\n“FINANCIER FOUND ALIVE!” \n\nAnd your by-line is under every one.\n\nWith Gliere dead, and Holt and Grunewald missing, you’re pretty sure that the story behind this one will be a real jaw-dropper— and probably dangerous. Holt’s been missing for 72 hours. You thoughtfully pack the gigantic revolver given to you by Bruno the vice-squad cop. A girl can’t be too careful, you decide. You can leave soon on one of the regular liners, and in the meantime do some shopping and research—maybe even make a trip to Arkham.\n\nYou send a telegram to your beau, Devon Wilson, aboard the USS Rochester, telling him your plans and that you’ll keep in touch.\n\nThe Sun’s circulation boost from this story should blow that pipsqueak Daily News right out of the water, you dreamily calculate. As for you, it’ll be goodbye New York—hello Pulitzer Prize!\n\nIn the morning, go to any New York Location.",
     "title": "Lydia Lau's Apartment",
     "traceNumbers": ["START"]
   },
@@ -1301,7 +1301,7 @@
     "traceNumbers": ["181"]
   },
   "58": {
-    "description": "You see three drivers standing near their cabs. One is young, another is an old man, and the third is nattily dressed. Which will you hire?\n\nIf you can successfully make a Psychology or a Spot Hidden roll, then go to 15 first, then choose.",
+    "description": "You see three drivers standing near their cabs. One is young, another is an old man, and the third is nattily dressed. Which will you hire?",
     "choices": [
       {
         "text": "Make a Psychology roll",
@@ -13684,7 +13684,7 @@
         "nextEntry": "527"
       },
       {
-        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson) with Navigate",
         "requirements": {
           "character": "Lydia Lau"
         },
@@ -13701,7 +13701,7 @@
         }
       },
       {
-        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson)",
+        "text": "Join Trip A (Blake, Fram, MacPherson, Jackson) with Navigate",
         "requirements": {
           "character": "Devon Wilson"
         },
@@ -14926,15 +14926,15 @@
   "554": {
     "choices": [
       {
-        "nextEntry": "New York Location",
+        "nextEntry": "New York",
         "text": "Go to any New York Location"
       },
       {
-        "nextEntry": "Athens Location",
+        "nextEntry": "Athens",
         "text": "Go to any Athens Location"
       },
       {
-        "nextEntry": "Alexandria Location",
+        "nextEntry": "Alexandria",
         "text": "Go to any Alexandria Location"
       },
       {
@@ -14942,7 +14942,7 @@
         "text": "Go to any Bremen Location"
       }
     ],
-    "description": "Your ship, the USS Rochester, lies snugly at anchor. Ordinarily, as the dashing Lt. Devon Wilson, you’d be storming the gangplank to start your month’s leave with a spree, but Nora’s alarming telegrams abruptly stopped exactly seven days ago, while you were still at sea. You must find her. You study her photo in its Deco frame and then carefully pack it. You’d give everything you have to get her back. As you pack, a chill runs down your spine: Gliere was a suicide, Grunewald and Holt mysteriously lost, and now Nora! You decide to include your service revolver in your bags, and you resolve to equip yourself for any eventuality at that nearby store. The Rochester is in the port location you wish; choose from: New York, Athens, Alexandria, or Bremen. Pick up any equipment or supplies you want and then go to any location below.",
+    "description": "Your ship, the USS Rochester, lies snugly at anchor. Ordinarily, as the dashing Lt. Devon Wilson, you’d be storming the gangplank to start your month’s leave with a spree, but Nora’s alarming telegrams abruptly stopped exactly seven days ago, while you were still at sea. You must find her. You study her photo in its Deco frame and then carefully pack it. You’d give everything you have to get her back.\n\nAs you pack, a chill runs down your spine: Gliere was a suicide, Grunewald and Holt mysteriously lost, and now Nora! You decide to include your service revolver in your bags, and you resolve to equip yourself for any eventuality at that nearby store.\n\nThe Rochester is in the port location you wish; choose from: New York, Athens, Alexandria, or Bremen.",
     "title": "USS Rochester",
     "traceNumbers": ["START"]
   },

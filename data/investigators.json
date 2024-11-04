@@ -155,7 +155,15 @@
       "Throw": 20,
       "Track": 10
     },
-    "inventory": []
+    "inventory": [
+      {
+        "name": ".45 Revolver",
+        "skill": "Firearms (Handgun)",
+        "damage": "1D10+2",
+        "malfunction": 100,
+        "type": "weapon"
+      }
+    ]
   },
   "Devon Wilson": {
     "health": 13,
@@ -234,7 +242,15 @@
       "Throw": 20,
       "Track": 10
     },
-    "inventory": []
+    "inventory": [
+      {
+        "name": ".38 Revolver",
+        "skill": "Firearms (Handgun)",
+        "damage": "1D10",
+        "malfunction": 100,
+        "type": "weapon"
+      }
+    ]
   },
   "Ernest Holt": {
     "health": 11,
