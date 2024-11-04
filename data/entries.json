@@ -10529,7 +10529,7 @@
     "traceNumbers": ["426"]
   },
   "410": {
-    "description": "The amulet summons a bizarre barrel-shaped creature, with what looks like a mutated starfish for a head! Make a Sanity roll and lose 0/1D6 Sanity points.\n\nThis is an Old One.",
+    "description": "The amulet summons a bizarre barrel-shaped creature, with what looks like a mutated starfish for a head!\n\nThis is an Old One.",
     "image": "/src/assets/images/atmosphere/elder-thing.png",
     "choices": [
       {
@@ -13638,7 +13638,7 @@
   },
   "520": {
     "title": "ANTARCTICA BASE CAMP",
-    "description": "The expedition camps at point ‘D.’ The weather holds; it is summer. Three trips are planned, departing simultaneously and each lasting 2 to 3 weeks. The crew spend several days preparing for the journeys. The weather should clear up around Feburuary 1st.\n\nTrip A will explore unknown portions of the mountains toward the pole. Trip B heads north, to establish a base area for further camps. Trip C crosses the mountains and heads toward the mysterious area reported by Lake.\n\nEach party will use one of the Dornier planes. If you’re Holt or Grunewald, you can choose one of the parties and join it at the listed entry. If you’re not, choose a party and then choose one of these skills: Navigate, Pilot (Aircraft), or Survival. If you can succeed with that skill roll, you’re allowed to go. Fail the roll and you don’t talk your way in.",
+    "description": "The expedition camps at point ‘D.’ The weather holds; it is summer. Three trips are planned, departing simultaneously and each lasting 2 to 3 weeks. The crew spend several days preparing for the journeys. The weather should clear up around Feburuary 1st. Until then, the crew spends time researching and prepping.\n\nTrip A will explore unknown portions of the mountains toward the pole. Trip B heads north, to establish a base area for further camps. Trip C crosses the mountains and heads toward the mysterious area reported by Lake.\n\nEach party will use one of the Dornier planes.",
     "image": "/src/assets/images/maps/a-portion-of-antarctica-map.png",
     "choices": [
       {
@@ -14101,6 +14101,9 @@
         "nextEntry": "574"
       }
     ],
+    "effects": {
+      "setDate": "1932-02-14 08:00"
+    },
     "traceNumbers": ["520"]
   },
   "526": {
@@ -14154,6 +14157,9 @@
         "nextEntry": "534"
       }
     ],
+    "effects": {
+      "setDate": "1932-02-09 08:00"
+    },
     "traceNumbers": ["520", "534"]
   },
   "528": {
@@ -14197,7 +14203,7 @@
     ]
   },
   "530": {
-    "description": "Select a leader to approach: Rambeau, Blake, Crawford, or Jones. Select one of the following skills: Credit Rating, Persuade, Fast Talk, Intimidate, or Charm. Succeed at a roll, and go to the appropriate entry. If you fail the roll, you will still be sent to confinement aboard the brig.",
+    "description": "This is your last chance to tag along with a group.\n\nSelect a leader to approach: Rambeau, Blake, Crawford, or Jones. Select one of the following skills: Credit Rating, Persuade, Fast Talk, Intimidate, or Charm.\n\nSucceed at a roll, and you are able to convince them to bring you along. If you fail the roll, you will be sent to confinement aboard the brig.",
     "choices": [
       {
         "text": "Approach Rambeau with Credit Rating",
@@ -14731,6 +14737,9 @@
         "nextEntry": "574"
       }
     ],
+    "effects": {
+      "setDate": "1932-02-13 08:00"
+    },
     "traceNumbers": ["520"]
   },
   "542": {
@@ -14814,7 +14823,7 @@
         "nextEntry": "546"
       },
       {
-        "text": "Succeed with a Spot Hidden roll",
+        "text": "Attempt a Spot Hidden roll",
         "effects": {
           "check": {
             "skill": "Spot Hidden",

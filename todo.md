@@ -1,23 +1,8 @@
 We should make sure that the Dark Sea trip starts in 500 and 501 (maybe others?)
 Make sure that anything that goes to 500 also can go to 501 (do this LAST)
-search for `skills` in entries.json and make sure it isn't supposed to be `skill`
-
-Check health 268
-check bonusDie on 397
 
 Bremen Locations
-520 - prisoner?? says it is summer?? Time advance to February??
-541 - advance to feb 13
-525 - advance to feb 13
-527 - clicking choice here advances time to feb 8 morning
-
 120
-
-add this below
-in all the right places
-"effects": {
-"departAntarctica": true
-}
 
 check 488 with all the characters
 

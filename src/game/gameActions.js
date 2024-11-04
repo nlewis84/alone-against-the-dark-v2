@@ -383,6 +383,20 @@ function handleEntryEffects(effects) {
     }
   }
 
+  if (effects.setDate) {
+    const [dateString, timeString] = effects.setDate.split(' ')
+    const newDate = new Date(dateString)
+
+    if (timeString) {
+      const [hours, minutes] = timeString.split(':').map(Number)
+      newDate.setHours(hours, minutes, 0, 0)
+    } else {
+      newDate.setHours(8, 0, 0, 0) // Default to 8:00 AM if no time is specified
+    }
+
+    setCurrentDate(newDate)
+    updateTime(0)
+  }
   // Handle other effects such as sanity, inventory updates, etc., similarly
 }
 
