@@ -114,6 +114,7 @@ export function startGame() {
   updateInventory() // Initialize inventory display
   updateTime(0) // Initialize date display
   updateInterpreterDisplay()
+  updateCharacterImage()
 }
 
 export function handleInvestigatorDeath() {
@@ -162,7 +163,27 @@ function switchToNextInvestigator() {
     updateInventory()
     updateTime(0)
     updateInterpreterDisplay()
+    updateCharacterImage()
   } else {
     console.log('All investigators are dead. Game over.')
   }
+}
+
+// Function to update the character image in the header
+export function updateCharacterImage() {
+  const characterImageElement = document.getElementById('characterImage')
+  if (!characterImageElement) return
+
+  // Map the current character name to the respective image filename
+  const characterImageMap = {
+    'Professor Grunewald': 'grunewald.png',
+    'Ernest Holt': 'holt.png',
+    'Lydia Lau': 'lau.png',
+    'Devon Wilson': 'wilson.png',
+  }
+
+  const imagePath = `src/assets/images/characters/${characterImageMap[currentState.character]}`
+
+  characterImageElement.src = imagePath
+  characterImageElement.alt = `${currentState.character} Image`
 }

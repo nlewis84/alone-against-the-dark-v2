@@ -10,6 +10,7 @@ import {
   setCurrentLocale,
   getCurrentLocale,
   handleInvestigatorDeath,
+  updateCharacterImage,
 } from './gameState.js'
 import { saveState, loadState } from '../utils/storage.js'
 import { rollDice, makeSkillCheck, updateMarker } from '../utils/dice.js'
@@ -1558,6 +1559,8 @@ export function loadGame() {
     updateSanity(0) // Refresh sanity display
     updateInventory() // Refresh inventory display
     updateTime(0) // Refresh date display explicitly after setting state
+
+    updateCharacterImage()
   } else {
     console.log('No saved state found in localStorage.')
   }

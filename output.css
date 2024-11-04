@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville&display=swap');
 
 /* Apply global styles */
 
 body {
-  font-family: "Libre Baskerville", serif;
+  font-family: 'Libre Baskerville', serif;
   background-color: #f8f8f8;
   color: #333;
 }
@@ -11,7 +11,7 @@ body {
 /* Custom button styles */
 
 button {
-  font-family: "Cinzel", serif;
+  font-family: 'Cinzel', serif;
   font-size: 1.1rem;
 }
 
@@ -49,10 +49,12 @@ button {
   /* Slightly darker gold border */
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  font-family: "Cinzel", serif;
+  font-family: 'Cinzel', serif;
   font-size: 1.1rem;
   text-transform: uppercase;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 #choices button:hover {
@@ -70,10 +72,12 @@ button {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   margin-right: 0.5rem;
-  font-family: "Cinzel", serif;
+  font-family: 'Cinzel', serif;
   font-size: 1.1rem;
   text-transform: uppercase;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 #saveButton:hover,
