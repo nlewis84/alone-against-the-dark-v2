@@ -354,8 +354,10 @@ describe('Game Logic', () => {
 
       // Verify that the game is over
       expect(console.log).toHaveBeenCalledWith(
-        'All investigators are dead. Game over.',
+        'All investigators have died. Restarting the game.',
       )
+
+      jest.restoreAllMocks() // Restore console.log after the test
     })
 
     test('should advance time based on effects', () => {

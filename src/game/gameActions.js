@@ -430,8 +430,6 @@ export function handleEntryChoices(entryId, entry) {
   }
 
   entry.choices.forEach((choice) => {
-    console.log(choice)
-
     const hasSkillCheck = choice.effects?.check?.skill
 
     // Additional check for research topic limit
