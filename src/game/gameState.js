@@ -8,6 +8,7 @@ import {
   updateInterpreterDisplay,
   showMinimapIfPiecesExist,
 } from './gameActions.js'
+import { showSkillAllocationModal } from './gameUI.js'
 
 export let gameData = {
   investigators: {},
@@ -94,27 +95,30 @@ export async function initializeGame() {
 
 export function startGame() {
   currentState = {
+    ...gameData.investigators['Professor Grunewald'],
     currentEntry: '13',
     previousEntry: 'START',
     character: 'Professor Grunewald',
-    currentLocale: 'Arkham', // Default starting locale ... should be Arkham
+    currentLocale: 'Arkham',
     dailySkillUsage: {},
-    combat: {
-      isActive: false,
-    },
+    combat: { isActive: false },
     visitedEntries: new Set(),
     shipJourneyStartDate: null,
     scheduledMeetings: [],
     pyramidPieces: [],
-    ...gameData.investigators['Professor Grunewald'],
+    unallocatedPoints: 150, // Initialize unallocated skill points
   }
   displayEntry(currentState.currentEntry)
-  updateHealth(0) // Initialize health display
-  updateSanity(0) // Initialize sanity display
-  updateInventory() // Initialize inventory display
-  updateTime(0) // Initialize date display
+  updateHealth(0)
+  updateSanity(0)
+  updateInventory()
+  updateTime(0)
   updateInterpreterDisplay()
   updateCharacterImage()
+
+  if (currentState.unallocatedPoints > 0) {
+    showSkillAllocationModal(currentState.character)
+  }
 }
 
 export function handleInvestigatorDeath() {
@@ -137,25 +141,24 @@ function restartGame() {
   initializeGame() // Reinitialize the game, which will reset all states and display the first entry
 }
 
-function switchToNextInvestigator() {
+export function switchToNextInvestigator() {
   currentInvestigatorIndex++
   if (currentInvestigatorIndex < investigatorOrder.length) {
     const nextInvestigator = investigatorOrder[currentInvestigatorIndex]
     currentState = {
+      ...gameData.investigators[nextInvestigator.name],
       currentEntry: nextInvestigator.entry,
       previousEntry: currentState.currentEntry,
       character: nextInvestigator.name,
       dailySkillUsage: {},
-      combat: {
-        isActive: false,
-      },
+      combat: { isActive: false },
       visitedEntries: currentState.visitedEntries,
       onShip: false,
       shipJourneyStartDate: null,
       hiredAthens: null,
       scheduledMeetings: [],
       pyramidPieces: [],
-      ...gameData.investigators[nextInvestigator.name],
+      unallocatedPoints: 150, // Initialize unallocated skill points
     }
     displayEntry(currentState.currentEntry)
     updateHealth(0)

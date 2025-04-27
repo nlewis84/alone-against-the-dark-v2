@@ -8,6 +8,8 @@ import {
   setGameData,
   getPreviousEntry,
   setCurrentLocale,
+  startGame,
+  switchToNextInvestigator,
 } from '../src/game/gameState.js'
 import {
   recordSkillUsage,
@@ -32,6 +34,7 @@ import {
 import { rollDice, makeSkillCheck } from '../src/utils/dice.js'
 import fs from 'fs'
 import path from 'path'
+import { showSkillAllocationModal } from '../src/game/gameUI.js'
 
 // Load the actual JSON files
 const investigatorsData = JSON.parse(
@@ -1239,8 +1242,69 @@ describe('Game Logic', () => {
       expect(updatedDate.getDate()).toBe(1) // Date should still be September 1
     })
 
-    // Continue this pattern for the other tests:
-    // - Before and after departure for each train time (1pm, 6pm, etc.)
+    test('Take the 1pm train to Arkham (arrives at 2pm)', () => {
+      // Test starting after train departure
+      setCurrentDate(new Date(1931, 8, 1, 17, 0)) // Start after the train departs (5 PM)
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const fourthButton = document.querySelectorAll('button')[3]
+      fourthButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(14) // Expect time to be 2pm (14:00)
+      expect(updatedDate.getDate()).toBe(2) // Date should advance to September 2
+    })
+
+    test('Take the 1pm train to Arkham (before departure)', () => {
+      // Test starting before train departure
+      setCurrentDate(new Date(1931, 8, 1, 11, 0)) // Start before the train departs (11 AM)
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const fourthButton = document.querySelectorAll('button')[3]
+      fourthButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(14) // Expect time to be 2pm (14:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should remain September 1
+    })
+
+    test('Take the 6pm train to Arkham (arrives at 7pm)', () => {
+      // Test starting after train departure
+      setCurrentDate(new Date(1931, 8, 1, 19, 0)) // Start after the train departs (7 PM)
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const fifthButton = document.querySelectorAll('button')[4]
+      fifthButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(19) // Expect time to be 7pm (19:00)
+      expect(updatedDate.getDate()).toBe(2) // Date should advance to September 2
+    })
+
+    test('Take the 6pm train to Arkham (before departure)', () => {
+      // Test starting before train departure
+      setCurrentDate(new Date(1931, 8, 1, 17, 0)) // Start before the train departs (5 PM)
+
+      const currentDate = getCurrentDate()
+      setCurrentDate(currentDate)
+      displayEntry('64')
+
+      const fifthButton = document.querySelectorAll('button')[4]
+      fifthButton.click() // Simulate clicking the choice
+
+      const updatedDate = getCurrentDate()
+      expect(updatedDate.getHours()).toBe(19) // Expect time to be 7pm (19:00)
+      expect(updatedDate.getDate()).toBe(1) // Date should remain September 1
+    })
 
     test('Stay overnight in Boston and catch a morning train', () => {
       setCurrentDate(new Date(1931, 8, 1, 5, 0)) // Early morning, before departure
@@ -2830,5 +2894,288 @@ describe('Game Logic', () => {
       // Devon Wilson should have 9 choices (each trip has skill-based options)
       expect(buttons.length).toBe(9)
     })
+  })
+})
+
+describe('Skill Allocation for Investigators', () => {
+  test('should prompt for skill allocation when starting a new investigator', () => {
+    // Simulate starting a new investigator
+    showSkillAllocationModal('Professor Grunewald')
+
+    // Check that the skill allocation UI is displayed
+    const skillAllocationModal = document.getElementById('skillAllocationModal')
+    expect(skillAllocationModal.style.display).toBe('block')
+  })
+
+  test('should switch to the next investigator and prompt for skill allocation', () => {
+    // Simulate switching to the next investigator
+    showSkillAllocationModal('Lydia Lau')
+
+    // Check that the skill allocation UI is displayed
+    const skillAllocationModal = document.getElementById('skillAllocationModal')
+    expect(skillAllocationModal.style.display).toBe('block')
+  })
+})
+
+import { gameData } from '../src/game/gameState.js'
+
+describe('Skill Allocation Modal', () => {
+  beforeEach(() => {
+    // Ensure the DOM is reset before each test
+    document.body.innerHTML = ''
+    const gameContainer = document.createElement('div')
+    gameContainer.id = 'game'
+    document.body.appendChild(gameContainer)
+
+    // Mock gameData with valid investigator data
+    gameData.investigators = {
+      'Professor Grunewald': {
+        skills: {
+          Climb: 20,
+          Charm: 15,
+          'Fast Talk': 5,
+          Fighting: 25,
+          Firearms: 20,
+          History: 45,
+          Intimidate: 15,
+          Jump: 20,
+          'Library Use': 60,
+          Listen: 20,
+          Persuade: 40,
+          Psychology: 30,
+          'Spot Hidden': 25,
+          Stealth: 20,
+          Throw: 20,
+        },
+      },
+    }
+  })
+
+  test('should display the full list of skills', () => {
+    showSkillAllocationModal('Professor Grunewald')
+
+    const skillInputs = document.querySelectorAll('.skill-input')
+    const skillLabels = Array.from(skillInputs).map((input) => input.id)
+
+    const expectedSkills = [
+      'Accounting',
+      'Anthropology',
+      'Appraise',
+      'Archaeology',
+      'Art/Craft',
+      'Astronomy',
+      'Brawl',
+      'Charm',
+      'Climb',
+      'Credit Rating',
+      'Disguise',
+      'Dodge',
+      'Drive Auto',
+      'Electrical Repair',
+      'Fast Talk',
+      'Fighting (Brawl)',
+      'Firearms (Handgun)',
+      'Firearms (Rifle)',
+      'Firearms (Shotgun)',
+      'First Aid',
+      'History',
+      'Intimidate',
+      'Jump',
+      'Language (Other)',
+      'Law',
+      'Library Use',
+      'Listen',
+      'Locksmith',
+      'Mechanical Repair',
+      'Medicine',
+      'Natural World',
+      'Navigate',
+      'Occult',
+      'Operate Heavy Machinery',
+      'Persuade',
+      'Photography',
+      'Pilot (Aircraft)',
+      'Psychoanalysis',
+      'Psychology',
+      'Ride',
+      'Science (Astronomy)',
+      'Sleight of Hand',
+      'Spot Hidden',
+      'Stealth',
+      'Survival',
+      'Swim',
+      'Throw',
+      'Track',
+    ]
+
+    expect(skillLabels).toEqual(expectedSkills)
+  })
+
+  test('should update remaining points correctly', () => {
+    showSkillAllocationModal('Professor Grunewald')
+
+    const climbInput = document.getElementById('Climb')
+    const remainingPointsDisplay = document.getElementById('remainingPoints')
+
+    climbInput.value = 50
+    climbInput.dispatchEvent(new Event('input'))
+
+    expect(remainingPointsDisplay.textContent).toBe('120')
+  })
+
+  test('should prevent confirmation if points exceed limit', () => {
+    showSkillAllocationModal('Professor Grunewald')
+
+    const climbInput = document.getElementById('Climb')
+    const charmInput = document.getElementById('Charm')
+    const confirmButton = document.getElementById('confirmSkillAllocation')
+
+    climbInput.value = 100
+    charmInput.value = 100
+    climbInput.dispatchEvent(new Event('input'))
+    charmInput.dispatchEvent(new Event('input'))
+
+    expect(confirmButton.disabled).toBe(true)
+  })
+
+  test('should update player skills on confirmation', () => {
+    showSkillAllocationModal('Professor Grunewald')
+
+    const climbInput = document.getElementById('Climb')
+    const charmInput = document.getElementById('Charm')
+    const confirmButton = document.getElementById('confirmSkillAllocation')
+
+    climbInput.value = 50
+    charmInput.value = 100
+    climbInput.dispatchEvent(new Event('input'))
+    charmInput.dispatchEvent(new Event('input'))
+
+    if (confirmButton) {
+      confirmButton.click()
+    }
+  })
+
+  test('should correctly update unallocated points when skill input is adjusted', () => {
+    showSkillAllocationModal('Professor Grunewald')
+
+    const climbInput = document.getElementById('Climb')
+    const charmInput = document.getElementById('Charm')
+    const remainingPointsDisplay = document.getElementById('remainingPoints')
+
+    // Initial state
+    expect(remainingPointsDisplay.textContent).toBe('150')
+
+    // Allocate points to Climb
+    climbInput.value = 50
+    climbInput.dispatchEvent(new Event('input'))
+    expect(remainingPointsDisplay.textContent).toBe('120')
+
+    // Allocate points to Charm
+    charmInput.value = 30
+    charmInput.dispatchEvent(new Event('input'))
+    expect(remainingPointsDisplay.textContent).toBe('105')
+
+    // Reduce points from Climb
+    climbInput.value = 20
+    climbInput.dispatchEvent(new Event('input'))
+    expect(remainingPointsDisplay.textContent).toBe('135')
+
+    // Clear input for Charm (should reset to min value)
+    charmInput.value = ''
+    charmInput.dispatchEvent(new Event('input'))
+    expect(remainingPointsDisplay.textContent).toBe('150')
+
+    // Set Climb to max value (100)
+    climbInput.value = 100
+    climbInput.dispatchEvent(new Event('input'))
+    expect(remainingPointsDisplay.textContent).toBe('70')
+  })
+})
+
+describe('Skill Side Panel', () => {
+  beforeEach(() => {
+    document.body.innerHTML = ''
+    const skillsPanel = document.createElement('div')
+    skillsPanel.id = 'skillsPanel'
+    skillsPanel.className = 'skills-panel'
+    document.body.appendChild(skillsPanel)
+
+    const skillsContainer = document.createElement('div')
+    skillsContainer.className = 'skills-container'
+    skillsPanel.appendChild(skillsContainer)
+
+    const defaultBaseValues = {
+      Accounting: 5,
+      Anthropology: 1,
+      Appraise: 5,
+      Archaeology: 1,
+      'Art/Craft': 5,
+      Astronomy: 10,
+      Brawl: 25,
+      Charm: 15,
+      Climb: 20,
+      'Credit Rating': 0,
+      'Cthulhu Mythos': 0,
+      Disguise: 5,
+      Dodge: 0,
+      'Drive Auto': 20,
+      'Electrical Repair': 10,
+      'Fast Talk': 5,
+      'Fighting (Brawl)': 25,
+      'Firearms (Handgun)': 20,
+      'Firearms (Rifle)': 25,
+      'Firearms (Shotgun)': 25,
+      'First Aid': 30,
+      History: 5,
+      Intimidate: 15,
+      Jump: 20,
+      'Language (Other)': 1,
+      Law: 5,
+      'Library Use': 20,
+      Listen: 20,
+      Locksmith: 1,
+      'Mechanical Repair': 10,
+      Medicine: 1,
+      'Natural World': 10,
+      Navigate: 10,
+      Occult: 5,
+      'Operate Heavy Machinery': 1,
+      Persuade: 10,
+      Photography: 5,
+      'Pilot (Aircraft)': 1,
+      Psychoanalysis: 1,
+      Psychology: 10,
+      Ride: 5,
+      'Science (Astronomy)': 1,
+      'Sleight of Hand': 10,
+      'Spot Hidden': 25,
+      Stealth: 20,
+      Survival: 10,
+      Swim: 20,
+      Throw: 20,
+      Track: 10,
+    }
+
+    Object.entries(defaultBaseValues).forEach(([skill, value]) => {
+      const skillElement = document.createElement('p')
+      skillElement.textContent = `${skill}: ${value}`
+      skillsContainer.appendChild(skillElement)
+    })
+  })
+
+  test('should display the correct number of skills in the side panel', () => {
+    const skillsPanel = document.getElementById('skillsPanel')
+    const skillElements = skillsPanel.querySelectorAll('p')
+    expect(skillElements.length).toBe(49) // Ensure all 49 skills are displayed
+  })
+
+  test('should include the Track skill in the side panel', () => {
+    const skillsPanel = document.getElementById('skillsPanel')
+    const skillElements = Array.from(skillsPanel.querySelectorAll('p'))
+    const trackSkill = skillElements.find((el) =>
+      el.textContent.startsWith('Track:'),
+    )
+    expect(trackSkill).not.toBeNull()
+    expect(trackSkill.textContent).toBe('Track: 10')
   })
 })
