@@ -768,9 +768,9 @@ select {
 
 .skills-panel {
   position: fixed;
-  right: -450px;
+  right: -800px;
   top: 0;
-  width: 400px;
+  width: 750px;
   height: 100%;
   background-color: #d4af37;
   padding: 0rem 1.5rem;
@@ -832,4 +832,28 @@ select {
 
 #closeSkillsButton:hover {
   background-color: #a07c27;
+}
+
+/* Style separated skill items in skills panel */
+.skills-column .skill-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.skill-name {
+  flex: 1;
+  font-weight: bold;
+  color: #fff; /* White text for skill names on gold background */
+}
+.skill-value {
+  background-color: #fff; /* White box for value */
+  color: #333;
+  font-weight: bold;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  min-width: 40px;
+  text-align: center;
 }

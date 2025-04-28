@@ -10,6 +10,11 @@ export function showSkillAllocationModal(investigatorName) {
 
   const investigatorData = gameData.investigators[investigatorName]
   let modal = document.getElementById('skillAllocationModal')
+  // If a modal already exists, remove it so it can be recreated for the new investigator
+  if (modal) {
+    modal.remove()
+    modal = null
+  }
 
   if (!modal) {
     modal = document.createElement('div')
@@ -146,7 +151,7 @@ export function showSkillAllocationModal(investigatorName) {
               const skillEntries = Object.entries(updatedSkills)
 
               skillsContainer.innerHTML = ''
-              const columnCount = 2
+              const columnCount = 3
               const skillsPerColumn = Math.ceil(
                 skillEntries.length / columnCount,
               )
@@ -157,8 +162,16 @@ export function showSkillAllocationModal(investigatorName) {
                 const start = i * skillsPerColumn
                 const end = start + skillsPerColumn
                 skillEntries.slice(start, end).forEach(([skill, value]) => {
-                  const skillElement = document.createElement('p')
-                  skillElement.textContent = `${skill}: ${value}`
+                  const skillElement = document.createElement('div')
+                  skillElement.className = 'skill-item'
+                  const nameSpan = document.createElement('span')
+                  nameSpan.className = 'skill-name'
+                  nameSpan.textContent = skill
+                  const valueSpan = document.createElement('span')
+                  valueSpan.className = 'skill-value'
+                  valueSpan.textContent = value
+                  skillElement.appendChild(nameSpan)
+                  skillElement.appendChild(valueSpan)
                   column.appendChild(skillElement)
                 })
                 skillsContainer.appendChild(column)
@@ -485,7 +498,7 @@ if (!skillsPanel) {
   const filteredSkills = skillEntries.filter(
     ([skill]) => skill !== 'Cthulhu Mythos',
   )
-  const columnCount = 2
+  const columnCount = 3
   const skillsPerColumn = Math.ceil(filteredSkills.length / columnCount) + 1
 
   for (let i = 0; i < columnCount; i++) {
@@ -494,8 +507,16 @@ if (!skillsPanel) {
     const start = i * skillsPerColumn
     const end = start + skillsPerColumn
     filteredSkills.slice(start, end).forEach(([skill, value]) => {
-      const skillElement = document.createElement('p')
-      skillElement.textContent = `${skill}: ${value}`
+      const skillElement = document.createElement('div')
+      skillElement.className = 'skill-item'
+      const nameSpan = document.createElement('span')
+      nameSpan.className = 'skill-name'
+      nameSpan.textContent = skill
+      const valueSpan = document.createElement('span')
+      valueSpan.className = 'skill-value'
+      valueSpan.textContent = value
+      skillElement.appendChild(nameSpan)
+      skillElement.appendChild(valueSpan)
       column.appendChild(skillElement)
     })
     skillsContainer.appendChild(column)
@@ -515,7 +536,7 @@ if (!skillsPanel) {
     toggleSkillsButton.textContent = 'Skills'
   })
 
-  // Adjust skillsContainer to display two columns
+  // Adjust skillsContainer to display three columns
   skillsContainer.innerHTML = ''
   for (let i = 0; i < columnCount; i++) {
     const column = document.createElement('div')
@@ -523,8 +544,16 @@ if (!skillsPanel) {
     const start = i * skillsPerColumn
     const end = start + skillsPerColumn
     skillEntries.slice(start, end).forEach(([skill, value]) => {
-      const skillElement = document.createElement('p')
-      skillElement.textContent = `${skill}: ${value}`
+      const skillElement = document.createElement('div')
+      skillElement.className = 'skill-item'
+      const nameSpan = document.createElement('span')
+      nameSpan.className = 'skill-name'
+      nameSpan.textContent = skill
+      const valueSpan = document.createElement('span')
+      valueSpan.className = 'skill-value'
+      valueSpan.textContent = value
+      skillElement.appendChild(nameSpan)
+      skillElement.appendChild(valueSpan)
       column.appendChild(skillElement)
     })
     skillsContainer.appendChild(column)

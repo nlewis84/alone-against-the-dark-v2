@@ -167,6 +167,11 @@ export function switchToNextInvestigator() {
     updateTime(0)
     updateInterpreterDisplay()
     updateCharacterImage()
+
+    // Show skill allocation modal if there are unallocated points
+    if (currentState.unallocatedPoints > 0) {
+      showSkillAllocationModal(currentState.character)
+    }
   } else {
     console.log('All investigators are dead. Game over.')
   }
