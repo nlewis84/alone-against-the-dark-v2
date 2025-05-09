@@ -26,3 +26,5 @@ Cunard Ship
 
 entry 74 - should reset the next day
 remove 1d6 from 155b
+
+When you allocate skills and save the game, the modified skills should save to state and loadGame should properly load the modified skill values
