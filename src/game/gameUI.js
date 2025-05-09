@@ -20,6 +20,7 @@ export function showSkillAllocationModal(investigatorName) {
     modal = document.createElement('div')
     modal.id = 'skillAllocationModal'
     modal.className = 'modal-overlay'
+    modal.tabIndex = -1 // Make modal focusable to capture keydown events
     modal.style.zIndex = '1000'
     modal.style.position = 'fixed'
     modal.style.top = '50%'
@@ -191,6 +192,17 @@ export function showSkillAllocationModal(investigatorName) {
             'Please allocate all skill points before confirming.'
         }
       })
+
+    // Add Enter key handling: pressing Enter triggers the Confirm button if it's enabled
+    modal.addEventListener('keydown', (e) => {
+      if (
+        e.key === 'Enter' &&
+        !document.getElementById('confirmSkillAllocation').disabled
+      ) {
+        document.getElementById('confirmSkillAllocation').click()
+      }
+    })
+
     modal.style.display = 'none' // Ensure the modal is hidden after initialization
   }
 
@@ -418,12 +430,11 @@ if (header) {
   toggleSkillsButton.addEventListener('click', () => {
     const skillsPanel = document.getElementById('skillsPanel')
     if (skillsPanel) {
+      toggleSkillsButton.textContent = 'Skills'
       if (skillsPanel.classList.contains('open')) {
         skillsPanel.classList.remove('open')
-        toggleSkillsButton.textContent = 'Skills'
       } else {
         skillsPanel.classList.add('open')
-        toggleSkillsButton.textContent = 'Close Skills'
       }
     }
   })

@@ -23,3 +23,6 @@ Be able to select a spell from your inventory and learn it (or read a book); use
 
 Cunard Ship
 106, 155a - code the Retrieve a weapon to let the player pick a weapon to attack with, maybe extra options for available weapons?
+
+entry 74 - should reset the next day
+remove 1d6 from 155b
