@@ -14,6 +14,7 @@ import {
 } from './gameState.js'
 import { saveState, loadState } from '../utils/storage.js'
 import { rollDice, makeSkillCheck, updateMarker } from '../utils/dice.js'
+import { showSkillAllocationModal, updateSkillsPanel } from './gameUI.js'
 
 function updateCalendarAndTimeDisplay(date, timeString) {
   const clockElement = document.getElementById('clock')
@@ -400,17 +401,6 @@ function handleEntryEffects(effects) {
     updateTime(0)
   }
   // Handle other effects such as sanity, inventory updates, etc., similarly
-}
-
-export function updateInterpreterDisplay(name) {
-  const interpreterDiv = document.getElementById('interpreter')
-
-  if (name) {
-    interpreterDiv.style.display = 'block' // Show the div if a name is provided
-    document.getElementById('interpreterName').innerText = name
-  } else {
-    interpreterDiv.style.display = 'none' // Hide the div if no name is set
-  }
 }
 
 export function handleEntryChoices(entryId, entry) {
@@ -1559,6 +1549,7 @@ export function loadGame() {
     updateTime(0) // Refresh date display explicitly after setting state
 
     updateCharacterImage()
+    updateSkillsPanel() // <-- Add this line to update the sidebar after loading
   } else {
     console.log('No saved state found in localStorage.')
   }
@@ -2780,4 +2771,16 @@ export function hasPyramidPiece(piece) {
  */
 export function hasInventoryItemType(itemType) {
   return currentState.inventory.some((item) => item.type === itemType)
+}
+
+export function updateInterpreterDisplay(name) {
+  const interpreterDiv = document.getElementById('interpreter')
+  if (!interpreterDiv) return
+  if (name) {
+    interpreterDiv.style.display = 'block' // Show the div if a name is provided
+    const nameElem = document.getElementById('interpreterName')
+    if (nameElem) nameElem.innerText = name
+  } else {
+    interpreterDiv.style.display = 'none' // Hide the div if no name is set
+  }
 }

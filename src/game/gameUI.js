@@ -85,100 +85,16 @@ export function showSkillAllocationModal(investigatorName) {
             allocatedSkills[input.id] = parseInt(input.value || input.min)
           })
 
+          // Update the actual game state with the allocated skills and unallocated points
+          currentState.skills = { ...allocatedSkills }
+          currentState.unallocatedPoints = 0
+
           // Ensure the modal is hidden after confirming skill allocation
           modal.style.display = 'none'
           console.log('Skill allocation modal hidden.')
 
           // Update the skills side panel with the allocated skills
-          const skillsPanel = document.getElementById('skillsPanel')
-          if (skillsPanel) {
-            const skillsContainer =
-              skillsPanel.querySelector('.skills-container')
-            if (skillsContainer) {
-              // Ensure Cthulhu Mythos is included in the skills side panel
-              const defaultBaseValues = {
-                Accounting: 5,
-                Anthropology: 1,
-                Appraise: 5,
-                Archaeology: 1,
-                'Art/Craft': 5,
-                Astronomy: 10,
-                Brawl: 25,
-                Charm: 15,
-                Climb: 20,
-                'Credit Rating': 0,
-                'Cthulhu Mythos': 0,
-                Disguise: 5,
-                Dodge: 0,
-                'Drive Auto': 20,
-                'Electrical Repair': 10,
-                'Fast Talk': 5,
-                'Fighting (Brawl)': 25,
-                'Firearms (Handgun)': 20,
-                'Firearms (Rifle)': 25,
-                'Firearms (Shotgun)': 25,
-                'First Aid': 30,
-                History: 5,
-                Intimidate: 15,
-                Jump: 20,
-                'Language (Other)': 1,
-                Law: 5,
-                'Library Use': 20,
-                Listen: 20,
-                Locksmith: 1,
-                'Mechanical Repair': 10,
-                Medicine: 1,
-                'Natural World': 10,
-                Navigate: 10,
-                Occult: 5,
-                'Operate Heavy Machinery': 1,
-                Persuade: 10,
-                Photography: 5,
-                'Pilot (Aircraft)': 1,
-                Psychoanalysis: 1,
-                Psychology: 10,
-                Ride: 5,
-                'Science (Astronomy)': 1,
-                'Sleight of Hand': 10,
-                'Spot Hidden': 25,
-                Stealth: 20,
-                Survival: 10,
-                Swim: 20,
-                Throw: 20,
-                Track: 10, // Added missing Track skill
-              }
-
-              const updatedSkills = { ...defaultBaseValues, ...allocatedSkills }
-              const skillEntries = Object.entries(updatedSkills)
-
-              skillsContainer.innerHTML = ''
-              const columnCount = 3
-              const skillsPerColumn = Math.ceil(
-                skillEntries.length / columnCount,
-              )
-
-              for (let i = 0; i < columnCount; i++) {
-                const column = document.createElement('div')
-                column.className = 'skills-column'
-                const start = i * skillsPerColumn
-                const end = start + skillsPerColumn
-                skillEntries.slice(start, end).forEach(([skill, value]) => {
-                  const skillElement = document.createElement('div')
-                  skillElement.className = 'skill-item'
-                  const nameSpan = document.createElement('span')
-                  nameSpan.className = 'skill-name'
-                  nameSpan.textContent = skill
-                  const valueSpan = document.createElement('span')
-                  valueSpan.className = 'skill-value'
-                  valueSpan.textContent = value
-                  skillElement.appendChild(nameSpan)
-                  skillElement.appendChild(valueSpan)
-                  column.appendChild(skillElement)
-                })
-                skillsContainer.appendChild(column)
-              }
-            }
-          }
+          updateSkillsPanel()
         } else {
           // Replace alert with a DOM-based error message
           let errorMessage = document.getElementById('errorMessage')
@@ -568,6 +484,93 @@ if (!skillsPanel) {
       column.appendChild(skillElement)
     })
     skillsContainer.appendChild(column)
+  }
+}
+
+// Add a function to update the skills side panel
+export function updateSkillsPanel() {
+  const skillsPanel = document.getElementById('skillsPanel')
+  if (skillsPanel) {
+    const skillsContainer = skillsPanel.querySelector('.skills-container')
+    if (skillsContainer) {
+      // Ensure Cthulhu Mythos is included in the skills side panel
+      const defaultBaseValues = {
+        Accounting: 5,
+        Anthropology: 1,
+        Appraise: 5,
+        Archaeology: 1,
+        'Art/Craft': 5,
+        Astronomy: 10,
+        Brawl: 25,
+        Charm: 15,
+        Climb: 20,
+        'Credit Rating': 0,
+        'Cthulhu Mythos': 0,
+        Disguise: 5,
+        Dodge: 0,
+        'Drive Auto': 20,
+        'Electrical Repair': 10,
+        'Fast Talk': 5,
+        'Fighting (Brawl)': 25,
+        'Firearms (Handgun)': 20,
+        'Firearms (Rifle)': 25,
+        'Firearms (Shotgun)': 25,
+        'First Aid': 30,
+        History: 5,
+        Intimidate: 15,
+        Jump: 20,
+        'Language (Other)': 1,
+        Law: 5,
+        'Library Use': 20,
+        Listen: 20,
+        Locksmith: 1,
+        'Mechanical Repair': 10,
+        Medicine: 1,
+        'Natural World': 10,
+        Navigate: 10,
+        Occult: 5,
+        'Operate Heavy Machinery': 1,
+        Persuade: 10,
+        Photography: 5,
+        'Pilot (Aircraft)': 1,
+        Psychoanalysis: 1,
+        Psychology: 10,
+        Ride: 5,
+        'Science (Astronomy)': 1,
+        'Sleight of Hand': 10,
+        'Spot Hidden': 25,
+        Stealth: 20,
+        Survival: 10,
+        Swim: 20,
+        Throw: 20,
+        Track: 10, // Added missing Track skill
+      }
+      const updatedSkills = { ...defaultBaseValues, ...currentState.skills }
+      const skillEntries = Object.entries(updatedSkills)
+      skillsContainer.innerHTML = ''
+      const columnCount = 3
+      const skillsPerColumn = Math.ceil(skillEntries.length / columnCount)
+      for (let i = 0; i < columnCount; i++) {
+        const column = document.createElement('div')
+        column.className = 'skills-column'
+        const start = i * skillsPerColumn
+        const end = start + skillsPerColumn
+        skillEntries.slice(start, end).forEach(([skill, value]) => {
+          const skillElement = document.createElement('div')
+          skillElement.className = 'skill-item'
+          const nameSpan = document.createElement('span')
+          nameSpan.className = 'skill-name'
+          nameSpan.textContent = skill
+          const valueSpan = document.createElement('span')
+          valueSpan.className = 'skill-value'
+          valueSpan.textContent = value
+          skillElement.appendChild(nameSpan)
+          skillElement.appendChild(valueSpan)
+          column.appendChild(skillElement)
+        })
+        skillsContainer.appendChild(column)
+      }
+    }
   }
 }
 
