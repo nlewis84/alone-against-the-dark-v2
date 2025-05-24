@@ -99,7 +99,7 @@ export function startGame() {
     currentEntry: '13',
     previousEntry: 'START',
     character: 'Professor Grunewald',
-    currentLocale: 'Arkham',
+    currentLocale: 'Arkham', // Default starting locale ... should be Arkham
     dailySkillUsage: {},
     combat: { isActive: false },
     visitedEntries: new Set(),
