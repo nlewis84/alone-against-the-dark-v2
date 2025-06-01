@@ -9,9 +9,8 @@ import {
   getPreviousEntry,
   setCurrentLocale,
   getCurrentLocale,
-  handleInvestigatorDeath,
-  updateCharacterImage,
 } from './gameState.js'
+import { handleInvestigatorDeath, updateCharacterImage } from './investigator.js'
 import { saveState, loadState } from '../utils/storage.js'
 import { rollDice, makeSkillCheck, updateMarker } from '../utils/dice.js'
 import { showSkillAllocationModal, updateSkillsPanel } from './gameUI.js'
@@ -1326,6 +1325,12 @@ export function updateHealth(amount) {
     if (currentState.health < 0) {
       currentState.health = 0 // Prevent health from going negative
     }
+    
+    // Check for death if health reaches 0
+    if (currentState.health === 0) {
+      handleInvestigatorDeath()
+      return // Exit early since the investigator is dead
+    }
   } else if (amount > 0) {
     // Handle healing but cap it at the current character's max initial health
     const initialHealth = gameData.investigators[currentState.character].health
@@ -1697,7 +1702,7 @@ export function checkRequirements(requirements) {
 
       // Normalize by trimming extra spaces, converting to lowercase, and replacing curly quotes with straight quotes
       const normalizeString = (str) =>
-        str ? str.trim().toLowerCase().replace(/[’']/g, "'") : null
+        str ? str.trim().toLowerCase().replace(/['']/g, "'") : null
 
       const normalizedAM = normalizeString(am)
       const normalizedPM = normalizeString(pm)

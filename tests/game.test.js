@@ -3,14 +3,14 @@ import {
   getCurrentDate,
   initializeGame,
   currentState,
-  handleInvestigatorDeath,
   setTempDescription,
   setGameData,
   getPreviousEntry,
   setCurrentLocale,
   startGame,
-  switchToNextInvestigator,
+  setCurrentState,
 } from '../src/game/gameState.js'
+import { handleInvestigatorDeath, switchToNextInvestigator } from '../src/game/investigator.js'
 import {
   recordSkillUsage,
   updateTime,
@@ -302,6 +302,7 @@ describe('Game Logic', () => {
       currentState.inventory = []
       setCurrentDate(new Date(1931, 8, 1, 12, 0)) // Noon, September 1, 1931
       addItem({ name: 'Magical Book', type: 'book' })
+      addItem({ name: 'Necronomicon', type: 'book' })
 
       // Save game state including current date and time
       saveGame()
