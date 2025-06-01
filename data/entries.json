@@ -12817,7 +12817,7 @@
         }
       },
       {
-        "text": "If you’re Holt - Try Persuade",
+        "text": "Try Persuade",
         "nextEntry": "483",
         "requirements": {
           "character": "Ernest Holt"
@@ -12837,7 +12837,7 @@
         }
       },
       {
-        "text": "If you’re Holt - Try Charm",
+        "text": "Try Charm",
         "nextEntry": "489",
         "requirements": {
           "character": "Ernest Holt"
@@ -12857,7 +12857,7 @@
         }
       },
       {
-        "text": "If you’re Holt - Try Fast Talk",
+        "text": "Try Fast Talk",
         "nextEntry": "495",
         "requirements": {
           "character": "Ernest Holt"
@@ -12877,7 +12877,7 @@
         }
       },
       {
-        "text": "If you’re Holt - Try Intimidate",
+        "text": "Try Intimidate",
         "nextEntry": "471",
         "requirements": {
           "character": "Ernest Holt"

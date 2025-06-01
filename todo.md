@@ -1,9 +1,3 @@
-36
-37
-554
-
-check 488 with all the characters
-
 Go to the desert and run out of water....you will have no health but won't die and trigger end of game
 
 Roughly every 6 entries in the pyramid should advance the time 1 hour (382)
@@ -26,3 +20,7 @@ Cunard Ship
 
 entry 74 - should reset the next day
 remove 1d6 from 155b
+
+On the Allocate Skills modal, we should indicate which investigator this is for. It is not clear when this pops up after an investigator dies.
+
+In entry 400, it appears that an investigator can be reduced to 0 hit points but not be killed. we should add a test for this to see what is going on.
