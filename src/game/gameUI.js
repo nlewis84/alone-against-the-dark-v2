@@ -32,7 +32,7 @@ export function showSkillAllocationModal(investigatorName) {
     modal.style.borderRadius = '8px'
     modal.innerHTML = `
       <div class="modal-content">
-        <h2>Allocate Skill Points</h2>
+        <h2>Allocate Skill Points for ${investigatorName}</h2>
         <p>You have <span id="remainingPoints">150</span> points to allocate to your skills.</p>
         <div id="skillInputs">
           ${generateSkillInputs(investigatorData.skills)}
@@ -237,7 +237,7 @@ modalStyle.textContent = `
     .modal-content h2 {
       font-size: 1.5rem;
       color: #333;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       text-transform: uppercase;
       border-bottom: 2px solid #d4af37;
       padding-bottom: 0.5rem;
