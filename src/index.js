@@ -5,9 +5,13 @@ import {
   showMinimapIfPiecesExist,
   highlightCurrentLocationOnMap,
 } from './game/gameActions.js'
+import { showSkillAllocationModal } from './game/gameUI.js'
 
 document.addEventListener('DOMContentLoaded', () => {
   initializeGame()
+
+  // Show skill allocation modal for the first investigator
+  showSkillAllocationModal('Professor Grunewald')
 
   document.getElementById('saveButton').onclick = saveGame
   document.getElementById('loadButton').onclick = loadGame
