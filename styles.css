@@ -85,6 +85,7 @@ button {
   transition:
     background-color 0.3s,
     border-color 0.3s;
+  cursor: pointer;
 }
 
 #choices button:nth-child(2n + 1),
@@ -112,6 +113,7 @@ button:nth-child(2n + 2) {
   transition:
     background-color 0.3s,
     border-color 0.3s;
+  cursor: pointer;
 }
 
 #saveButton:hover,
@@ -457,6 +459,7 @@ img {
   font-size: 1rem;
   text-transform: uppercase;
   transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 #inventoryButton:hover {
@@ -569,6 +572,7 @@ select {
   font-weight: bold;
   transition: background-color 0.3s ease;
   border: none;
+  cursor: pointer;
 }
 
 .close:hover,

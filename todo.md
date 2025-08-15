@@ -1,4 +1,4 @@
-Go to the desert and run out of water....you will have no health but won't die and trigger end of game
+Go to the desert and run out of water....you will have no health and will die and trigger end of game, but the next investigator will not begin playing at thier correct starting location (341)
 
 Roughly every 6 entries in the pyramid should advance the time 1 hour (382)
 
