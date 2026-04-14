@@ -292,6 +292,10 @@ const locationCoordinates = {
 let currentPulseDot = null // Store the current pulsing dot for later updates
 let currentEntryId = null // Store the current entry id to use for repositioning
 
+export function getCurrentEntryId() {
+  return currentEntryId
+}
+
 export function highlightCurrentLocationOnMap(entryId) {
   const mapContainer = document.getElementById('minimap-container')
 
