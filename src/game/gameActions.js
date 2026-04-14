@@ -1782,40 +1782,17 @@ export function checkRequirements(requirements) {
       const { moderateHotelStays, expensiveHotelStays } =
         requirements.minHotelStays
 
-      // Check for minimum moderateHotelStays
       if (moderateHotelStays !== undefined) {
-        const playerModerateStays = currentState.moderateHotelStays || 0 // Default to 0 if undefined
+        const playerModerateStays = currentState.moderateHotelStays || 0
         if (playerModerateStays < moderateHotelStays) {
-          return false // Player hasn't met the minimum moderate stays requirement
+          return false
         }
       }
 
-      // Check for minimum expensiveHotelStays
       if (expensiveHotelStays !== undefined) {
-        const playerExpensiveStays = currentState.expensiveHotelStays || 0 // Default to 0 if undefined
+        const playerExpensiveStays = currentState.expensiveHotelStays || 0
         if (playerExpensiveStays < expensiveHotelStays) {
-          return false // Player hasn't met the minimum expensive stays requirement
-        }
-      }
-    }
-
-    if (requirements.minHotelStays) {
-      const { moderateHotelStays, expensiveHotelStays } =
-        requirements.minHotelStays
-
-      // Check for minimum moderateHotelStays
-      if (moderateHotelStays !== undefined) {
-        const playerModerateStays = currentState.moderateHotelStays || 0 // Default to 0 if undefined
-        if (playerModerateStays < moderateHotelStays) {
-          return false // Player hasn't met the minimum moderate stays requirement
-        }
-      }
-
-      // Check for minimum expensiveHotelStays
-      if (expensiveHotelStays !== undefined) {
-        const playerExpensiveStays = currentState.expensiveHotelStays || 0 // Default to 0 if undefined
-        if (playerExpensiveStays < expensiveHotelStays) {
-          return false // Player hasn't met the minimum expensive stays requirement
+          return false
         }
       }
     }
