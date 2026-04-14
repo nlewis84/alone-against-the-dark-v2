@@ -4,6 +4,7 @@ import {
   loadGame,
   showMinimapIfPiecesExist,
   highlightCurrentLocationOnMap,
+  getCurrentEntryId,
 } from './game/gameActions.js'
 import { showSkillAllocationModal } from './game/gameUI.js'
 
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .addEventListener('click', function () {
       this.classList.toggle('expanded')
 
-      highlightCurrentLocationOnMap(currentEntryId)
+      highlightCurrentLocationOnMap(getCurrentEntryId())
     })
 
   // Add event listeners for opening and closing the inventory panel
