@@ -971,7 +971,7 @@ function handleSpecialEntry54(choicesContainer) {
 
   // Loop through the available books and exclude books already in the inventory
   books.forEach((book) => {
-    if (!inventoryBooks.includes(book.name)) {
+    if (!inventoryBooks.some((item) => item.name === book.name)) {
       // Only allow selecting books not in the player's inventory and if selectedBooks < 3
       if (selectedBooks < 3) {
         const bookButton = createButton(
