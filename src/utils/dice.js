@@ -41,7 +41,6 @@ export function performCustomRoll() {
 
   const hoursRemaining = Math.max(0, (sixPM - currentTime) / (1000 * 60 * 60)) // Calculate remaining hours
   totalBonus += Math.floor(hoursRemaining) * 5 // Add 5 for each remaining hour
-  console.log(hoursRemaining)
   // Inventory logic: Check if player has the-symbol-of-the-cult-of-aten, clue207, or the-symbol
   const clues = [
     'the-symbol-of-the-cult-of-aten',

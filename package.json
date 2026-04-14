@@ -7,7 +7,7 @@
     "build:css": "npx tailwindcss build styles.css -o output.css",
     "test": "jest",
     "sort": "node scripts/sortJson.js",
-    "missing": "cd scripts && node nextEntries.js && node topLevelEntries.js && node missingEntries.js && cd output && code missingEntries.json"
+    "missing": "cd scripts && node nextEntries.js && node topLevelEntries.js && node missingEntries.js"
   },
   "devDependencies": {
     "@babel/core": "^7.24.5",

@@ -91,7 +91,6 @@ export function showSkillAllocationModal(investigatorName) {
 
           // Ensure the modal is hidden after confirming skill allocation
           modal.style.display = 'none'
-          console.log('Skill allocation modal hidden.')
 
           // Update the skills side panel with the allocated skills
           updateSkillsPanel()
