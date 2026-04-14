@@ -1,3 +1,4 @@
 node_modules/
 .DS_Store
 sorted_entries.json
+coverage/
