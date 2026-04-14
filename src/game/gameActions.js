@@ -2111,7 +2111,7 @@ function handleCombatRound(actionType) {
 
           const damageToOpponent = parseAndComputeDamage(unarmedStrike)
 
-          if (opponent.health > 0 - damageToOpponent < 0) {
+          if (opponent.health - damageToOpponent < 0) {
             opponent.health = 0
           } else {
             opponent.health -= damageToOpponent
@@ -2151,7 +2151,7 @@ function handleCombatRound(actionType) {
 
           const damageToOpponent = parseAndComputeDamage(weaponDamage)
 
-          if (opponent.health > 0 - damageToOpponent < 0) {
+          if (opponent.health - damageToOpponent < 0) {
             opponent.health = 0
           } else {
             opponent.health -= damageToOpponent
