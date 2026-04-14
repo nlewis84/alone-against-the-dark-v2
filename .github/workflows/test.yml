@@ -1,6 +1,8 @@
 name: Test Suite
 
 on:
+  push:
+    branches: ['main']
   pull_request:
     branches: ['*']
 
@@ -19,6 +21,9 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Check formatting
+        run: npx prettier --check .
 
       - name: Run tests
         run: yarn test

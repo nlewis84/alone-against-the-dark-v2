@@ -4,21 +4,21 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Libre Baskerville"', "serif"],
-        display: ['"Cinzel"', "serif"],
+        sans: ['"Libre Baskerville"', 'serif'],
+        display: ['"Cinzel"', 'serif'],
       },
       colors: {
-        gold: "#d4af37",
-        navy: "#000080",
+        gold: '#d4af37',
+        navy: '#000080',
       },
     },
     container: {
       center: true,
-      padding: "2rem",
+      padding: '2rem',
     },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-};
+}

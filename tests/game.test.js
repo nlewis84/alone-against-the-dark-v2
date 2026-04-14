@@ -2902,8 +2902,8 @@ describe('Game Logic', () => {
       currentState.skills = {
         'Library Use': 75,
         'Spot Hidden': 60,
-        'Listen': 45,
-        'Psychology': 35
+        Listen: 45,
+        Psychology: 35,
       }
       saveGame()
 
@@ -2911,8 +2911,8 @@ describe('Game Logic', () => {
       currentState.skills = {
         'Library Use': 20,
         'Spot Hidden': 25,
-        'Listen': 20,
-        'Psychology': 10
+        Listen: 20,
+        Psychology: 10,
       }
 
       // Load the saved game
@@ -2922,8 +2922,8 @@ describe('Game Logic', () => {
       expect(currentState.skills).toEqual({
         'Library Use': 75,
         'Spot Hidden': 60,
-        'Listen': 45,
-        'Psychology': 35
+        Listen: 45,
+        Psychology: 35,
       })
     })
 
@@ -2932,36 +2932,36 @@ describe('Game Logic', () => {
       currentState.skills = {
         'Library Use': 20,
         'Spot Hidden': 25,
-        'Listen': 20,
-        'Psychology': 10
+        Listen: 20,
+        Psychology: 10,
       }
-      
+
       // Modify some skills
       currentState.skills['Library Use'] = 75
       currentState.skills['Spot Hidden'] = 60
       currentState.skills['Listen'] = 45
       currentState.skills['Psychology'] = 35
-      
+
       // Save the game with modified skills
       saveGame()
-      
+
       // Change skills again
       currentState.skills = {
         'Library Use': 30,
         'Spot Hidden': 35,
-        'Listen': 30,
-        'Psychology': 20
+        Listen: 30,
+        Psychology: 20,
       }
-      
+
       // Load the game
       loadGame()
-      
+
       // Verify that the modified skills were restored
       expect(currentState.skills).toEqual({
         'Library Use': 75,
         'Spot Hidden': 60,
-        'Listen': 45,
-        'Psychology': 35
+        Listen: 45,
+        Psychology: 35,
       })
     })
   })
