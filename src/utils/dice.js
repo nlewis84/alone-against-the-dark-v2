@@ -49,8 +49,8 @@ export function performCustomRoll() {
     'the-symbol',
   ]
   clues.forEach((clue) => {
-    if (currentState.inventory.includes(clue)) {
-      totalBonus += 20 // Add 20 if any of the clues are in the inventory
+    if (currentState.inventory.some((item) => item.name === clue)) {
+      totalBonus += 20
     }
   })
 
