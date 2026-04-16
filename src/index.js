@@ -7,8 +7,8 @@ import {
 } from './game/gameActions.js'
 import { showSkillAllocationModal } from './game/gameUI.js'
 
-document.addEventListener('DOMContentLoaded', () => {
-  initializeGame()
+document.addEventListener('DOMContentLoaded', async () => {
+  await initializeGame()
 
   // Show skill allocation modal for the first investigator
   showSkillAllocationModal('Professor Grunewald')
@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('inventoryButton').addEventListener('click', () => {
     const inventoryPanel = document.getElementById('inventoryPanel')
     if (inventoryPanel.classList.contains('open')) {
-      inventoryPanel.classList.remove('open') // Close if it's already open
+      inventoryPanel.classList.remove('open')
     } else {
-      inventoryPanel.classList.add('open') // Open if it's closed
+      inventoryPanel.classList.add('open')
     }
   })
 
@@ -37,8 +37,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('inventoryPanel').classList.remove('open')
   })
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // Call this to set initial visibility of the minimap
-    showMinimapIfPiecesExist()
-  })
+  showMinimapIfPiecesExist()
 })
