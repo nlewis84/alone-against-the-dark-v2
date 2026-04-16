@@ -132,7 +132,6 @@ export function displayEntry(entryId) {
   updateMinimapProgress(entryId)
 
   if (lastDisplayedEntry === '187' && entryId === '10d') {
-    console.log('Prevented display of 10d following 187')
     return // Prevent the specific unwanted transition
   }
 
@@ -666,7 +665,6 @@ export function handleEntryChoices(entryId, entry) {
 
               // Handle scheduling a meeting
               if (choice.effects.scheduleMeeting) {
-                console.log(choice.effects.scheduleMeeting)
                 if (!currentState.scheduledMeetings) {
                   currentState.scheduledMeetings = []
                 }
@@ -765,7 +763,6 @@ export function handleComplexOutcome(checkResult) {
   }
 
   if (checkResult.dexterity) {
-    console.log(currentState)
     currentState.DEX -= parseInt(checkResult.dexterity)
   }
 
@@ -1550,8 +1547,6 @@ export function loadGame() {
 
     updateCharacterImage()
     updateSkillsPanel() // <-- Add this line to update the sidebar after loading
-  } else {
-    console.log('No saved state found in localStorage.')
   }
 }
 
@@ -1930,7 +1925,6 @@ export function handleOutcomeBasedEncounter(choice) {
         .diceRoll
         ? rollDice(matchedOutcome.effects.setVariable.value.diceRoll)
         : matchedOutcome.effects.setVariable.value
-      console.log('set water level to ' + currentState.waterSupply)
       updateWaterSupplyDisplay(currentState.waterSupply) // Update the UI for water supply
     }
 
@@ -2080,7 +2074,6 @@ function startCombat(entryId, combatDetails) {
 
 function handleCombatRound(actionType) {
   if (!currentState.combat.isActive) {
-    console.log('Combat has already ended, exiting round.')
     return
   }
 
@@ -2117,16 +2110,11 @@ function handleCombatRound(actionType) {
             opponent.health -= damageToOpponent
           }
 
-          console.log(
-            `Player attacked successfully, new opponent health: ${opponent.health}`,
-          )
-
           updateHitMarker(
             document.getElementById('playerHitMarker'),
             `You hit opponent for ${damageToOpponent} damage!`,
           )
         } else {
-          console.log('Player attack failed.')
           updateHitMarker(
             document.getElementById('playerHitMarker'),
             'You missed!',
@@ -2157,16 +2145,11 @@ function handleCombatRound(actionType) {
             opponent.health -= damageToOpponent
           }
 
-          console.log(
-            `Player attacked successfully, new opponent health: ${opponent.health}`,
-          )
-
           updateHitMarker(
             document.getElementById('playerHitMarker'),
             `You hit opponent for ${damageToOpponent} damage!`,
           )
         } else {
-          console.log('Player attack failed.')
           updateHitMarker(
             document.getElementById('playerHitMarker'),
             'You missed!',
@@ -2199,16 +2182,12 @@ function handleCombatRound(actionType) {
           currentState.health -= damageToPlayer
         }
         updateHealthDisplay()
-        console.log(
-          `Opponent attacked successfully, new player health: ${currentState.health}`,
-        )
 
         updateHitMarker(
           document.getElementById('opponentHitMarker'),
           `Opponent hit you for ${damageToPlayer} damage!`,
         )
       } else {
-        console.log('Opponent attack failed.')
         updateHitMarker(
           document.getElementById('opponentHitMarker'),
           'Opponent missed!',
@@ -2219,11 +2198,9 @@ function handleCombatRound(actionType) {
 
   // Check for end of combat
   if (currentState.health <= 0) {
-    console.log('Player defeated, handling loss.')
     endCombat(currentState.combat.outcome.lose)
     return
   } else if (opponent.health <= 0) {
-    console.log('Opponent defeated, handling win.')
     endCombat(currentState.combat.outcome.win)
     return
   }
@@ -2231,22 +2208,18 @@ function handleCombatRound(actionType) {
   // Update combat status if still active
   if (currentState.combat.isActive) {
     updateCombatStatus()
-  } else {
-    console.log('Combat is not active post-round, no UI update required.')
   }
 }
 
 function endCombat(entry = null) {
   clearHitMarkers() // Clear the hit markers when combat ends
 
-  console.log(`Ending combat, transition to entry: ${entry}`)
   currentState.combat.isActive = false // Explicitly mark combat as inactive
   updateCombatStatus() // Update any UI or status indicators
 
   if (typeof entry === 'object') {
     handleComplexOutcome(entry)
   } else {
-    console.log(`Displaying victory/defeat entry: ${entry}`)
     setTimeout(() => displayEntry(entry), 100) // Use a slight delay to ensure all combat processes have ceased
   }
 }
@@ -2277,7 +2250,6 @@ function updateCombatStatus() {
       <br>Health: ${currentState.combat.opponent.health}/${currentState.combat.opponent.maxHealth}
       </p>
     `
-    console.log(currentState.combat.opponent.image)
     // Check if an image is provided for the opponent
     if (currentState.combat.opponent.image) {
       combatHtml += `
@@ -2380,7 +2352,6 @@ function checkIfDisembarked(choicesContainer) {
       () => {
         // Set the hour to Noon (12 PM)
         updateTime(0, 12)
-        console.log('Got off at Athens Pier, time set to Noon.')
         displayEntry('173')
       },
     )
@@ -2392,7 +2363,6 @@ function checkIfDisembarked(choicesContainer) {
       () => {
         // Advance the day and set the hour to 8AM
         updateTime(24)
-        console.log('Staying onboard, time advanced to 11 PM.')
         displayEntry('187')
       },
     )
@@ -2409,7 +2379,6 @@ function checkIfDisembarked(choicesContainer) {
       () => {
         // Set the time to 1 PM
         updateTime(0, 13)
-        console.log('Disembarked at Alexandria, time set to 1 PM.')
         displayEntry('195')
       },
     )
@@ -2429,15 +2398,6 @@ function saveSelectedActivities(amActivity, pmActivity, nightActivity) {
   }
 }
 
-function displaySelectedActivities() {
-  if (currentState.shipActivities) {
-    console.log('Your selected activities for today:')
-    console.log('AM:', currentState.shipActivities.am)
-    console.log('PM:', currentState.shipActivities.pm)
-    console.log('Night:', currentState.shipActivities.night)
-  }
-}
-
 function handleSpecialEntry187(choicesContainer) {
   const currentDate = getCurrentDate()
 
@@ -2451,11 +2411,9 @@ function handleSpecialEntry187(choicesContainer) {
       0,
       0, // Ensure the time is set to midnight
     )
-    console.log('Ship journey started on:', currentState.shipJourneyStartDate)
   }
 
   const journeyDay = calculateJourneyDay() // Calculate the current day of the journey
-  console.log('Journey day:', journeyDay)
 
   // Handle disembarkation if we're on specific days
   if (checkIfDisembarked(choicesContainer)) {
@@ -2534,11 +2492,6 @@ function handleSpecialEntry187(choicesContainer) {
       if (amActivity && pmActivity && nightActivity) {
         // Save selected activities
         saveSelectedActivities(amActivity, pmActivity, nightActivity)
-        console.log('Activities selected for Cunard Ship:', {
-          am: amActivity,
-          pm: pmActivity,
-          night: nightActivity,
-        })
 
         // Get the schedule entry for the current journey day and display it
         const journeyDay = calculateJourneyDay() // Recalculate the journey day
