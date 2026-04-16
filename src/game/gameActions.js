@@ -1320,15 +1320,14 @@ export function makeChoice(nextEntry, effects) {
 }
 
 export function updateHealth(amount) {
-  // Only adjust if there is actual damage (negative values)
+  const initialHealth = gameData.investigators[currentState.character].health
+
   if (amount < 0) {
     currentState.health += amount
     if (currentState.health < 0) {
-      currentState.health = 0 // Prevent health from going negative
+      currentState.health = 0
     }
   } else if (amount > 0) {
-    // Handle healing but cap it at the current character's max initial health
-    const initialHealth = gameData.investigators[currentState.character].health
     currentState.health = Math.min(currentState.health + amount, initialHealth)
   }
   document.getElementById('health').innerText = `Health: ${currentState.health}`
@@ -1338,7 +1337,7 @@ export function updateHealth(amount) {
       ? `Health increased by ${amount}`
       : `Health decreased by ${Math.abs(amount)}`
   if (amount !== 0) {
-    if (currentState.health === 100) {
+    if (currentState.health >= initialHealth) {
       updateMarker('healthMarker', 'Health fully restored!')
     } else {
       updateMarker('healthMarker', message)
@@ -1621,7 +1620,9 @@ export function checkRequirements(requirements) {
       }
     }
     if (requirements.fullHealth) {
-      if (currentState.health < 100) {
+      const initialHealth =
+        gameData.investigators[currentState.character].health
+      if (currentState.health < initialHealth) {
         return false
       }
     }
