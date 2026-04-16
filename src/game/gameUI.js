@@ -1,6 +1,58 @@
 import { initializeGame, gameData, currentState } from './gameState.js'
 import { saveGame, loadGame, checkRequirements } from './gameActions.js'
 
+const DEFAULT_BASE_VALUES = {
+  Accounting: 5,
+  Anthropology: 1,
+  Appraise: 5,
+  Archaeology: 1,
+  'Art/Craft': 5,
+  Astronomy: 10,
+  Brawl: 25,
+  Charm: 15,
+  Climb: 20,
+  'Credit Rating': 0,
+  'Cthulhu Mythos': 0,
+  Disguise: 5,
+  Dodge: 0,
+  'Drive Auto': 20,
+  'Electrical Repair': 10,
+  'Fast Talk': 5,
+  'Fighting (Brawl)': 25,
+  'Firearms (Handgun)': 20,
+  'Firearms (Rifle)': 25,
+  'Firearms (Shotgun)': 25,
+  'First Aid': 30,
+  History: 5,
+  Intimidate: 15,
+  Jump: 20,
+  'Language (Other)': 1,
+  Law: 5,
+  'Library Use': 20,
+  Listen: 20,
+  Locksmith: 1,
+  'Mechanical Repair': 10,
+  Medicine: 1,
+  'Natural World': 10,
+  Navigate: 10,
+  Occult: 5,
+  'Operate Heavy Machinery': 1,
+  Persuade: 10,
+  Photography: 5,
+  'Pilot (Aircraft)': 1,
+  Psychoanalysis: 1,
+  Psychology: 10,
+  Ride: 5,
+  'Science (Astronomy)': 1,
+  'Sleight of Hand': 10,
+  'Spot Hidden': 25,
+  Stealth: 20,
+  Survival: 10,
+  Swim: 20,
+  Throw: 20,
+  Track: 10,
+}
+
 // Add a function to create and manage the skill allocation modal
 export function showSkillAllocationModal(investigatorName) {
   if (!gameData.investigators[investigatorName]) {
@@ -126,65 +178,12 @@ export function showSkillAllocationModal(investigatorName) {
 }
 
 function generateSkillInputs(skills) {
-  const defaultBaseValues = {
-    Accounting: 5,
-    Anthropology: 1,
-    Appraise: 5,
-    Archaeology: 1,
-    'Art/Craft': 5,
-    Astronomy: 10,
-    Brawl: 25,
-    Charm: 15,
-    Climb: 20,
-    'Credit Rating': 0,
-    'Cthulhu Mythos': 0,
-    Disguise: 5,
-    Dodge: 0,
-    'Drive Auto': 20,
-    'Electrical Repair': 10,
-    'Fast Talk': 5,
-    'Fighting (Brawl)': 25,
-    'Firearms (Handgun)': 20,
-    'Firearms (Rifle)': 25,
-    'Firearms (Shotgun)': 25,
-    'First Aid': 30,
-    History: 5,
-    Intimidate: 15,
-    Jump: 20,
-    'Language (Other)': 1,
-    Law: 5,
-    'Library Use': 20,
-    Listen: 20,
-    Locksmith: 1,
-    'Mechanical Repair': 10,
-    Medicine: 1,
-    'Natural World': 10,
-    Navigate: 10,
-    Occult: 5,
-    'Operate Heavy Machinery': 1,
-    Persuade: 10,
-    Photography: 5,
-    'Pilot (Aircraft)': 1,
-    Psychoanalysis: 1,
-    Psychology: 10,
-    Ride: 5,
-    'Science (Astronomy)': 1,
-    'Sleight of Hand': 10,
-    'Spot Hidden': 25,
-    Stealth: 20,
-    Survival: 10,
-    Swim: 20,
-    Throw: 20,
-    Track: 10, // Added missing Track skill
-  }
-
-  // Filter out Cthulhu Mythos only in the skill allocation modal
-  const filteredSkills = Object.keys(defaultBaseValues).filter(
+  const filteredSkills = Object.keys(DEFAULT_BASE_VALUES).filter(
     (skill) => skill !== 'Cthulhu Mythos',
   )
 
   const skillEntries = filteredSkills.map((skill) => {
-    const currentValue = skills[skill] || defaultBaseValues[skill]
+    const currentValue = skills[skill] || DEFAULT_BASE_VALUES[skill]
     return { skill, value: currentValue, min: currentValue }
   })
 
@@ -369,59 +368,7 @@ if (!skillsPanel) {
   const skillsContainer = document.createElement('div')
   skillsContainer.className = 'skills-container'
 
-  const defaultBaseValues = {
-    Accounting: 5,
-    Anthropology: 1,
-    Appraise: 5,
-    Archaeology: 1,
-    'Art/Craft': 5,
-    Astronomy: 10,
-    Brawl: 25,
-    Charm: 15,
-    Climb: 20,
-    'Credit Rating': 0,
-    'Cthulhu Mythos': 0,
-    Disguise: 5,
-    Dodge: 0,
-    'Drive Auto': 20,
-    'Electrical Repair': 10,
-    'Fast Talk': 5,
-    'Fighting (Brawl)': 25,
-    'Firearms (Handgun)': 20,
-    'Firearms (Rifle)': 25,
-    'Firearms (Shotgun)': 25,
-    'First Aid': 30,
-    History: 5,
-    Intimidate: 15,
-    Jump: 20,
-    'Language (Other)': 1,
-    Law: 5,
-    'Library Use': 20,
-    Listen: 20,
-    Locksmith: 1,
-    'Mechanical Repair': 10,
-    Medicine: 1,
-    'Natural World': 10,
-    Navigate: 10,
-    Occult: 5,
-    'Operate Heavy Machinery': 1,
-    Persuade: 10,
-    Photography: 5,
-    'Pilot (Aircraft)': 1,
-    Psychoanalysis: 1,
-    Psychology: 10,
-    Ride: 5,
-    'Science (Astronomy)': 1,
-    'Sleight of Hand': 10,
-    'Spot Hidden': 25,
-    Stealth: 20,
-    Survival: 10,
-    Swim: 20,
-    Throw: 20,
-    Track: 10, // Added missing Track skill
-  }
-
-  const skillEntries = Object.entries(defaultBaseValues)
+  const skillEntries = Object.entries(DEFAULT_BASE_VALUES)
   const filteredSkills = skillEntries.filter(
     ([skill]) => skill !== 'Cthulhu Mythos',
   )
@@ -493,59 +440,7 @@ export function updateSkillsPanel() {
   if (skillsPanel) {
     const skillsContainer = skillsPanel.querySelector('.skills-container')
     if (skillsContainer) {
-      // Ensure Cthulhu Mythos is included in the skills side panel
-      const defaultBaseValues = {
-        Accounting: 5,
-        Anthropology: 1,
-        Appraise: 5,
-        Archaeology: 1,
-        'Art/Craft': 5,
-        Astronomy: 10,
-        Brawl: 25,
-        Charm: 15,
-        Climb: 20,
-        'Credit Rating': 0,
-        'Cthulhu Mythos': 0,
-        Disguise: 5,
-        Dodge: 0,
-        'Drive Auto': 20,
-        'Electrical Repair': 10,
-        'Fast Talk': 5,
-        'Fighting (Brawl)': 25,
-        'Firearms (Handgun)': 20,
-        'Firearms (Rifle)': 25,
-        'Firearms (Shotgun)': 25,
-        'First Aid': 30,
-        History: 5,
-        Intimidate: 15,
-        Jump: 20,
-        'Language (Other)': 1,
-        Law: 5,
-        'Library Use': 20,
-        Listen: 20,
-        Locksmith: 1,
-        'Mechanical Repair': 10,
-        Medicine: 1,
-        'Natural World': 10,
-        Navigate: 10,
-        Occult: 5,
-        'Operate Heavy Machinery': 1,
-        Persuade: 10,
-        Photography: 5,
-        'Pilot (Aircraft)': 1,
-        Psychoanalysis: 1,
-        Psychology: 10,
-        Ride: 5,
-        'Science (Astronomy)': 1,
-        'Sleight of Hand': 10,
-        'Spot Hidden': 25,
-        Stealth: 20,
-        Survival: 10,
-        Swim: 20,
-        Throw: 20,
-        Track: 10, // Added missing Track skill
-      }
-      const updatedSkills = { ...defaultBaseValues, ...currentState.skills }
+      const updatedSkills = { ...DEFAULT_BASE_VALUES, ...currentState.skills }
       const skillEntries = Object.entries(updatedSkills)
       skillsContainer.innerHTML = ''
       const columnCount = 3
