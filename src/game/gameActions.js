@@ -84,22 +84,6 @@ function updateDescription(entryId, title, description, specialInstructions) {
   document.getElementById('description').innerHTML = entryText
 }
 
-function updateChoices(choices, requirementsChecker, onClickHandler) {
-  const choicesContainer = document.getElementById('choices')
-  choicesContainer.innerHTML = ''
-
-  choices.forEach((choice) => {
-    if (requirementsChecker(choice.requirements)) {
-      const button = createButton(
-        choice.text,
-        'px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mb-2',
-        () => onClickHandler(choice),
-      )
-      choicesContainer.appendChild(button)
-    }
-  })
-}
-
 function displayError(entryId) {
   console.error(`Entry with ID ${entryId} not found`)
   document.getElementById('description').innerText =
@@ -327,20 +311,6 @@ export function highlightCurrentLocationOnMap(entryId) {
   } else {
     console.error('Map container not found.')
   }
-}
-
-// Function to update the pulsing dot position on screen resize
-function updateDotPosition(pulseDot, coords) {
-  const mapContainer = document.getElementById('minimap-container')
-  const mapRect = mapContainer.getBoundingClientRect()
-
-  // Calculate the dot's position based on the percentage coordinates relative to the current map size
-  const top = coords.yPercent * mapRect.height
-  const left = coords.xPercent * mapRect.width
-
-  // Apply the calculated positions
-  pulseDot.style.top = `${top}px`
-  pulseDot.style.left = `${left}px`
 }
 
 function handleEntryEffects(effects) {
@@ -2033,22 +2003,6 @@ export function parseAndComputeDamage(damageInput, diceRoller = rollDice) {
   }
   console.error('Invalid damage input format: ' + damageInput)
   return 0
-}
-
-function findWeaponByName(name) {
-  const categories = [
-    'Handguns',
-    'Rifles',
-    'SMGs',
-    'Shotguns',
-    'Melee',
-    'Explosives',
-  ]
-  for (const category of categories) {
-    const weapon = gameData[category].find((weapon) => weapon.name === name)
-    if (weapon) return weapon
-  }
-  return null
 }
 
 function hasSkill(skillName) {
