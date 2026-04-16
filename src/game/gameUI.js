@@ -1,5 +1,5 @@
-import { initializeGame, gameData, currentState } from './gameState.js'
-import { saveGame, loadGame, checkRequirements } from './gameActions.js'
+import { gameData, currentState } from './gameState.js'
+import { checkRequirements } from './gameActions.js'
 
 // Add a function to create and manage the skill allocation modal
 export function showSkillAllocationModal(investigatorName) {
@@ -597,10 +597,3 @@ export function displayEntry(entryId) {
     }
   })
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  initializeGame()
-
-  document.getElementById('saveButton').onclick = saveGame
-  document.getElementById('loadButton').onclick = loadGame
-})
