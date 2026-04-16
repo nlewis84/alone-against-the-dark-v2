@@ -1260,11 +1260,11 @@ export function makeChoice(nextEntry, effects) {
           check.skill,
           currentState.skills,
           currentState,
-          effects.check?.difficulty || 'normal',
-          effects.check?.tries || null,
-          effects.check?.opposedValue || null,
-          effects.check?.bonus || 0,
-          effects.check?.penaltyDice || 0,
+          check.difficulty || 'normal',
+          check.tries || null,
+          check.opposedValue || null,
+          check.bonus || 0,
+          check.penaltyDice || 0,
         )
 
         currentState.results = currentState.results || {} // Initialize if not present
